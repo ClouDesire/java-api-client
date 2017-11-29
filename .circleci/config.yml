@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: openjdk:8-jdk
+    working_directory: ~/java-api-client
+    steps:
+      - checkout
+      - restore_cache:
+          key: java-api-client-root
+      - run:
+          name: Configure Maven repository
+          command: mkdir -p ~/.m2 && cp ~/java-api-client/.circleci/settings.xml ~/.m2
+      - run:
+          name: Build
+          command: ./mvnw -B install -Dmaven.test.skip=true
+      - save_cache:
+          key: java-api-client-root
+          paths:
+            - "~/.m2"
+      - run:
+          name: Run Tests
+          command: ./mvnw -B verify
+      - run:
+          name: Deploy client artifacts
+          command: ./mvnw -B deploy -Dmaven.test.skip=true

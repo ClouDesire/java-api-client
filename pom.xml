@@ -30,7 +30,7 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>snapshots</id>
+			<id>artifactory</id>
 			<name>libs-snapshot-local</name>
 			<url>https://artifactory.cloudesire.com/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
