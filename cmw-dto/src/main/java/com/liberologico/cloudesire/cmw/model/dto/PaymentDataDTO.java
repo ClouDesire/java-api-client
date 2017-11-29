@@ -1,0 +1,90 @@
+package com.liberologico.cloudesire.cmw.model.dto;
+
+import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+
+public class PaymentDataDTO
+{
+    @NotEmpty
+    @Pattern( regexp = "\\d{2}", message = ConstraintKeys.TWO_DIGITS )
+    private String expirationMonth;
+
+    @NotEmpty
+    @Pattern( regexp = "\\d{2}|\\d{4}", message = ConstraintKeys.TWO_OR_FOUR_DIGITS )
+    private String expirationYear;
+
+    @NotEmpty
+    @CreditCardNumber
+    private String number;
+
+    @NotEmpty
+    @Pattern( regexp = "\\d{3}|\\d{4}", message = ConstraintKeys.THREE_OR_FOUR_DIGITS )
+    private String cvc;
+
+    private String holder;
+
+    public PaymentDataDTO( String expirationMonth, String expirationYear, String number, String cvc )
+    {
+        this.expirationMonth = expirationMonth;
+        this.expirationYear = expirationYear;
+        this.number = number;
+        this.cvc = cvc;
+    }
+
+    public PaymentDataDTO()
+    {
+    }
+
+    public String getExpirationMonth()
+    {
+        return expirationMonth;
+    }
+
+    public void setExpirationMonth( String expirationMonth )
+    {
+        this.expirationMonth = expirationMonth;
+    }
+
+    public String getExpirationYear()
+    {
+        return expirationYear;
+    }
+
+    public void setExpirationYear( String expirationYear )
+    {
+        this.expirationYear = expirationYear;
+    }
+
+    public String getNumber()
+    {
+        return number;
+    }
+
+    public void setNumber( String number )
+    {
+        this.number = number;
+    }
+
+    public String getCvc()
+    {
+        return cvc;
+    }
+
+    public void setCvc( String cvc )
+    {
+        this.cvc = cvc;
+    }
+
+    public String getHolder()
+    {
+        return holder;
+    }
+
+    public void setHolder( String holder )
+    {
+        this.holder = holder;
+    }
+}
