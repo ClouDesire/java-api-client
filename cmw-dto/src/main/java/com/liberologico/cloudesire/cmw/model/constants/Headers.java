@@ -7,6 +7,7 @@ public final class Headers
     public static final String PAGE_NUMBER = "CMW-PageNumber";
     public static final String TOTAL_ITEMS = "CMW-TotalItems";
     public static final String TOTAL_PAGES = "CMW-TotalPages";
+    public static final String RELATED_RESOURCE = "CMW-Related-Resource";
 
     private Headers()
     {
