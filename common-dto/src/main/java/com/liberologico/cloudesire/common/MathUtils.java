@@ -6,11 +6,11 @@ public final class MathUtils
 {
     public static final BigDecimal ONE_HUNDRED = new BigDecimal( 100 );
 
-    public static BigDecimal addPercentage( BigDecimal base, BigDecimal pct, int scale )
+    public static BigDecimal addPercentage( BigDecimal base, BigDecimal pct )
     {
         if ( base == null ) return BigDecimal.ZERO;
 
-        return base.add( percentage( base, pct, scale ) );
+        return base.add( percentage( base, pct, MathConfiguration.DEFAULT_PRECISION ) );
     }
 
     public static BigDecimal subtractPercentage( BigDecimal base, BigDecimal pct )
