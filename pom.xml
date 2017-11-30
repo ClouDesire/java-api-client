@@ -10,8 +10,14 @@
 	<artifactId>java-api-client</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 
+	<name>java-api-client</name>
+	<description>Java API client for Cloudesire platform</description>
+	<url>http://github.com/cloudesire/java-api-client</url>
+
 	<scm>
+		<connection>scm:git:git://github.com/ClouDesire/java-api-client.git</connection>
 		<developerConnection>scm:git:git@github.com:ClouDesire/java-api-client.git</developerConnection>
+		<url>http://github.com/cloudesire/java-api-client/tree/master</url>
 	</scm>
 
 	<modules>
@@ -65,7 +71,49 @@
 					<tag>${project.artifactId}-${project.version}</tag>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
+	<developers>
+		<developer>
+			<name>Cloudesire Team</name>
+			<email>dev@cloudesire.com</email>
+			<organization>Cloudesire.com srl</organization>
+			<organizationUrl>https://cloudesire.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
 </project>
