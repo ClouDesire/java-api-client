@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,6 +37,9 @@ public class ResellerPricingDTO extends BaseEntityDTO
 
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricings;
+
+    @Valid
+    private List<BillingItemValueDTO> billingItemValues;
 
     public ResellerPricingDTO( UrlEntityDTO distributor, UrlEntityDTO productVersion )
     {
@@ -131,6 +135,16 @@ public class ResellerPricingDTO extends BaseEntityDTO
     public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
     {
         this.cloudPricings = cloudPricings;
+    }
+
+    public List<BillingItemValueDTO> getBillingItemValues()
+    {
+        return billingItemValues;
+    }
+
+    public void setBillingItemValues( List<BillingItemValueDTO> billingItemValues )
+    {
+        this.billingItemValues = billingItemValues;
     }
 
     @Override
