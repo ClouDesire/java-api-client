@@ -48,10 +48,18 @@ public enum UserRole
         @Override
         public boolean canCreate( UserRole userRole )
         {
-            return ! userRole.equals( ROLE_ADMIN );
+            return this.compareTo( userRole ) >= 0;
         }
     },
     ROLE_ADMIN
+    {
+        @Override
+        public boolean canCreate( UserRole userRole )
+        {
+            return ! userRole.equals( ROLE_SUPERADMIN );
+        }
+    },
+    ROLE_SUPERADMIN
     {
         @Override
         public boolean canCreate( UserRole userRole )
@@ -74,6 +82,11 @@ public enum UserRole
     public boolean canImpersonate()
     {
         return this.compareTo( ROLE_SUPERVISOR ) >= 0;
+    }
+
+    public boolean isAdmin()
+    {
+        return this.compareTo( ROLE_ADMIN ) >= 0;
     }
 
     public boolean isSuperior( Set<UserRole> roles )
