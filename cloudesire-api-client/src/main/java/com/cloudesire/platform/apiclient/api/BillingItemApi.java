@@ -20,6 +20,9 @@ public interface BillingItemApi
     @POST( "billingItem" )
     Call<BillingItemDTO> create( @Body BillingItemDTO source );
 
+    @POST( "billingItem" )
+    Call<BillingItemDTO> create( @Body BillingItemDTO source, @Query( "language" ) String language );
+
     @DELETE( "billingItem/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
@@ -27,15 +30,22 @@ public interface BillingItemApi
     Call<List<BillingItemDTO>> getAll(
             @QueryMap Map<String, String> pageRequest,
             @Query( "valueType" ) BillingItemValueType valueType,
-            @Query( "companyId" ) Integer companyId
+            @Query( "companyId" ) Integer companyId,
+            @Query( "reseller" ) String reseller
     );
 
     @GET( "billingItem/identifier={identifier}" )
-    Call<BillingItemDTO> getByIdentifier( @Path( "identifier" ) String identifier );
+    Call<BillingItemDTO> get( @Path( "identifier" ) String identifier );
 
     @GET( "billingItem/{id}" )
     Call<BillingItemDTO> get( @Path( "id" ) Integer id );
 
+    @GET( "billingItem/{id}" )
+    Call<BillingItemDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
+
     @PUT( "billingItem/{id}" )
     Call<BillingItemDTO> update( @Path( "id" ) Integer id, @Body BillingItemDTO source );
+
+    @PUT( "billingItem/{id}" )
+    Call<BillingItemDTO> update( @Path( "id" ) Integer id, @Body BillingItemDTO source, @Query( "language" ) String language );
 }
