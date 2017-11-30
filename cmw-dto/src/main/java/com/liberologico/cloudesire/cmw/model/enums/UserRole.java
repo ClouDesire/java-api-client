@@ -15,4 +15,9 @@ public enum UserRole
     ROLE_SUPERVISOR,
     ROLE_ADMIN,
     ROLE_SUPERADMIN;
+
+    public String prettyPrint()
+    {
+        return this.toString().replace( "ROLE_", "" ).toLowerCase();
+    }
 }
