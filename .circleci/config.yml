@@ -22,5 +22,5 @@ jobs:
           name: Run Tests
           command: ./mvnw -B verify
       - run:
-          name: Deploy client artifacts
-          command: ./mvnw -B deploy -Dmaven.test.skip=true
+          name: Deploy artifacts
+          command: if [ "$CIRCLE_BRANCH" == "master" ]; then ./mvnw -B deploy -Dmaven.test.skip=true; fi
