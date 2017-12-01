@@ -30,6 +30,12 @@ public class ResellingPriceDTO extends DTO
         this.sellout = sellout;
     }
 
+    public ResellingPriceDTO( BigDecimal markup, ResellingConfigurationType markupType )
+    {
+        this( markup );
+        this.markupType = markupType;
+    }
+
     public ResellingPriceDTO( BigDecimal markup )
     {
         this.markup = markup;
