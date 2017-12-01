@@ -1,5 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import com.liberologico.cloudesire.cmw.model.enums.ResellingConfigurationType;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -11,10 +13,21 @@ public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
     @Valid
     private UrlEntityDTO cloudPricing;
 
+    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup, ResellingConfigurationType markupType )
+    {
+        this( cloudPricing );
+        this.price = new ResellingPriceDTO( markup, markupType );
+    }
+
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup )
     {
-        this.cloudPricing = cloudPricing;
+        this( cloudPricing );
         this.price = new ResellingPriceDTO( markup );
+    }
+
+    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing )
+    {
+        this.cloudPricing = cloudPricing;
     }
 
     // region Auto-generated code
