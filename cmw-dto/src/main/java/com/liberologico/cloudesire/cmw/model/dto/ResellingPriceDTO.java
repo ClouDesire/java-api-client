@@ -8,17 +8,19 @@ import java.util.Objects;
 
 public class ResellingPriceDTO extends DTO
 {
-    @ApiModelProperty( "The markup percentage on the product price, editable by the distributor" )
+    @ApiModelProperty( "The markup on the price, editable by a distributor" )
     private BigDecimal markup;
 
+    @ApiModelProperty( "The markup type, editable by a distributor" )
     private ResellingConfigurationType markupType;
 
-    @ApiModelProperty( value = "The sell-in price of this product", readOnly = true )
+    @ApiModelProperty( value = "The sell-in price", readOnly = true )
     private BigDecimal sellin;
 
-    @ApiModelProperty( "The sell-out price for this product, editable by a reseller" )
+    @ApiModelProperty( "The sell-out on the price, editable by a reseller" )
     private BigDecimal sellout;
 
+    @ApiModelProperty( "The sell-out type, editable by a reseller" )
     private ResellingConfigurationType selloutType;
 
     // region Auto-generated code
