@@ -38,6 +38,8 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricings;
 
+    private Boolean locked;
+
     @Valid
     private List<BillingItemValueDTO> billingItemValues;
 
@@ -135,6 +137,16 @@ public class ResellerPricingDTO extends BaseEntityDTO
     public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
     {
         this.cloudPricings = cloudPricings;
+    }
+
+    public Boolean getLocked()
+    {
+        return locked;
+    }
+
+    public void setLocked( Boolean locked )
+    {
+        this.locked = locked;
     }
 
     public List<BillingItemValueDTO> getBillingItemValues()
