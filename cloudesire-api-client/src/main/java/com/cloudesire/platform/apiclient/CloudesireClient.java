@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient;
 
 import com.cloudesire.platform.apiclient.api.AdminApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
+import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
@@ -212,6 +213,11 @@ public class CloudesireClient
     public AdminApi getAdminApi()
     {
         return retrofit.create( AdminApi.class );
+    }
+
+    public BudgetEstimateApi getBudgetEstimateApi()
+    {
+        return retrofit.create( BudgetEstimateApi.class );
     }
 
     public MessageApi getMessageApi()
