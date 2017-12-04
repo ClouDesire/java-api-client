@@ -127,7 +127,7 @@ public class BudgetInputDTO
         return this;
     }
 
-    @AssertFalse( message = "Billing item values can't be null" )
+    @AssertFalse( message = "{validator.billing.item.chosen.value.null}" )
     public boolean isBillingItemValueNull()
     {
         for ( Map.Entry<UrlEntityDTO, Integer> entry : billingItems.entrySet() )
