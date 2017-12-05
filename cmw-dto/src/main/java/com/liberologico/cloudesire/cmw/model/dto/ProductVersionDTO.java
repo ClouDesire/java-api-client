@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,8 +32,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
      */
     private BigDecimal bandwidthInGB;
 
-    @NotNull
-    private BigDecimal price = BigDecimal.ZERO;
+    private BigDecimal price;
 
     private BigDecimal vendorPrice;
 
