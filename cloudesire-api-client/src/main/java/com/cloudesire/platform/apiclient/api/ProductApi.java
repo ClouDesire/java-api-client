@@ -70,6 +70,9 @@ public interface ProductApi
     Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name );
 
     @GET( "product" )
+    Call<List<ProductDTO>> getAllNameFilter( @QueryMap Map<String, String> pageRequest, @Query( "nameFilter" ) String name );
+
+    @GET( "product" )
     Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name,
             @Query( "reseller" ) String reseller );
 

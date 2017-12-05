@@ -10,6 +10,7 @@ import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
+import com.cloudesire.platform.apiclient.api.ElasticSearchApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MessageApi;
@@ -263,6 +264,11 @@ public class CloudesireClient
     public BudgetEstimateApi getBudgetEstimateApi()
     {
         return retrofit.create( BudgetEstimateApi.class );
+    }
+
+    public ElasticSearchApi getElasticSearchApi()
+    {
+        return retrofit.create( ElasticSearchApi.class );
     }
 
     public MessageApi getMessageApi()

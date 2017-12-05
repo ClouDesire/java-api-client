@@ -1104,6 +1104,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enable selling extra resources" )
         private boolean billingItems = true;
 
+        @ApiModelProperty( "Enable FTS" )
+        private boolean fullTextSearch;
+
         @ApiModelProperty( "Enabled payment gateways" )
         @Valid
         private List<PaymentGateway> enabledPaymentGateways = Collections.singletonList( PaymentGateway.STRIPE );
@@ -1369,6 +1372,16 @@ public class EnvironmentDTO extends DTO
         public void setBillingItems( boolean billingItems )
         {
             this.billingItems = billingItems;
+        }
+
+        public boolean isFullTextSearch()
+        {
+            return fullTextSearch;
+        }
+
+        public void setFullTextSearch( boolean fullTextSearch )
+        {
+            this.fullTextSearch = fullTextSearch;
         }
 
         public List<PaymentGateway> getEnabledPaymentGateways()
