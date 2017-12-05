@@ -127,6 +127,9 @@ public class MyUserDTO extends NamedEntityDTO
     @ApiModelProperty( value = "What roles can this user impersonate", readOnly = true )
     private Set<UserRole> canImpersonate;
 
+    @ApiModelProperty( value = "What roles can this user create", readOnly = true )
+    private Set<UserRole> canCreate;
+
     @Override
     public String getResourceName()
     {
@@ -589,6 +592,16 @@ public class MyUserDTO extends NamedEntityDTO
     public void setCanImpersonate( Set<UserRole> canImpersonate )
     {
         this.canImpersonate = canImpersonate;
+    }
+
+    public Set<UserRole> getCanCreate()
+    {
+        return canCreate;
+    }
+
+    public void setCanCreate( Set<UserRole> canCreate )
+    {
+        this.canCreate = canCreate;
     }
 
     @Override
