@@ -32,6 +32,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
      */
     private BigDecimal bandwidthInGB;
 
+    @ApiModelProperty( "Can be null for a catalog-only product plan" )
     private BigDecimal price;
 
     private BigDecimal vendorPrice;
