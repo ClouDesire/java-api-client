@@ -23,6 +23,9 @@ public class DockerComposeServiceDTO
     @JsonProperty( "container_name" )
     private String containerName;
 
+    private boolean privileged;
+    private boolean networkMode;
+
     private String image;
     private String build;
 
@@ -84,6 +87,30 @@ public class DockerComposeServiceDTO
     public DockerComposeServiceDTO setContainerName( String containerName )
     {
         this.containerName = containerName;
+        return this;
+    }
+
+    public boolean isPrivileged()
+    {
+        return privileged;
+    }
+
+    public DockerComposeServiceDTO setPrivileged( boolean privileged )
+    {
+        this.privileged = privileged;
+        return this;
+    }
+
+    @JsonProperty( "networkMode" )
+    public boolean isNetworkMode()
+    {
+        return networkMode;
+    }
+
+    @JsonProperty( "net" )
+    public DockerComposeServiceDTO setNetworkMode( String networkMode )
+    {
+        this.networkMode = networkMode.equals( "host" );
         return this;
     }
 
