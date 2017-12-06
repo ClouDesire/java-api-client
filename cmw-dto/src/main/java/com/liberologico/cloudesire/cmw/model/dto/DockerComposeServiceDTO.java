@@ -24,7 +24,7 @@ public class DockerComposeServiceDTO
     private String containerName;
 
     private boolean privileged;
-    private boolean networkMode;
+    private String net;
 
     private String image;
     private String build;
@@ -101,16 +101,14 @@ public class DockerComposeServiceDTO
         return this;
     }
 
-    @JsonProperty( "networkMode" )
-    public boolean isNetworkMode()
+    public String getNet()
     {
-        return networkMode;
+        return net;
     }
 
-    @JsonProperty( "net" )
-    public DockerComposeServiceDTO setNetworkMode( String networkMode )
+    public DockerComposeServiceDTO setNet( String net )
     {
-        this.networkMode = networkMode.equals( "host" );
+        this.net = net;
         return this;
     }
 
