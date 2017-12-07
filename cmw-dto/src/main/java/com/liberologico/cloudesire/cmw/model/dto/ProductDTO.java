@@ -146,7 +146,18 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
 
+    public ProductDTO( String name, String identifier, ProductType type )
+    {
+        super( name );
+        this.SKU = identifier;
+        this.type = type;
+    }
+
     //region Auto-generated code
+    public ProductDTO()
+    {
+    }
+
     public String getSKU()
     {
         return SKU;
