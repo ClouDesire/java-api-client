@@ -24,6 +24,8 @@ Artifacts are hosted on JCenter:
 </repositories>
 ```
 
+## Examples
+
 [Basic usage](https://github.com/ClouDesire/examples/blob/master/java-api-client/src/test/java/org/example/client/ClientTest.java)
 
 [Example project](https://github.com/ClouDesire/examples/tree/master/java-api-client)
