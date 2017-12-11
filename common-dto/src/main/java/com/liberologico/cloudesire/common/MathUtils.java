@@ -61,6 +61,11 @@ public final class MathUtils
         return number;
     }
 
+    public static boolean isNullOrZero( BigDecimal number )
+    {
+        return number == null || isZero( number );
+    }
+
     public static boolean isZero( BigDecimal number )
     {
         return BigDecimal.ZERO.compareTo( number ) == 0;
