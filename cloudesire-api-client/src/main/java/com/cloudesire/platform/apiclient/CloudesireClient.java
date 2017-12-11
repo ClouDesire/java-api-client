@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient;
 
 import com.cloudesire.platform.apiclient.api.AdminApi;
+import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
@@ -16,9 +17,11 @@ import com.cloudesire.platform.apiclient.api.PublicUserFileApi;
 import com.cloudesire.platform.apiclient.api.ResellerPricingApi;
 import com.cloudesire.platform.apiclient.api.ResellingReportApi;
 import com.cloudesire.platform.apiclient.api.RiskProfileApi;
+import com.cloudesire.platform.apiclient.api.StackParameterValueApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
+import com.cloudesire.platform.apiclient.api.VMConfigurationApi;
 import com.cloudesire.platform.apiclient.api.VMInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -313,6 +316,21 @@ public class CloudesireClient
     public VMInstanceApi getVMInstanceApi()
     {
         return retrofit.create( VMInstanceApi.class );
+    }
+
+    public ApplicationFileApi getApplicationFileApi()
+    {
+        return retrofit.create( ApplicationFileApi.class );
+    }
+
+    public StackParameterValueApi getStackParameterValueApi()
+    {
+        return retrofit.create( StackParameterValueApi.class );
+    }
+
+    public VMConfigurationApi getVMConfigurationApi()
+    {
+        return retrofit.create( VMConfigurationApi.class );
     }
     // endregion
 
