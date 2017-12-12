@@ -41,15 +41,14 @@ public class BudgetDTO extends BaseEntityDTO
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private String couponStatus;
 
-    /**
-     * Recurring monthly price
-     */
+    @ApiModelProperty( "Recurring monthly price" )
     private BigDecimal priceExcludingVAT;
 
-    /**
-     * Price for the first month, including potential setup fee
-     */
+    @ApiModelProperty( "Price for the first month, including potential setup fee" )
     private BigDecimal firstPriceExcludingVAT;
+
+    @ApiModelProperty( "True if this will generate a self-billed invoice" )
+    private Boolean selfBilled;
 
     @JsonProperty
     public BigDecimal getTotalPrice()
@@ -200,6 +199,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setCouponStatus( String couponStatus )
     {
         this.couponStatus = couponStatus;
+    }
+
+    public Boolean isSelfBilled()
+    {
+        return selfBilled;
+    }
+
+    public void setSelfBilled( Boolean selfBilled )
+    {
+        this.selfBilled = selfBilled;
     }
 
     @Override
