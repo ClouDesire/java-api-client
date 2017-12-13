@@ -62,9 +62,17 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )
     private String reseller;
 
-    /**
-     *  Avoid null value from client
-     */
+    public OrderInputDTO( UrlEntityDTO productVersion )
+    {
+        this.type = OrderType.NORMAL;
+        this.productVersion = productVersion;
+        this.billingPeriods = 1;
+    }
+
+    public OrderInputDTO()
+    {
+    }
+
     public void setBillingPeriods( Integer billingPeriods )
     {
         this.billingPeriods = billingPeriods;

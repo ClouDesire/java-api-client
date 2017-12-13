@@ -8,9 +8,14 @@ public enum ProductType
     MANAGED,
 
     /**
-     * Provisioning is handled externally
+     * Provisioning is handled programmatically
      */
     SYNDICATED,
+
+    /**
+     * Provisioning is handled externally
+     */
+    SERVICE,
 
     /**
      * This product is a bundle of other products

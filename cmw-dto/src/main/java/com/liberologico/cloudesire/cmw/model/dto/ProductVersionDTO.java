@@ -106,6 +106,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "The number of markups set for this plan" )
     private long markedUp;
 
+    @ApiModelProperty( "True if a subscription from this plan will be automatically set to DEPLOYED on payment" )
+    private boolean autodeploy;
+
     //region Auto-generated code
     public Set<UrlEntityDTO> getVirtualMachineConfiguration()
     {
@@ -453,6 +456,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setMarkedUp( long markedUp )
     {
         this.markedUp = markedUp;
+    }
+
+    public boolean isAutodeploy()
+    {
+        return autodeploy;
+    }
+
+    public void setAutodeploy( boolean autodeploy )
+    {
+        this.autodeploy = autodeploy;
     }
 
     @Override
