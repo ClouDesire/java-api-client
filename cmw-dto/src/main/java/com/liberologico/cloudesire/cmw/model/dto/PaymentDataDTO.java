@@ -5,6 +5,8 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PaymentDataDTO
 {
@@ -36,6 +38,16 @@ public class PaymentDataDTO
 
     public PaymentDataDTO()
     {
+    }
+
+    public Map<String, String> toMap()
+    {
+        Map<String, String> map = new HashMap<>();
+        map.put( "cardNumber", number );
+        map.put( "cardExpirationMonth", expirationMonth );
+        map.put( "cardExpirationYear", expirationYear );
+        map.put( "cardCVC", cvc );
+        return map;
     }
 
     public String getExpirationMonth()
