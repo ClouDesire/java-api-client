@@ -109,7 +109,17 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "True if a subscription from this plan will be automatically set to DEPLOYED on payment" )
     private boolean autodeploy;
 
+    public ProductVersionDTO( String name, UrlEntityDTO product )
+    {
+        super( name );
+        this.product = product;
+    }
+
     //region Auto-generated code
+    public ProductVersionDTO()
+    {
+    }
+
     public Set<UrlEntityDTO> getVirtualMachineConfiguration()
     {
         return virtualMachineConfiguration;
