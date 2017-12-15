@@ -89,10 +89,13 @@ public interface UserApi
     Call<Boolean> isMyAddressValid();
 
     @PATCH( "user/passwordRecovery" )
-    Call<Void> passwordRecovery( @Query( "email" ) String email );
+    Call<Void> passwordRecovery( @Query( "identifier" ) String identifier );
 
     @POST( "user/resetPassword/{email}/{tag}" )
-    Call<Void> resetPassword( @Path( "tag" ) String tag, @Path( "email" ) String email, @Body Object map );
+    Call<Void> resetPasswordByEmail( @Path( "email" ) String email, @Path( "tag" ) String tag, @Body Map<String, String> map );
+
+    @POST( "user/resetPassword/{username}/{tag}" )
+    Call<Void> resetPasswordByUsername( @Path( "username" ) String email, @Path( "tag" ) String tag, @Body Map<String, String> map );
 
     @PATCH( "user" )
     Call<Void> retryRegistration( @Body Object input );
