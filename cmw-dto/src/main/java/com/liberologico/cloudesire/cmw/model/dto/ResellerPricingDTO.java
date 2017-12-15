@@ -33,10 +33,10 @@ public class ResellerPricingDTO extends BaseEntityDTO
     private ResellingPriceDTO setup;
 
     @Valid
-    private Set<BillingItemResellingPriceDTO> billingItems;
+    private Set<BillingItemResellingPriceDTO> billingItemResellingPrices;
 
     @Valid
-    private Set<CloudPricingResellingPriceDTO> cloudPricings;
+    private Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices;
 
     private Boolean locked;
 
@@ -119,24 +119,24 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.setup = setup;
     }
 
-    public Set<BillingItemResellingPriceDTO> getBillingItems()
+    public Set<BillingItemResellingPriceDTO> getBillingItemResellingPrices()
     {
-        return billingItems;
+        return billingItemResellingPrices;
     }
 
-    public void setBillingItems( Set<BillingItemResellingPriceDTO> billingItems )
+    public void setBillingItemResellingPrices( Set<BillingItemResellingPriceDTO> billingItemResellingPrices )
     {
-        this.billingItems = billingItems;
+        this.billingItemResellingPrices = billingItemResellingPrices;
     }
 
-    public Set<CloudPricingResellingPriceDTO> getCloudPricings()
+    public Set<CloudPricingResellingPriceDTO> getCloudPricingResellingPrices()
     {
-        return cloudPricings;
+        return cloudPricingResellingPrices;
     }
 
-    public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
+    public void setCloudPricingResellingPrices( Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices )
     {
-        this.cloudPricings = cloudPricings;
+        this.cloudPricingResellingPrices = cloudPricingResellingPrices;
     }
 
     public Boolean getLocked()
