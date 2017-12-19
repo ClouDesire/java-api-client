@@ -1,5 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import javax.validation.constraints.AssertTrue;
+
 public class PasswordResetDTO
 {
     private String email;
@@ -25,6 +27,12 @@ public class PasswordResetDTO
     public String getIdentifier()
     {
         return email != null ? email : username;
+    }
+
+    @AssertTrue( message = "{validator.password.reset.email.xor.username}" )
+    public boolean isSingleIdentifierPresent()
+    {
+        return ( email == null ) != ( username == null );
     }
 
     public PasswordResetDTO()
