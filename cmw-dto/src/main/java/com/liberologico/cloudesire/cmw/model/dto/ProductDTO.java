@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -151,6 +152,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         super( name );
         this.SKU = identifier;
         this.type = type;
+    }
+
+    @JsonProperty( "is_service" )
+    public boolean isService()
+    {
+        return type == ProductType.SERVICE;
     }
 
     //region Auto-generated code
