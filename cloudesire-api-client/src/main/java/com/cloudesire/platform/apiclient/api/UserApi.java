@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.DistributorDTO;
 import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
+import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PaymentDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
@@ -90,7 +91,7 @@ public interface UserApi
     Call<Boolean> isMyAddressValid();
 
     @POST( "user/password/recovery" )
-    Call<Void> passwordRecovery( @Body PasswordResetDTO request );
+    Call<Void> passwordRecovery( @Body PasswordRecoveryDTO request );
 
     @POST( "user/password/reset" )
     Call<Void> passwordReset( @Body PasswordResetDTO request );
