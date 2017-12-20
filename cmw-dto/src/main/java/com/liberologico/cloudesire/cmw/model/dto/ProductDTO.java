@@ -86,10 +86,20 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     private List<UrlEntityDTO> cloudProviders;
 
     @ApiModelProperty( readOnly = true )
-    private Boolean isManaged;
+    @JsonProperty( "isBundle" )
+    private Boolean bundle;
 
     @ApiModelProperty( readOnly = true )
-    private Boolean isSyndicated;
+    @JsonProperty( "isManaged" )
+    private Boolean managed;
+
+    @ApiModelProperty( readOnly = true )
+    @JsonProperty( "isService" )
+    private Boolean service;
+
+    @ApiModelProperty( readOnly = true )
+    @JsonProperty( "isSyndicated" )
+    private Boolean syndicated;
 
     private String certificate;
 
@@ -152,12 +162,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         super( name );
         this.SKU = identifier;
         this.type = type;
-    }
-
-    @JsonProperty( "is_service" )
-    public boolean isService()
-    {
-        return type == ProductType.SERVICE;
     }
 
     //region Auto-generated code
@@ -386,24 +390,44 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.metrics = metrics;
     }
 
-    public Boolean getIsManaged()
+    public Boolean isBundle()
     {
-        return isManaged;
+        return bundle;
     }
 
-    public void setIsManaged( Boolean isManaged )
+    public void setBundle( Boolean bundle )
     {
-        this.isManaged = isManaged;
+        this.bundle = bundle;
     }
 
-    public Boolean getIsSyndicated()
+    public Boolean isManaged()
     {
-        return isSyndicated;
+        return managed;
     }
 
-    public void setIsSyndicated( Boolean isSyndicated )
+    public void setManaged( Boolean managed )
     {
-        this.isSyndicated = isSyndicated;
+        this.managed = managed;
+    }
+
+    public Boolean isService()
+    {
+        return service;
+    }
+
+    public void setService( Boolean service )
+    {
+        this.service = service;
+    }
+
+    public Boolean isSyndicated()
+    {
+        return syndicated;
+    }
+
+    public void setSyndicated( Boolean syndicated )
+    {
+        this.syndicated = syndicated;
     }
 
     public String getPrivateKey()
