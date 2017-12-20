@@ -1578,8 +1578,7 @@ public class EnvironmentDTO extends DTO
          *
          * Works as feature flag too (empty means disabled).
          */
-        @URL
-        private String slackNotificationEndpoint;
+        private List<String> slackNotificationEndpoints;
 
         private String slackChannel;
 
@@ -1815,14 +1814,20 @@ public class EnvironmentDTO extends DTO
             this.janineInvoiceManagerUrl = janineInvoiceManagerUrl;
         }
 
-        public String getSlackNotificationEndpoint()
+        public List<String> getSlackNotificationEndpoints()
         {
-            return slackNotificationEndpoint;
+            return slackNotificationEndpoints;
         }
 
-        public void setSlackNotificationEndpoint( String slackNotificationEndpoint )
+        public void setSlackNotificationEndpoints( List<String> slackNotificationEndpoints )
         {
-            this.slackNotificationEndpoint = slackNotificationEndpoint;
+            this.slackNotificationEndpoints = slackNotificationEndpoints;
+        }
+
+        @Deprecated
+        public void setSlackNotificationEndpoint( String endpoint )
+        {
+            if ( endpoint != null ) slackNotificationEndpoints = Collections.singletonList( endpoint );
         }
 
         public String getZuoraConnectorUrl()
