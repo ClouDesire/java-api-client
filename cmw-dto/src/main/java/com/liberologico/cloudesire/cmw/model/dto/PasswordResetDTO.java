@@ -1,62 +1,40 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
-import javax.validation.constraints.AssertTrue;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class PasswordResetDTO
 {
-    private String email;
-
-    private String username;
+    @NotEmpty
+    private String identifier;
 
     private String tag;
 
     private String password;
 
-    public PasswordResetDTO( String username, String tag, String password )
+    public PasswordResetDTO( String identifier, String tag, String password )
     {
-        this( username );
+        this( identifier );
         this.tag = tag;
         this.password = password;
     }
 
-    public PasswordResetDTO( String username )
+    public PasswordResetDTO( String identifier )
     {
-        this.username = username;
-    }
-
-    public String getIdentifier()
-    {
-        return email != null ? email : username;
-    }
-
-    @AssertTrue( message = "{validator.password.reset.email.xor.username}" )
-    public boolean isSingleIdentifierPresent()
-    {
-        return ( email == null ) != ( username == null );
+        this.identifier = identifier;
     }
 
     public PasswordResetDTO()
     {
     }
 
-    public String getEmail()
+    public String getIdentifier()
     {
-        return email;
+        return identifier;
     }
 
-    public void setEmail( String email )
+    public void setIdentifier( String identifier )
     {
-        this.email = email;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public void setUsername( String username )
-    {
-        this.username = username;
+        this.identifier = identifier;
     }
 
     public String getTag()
