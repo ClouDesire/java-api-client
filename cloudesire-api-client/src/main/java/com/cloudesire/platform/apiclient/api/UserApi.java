@@ -2,6 +2,8 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.DistributorDTO;
 import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
+import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
+import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PaymentDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import okhttp3.ResponseBody;
@@ -88,11 +90,11 @@ public interface UserApi
     @GET( "user/isMyAddressValid" )
     Call<Boolean> isMyAddressValid();
 
-    @PATCH( "user/passwordRecovery" )
-    Call<Void> passwordRecovery( @Query( "email" ) String email );
+    @POST( "user/password/recovery" )
+    Call<Void> passwordRecovery( @Body PasswordRecoveryDTO request );
 
-    @POST( "user/resetPassword/{email}/{tag}" )
-    Call<Void> resetPassword( @Path( "tag" ) String tag, @Path( "email" ) String email, @Body Object map );
+    @POST( "user/password/reset" )
+    Call<Void> passwordReset( @Body PasswordResetDTO request );
 
     @PATCH( "user" )
     Call<Void> retryRegistration( @Body Object input );
