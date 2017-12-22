@@ -1,7 +1,11 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+
+import static com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO.Action.MASS_UPDATE;
+import static com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
 
 public class ResellerPricingPatchDTO extends DTO
 {
@@ -13,6 +17,14 @@ public class ResellerPricingPatchDTO extends DTO
     public ResellerPricingPatchDTO( Action action )
     {
         this.action = action;
+    }
+
+    @AssertTrue( message = "Missing percentage value" )
+    public boolean isValidAction()
+    {
+        if ( action == MASS_UPDATE || action == MASS_UPDATE_CLOUD_PRICINGS ) return percentage != null;
+
+        return true;
     }
 
     public ResellerPricingPatchDTO()
@@ -41,6 +53,6 @@ public class ResellerPricingPatchDTO extends DTO
 
     public enum Action
     {
-        MASS_UPDATE_CLOUD_PRICINGS
+        MASS_UPDATE, MASS_UPDATE_CLOUD_PRICINGS
     }
 }
