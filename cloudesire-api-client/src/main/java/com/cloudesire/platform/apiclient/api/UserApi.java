@@ -65,8 +65,9 @@ public interface UserApi
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
 
     @GET( "user" )
-    Call<Void> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
-            @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled, @QueryMap Map<String, String> pageRequest );
+    Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
+            @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled,
+            @QueryMap Map<String, String> pageRequest );
 
     @GET( "user/{id}/metadata" )
     Call<Map<String, String>> getMetadata( @Path( "id" ) Integer id );
