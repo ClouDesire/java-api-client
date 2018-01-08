@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -29,6 +30,7 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private String language = "EN";
 
+    @NotEmpty
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String emailAddress;
 
