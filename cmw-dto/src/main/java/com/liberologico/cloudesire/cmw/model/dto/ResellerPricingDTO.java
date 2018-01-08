@@ -33,10 +33,10 @@ public class ResellerPricingDTO extends BaseEntityDTO
     private ResellingPriceDTO setup;
 
     @Valid
-    private Set<BillingItemResellingPriceDTO> billingItems;
+    private Set<BillingItemResellingPriceDTO> billingItemResellingPrices;
 
     @Valid
-    private Set<CloudPricingResellingPriceDTO> cloudPricings;
+    private Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices;
 
     private Boolean locked;
 
@@ -119,24 +119,60 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.setup = setup;
     }
 
+    public Set<BillingItemResellingPriceDTO> getBillingItemResellingPrices()
+    {
+        return billingItemResellingPrices;
+    }
+
+    public void setBillingItemResellingPrices( Set<BillingItemResellingPriceDTO> billingItemResellingPrices )
+    {
+        this.billingItemResellingPrices = billingItemResellingPrices;
+    }
+
+    public Set<CloudPricingResellingPriceDTO> getCloudPricingResellingPrices()
+    {
+        return cloudPricingResellingPrices;
+    }
+
+    public void setCloudPricingResellingPrices( Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices )
+    {
+        this.cloudPricingResellingPrices = cloudPricingResellingPrices;
+    }
+
+    /**
+     * @deprecated Use getBillingItemResellingPrices
+     */
+    @Deprecated
     public Set<BillingItemResellingPriceDTO> getBillingItems()
     {
-        return billingItems;
+        return getBillingItemResellingPrices();
     }
 
+    /**
+     * @deprecated Use setBillingItemResellingPrices
+     */
+    @Deprecated
     public void setBillingItems( Set<BillingItemResellingPriceDTO> billingItems )
     {
-        this.billingItems = billingItems;
+        setBillingItemResellingPrices( billingItems );
     }
 
+    /**
+     * @deprecated Use getCloudPricingResellingPrices
+     */
+    @Deprecated
     public Set<CloudPricingResellingPriceDTO> getCloudPricings()
     {
-        return cloudPricings;
+        return getCloudPricingResellingPrices();
     }
 
+    /**
+     * @deprecated Use setCloudPricingResellingPrices
+     */
+    @Deprecated
     public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
     {
-        this.cloudPricings = cloudPricings;
+        setCloudPricingResellingPrices( cloudPricings );
     }
 
     public Boolean getLocked()
