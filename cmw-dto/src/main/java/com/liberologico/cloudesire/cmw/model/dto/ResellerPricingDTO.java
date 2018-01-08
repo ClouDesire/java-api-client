@@ -139,6 +139,42 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.cloudPricingResellingPrices = cloudPricingResellingPrices;
     }
 
+    /**
+     * @deprecated Use getBillingItemResellingPrices
+     */
+    @Deprecated
+    public Set<BillingItemResellingPriceDTO> getBillingItems()
+    {
+        return getBillingItemResellingPrices();
+    }
+
+    /**
+     * @deprecated Use setBillingItemResellingPrices
+     */
+    @Deprecated
+    public void setBillingItems( Set<BillingItemResellingPriceDTO> billingItems )
+    {
+        setBillingItemResellingPrices( billingItems );
+    }
+
+    /**
+     * @deprecated Use getCloudPricingResellingPrices
+     */
+    @Deprecated
+    public Set<CloudPricingResellingPriceDTO> getCloudPricings()
+    {
+        return getCloudPricingResellingPrices();
+    }
+
+    /**
+     * @deprecated Use setCloudPricingResellingPrices
+     */
+    @Deprecated
+    public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
+    {
+        setCloudPricingResellingPrices( cloudPricings );
+    }
+
     public Boolean getLocked()
     {
         return locked;
