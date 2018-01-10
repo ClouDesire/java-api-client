@@ -40,8 +40,9 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "Optional discount coupon" )
     private String hashCoupon;
 
+    @Deprecated
     @Min ( 1 )
-    @ApiModelProperty( "How many periods to buy" )
+    @ApiModelProperty( value = "How many periods to buy", hidden = true )
     private Integer billingPeriods;
 
     @Valid
@@ -66,13 +67,13 @@ public class OrderInputDTO extends BaseEntityDTO
     {
         this.type = OrderType.NORMAL;
         this.productVersion = productVersion;
-        this.billingPeriods = 1;
     }
 
     public OrderInputDTO()
     {
     }
 
+    @Deprecated
     public void setBillingPeriods( Integer billingPeriods )
     {
         this.billingPeriods = billingPeriods;
@@ -139,6 +140,7 @@ public class OrderInputDTO extends BaseEntityDTO
         this.bandwidthPricing = bandwidthPricing;
     }
 
+    @Deprecated
     public Integer getBillingPeriods()
     {
         return billingPeriods;
