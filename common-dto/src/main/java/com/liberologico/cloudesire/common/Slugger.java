@@ -10,7 +10,7 @@ public class Slugger
     {
         if ( errorMessage == null ) return "";
 
-        return errorMessage.replaceAll( "\\.|\\s|'", "-" );
+        return errorMessage.replaceAll( "\\.|\\s|'|_", "-" );
     }
 
     public static String slugify( String name )
