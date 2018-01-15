@@ -50,6 +50,12 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( "True if this will generate a self-billed invoice" )
     private Boolean selfBilled;
 
+    @ApiModelProperty( "Number of months of a billing cycle for this order" )
+    private Integer billingPeriod;
+
+    @ApiModelProperty( "Minimum duration of this order in months" )
+    private Integer minimumDuration;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -209,6 +215,26 @@ public class BudgetDTO extends BaseEntityDTO
     public void setSelfBilled( Boolean selfBilled )
     {
         this.selfBilled = selfBilled;
+    }
+
+    public Integer getBillingPeriod()
+    {
+        return billingPeriod;
+    }
+
+    public void setBillingPeriod( Integer billingPeriod )
+    {
+        this.billingPeriod = billingPeriod;
+    }
+
+    public Integer getMinimumDuration()
+    {
+        return minimumDuration;
+    }
+
+    public void setMinimumDuration( Integer minimumDuration )
+    {
+        this.minimumDuration = minimumDuration;
     }
 
     @Override
