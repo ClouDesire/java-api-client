@@ -49,6 +49,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Boolean published = false;
 
+    @Deprecated
     private List<Integer> availableOrderPeriods;
 
     private Integer lifespan;
@@ -230,11 +231,13 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.selfBilling = selfBilling;
     }
 
+    @Deprecated
     public List<Integer> getAvailableOrderPeriods()
     {
         return availableOrderPeriods;
     }
 
+    @Deprecated
     public void setAvailableOrderPeriods( List<Integer> availableOrderPeriods )
     {
         this.availableOrderPeriods = availableOrderPeriods;
