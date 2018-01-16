@@ -35,17 +35,17 @@ public class CompanyDTO extends MinimalCompanyDTO
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
 
-    private boolean enableProviderCredential = false;
+    private Boolean enableProviderCredential;
 
-    private Integer maxConcurrentInstance = 5;
+    private Integer maxConcurrentInstance;
 
     private String publicKey;
 
-    private Integer maxPublishedProducts = -1;
+    private Integer maxPublishedProducts;
 
     private Integer currentPublishedProducts = 1;
 
-    private boolean trusted = false;
+    private Boolean trusted;
 
     @JsonInclude ( Include.NON_NULL )
     private String externalId;
@@ -140,12 +140,12 @@ public class CompanyDTO extends MinimalCompanyDTO
         this.ri = ri;
     }
 
-    public boolean getEnableProviderCredential()
+    public Boolean getEnableProviderCredential()
     {
         return enableProviderCredential;
     }
 
-    public void setEnableProviderCredential( boolean enableProviderCredential )
+    public void setEnableProviderCredential( Boolean enableProviderCredential )
     {
         this.enableProviderCredential = enableProviderCredential;
     }
@@ -220,12 +220,12 @@ public class CompanyDTO extends MinimalCompanyDTO
         this.syndicationEndpoint = syndicationEndpoint;
     }
 
-    public boolean isTrusted()
+    public Boolean isTrusted()
     {
         return trusted;
     }
 
-    public void setTrusted( boolean trusted )
+    public void setTrusted( Boolean trusted )
     {
         this.trusted = trusted;
     }
