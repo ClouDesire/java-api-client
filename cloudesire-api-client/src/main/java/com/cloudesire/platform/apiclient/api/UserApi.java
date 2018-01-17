@@ -1,11 +1,12 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.DistributorDTO;
 import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PaymentDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
+import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -100,8 +101,11 @@ public interface UserApi
     @PATCH( "user" )
     Call<Void> retryRegistration( @Body Object input );
 
-    @POST( "user/payment/stripe" )
-    Call<Void> savePaymentData( @Body PaymentDataDTO paymentData );
+    @POST( "user/payment/card" )
+    Call<Void> saveCardData( @Body CardDataDTO data );
+
+    @POST( "user/payment/sepa" )
+    Call<Void> saveSepaData( @Body SepaDataDTO data );
 
     @GET( "user/{id}/distributor" )
     Call<DistributorDTO> getDistributorProfile( @Path( "id" ) int id );
