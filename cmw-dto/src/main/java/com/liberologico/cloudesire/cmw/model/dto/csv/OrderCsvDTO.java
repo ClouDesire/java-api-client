@@ -6,7 +6,7 @@ import com.liberologico.cloudesire.cmw.model.dto.DTO;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@JsonPropertyOrder( { "name", "type", "buyer", "date", "endOfPeriod", "currency", "vat" } )
+@JsonPropertyOrder( { "name", "type", "buyer", "date", "endOfPeriod", "currency", "price", "vat" } )
 public class OrderCsvDTO extends DTO
 {
     private String name;
@@ -20,6 +20,8 @@ public class OrderCsvDTO extends DTO
     private Date endOfPeriod;
 
     private String currency;
+
+    private BigDecimal price;
 
     private BigDecimal vat;
 
@@ -83,6 +85,16 @@ public class OrderCsvDTO extends DTO
     public void setCurrency( String currency )
     {
         this.currency = currency;
+    }
+
+    public BigDecimal getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice( BigDecimal price )
+    {
+        this.price = price;
     }
 
     public BigDecimal getVat()
