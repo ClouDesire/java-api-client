@@ -91,6 +91,12 @@ public class EnvironmentDTO extends DTO
     /**
      * Support email for customers
      */
+
+    @URL
+    private String mailLogo;
+
+    private String mailFooter;
+
     @Email
     @NotEmpty
     private String supportMail;
@@ -389,6 +395,26 @@ public class EnvironmentDTO extends DTO
     public void setMailSubjectTag( String mailSubjectTag )
     {
         this.mailSubjectTag = mailSubjectTag;
+    }
+
+    public String getMailLogo()
+    {
+        return mailLogo;
+    }
+
+    public void setMailLogo( String mailLogo )
+    {
+        this.mailLogo = mailLogo;
+    }
+
+    public String getMailFooter()
+    {
+        return mailFooter;
+    }
+
+    public void setMailFooter( String mailFooter )
+    {
+        this.mailFooter = mailFooter;
     }
 
     public String getSupportMail()
