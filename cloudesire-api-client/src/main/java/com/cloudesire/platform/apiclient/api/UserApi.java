@@ -53,10 +53,10 @@ public interface UserApi
     @POST( "user" )
     Call<MyUserDTO> create( @Body MyUserDTO userDTO );
 
-    @DELETE( "user/{id}/payment/stripe" )
+    @DELETE( "user/{id}/payment" )
     Call<Void> deletePaymentDataForAdmin( @Path( "id" ) Integer id );
 
-    @DELETE( "user/payment/stripe" )
+    @DELETE( "user/payment" )
     Call<Void> deletePaymentData();
 
     @DELETE( "user/{id}" )
