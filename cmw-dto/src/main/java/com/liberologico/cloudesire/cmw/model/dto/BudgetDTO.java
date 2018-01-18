@@ -56,6 +56,9 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( "Minimum duration of this order in months" )
     private Integer minimumDuration;
 
+    @ApiModelProperty( "Duration of this order in hours" )
+    private Integer lifespan;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -235,6 +238,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setMinimumDuration( Integer minimumDuration )
     {
         this.minimumDuration = minimumDuration;
+    }
+
+    public Integer getLifespan()
+    {
+        return lifespan;
+    }
+
+    public void setLifespan( Integer lifespan )
+    {
+        this.lifespan = lifespan;
     }
 
     @Override
