@@ -52,7 +52,9 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @NotNull
     private List<OrderLineDTO> entries;
 
-    private boolean cashed;
+    private Boolean cashed;
+
+    private Boolean pending;
 
     @Deprecated
     private BigDecimal totalPrice;
@@ -263,6 +265,26 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.entries = entries;
     }
 
+    public Boolean isCashed()
+    {
+        return cashed;
+    }
+
+    public void setCashed( Boolean cashed )
+    {
+        this.cashed = cashed;
+    }
+
+    public Boolean isPending()
+    {
+        return pending;
+    }
+
+    public void setPending( Boolean pending )
+    {
+        this.pending = pending;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -280,15 +302,5 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode(), total, paymentReference, paymentReceived, remoteId );
-    }
-
-    public boolean isCashed()
-    {
-        return cashed;
-    }
-
-    public void setCashed( boolean cashed )
-    {
-        this.cashed = cashed;
     }
 }
