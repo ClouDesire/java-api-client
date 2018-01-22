@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Size;
@@ -20,8 +21,10 @@ public class ResellerDTO extends UserProfileDTO
 
     private String senderName;
 
+    @Email
     private String senderAddress;
 
+    @Email
     private String replyTo;
 
     @URL
