@@ -14,6 +14,10 @@ public abstract class BaseInvoiceDTO extends BaseEntityDTO
     @NotNull
     protected Date date;
 
+    /**
+     * @deprecated by {@code status}
+     */
+    @Deprecated
     protected boolean paid;
 
     public Date getDate()

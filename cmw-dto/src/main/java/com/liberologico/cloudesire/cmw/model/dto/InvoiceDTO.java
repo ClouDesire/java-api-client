@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceOperationType;
+import com.liberologico.cloudesire.cmw.model.enums.InvoiceStatus;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -54,7 +55,7 @@ public class InvoiceDTO extends BaseInvoiceDTO
 
     private Boolean cashed;
 
-    private Boolean pending;
+    private InvoiceStatus status;
 
     @Deprecated
     private BigDecimal totalPrice;
@@ -275,14 +276,14 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.cashed = cashed;
     }
 
-    public Boolean isPending()
+    public InvoiceStatus getStatus()
     {
-        return pending;
+        return status;
     }
 
-    public void setPending( Boolean pending )
+    public void setStatus( InvoiceStatus status )
     {
-        this.pending = pending;
+        this.status = status;
     }
 
     @Override
