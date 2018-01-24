@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.cmw.model.enums.TrialMode;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -41,7 +42,10 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Integer minimumDuration = 1;
 
+    @Deprecated
     private Boolean triable = false;
+
+    private TrialMode trialMode;
 
     private boolean cloudesireFeeActivated = true;
 
@@ -159,6 +163,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setTriable( Boolean triable )
     {
         this.triable = triable;
+    }
+
+    public TrialMode getTrialMode()
+    {
+        return trialMode;
+    }
+
+    public void setTrialMode( TrialMode trialMode )
+    {
+        this.trialMode = trialMode;
     }
 
     public BigDecimal getPrice()
