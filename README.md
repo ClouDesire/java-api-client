@@ -1,9 +1,12 @@
 # java-api-client
+
+[![CircleCI](https://circleci.com/gh/ClouDesire/java-api-client.svg?style=svg)](https://circleci.com/gh/ClouDesire/java-api-client) [ ![Download](https://api.bintray.com/packages/cloudesire/maven-releases/cloudesire-api-client/images/download.svg) ](https://bintray.com/cloudesire/maven-releases/cloudesire-api-client/_latestVersion)
+
 Java 7 client to consume the cloudesire API, based on [retrofit](https://github.com/square/retrofit).
 
-## Usage
+## Maven usage
 
-Add the package to your project:
+Add the dependency to your pom.xml:
 
 ```
 <dependency>
@@ -13,7 +16,7 @@ Add the package to your project:
 </dependency>
 ```
 
-Artifacts are hosted on JCenter:
+Add JCenter repository to your pom.xml:
 
 ```
 <repositories>
@@ -22,6 +25,22 @@ Artifacts are hosted on JCenter:
     <url>https://jcenter.bintray.com/</url>
   </repository>
 </repositories>
+```
+
+## Gradle usage
+
+Add the dependency to build.gradle:
+
+    compile 'com.cloudesire.platform:cloudesire-api-client:1.0.0'
+    
+Add jcenter repository to build.gradle:
+
+```
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
 ```
 
 ## Examples
