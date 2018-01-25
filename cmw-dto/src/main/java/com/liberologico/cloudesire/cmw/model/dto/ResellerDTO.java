@@ -22,9 +22,6 @@ public class ResellerDTO extends UserProfileDTO
     private String senderName;
 
     @Email
-    private String senderAddress;
-
-    @Email
     private String replyTo;
 
     @URL
@@ -69,16 +66,6 @@ public class ResellerDTO extends UserProfileDTO
     public void setSenderName( String senderName )
     {
         this.senderName = senderName;
-    }
-
-    public String getSenderAddress()
-    {
-        return senderAddress;
-    }
-
-    public void setSenderAddress( String senderAddress )
-    {
-        this.senderAddress = senderAddress;
     }
 
     public String getReplyTo()
