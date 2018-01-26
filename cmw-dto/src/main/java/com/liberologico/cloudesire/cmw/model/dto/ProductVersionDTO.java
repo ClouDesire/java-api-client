@@ -97,6 +97,11 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Map<UrlEntityDTO, BigDecimal> bundle;
 
+    /**
+     * @deprecated use GET|PUT /productVersion/metadata
+     */
+    @ApiModelProperty( hidden = true )
+    @Deprecated
     private Map<String, Object> metadata;
 
     private int weight;
@@ -431,11 +436,19 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.bundle = bundle;
     }
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public Map<String, Object> getMetadata()
     {
         return metadata;
     }
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public void setMetadata( Map<String, Object> metadata )
     {
         this.metadata = metadata;
