@@ -53,6 +53,13 @@ public class MailEnvironmentDTO extends DTO
     private MailConfiguration invoicePaid;
 
     /**
+     * Email sent for pending invoices, containing Sepa mandate
+     */
+    @NotNull
+    @Valid
+    private MailConfiguration invoicePending;
+
+    /**
      * Email sent when user must set password for the first time
      */
     @NotNull
@@ -315,6 +322,16 @@ public class MailEnvironmentDTO extends DTO
     public void setInvoicePaid( MailConfiguration invoicePaid )
     {
         this.invoicePaid = invoicePaid;
+    }
+
+    public MailConfiguration getInvoicePending()
+    {
+        return invoicePending;
+    }
+
+    public void setInvoicePending( MailConfiguration invoicePending )
+    {
+        this.invoicePending = invoicePending;
     }
 
     public MailConfiguration getPasswordSet()
