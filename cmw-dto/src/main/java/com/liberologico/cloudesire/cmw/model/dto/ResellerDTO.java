@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
 
-public class ResellerDTO extends UserProfileDTO
+public class ResellerDTO extends MinimalCompanyDTO
 {
     private Set<UrlEntityDTO> distributors;
 
@@ -34,6 +34,15 @@ public class ResellerDTO extends UserProfileDTO
 
     @Size( max = 125 )
     private String storeName;
+
+    public ResellerDTO( String name )
+    {
+        super( name );
+    }
+
+    public ResellerDTO()
+    {
+    }
 
     // region Auto-generated code
     public Set<UrlEntityDTO> getDistributors()

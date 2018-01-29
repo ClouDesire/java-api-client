@@ -2,8 +2,6 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 public abstract class UserProfileDTO extends DTO
 {
-    private String marketplaceDomain;
-
     private String taxCode;
 
     private String companyName;
@@ -21,16 +19,6 @@ public abstract class UserProfileDTO extends DTO
     private String state;
 
     private String zipCode;
-
-    public String getMarketplaceDomain()
-    {
-        return marketplaceDomain;
-    }
-
-    public void setMarketplaceDomain( String marketplaceDomain )
-    {
-        this.marketplaceDomain = marketplaceDomain;
-    }
 
     public String getTaxCode()
     {
