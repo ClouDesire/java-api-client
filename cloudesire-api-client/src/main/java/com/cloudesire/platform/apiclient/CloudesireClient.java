@@ -112,6 +112,11 @@ public class CloudesireClient
         return new Builder( this );
     }
 
+    public Retrofit getRetrofit()
+    {
+        return retrofit;
+    }
+
     public static class Builder
     {
         private String username;
