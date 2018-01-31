@@ -42,10 +42,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Integer minimumDuration = 1;
 
-    @Deprecated
-    private Boolean triable = false;
-
-    private TrialMode trialMode;
+    private TrialMode trialMode = TrialMode.NOT_TRIABLE;
 
     private boolean cloudesireFeeActivated = true;
 
@@ -155,14 +152,19 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.published = published;
     }
 
+    @Deprecated
     public Boolean getTriable()
     {
-        return triable;
+        return getTrialMode() != TrialMode.NOT_TRIABLE;
     }
 
+    @Deprecated
     public void setTriable( Boolean triable )
     {
-        this.triable = triable;
+        if ( this.trialMode != null ) return;
+
+        if ( Boolean.TRUE.equals( triable ) ) setTrialMode( TrialMode.TRIABLE );
+        else setTrialMode( TrialMode.NOT_TRIABLE );
     }
 
     public TrialMode getTrialMode()
@@ -515,7 +517,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         if ( price != null ? !price.equals( that.price ) : that.price != null ) return false;
         if ( billingPeriod != null ? !billingPeriod.equals( that.billingPeriod ) : that.billingPeriod != null )
             return false;
-        if ( triable != null ? !triable.equals( that.triable ) : that.triable != null ) return false;
+        if ( trialMode != null ? !trialMode.equals( that.trialMode ) : that.trialMode != null ) return false;
         if ( published != null ? !published.equals( that.published ) : that.published != null ) return false;
         if ( lifespan != null ? !lifespan.equals( that.lifespan ) : that.lifespan != null ) return false;
         if ( webdavSupport != null ? !webdavSupport.equals( that.webdavSupport ) : that.webdavSupport != null )
@@ -532,7 +534,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         result = 31 * result + ( bandwidthInGB != null ? bandwidthInGB.hashCode() : 0 );
         result = 31 * result + ( price != null ? price.hashCode() : 0 );
         result = 31 * result + ( billingPeriod != null ? billingPeriod.hashCode() : 0 );
-        result = 31 * result + ( triable != null ? triable.hashCode() : 0 );
+        result = 31 * result + ( trialMode != null ? trialMode.hashCode() : 0 );
         result = 31 * result + ( cloudesireFeeActivated ? 1 : 0 );
         result = 31 * result + ( selfBilling ? 1 : 0 );
         result = 31 * result + ( published != null ? published.hashCode() : 0 );
