@@ -1,7 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.liberologico.cloudesire.cmw.model.enums.TrialMode;
+import com.liberologico.cloudesire.cmw.model.enums.Trial;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -42,7 +42,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Integer minimumDuration = 1;
 
-    private TrialMode trialMode;
+    private Trial trial;
 
     private boolean cloudesireFeeActivated = true;
 
@@ -153,34 +153,34 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     }
 
     /**
-     * @deprecated replaced by {@link #getTrialMode()}
+     * @deprecated replaced by {@link #getTrial()}
      */
     @Deprecated
     public Boolean getTriable()
     {
-        return getTrialMode() != TrialMode.NOT_TRIABLE;
+        return getTrial() != Trial.NOT_ALLOWED;
     }
 
     /**
-     * @deprecated replaced by {@link #setTrialMode(TrialMode)}
+     * @deprecated replaced by {@link #setTrial(Trial)}
      */
     @Deprecated
     public void setTriable( Boolean triable )
     {
-        if ( this.trialMode != null ) return;
+        if ( this.trial != null ) return;
 
-        if ( Boolean.TRUE.equals( triable ) ) setTrialMode( TrialMode.TRIABLE );
-        else setTrialMode( TrialMode.NOT_TRIABLE );
+        if ( Boolean.TRUE.equals( triable ) ) setTrial( Trial.ALLOWED );
+        else setTrial( Trial.NOT_ALLOWED );
     }
 
-    public TrialMode getTrialMode()
+    public Trial getTrial()
     {
-        return trialMode;
+        return trial;
     }
 
-    public void setTrialMode( TrialMode trialMode )
+    public void setTrial( Trial trial )
     {
-        this.trialMode = trialMode;
+        this.trial = trial;
     }
 
     public BigDecimal getPrice()
@@ -337,7 +337,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.editableEnvironment = editableEnvironment;
         return this;
     }
-    
+
     public Set<UrlEntityDTO> getConfigurationParameters()
     {
         return configurationParameters;
@@ -523,7 +523,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         if ( price != null ? !price.equals( that.price ) : that.price != null ) return false;
         if ( billingPeriod != null ? !billingPeriod.equals( that.billingPeriod ) : that.billingPeriod != null )
             return false;
-        if ( trialMode != null ? !trialMode.equals( that.trialMode ) : that.trialMode != null ) return false;
+        if ( trial != null ? !trial.equals( that.trial ) : that.trial != null ) return false;
         if ( published != null ? !published.equals( that.published ) : that.published != null ) return false;
         if ( lifespan != null ? !lifespan.equals( that.lifespan ) : that.lifespan != null ) return false;
         if ( webdavSupport != null ? !webdavSupport.equals( that.webdavSupport ) : that.webdavSupport != null )
@@ -540,7 +540,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         result = 31 * result + ( bandwidthInGB != null ? bandwidthInGB.hashCode() : 0 );
         result = 31 * result + ( price != null ? price.hashCode() : 0 );
         result = 31 * result + ( billingPeriod != null ? billingPeriod.hashCode() : 0 );
-        result = 31 * result + ( trialMode != null ? trialMode.hashCode() : 0 );
+        result = 31 * result + ( trial != null ? trial.hashCode() : 0 );
         result = 31 * result + ( cloudesireFeeActivated ? 1 : 0 );
         result = 31 * result + ( selfBilling ? 1 : 0 );
         result = 31 * result + ( published != null ? published.hashCode() : 0 );
