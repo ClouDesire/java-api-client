@@ -42,7 +42,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Integer minimumDuration = 1;
 
-    private TrialMode trialMode = TrialMode.NOT_TRIABLE;
+    private TrialMode trialMode;
 
     private boolean cloudesireFeeActivated = true;
 
