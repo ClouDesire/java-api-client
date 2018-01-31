@@ -152,12 +152,18 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.published = published;
     }
 
+    /**
+     * @deprecated replaced by {@link #getTrialMode()}
+     */
     @Deprecated
     public Boolean getTriable()
     {
         return getTrialMode() != TrialMode.NOT_TRIABLE;
     }
 
+    /**
+     * @deprecated replaced by {@link #setTrialMode(TrialMode)}
+     */
     @Deprecated
     public void setTriable( Boolean triable )
     {
