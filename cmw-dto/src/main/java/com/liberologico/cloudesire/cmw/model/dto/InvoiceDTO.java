@@ -286,6 +286,15 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.status = status;
     }
 
+    /**
+     * @deprecated by {@code getStatus()}
+     */
+    @Deprecated
+    public boolean isPaid()
+    {
+        return status == InvoiceStatus.PAID;
+    }
+
     @Override
     public boolean equals( Object o )
     {
