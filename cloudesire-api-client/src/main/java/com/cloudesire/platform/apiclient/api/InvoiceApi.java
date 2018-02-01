@@ -25,11 +25,6 @@ public interface InvoiceApi
     Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Object input );
 
     @GET( "invoice" )
-    Call<List<InvoiceDTO>> getAll( @Query( "paid" ) Boolean paid, @Query( "nominee" ) Boolean nominee,
-            @Query( "selfBilled" ) Boolean selfBilled, @Query( "type" ) String type,
-            @Query( "expired" ) Boolean expired, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "invoice" )
     Call<List<InvoiceDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
     @GET( "invoice/{id}/pdf" )

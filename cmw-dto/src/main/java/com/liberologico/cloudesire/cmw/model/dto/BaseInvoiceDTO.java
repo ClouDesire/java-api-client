@@ -14,8 +14,6 @@ public abstract class BaseInvoiceDTO extends BaseEntityDTO
     @NotNull
     protected Date date;
 
-    protected boolean paid;
-
     public Date getDate()
     {
         return date;
@@ -24,16 +22,6 @@ public abstract class BaseInvoiceDTO extends BaseEntityDTO
     public void setDate( Date date )
     {
         this.date = date;
-    }
-
-    public boolean isPaid()
-    {
-        return paid;
-    }
-
-    public void setPaid( boolean paid )
-    {
-        this.paid = paid;
     }
 
     public UrlEntityDTO getCompany()
@@ -50,15 +38,15 @@ public abstract class BaseInvoiceDTO extends BaseEntityDTO
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( !( o instanceof BaseInvoiceDTO ) ) return false;
-        if ( !super.equals( o ) ) return false;
+        if ( ! ( o instanceof BaseInvoiceDTO ) ) return false;
+        if ( ! super.equals( o ) ) return false;
         BaseInvoiceDTO that = (BaseInvoiceDTO) o;
-        return paid == that.paid && Objects.equals( company, that.company ) && Objects.equals( date, that.date );
+        return Objects.equals( company, that.company ) && Objects.equals( date, that.date );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), company, date, paid );
+        return Objects.hash( super.hashCode(), company, date );
     }
 }

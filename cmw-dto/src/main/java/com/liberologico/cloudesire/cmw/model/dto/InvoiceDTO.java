@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceOperationType;
+import com.liberologico.cloudesire.cmw.model.enums.InvoiceStatus;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -52,7 +53,9 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @NotNull
     private List<OrderLineDTO> entries;
 
-    private boolean cashed;
+    private Boolean cashed;
+
+    private InvoiceStatus status;
 
     @Deprecated
     private BigDecimal totalPrice;
@@ -263,6 +266,35 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.entries = entries;
     }
 
+    public Boolean isCashed()
+    {
+        return cashed;
+    }
+
+    public void setCashed( Boolean cashed )
+    {
+        this.cashed = cashed;
+    }
+
+    public InvoiceStatus getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus( InvoiceStatus status )
+    {
+        this.status = status;
+    }
+
+    /**
+     * @deprecated by {@code getStatus()}
+     */
+    @Deprecated
+    public boolean isPaid()
+    {
+        return status == InvoiceStatus.PAID;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -280,15 +312,5 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode(), total, paymentReference, paymentReceived, remoteId );
-    }
-
-    public boolean isCashed()
-    {
-        return cashed;
-    }
-
-    public void setCashed( boolean cashed )
-    {
-        this.cashed = cashed;
     }
 }
