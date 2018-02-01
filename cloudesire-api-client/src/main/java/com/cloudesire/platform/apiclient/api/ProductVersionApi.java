@@ -27,7 +27,7 @@ public interface ProductVersionApi
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
 
     @GET( "productVersion" )
-    Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
+    Call<List<ProductVersionDTO>> getAll( @Query( "product" ) int product, @QueryMap Map<String, String> pageRequest );
 
     @GET( "productVersion/identifier/{productVersionIdentifier}" )
     Call<ProductVersionDTO> getByIdentifier( @Path( "productVersionIdentifier" ) String productVersionIdentifier );
@@ -39,5 +39,11 @@ public interface ProductVersionApi
     Call<ProductVersionDTO> get( @Path( "id" ) int id, @Query( "reseller" ) String reseller );
 
     @PUT( "productVersion/{id}" )
-    Call<ProductVersionDTO> update( @Path( "id" ) Integer id, @Body ProductVersionDTO input );
+    Call<ProductVersionDTO> update( @Path( "id" ) int id, @Body ProductVersionDTO input );
+
+    @GET( "productVersion/{id}/metadata" )
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "productVersion/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
 }

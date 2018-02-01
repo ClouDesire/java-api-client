@@ -70,9 +70,6 @@ public interface UserApi
             @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled,
             @QueryMap Map<String, String> pageRequest );
 
-    @GET( "user/{id}/metadata" )
-    Call<Map<String, String>> getMetadata( @Path( "id" ) Integer id );
-
     @GET( "user/{id}/reseller" )
     Call<ResellerDTO> getResellerProfile( @Path( "id" ) Integer id );
 
@@ -119,8 +116,11 @@ public interface UserApi
     @PUT( "user/{id}/reseller" )
     Call<ResellerDTO> saveResellerProfile( @Path( "id" ) int id, @Body ResellerDTO profile );
 
+    @GET( "user/{id}/metadata" )
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+
     @PUT( "user/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Object payload );
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
 
     @PUT( "user/{id}" )
     Call<MyUserDTO> update( @Path( "id" ) int id, @Body MyUserDTO userDTO );
