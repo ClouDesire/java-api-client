@@ -7,6 +7,7 @@ import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
+import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -106,6 +107,9 @@ public interface UserApi
 
     @POST( "user/payment/sepa" )
     Call<Void> saveSepaData( @Body SepaDataDTO data );
+
+    @POST( "user/payment/token" )
+    Call<Void> saveTokenData( @Body TokenDataDTO data );
 
     @GET( "user/{id}/distributor" )
     Call<DistributorDTO> getDistributorProfile( @Path( "id" ) int id );
