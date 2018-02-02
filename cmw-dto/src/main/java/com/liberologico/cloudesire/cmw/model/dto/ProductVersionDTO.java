@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.cmw.model.enums.Trial;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -41,7 +42,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Integer minimumDuration = 1;
 
-    private Boolean triable = false;
+    private Trial trial;
 
     private boolean cloudesireFeeActivated = true;
 
@@ -151,14 +152,35 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.published = published;
     }
 
+    /**
+     * @deprecated replaced by {@link #getTrial()}
+     */
+    @Deprecated
     public Boolean getTriable()
     {
-        return triable;
+        return getTrial() != Trial.NOT_ALLOWED;
     }
 
+    /**
+     * @deprecated replaced by {@link #setTrial(Trial)}
+     */
+    @Deprecated
     public void setTriable( Boolean triable )
     {
-        this.triable = triable;
+        if ( this.trial != null ) return;
+
+        if ( Boolean.TRUE.equals( triable ) ) setTrial( Trial.ALLOWED );
+        else setTrial( Trial.NOT_ALLOWED );
+    }
+
+    public Trial getTrial()
+    {
+        return trial;
+    }
+
+    public void setTrial( Trial trial )
+    {
+        this.trial = trial;
     }
 
     public BigDecimal getPrice()
@@ -315,7 +337,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.editableEnvironment = editableEnvironment;
         return this;
     }
-    
+
     public Set<UrlEntityDTO> getConfigurationParameters()
     {
         return configurationParameters;
@@ -501,7 +523,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         if ( price != null ? !price.equals( that.price ) : that.price != null ) return false;
         if ( billingPeriod != null ? !billingPeriod.equals( that.billingPeriod ) : that.billingPeriod != null )
             return false;
-        if ( triable != null ? !triable.equals( that.triable ) : that.triable != null ) return false;
+        if ( trial != null ? !trial.equals( that.trial ) : that.trial != null ) return false;
         if ( published != null ? !published.equals( that.published ) : that.published != null ) return false;
         if ( lifespan != null ? !lifespan.equals( that.lifespan ) : that.lifespan != null ) return false;
         if ( webdavSupport != null ? !webdavSupport.equals( that.webdavSupport ) : that.webdavSupport != null )
@@ -518,7 +540,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         result = 31 * result + ( bandwidthInGB != null ? bandwidthInGB.hashCode() : 0 );
         result = 31 * result + ( price != null ? price.hashCode() : 0 );
         result = 31 * result + ( billingPeriod != null ? billingPeriod.hashCode() : 0 );
-        result = 31 * result + ( triable != null ? triable.hashCode() : 0 );
+        result = 31 * result + ( trial != null ? trial.hashCode() : 0 );
         result = 31 * result + ( cloudesireFeeActivated ? 1 : 0 );
         result = 31 * result + ( selfBilling ? 1 : 0 );
         result = 31 * result + ( published != null ? published.hashCode() : 0 );
