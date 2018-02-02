@@ -40,4 +40,10 @@ public interface ProductVersionApi
 
     @PUT( "productVersion/{id}" )
     Call<ProductVersionDTO> update( @Path( "id" ) Integer id, @Body ProductVersionDTO input );
+
+    @GET( "productVersion/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "productVersion/{id}/metadata" )
+    Call<ProductVersionDTO> setMetadata( @Path( "id" ) Integer id, @Body Map<String, String> metadata );
 }
