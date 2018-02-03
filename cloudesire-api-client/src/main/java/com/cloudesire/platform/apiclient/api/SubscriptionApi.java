@@ -45,9 +45,6 @@ public interface SubscriptionApi
     @GET( "subscription/expiring" )
     Call<List<SubscriptionDTO>> getExpiring();
 
-    @GET( "subscription/{id}/metadata" )
-    Call<Map<String, String>> getMetadata( @Path( "id" ) Integer id );
-
     @GET( "subscription/{id}" )
     Call<SubscriptionDTO> get( @Path( "id" ) Integer id );
 
@@ -61,8 +58,11 @@ public interface SubscriptionApi
     @POST( "subscription/{id}/endpoints" )
     Call<SubscriptionDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );
 
+    @GET( "subscription/{id}/metadata" )
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) Integer id );
+
     @PUT( "subscription/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Object payload );
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
 
     @Streaming
     @GET( "subscription" )
