@@ -25,6 +25,11 @@ public class EnvironmentDTO extends DTO
     @NotEmpty
     private String environmentName;
     /**
+     * The name of the current chef environment
+     */
+    @NotEmpty
+    private String chefEnvironmentName;
+    /**
      * The name of the mail environment
      */
     @NotEmpty
@@ -866,6 +871,16 @@ public class EnvironmentDTO extends DTO
     public void setSubscriptionTermAlarm( MailCustomization subscriptionTermAlarm )
     {
         this.subscriptionTermAlarm = subscriptionTermAlarm;
+    }
+
+    public String getChefEnvironmentName()
+    {
+        return chefEnvironmentName;
+    }
+
+    public void setChefEnvironmentName( String chefEnvironmentName )
+    {
+        this.chefEnvironmentName = chefEnvironmentName;
     }
     //endregion
 
