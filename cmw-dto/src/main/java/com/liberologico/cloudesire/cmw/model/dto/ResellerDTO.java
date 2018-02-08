@@ -8,7 +8,8 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
 
-public class ResellerDTO extends MinimalCompanyDTO
+@SuppressWarnings( "squid:MaximumInheritanceDepth" )
+public class ResellerDTO extends ParentChildCompanyDTO
 {
     private Set<UrlEntityDTO> distributors;
 

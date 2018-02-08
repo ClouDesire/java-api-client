@@ -51,6 +51,12 @@ public class MyUserDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO userCompany;
 
+    @Valid
+    private UrlEntityDTO distributor;
+
+    @Valid
+    private UrlEntityDTO reseller;
+
     private AddressDTO address;
 
     private AddressDTO homeAddress;
@@ -238,6 +244,26 @@ public class MyUserDTO extends NamedEntityDTO
     public void setUserCompany( UrlEntityDTO userCompany )
     {
         this.userCompany = userCompany;
+    }
+
+    public UrlEntityDTO getDistributor()
+    {
+        return distributor;
+    }
+
+    public void setDistributor( UrlEntityDTO distributor )
+    {
+        this.distributor = distributor;
+    }
+
+    public UrlEntityDTO getReseller()
+    {
+        return reseller;
+    }
+
+    public void setReseller( UrlEntityDTO reseller )
+    {
+        this.reseller = reseller;
     }
 
     public String getEmail()
