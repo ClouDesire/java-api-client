@@ -131,6 +131,12 @@ public class CloudesireClient
         {
         }
 
+        public Builder( String baseUrl, ObjectMapper mapper )
+        {
+            this.baseUrl = baseUrl;
+            this.mapper = mapper;
+        }
+
         public Builder( CloudesireClient cloudesireClient )
         {
             this.username = cloudesireClient.username;
