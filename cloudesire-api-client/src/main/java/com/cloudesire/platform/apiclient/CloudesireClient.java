@@ -192,8 +192,8 @@ public class CloudesireClient
 
         public CloudesireClient build()
         {
-            Validate.notBlank( baseUrl );
-            Validate.notNull( mapper );
+            Validate.notBlank( baseUrl, "A baseUrl must be set" );
+            Validate.notNull( mapper, "An ObjectMapper instance is required" );
             return new CloudesireClient( username, password, token, impersonate, baseUrl, mapper, interceptor );
         }
 
