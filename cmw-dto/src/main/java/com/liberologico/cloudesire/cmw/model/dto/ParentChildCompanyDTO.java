@@ -1,7 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 @SuppressWarnings( "squid:MaximumInheritanceDepth" )
-public class ParentChildCompanyDTO extends MinimalCompanyDTO
+public abstract class ParentChildCompanyDTO extends MinimalCompanyDTO
 {
     private String marketplaceDomain;
 

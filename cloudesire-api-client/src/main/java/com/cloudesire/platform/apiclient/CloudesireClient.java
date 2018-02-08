@@ -6,6 +6,7 @@ import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
+import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
@@ -329,6 +330,11 @@ public class CloudesireClient
     public UserCompanyApi getUserCompanyApi()
     {
         return retrofit.create( UserCompanyApi.class );
+    }
+
+    public DistributorApi getDistributorApi()
+    {
+        return retrofit.create( DistributorApi.class );
     }
 
     public ResellerApi getResellerApi()
