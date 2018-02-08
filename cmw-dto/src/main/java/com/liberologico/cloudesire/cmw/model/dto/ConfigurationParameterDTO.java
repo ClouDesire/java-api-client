@@ -13,7 +13,7 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
     @Size( max = 250, message = INVALID_SIZE )
-    @Pattern( regexp = "[A-Z][A-Z0-9_]*", message = ConstraintKeys.ALPHANUMERIC_UPPERCASE_AND_START_WITH_LETTER )
+    @Pattern( regexp = "[A-Za-z][A-Za-z0-9_]*", message = ConstraintKeys.ALPHANUMERIC_START_WITH_LETTER )
     private String code;
 
     @NotEmpty
