@@ -48,14 +48,9 @@ public class MyUserDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO company;
 
+    @ApiModelProperty( hidden = true )
     @Valid
     private UrlEntityDTO userCompany;
-
-    @Valid
-    private UrlEntityDTO distributor;
-
-    @Valid
-    private UrlEntityDTO reseller;
 
     private AddressDTO address;
 
@@ -236,34 +231,22 @@ public class MyUserDTO extends NamedEntityDTO
         this.company = company;
     }
 
+    /**
+     * @deprecated by {@link #getCompany()}
+     */
+    @Deprecated
     public UrlEntityDTO getUserCompany()
     {
         return userCompany;
     }
 
+    /**
+     * @deprecated by {@link #setCompany(UrlEntityDTO)}
+     */
+    @Deprecated
     public void setUserCompany( UrlEntityDTO userCompany )
     {
         this.userCompany = userCompany;
-    }
-
-    public UrlEntityDTO getDistributor()
-    {
-        return distributor;
-    }
-
-    public void setDistributor( UrlEntityDTO distributor )
-    {
-        this.distributor = distributor;
-    }
-
-    public UrlEntityDTO getReseller()
-    {
-        return reseller;
-    }
-
-    public void setReseller( UrlEntityDTO reseller )
-    {
-        this.reseller = reseller;
     }
 
     public String getEmail()
