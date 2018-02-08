@@ -1,6 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.DateWrapper;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -14,8 +16,6 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +25,10 @@ public interface CouponApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @POST( "coupon" )
-    Call<CouponDTO> create( @Query( "type" ) String type, @Query( "expiration" ) Date expiration,
-            @Query( "value" ) BigDecimal value, @Query( "code" ) String code,
-            @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "licenseOnly" ) Boolean licenseOnly, @Query( "reusable" ) Boolean reusable );
+    Call<CouponDTO> create( @Query( "type" ) CouponType type, @Query( "expirationDate" ) DateWrapper expiration,
+            @Query( "howMany" ) Integer howMany, @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product, @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "number" ) Integer number );
 
     @GET( "coupon/{id}" )
     Call<CouponDTO> get( @Path( "id" ) Integer id );
@@ -41,14 +41,14 @@ public interface CouponApi
 
     @GET( "coupon" )
     Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "product" ) Integer product, @Query( "createdAfter" ) Date createdAfter,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) DateWrapper createdAfter,
             @Query( "unused" ) Boolean unused );
 
     @Streaming
     @GET( "coupon" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "product" ) Integer product, @Query( "createdAfter" ) Date createdAfter,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) DateWrapper createdAfter,
             @Query( "unused" ) Boolean unused );
 
     @Streaming
