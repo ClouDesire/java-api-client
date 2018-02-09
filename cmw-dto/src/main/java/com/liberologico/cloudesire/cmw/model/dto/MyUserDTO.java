@@ -156,6 +156,11 @@ public class MyUserDTO extends NamedEntityDTO
         this.userRole = userRole;
     }
 
+    public void setUserRole( @NotNull UserRole userRole )
+    {
+        this.userRole = userRole.toString();
+    }
+
     public Boolean getEnabled()
     {
         return isEnabled();

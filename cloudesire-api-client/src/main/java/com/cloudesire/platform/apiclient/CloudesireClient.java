@@ -131,6 +131,12 @@ public class CloudesireClient
         {
         }
 
+        public Builder( String baseUrl, ObjectMapper mapper )
+        {
+            this.baseUrl = baseUrl;
+            this.mapper = mapper;
+        }
+
         public Builder( CloudesireClient cloudesireClient )
         {
             this.username = cloudesireClient.username;
@@ -186,8 +192,8 @@ public class CloudesireClient
 
         public CloudesireClient build()
         {
-            Validate.notBlank( baseUrl );
-            Validate.notNull( mapper );
+            Validate.notBlank( baseUrl, "A baseUrl must be set" );
+            Validate.notNull( mapper, "An ObjectMapper instance is required" );
             return new CloudesireClient( username, password, token, impersonate, baseUrl, mapper, interceptor );
         }
 
