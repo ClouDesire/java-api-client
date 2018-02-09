@@ -2,7 +2,6 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import java.util.Set;
 
-@SuppressWarnings( "squid:MaximumInheritanceDepth" )
 public class DistributorDTO extends ParentChildCompanyDTO
 {
     private Set<UrlEntityDTO> products;

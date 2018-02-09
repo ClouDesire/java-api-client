@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:MaximumInheritanceDepth" )
 public class CompanyDTO extends MinimalCompanyDTO
 {
     private String syndicationEndpoint;
