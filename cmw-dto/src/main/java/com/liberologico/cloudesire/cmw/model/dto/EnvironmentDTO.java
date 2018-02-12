@@ -1651,9 +1651,19 @@ public class EnvironmentDTO extends DTO
         private Long maxFileSize = 0L;
 
         /**
+         * Content types of supported application files, null or empty disables feature
+         */
+        private List<String> supportedApplicationFileTypes;
+
+        /**
          * Content types of supported company and product images, null or empty disables feature
          */
         private List<String> supportedImageTypes;
+
+        /**
+         * Content types of supported public files, null or empty disables feature
+         */
+        private List<String> supportedPublicFileTypes;
 
         /**
          * If configured, every invoice line will have this VAT
@@ -1948,6 +1958,16 @@ public class EnvironmentDTO extends DTO
             this.slackChannel = slackChannel;
         }
 
+        public List<String> getSupportedApplicationFileTypes()
+        {
+            return supportedApplicationFileTypes;
+        }
+
+        public void setSupportedApplicationFileTypes( List<String> supportedApplicationFileTypes )
+        {
+            this.supportedApplicationFileTypes = supportedApplicationFileTypes;
+        }
+
         public List<String> getSupportedImageTypes()
         {
             return supportedImageTypes;
@@ -1956,6 +1976,16 @@ public class EnvironmentDTO extends DTO
         public void setSupportedImageTypes( List<String> supportedImageTypes )
         {
             this.supportedImageTypes = supportedImageTypes;
+        }
+
+        public List<String> getSupportedPublicFileTypes()
+        {
+            return supportedPublicFileTypes;
+        }
+
+        public void setSupportedPublicFileTypes( List<String> supportedPublicFileTypes )
+        {
+            this.supportedPublicFileTypes = supportedPublicFileTypes;
         }
         //endregion
 
