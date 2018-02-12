@@ -87,6 +87,10 @@ public interface UserApi
     @GET( "user/{id}" )
     Call<MyUserDTO> get( @Path( "id" ) Integer id );
 
+    /**
+     * @deprecated look for {@link MyUserDTO#isValidAddress()}
+     */
+    @Deprecated
     @GET( "user/isMyAddressValid" )
     Call<Boolean> isMyAddressValid();
 
