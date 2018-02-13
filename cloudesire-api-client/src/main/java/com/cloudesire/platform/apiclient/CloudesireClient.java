@@ -12,6 +12,7 @@ import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MessageApi;
 import com.cloudesire.platform.apiclient.api.OrderApi;
 import com.cloudesire.platform.apiclient.api.ProductApi;
+import com.cloudesire.platform.apiclient.api.ProductFileApi;
 import com.cloudesire.platform.apiclient.api.ProductImageFileApi;
 import com.cloudesire.platform.apiclient.api.ProductVersionApi;
 import com.cloudesire.platform.apiclient.api.PublicUserFileApi;
@@ -245,6 +246,15 @@ public class CloudesireClient
         return retrofit.create( ProductApi.class );
     }
 
+    public ProductFileApi getProductFileApi()
+    {
+        return retrofit.create( ProductFileApi.class );
+    }
+
+    /**
+     * @deprecated by {@link #getProductFileApi()}
+     */
+    @Deprecated
     public ProductImageFileApi getProductImageFileApi()
     {
         return retrofit.create( ProductImageFileApi.class );
