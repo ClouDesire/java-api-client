@@ -19,22 +19,22 @@ import java.util.List;
 public interface ProductFileApi
 {
     @Multipart
-    @POST( "productFile" )
+    @POST( "file" )
     Call<FileDTO> create( @Part( "file\"; filename=\"file" ) RequestBody file, @Query( "tag" ) String tag,
             @Query( "weight" ) Integer weight );
 
-    @DELETE( "productFile/{id}" )
+    @DELETE( "file/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
-    @PATCH( "productFile/{id}" )
+    @PATCH( "file/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductFilePatchDTO input );
 
-    @GET( "productFile" )
+    @GET( "file" )
     Call<List<FileDTO>> getAll( @Query( "productId" ) Integer productId, @Query( "tag" ) String tag );
 
-    @GET( "productFile/static/{name}" )
+    @GET( "file/static/{name}" )
     Call<List<byte[]>> getFile( @Path( "name" ) String name );
 
-    @GET( "productFile/{id}" )
+    @GET( "file/{id}" )
     Call<FileDTO> get( @Path( "id" ) Integer id );
 }
