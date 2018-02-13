@@ -1656,6 +1656,11 @@ public class EnvironmentDTO extends DTO
         private List<String> supportedApplicationFileTypes;
 
         /**
+         * Content types of supported file uploads, grouped by request type
+         */
+        private Map<String, List<String>> supportedFileTypes;
+
+        /**
          * Content types of supported company and product images, null or empty disables feature
          */
         private List<String> supportedImageTypes;
@@ -1966,6 +1971,16 @@ public class EnvironmentDTO extends DTO
         public void setSupportedApplicationFileTypes( List<String> supportedApplicationFileTypes )
         {
             this.supportedApplicationFileTypes = supportedApplicationFileTypes;
+        }
+
+        public Map<String, List<String>> getSupportedFileTypes()
+        {
+            return supportedFileTypes;
+        }
+
+        public void setSupportedFileTypes( Map<String, List<String>> supportedFileTypes )
+        {
+            this.supportedFileTypes = supportedFileTypes;
         }
 
         public List<String> getSupportedImageTypes()
