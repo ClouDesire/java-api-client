@@ -3,11 +3,11 @@ package com.cloudesire.platform.apiclient;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateWrapper
+public class ISO8601Date
 {
     private final Date date;
 
-    public DateWrapper( Date date )
+    public ISO8601Date( Date date )
     {
         this.date = date;
     }

@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.DateWrapper;
+import com.cloudesire.platform.apiclient.ISO8601Date;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -24,7 +24,7 @@ public interface CouponApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @POST( "coupon" )
-    Call<CouponDTO> create( @Query( "type" ) String type, @Query( "expirationDate" ) DateWrapper expiration,
+    Call<CouponDTO> create( @Query( "type" ) String type, @Query( "expirationDate" ) ISO8601Date expiration,
             @Query( "howMany" ) Integer howMany, @Query( "productVersion" ) Integer productVersion,
             @Query( "product" ) Integer product, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "number" ) Integer number );
@@ -40,14 +40,14 @@ public interface CouponApi
 
     @GET( "coupon" )
     Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "product" ) Integer product, @Query( "createdAfter" ) DateWrapper createdAfter,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
             @Query( "unused" ) Boolean unused );
 
     @Streaming
     @GET( "coupon" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "product" ) Integer product, @Query( "createdAfter" ) DateWrapper createdAfter,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
             @Query( "unused" ) Boolean unused );
 
     @Streaming
