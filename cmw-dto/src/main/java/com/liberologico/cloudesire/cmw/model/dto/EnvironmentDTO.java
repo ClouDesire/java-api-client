@@ -1656,19 +1656,19 @@ public class EnvironmentDTO extends DTO
         private List<String> supportedApplicationFileTypes;
 
         /**
+         * Content types of supported company and product images, null or empty disables feature
+         */
+        private List<String> supportedCompanyLogoFileTypes;
+
+        /**
          * Content types of supported file uploads, grouped by request type
          */
         private Map<String, List<String>> supportedFileTypes;
 
         /**
-         * Content types of supported company and product images, null or empty disables feature
-         */
-        private List<String> supportedImageTypes;
-
-        /**
          * Content types of supported public files, null or empty disables feature
          */
-        private List<String> supportedPublicFileTypes;
+        private List<String> supportedPublicUserFileTypes;
 
         /**
          * If configured, every invoice line will have this VAT
@@ -1973,6 +1973,16 @@ public class EnvironmentDTO extends DTO
             this.supportedApplicationFileTypes = supportedApplicationFileTypes;
         }
 
+        public List<String> getSupportedCompanyLogoFileTypes()
+        {
+            return supportedCompanyLogoFileTypes;
+        }
+
+        public void setSupportedCompanyLogoFileTypes( List<String> supportedCompanyLogoFileTypes )
+        {
+            this.supportedCompanyLogoFileTypes = supportedCompanyLogoFileTypes;
+        }
+
         public Map<String, List<String>> getSupportedFileTypes()
         {
             return supportedFileTypes;
@@ -1983,24 +1993,14 @@ public class EnvironmentDTO extends DTO
             this.supportedFileTypes = supportedFileTypes;
         }
 
-        public List<String> getSupportedImageTypes()
+        public List<String> getSupportedPublicUserFileTypes()
         {
-            return supportedImageTypes;
+            return supportedPublicUserFileTypes;
         }
 
-        public void setSupportedImageTypes( List<String> supportedImageTypes )
+        public void setSupportedPublicUserFileTypes( List<String> supportedPublicUserFileTypes )
         {
-            this.supportedImageTypes = supportedImageTypes;
-        }
-
-        public List<String> getSupportedPublicFileTypes()
-        {
-            return supportedPublicFileTypes;
-        }
-
-        public void setSupportedPublicFileTypes( List<String> supportedPublicFileTypes )
-        {
-            this.supportedPublicFileTypes = supportedPublicFileTypes;
+            this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
         //endregion
 
