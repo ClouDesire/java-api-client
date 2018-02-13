@@ -136,6 +136,7 @@ public class MyUserDTO extends NamedEntityDTO
     @ApiModelProperty( value = "What roles can this user create", readOnly = true )
     private Set<UserRole> canCreate;
 
+    @ApiModelProperty( value = "If this user has a configured valid address", readOnly = true )
     private boolean validAddress;
 
     @Override
