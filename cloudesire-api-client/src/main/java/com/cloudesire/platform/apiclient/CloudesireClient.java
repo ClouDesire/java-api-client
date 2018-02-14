@@ -6,6 +6,7 @@ import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
+import com.cloudesire.platform.apiclient.api.EventApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MessageApi;
@@ -342,6 +343,11 @@ public class CloudesireClient
     public VMConfigurationApi getVMConfigurationApi()
     {
         return retrofit.create( VMConfigurationApi.class );
+    }
+
+    public EventApi getEventApi()
+    {
+        return retrofit.create( EventApi.class );
     }
     // endregion
 
