@@ -8,7 +8,7 @@ public class ErrorResponseFactory
     {
     }
 
-    public static ErrorResponseDTO build( String key, String error)
+    public static ErrorResponseDTO build( String key, String error )
     {
         return new ErrorResponseDTO( ErrorHolder.errorHolderDefault( key, error ) );
     }

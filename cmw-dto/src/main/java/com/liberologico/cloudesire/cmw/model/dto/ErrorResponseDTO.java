@@ -21,11 +21,6 @@ public class ErrorResponseDTO
         this.setErrorHolders( errorHolder );
     }
 
-    public ErrorResponseDTO( ErrorHolder errorHolder )
-    {
-        this.setErrorHolders( Collections.singletonList( errorHolder ) );
-    }
-
     public ErrorResponseDTO( Throwable throwable )
     {
         this( throwable, throwable.getMessage() );
@@ -33,8 +28,12 @@ public class ErrorResponseDTO
 
     public ErrorResponseDTO( Throwable throwable, String message )
     {
-        this( ErrorHolder.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ),
-                message ) );
+        this( ErrorHolder.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ), message ) );
+    }
+
+    public ErrorResponseDTO( ErrorHolder errorHolder )
+    {
+        this.setErrorHolders( Collections.singletonList( errorHolder ) );
     }
 
     /**
