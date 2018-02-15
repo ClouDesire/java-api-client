@@ -143,8 +143,7 @@ public class ErrorHolder implements Serializable
     {
         StringBuilder support = new StringBuilder();
 
-        if ( requestId != null && requestId.length() > 0 )
-            support.append( "reqId: " ).append( requestId ).append( " " );
+        if ( requestId != null && requestId.length() > 0 ) support.append( "reqId: " ).append( requestId ).append( " " );
         if ( error != null && error.length() > 0 ) support.append( error ).append( " " );
         if ( contexts != null && !contexts.isEmpty() ) support.append( "contexts: " ).append( contexts );
 
