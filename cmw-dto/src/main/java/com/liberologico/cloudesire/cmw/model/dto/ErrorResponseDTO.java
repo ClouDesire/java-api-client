@@ -21,11 +21,6 @@ public class ErrorResponseDTO
         this.setErrorHolders( errorHolder );
     }
 
-    public ErrorResponseDTO( ErrorHolder errorHolder )
-    {
-        this.setErrorHolders( Collections.singletonList( errorHolder ) );
-    }
-
     public ErrorResponseDTO( Throwable throwable )
     {
         this( throwable, throwable.getMessage() );
@@ -33,16 +28,26 @@ public class ErrorResponseDTO
 
     public ErrorResponseDTO( Throwable throwable, String message )
     {
-        this( ErrorHolder.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ),
-                message ) );
+        this( ErrorHolder.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ), message ) );
     }
 
+    public ErrorResponseDTO( ErrorHolder errorHolder )
+    {
+        this.setErrorHolders( Collections.singletonList( errorHolder ) );
+    }
+
+    /**
+     * @deprecated see {@link com.liberologico.cloudesire.cmw.model.utils.ErrorResponseFactory}
+     */
     @Deprecated
     public ErrorResponseDTO( String error )
     {
         this( ErrorHolder.errorHolderDefault( error ) );
     }
 
+    /**
+     * @deprecated use {@link #getErrorHolders()}
+     */
     @Deprecated
     public List<String> getErrors()
     {
@@ -54,12 +59,18 @@ public class ErrorResponseDTO
         return errors;
     }
 
+    /**
+     * @deprecated use {@link #setErrorHolders(List)} ()}
+     */
     @Deprecated
     public void setErrors( List<String> errors )
     {
         this.errors = errors;
     }
 
+    /**
+     * @deprecated use {@link #addErrorHolder(ErrorHolder)} ()}
+     */
     @Deprecated
     public void addError( String error )
     {
