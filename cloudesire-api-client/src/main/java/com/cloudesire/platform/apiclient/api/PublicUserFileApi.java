@@ -21,13 +21,13 @@ public interface PublicUserFileApi
     @GET( "publicUserFile/{id}" )
     Call<FileDTO> get( @Path( "id" ) int id );
 
-    @GET( "publicUserFile/static/{name}")
+    @GET( "publicUserFile/static/{name}" )
     Call<ResponseBody> download( @Path( "name" ) String name );
 
-    @GET( "publicUserFile/static/{name}")
-    @Headers("Accept: image/*")
+    @GET( "publicUserFile/static/{name}" )
+    @Headers( "Accept: image/*" )
     Call<ResponseBody> downloadImage( @Path( "name" ) String name );
 
-    @DELETE( "publicUserFile/{id}")
+    @DELETE( "publicUserFile/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 }
