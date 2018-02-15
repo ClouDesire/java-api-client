@@ -31,12 +31,22 @@ public class ErrorHolder implements Serializable
         this.error = "";
     }
 
-    // http://goo.gl/IMvVKB
+    /**
+     * @param error can contains placeholders in the form of {placeholder} that will be substituted with extraFields contents.
+     */
     private ErrorHolder( String key, String error, Map<String, String> extraFields, String requestId,
             List<Serializable> contexts )
     {
-        this.error = error;
-        if ( extraFields != null ) this.extraFields.putAll( extraFields );
+        if ( extraFields != null )
+        {
+            String replacedError = error;
+            for ( Map.Entry<String, String> entry : extraFields.entrySet() )
+            {
+                replacedError = replacedError.replace( String.format( "{%s}", entry.getKey() ), entry.getValue() );
+            }
+            this.error = replacedError;
+            this.extraFields.putAll( extraFields );
+        }
         this.requestId = requestId;
         this.contexts = contexts;
         this.key = generateKey( key );

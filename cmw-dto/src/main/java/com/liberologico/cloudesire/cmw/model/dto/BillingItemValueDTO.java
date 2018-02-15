@@ -62,6 +62,16 @@ public class BillingItemValueDTO extends BaseEntityDTO
         if ( sellout != null ) recurring = sellout;
     }
 
+    public static BillingItemValueDTO of( UrlEntityDTO billingItem, int start, int end, BigDecimal price )
+    {
+        BillingItemValueDTO dto = new BillingItemValueDTO();
+        dto.item = billingItem;
+        dto.start = start;
+        dto.end = end;
+        dto.price = price;
+        return dto;
+    }
+
     // region Auto-generated code
     public BillingItemValueDTO()
     {
