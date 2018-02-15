@@ -37,12 +37,18 @@ public class ErrorResponseDTO
                 message ) );
     }
 
+    /**
+     * @deprecated see {@link com.liberologico.cloudesire.cmw.model.utils.ErrorResponseFactory}
+     */
     @Deprecated
     public ErrorResponseDTO( String error )
     {
         this( ErrorHolder.errorHolderDefault( error ) );
     }
 
+    /**
+     * @deprecated use {@link #getErrorHolders()}
+     */
     @Deprecated
     public List<String> getErrors()
     {
@@ -54,12 +60,18 @@ public class ErrorResponseDTO
         return errors;
     }
 
+    /**
+     * @deprecated use {@link #setErrorHolders(List)} ()}
+     */
     @Deprecated
     public void setErrors( List<String> errors )
     {
         this.errors = errors;
     }
 
+    /**
+     * @deprecated use {@link #addErrorHolder(ErrorHolder)} ()}
+     */
     @Deprecated
     public void addError( String error )
     {
