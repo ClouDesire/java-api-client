@@ -47,6 +47,7 @@ public class ErrorHolder implements Serializable
             this.error = replacedError;
             this.extraFields.putAll( extraFields );
         }
+        else this.error = error;
         this.requestId = requestId;
         this.contexts = contexts;
         this.key = generateKey( key );
