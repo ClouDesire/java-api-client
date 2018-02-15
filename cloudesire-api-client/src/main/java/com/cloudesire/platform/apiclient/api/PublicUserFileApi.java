@@ -6,6 +6,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -22,6 +23,10 @@ public interface PublicUserFileApi
 
     @GET( "publicUserFile/static/{name}")
     Call<ResponseBody> download( @Path( "name" ) String name );
+
+    @GET( "publicUserFile/static/{name}")
+    @Headers("Accept: image/*")
+    Call<ResponseBody> downloadImage( @Path( "name" ) String name );
 
     @DELETE( "publicUserFile/{id}")
     Call<Void> delete( @Path( "id" ) int id );
