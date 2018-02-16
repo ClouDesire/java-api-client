@@ -22,9 +22,6 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Valid
     private AddressDTO billingAddress;
 
-    @Size( max = 1024 )
-    private String companyUrl;
-
     @Size( max = 255 )
     private String taxCode;
 
@@ -74,16 +71,6 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public void setLogoFile( UrlEntityDTO logoFile )
     {
         this.logoFile = logoFile;
-    }
-
-    public String getCompanyUrl()
-    {
-        return companyUrl;
-    }
-
-    public void setCompanyUrl( String companyUrl )
-    {
-        this.companyUrl = companyUrl;
     }
 
     public String getTaxCode()
