@@ -93,4 +93,9 @@ public class UrlEntityDTO
     {
         return new UrlEntityDTO();
     }
+
+    public static UrlEntityDTO of( String url )
+    {
+        return new UrlEntityDTO( url );
+    }
 }
