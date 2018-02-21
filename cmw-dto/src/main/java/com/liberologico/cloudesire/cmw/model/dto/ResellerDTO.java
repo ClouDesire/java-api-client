@@ -19,13 +19,18 @@ public class ResellerDTO extends UserProfileDTO
     @Size( min = 3, max = 8 )
     private String invoicePrefix;
 
+    @Size( max = 125 )
     private String senderName;
 
     @Email
+    @Size( max = 125 )
     private String replyTo;
 
     @URL
     private String logo;
+
+    @Size( max = 125 )
+    private String signature;
 
     // region Auto-generated code
     public Set<UrlEntityDTO> getDistributors()
@@ -86,6 +91,16 @@ public class ResellerDTO extends UserProfileDTO
     public void setLogo( String logo )
     {
         this.logo = logo;
+    }
+
+    public String getSignature()
+    {
+        return signature;
+    }
+
+    public void setSignature( String signature )
+    {
+        this.signature = signature;
     }
 
     @Override
