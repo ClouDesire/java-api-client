@@ -32,6 +32,9 @@ public class ResellerDTO extends UserProfileDTO
     @Size( max = 125 )
     private String signature;
 
+    @Size( max = 125 )
+    private String storeName;
+
     // region Auto-generated code
     public Set<UrlEntityDTO> getDistributors()
     {
@@ -101,6 +104,16 @@ public class ResellerDTO extends UserProfileDTO
     public void setSignature( String signature )
     {
         this.signature = signature;
+    }
+
+    public String getStoreName()
+    {
+        return storeName;
+    }
+
+    public void setStoreName( String storeName )
+    {
+        this.storeName = storeName;
     }
 
     @Override
