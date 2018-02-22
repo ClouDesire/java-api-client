@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.FileDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ProductImageFilePatchDTO;
+import com.liberologico.cloudesire.cmw.model.dto.ProductFilePatchDTO;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -16,26 +16,25 @@ import retrofit2.http.Query;
 
 import java.util.List;
 
-@Deprecated
-public interface ProductImageFileApi
+public interface ProductFileApi
 {
     @Multipart
-    @POST( "productImageFile" )
-    Call<FileDTO> create( @Part( "file\"; filename=\"file" ) RequestBody file,
+    @POST( "file" )
+    Call<FileDTO> create( @Part( "file\"; filename=\"file" ) RequestBody file, @Query( "tag" ) String tag,
             @Query( "weight" ) Integer weight );
 
-    @DELETE( "productImageFile/{id}" )
+    @DELETE( "file/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
-    @PATCH( "productImageFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductImageFilePatchDTO input );
+    @PATCH( "file/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductFilePatchDTO input );
 
-    @GET( "productImageFile" )
+    @GET( "file" )
     Call<List<FileDTO>> getAll( @Query( "productId" ) Integer productId, @Query( "tag" ) String tag );
 
-    @GET( "productImageFile/static/{name}" )
+    @GET( "file/static/{name}" )
     Call<List<byte[]>> getFile( @Path( "name" ) String name );
 
-    @GET( "productImageFile/{id}" )
+    @GET( "file/{id}" )
     Call<FileDTO> get( @Path( "id" ) Integer id );
 }

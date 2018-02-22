@@ -1651,9 +1651,24 @@ public class EnvironmentDTO extends DTO
         private Long maxFileSize = 0L;
 
         /**
+         * Content types of supported application files, null or empty disables feature
+         */
+        private List<String> supportedApplicationFileTypes;
+
+        /**
          * Content types of supported company and product images, null or empty disables feature
          */
-        private List<String> supportedImageTypes;
+        private List<String> supportedCompanyLogoFileTypes;
+
+        /**
+         * Content types of supported file uploads, grouped by request type
+         */
+        private Map<String, List<String>> supportedFileTypes;
+
+        /**
+         * Content types of supported public files, null or empty disables feature
+         */
+        private List<String> supportedPublicUserFileTypes;
 
         /**
          * If configured, every invoice line will have this VAT
@@ -1948,14 +1963,44 @@ public class EnvironmentDTO extends DTO
             this.slackChannel = slackChannel;
         }
 
-        public List<String> getSupportedImageTypes()
+        public List<String> getSupportedApplicationFileTypes()
         {
-            return supportedImageTypes;
+            return supportedApplicationFileTypes;
         }
 
-        public void setSupportedImageTypes( List<String> supportedImageTypes )
+        public void setSupportedApplicationFileTypes( List<String> supportedApplicationFileTypes )
         {
-            this.supportedImageTypes = supportedImageTypes;
+            this.supportedApplicationFileTypes = supportedApplicationFileTypes;
+        }
+
+        public List<String> getSupportedCompanyLogoFileTypes()
+        {
+            return supportedCompanyLogoFileTypes;
+        }
+
+        public void setSupportedCompanyLogoFileTypes( List<String> supportedCompanyLogoFileTypes )
+        {
+            this.supportedCompanyLogoFileTypes = supportedCompanyLogoFileTypes;
+        }
+
+        public Map<String, List<String>> getSupportedFileTypes()
+        {
+            return supportedFileTypes;
+        }
+
+        public void setSupportedFileTypes( Map<String, List<String>> supportedFileTypes )
+        {
+            this.supportedFileTypes = supportedFileTypes;
+        }
+
+        public List<String> getSupportedPublicUserFileTypes()
+        {
+            return supportedPublicUserFileTypes;
+        }
+
+        public void setSupportedPublicUserFileTypes( List<String> supportedPublicUserFileTypes )
+        {
+            this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
         //endregion
 
