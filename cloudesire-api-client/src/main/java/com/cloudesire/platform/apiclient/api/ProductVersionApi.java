@@ -48,7 +48,14 @@ public interface ProductVersionApi
     Call<ProductVersionDTO> get( @Path( "id" ) int id );
 
     @GET( "productVersion/{id}" )
-    Call<ProductVersionDTO> get( @Path( "id" ) int id, @Query( "reseller" ) String reseller );
+    Call<ProductVersionDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+
+    @GET( "productVersion/{id}" )
+    Call<ProductVersionDTO> getByReseller( @Path( "id" ) int id, @Query( "reseller" ) String reseller );
+
+    @GET( "productVersion/{id}" )
+    Call<ProductVersionDTO> getByReseller( @Path( "id" ) int id, @Query( "reseller" ) String reseller,
+            @Query( "language" ) String language );
 
     @PUT( "productVersion/{id}" )
     Call<ProductVersionDTO> update( @Path( "id" ) int id, @Body ProductVersionDTO input );
