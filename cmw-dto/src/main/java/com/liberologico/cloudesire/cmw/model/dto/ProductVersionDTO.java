@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_MIN;
+
 public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL10nDTO
 {
     public static final String DESCRIPTION_FIELD = "description";
@@ -81,7 +83,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * The duration (in days) for a trial of this product version
      */
-    @Min( 1 )
+    @Min( value = 1, message = INVALID_MIN )
     private Integer trialLength = 1;
 
     private BigDecimal revenueSharingQuota;
