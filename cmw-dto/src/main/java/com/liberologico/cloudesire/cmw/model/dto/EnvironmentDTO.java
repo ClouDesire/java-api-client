@@ -1613,6 +1613,11 @@ public class EnvironmentDTO extends DTO
         private String syndicationEndpoint;
 
         /**
+         * Global notification secret
+         */
+        private String syndicationEndpointSecretToken;
+
+        /**
          * URL for the CAP (italian postal code) validation microservice
          */
         @URL
@@ -1865,6 +1870,16 @@ public class EnvironmentDTO extends DTO
         public void setSyndicationEndpoint( String syndicationEndpoint )
         {
             this.syndicationEndpoint = syndicationEndpoint;
+        }
+
+        public String getSyndicationEndpointSecretToken()
+        {
+            return syndicationEndpointSecretToken;
+        }
+
+        public void setSyndicationEndpointSecretToken( String syndicationEndpointSecretToken )
+        {
+            this.syndicationEndpointSecretToken = syndicationEndpointSecretToken;
         }
 
         public String getCapValidationServiceUrl()
