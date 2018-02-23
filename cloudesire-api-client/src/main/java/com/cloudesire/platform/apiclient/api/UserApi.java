@@ -93,8 +93,14 @@ public interface UserApi
     @POST( "user/password/recovery" )
     Call<Void> passwordRecovery( @Body PasswordRecoveryDTO request );
 
+    @POST( "user/password/recovery" )
+    Call<Void> passwordRecovery( @Body PasswordRecoveryDTO request, @Query( "reseller" ) String reseller );
+
     @POST( "user/password/reset" )
     Call<Void> passwordReset( @Body PasswordResetDTO request );
+
+    @POST( "user/password/reset" )
+    Call<Void> passwordReset( @Body PasswordResetDTO request, @Query( "reseller" ) String reseller );
 
     @PATCH( "user" )
     Call<Void> retryRegistration( @Body Object input );
