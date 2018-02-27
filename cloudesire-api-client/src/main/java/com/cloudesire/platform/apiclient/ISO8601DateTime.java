@@ -11,9 +11,8 @@ public class ISO8601DateTime extends ISO8601Date
     }
 
     @Override
-    public String toString()
+    public SimpleDateFormat getDateFormat()
     {
-        final SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm" );
-        return dateFormat.format( getDate() );
+        return new SimpleDateFormat( "yyyy-MM-dd hh:mm" );
     }
 }
