@@ -15,7 +15,12 @@ public class ISO8601Date
     @Override
     public String toString()
     {
-        final SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm" );
+        final SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd" );
         return dateFormat.format( date );
+    }
+
+    public Date getDate()
+    {
+        return date;
     }
 }

@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.ISO8601Date;
+import com.cloudesire.platform.apiclient.ISO8601DateTime;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -31,7 +32,7 @@ public interface CouponApi
     @POST( "coupon" )
     Call<List<CouponDTO>> generateList( @Query( "howMany" ) Integer howMany, @Query( "type" ) String type,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "expirationDate" ) ISO8601Date expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "expirationDate" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "number" ) BigDecimal number );
 
     /*
@@ -40,7 +41,7 @@ public interface CouponApi
     */
     @POST( "coupon" )
     Call<CouponDTO> generateExtendedTrial( @Query( "productVersion" ) Integer productVersion,
-            @Query( "product" ) Integer product, @Query( "expiration" ) ISO8601Date expiration,
+            @Query( "product" ) Integer product, @Query( "expiration" ) ISO8601DateTime expiration,
             @Query( "days" ) Integer days, @Query( "plafond" ) BigDecimal plafond );
 
     /*
@@ -50,7 +51,7 @@ public interface CouponApi
     @POST( "coupon" )
     Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "code" ) String code,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "expiration" ) ISO8601Date expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "expiration" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "value" ) BigDecimal value );
 
     @GET( "coupon/{id}" )
