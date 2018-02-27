@@ -25,54 +25,34 @@ public interface CouponApi
     @DELETE( "coupon/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
-    /*
-        List<CouponDTO> generate( Integer howMany, String type, Integer productVersion, Integer product, Date expirationDate,
-            Boolean licenseOnly, BigDecimal number ) throws RestException;
-    */
     @POST( "coupon" )
     Call<List<CouponDTO>> generateList( @Query( "howMany" ) Integer howMany, @Query( "type" ) String type,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
             @Query( "expirationDate" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "number" ) BigDecimal number );
 
-    /*
-    CouponDTO generateExtendedTrial( Integer productVersion, Integer product, Date expiration, int days, BigDecimal plafond )
-            throws RestException;
-    */
     @POST( "coupon" )
-    Call<CouponDTO> generateExtendedTrial( @Query( "productVersion" ) Integer productVersion,
-            @Query( "product" ) Integer product, @Query( "expiration" ) ISO8601DateTime expiration,
+    Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product, @Query( "expirationDate" ) ISO8601DateTime expiration,
             @Query( "days" ) Integer days, @Query( "plafond" ) BigDecimal plafond );
 
-    /*
-    CouponDTO generate( CouponType type, String code, Integer productVersion, Integer product, Date expiration,
-            Boolean licenseOnly, BigDecimal value ) throws RestException;
-     */
     @POST( "coupon" )
     Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "code" ) String code,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
             @Query( "expiration" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "value" ) BigDecimal value );
 
-    @GET( "coupon/{id}" )
-    Call<CouponDTO> get( @Path( "id" ) Integer id );
-
-    /*
-        void sendEmail( int id, String email, String language ) throws RestException;
-    */
     @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
 
     @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
 
+    @GET( "coupon/{id}" )
+    Call<CouponDTO> get( @Path( "id" ) Integer id );
+
     @GET( "coupon/hash={hash}" )
     Call<CouponDTO> retrieveByHash( @Path( "hash" ) String hash );
-
-    /*
-        RestResult<List<CouponDTO>> retrieve( PageRequestDTO page, String type, Integer product, Date expiringAfter,
-            Boolean unused ) throws RestException;
-     */
 
     @GET( "coupon" )
     Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
