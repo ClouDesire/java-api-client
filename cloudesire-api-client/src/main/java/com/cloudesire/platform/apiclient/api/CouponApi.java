@@ -31,7 +31,7 @@ public interface CouponApi
     @POST( "coupon" )
     Call<List<CouponDTO>> generateList( @Query( "howMany" ) Integer howMany, @Query( "type" ) String type,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "expiration" ) ISO8601Date expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "expirationDate" ) ISO8601Date expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
             @Query( "number" ) Integer number );
 
     /*
@@ -56,8 +56,11 @@ public interface CouponApi
     @GET( "coupon/{id}" )
     Call<CouponDTO> get( @Path( "id" ) Integer id );
 
+    /*
+        void sendEmail( int id, String email, String language ) throws RestException;
+    */
     @PATCH( "coupon/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
 
     @GET( "coupon/hash={hash}" )
     Call<CouponDTO> retrieveByHash( @Path( "hash" ) String hash );
