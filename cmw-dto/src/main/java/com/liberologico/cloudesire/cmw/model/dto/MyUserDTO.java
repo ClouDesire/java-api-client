@@ -21,7 +21,7 @@ import java.util.Set;
 public class MyUserDTO extends NamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
-
+    
     @Pattern( regexp = USERNAME_REGEXP, message = ConstraintKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
