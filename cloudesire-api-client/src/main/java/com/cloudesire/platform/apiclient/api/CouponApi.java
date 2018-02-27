@@ -63,6 +63,9 @@ public interface CouponApi
     @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
 
+    @PATCH( "coupon/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
+
     @GET( "coupon/hash={hash}" )
     Call<CouponDTO> retrieveByHash( @Path( "hash" ) String hash );
 
