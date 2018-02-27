@@ -32,7 +32,7 @@ public interface CouponApi
     Call<List<CouponDTO>> generateList( @Query( "howMany" ) Integer howMany, @Query( "type" ) String type,
             @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
             @Query( "expirationDate" ) ISO8601Date expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
-            @Query( "number" ) Integer number );
+            @Query( "number" ) BigDecimal number );
 
     /*
     CouponDTO generateExtendedTrial( Integer productVersion, Integer product, Date expiration, int days, BigDecimal plafond )
