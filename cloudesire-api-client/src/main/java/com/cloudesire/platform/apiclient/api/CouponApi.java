@@ -26,21 +26,21 @@ public interface CouponApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @POST( "coupon" )
-    Call<List<CouponDTO>> generateList( @Query( "howMany" ) Integer howMany, @Query( "type" ) String type,
-            @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "expirationDate" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
-            @Query( "number" ) BigDecimal number );
+    Call<List<CouponDTO>> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product, @Query( "expirationDate" ) ISO8601DateTime expiration,
+            @Query( "licenseOnly" ) Boolean licenseOnly, @Query( "number" ) BigDecimal number,
+            @Query( "howMany" ) Integer howMany );
+
+    @POST( "coupon" )
+    Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product, @Query( "expiration" ) ISO8601DateTime expiration,
+            @Query( "licenseOnly" ) Boolean licenseOnly, @Query( "code" ) String code,
+            @Query( "value" ) BigDecimal value );
 
     @POST( "coupon" )
     Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
             @Query( "product" ) Integer product, @Query( "expirationDate" ) ISO8601DateTime expiration,
             @Query( "days" ) Integer days, @Query( "plafond" ) BigDecimal plafond );
-
-    @POST( "coupon" )
-    Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "code" ) String code,
-            @Query( "productVersion" ) Integer productVersion, @Query( "product" ) Integer product,
-            @Query( "expiration" ) ISO8601DateTime expiration, @Query( "licenseOnly" ) Boolean licenseOnly,
-            @Query( "value" ) BigDecimal value );
 
     @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
