@@ -41,7 +41,12 @@ public class BillingItemValueDTO extends BaseEntityDTO
 
     public BillingItemValueDTO( BillingItemDTO item, Integer start, Integer end, double price )
     {
-        this.item = new UrlEntityDTO( item );
+        this( new UrlEntityDTO( item ), start, end, price );
+    }
+
+    public BillingItemValueDTO( UrlEntityDTO item, Integer start, Integer end, double price )
+    {
+        this.item = item;
         this.start = start;
         this.end = end;
         this.price = BigDecimal.valueOf( price );
