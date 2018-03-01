@@ -38,6 +38,14 @@ public enum DeploymentStatusEnum
     }
 
     /**
+     * The statuses in which the subscription are no longer active
+     */
+    public static Collection<DeploymentStatusEnum> terminated()
+    {
+        return EnumSet.of( PAYMENT_EXPIRED, UNDEPLOYED );
+    }
+
+    /**
      * The statuses in which the subscription has been/will be undeployed
      */
     public static Collection<DeploymentStatusEnum> undeployed()
