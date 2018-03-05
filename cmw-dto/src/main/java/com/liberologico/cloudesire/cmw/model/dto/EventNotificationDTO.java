@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.liberologico.cloudesire.cmw.model.enums.CmwEventType;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,7 @@ public class EventNotificationDTO extends BaseEntityDTO
     private Date date;
     private CmwEventType type;
     private String entityUrl;
+    private Map<String, Object> metadata;
 
     public Integer getEventId()
     {
@@ -67,6 +69,16 @@ public class EventNotificationDTO extends BaseEntityDTO
     public void setEntityUrl( String entityUrl )
     {
         this.entityUrl = entityUrl;
+    }
+
+    public Map<String, Object> getMetadata()
+    {
+        return metadata;
+    }
+
+    public void setMetadata( Map<String, Object> metadata )
+    {
+        this.metadata = metadata;
     }
 
     @Override
