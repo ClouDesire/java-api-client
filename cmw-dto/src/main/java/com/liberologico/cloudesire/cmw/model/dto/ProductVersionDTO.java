@@ -113,6 +113,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "True if a subscription from this plan will be automatically set to DEPLOYED on payment" )
     private boolean autodeploy;
 
+    @ApiModelProperty( value = "Descriptive label of this product version", readOnly = true )
+    private String label;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -508,6 +511,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setAutodeploy( boolean autodeploy )
     {
         this.autodeploy = autodeploy;
+    }
+
+    public String getLabel()
+    {
+        return label;
+    }
+
+    public void setLabel( String label )
+    {
+        this.label = label;
     }
 
     @Override
