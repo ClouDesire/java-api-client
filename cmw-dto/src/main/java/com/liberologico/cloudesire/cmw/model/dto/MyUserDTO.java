@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.cmw.model.enums.UserGroup;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
 import com.liberologico.cloudesire.common.Regexp;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -55,6 +57,8 @@ public class MyUserDTO extends NamedEntityDTO
 
     @NotEmpty
     private String userRole = "ROLE_USER";
+
+    private List<UserGroup> groups;
 
     /**
      * These are used to populate company when creating a ROLE_VENDOR
@@ -159,6 +163,16 @@ public class MyUserDTO extends NamedEntityDTO
     public void setUserRole( @NotNull UserRole userRole )
     {
         this.userRole = userRole.toString();
+    }
+
+    public List<UserGroup> getGroups()
+    {
+        return groups;
+    }
+
+    public void setGroups( List<UserGroup> groups )
+    {
+        this.groups = groups;
     }
 
     public Boolean getEnabled()
