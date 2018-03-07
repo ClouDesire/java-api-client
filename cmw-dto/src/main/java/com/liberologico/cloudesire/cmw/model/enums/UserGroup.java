@@ -7,8 +7,8 @@ package com.liberologico.cloudesire.cmw.model.enums;
  */
 public enum UserGroup
 {
-    SALES_DEPARTMENT,
-    TECH_DEPARTMENT,
-    MARKETING_DEPARTMENT,
-    MANAGEMENT
+    MANAGEMENT,
+    MARKETING,
+    SALES,
+    TECH
 }
