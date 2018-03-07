@@ -289,16 +289,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.averageRating = averageRating;
     }
 
-    public Integer getTrialLengthDays()
-    {
-        return trialLengthDays;
-    }
-
-    public void setTrialLengthDays( Integer trialLengthDays )
-    {
-        this.trialLengthDays = trialLengthDays;
-    }
-
     public String getAttributes()
     {
         return attributes;
