@@ -108,6 +108,13 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private CouponConfiguration couponConfiguration;
 
+    /**
+     * @deprecated by {@link #couponConfiguration}
+     */
+    @ApiModelProperty( value = "True if this plan can be purchased only with a coupon", hidden = true )
+    @Deprecated
+    private Boolean unlockable;
+
     @ApiModelProperty( "The number of markups set for this plan" )
     private long markedUp;
 
@@ -498,20 +505,18 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
      * @deprecated by {@link #getCouponConfiguration()}
      */
     @Deprecated
-    public boolean isUnlockable()
+    public Boolean isUnlockable()
     {
-        return couponConfiguration == CouponConfiguration.MANDATORY;
+        return unlockable;
     }
 
     /**
      * @deprecated by {@link #setCouponConfiguration(CouponConfiguration)}
      */
     @Deprecated
-    public void setUnlockable( boolean unlockable )
+    public void setUnlockable( Boolean unlockable )
     {
-        if ( couponConfiguration != null ) return;
-        if ( unlockable ) couponConfiguration = CouponConfiguration.MANDATORY;
-        else couponConfiguration = CouponConfiguration.ALLOWED;
+        this.unlockable = unlockable;
     }
 
     public long getMarkedUp()
