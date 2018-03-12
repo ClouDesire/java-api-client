@@ -7,11 +7,8 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 import java.util.List;
-
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION;
 
 public interface VMInstanceApi
 {
@@ -25,7 +22,7 @@ public interface VMInstanceApi
     Call<List<VirtualMachineInstanceDTO>> getAll();
 
     @GET( "virtualMachineInstance/nodename={nodename}" )
-    Call<VirtualMachineInstanceDTO> getByNodeName( @Path( "nodename" ) String nodename, @Query( VERSION ) Long apiVersion );
+    Call<VirtualMachineInstanceDTO> getByNodeName( @Path( "nodename" ) String nodename );
 
     @GET( "virtualMachineInstance/{id}" )
     Call<VirtualMachineInstanceDTO> get( @Path( "id" ) Integer id );
