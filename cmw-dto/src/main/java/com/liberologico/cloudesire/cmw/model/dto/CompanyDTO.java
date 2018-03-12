@@ -12,12 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:MaximumInheritanceDepth" )
 public class CompanyDTO extends MinimalCompanyDTO
 {
     private String syndicationEndpoint;
-
-    private String phoneNumber;
 
     private String rea;
 
@@ -28,9 +25,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     private String form;
 
     private String language = "EN";
-
-    @Email( regexp = Regexp.INTERNET_EMAIL )
-    private String emailAddress;
 
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
@@ -80,16 +74,6 @@ public class CompanyDTO extends MinimalCompanyDTO
         super();
     }
 
-    public String getEmailAddress()
-    {
-        return emailAddress;
-    }
-
-    public void setEmailAddress( String emailAddress )
-    {
-        this.emailAddress = emailAddress;
-    }
-
     public String getTechnicalEmailAddress()
     {
         return technicalEmailAddress;
@@ -108,16 +92,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setLanguage( String language )
     {
         this.language = language;
-    }
-
-    public String getPhoneNumber()
-    {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber( String phoneNumber )
-    {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getRea()

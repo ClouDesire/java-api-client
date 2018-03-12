@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.CompanyDTO;
+import com.liberologico.cloudesire.cmw.model.dto.UserCompanyDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -18,10 +19,10 @@ public interface UserCompanyApi
     Call<CompanyDTO> getByExternalId( @Path( "extId" ) String extId );
 
     @GET( "userCompany/{id}" )
-    Call<CompanyDTO> get( @Path( "id" ) int id );
+    Call<UserCompanyDTO> get( @Path( "id" ) int id );
 
     @PUT( "userCompany/{id}" )
-    Call<CompanyDTO> update( @Path( "id" ) int id, @Body CompanyDTO company );
+    Call<UserCompanyDTO> update( @Path( "id" ) int id, @Body UserCompanyDTO company );
 
     @DELETE( "userCompany/{id}" )
     Call<Void> delete( @Path( "id" ) int id );

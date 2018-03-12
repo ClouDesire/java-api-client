@@ -48,6 +48,7 @@ public class MyUserDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO company;
 
+    @ApiModelProperty( hidden = true )
     @Valid
     private UrlEntityDTO userCompany;
 
@@ -230,11 +231,19 @@ public class MyUserDTO extends NamedEntityDTO
         this.company = company;
     }
 
+    /**
+     * @deprecated by {@link #getCompany()}
+     */
+    @Deprecated
     public UrlEntityDTO getUserCompany()
     {
         return userCompany;
     }
 
+    /**
+     * @deprecated by {@link #setCompany(UrlEntityDTO)}
+     */
+    @Deprecated
     public void setUserCompany( UrlEntityDTO userCompany )
     {
         this.userCompany = userCompany;

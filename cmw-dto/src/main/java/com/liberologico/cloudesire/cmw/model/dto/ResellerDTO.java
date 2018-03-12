@@ -5,12 +5,12 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-public class ResellerDTO extends UserProfileDTO
+public class ResellerDTO extends ParentChildCompanyDTO
 {
-    private Set<UrlEntityDTO> distributors;
+    private List<UrlEntityDTO> distributors;
 
     @ApiModelProperty( "Set to false and fill the rest of the data to bill for yourself" )
     private Boolean billsToDistributor;
@@ -35,13 +35,22 @@ public class ResellerDTO extends UserProfileDTO
     @Size( max = 125 )
     private String storeName;
 
+    public ResellerDTO( String name )
+    {
+        super( name );
+    }
+
+    public ResellerDTO()
+    {
+    }
+
     // region Auto-generated code
-    public Set<UrlEntityDTO> getDistributors()
+    public List<UrlEntityDTO> getDistributors()
     {
         return distributors;
     }
 
-    public void setDistributors( Set<UrlEntityDTO> distributors )
+    public void setDistributors( List<UrlEntityDTO> distributors )
     {
         this.distributors = distributors;
     }

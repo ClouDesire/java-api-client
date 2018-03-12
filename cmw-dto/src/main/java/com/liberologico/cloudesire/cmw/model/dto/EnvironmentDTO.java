@@ -1211,6 +1211,8 @@ public class EnvironmentDTO extends DTO
 
         private boolean resellerMailCustomization;
 
+        private boolean multipleParentChildUsers;
+
         public boolean isExternalSubscriptionHandling()
         {
             return externalSubscriptionHandling != null;
@@ -1472,6 +1474,16 @@ public class EnvironmentDTO extends DTO
         public void setResellerMailCustomization( boolean resellerMailCustomization )
         {
             this.resellerMailCustomization = resellerMailCustomization;
+        }
+
+        public boolean isMultipleParentChildUsers()
+        {
+            return multipleParentChildUsers;
+        }
+
+        public void setMultipleParentChildUsers( boolean multipleParentChildUsers )
+        {
+            this.multipleParentChildUsers = multipleParentChildUsers;
         }
 
         public enum ExternalSubscriptionHandling

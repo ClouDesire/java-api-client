@@ -1,7 +1,9 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Email;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -22,14 +24,16 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Valid
     private AddressDTO billingAddress;
 
-    @Size( max = 1024 )
-    private String companyUrl;
-
     @Size( max = 255 )
     private String taxCode;
 
     @Size( max = 255 )
     private String slug;
+
+    private String phoneNumber;
+
+    @Email( regexp = Regexp.INTERNET_EMAIL )
+    private String emailAddress;
 
     public MinimalCompanyDTO( String name )
     {
@@ -76,16 +80,6 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
         this.logoFile = logoFile;
     }
 
-    public String getCompanyUrl()
-    {
-        return companyUrl;
-    }
-
-    public void setCompanyUrl( String companyUrl )
-    {
-        this.companyUrl = companyUrl;
-    }
-
     public String getTaxCode()
     {
         return taxCode;
@@ -124,6 +118,26 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public void setBillingAddress( AddressDTO billingAddress )
     {
         this.billingAddress = billingAddress;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber( String phoneNumber )
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmailAddress()
+    {
+        return emailAddress;
+    }
+
+    public void setEmailAddress( String emailAddress )
+    {
+        this.emailAddress = emailAddress;
     }
 
     @Override
