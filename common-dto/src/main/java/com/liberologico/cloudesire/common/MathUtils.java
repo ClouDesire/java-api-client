@@ -76,5 +76,12 @@ public final class MathUtils
         return ! isZero( number );
     }
 
+    public static String parseLongToString( Long amount )
+    {
+        return BigDecimal.valueOf( amount )
+                .divide( ONE_HUNDRED, MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE )
+                .toPlainString();
+    }
+
     private MathUtils() {}
 }
