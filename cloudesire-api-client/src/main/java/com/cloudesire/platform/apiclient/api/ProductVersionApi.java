@@ -16,6 +16,8 @@ import retrofit2.http.QueryMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.liberologico.cloudesire.cmw.model.constants.Parameters.LANGUAGE;
+
 public interface ProductVersionApi
 {
     @POST( "productVersion" )
@@ -48,7 +50,7 @@ public interface ProductVersionApi
     Call<ProductVersionDTO> get( @Path( "id" ) int id );
 
     @GET( "productVersion/{id}" )
-    Call<ProductVersionDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+    Call<ProductVersionDTO> get( @Path( "id" ) int id, @Query( LANGUAGE ) String language );
 
     @GET( "productVersion/{id}" )
     Call<ProductVersionDTO> getByReseller( @Path( "id" ) int id, @Query( "reseller" ) String reseller );

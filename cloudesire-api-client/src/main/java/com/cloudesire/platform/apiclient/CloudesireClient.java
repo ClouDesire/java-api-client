@@ -29,6 +29,8 @@ import com.cloudesire.platform.apiclient.api.VMConfigurationApi;
 import com.cloudesire.platform.apiclient.api.VMInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.liberologico.cloudesire.cmw.ApiVersion;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -44,8 +46,12 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION;
+
 public class CloudesireClient
 {
+    public static final Long LATEST_API_VERSION = ApiVersion.V20180312;
+
     private final Retrofit retrofit;
     private final String username;
     private final String password;
@@ -54,48 +60,48 @@ public class CloudesireClient
     private final String baseUrl;
     private final ObjectMapper mapper;
     private final Interceptor interceptor;
+    private final long version;
 
-    CloudesireClient( final String username, final String password, final String token, final String impersonate,
-            String baseUrl, final ObjectMapper mapper, final Interceptor interceptor )
+    private CloudesireClient( Builder builder )
     {
-        this.username = username;
-        this.password = password;
-        this.token = token;
-        this.impersonate = impersonate;
-        this.baseUrl = baseUrl;
-        this.mapper = mapper;
-        this.interceptor = interceptor;
+        this.username = builder.username;
+        this.password = builder.password;
+        this.token = builder.token;
+        this.impersonate = builder.impersonate;
+        this.baseUrl = builder.baseUrl;
+        this.mapper = builder.mapper;
+        this.interceptor = builder.interceptor;
+        this.version = builder.version;
 
-        if ( ! baseUrl.endsWith( "/" ) ) baseUrl += "/";
-
-        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
                 .readTimeout( 60, TimeUnit.SECONDS );       // socket timeout
 
         if ( username != null && password != null )
         {
-            builder.addInterceptor( new BasicAuthInterceptor( username, password ) );
+            clientBuilder.addInterceptor( new BasicAuthInterceptor( username, password ) );
         }
         else if ( token != null )
         {
-            builder.addInterceptor( getHeaderInterceptor( "CMW-Auth-Token", token ) );
+            clientBuilder.addInterceptor( getHeaderInterceptor( "CMW-Auth-Token", token ) );
         }
 
         if ( impersonate != null )
         {
-            builder.addInterceptor( getHeaderInterceptor( "CMW-As-User", impersonate ) );
+            clientBuilder.addInterceptor( getHeaderInterceptor( "CMW-As-User", impersonate ) );
         }
 
-        if ( interceptor != null ) builder.addInterceptor( interceptor );
+        if ( interceptor != null ) clientBuilder.addInterceptor( interceptor );
+
+        clientBuilder.addInterceptor( getParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
         retrofit = new Retrofit.Builder()
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
                 .baseUrl( baseUrl )
-                .client( builder.build() )
+                .client( clientBuilder.build() )
                 .validateEagerly( true )
                 .build();
     }
-
 
     private Interceptor getHeaderInterceptor( final String headerName, final String headerValue )
     {
@@ -106,6 +112,27 @@ public class CloudesireClient
             {
                 Request request = chain.request().newBuilder()
                         .addHeader( headerName, headerValue ).build();
+                return chain.proceed( request );
+            }
+        };
+    }
+
+    private Interceptor getParameterInterceptor( final String parameterName, final String parameterValue )
+    {
+        return new Interceptor()
+        {
+            @Override
+            public Response intercept( Chain chain ) throws IOException
+            {
+                Request original = chain.request();
+                HttpUrl originalHttpUrl = original.url();
+
+                HttpUrl url = originalHttpUrl.newBuilder()
+                        .addQueryParameter( parameterName, parameterValue )
+                        .build();
+
+                Request.Builder requestBuilder = original.newBuilder().url( url );
+                Request request = requestBuilder.build();
                 return chain.proceed( request );
             }
         };
@@ -130,6 +157,7 @@ public class CloudesireClient
         private String baseUrl;
         private ObjectMapper mapper;
         private Interceptor interceptor;
+        private Long version;
 
         public Builder()
         {
@@ -150,6 +178,7 @@ public class CloudesireClient
             this.baseUrl = cloudesireClient.baseUrl;
             this.mapper = cloudesireClient.mapper;
             this.interceptor = cloudesireClient.interceptor;
+            this.version = cloudesireClient.version;
         }
 
         public Builder setUsername( String username )
@@ -194,11 +223,21 @@ public class CloudesireClient
             return this;
         }
 
+        public Builder setApiVersion( long version )
+        {
+            this.version = version;
+            return this;
+        }
+
         public CloudesireClient build()
         {
             Validate.notBlank( baseUrl, "A baseUrl must be set" );
             Validate.notNull( mapper, "An ObjectMapper instance is required" );
-            return new CloudesireClient( username, password, token, impersonate, baseUrl, mapper, interceptor );
+
+            if ( ! baseUrl.endsWith( "/" ) ) baseUrl += "/";
+            if ( version == null ) version = LATEST_API_VERSION;
+
+            return new CloudesireClient( this );
         }
 
         @Override
@@ -210,13 +249,13 @@ public class CloudesireClient
             return Objects.equals( username, builder.username ) && Objects.equals( password, builder.password )
                     && Objects.equals( token, builder.token ) && Objects.equals( impersonate, builder.impersonate )
                     && Objects.equals( baseUrl, builder.baseUrl ) && Objects.equals( mapper, builder.mapper ) && Objects
-                    .equals( interceptor, builder.interceptor );
+                    .equals( interceptor, builder.interceptor ) && Objects.equals( version, builder.version );
         }
 
         @Override
         public int hashCode()
         {
-            return Objects.hash( username, password, token, impersonate, baseUrl, mapper, interceptor );
+            return Objects.hash( username, password, token, impersonate, baseUrl, mapper, interceptor, version );
         }
     }
 

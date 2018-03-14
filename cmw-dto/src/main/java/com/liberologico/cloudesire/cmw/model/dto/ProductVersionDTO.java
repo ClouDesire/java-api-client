@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.cmw.model.enums.CouponConfiguration;
 import com.liberologico.cloudesire.cmw.model.enums.Trial;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -17,6 +18,7 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 
 public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL10nDTO
 {
+    public static final String COUPON_CONFIGURATION_FIELD = "couponConfiguration";
     public static final String DESCRIPTION_FIELD = "description";
     public static final String PRICE_FIELD = "price";
     public static final String PUBLISHED_FIELD = "published";
@@ -104,8 +106,14 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private int weight;
 
-    @ApiModelProperty( "True if this plan can be purchased only with a coupon" )
-    private boolean unlockable;
+    private CouponConfiguration couponConfiguration;
+
+    /**
+     * @deprecated by {@link #couponConfiguration}
+     */
+    @ApiModelProperty( value = "True if this plan can be purchased only with a coupon", hidden = true )
+    @Deprecated
+    private Boolean unlockable;
 
     @ApiModelProperty( "The number of markups set for this plan" )
     private long markedUp;
@@ -483,12 +491,30 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.weight = weight;
     }
 
-    public boolean isUnlockable()
+    public CouponConfiguration getCouponConfiguration()
+    {
+        return couponConfiguration;
+    }
+
+    public void setCouponConfiguration( CouponConfiguration configuration )
+    {
+        this.couponConfiguration = configuration;
+    }
+
+    /**
+     * @deprecated by {@link #getCouponConfiguration()}
+     */
+    @Deprecated
+    public Boolean isUnlockable()
     {
         return unlockable;
     }
 
-    public void setUnlockable( boolean unlockable )
+    /**
+     * @deprecated by {@link #setCouponConfiguration(CouponConfiguration)}
+     */
+    @Deprecated
+    public void setUnlockable( Boolean unlockable )
     {
         this.unlockable = unlockable;
     }
