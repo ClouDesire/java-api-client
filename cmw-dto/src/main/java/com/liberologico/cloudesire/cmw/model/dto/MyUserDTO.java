@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -59,7 +58,7 @@ public class MyUserDTO extends NamedEntityDTO
     @NotEmpty
     private String userRole = "ROLE_USER";
 
-    private List<UserGroup> groups;
+    private Set<UserGroup> groups;
 
     /**
      * These are used to populate company when creating a ROLE_VENDOR
@@ -166,12 +165,12 @@ public class MyUserDTO extends NamedEntityDTO
         this.userRole = userRole.toString();
     }
 
-    public List<UserGroup> getGroups()
+    public Set<UserGroup> getGroups()
     {
         return groups;
     }
 
-    public void setGroups( List<UserGroup> groups )
+    public void setGroups( Set<UserGroup> groups )
     {
         this.groups = groups;
     }
