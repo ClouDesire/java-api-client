@@ -128,9 +128,8 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 
-    @JsonInclude( JsonInclude.Include.NON_NULL )
     @Valid
-    private Set<ConfigurationParameterDTO> configurationParameters;
+    private List<ConfigurationParameterDTO> configurationParameters;
 
     @ApiModelProperty( "Pre-shared secret to sign event notifications" )
     private String notificationSecretToken;
@@ -515,12 +514,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.faq = faq;
     }
 
-    public Set<ConfigurationParameterDTO> getConfigurationParameters()
+    public List<ConfigurationParameterDTO> getConfigurationParameters()
     {
         return configurationParameters;
     }
 
-    public ProductDTO setConfigurationParameters( Set<ConfigurationParameterDTO> configurationParameters )
+    public ProductDTO setConfigurationParameters( List<ConfigurationParameterDTO> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
         return this;

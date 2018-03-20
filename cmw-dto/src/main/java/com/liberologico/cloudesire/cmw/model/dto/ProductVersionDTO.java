@@ -78,7 +78,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     private boolean drafted;
 
     @Valid
-    private Set<UrlEntityDTO> configurationParameters = new HashSet<>();
+    private List<UrlEntityDTO> configurationParameters;
 
     private String externalId;
 
@@ -356,12 +356,12 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         return this;
     }
 
-    public Set<UrlEntityDTO> getConfigurationParameters()
+    public List<UrlEntityDTO> getConfigurationParameters()
     {
         return configurationParameters;
     }
 
-    public ProductVersionDTO setConfigurationParameters( Set<UrlEntityDTO> configurationParameters )
+    public ProductVersionDTO setConfigurationParameters( List<UrlEntityDTO> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
         return this;

@@ -27,6 +27,8 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
 
     private boolean required;
 
+    private Integer weight;
+
     public ConfigurationParameterDTO( String name, String code, String description )
     {
         super( name );
@@ -91,6 +93,16 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     {
         this.required = required;
         return this;
+    }
+
+    public Integer getWeight()
+    {
+        return weight;
+    }
+
+    public void setWeight( Integer weight )
+    {
+        this.weight = weight;
     }
 
     @Override
