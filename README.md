@@ -12,7 +12,7 @@ Add the dependency to your pom.xml:
 <dependency>
   <groupId>com.cloudesire.platform</groupId>
   <artifactId>cloudesire-api-client</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
@@ -31,7 +31,7 @@ Add JCenter repository to your pom.xml:
 
 Add the dependency to build.gradle:
 
-    compile 'com.cloudesire.platform:cloudesire-api-client:1.0.0'
+    compile 'com.cloudesire.platform:cloudesire-api-client:1.1.0'
     
 Add jcenter repository to build.gradle:
 
