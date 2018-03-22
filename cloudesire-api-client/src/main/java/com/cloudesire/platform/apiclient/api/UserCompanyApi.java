@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.CompanyDTO;
+import com.liberologico.cloudesire.cmw.model.dto.MinimalCompanyDTO;
 import com.liberologico.cloudesire.cmw.model.dto.UserCompanyDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,10 +13,10 @@ import retrofit2.http.Path;
 public interface UserCompanyApi
 {
     @POST( "userCompany" )
-    Call<CompanyDTO> create( @Body CompanyDTO company );
+    Call<UserCompanyDTO> create( @Body MinimalCompanyDTO company );
 
     @GET( "userCompany/externalId={extId}" )
-    Call<CompanyDTO> getByExternalId( @Path( "extId" ) String extId );
+    Call<UserCompanyDTO> getByExternalId( @Path( "extId" ) String extId );
 
     @GET( "userCompany/{id}" )
     Call<UserCompanyDTO> get( @Path( "id" ) int id );
