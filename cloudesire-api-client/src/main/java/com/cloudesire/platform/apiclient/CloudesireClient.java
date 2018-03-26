@@ -50,7 +50,7 @@ import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION
 
 public class CloudesireClient
 {
-    public static final Long LATEST_API_VERSION = ApiVersion.V20180312;
+    public static final Long LATEST_API_VERSION = ApiVersion.V20180322;
 
     private final Retrofit retrofit;
     private final String username;
