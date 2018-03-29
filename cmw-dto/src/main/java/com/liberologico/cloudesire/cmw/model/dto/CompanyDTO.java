@@ -46,6 +46,9 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private Date lastInboundInvoice;
 
+    @Size( max = 1024 )
+    private String companyUrl;
+
     private String notificationSecretToken;
 
     @Valid
@@ -202,6 +205,16 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setTrusted( Boolean trusted )
     {
         this.trusted = trusted;
+    }
+
+    public String getCompanyUrl()
+    {
+        return companyUrl;
+    }
+
+    public void setCompanyUrl( String companyUrl )
+    {
+        this.companyUrl = companyUrl;
     }
 
     public String getNotificationSecretToken()
