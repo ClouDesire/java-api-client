@@ -89,8 +89,11 @@ public class MyUserDTO extends NamedEntityDTO
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String facebookToken;
 
+    @JsonInclude ( JsonInclude.Include.NON_NULL )
+    private String keycloakToken;
+
     @JsonInclude ( JsonInclude.Include.NON_DEFAULT )
-    private boolean facebookAuthenticated = false;
+    private boolean socialAuthenticated = false;
 
     private String fiscalCode;
 
@@ -420,14 +423,24 @@ public class MyUserDTO extends NamedEntityDTO
         this.facebookToken = facebookToken;
     }
 
-    public boolean isFacebookAuthenticated()
+    public String getKeycloakToken()
     {
-        return facebookAuthenticated;
+        return keycloakToken;
     }
 
-    public void setFacebookAuthenticated( boolean facebookAuthenticated )
+    public void setKeycloakToken( String keycloakToken )
     {
-        this.facebookAuthenticated = facebookAuthenticated;
+        this.keycloakToken = keycloakToken;
+    }
+
+    public boolean isSocialAuthenticated()
+    {
+        return socialAuthenticated;
+    }
+
+    public void setSocialAuthenticated( boolean socialAuthenticated )
+    {
+        this.socialAuthenticated = socialAuthenticated;
     }
 
     public String getFullName()
