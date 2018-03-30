@@ -89,7 +89,6 @@ public class MyUserDTO extends NamedEntityDTO
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String facebookToken;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String keycloakToken;
 
     @JsonInclude ( JsonInclude.Include.NON_DEFAULT )
