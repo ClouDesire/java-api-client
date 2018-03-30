@@ -63,10 +63,8 @@ public class MyUserDTO extends NamedEntityDTO
     /**
      * These are used to populate company when creating a ROLE_VENDOR
      **/
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String companyName;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String companyTaxCode;
 
     private Boolean enabled;
@@ -83,11 +81,7 @@ public class MyUserDTO extends NamedEntityDTO
 
     private Date creationDate;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String externalId;
-
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
-    private String facebookToken;
 
     private String keycloakToken;
 
@@ -410,16 +404,6 @@ public class MyUserDTO extends NamedEntityDTO
     public void setCompanyTaxCode( String companyTaxCode )
     {
         this.companyTaxCode = companyTaxCode;
-    }
-
-    public String getFacebookToken()
-    {
-        return facebookToken;
-    }
-
-    public void setFacebookToken( String facebookToken )
-    {
-        this.facebookToken = facebookToken;
     }
 
     public String getKeycloakToken()
