@@ -35,6 +35,8 @@ public class BillingItemDTO extends NamedEntityDTO
 
     private boolean required;
 
+    private ApiEndpointDTO endpoint;
+
     public BillingItemDTO( BillingItemType type, String name, String unit, String description )
     {
         super( name );
@@ -126,6 +128,17 @@ public class BillingItemDTO extends NamedEntityDTO
         return this;
     }
 
+    public ApiEndpointDTO getEndpoint()
+    {
+        return endpoint;
+    }
+
+    public BillingItemDTO setEndpoint( ApiEndpointDTO endpoint )
+    {
+        this.endpoint = endpoint;
+        return this;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -139,15 +152,6 @@ public class BillingItemDTO extends NamedEntityDTO
     public int hashCode()
     {
         return Objects.hash( identifier );
-    }
-
-    @Override
-    public String toString()
-    {
-        final StringBuilder sb = new StringBuilder( "BillingItemDTO{" );
-        sb.append( "identifier='" ).append( identifier ).append( '\'' );
-        sb.append( '}' );
-        return sb.toString();
     }
     // endregion
 }
