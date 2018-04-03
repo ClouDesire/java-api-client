@@ -86,6 +86,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     private List<UrlEntityDTO> cloudProviders;
 
     @ApiModelProperty( readOnly = true )
+    @JsonProperty( "isApi" )
+    private Boolean api;
+
+    @ApiModelProperty( readOnly = true )
     @JsonProperty( "isBundle" )
     private Boolean bundle;
 
@@ -377,6 +381,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setMetrics( List<UrlEntityDTO> metrics )
     {
         this.metrics = metrics;
+    }
+
+    public Boolean isApi()
+    {
+        return api;
+    }
+
+    public void setApi( Boolean api )
+    {
+        this.api = api;
     }
 
     public Boolean isBundle()
