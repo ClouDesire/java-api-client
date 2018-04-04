@@ -8,6 +8,7 @@ import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
+import com.liberologico.cloudesire.cmw.model.enums.UserRole;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -68,7 +69,7 @@ public interface UserApi
 
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
-            @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled,
+            @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
             @QueryMap Map<String, String> pageRequest );
 
     @GET( "user/{id}/reseller" )
