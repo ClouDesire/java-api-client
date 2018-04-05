@@ -1619,15 +1619,10 @@ public class EnvironmentDTO extends DTO
         private String appsHostnameDomain;
 
         /**
-         * Global syndication endpoint
+         * Global syndication endpoints
          */
-        @URL
-        private String syndicationEndpoint;
-
-        /**
-         * Global notification secret
-         */
-        private String syndicationEndpointSecretToken;
+        @Valid
+        private List<SyndicationEndpoint> syndicationEndpoints;
 
         /**
          * URL for the CAP (italian postal code) validation microservice
@@ -1874,24 +1869,47 @@ public class EnvironmentDTO extends DTO
             this.appsHostnameDomain = appsHostnameDomain;
         }
 
-        public String getSyndicationEndpoint()
+        public List<SyndicationEndpoint> getSyndicationEndpoints()
         {
-            return syndicationEndpoint;
+            return syndicationEndpoints;
         }
 
+        public void setSyndicationEndpoints( List<SyndicationEndpoint> syndicationEndpoints )
+        {
+            this.syndicationEndpoints = syndicationEndpoints;
+        }
+
+        public void setSyndicationEndpoint( String url, String secret )
+        {
+            syndicationEndpoints = Collections.singletonList( new SyndicationEndpoint( url, secret ) );
+        }
+
+        @Deprecated
         public void setSyndicationEndpoint( String syndicationEndpoint )
         {
-            this.syndicationEndpoint = syndicationEndpoint;
+            if ( syndicationEndpoint == null ) return;
+            SyndicationEndpoint endpoint = getCurrentOrNewEndpoint();
+            endpoint.setUrl( syndicationEndpoint );
+            syndicationEndpoints = Collections.singletonList( endpoint );
         }
 
-        public String getSyndicationEndpointSecretToken()
-        {
-            return syndicationEndpointSecretToken;
-        }
-
+        @Deprecated
         public void setSyndicationEndpointSecretToken( String syndicationEndpointSecretToken )
         {
-            this.syndicationEndpointSecretToken = syndicationEndpointSecretToken;
+            if ( syndicationEndpointSecretToken == null ) return;
+            SyndicationEndpoint endpoint = getCurrentOrNewEndpoint();
+            endpoint.setSecret( syndicationEndpointSecretToken );
+            syndicationEndpoints = Collections.singletonList( endpoint );
+        }
+
+        private SyndicationEndpoint getCurrentOrNewEndpoint()
+        {
+            if ( syndicationEndpoints != null && ! syndicationEndpoints.isEmpty() )
+            {
+                return syndicationEndpoints.get( 0 );
+            }
+
+            return new SyndicationEndpoint();
         }
 
         public String getCapValidationServiceUrl()
@@ -2209,6 +2227,45 @@ public class EnvironmentDTO extends DTO
             this.user = user;
         }
         // endregion
+    }
+
+    public static class SyndicationEndpoint
+    {
+        @NotEmpty
+        @URL
+        private String url;
+
+        private String secret;
+
+        public SyndicationEndpoint( String url, String secret )
+        {
+            this.url = url;
+            this.secret = secret;
+        }
+
+        public SyndicationEndpoint()
+        {
+        }
+
+        public String getUrl()
+        {
+            return url;
+        }
+
+        public String getSecret()
+        {
+            return secret;
+        }
+
+        public void setUrl( String url )
+        {
+            this.url = url;
+        }
+
+        public void setSecret( String secret )
+        {
+            this.secret = secret;
+        }
     }
 
     @Override
