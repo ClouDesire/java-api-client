@@ -86,7 +86,7 @@ public class MyUserDTO extends NamedEntityDTO
     private String keycloakToken;
 
     @JsonInclude ( JsonInclude.Include.NON_DEFAULT )
-    private boolean socialAuthenticated = false;
+    private boolean keycloakAuthenticated = false;
 
     private String fiscalCode;
 
@@ -416,14 +416,14 @@ public class MyUserDTO extends NamedEntityDTO
         this.keycloakToken = keycloakToken;
     }
 
-    public boolean isSocialAuthenticated()
+    public boolean isKeycloakAuthenticated()
     {
-        return socialAuthenticated;
+        return keycloakAuthenticated;
     }
 
-    public void setSocialAuthenticated( boolean socialAuthenticated )
+    public void setKeycloakAuthenticated( boolean keycloakAuthenticated )
     {
-        this.socialAuthenticated = socialAuthenticated;
+        this.keycloakAuthenticated = keycloakAuthenticated;
     }
 
     public String getFullName()
