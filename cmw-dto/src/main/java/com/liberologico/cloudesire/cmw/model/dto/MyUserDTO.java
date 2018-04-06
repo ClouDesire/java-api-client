@@ -55,8 +55,8 @@ public class MyUserDTO extends NamedEntityDTO
 
     private AddressDTO homeAddress;
 
-    @NotEmpty
-    private String userRole = "ROLE_USER";
+    @NotNull
+    private UserRole userRole = UserRole.ROLE_USER;
 
     private Set<UserGroup> groups;
 
@@ -153,19 +153,23 @@ public class MyUserDTO extends NamedEntityDTO
         return address.getCountryCode();
     }
 
-    public String getUserRole()
+    public UserRole getUserRole()
     {
         return userRole;
     }
 
-    public void setUserRole( String userRole )
+    /**
+     * @deprecated use {@link #setUserRole(UserRole)}
+     */
+    @Deprecated
+    public void setUserRole( @NotNull String userRole )
     {
-        this.userRole = userRole;
+        this.userRole = UserRole.valueOf( userRole );
     }
 
-    public void setUserRole( @NotNull UserRole userRole )
+    public void setUserRole( UserRole userRole )
     {
-        this.userRole = userRole.toString();
+        this.userRole = userRole;
     }
 
     public Set<UserGroup> getGroups()
