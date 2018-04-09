@@ -14,7 +14,11 @@ import java.util.Objects;
 
 public class CompanyDTO extends MinimalCompanyDTO
 {
+    public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
+    public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
     public static final String SANDBOX_ALLOWED = "sandboxAllowed";
+    public static final String SLUG = "slug";
+    public static final String TRUSTED = "trusted";
 
     private String syndicationEndpoint;
 
