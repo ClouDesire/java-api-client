@@ -14,6 +14,8 @@ import java.util.Objects;
 
 public class CompanyDTO extends MinimalCompanyDTO
 {
+    public static final String SANDBOX_ALLOWED = "sandboxAllowed";
+
     private String syndicationEndpoint;
 
     private String rea;
@@ -55,6 +57,8 @@ public class CompanyDTO extends MinimalCompanyDTO
     private BankAccountDataDTO bankAccountData;
 
     private List<UrlEntityDTO> vendors;
+
+    private Boolean sandboxAllowed;
 
     public enum Type
     {
@@ -255,6 +259,16 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setBankAccountData( BankAccountDataDTO bankAccountData )
     {
         this.bankAccountData = bankAccountData;
+    }
+
+    public Boolean isSandboxAllowed()
+    {
+        return sandboxAllowed;
+    }
+
+    public void setSandboxAllowed( Boolean sandboxAllowed )
+    {
+        this.sandboxAllowed = sandboxAllowed;
     }
 
     @Override
