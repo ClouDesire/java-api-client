@@ -14,11 +14,6 @@ import java.util.Objects;
 
 public class CompanyDTO extends MinimalCompanyDTO
 {
-    public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
-    public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
-    public static final String SLUG = "slug";
-    public static final String TRUSTED = "trusted";
-
     private String syndicationEndpoint;
 
     private String rea;
@@ -36,14 +31,17 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private Boolean enableProviderCredential;
 
+    @ApiModelProperty( hidden = true )
     private Integer maxConcurrentInstance;
 
     private String publicKey;
 
+    @ApiModelProperty( hidden = true )
     private Integer maxPublishedProducts;
 
     private Integer currentPublishedProducts = 1;
 
+    @ApiModelProperty( hidden = true )
     private Boolean trusted;
 
     @JsonInclude ( Include.NON_NULL )
@@ -61,6 +59,7 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private List<UrlEntityDTO> vendors;
 
+    @ApiModelProperty( hidden = true )
     private CompanyFeatureTogglesDTO featureToggles;
 
     public enum Type
@@ -285,5 +284,16 @@ public class CompanyDTO extends MinimalCompanyDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode() );
+    }
+
+    public static class Fields
+    {
+        public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
+        public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
+        public static final String TRUSTED = "trusted";
+
+        private Fields()
+        {
+        }
     }
 }
