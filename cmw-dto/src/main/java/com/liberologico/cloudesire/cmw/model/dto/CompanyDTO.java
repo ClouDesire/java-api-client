@@ -16,7 +16,6 @@ public class CompanyDTO extends MinimalCompanyDTO
 {
     public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
     public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
-    public static final String SANDBOX_ALLOWED = "sandboxAllowed";
     public static final String SLUG = "slug";
     public static final String TRUSTED = "trusted";
 
@@ -62,7 +61,7 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private List<UrlEntityDTO> vendors;
 
-    private Boolean sandboxAllowed;
+    private CompanyFeatureTogglesDTO featureToggles;
 
     public enum Type
     {
@@ -265,14 +264,14 @@ public class CompanyDTO extends MinimalCompanyDTO
         this.bankAccountData = bankAccountData;
     }
 
-    public Boolean isSandboxAllowed()
+    public CompanyFeatureTogglesDTO getFeatureToggles()
     {
-        return sandboxAllowed;
+        return featureToggles;
     }
 
-    public void setSandboxAllowed( Boolean sandboxAllowed )
+    public void setFeatureToggles( CompanyFeatureTogglesDTO featureToggles )
     {
-        this.sandboxAllowed = sandboxAllowed;
+        this.featureToggles = featureToggles;
     }
 
     @Override
