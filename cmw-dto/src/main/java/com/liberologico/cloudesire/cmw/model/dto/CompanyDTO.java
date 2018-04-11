@@ -31,14 +31,17 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     private Boolean enableProviderCredential;
 
+    @ApiModelProperty( hidden = true )
     private Integer maxConcurrentInstance;
 
     private String publicKey;
 
+    @ApiModelProperty( hidden = true )
     private Integer maxPublishedProducts;
 
     private Integer currentPublishedProducts = 1;
 
+    @ApiModelProperty( hidden = true )
     private Boolean trusted;
 
     @JsonInclude ( Include.NON_NULL )
@@ -55,6 +58,9 @@ public class CompanyDTO extends MinimalCompanyDTO
     private BankAccountDataDTO bankAccountData;
 
     private List<UrlEntityDTO> vendors;
+
+    @ApiModelProperty( hidden = true )
+    private CompanyFeatureTogglesDTO featureToggles;
 
     public enum Type
     {
@@ -257,6 +263,16 @@ public class CompanyDTO extends MinimalCompanyDTO
         this.bankAccountData = bankAccountData;
     }
 
+    public CompanyFeatureTogglesDTO getFeatureToggles()
+    {
+        return featureToggles;
+    }
+
+    public void setFeatureToggles( CompanyFeatureTogglesDTO featureToggles )
+    {
+        this.featureToggles = featureToggles;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -268,5 +284,16 @@ public class CompanyDTO extends MinimalCompanyDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode() );
+    }
+
+    public static class Fields
+    {
+        public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
+        public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
+        public static final String TRUSTED = "trusted";
+
+        private Fields()
+        {
+        }
     }
 }

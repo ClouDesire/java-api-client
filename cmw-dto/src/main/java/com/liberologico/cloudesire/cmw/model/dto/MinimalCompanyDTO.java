@@ -27,6 +27,7 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Size( max = 255 )
     private String taxCode;
 
+    @ApiModelProperty( hidden = true )
     @Size( max = 255 )
     private String slug;
 
@@ -151,5 +152,14 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode() );
+    }
+
+    public static class Fields
+    {
+        public static final String SLUG = "slug";
+
+        private Fields()
+        {
+        }
     }
 }
