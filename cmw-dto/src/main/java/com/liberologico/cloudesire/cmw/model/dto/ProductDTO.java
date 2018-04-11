@@ -39,6 +39,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty("URL where events of syndicated applications are dispatched")
     private String syndicatedEndpoint;
 
+    @ApiModelProperty( "Base URL for this product's API" )
+    private String apiUrl;
+
     @Valid
     private List<UrlEntityDTO> files;
 
@@ -371,6 +374,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setSyndicatedEndpoint( String syndicatedEndpoint )
     {
         this.syndicatedEndpoint = syndicatedEndpoint;
+    }
+
+    public String getApiUrl()
+    {
+        return apiUrl;
+    }
+
+    public void setApiUrl( String apiUrl )
+    {
+        this.apiUrl = apiUrl;
     }
 
     public List<UrlEntityDTO> getMetrics()

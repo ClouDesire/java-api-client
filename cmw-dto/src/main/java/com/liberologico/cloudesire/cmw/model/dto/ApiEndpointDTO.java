@@ -12,12 +12,12 @@ public class ApiEndpointDTO
     private HttpMethod method;
 
     @Size( min = 1, max = 2000 )
-    private String url;
+    private String path;
 
-    public ApiEndpointDTO( HttpMethod method, String url )
+    public ApiEndpointDTO( HttpMethod method, String path )
     {
         this.method = method;
-        this.url = url;
+        this.path = path;
     }
 
     public ApiEndpointDTO()
@@ -34,14 +34,14 @@ public class ApiEndpointDTO
         this.method = method;
     }
 
-    public String getUrl()
+    public String getPath()
     {
-        return url;
+        return path;
     }
 
-    public void setUrl( String url )
+    public void setPath( String path )
     {
-        this.url = url;
+        this.path = path;
     }
 
     @Override
@@ -50,12 +50,12 @@ public class ApiEndpointDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         ApiEndpointDTO that = (ApiEndpointDTO) o;
-        return method == that.method && Objects.equals( url, that.url );
+        return method == that.method && Objects.equals( path, that.path );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( method, url );
+        return Objects.hash( method, path );
     }
 }
