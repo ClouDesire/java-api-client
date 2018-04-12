@@ -2,7 +2,6 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 
-import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
@@ -125,18 +124,5 @@ public class BudgetInputDTO
     {
         this.reseller = reseller;
         return this;
-    }
-
-    @AssertFalse( message = "{validator.billing.item.chosen.value.null}" )
-    public boolean isBillingItemValueNull()
-    {
-        if ( billingItems == null ) return false;
-
-        for ( Map.Entry<UrlEntityDTO, Integer> entry : billingItems.entrySet() )
-        {
-            if ( entry.getValue() == null ) return true;
-        }
-
-        return false;
     }
 }
