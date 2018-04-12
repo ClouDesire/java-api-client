@@ -92,4 +92,9 @@ public class ErrorResponseDTO
     {
         errorHolders.add( errorHolder );
     }
+
+    public ErrorHolder firstErrorHolder()
+    {
+        return this.errorHolders.get( 0 );
+    }
 }
