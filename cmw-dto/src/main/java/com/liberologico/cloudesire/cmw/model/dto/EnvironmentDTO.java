@@ -1213,7 +1213,7 @@ public class EnvironmentDTO extends DTO
 
         private boolean multipleParentChildUsers;
 
-        private boolean keycloak = false;
+        private boolean keycloak;
 
         public boolean isExternalSubscriptionHandling()
         {
