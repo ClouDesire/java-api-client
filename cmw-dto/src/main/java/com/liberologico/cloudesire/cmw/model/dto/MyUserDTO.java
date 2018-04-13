@@ -63,10 +63,8 @@ public class MyUserDTO extends NamedEntityDTO
     /**
      * These are used to populate company when creating a ROLE_VENDOR
      **/
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String companyName;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String companyTaxCode;
 
     private Boolean enabled;
@@ -83,14 +81,12 @@ public class MyUserDTO extends NamedEntityDTO
 
     private Date creationDate;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String externalId;
 
-    @JsonInclude ( JsonInclude.Include.NON_NULL )
-    private String facebookToken;
+    private String keycloakToken;
 
-    @JsonInclude ( JsonInclude.Include.NON_DEFAULT )
-    private boolean facebookAuthenticated = false;
+    @JsonInclude( JsonInclude.Include.NON_DEFAULT )
+    private boolean keycloakAuthenticated;
 
     private String fiscalCode;
 
@@ -410,24 +406,24 @@ public class MyUserDTO extends NamedEntityDTO
         this.companyTaxCode = companyTaxCode;
     }
 
-    public String getFacebookToken()
+    public String getKeycloakToken()
     {
-        return facebookToken;
+        return keycloakToken;
     }
 
-    public void setFacebookToken( String facebookToken )
+    public void setKeycloakToken( String keycloakToken )
     {
-        this.facebookToken = facebookToken;
+        this.keycloakToken = keycloakToken;
     }
 
-    public boolean isFacebookAuthenticated()
+    public boolean isKeycloakAuthenticated()
     {
-        return facebookAuthenticated;
+        return keycloakAuthenticated;
     }
 
-    public void setFacebookAuthenticated( boolean facebookAuthenticated )
+    public void setKeycloakAuthenticated( boolean keycloakAuthenticated )
     {
-        this.facebookAuthenticated = facebookAuthenticated;
+        this.keycloakAuthenticated = keycloakAuthenticated;
     }
 
     public String getFullName()

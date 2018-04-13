@@ -1213,6 +1213,8 @@ public class EnvironmentDTO extends DTO
 
         private boolean multipleParentChildUsers;
 
+        private boolean keycloak;
+
         public boolean isExternalSubscriptionHandling()
         {
             return externalSubscriptionHandling != null;
@@ -1484,6 +1486,16 @@ public class EnvironmentDTO extends DTO
         public void setMultipleParentChildUsers( boolean multipleParentChildUsers )
         {
             this.multipleParentChildUsers = multipleParentChildUsers;
+        }
+
+        public boolean isKeycloak()
+        {
+            return keycloak;
+        }
+
+        public void setKeycloak( boolean keycloak )
+        {
+            this.keycloak = keycloak;
         }
 
         public enum ExternalSubscriptionHandling
