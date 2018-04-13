@@ -118,9 +118,19 @@ public class SubscriptionPatchDTO extends DTO
         }
     }
 
+    /**
+     * @deprecated by {@link #setDeploymentStatus(DeploymentStatusEnum)}
+     */
+    @Deprecated
     public SubscriptionPatchDTO setDeploymentStatus( String deploymentStatus )
     {
         this.deploymentStatus = deploymentStatus;
+        return this;
+    }
+
+    public SubscriptionPatchDTO setDeploymentStatus( DeploymentStatusEnum deploymentStatus )
+    {
+        if ( deploymentStatus != null ) this.deploymentStatus = deploymentStatus.toString();
         return this;
     }
 
