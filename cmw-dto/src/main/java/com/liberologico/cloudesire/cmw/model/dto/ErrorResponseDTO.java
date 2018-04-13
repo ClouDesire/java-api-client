@@ -95,6 +95,7 @@ public class ErrorResponseDTO
 
     public ErrorHolder firstErrorHolder()
     {
+        if ( this.errorHolders.isEmpty() ) return null;
         return this.errorHolders.get( 0 );
     }
 }
