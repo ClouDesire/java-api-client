@@ -85,8 +85,8 @@ public class MyUserDTO extends NamedEntityDTO
 
     private String keycloakToken;
 
-    @JsonInclude ( JsonInclude.Include.NON_DEFAULT )
-    private boolean keycloakAuthenticated = false;
+    @JsonInclude( JsonInclude.Include.NON_DEFAULT )
+    private boolean keycloakAuthenticated;
 
     private String fiscalCode;
 
