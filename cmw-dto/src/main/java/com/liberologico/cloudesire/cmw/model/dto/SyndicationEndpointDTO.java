@@ -17,6 +17,11 @@ public class SyndicationEndpointDTO
         this.secret = secret;
     }
 
+    public SyndicationEndpointDTO( String url )
+    {
+        this.url = url;
+    }
+
     public SyndicationEndpointDTO()
     {
     }
