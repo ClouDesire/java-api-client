@@ -53,6 +53,13 @@ public class MailEnvironmentDTO extends DTO
     private MailConfiguration invoicePaid;
 
     /**
+     * Email sent for paid invoices to reseller
+     */
+    @NotNull
+    @Valid
+    private MailConfiguration invoicePaidReseller;
+
+    /**
      * Email sent for pending invoices, containing Sepa mandate
      */
     @NotNull
@@ -322,6 +329,16 @@ public class MailEnvironmentDTO extends DTO
     public void setInvoicePaid( MailConfiguration invoicePaid )
     {
         this.invoicePaid = invoicePaid;
+    }
+
+    public MailConfiguration getInvoicePaidReseller()
+    {
+        return invoicePaidReseller;
+    }
+
+    public void setInvoicePaidReseller( MailConfiguration invoicePaidReseller )
+    {
+        this.invoicePaidReseller = invoicePaidReseller;
     }
 
     public MailConfiguration getInvoicePending()
