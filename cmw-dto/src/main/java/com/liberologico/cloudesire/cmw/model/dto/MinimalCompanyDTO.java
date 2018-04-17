@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -34,11 +35,13 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     private String phoneNumber;
 
     @Email( regexp = Regexp.INTERNET_EMAIL )
+    @NotNull
     private String emailAddress;
 
-    public MinimalCompanyDTO( String name )
+    public MinimalCompanyDTO( String name, String emailAddress )
     {
         super( name );
+        this.emailAddress = emailAddress;
     }
 
     public MinimalCompanyDTO()

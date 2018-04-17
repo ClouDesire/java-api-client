@@ -35,9 +35,9 @@ public class ResellerDTO extends ParentChildCompanyDTO
     @Size( max = 125 )
     private String storeName;
 
-    public ResellerDTO( String name )
+    public ResellerDTO( String name, String email )
     {
-        super( name );
+        super( name, email );
     }
 
     public ResellerDTO()

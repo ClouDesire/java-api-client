@@ -67,15 +67,15 @@ public class CompanyDTO extends MinimalCompanyDTO
         COMPANY, CUSTOMER_COMPANY
     }
 
-    public CompanyDTO( String name, String taxCode )
+    public CompanyDTO( String name, String email, String taxCode )
     {
-        this( name );
+        this( name, email );
         setTaxCode( taxCode );
     }
 
-    public CompanyDTO( String name )
+    public CompanyDTO( String name, String email )
     {
-        super( name );
+        super( name, email );
     }
 
     public CompanyDTO()

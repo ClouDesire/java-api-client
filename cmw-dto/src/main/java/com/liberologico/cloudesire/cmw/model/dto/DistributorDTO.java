@@ -6,9 +6,9 @@ public class DistributorDTO extends ParentChildCompanyDTO
 {
     private Set<UrlEntityDTO> products;
 
-    public DistributorDTO( String name )
+    public DistributorDTO( String name, String email )
     {
-        super( name );
+        super( name, email );
     }
 
     public DistributorDTO()
