@@ -2102,6 +2102,9 @@ public class EnvironmentDTO extends DTO
         private String order;
 
         @NotEmpty
+        private String proceeds;
+
+        @NotEmpty
         private String product;
 
         @NotEmpty
@@ -2192,6 +2195,16 @@ public class EnvironmentDTO extends DTO
         public void setOrder( String order )
         {
             this.order = order;
+        }
+
+        public String getProceeds()
+        {
+            return proceeds;
+        }
+
+        public void setProceeds( String proceeds )
+        {
+            this.proceeds = proceeds;
         }
 
         public String getProduct()
