@@ -53,11 +53,11 @@ public class MailEnvironmentDTO extends DTO
     private MailConfiguration invoicePaid;
 
     /**
-     * Email sent for paid invoices to reseller
+     * Email sent for paid invoices to distributor and reseller
      */
     @NotNull
     @Valid
-    private MailConfiguration invoicePaidReseller;
+    private MailConfiguration invoicePaidParentChild;
 
     /**
      * Email sent for pending invoices, containing Sepa mandate
@@ -331,14 +331,14 @@ public class MailEnvironmentDTO extends DTO
         this.invoicePaid = invoicePaid;
     }
 
-    public MailConfiguration getInvoicePaidReseller()
+    public MailConfiguration getInvoicePaidParentChild()
     {
-        return invoicePaidReseller;
+        return invoicePaidParentChild;
     }
 
-    public void setInvoicePaidReseller( MailConfiguration invoicePaidReseller )
+    public void setInvoicePaidParentChild( MailConfiguration invoicePaidParentChild )
     {
-        this.invoicePaidReseller = invoicePaidReseller;
+        this.invoicePaidParentChild = invoicePaidParentChild;
     }
 
     public MailConfiguration getInvoicePending()
