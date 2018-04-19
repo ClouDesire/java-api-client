@@ -22,7 +22,7 @@ public interface InvoiceApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @PATCH( "invoice/{id}/forcePaid" )
-    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
 
     @GET( "invoice" )
     Call<List<InvoiceDTO>> getAll( @QueryMap Map<String, String> pageRequest );
