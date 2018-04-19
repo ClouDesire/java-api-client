@@ -4,10 +4,17 @@ public class UserCompanyDTO extends CompanyDTO
 {
     public UserCompanyDTO( String name, String email )
     {
-        super( name, email );
+        super( name );
+        setEmailAddress( email );
+    }
+
+    public UserCompanyDTO( String name )
+    {
+        super( name );
     }
 
     public UserCompanyDTO()
     {
+        super();
     }
 }

@@ -40,8 +40,13 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
 
     public MinimalCompanyDTO( String name, String emailAddress )
     {
-        super( name );
+        this( name );
         this.emailAddress = emailAddress;
+    }
+
+    public MinimalCompanyDTO( String name )
+    {
+        super( name );
     }
 
     public MinimalCompanyDTO()

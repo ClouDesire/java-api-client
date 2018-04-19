@@ -40,8 +40,14 @@ public class ResellerDTO extends ParentChildCompanyDTO
         super( name, email );
     }
 
+    public ResellerDTO( String name )
+    {
+        super( name );
+    }
+
     public ResellerDTO()
     {
+        super();
     }
 
     // region Auto-generated code
