@@ -4,6 +4,11 @@ public abstract class ParentChildCompanyDTO extends MinimalCompanyDTO
 {
     private String marketplaceDomain;
 
+    public ParentChildCompanyDTO( String name, String email )
+    {
+        super( name, email );
+    }
+
     public ParentChildCompanyDTO( String name )
     {
         super( name );
@@ -11,6 +16,7 @@ public abstract class ParentChildCompanyDTO extends MinimalCompanyDTO
 
     public ParentChildCompanyDTO()
     {
+        super();
     }
 
     public String getMarketplaceDomain()

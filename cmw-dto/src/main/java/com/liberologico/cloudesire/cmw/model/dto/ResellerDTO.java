@@ -35,6 +35,11 @@ public class ResellerDTO extends ParentChildCompanyDTO
     @Size( max = 125 )
     private String storeName;
 
+    public ResellerDTO( String name, String email )
+    {
+        super( name, email );
+    }
+
     public ResellerDTO( String name )
     {
         super( name );
@@ -42,6 +47,7 @@ public class ResellerDTO extends ParentChildCompanyDTO
 
     public ResellerDTO()
     {
+        super();
     }
 
     // region Auto-generated code
