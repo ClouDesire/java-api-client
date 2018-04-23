@@ -22,6 +22,7 @@ import com.cloudesire.platform.apiclient.api.ResellerPricingApi;
 import com.cloudesire.platform.apiclient.api.ResellingReportApi;
 import com.cloudesire.platform.apiclient.api.RiskProfileApi;
 import com.cloudesire.platform.apiclient.api.StackParameterValueApi;
+import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
@@ -399,6 +400,11 @@ public class CloudesireClient
     public StackParameterValueApi getStackParameterValueApi()
     {
         return retrofit.create( StackParameterValueApi.class );
+    }
+
+    public StatisticsApi getStatisticsApi()
+    {
+        return retrofit.create( StatisticsApi.class );
     }
 
     public VMConfigurationApi getVMConfigurationApi()
