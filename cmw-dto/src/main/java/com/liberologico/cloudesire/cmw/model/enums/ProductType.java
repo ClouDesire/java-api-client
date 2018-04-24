@@ -3,14 +3,19 @@ package com.liberologico.cloudesire.cmw.model.enums;
 public enum ProductType
 {
     /**
+     * This product is billed per API call
+     */
+    API,
+
+    /**
+     * This product is a bundle of other products
+     */
+    BUNDLE,
+
+    /**
      * Provisioning is made by us
      */
     MANAGED,
-
-    /**
-     * Provisioning is handled programmatically
-     */
-    SYNDICATED,
 
     /**
      * Provisioning is handled externally
@@ -18,7 +23,7 @@ public enum ProductType
     SERVICE,
 
     /**
-     * This product is a bundle of other products
+     * Provisioning is handled programmatically
      */
-    BUNDLE
+    SYNDICATED
 }

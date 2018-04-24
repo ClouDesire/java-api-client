@@ -39,6 +39,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty("URL where events of syndicated applications are dispatched")
     private String syndicatedEndpoint;
 
+    @ApiModelProperty( "Base URL for this product's API" )
+    private String apiUrl;
+
     @Valid
     private List<UrlEntityDTO> files;
 
@@ -84,6 +87,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 
     @Valid
     private List<UrlEntityDTO> cloudProviders;
+
+    @ApiModelProperty( readOnly = true )
+    @JsonProperty( "isApi" )
+    private Boolean api;
 
     @ApiModelProperty( readOnly = true )
     @JsonProperty( "isBundle" )
@@ -369,6 +376,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.syndicatedEndpoint = syndicatedEndpoint;
     }
 
+    public String getApiUrl()
+    {
+        return apiUrl;
+    }
+
+    public void setApiUrl( String apiUrl )
+    {
+        this.apiUrl = apiUrl;
+    }
+
     public List<UrlEntityDTO> getMetrics()
     {
         return metrics;
@@ -377,6 +394,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setMetrics( List<UrlEntityDTO> metrics )
     {
         this.metrics = metrics;
+    }
+
+    public Boolean isApi()
+    {
+        return api;
+    }
+
+    public void setApi( Boolean api )
+    {
+        this.api = api;
     }
 
     public Boolean isBundle()

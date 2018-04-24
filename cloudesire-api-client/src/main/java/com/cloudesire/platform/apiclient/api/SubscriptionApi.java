@@ -53,7 +53,7 @@ public interface SubscriptionApi
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/instructions" )
-    Call<SubscriptionDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Object instructions );
+    Call<SubscriptionDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Map<String, String> instructions );
 
     @POST( "subscription/{id}/endpoints" )
     Call<SubscriptionDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );

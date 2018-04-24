@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
+import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
@@ -12,10 +13,12 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class EnvironmentDTO extends DTO
 {
@@ -1192,7 +1195,10 @@ public class EnvironmentDTO extends DTO
 
         private boolean blobStorageUpload;
 
-        private boolean productBundles;
+        /**
+         * The product types enabled for this environment
+         */
+        private Set<ProductType> enabledProductTypes = EnumSet.allOf( ProductType.class );
 
         private ExternalSubscriptionHandling externalSubscriptionHandling;
 
@@ -1370,14 +1376,24 @@ public class EnvironmentDTO extends DTO
             this.blobStorageUpload = blobStorageUpload;
         }
 
-        public boolean isProductBundles()
+        public Set<ProductType> getEnabledProductTypes()
         {
-            return productBundles;
+            return enabledProductTypes;
         }
 
+        public void setEnabledProductTypes( Set<ProductType> enabledProductTypes )
+        {
+            this.enabledProductTypes = enabledProductTypes;
+        }
+
+        /**
+         * @deprecated use {@link #setEnabledProductTypes(Set)}
+         */
+        @Deprecated
         public void setProductBundles( boolean productBundles )
         {
-            this.productBundles = productBundles;
+            if ( productBundles ) enabledProductTypes.add( ProductType.BUNDLE );
+            else enabledProductTypes.remove( ProductType.BUNDLE );
         }
 
         public ExternalSubscriptionHandling getExternalSubscriptionHandling()
