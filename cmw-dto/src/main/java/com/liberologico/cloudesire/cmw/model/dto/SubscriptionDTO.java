@@ -65,6 +65,12 @@ public class SubscriptionDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO coupon;
 
+    private List<SubscriptionBillingItemDTO> extraResources;
+
+    /**
+     * @deprecated by {@link #extraResources}
+     */
+    @Deprecated
     @Valid
     private Map<UrlEntityDTO, Integer> billingItems = new HashMap<>();
 
@@ -358,11 +364,29 @@ public class SubscriptionDTO extends NamedEntityDTO
         this.coupon = coupon;
     }
 
+    public List<SubscriptionBillingItemDTO> getExtraResources()
+    {
+        return extraResources;
+    }
+
+    public void setExtraResources( List<SubscriptionBillingItemDTO> extraResources )
+    {
+        this.extraResources = extraResources;
+    }
+
+    /**
+     * @deprecated by {@link #getExtraResources()}
+     */
+    @Deprecated
     public Map<UrlEntityDTO, Integer> getBillingItems()
     {
         return billingItems;
     }
 
+    /**
+     * @deprecated by {@link #setExtraResources(List)}
+     */
+    @Deprecated
     public SubscriptionDTO setBillingItems( Map<String, Integer> billingItems )
     {
         if ( billingItems == null ) return this;
