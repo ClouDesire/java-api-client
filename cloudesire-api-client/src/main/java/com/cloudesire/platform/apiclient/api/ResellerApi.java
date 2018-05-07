@@ -27,6 +27,12 @@ public interface ResellerApi
             @Query( "textField" ) String textField,
             @QueryMap Map<String, String> pageRequest );
 
+    @GET( "reseller" )
+    Call<List<ResellerDTO>> getAll(
+            @Query( "textField" ) String textField,
+            @Query( "showEmpty" ) boolean showEmpty,
+            @QueryMap Map<String, String> pageRequest );
+
     @PUT( "reseller/{id}" )
     Call<ResellerDTO> update( @Path( "id" ) int id, @Body ResellerDTO reseller );
 
