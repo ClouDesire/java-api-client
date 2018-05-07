@@ -5,6 +5,8 @@ import com.liberologico.cloudesire.cmw.model.dto.RecurringCostLineDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SubscriptionDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SubscriptionPatchDTO;
 import com.liberologico.cloudesire.cmw.model.dto.VendorOrderLineDTO;
+import com.liberologico.cloudesire.cmw.model.enums.DeploymentStatusEnum;
+import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -37,6 +39,17 @@ public interface SubscriptionApi
     @HEAD( "subscription" )
     Call<Void> getAllPagedHead( @Query( "filter" ) String filter, @Query( "status" ) String status,
             @Query( "type" ) String type, @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "status" ) DeploymentStatusEnum status, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "type" ) OrderType type, @QueryMap Map<String, String> pageRequest );
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAllPaged( @Query( "filter" ) String filter, @Query( "status" ) String status,

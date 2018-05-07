@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.LineType;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class RecurringCostLineDTO extends OrderLineDTO
@@ -11,6 +12,11 @@ public class RecurringCostLineDTO extends OrderLineDTO
     @JsonInclude( JsonInclude.Include.NON_NULL )
     @Valid
     private UrlEntityDTO subscription;
+
+    public RecurringCostLineDTO( BigDecimal price, double vat )
+    {
+        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( new BigDecimal( vat ) ) );
+    }
 
     public RecurringCostLineDTO()
     {
