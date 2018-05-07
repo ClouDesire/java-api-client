@@ -120,4 +120,9 @@ public interface ProductApi
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+
+    @Streaming
+    @GET( "product" )
+    @Headers( { "Accept:text/csv" } )
+    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "productType" ) ProductType productType );
 }
