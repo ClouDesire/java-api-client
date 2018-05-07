@@ -5,7 +5,7 @@ import com.liberologico.cloudesire.cmw.model.dto.DTO;
 
 import java.util.Date;
 
-@JsonPropertyOrder( { "name", "type", "category", "company", "published" } )
+@JsonPropertyOrder( { "name", "type", "category", "company", "email", "published" } )
 public class ProductCsvDTO extends DTO
 {
     private String name;
@@ -15,6 +15,8 @@ public class ProductCsvDTO extends DTO
     private String category;
 
     private String company;
+
+    private String email;
 
     private Date published;
 
@@ -58,6 +60,16 @@ public class ProductCsvDTO extends DTO
     public void setCompany( String company )
     {
         this.company = company;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail( String email )
+    {
+        this.email = email;
     }
 
     public Date getPublished()
