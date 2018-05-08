@@ -36,6 +36,10 @@ public interface SubscriptionApi
     @PATCH( "subscription/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input );
 
+    @PATCH( "subscription/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input,
+            @Query( "language" ) String language );
+
     @HEAD( "subscription" )
     Call<Void> getAllPagedHead( @Query( "filter" ) String filter, @Query( "status" ) String status,
             @Query( "type" ) String type, @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
@@ -49,7 +53,15 @@ public interface SubscriptionApi
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
             @Query( "type" ) OrderType type, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "filter" ) String filter, @QueryMap Map<String, String> pageRequest );
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAllPaged( @Query( "filter" ) String filter, @Query( "status" ) String status,
@@ -60,6 +72,9 @@ public interface SubscriptionApi
 
     @GET( "subscription/{id}" )
     Call<SubscriptionDTO> get( @Path( "id" ) Integer id );
+
+    @GET( "subscription/{id}" )
+    Call<SubscriptionDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @POST( "subscription/{id}/invoice" )
     Call<Void> postOrderLines( @Path( "id" ) Integer id, @Body List<VendorOrderLineDTO> lines,
@@ -72,10 +87,10 @@ public interface SubscriptionApi
     Call<SubscriptionDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );
 
     @GET( "subscription/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) Integer id );
+    Call<Map<String, String>> getMetadata( @Path( "id" ) Integer id );
 
     @PUT( "subscription/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, String> payload );
 
     @Streaming
     @GET( "subscription" )

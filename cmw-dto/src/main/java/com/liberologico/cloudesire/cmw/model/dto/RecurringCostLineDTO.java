@@ -13,6 +13,11 @@ public class RecurringCostLineDTO extends OrderLineDTO
     @Valid
     private UrlEntityDTO subscription;
 
+    public RecurringCostLineDTO( double price, double vat )
+    {
+        this( BigDecimal.valueOf( price ), vat );
+    }
+
     public RecurringCostLineDTO( BigDecimal price, double vat )
     {
         this.setPrice( new VATPriceDTO().withValue( price ).withVAT( new BigDecimal( vat ) ) );

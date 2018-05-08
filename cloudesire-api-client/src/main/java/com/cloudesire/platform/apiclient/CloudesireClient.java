@@ -418,6 +418,11 @@ public class CloudesireClient
     }
     // endregion
 
+    public <T> T getCustomApi( Class<T> customApi )
+    {
+        return retrofit.create( customApi );
+    }
+
     @Override
     public boolean equals( Object o )
     {
