@@ -65,7 +65,7 @@ public interface UserApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input );
 
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
