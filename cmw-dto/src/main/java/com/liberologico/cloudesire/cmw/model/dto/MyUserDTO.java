@@ -22,7 +22,7 @@ import java.util.Set;
 public class MyUserDTO extends NamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
-    
+
     @Pattern( regexp = USERNAME_REGEXP, message = ConstraintKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
@@ -157,6 +157,11 @@ public class MyUserDTO extends NamedEntityDTO
         return userRole;
     }
 
+    public void setUserRole( UserRole userRole )
+    {
+        this.userRole = userRole;
+    }
+
     /**
      * @deprecated use {@link #setUserRole(UserRole)}
      */
@@ -164,11 +169,6 @@ public class MyUserDTO extends NamedEntityDTO
     public void setUserRole( @NotNull String userRole )
     {
         this.userRole = UserRole.valueOf( userRole );
-    }
-
-    public void setUserRole( UserRole userRole )
-    {
-        this.userRole = userRole;
     }
 
     public Set<UserGroup> getGroups()
@@ -284,12 +284,12 @@ public class MyUserDTO extends NamedEntityDTO
         this.password = password;
     }
 
-    public String getPasswordHash ()
+    public String getPasswordHash()
     {
         return passwordHash;
     }
 
-    public void setPasswordHash ( String passwordHash )
+    public void setPasswordHash( String passwordHash )
     {
         this.passwordHash = passwordHash;
     }
@@ -670,7 +670,7 @@ public class MyUserDTO extends NamedEntityDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        if ( ! super.equals( o ) ) return false;
+        if ( !super.equals( o ) ) return false;
         MyUserDTO myUserDTO = (MyUserDTO) o;
         return Objects.equals( userName, myUserDTO.userName ) && Objects.equals( email, myUserDTO.email ) && Objects
                 .equals( userRole, myUserDTO.userRole );
