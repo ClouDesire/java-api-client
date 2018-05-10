@@ -73,6 +73,9 @@ public class MyUserDTO extends NamedEntityDTO
 
     private boolean readOnly = false;
 
+    @ApiModelProperty("User don't wants to be tracked")
+    private boolean doNotTrack;
+
     private Boolean acceptedTerms;
 
     private String environment;
@@ -396,6 +399,16 @@ public class MyUserDTO extends NamedEntityDTO
         this.readOnly = readOnly;
     }
 
+    public boolean isDoNotTrack()
+    {
+        return doNotTrack;
+    }
+
+    public void setDoNotTrack( boolean doNotTrack )
+    {
+        this.doNotTrack = doNotTrack;
+    }
+
     public String getCompanyTaxCode()
     {
         return companyTaxCode;
@@ -668,4 +681,5 @@ public class MyUserDTO extends NamedEntityDTO
     {
         return Objects.hash( super.hashCode(), userName, email, userRole );
     }
+
 }
