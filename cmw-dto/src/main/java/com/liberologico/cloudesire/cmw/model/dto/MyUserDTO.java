@@ -73,13 +73,13 @@ public class MyUserDTO extends NamedEntityDTO
 
     private boolean readOnly = false;
 
-    @ApiModelProperty("User don't wants to be tracked")
+    @ApiModelProperty( "User does not wants to be tracked" )
     private boolean doNotTrack;
 
     private Boolean acceptedTerms;
 
     private String environment;
-    
+
     private Date activationDate;
 
     private Date creationDate;
