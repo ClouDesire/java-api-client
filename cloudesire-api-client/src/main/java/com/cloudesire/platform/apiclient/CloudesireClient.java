@@ -144,11 +144,6 @@ public class CloudesireClient
         return new Builder( this );
     }
 
-    public Retrofit getRetrofit()
-    {
-        return retrofit;
-    }
-
     public static class Builder
     {
         private String username;
@@ -418,9 +413,9 @@ public class CloudesireClient
     }
     // endregion
 
-    public <T> T getCustomApi( Class<T> customApi )
+    public <T> T getApi( Class<T> api )
     {
-        return retrofit.create( customApi );
+        return retrofit.create( api );
     }
 
     @Override
