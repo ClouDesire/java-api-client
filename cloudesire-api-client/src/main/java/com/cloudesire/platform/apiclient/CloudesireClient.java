@@ -51,7 +51,7 @@ import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION
 
 public class CloudesireClient
 {
-    public static final Long LATEST_API_VERSION = ApiVersion.V20180322;
+    public static final Long LATEST_API_VERSION = ApiVersion.V20180504;
 
     private final Retrofit retrofit;
     private final String username;
@@ -142,11 +142,6 @@ public class CloudesireClient
     public Builder newBuilder()
     {
         return new Builder( this );
-    }
-
-    public Retrofit getRetrofit()
-    {
-        return retrofit;
     }
 
     public static class Builder
@@ -417,6 +412,11 @@ public class CloudesireClient
         return retrofit.create( EventApi.class );
     }
     // endregion
+
+    public <T> T getApi( Class<T> api )
+    {
+        return retrofit.create( api );
+    }
 
     @Override
     public boolean equals( Object o )

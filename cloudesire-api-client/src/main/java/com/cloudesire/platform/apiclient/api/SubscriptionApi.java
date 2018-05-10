@@ -5,6 +5,8 @@ import com.liberologico.cloudesire.cmw.model.dto.RecurringCostLineDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SubscriptionDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SubscriptionPatchDTO;
 import com.liberologico.cloudesire.cmw.model.dto.VendorOrderLineDTO;
+import com.liberologico.cloudesire.cmw.model.enums.DeploymentStatusEnum;
+import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -34,9 +36,32 @@ public interface SubscriptionApi
     @PATCH( "subscription/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input );
 
+    @PATCH( "subscription/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input,
+            @Query( "language" ) String language );
+
     @HEAD( "subscription" )
     Call<Void> getAllPagedHead( @Query( "filter" ) String filter, @Query( "status" ) String status,
             @Query( "type" ) String type, @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "status" ) DeploymentStatusEnum status, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "type" ) OrderType type, @QueryMap Map<String, String> pageRequest );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAllPaged(
+            @Query( "filter" ) String filter, @QueryMap Map<String, String> pageRequest );
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAllPaged( @Query( "filter" ) String filter, @Query( "status" ) String status,
@@ -47,6 +72,9 @@ public interface SubscriptionApi
 
     @GET( "subscription/{id}" )
     Call<SubscriptionDTO> get( @Path( "id" ) Integer id );
+
+    @GET( "subscription/{id}" )
+    Call<SubscriptionDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @POST( "subscription/{id}/invoice" )
     Call<Void> postOrderLines( @Path( "id" ) Integer id, @Body List<VendorOrderLineDTO> lines,
