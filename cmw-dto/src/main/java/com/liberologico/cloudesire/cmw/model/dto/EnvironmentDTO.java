@@ -38,7 +38,7 @@ public class EnvironmentDTO extends DTO
     @NotEmpty
     private String mailEnvironmentName = "defaultMailEnvironment";
     /**
-     * The name of the store
+     * The name of the store as it will appear in transactional emails
      */
     @NotEmpty
     private String storeName;
@@ -96,15 +96,21 @@ public class EnvironmentDTO extends DTO
      * Tag added into the subject for all outgoing emails
      */
     private String mailSubjectTag;
-    /**
-     * Support email for customers
-     */
 
+    /**
+     * URL of the logo of all outgoing emails
+     */
     @URL
     private String mailLogo;
 
+    /**
+     * Footer for all the emails
+     */
     private String mailFooter;
 
+    /**
+     * Support email for customers
+     */
     @Email
     @NotEmpty
     private String supportMail;
@@ -130,7 +136,7 @@ public class EnvironmentDTO extends DTO
     private SubscriptionTerm subscriptionTerm;
 
     /**
-     * After X days you cannot paid a subscription
+     * Days after a customer cannot pay a subscription anymore
      */
     private int daysAfterFirstPaymentExpires = 3;
 
@@ -1179,6 +1185,9 @@ public class EnvironmentDTO extends DTO
          */
         private boolean unmanagedOrders;
 
+        /**
+         * Send product instructions to the customer on buy
+         */
         private boolean instructionsInEmail = false;
 
         /**
@@ -1193,6 +1202,9 @@ public class EnvironmentDTO extends DTO
          */
         private boolean zipApplicationFileValidation = true;
 
+        /**
+         * Enables upload of file to the blob storage service
+         */
         private boolean blobStorageUpload;
 
         /**
@@ -1200,25 +1212,49 @@ public class EnvironmentDTO extends DTO
          */
         private Set<ProductType> enabledProductTypes = EnumSet.allOf( ProductType.class );
 
+        /**
+         * Handle subscriptions via external service
+         */
         private ExternalSubscriptionHandling externalSubscriptionHandling;
 
+        /**
+         * Require approvation for customer subscriptions
+         */
         private boolean subscriptionApproval;
 
+        /**
+         * Require approvation for vendor creation
+         */
         private boolean vendorApproval;
 
         private boolean userProfileExtended;
 
         private boolean backup = true;
 
+        /**
+         * Enable selling extra resources
+         */
         private boolean billingItems = true;
 
+        /**
+         * Enabled payment gateways
+         */
         @Valid
         private List<PaymentGateway> enabledPaymentGateways = Collections.singletonList( PaymentGateway.STRIPE );
 
+        /**
+         * Customize reseller emails
+         */
         private boolean resellerMailCustomization;
 
+        /**
+         * Allow having more users per Distributor/Reseller company
+         */
         private boolean multipleParentChildUsers;
 
+        /**
+         * Enable Keycloak SSO
+         */
         private boolean keycloak;
 
         public boolean isExternalSubscriptionHandling()
@@ -1673,8 +1709,14 @@ public class EnvironmentDTO extends DTO
          */
         private List<String> slackNotificationEndpoints;
 
+        /**
+         * Slack channel that receives notifications
+         */
         private String slackChannel;
 
+        /**
+         * URL for the Zuora connector
+         */
         @URL
         private String zuoraConnectorUrl;
 
@@ -1715,6 +1757,9 @@ public class EnvironmentDTO extends DTO
          */
         private BigDecimal customVat;
 
+        /**
+         * How many subscriptions to allow per-user for a product
+         */
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
         //region Auto-generated getters and setters
