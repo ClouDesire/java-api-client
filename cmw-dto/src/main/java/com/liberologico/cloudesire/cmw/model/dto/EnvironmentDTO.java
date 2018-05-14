@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,343 +23,262 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+@ApiModel( description = "Platform configuration" )
 public class EnvironmentDTO extends DTO
 {
-    /**
-     * The name of this environment
-     */
+    @ApiModelProperty( "The name of this environment" )
     @NotEmpty
+    @Size( max = 255 )
     private String environmentName;
-    /**
-     * The name of the current chef environment
-     */
+
+    @ApiModelProperty( "The name of the current chef environment" )
     @NotEmpty
+    @Size( max = 255 )
     private String chefEnvironmentName;
-    /**
-     * The name of the mail environment
-     */
+
+    @ApiModelProperty( "The name of the mail environment" )
     @NotEmpty
+    @Size( max = 255 )
     private String mailEnvironmentName = "defaultMailEnvironment";
-    /**
-     * The name of the store as it will appear in transactional emails
-     */
+
+    @ApiModelProperty( "The name of the store as it will appear in transactional emails" )
     @NotEmpty
+    @Size( max = 255 )
     private String storeName;
-    /**
-     * The name of the support team, used in email signatures
-     */
+
+    @ApiModelProperty( "The name of the support team, used in email signatures" )
     @NotEmpty
+    @Size( max = 255 )
     private String teamName;
-    /**
-     * If this is the default environment
-     */
+
+    @ApiModelProperty( "If this is the default environment" )
     private boolean defaultEnvironment = false;
-    /**
-     * The base URL of the frontend
-     */
+
+    @ApiModelProperty( "The base URL of the frontend" )
     @NotEmpty
     @URL
+    @Size( max = 2048 )
     private String frontendUrl;
+
     /**
-     * Pattern generating frontend URLs for a reseller
-     *
      * Needs one `[[reseller]]` placeholder.
      */
+    @ApiModelProperty( "Pattern generating frontend URLs for a reseller" )
     @NotEmpty
     private String frontendResellerPattern;
-    /**
-     * Patterns to generate links to the frontend
-     */
+
+    @ApiModelProperty( "Patterns to generate links to the frontend" )
     @Valid
     private UrlPatterns urlPatterns;
-    /**
-     * Email of the devs
-     */
+
+    @ApiModelProperty( "Email where to send platform operations notifications" )
     @NotEmpty
     @Email
     private String operationGroup;
-    /**
-     * Email of the team
-     */
+
+    @ApiModelProperty( "Email of the team" )
     @NotEmpty
     @Email
     private String notificationGroup;
-    /**
-     * Sender name of all the emails
-     */
+
+    @ApiModelProperty( "Sender name of all the emails generated" )
     @NotEmpty
+    @Size( max = 255 )
     private String mailSenderName;
-    /**
-     * Sender email of all the emails
-     */
+
+    @ApiModelProperty( "Sender email of all the emails generated" )
     @NotEmpty
     @Email
     private String mailSenderAddress;
-    /**
-     * Tag added into the subject for all outgoing emails
-     */
+
+    @ApiModelProperty( "Tag added into the subject for all outgoing emails" )
+    @Size( max = 15 )
     private String mailSubjectTag;
 
-    /**
-     * URL of the logo of all outgoing emails
-     */
+    @ApiModelProperty( "URL of the logo of all outgoing emails" )
     @URL
     private String mailLogo;
 
-    /**
-     * Footer for all the emails
-     */
+    @ApiModelProperty( "Footer for all the emails" )
+    @Size( max = 2048 )
     private String mailFooter;
 
-    /**
-     * Support email for customers
-     */
+    @ApiModelProperty( "Support email for customers" )
     @Email
     @NotEmpty
     private String supportMail;
 
-    /**
-     * SendGrid template id to use
-     */
+    @ApiModelProperty( "SendGrid template id to use" )
     @NotEmpty
+    @Size( max = 255 )
     private String sendGridTemplateID;
 
-    /**
-     * Section of default user values
-     */
+    @ApiModelProperty( "Section of default user values" )
     @NotNull
     @Valid
     private DefaultUserValues defaultUserValues;
 
-    /**
-     * Section for subscriptions alerts
-     */
+    @ApiModelProperty( "Section for subscriptions alerts" )
     @NotNull
     @Valid
     private SubscriptionTerm subscriptionTerm;
 
-    /**
-     * Days after a customer cannot pay a subscription anymore
-     */
+    @ApiModelProperty( "Days after a customer cannot pay a subscription anymore" )
     private int daysAfterFirstPaymentExpires = 3;
 
-    /**
-     * Section for invoice alerts
-     */
+    @ApiModelProperty( "Section for invoice alerts" )
     @NotNull
     @Valid
     private InvoiceSleepTerm invoiceTerm;
 
-    /**
-     * Email sent for registration
-     */
+    @ApiModelProperty( "Email sent for registration" )
     @Valid
     @NotNull
     private MailCustomization registration = new MailCustomization();
 
-    /**
-     * Email sent for new invoices
-     */
+    @ApiModelProperty( "Email sent for new invoices" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoice = new NotificationMailCustomization();
 
-    /**
-     * Email sent for paid invoices
-     */
+    @ApiModelProperty( "Email sent for paid invoices" )
     @Valid
     @NotNull
     private MailCustomization invoicePaid = new MailCustomization();
 
-    /**
-     * Email sent when user must set password for the first time
-     */
+    @ApiModelProperty( "Email sent when user must set password for the first time" )
     @Valid
     @NotNull
     private MailCustomization passwordSet = new MailCustomization();
 
-    /**
-     * Email sent when starting password recovery procedure
-     */
+    @ApiModelProperty( "Email sent when starting password recovery procedure" )
     @Valid
     @NotNull
     private MailCustomization passwordRecovery = new MailCustomization();
 
-    /**
-     * Email sent when password set procedure completes
-     */
+    @ApiModelProperty( "Email sent when password set procedure completes" )
     @Valid
     @NotNull
     private MailCustomization passwordSetDone = new MailCustomization();
 
-    /**
-     * Email sent when password recovery procedure completes
-     */
+    @ApiModelProperty( "Email sent when password recovery procedure completes" )
     @Valid
     @NotNull
     private MailCustomization passwordRecoveryDone = new MailCustomization();
 
-    /**
-     * Email sent for new orders
-     */
+    @ApiModelProperty( "Email sent for new orders" )
     @Valid
     @NotNull
     private NotificationMailCustomization orderNotifier = new NotificationMailCustomization();
 
-    /**
-     * Email sent for orders direct to deployer
-     */
+    @ApiModelProperty( "Email sent for orders direct to deployer" )
     @Valid
     @NotNull
     private NotificationMailCustomization orderCreation = new NotificationMailCustomization();
 
-    /**
-     * Email sent on every new order creation to vendor
-     */
+    @ApiModelProperty( "Email sent on every new order creation to vendor" )
     @Valid
     @NotNull
     private MailCustomization orderCreationVendor = new MailCustomization();
 
-    /**
-     * Email sent to the customer when application has been undeployed
-     */
+    @ApiModelProperty( "Email sent to the customer when application has been undeployed" )
     @Valid
     @NotNull
     private NotificationMailCustomization orderUndeployCustomer = new NotificationMailCustomization();
 
-    /**
-     * Email sent to the vendor when application has been undeployed
-     */
+    @ApiModelProperty( "Email sent to the vendor when application has been undeployed" )
     @Valid
     @NotNull
     private MailCustomization orderUndeployVendor = new MailCustomization();
 
-    /**
-     * Email sent when deploy go wrong
-     */
+    @ApiModelProperty( "Email sent when deploy go wrong" )
     @Valid
     @NotNull
     private MailCustomization deployFailed = new MailCustomization();
 
-    /**
-     * Email sent to the vendor when deployment is completed
-     */
+    @ApiModelProperty( "Email sent to the vendor when deployment is completed" )
     @Valid
     @NotNull
     private MailCustomization deployCompleteVendor = new MailCustomization();
 
-    /**
-     * Email sent to the vendor when deployment is completed but needs post configuration
-     */
+    @ApiModelProperty( "Email sent to the vendor when deployment is completed but needs post configuration" )
     @Valid
     @NotNull
     private MailCustomization deployCompleteWithPostConfigurationVendor = new MailCustomization();
 
-    /**
-     * Email sent to the customer when deployment is completed
-     */
+    @ApiModelProperty( "Email sent to the customer when deployment is completed" )
     @Valid
     @NotNull
     private NotificationMailCustomization deployCompleteCustomer = new NotificationMailCustomization();
 
-    /**
-     * Email sent to the configured addresses when a vendor request an approval for changes of a product
-     */
+    @ApiModelProperty( "Email sent to the configured addresses when a vendor request an approval for changes of a product" )
     @Valid
     @NotNull
     private MailCustomization approvalRequest = new MailCustomization();
 
-    /**
-     * Email sent to the vendor of a subscription stuck in pending state
-     */
+    @ApiModelProperty( "Email sent to the vendor of a subscription stuck in pending state" )
     @Valid
     @NotNull
     private MailCustomization stuckSubscription = new MailCustomization();
 
-    /**
-     * Sent when subscription is reaching end date
-     */
+    @ApiModelProperty( "Sent when subscription is reaching end date" )
     @Valid
     @NotNull
     private MailCustomization subscriptionTermAlarm = new MailCustomization();
 
-    /**
-     * Email sent to the vendor when his account is approved
-     */
+    @ApiModelProperty( "Email sent to the vendor when his account is approved" )
     @Valid
     @NotNull
     private MailCustomization vendorApproval = new MailCustomization();
 
-    /**
-     * Email containing vendor data
-     */
+    @ApiModelProperty( "Email containing vendor data" )
     @Valid
     @NotNull
     private MailCustomization vendorApprovalData = new MailCustomization();
 
-    /**
-     * Email sent on product approval to the company
-     */
+    @ApiModelProperty( "Email sent on product approval to the company" )
     @Valid
     @NotNull
     private MailCustomization productApproval = new MailCustomization();
 
-    /**
-     * Email sent on product approval containing product data
-     */
+    @ApiModelProperty( "Email sent on product approval containing product data" )
     @Valid
     @NotNull
     private MailCustomization productApprovalData = new MailCustomization();
 
-    /**
-     * Email sent on vendor registration
-     */
+    @ApiModelProperty( "Email sent on vendor registration" )
     @Valid
     @NotNull
     private MailCustomization vendorRegistration = new MailCustomization();
 
-    /**
-     * Email sent on vendor registration to admin(s)
-     */
+    @ApiModelProperty( "Email sent on vendor registration to admin(s)" )
     @Valid
     @NotNull
     private MailCustomization vendorRegistrationNotification = new MailCustomization();
 
-    /**
-     * Vendor proceeds report
-     */
+    @ApiModelProperty( "Vendor proceeds report" )
     @Valid
     @NotNull
     private MailCustomization vendorReport = new MailCustomization();
 
-    /**
-     * Reminders before the sleep term, warn the user to pay
-     */
+    @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceReminder = new NotificationMailCustomization();
-    /**
-     * Alert to inform the user that the subscription has been put to sleep
-     */
+    @ApiModelProperty( "Alert to inform the user that the subscription has been put to sleep" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceSleep = new NotificationMailCustomization();
-    /**
-     * Alert to inform the user that the subscription has been destroyed
-     */
+    @ApiModelProperty( "Alert to inform the user that the subscription has been destroyed" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceDeath = new NotificationMailCustomization();
 
-    /**
-     * Features section
-     */
+    @ApiModelProperty( "Features section" )
     @Valid
     private FeaturesEnvironment features;
 
-    /**
-     * Configuration section
-     */
+    @ApiModelProperty( "Configuration section" )
     @Valid
     private ConfigurationEnvironment configuration;
 
@@ -893,29 +815,19 @@ public class EnvironmentDTO extends DTO
     }
     //endregion
 
-    /**
-     * Default attributes for new users
-     */
+    @ApiModel( description = "Default attributes for new users" )
     public static class DefaultUserValues
     {
-        /**
-         * Enabled flag default value
-         */
+        @ApiModelProperty( "Enabled flag default value" )
         private boolean isEnabled;
 
-        /**
-         * Active flag default value
-         */
+        @ApiModelProperty( "Active flag default value" )
         private boolean isActive;
 
-        /**
-         * TermsAccepted flag default value
-         */
+        @ApiModelProperty( "TermsAccepted flag default value" )
         private boolean termsAccepted;
 
-        /**
-         * Activate old account if not active when recreating account
-         */
+        @ApiModelProperty( "Activate old account if not active when recreating account" )
         private boolean canBeReactivated;
 
         //region Auto-generated getters and setters
@@ -961,31 +873,21 @@ public class EnvironmentDTO extends DTO
         //endregion
     }
 
-    /**
-     * An instance of email template to be sent at certain events
-     */
+    @ApiModel( description = "An instance of email template to be sent at certain events" )
     public static class MailCustomization
     {
         public static final String DEFAULT_MAIL_LANGUAGE = "it";
 
-        /**
-         * Should send emails of this type
-         */
+        @ApiModelProperty( "Should send emails of this type" )
         private boolean serviceEnable = true;
 
-        /**
-         * The recipients to send these emails to
-         */
+        @ApiModelProperty( "The recipients to send these emails to" )
         private List<String> to;
 
-        /**
-         * The language in which this email will be rendered
-         */
+        @ApiModelProperty( "The language in which this email will be rendered" )
         private String language;
 
-        /**
-         * Template parameter overrides
-         */
+        @ApiModelProperty( "Template parameter overrides" )
         private Map<String, String> parameters = new HashMap<>();
 
         @JsonIgnore
@@ -1045,6 +947,7 @@ public class EnvironmentDTO extends DTO
         //endregion
     }
 
+    @ApiModel( description = "A non-transactional email notification from which user can unsubscribe" )
     public static class NotificationMailCustomization extends MailCustomization
     {
         @JsonIgnore
@@ -1062,23 +965,18 @@ public class EnvironmentDTO extends DTO
         }
     }
 
-    /**
-     * The emails to send when there are invoice to be paid for customers
-     */
+    @ApiModel( description = "The emails to send when there are invoice with pending payment for customers" )
     public static class InvoiceSleepTerm
     {
-        /**
-         * Days after deadline, subscription will be set to sleeping
-         */
+        @ApiModelProperty( "Days after deadline, subscription will be set to sleeping" )
         @NotNull
         private Integer sleepDays = 2;
 
-        /**
-         * Days after sleep deadline, subscription will be undeployed
-         */
+        @ApiModelProperty( "Days after sleep deadline, subscription will be undeployed" )
         @NotNull
         private Integer delayDays = 3;
 
+        //region autogenerated
         public Integer getDelayDays()
         {
             return delayDays;
@@ -1101,6 +999,7 @@ public class EnvironmentDTO extends DTO
         //endregion
     }
 
+    @ApiModel( description = "Fine tuning of subscription expiration behaviour")
     public static class SubscriptionTerm
     {
         /**
@@ -1108,11 +1007,10 @@ public class EnvironmentDTO extends DTO
          * If < 0 means that it's never possible to Renew subscriptions
          * If > 0 means the day before expiration that renew is possible
          */
+        @ApiModelProperty( "How many days before expiration renewal is possibile" )
         private int daysLeftUntilExpirationForRenewal = -1;
 
-        /**
-         * List of days before expire to send email alerts about expiration
-         */
+        @ApiModelProperty( "List of days before expire to send email alerts about expiration" )
         @NotNull
         private Integer[] subscriptionTermAlertDays;
 
@@ -1140,121 +1038,80 @@ public class EnvironmentDTO extends DTO
         //endregion
     }
 
-    /**
-     * Features that can be toggled at runtime
-     */
+    @ApiModel( description = "Features that can be toggled at runtime" )
     public static class FeaturesEnvironment
     {
-        /**
-         * Enables the creation of syndicated products
-         */
+        @ApiModelProperty( "Enables the creation of syndicated products" )
         private boolean syndicated = false;
 
-        /**
-         * Enables vendors to invoice customer on their own
-         */
+        @ApiModelProperty( "Enables vendors to invoice customer on their own" )
         private SelfBilling selfBilling = SelfBilling.DISABLED;
 
-        /**
-         * Enables the usage of coupons
-         */
+        @ApiModelProperty( "Enables the usage of coupons" )
         private boolean coupon = true;
 
-        /**
-         * Enables uservoice widget
-         */
+        @ApiModelProperty( "Enables uservoice widget" )
         private boolean uservoice = true;
 
-        /**
-         * Show the bandwidth
-         */
+        @ApiModelProperty( "Show the bandwidth" )
         private boolean showBandwidth = true;
 
-        /**
-         * Enables upgrading TRIAL subscriptions to NORMAL subscriptions
-         */
+        @ApiModelProperty( "Enables upgrading TRIAL subscriptions to NORMAL subscriptions" )
         private boolean upgradeToNormal = true;
 
-        /**
-         * Enable product revision
-         */
+        @ApiModelProperty( "Enable product revision" )
         private boolean productRevision = false;
 
-        /**
-         * Enable unmanaged orders
-         */
+        @ApiModelProperty( "Enable unmanaged orders" )
         private boolean unmanagedOrders;
 
-        /**
-         * Send product instructions to the customer on buy
-         */
+        @ApiModelProperty( "Send product instructions to the customer on buy" )
         private boolean instructionsInEmail = false;
 
-        /**
-         * Permit links in end user instructions
-         */
+        @ApiModelProperty( "Permit links in end user instructions" )
         private LinksInEndUserInstructions linksInEndUserInstructions;
 
+        @ApiModelProperty( "Add a legal notice into invoice footer required in Italy" )
         private boolean cashAccounting = true;
 
-        /**
-         * Validation for uploaded zip application files
-         */
+        @ApiModelProperty( "Validation for uploaded zip application files" )
         private boolean zipApplicationFileValidation = true;
 
-        /**
-         * Enables upload of file to the blob storage service
-         */
+        @ApiModelProperty( "Enables upload of file to the blob storage service" )
         private boolean blobStorageUpload;
 
-        /**
-         * The product types enabled for this environment
-         */
+        @ApiModelProperty( "The product types enabled for this environment" )
         private Set<ProductType> enabledProductTypes = EnumSet.allOf( ProductType.class );
 
-        /**
-         * Handle subscriptions via external service
-         */
+        @ApiModelProperty( "Handle subscriptions via external service" )
         private ExternalSubscriptionHandling externalSubscriptionHandling;
 
-        /**
-         * Require approvation for customer subscriptions
-         */
+        @ApiModelProperty( "Require approvation for customer subscriptions" )
         private boolean subscriptionApproval;
 
-        /**
-         * Require approvation for vendor creation
-         */
+        @ApiModelProperty( "Require approvation for vendor creation" )
         private boolean vendorApproval;
 
+        @ApiModelProperty( "Enables a bunch of additional fields in the user profile, often not required" )
         private boolean userProfileExtended;
 
+        @ApiModelProperty( "VM backup available on the platform" )
         private boolean backup = true;
 
-        /**
-         * Enable selling extra resources
-         */
+        @ApiModelProperty( "Enable selling extra resources" )
         private boolean billingItems = true;
 
-        /**
-         * Enabled payment gateways
-         */
+        @ApiModelProperty( "Enabled payment gateways" )
         @Valid
         private List<PaymentGateway> enabledPaymentGateways = Collections.singletonList( PaymentGateway.STRIPE );
 
-        /**
-         * Customize reseller emails
-         */
+        @ApiModelProperty( "Customize reseller emails" )
         private boolean resellerMailCustomization;
 
-        /**
-         * Allow having more users per Distributor/Reseller company
-         */
+        @ApiModelProperty( "Allow having more users per Distributor/Reseller company" )
         private boolean multipleParentChildUsers;
 
-        /**
-         * Enable Keycloak SSO
-         */
+        @ApiModelProperty( "Enable Keycloak SSO" )
         private boolean keycloak;
 
         public boolean isExternalSubscriptionHandling()
@@ -1422,9 +1279,7 @@ public class EnvironmentDTO extends DTO
             this.enabledProductTypes = enabledProductTypes;
         }
 
-        /**
-         * @deprecated use {@link #setEnabledProductTypes(Set)}
-         */
+        @ApiModelProperty( "@deprecated use {@link #setEnabledProductTypes(Set)}" )
         @Deprecated
         public void setProductBundles( boolean productBundles )
         {
@@ -1567,199 +1422,133 @@ public class EnvironmentDTO extends DTO
 
         public enum SelfBilling
         {
-            /**
-             * Every invoice emitted is self billed
-             */
+            @ApiModelProperty( "Every invoice emitted is self billed" )
             ENABLED,
 
-            /**
-             * No invoice emitted is self billed
-             */
+            @ApiModelProperty( "No invoice emitted is self billed" )
             DISABLED,
 
-            /**
-             * Invoices are emitted self billed according to vendor's plan or reseller's pricing
-             */
+            @ApiModelProperty( "Invoices are emitted self billed according to vendor's plan or reseller's pricing" )
             PER_PLAN
         }
         //endregion
     }
 
+    @ApiModel( description = "General configuration of the platform" )
     public static class ConfigurationEnvironment
     {
-        /**
-         * How many TRIALs per user allow
-         * -1 means unlimited
-         */
+        // -1 means unlimited
+        @ApiModelProperty( "Limit concurrent customer trial requests" )
         private int trialLimit = -1;
 
-        /**
-         * Default trials duration
-         */
+        @ApiModelProperty( "Default trials duration" )
         private int trialLengthInDays = 1;
 
-        /**
-         * Default sandbox duration
-         */
+        @ApiModelProperty( "Default sandbox duration" )
         private int sandboxLengthInHour = 1;
 
-        /**
-         * Amount of the one-time fee per deploy
-         */
+        @ApiModelProperty( "Amount of the one-time fee per deploy" )
         @NotNull
         private BigDecimal monthlyRunningFee = BigDecimal.ZERO;
 
-        /**
-         * How much retain in % of vendor earnings
-         *
-         * This is the default value for new products.
-         */
         @NotNull
+        @ApiModelProperty( "Percentage kept by platform owner set by default on new products" )
         private BigDecimal cloudesirePercentage = new BigDecimal( 15 );
 
-        /**
-         * The billingPeriods (how often customers receive invoices) a vendor can chose for its products
-         */
+        @ApiModelProperty( "The billingPeriods (how often customers receive invoices) a vendor can chose for its products" )
         @NotNull
         private List<Integer> customerInvoicePeriod = Arrays.asList( 1, 3, 6, 12, 24 );
 
-        /**
-         * Max available disk size when creating VMC
-         */
+        @ApiModelProperty( "Max available disk size when creating VMC" )
         private int diskSpaceLimit = 10000;
 
-        /**
-         * Default currency representation
-         */
+        @ApiModelProperty( "Default currency representation" )
         @NotEmpty
+        @Size( max = 3 )
         private String currency = "EUR";
-        /**
-         * Default nation, don't know what is about
-         */
+
+        @ApiModelProperty( "Default nation" )
         @NotEmpty
+        @Size( max = 2 )
         private String nation = "IT";
-        /**
-         * Enable validation of VAT ID for companies
-         */
+
+        @ApiModelProperty( "Enable validation of VAT ID for companies" )
         private boolean taxCodeValidation = true;
 
-        /**
-         * The default maximum number of published products for a newly created company
-         */
+        @ApiModelProperty( "The default maximum number of published products for a newly created company" )
         private int companyMaxPublishedProducts = -1;
 
-        /**
-         * The available polling frequencies for metrics
-         */
+        @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
         @Valid
         private List<EntryDTO> metricFrequencyValues;
 
-        /**
-         * The cloud provider names enabled for this environment
-         */
+        @ApiModelProperty( "The cloud provider names enabled for this environment" )
         private List<String> enabledCloudProviders;
 
-        /**
-         * The product category names enabled for this environment
-         */
+        @ApiModelProperty( "The product category names enabled for this environment" )
         private List<String> enabledCategories;
 
-        /**
-         * The product category names disabled for this environment
-         */
+        @ApiModelProperty( "The product category names disabled for this environment" )
         private List<String> disabledCategories;
 
-        /**
-         * Anonymous user default country code
-         */
+        @ApiModelProperty( "Anonymous user default country code" )
         @NotNull
         private String anonymousUserCountryCode;
 
-        /**
-         * End of the hostname generated. eg: apps.com
-         */
+        @ApiModelProperty( "End of the hostname generated. eg: apps.com" )
         @NotNull
         private String appsHostnameDomain;
 
-        /**
-         * Global syndication endpoints
-         */
+        @ApiModelProperty( "Global syndication endpoints" )
         @Valid
         private List<SyndicationEndpointDTO> syndicationEndpoints;
 
-        /**
-         * URL for the CAP (italian postal code) validation microservice
-         */
+        @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
         @URL
         private String capValidationServiceUrl;
 
-        /**
-         * URL for Janine invoicing service
-         *
-         * This has priority over the cmw.properties one
-         */
+        // This has priority over the cmw.properties one
+        @ApiModelProperty( "URL to PDF invoice manager" )
         @URL
         private String janineInvoiceManagerUrl;
 
-        /**
-         * URL for a Slack Incoming Webhook to notify new orders, users, etc.
-         *
-         * Works as feature flag too (empty means disabled).
-         */
+        // Works as feature flag too (empty means disabled)
+        @ApiModelProperty( "List of Slack Incoming Webhook to send platform notifications" )
         private List<String> slackNotificationEndpoints;
 
-        /**
-         * Slack channel that receives notifications
-         */
+        @ApiModelProperty( "Slack channel that receives notifications" )
+        @Size( max = 255 )
         private String slackChannel;
 
-        /**
-         * URL for the Zuora connector
-         */
+        @ApiModelProperty( "URL for the Zuora connector" )
         @URL
         private String zuoraConnectorUrl;
 
-        /**
-         * Send activation email on user creation
-         */
+        @ApiModelProperty( "Send activation email on user creation" )
         @NotNull
         private Boolean sendActivationEmail;
 
-        /**
-         * Maximum size for uploaded files in bytes, a value < 1 disables check
-         */
+        @ApiModelProperty( "Maximum size for uploaded files in bytes, a value < 1 disables check" )
         @NotNull
         private Long maxFileSize = 0L;
 
-        /**
-         * Content types of supported application files, null or empty disables feature
-         */
+        @ApiModelProperty( "Content types of supported application files, null or empty disables feature" )
         private List<String> supportedApplicationFileTypes;
 
-        /**
-         * Content types of supported company and product images, null or empty disables feature
-         */
+        @ApiModelProperty( "Content types of supported company and product images, null or empty disables feature" )
         private List<String> supportedCompanyLogoFileTypes;
 
-        /**
-         * Content types of supported file uploads, grouped by request type
-         */
+        @ApiModelProperty( "Content types of supported file uploads, grouped by request type" )
         private Map<String, List<String>> supportedFileTypes;
 
-        /**
-         * Content types of supported public files, null or empty disables feature
-         */
+        @ApiModelProperty( "Content types of supported public files, null or empty disables feature" )
         private List<String> supportedPublicUserFileTypes;
 
-        /**
-         * If configured, every invoice line will have this VAT
-         */
+        @ApiModelProperty( "If configured, every invoice line will have this VAT" )
         private BigDecimal customVat;
 
-        /**
-         * How many subscriptions to allow per-user for a product
-         */
+        @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
         //region Auto-generated getters and setters
@@ -2119,23 +1908,18 @@ public class EnvironmentDTO extends DTO
 
         public enum SubscriptionsPerProduct
         {
-            /**
-             * One subscription per product at a time is allowed
-             */
+            @ApiModelProperty( "One subscription per product at a time is allowed" )
             ONE,
 
-            /**
-             * Only one trial per product
-             */
+            @ApiModelProperty( "Only one trial per product" )
             TRIAL,
 
-            /**
-             * No check is done
-             */
+            @ApiModelProperty( "No check is done" )
             UNLIMITED
         }
     }
 
+    @ApiModel( description = "URL patterns used to build links to the GUI inside notification (e.g. email, slack, ...)" )
     public static class UrlPatterns
     {
         @NotEmpty
