@@ -5,15 +5,15 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
-@ApiModel(description = "An Endpoint where to dispatch web hooks notifications")
+@ApiModel( description = "An Endpoint where to dispatch web hooks notifications" )
 public class SyndicationEndpointDTO
 {
     @NotEmpty
     @URL
-    @ApiModelProperty("URL where to dispatch web hooks")
+    @ApiModelProperty( "URL where to dispatch web hooks" )
     private String url;
 
-    @ApiModelProperty("An optional secret to sign outgoing web hooks")
+    @ApiModelProperty( "An optional secret to sign outgoing web hooks" )
     private String secret;
 
     public SyndicationEndpointDTO( String url, String secret )
@@ -36,14 +36,14 @@ public class SyndicationEndpointDTO
         return url;
     }
 
-    public String getSecret()
-    {
-        return secret;
-    }
-
     public void setUrl( String url )
     {
         this.url = url;
+    }
+
+    public String getSecret()
+    {
+        return secret;
     }
 
     public void setSecret( String secret )
