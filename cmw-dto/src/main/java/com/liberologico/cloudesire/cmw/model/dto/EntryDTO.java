@@ -1,7 +1,10 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.validation.constraints.NotNull;
 
+@ApiModel( description = "A key/value pair" )
 public class EntryDTO
 {
     @NotNull
