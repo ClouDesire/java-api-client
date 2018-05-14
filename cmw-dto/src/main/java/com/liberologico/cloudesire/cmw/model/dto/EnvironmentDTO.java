@@ -92,7 +92,7 @@ public class EnvironmentDTO extends DTO
     private String mailSenderAddress;
 
     @ApiModelProperty( "Tag added into the subject for all outgoing emails" )
-    @Size( max = 15 )
+    @Size( max = 20 )
     private String mailSubjectTag;
 
     @ApiModelProperty( "URL of the logo of all outgoing emails" )
