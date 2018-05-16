@@ -1114,6 +1114,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enable Keycloak SSO" )
         private boolean keycloak;
 
+        @ApiModelProperty( "Remove customer data from notifications" )
+        private boolean gdpr;
+
         public boolean isExternalSubscriptionHandling()
         {
             return externalSubscriptionHandling != null;
@@ -1403,6 +1406,16 @@ public class EnvironmentDTO extends DTO
         public void setKeycloak( boolean keycloak )
         {
             this.keycloak = keycloak;
+        }
+
+        public boolean isGdpr()
+        {
+            return gdpr;
+        }
+
+        public void setGdpr( boolean gdpr )
+        {
+            this.gdpr = gdpr;
         }
 
         public enum ExternalSubscriptionHandling
