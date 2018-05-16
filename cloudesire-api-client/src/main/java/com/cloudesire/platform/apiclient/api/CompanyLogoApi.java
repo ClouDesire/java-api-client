@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.FileDTO;
-import okhttp3.RequestBody;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -18,7 +18,7 @@ public interface CompanyLogoApi
 {
     @Multipart
     @POST( "companyLogoFile" )
-    Call<FileDTO> create( @Part( "file\"; filename=\"file" ) RequestBody file );
+    Call<FileDTO> create( @Part MultipartBody.Part file );
 
     @DELETE( "companyLogoFile/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );

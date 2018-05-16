@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.VirtualMachineConfigurationDTO;
-import okhttp3.RequestBody;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -42,7 +42,7 @@ public interface VMConfigurationApi
     @Multipart
     @POST( "virtualMachineConfiguration/{id}/compose" )
     Call<VirtualMachineConfigurationDTO> parseDockerCompose( @Path( "id" ) Integer id,
-            @Part( "file\"; filename=\"file" ) RequestBody file, @Query( "version" ) String version );
+            @Part MultipartBody.Part file, @Query( "version" ) String version );
 
     @PUT( "virtualMachineConfiguration/{id}" )
     Call<VirtualMachineConfigurationDTO> update( @Body VirtualMachineConfigurationDTO vmc, @Path( "id" ) Integer id );

@@ -33,11 +33,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.ApiVersion;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.apache.commons.lang3.Validate;
 import retrofit2.Retrofit;
@@ -253,13 +250,6 @@ public class CloudesireClient
         {
             return Objects.hash( username, password, token, impersonate, baseUrl, mapper, interceptor, version );
         }
-    }
-
-    public MultipartBody.Part getUploadPayload( String fileName, byte[] payload )
-    {
-        RequestBody file = RequestBody.create(
-                MediaType.parse("application/octet-stream"), payload );
-        return MultipartBody.Part.createFormData( "file", fileName, file );
     }
 
     // region retrofit factories
