@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.FileDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ProductFilePatchDTO;
-import okhttp3.RequestBody;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -20,7 +20,7 @@ public interface ProductFileApi
 {
     @Multipart
     @POST( "file" )
-    Call<FileDTO> create( @Part( "file\"; filename=\"file" ) RequestBody file, @Query( "tag" ) String tag,
+    Call<FileDTO> create( @Part MultipartBody.Part file, @Query( "tag" ) String tag,
             @Query( "weight" ) Integer weight );
 
     @DELETE( "file/{id}" )
