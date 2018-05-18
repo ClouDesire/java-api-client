@@ -118,7 +118,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "The number of markups set for this plan" )
     private long markedUp;
 
-    @ApiModelProperty( "True if a subscription from this plan will be automatically set to DEPLOYED on payment" )
+    @ApiModelProperty( "Automatically set subscriptions to DEPLOYED on payment and UNDEPLOYED on expiry" )
     private boolean autodeploy;
 
     @ApiModelProperty( value = "Descriptive label of this product version", readOnly = true )
