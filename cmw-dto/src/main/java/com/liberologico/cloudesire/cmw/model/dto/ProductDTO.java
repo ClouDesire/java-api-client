@@ -101,6 +101,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     private Boolean managed;
 
     @ApiModelProperty( readOnly = true )
+    @JsonProperty( "isMicrosoft" )
+    private Boolean microsoft;
+
+    @ApiModelProperty( readOnly = true )
     @JsonProperty( "isService" )
     private Boolean service;
 
@@ -424,6 +428,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setManaged( Boolean managed )
     {
         this.managed = managed;
+    }
+
+    public Boolean isMicrosoft()
+    {
+        return microsoft;
+    }
+
+    public void setMicrosoft( Boolean microsoft )
+    {
+        this.microsoft = microsoft;
     }
 
     public Boolean isService()

@@ -18,6 +18,11 @@ public enum ProductType
     MANAGED,
 
     /**
+     * This product is imported from the Azure catalog
+     */
+    MICROSOFT,
+
+    /**
      * Provisioning is handled externally
      */
     SERVICE,
