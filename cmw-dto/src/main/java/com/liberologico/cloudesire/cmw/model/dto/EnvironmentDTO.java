@@ -1564,6 +1564,10 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
+        @ApiModelProperty( "URL for the Microsoft API connector" )
+        @URL
+        private String microsoftApiEndpoint;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -1918,6 +1922,16 @@ public class EnvironmentDTO extends DTO
             this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
         //endregion
+
+        public String getMicrosoftApiEndpoint()
+        {
+            return microsoftApiEndpoint;
+        }
+
+        public void setMicrosoftApiEndpoint( String microsoftApiEndpoint )
+        {
+            this.microsoftApiEndpoint = microsoftApiEndpoint;
+        }
 
         public enum SubscriptionsPerProduct
         {
