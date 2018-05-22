@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.liberologico.cloudesire.cmw.model.dto.AzureProductDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ProductBundleDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ProductDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ProductDraftDTO;
@@ -32,6 +33,9 @@ public interface ProductApi
 
     @POST( "product" )
     Call<ProductDTO> create( @Body ProductDTO input, @Query( "language" ) String language );
+
+    @POST( "product/csp" )
+    Call<ProductDTO> createCsp( @Body AzureProductDTO input );
 
     @DELETE( "product/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );

@@ -2125,7 +2125,7 @@ public class EnvironmentDTO extends DTO
     @AssertTrue( message = "Missing Microsoft API connector endpoint" )
     public boolean isMicrosoftConnectorConfigured()
     {
-        if ( features.enabledProductTypes.contains( ProductType.MICROSOFT ) )
+        if ( features.enabledProductTypes.contains( ProductType.CSP ) )
         {
             return configuration.microsoftApiEndpoint != null;
         }

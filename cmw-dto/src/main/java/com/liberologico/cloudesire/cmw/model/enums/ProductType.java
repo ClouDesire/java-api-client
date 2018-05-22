@@ -13,14 +13,14 @@ public enum ProductType
     BUNDLE,
 
     /**
+     * This product is imported from the Azure catalog
+     */
+    CSP,
+
+    /**
      * Provisioning is made by us
      */
     MANAGED,
-
-    /**
-     * This product is imported from the Azure catalog
-     */
-    MICROSOFT,
 
     /**
      * Provisioning is handled externally
