@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.liberologico.cloudesire.cmw.model.enums.MicrosoftProduct;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -166,6 +167,8 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
+
+    private MicrosoftProduct microsoftProductType;
 
     public ProductDTO( String name, String identifier, ProductType type )
     {
@@ -638,6 +641,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setSilent( boolean silent )
     {
         this.silent = silent;
+    }
+
+    public MicrosoftProduct getMicrosoftProductType()
+    {
+        return microsoftProductType;
+    }
+
+    public void setMicrosoftProductType( MicrosoftProduct microsoftProductType )
+    {
+        this.microsoftProductType = microsoftProductType;
     }
 
     @Override
