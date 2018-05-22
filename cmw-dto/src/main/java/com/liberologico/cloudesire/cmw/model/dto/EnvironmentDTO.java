@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -2119,6 +2120,17 @@ public class EnvironmentDTO extends DTO
             this.user = user;
         }
         // endregion
+    }
+
+    @AssertTrue( message = "Missing Microsoft API connector endpoint" )
+    public boolean isMicrosoftConnectorConfigured()
+    {
+        if ( features.enabledProductTypes.contains( ProductType.MICROSOFT ) )
+        {
+            return configuration.microsoftApiEndpoint != null;
+        }
+
+        return true;
     }
 
     @Override
