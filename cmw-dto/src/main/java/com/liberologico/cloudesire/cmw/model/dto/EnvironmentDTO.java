@@ -1571,6 +1571,8 @@ public class EnvironmentDTO extends DTO
 
         private String cspAzureProductId = "MS-AZR-0146P";
 
+        private String cspAzureParameterCode = "DNS_PREFIX";
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -1943,6 +1945,16 @@ public class EnvironmentDTO extends DTO
         public void setCspAzureProductId( String cspAzureProductId )
         {
             this.cspAzureProductId = cspAzureProductId;
+        }
+
+        public String getCspAzureParameterCode()
+        {
+            return cspAzureParameterCode;
+        }
+
+        public void setCspAzureParameterCode( String cspAzureParameterCode )
+        {
+            this.cspAzureParameterCode = cspAzureParameterCode;
         }
         //endregion
 
