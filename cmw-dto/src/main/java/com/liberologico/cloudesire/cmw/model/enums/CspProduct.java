@@ -1,22 +1,22 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
-public enum MicrosoftProduct
+public enum CspProduct
 {
     AZURE_MARKETPLACE( "azure" ),
     LICENSE_BASED( "license" );
 
     private final String type;
 
-    MicrosoftProduct( String type )
+    CspProduct( String type )
     {
         this.type = type;
     }
 
-    public static MicrosoftProduct getByType( String type )
+    public static CspProduct getByType( String type )
     {
         if ( type == null ) throw new NullPointerException( "type is null" );
 
-        for ( MicrosoftProduct productType : MicrosoftProduct.values() )
+        for ( CspProduct productType : CspProduct.values() )
         {
             if ( productType.type.equals( type ) ) return productType;
         }

@@ -2,7 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.liberologico.cloudesire.cmw.model.enums.MicrosoftProduct;
+import com.liberologico.cloudesire.cmw.model.enums.CspProduct;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -102,8 +102,8 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     private Boolean managed;
 
     @ApiModelProperty( readOnly = true )
-    @JsonProperty( "isMicrosoft" )
-    private Boolean microsoft;
+    @JsonProperty( "isCsp" )
+    private Boolean csp;
 
     @ApiModelProperty( readOnly = true )
     @JsonProperty( "isService" )
@@ -168,7 +168,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
 
-    private MicrosoftProduct microsoftProductType;
+    private CspProduct cspProductType;
 
     public ProductDTO( String name, String identifier, ProductType type )
     {
@@ -433,14 +433,14 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.managed = managed;
     }
 
-    public Boolean isMicrosoft()
+    public Boolean isCsp()
     {
-        return microsoft;
+        return csp;
     }
 
-    public void setMicrosoft( Boolean microsoft )
+    public void setCsp( Boolean csp )
     {
-        this.microsoft = microsoft;
+        this.csp = csp;
     }
 
     public Boolean isService()
@@ -643,14 +643,14 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.silent = silent;
     }
 
-    public MicrosoftProduct getMicrosoftProductType()
+    public CspProduct getCspProductType()
     {
-        return microsoftProductType;
+        return cspProductType;
     }
 
-    public void setMicrosoftProductType( MicrosoftProduct microsoftProductType )
+    public void setCspProductType( CspProduct cspProductType )
     {
-        this.microsoftProductType = microsoftProductType;
+        this.cspProductType = cspProductType;
     }
 
     @Override

@@ -1565,9 +1565,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
-        @ApiModelProperty( "URL for the Microsoft API connector" )
+        @ApiModelProperty( "URL for the CSP API connector" )
         @URL
-        private String microsoftApiEndpoint;
+        private String cspApiEndpoint;
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
@@ -1924,14 +1924,14 @@ public class EnvironmentDTO extends DTO
         }
         //endregion
 
-        public String getMicrosoftApiEndpoint()
+        public String getCspApiEndpoint()
         {
-            return microsoftApiEndpoint;
+            return cspApiEndpoint;
         }
 
-        public void setMicrosoftApiEndpoint( String microsoftApiEndpoint )
+        public void setCspApiEndpoint( String cspApiEndpoint )
         {
-            this.microsoftApiEndpoint = microsoftApiEndpoint;
+            this.cspApiEndpoint = cspApiEndpoint;
         }
 
         public enum SubscriptionsPerProduct
@@ -2122,12 +2122,12 @@ public class EnvironmentDTO extends DTO
         // endregion
     }
 
-    @AssertTrue( message = "Missing Microsoft API connector endpoint" )
-    public boolean isMicrosoftConnectorConfigured()
+    @AssertTrue( message = "Missing CSP API connector endpoint" )
+    public boolean isCspConnectorConfigured()
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
         {
-            return configuration.microsoftApiEndpoint != null;
+            return configuration.cspApiEndpoint != null;
         }
 
         return true;
