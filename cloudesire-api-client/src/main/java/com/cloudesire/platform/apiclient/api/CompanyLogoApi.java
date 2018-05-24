@@ -27,7 +27,7 @@ public interface CompanyLogoApi
     @PATCH( "companyLogoFile/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
 
-    @GET( "file/{id}/static" )
+    @GET( "companyLogoFile/{id}/static" )
     @Headers( "Accept: image/*" )
     @Streaming
     Call<ResponseBody> getFile( @Path( "id" ) Integer id );

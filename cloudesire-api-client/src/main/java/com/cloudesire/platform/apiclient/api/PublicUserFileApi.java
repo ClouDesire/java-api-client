@@ -22,14 +22,6 @@ public interface PublicUserFileApi
     @GET( "publicUserFile/{id}" )
     Call<FileDTO> get( @Path( "id" ) int id );
 
-    @GET( "publicUserFile/static/{name}" )
-    Call<ResponseBody> download( @Path( "name" ) String name );
-
-    @GET( "publicUserFile/static/{name}" )
-    @Headers( "Accept: image/*" )
-    @Deprecated
-    Call<ResponseBody> downloadImage( @Path( "name" ) String name );
-
     @GET( "publicUserFile/{id}/static" )
     @Headers( "Accept: image/*" )
     @Streaming
