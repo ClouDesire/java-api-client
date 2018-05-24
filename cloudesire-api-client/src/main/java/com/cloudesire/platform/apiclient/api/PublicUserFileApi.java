@@ -30,7 +30,7 @@ public interface PublicUserFileApi
     @Deprecated
     Call<ResponseBody> downloadImage( @Path( "name" ) String name );
 
-    @GET( "file/{id}/static" )
+    @GET( "publicUserFile/{id}/static" )
     @Headers( "Accept: image/*" )
     @Streaming
     Call<ResponseBody> getFile( @Path( "id" ) Integer id );
