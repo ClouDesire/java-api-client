@@ -1569,6 +1569,8 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "URL for the CSP API connector" )
         private Map<CspProduct, String> cspApiEndpoints;
 
+        private String cspAzureProductId = "MS-AZR-0146P";
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -1922,7 +1924,6 @@ public class EnvironmentDTO extends DTO
         {
             this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
-        //endregion
 
         public Map<CspProduct, String> getCspApiEndpoints()
         {
@@ -1933,6 +1934,17 @@ public class EnvironmentDTO extends DTO
         {
             this.cspApiEndpoints = cspApiEndpoints;
         }
+
+        public String getCspAzureProductId()
+        {
+            return cspAzureProductId;
+        }
+
+        public void setCspAzureProductId( String cspAzureProductId )
+        {
+            this.cspAzureProductId = cspAzureProductId;
+        }
+        //endregion
 
         public enum SubscriptionsPerProduct
         {
