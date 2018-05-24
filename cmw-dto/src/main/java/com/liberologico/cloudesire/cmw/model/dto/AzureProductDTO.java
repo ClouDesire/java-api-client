@@ -11,6 +11,12 @@ public class AzureProductDTO extends ProductDTO
 
     private String offerId;
 
+    private String azurePublisher;
+
+    private String azureOffer;
+
+    private String azureSku;
+
     public AzureProductDTO( String name, String identifier, CspProduct type )
     {
         super( name, identifier, ProductType.CSP );
@@ -39,5 +45,35 @@ public class AzureProductDTO extends ProductDTO
     public void setOfferId( String offerId )
     {
         this.offerId = offerId;
+    }
+
+    public String getAzurePublisher()
+    {
+        return azurePublisher;
+    }
+
+    public void setAzurePublisher( String azurePublisher )
+    {
+        this.azurePublisher = azurePublisher;
+    }
+
+    public String getAzureOffer()
+    {
+        return azureOffer;
+    }
+
+    public void setAzureOffer( String azureOffer )
+    {
+        this.azureOffer = azureOffer;
+    }
+
+    public String getAzureSku()
+    {
+        return azureSku;
+    }
+
+    public void setAzureSku( String azureSku )
+    {
+        this.azureSku = azureSku;
     }
 }
