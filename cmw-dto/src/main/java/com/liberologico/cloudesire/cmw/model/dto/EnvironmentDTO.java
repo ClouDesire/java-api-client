@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liberologico.cloudesire.cmw.model.enums.CspProduct;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
@@ -1566,8 +1567,7 @@ public class EnvironmentDTO extends DTO
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
         @ApiModelProperty( "URL for the CSP API connector" )
-        @URL
-        private String cspApiEndpoint;
+        private Map<CspProduct, String> cspApiEndpoints;
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
@@ -1924,14 +1924,14 @@ public class EnvironmentDTO extends DTO
         }
         //endregion
 
-        public String getCspApiEndpoint()
+        public Map<CspProduct, String> getCspApiEndpoints()
         {
-            return cspApiEndpoint;
+            return cspApiEndpoints;
         }
 
-        public void setCspApiEndpoint( String cspApiEndpoint )
+        public void setCspApiEndpoints( Map<CspProduct, String> cspApiEndpoints )
         {
-            this.cspApiEndpoint = cspApiEndpoint;
+            this.cspApiEndpoints = cspApiEndpoints;
         }
 
         public enum SubscriptionsPerProduct
@@ -2127,7 +2127,8 @@ public class EnvironmentDTO extends DTO
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
         {
-            return configuration.cspApiEndpoint != null;
+            Map<CspProduct, String> endpoints = configuration.cspApiEndpoints;
+            return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProduct.class ) );
         }
 
         return true;
