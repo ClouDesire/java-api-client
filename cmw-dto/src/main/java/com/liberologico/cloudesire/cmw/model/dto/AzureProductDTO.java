@@ -1,6 +1,6 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
-import com.liberologico.cloudesire.cmw.model.enums.CspProduct;
+import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class AzureProductDTO extends ProductDTO
 
     private String azureSku;
 
-    public AzureProductDTO( String name, String identifier, CspProduct type )
+    public AzureProductDTO( String name, String identifier, CspProductType type )
     {
         super( name, identifier, ProductType.CSP );
         setCspProductType( type );

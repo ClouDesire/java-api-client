@@ -2,7 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.liberologico.cloudesire.cmw.model.enums.CspProduct;
+import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -168,7 +168,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
 
-    private CspProduct cspProductType;
+    private CspProductType cspProductType;
 
     public ProductDTO( String name, String identifier, ProductType type )
     {
@@ -643,12 +643,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.silent = silent;
     }
 
-    public CspProduct getCspProductType()
+    public CspProductType getCspProductType()
     {
         return cspProductType;
     }
 
-    public void setCspProductType( CspProduct cspProductType )
+    public void setCspProductType( CspProductType cspProductType )
     {
         this.cspProductType = cspProductType;
     }

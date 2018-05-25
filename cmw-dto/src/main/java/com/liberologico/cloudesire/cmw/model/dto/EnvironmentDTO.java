@@ -1,7 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.liberologico.cloudesire.cmw.model.enums.CspProduct;
+import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
@@ -1567,7 +1567,7 @@ public class EnvironmentDTO extends DTO
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
         @ApiModelProperty( "URL for the CSP API connector" )
-        private Map<CspProduct, String> cspApiEndpoints;
+        private Map<CspProductType, String> cspApiEndpoints;
 
         private String cspAzureProductId = "MS-AZR-0146P";
 
@@ -1927,12 +1927,12 @@ public class EnvironmentDTO extends DTO
             this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
 
-        public Map<CspProduct, String> getCspApiEndpoints()
+        public Map<CspProductType, String> getCspApiEndpoints()
         {
             return cspApiEndpoints;
         }
 
-        public void setCspApiEndpoints( Map<CspProduct, String> cspApiEndpoints )
+        public void setCspApiEndpoints( Map<CspProductType, String> cspApiEndpoints )
         {
             this.cspApiEndpoints = cspApiEndpoints;
         }
@@ -2151,8 +2151,8 @@ public class EnvironmentDTO extends DTO
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
         {
-            Map<CspProduct, String> endpoints = configuration.cspApiEndpoints;
-            return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProduct.class ) );
+            Map<CspProductType, String> endpoints = configuration.cspApiEndpoints;
+            return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProductType.class ) );
         }
 
         return true;
