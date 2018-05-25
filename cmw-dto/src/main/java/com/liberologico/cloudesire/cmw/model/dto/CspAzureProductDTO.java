@@ -1,50 +1,28 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
-import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-public class AzureProductDTO extends ProductDTO
+public class CspAzureProductDTO extends CspProductDTO
 {
-    private BigDecimal price;
-
-    private String offerId;
-
+    @NotNull
     private String azurePublisher;
 
+    @NotNull
     private String azureOffer;
 
+    @NotNull
     private String azureSku;
 
-    public AzureProductDTO( String name, String identifier, CspProductType type )
+    public CspAzureProductDTO( String name, String identifier, BigDecimal price, UrlEntityDTO company )
     {
-        super( name, identifier, ProductType.CSP );
-        setCspProductType( type );
+        super( name, identifier, CspProductType.AZURE_MARKETPLACE, price, company );
     }
 
-    public AzureProductDTO()
+    public CspAzureProductDTO()
     {
-    }
-
-    public BigDecimal getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice( BigDecimal price )
-    {
-        this.price = price;
-    }
-
-    public String getOfferId()
-    {
-        return offerId;
-    }
-
-    public void setOfferId( String offerId )
-    {
-        this.offerId = offerId;
     }
 
     public String getAzurePublisher()
