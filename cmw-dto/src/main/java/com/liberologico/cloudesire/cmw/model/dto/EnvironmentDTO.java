@@ -1569,8 +1569,10 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "URL for the CSP API connector" )
         private Map<CspProductType, String> cspApiEndpoints;
 
+        @ApiModelProperty( "The id of the current Azure pay-per-use CSP offer" )
         private String cspAzureProductId = "MS-AZR-0146P";
 
+        @ApiModelProperty( "The code to use when autocreating the ConfigurationParameter for Azure CSP products" )
         private String cspAzureParameterCode = "DNS_PREFIX";
 
         //region Auto-generated getters and setters

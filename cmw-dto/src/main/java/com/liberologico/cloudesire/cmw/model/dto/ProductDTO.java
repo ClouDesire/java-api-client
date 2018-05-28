@@ -101,7 +101,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @JsonProperty( "isManaged" )
     private Boolean managed;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "Is a CSP importer product", readOnly = true )
     @JsonProperty( "isCsp" )
     private Boolean csp;
 
@@ -168,6 +168,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
 
+    @ApiModelProperty( "Whether this CSP product is license-based or Azure marketplace" )
     private CspProductType cspProductType;
 
     public ProductDTO( String name, String identifier, ProductType type )

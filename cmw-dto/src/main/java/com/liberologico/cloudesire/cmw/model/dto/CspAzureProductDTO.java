@@ -1,19 +1,23 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class CspAzureProductDTO extends CspProductDTO
 {
-    @NotNull
+    @ApiModelProperty( "The publisher id of an Azure marketplace image" )
+    @NotEmpty
     private String azurePublisher;
 
-    @NotNull
+    @ApiModelProperty( "The offer id of an Azure marketplace image" )
+    @NotEmpty
     private String azureOffer;
 
-    @NotNull
+    @ApiModelProperty( "The sku of an Azure marketplace image" )
+    @NotEmpty
     private String azureSku;
 
     public CspAzureProductDTO( String name, String identifier, BigDecimal price, UrlEntityDTO company )
