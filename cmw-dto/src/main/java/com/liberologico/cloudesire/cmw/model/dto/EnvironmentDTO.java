@@ -1566,7 +1566,7 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
-        @ApiModelProperty( "URL for the CSP API connector" )
+        @ApiModelProperty( "URLs for the CSP API connector per product type" )
         private Map<CspProductType, String> cspApiEndpoints;
 
         @ApiModelProperty( "The id of the current Azure pay-per-use CSP offer" )
