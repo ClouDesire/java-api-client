@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
@@ -11,6 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -1564,6 +1566,15 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
+        @ApiModelProperty( "URLs for the CSP API connector per product type" )
+        private Map<CspProductType, String> cspApiEndpoints;
+
+        @ApiModelProperty( "The id of the current Azure pay-per-use CSP offer" )
+        private String cspAzureProductId = "MS-AZR-0146P";
+
+        @ApiModelProperty( "The code to use when autocreating the ConfigurationParameter for Azure CSP products" )
+        private String cspAzureParameterCode = "DNS_PREFIX";
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -1917,6 +1928,36 @@ public class EnvironmentDTO extends DTO
         {
             this.supportedPublicUserFileTypes = supportedPublicUserFileTypes;
         }
+
+        public Map<CspProductType, String> getCspApiEndpoints()
+        {
+            return cspApiEndpoints;
+        }
+
+        public void setCspApiEndpoints( Map<CspProductType, String> cspApiEndpoints )
+        {
+            this.cspApiEndpoints = cspApiEndpoints;
+        }
+
+        public String getCspAzureProductId()
+        {
+            return cspAzureProductId;
+        }
+
+        public void setCspAzureProductId( String cspAzureProductId )
+        {
+            this.cspAzureProductId = cspAzureProductId;
+        }
+
+        public String getCspAzureParameterCode()
+        {
+            return cspAzureParameterCode;
+        }
+
+        public void setCspAzureParameterCode( String cspAzureParameterCode )
+        {
+            this.cspAzureParameterCode = cspAzureParameterCode;
+        }
         //endregion
 
         public enum SubscriptionsPerProduct
@@ -2105,6 +2146,18 @@ public class EnvironmentDTO extends DTO
             this.user = user;
         }
         // endregion
+    }
+
+    @AssertTrue( message = "Missing CSP API connector endpoint" )
+    public boolean isCspConnectorConfigured()
+    {
+        if ( features.enabledProductTypes.contains( ProductType.CSP ) )
+        {
+            Map<CspProductType, String> endpoints = configuration.cspApiEndpoints;
+            return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProductType.class ) );
+        }
+
+        return true;
     }
 
     @Override

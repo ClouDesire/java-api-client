@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -100,6 +101,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @JsonProperty( "isManaged" )
     private Boolean managed;
 
+    @ApiModelProperty( value = "Is a CSP importer product", readOnly = true )
+    @JsonProperty( "isCsp" )
+    private Boolean csp;
+
     @ApiModelProperty( readOnly = true )
     @JsonProperty( "isService" )
     private Boolean service;
@@ -162,6 +167,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 
     @ApiModelProperty( "Request approval of this product" )
     private boolean requestedForApproval;
+
+    @ApiModelProperty( "Whether this CSP product is license-based or Azure marketplace" )
+    private CspProductType cspProductType;
 
     public ProductDTO( String name, String identifier, ProductType type )
     {
@@ -426,6 +434,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         this.managed = managed;
     }
 
+    public Boolean isCsp()
+    {
+        return csp;
+    }
+
+    public void setCsp( Boolean csp )
+    {
+        this.csp = csp;
+    }
+
     public Boolean isService()
     {
         return service;
@@ -624,6 +642,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setSilent( boolean silent )
     {
         this.silent = silent;
+    }
+
+    public CspProductType getCspProductType()
+    {
+        return cspProductType;
+    }
+
+    public void setCspProductType( CspProductType cspProductType )
+    {
+        this.cspProductType = cspProductType;
     }
 
     @Override
