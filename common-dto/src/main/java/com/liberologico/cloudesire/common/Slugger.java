@@ -6,11 +6,18 @@ import java.util.List;
 
 public class Slugger
 {
-    public static String slugifyError( String errorMessage )
+    public static String slugifyError( String errorMessage, boolean forceLowerCase )
     {
         if ( errorMessage == null ) return "";
 
-        return errorMessage.replaceAll( "\\.|\\s|'|_", "-" );
+        String slugged = errorMessage.replaceAll( "\\.|\\s|'|_", "-" );
+        if ( forceLowerCase ) return slugged.toLowerCase();
+        return slugged;
+    }
+
+    public static String slugifyError( String errorMessage )
+    {
+        return slugifyError( errorMessage, false );
     }
 
     public static String slugify( String name )
