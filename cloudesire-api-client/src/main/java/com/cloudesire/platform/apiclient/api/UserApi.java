@@ -6,7 +6,6 @@ import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
-import com.liberologico.cloudesire.cmw.model.dto.VerificationRequestDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
@@ -109,7 +108,7 @@ public interface UserApi
     Call<Void> passwordReset( @Body PasswordResetDTO request, @Query( "reseller" ) String reseller );
 
     @POST( "user/verification" )
-    Call<Void> requestVerification( @Body VerificationRequestDTO request );
+    Call<Void> requestVerification();
 
     @POST( "user/payment/card" )
     Call<Void> saveCardData( @Body CardDataDTO data );
