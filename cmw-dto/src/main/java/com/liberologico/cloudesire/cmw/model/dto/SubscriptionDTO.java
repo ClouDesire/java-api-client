@@ -6,6 +6,8 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
 {
     private List<SubscriptionBillingItemDTO> billingItems;
 
+    private List<SubscriptionApiEndpointDTO> apiEndpoints;
+
     public List<SubscriptionBillingItemDTO> getBillingItems()
     {
         return billingItems;
@@ -14,5 +16,15 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
     public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    public List<SubscriptionApiEndpointDTO> getApiEndpoints()
+    {
+        return apiEndpoints;
+    }
+
+    public void setApiEndpoints( List<SubscriptionApiEndpointDTO> apiEndpoints )
+    {
+        this.apiEndpoints = apiEndpoints;
     }
 }
