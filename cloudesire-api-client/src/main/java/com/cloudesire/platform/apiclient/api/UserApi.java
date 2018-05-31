@@ -107,8 +107,8 @@ public interface UserApi
     @POST( "user/password/reset" )
     Call<Void> passwordReset( @Body PasswordResetDTO request, @Query( "reseller" ) String reseller );
 
-    @PATCH( "user" )
-    Call<Void> retryRegistration( @Body Object input );
+    @POST( "user/verification" )
+    Call<Void> requestVerification();
 
     @POST( "user/payment/card" )
     Call<Void> saveCardData( @Body CardDataDTO data );
