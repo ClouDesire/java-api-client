@@ -6,10 +6,8 @@ import java.util.List;
 
 public class SubscriptionDTO extends BaseSubscriptionDTO
 {
+    @ApiModelProperty( value = "Extra resources for this subscription", readOnly = true )
     private List<SubscriptionBillingItemDTO> billingItems;
-
-    @ApiModelProperty( value = "API endpoints for this subscription", readOnly = true )
-    private List<SubscriptionApiEndpointDTO> apiEndpoints;
 
     public List<SubscriptionBillingItemDTO> getBillingItems()
     {
@@ -19,15 +17,5 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
     public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
         this.billingItems = billingItems;
-    }
-
-    public List<SubscriptionApiEndpointDTO> getApiEndpoints()
-    {
-        return apiEndpoints;
-    }
-
-    public void setApiEndpoints( List<SubscriptionApiEndpointDTO> apiEndpoints )
-    {
-        this.apiEndpoints = apiEndpoints;
     }
 }

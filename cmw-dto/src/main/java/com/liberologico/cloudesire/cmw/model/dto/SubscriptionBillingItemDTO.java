@@ -10,6 +10,8 @@ public class SubscriptionBillingItemDTO extends DTO
 
     private Boolean unlimited;
 
+    private ApiEndpointDTO endpoint;
+
     public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value )
     {
         this.billingItem = billingItem;
@@ -50,6 +52,16 @@ public class SubscriptionBillingItemDTO extends DTO
         this.unlimited = unlimited;
     }
 
+    public ApiEndpointDTO getEndpoint()
+    {
+        return endpoint;
+    }
+
+    public void setEndpoint( ApiEndpointDTO endpoint )
+    {
+        this.endpoint = endpoint;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -63,5 +75,12 @@ public class SubscriptionBillingItemDTO extends DTO
     public int hashCode()
     {
         return Objects.hash( billingItem, value );
+    }
+
+    @Override
+    public String toString()
+    {
+        return "SubscriptionBillingItemDTO{" + "billingItem=" + billingItem + ", value=" + value + ", unlimited="
+                + unlimited + ", endpoint=" + endpoint + '}';
     }
 }
