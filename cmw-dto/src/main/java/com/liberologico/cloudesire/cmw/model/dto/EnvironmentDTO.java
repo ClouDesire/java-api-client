@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
+import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -1578,6 +1579,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "The identifier used when autocreating the BillingItem for licence CSP products" )
         private String cspLicenseIdentifier = "licenses";
 
+        @ApiModelProperty( "The default destination for a CSP product" )
+        private ProductDestination cspDefaultProductDestination = ProductDestination.B2B;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -1970,6 +1974,16 @@ public class EnvironmentDTO extends DTO
         public void setCspLicenseIdentifier( String cspLicenseIdentifier )
         {
             this.cspLicenseIdentifier = cspLicenseIdentifier;
+        }
+
+        public ProductDestination getCspDefaultProductDestination()
+        {
+            return cspDefaultProductDestination;
+        }
+
+        public void setCspDefaultProductDestination( ProductDestination cspDefaultProductDestination )
+        {
+            this.cspDefaultProductDestination = cspDefaultProductDestination;
         }
         //endregion
 
