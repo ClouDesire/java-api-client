@@ -58,4 +58,10 @@ public class ApiEndpointDTO
     {
         return Objects.hash( method, path );
     }
+
+    @Override
+    public String toString()
+    {
+        return method + " " + path;
+    }
 }
