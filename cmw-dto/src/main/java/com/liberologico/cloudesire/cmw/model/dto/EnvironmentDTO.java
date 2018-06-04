@@ -1575,7 +1575,7 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "The code to use when autocreating the ConfigurationParameter for Azure CSP products" )
         private String cspAzureParameterCode = "DNS_PREFIX";
 
-        @ApiModelProperty( "The identifier used when autocreating the BillingItem for licence CSP products")
+        @ApiModelProperty( "The identifier used when autocreating the BillingItem for licence CSP products" )
         private String cspLicenseIdentifier = "licenses";
 
         //region Auto-generated getters and setters
