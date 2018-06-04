@@ -11,6 +11,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Streaming;
 
 public interface PublicUserFileApi
 {
@@ -21,12 +22,10 @@ public interface PublicUserFileApi
     @GET( "publicUserFile/{id}" )
     Call<FileDTO> get( @Path( "id" ) int id );
 
-    @GET( "publicUserFile/static/{name}" )
-    Call<ResponseBody> download( @Path( "name" ) String name );
-
-    @GET( "publicUserFile/static/{name}" )
+    @GET( "publicUserFile/{id}/static" )
     @Headers( "Accept: image/*" )
-    Call<ResponseBody> downloadImage( @Path( "name" ) String name );
+    @Streaming
+    Call<ResponseBody> getFile( @Path( "id" ) Integer id );
 
     @DELETE( "publicUserFile/{id}" )
     Call<Void> delete( @Path( "id" ) int id );

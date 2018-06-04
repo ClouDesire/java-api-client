@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
+import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
@@ -400,6 +401,11 @@ public class CloudesireClient
     public EventApi getEventApi()
     {
         return retrofit.create( EventApi.class );
+    }
+
+    public CompanyLogoApi getCompanyLogoApi()
+    {
+        return retrofit.create( CompanyLogoApi.class );
     }
     // endregion
 
