@@ -171,6 +171,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Whether this CSP product is license-based or Azure marketplace" )
     private CspProductType cspProductType;
 
+    @ApiModelProperty( "Authentication header name for the upstream API" )
+    private String apiHeaderName;
+
+    @ApiModelProperty( "Authentication header value for the upstream API" )
+    private String apiHeaderValue;
+
     public ProductDTO( String name, String identifier, ProductType type )
     {
         super( name );
@@ -652,6 +658,26 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setCspProductType( CspProductType cspProductType )
     {
         this.cspProductType = cspProductType;
+    }
+
+    public String getApiHeaderName()
+    {
+        return apiHeaderName;
+    }
+
+    public void setApiHeaderName( String apiHeaderName )
+    {
+        this.apiHeaderName = apiHeaderName;
+    }
+
+    public String getApiHeaderValue()
+    {
+        return apiHeaderValue;
+    }
+
+    public void setApiHeaderValue( String apiHeaderValue )
+    {
+        this.apiHeaderValue = apiHeaderValue;
     }
 
     @Override
