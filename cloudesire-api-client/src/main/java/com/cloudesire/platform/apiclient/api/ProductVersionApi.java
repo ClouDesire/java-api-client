@@ -43,6 +43,10 @@ public interface ProductVersionApi
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product,
             @QueryMap Map<String, String> pageRequest );
 
+    @GET( "productVersion" )
+    Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product, @Query( "reseller" ) String reseller,
+            @QueryMap Map<String, String> pageRequest );
+
     @GET( "productVersion/identifier/{productVersionIdentifier}" )
     Call<ProductVersionDTO> getByIdentifier( @Path( "productVersionIdentifier" ) String productVersionIdentifier );
 
