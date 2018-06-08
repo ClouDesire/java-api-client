@@ -20,10 +20,10 @@ public interface ApplicationFileApi
     Call<ApplicationFileDTO> create( @Body ApplicationFileDTO file );
 
     @DELETE( "applicationFile/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
+    Call<Void> delete( @Path( "id" ) int id );
 
     @PATCH( "applicationFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
 
     @GET( "applicationFile/active" )
     Call<ApplicationFileDTO> getActive( @Query( "virtualMachineConfiguration" ) Integer virtualMachineConfiguration,
@@ -33,11 +33,11 @@ public interface ApplicationFileApi
     Call<List<ApplicationFileDTO>> getAllVersions( @Query( "virtualMachineInstance" ) String virtualMachineInstance );
 
     @GET( "applicationFile/{id}/environment" )
-    Call<List<ApplicationFileEnvironmentDTO>> getEnvironments( @Path( "id" ) Integer id );
+    Call<List<ApplicationFileEnvironmentDTO>> getEnvironments( @Path( "id" ) int id );
 
     @GET( "applicationFile/{id}" )
-    Call<ApplicationFileDTO> get( @Path( "id" ) Integer id );
+    Call<ApplicationFileDTO> get( @Path( "id" ) int id );
 
     @PUT( "applicationFile/{id}" )
-    Call<ApplicationFileDTO> update( @Body ApplicationFileDTO input, @Path( "id" ) Integer id );
+    Call<ApplicationFileDTO> update( @Path( "id" ) int id, @Body ApplicationFileDTO input );
 }

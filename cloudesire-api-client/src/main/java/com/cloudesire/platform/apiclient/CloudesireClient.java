@@ -28,7 +28,7 @@ import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
-import com.cloudesire.platform.apiclient.api.VMConfigurationApi;
+import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
 import com.cloudesire.platform.apiclient.api.VMInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -399,9 +399,9 @@ public class CloudesireClient
         return retrofit.create( StatisticsApi.class );
     }
 
-    public VMConfigurationApi getVMConfigurationApi()
+    public VirtualMachineConfigurationApi getVirtualMachineConfigurationApi()
     {
-        return retrofit.create( VMConfigurationApi.class );
+        return retrofit.create( VirtualMachineConfigurationApi.class );
     }
 
     public EventApi getEventApi()
