@@ -2,7 +2,6 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
@@ -909,9 +908,19 @@ public class EnvironmentDTO extends DTO
         @NotEmpty
         private String link;
 
+        public String getPrimary()
+        {
+            return primary;
+        }
+
         public void setPrimary( String primary )
         {
             this.primary = primary;
+        }
+
+        public String getTextOnPrimary()
+        {
+            return textOnPrimary;
         }
 
         public void setTextOnPrimary( String textOnPrimary )
@@ -919,14 +928,29 @@ public class EnvironmentDTO extends DTO
             this.textOnPrimary = textOnPrimary;
         }
 
+        public String getText()
+        {
+            return text;
+        }
+
         public void setText( String text )
         {
             this.text = text;
         }
 
+        public String getTextLight()
+        {
+            return textLight;
+        }
+
         public void setTextLight( String textLight )
         {
             this.textLight = textLight;
+        }
+
+        public String getLink()
+        {
+            return link;
         }
 
         public void setLink( String link )
