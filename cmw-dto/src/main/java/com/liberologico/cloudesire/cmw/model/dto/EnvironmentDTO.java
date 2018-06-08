@@ -934,12 +934,6 @@ public class EnvironmentDTO extends DTO
             this.link = link;
         }
 
-        public Map<String, String> toMap()
-        {
-            ObjectMapper oMapper = new ObjectMapper();
-            return oMapper.convertValue( this, Map.class );
-        }
-
         //endregion
     }
 
