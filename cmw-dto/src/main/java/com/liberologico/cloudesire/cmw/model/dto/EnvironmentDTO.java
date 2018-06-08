@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
@@ -943,6 +944,12 @@ public class EnvironmentDTO extends DTO
         public void setTextLight( String textLight )
         {
             this.textLight = textLight;
+        }
+
+        public Map<String, String> toMap()
+        {
+            ObjectMapper oMapper = new ObjectMapper();
+            return oMapper.convertValue( this, Map.class );
         }
 
         //endregion
