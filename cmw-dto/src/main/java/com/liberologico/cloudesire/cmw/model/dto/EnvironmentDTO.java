@@ -102,6 +102,10 @@ public class EnvironmentDTO extends DTO
     @URL
     private String mailLogo;
 
+    @ApiModelProperty( "Email palette colors" )
+    @Valid
+    private EmailPalette mailPalette;
+
     @ApiModelProperty( "Footer for all the emails" )
     @Size( max = 2048 )
     private String mailFooter;
@@ -344,6 +348,16 @@ public class EnvironmentDTO extends DTO
     public void setMailLogo( String mailLogo )
     {
         this.mailLogo = mailLogo;
+    }
+
+    public EmailPalette getMailPalette()
+    {
+        return mailPalette;
+    }
+
+    public void setMailPalette( EmailPalette mailPalette )
+    {
+        this.mailPalette = mailPalette;
     }
 
     public String getMailFooter()
@@ -873,6 +887,116 @@ public class EnvironmentDTO extends DTO
         {
             this.canBeReactivated = canBeReactivated;
         }
+        //endregion
+    }
+
+    @ApiModel( description = "Email palette attributes" )
+    public static class EmailPalette
+    {
+        @NotEmpty
+        private String black;
+
+        @NotEmpty
+        private String white;
+
+        @NotEmpty
+        private String primary;
+
+        @NotEmpty
+        private String primaryLight;
+
+        @NotEmpty
+        private String primaryDark;
+
+        @NotEmpty
+        private String secondaryLight;
+
+        @NotEmpty
+        private String secondary;
+
+        @NotEmpty
+        private String secondaryDark;
+
+        public String getBlack()
+        {
+            return black;
+        }
+
+        public void setBlack( String black )
+        {
+            this.black = black;
+        }
+
+        public String getWhite()
+        {
+            return white;
+        }
+
+        public void setWhite( String white )
+        {
+            this.white = white;
+        }
+
+        public String getPrimary()
+        {
+            return primary;
+        }
+
+        public void setPrimary( String primary )
+        {
+            this.primary = primary;
+        }
+
+        public String getPrimaryLight()
+        {
+            return primaryLight;
+        }
+
+        public void setPrimaryLight( String primaryLight )
+        {
+            this.primaryLight = primaryLight;
+        }
+
+        public String getPrimaryDark()
+        {
+            return primaryDark;
+        }
+
+        public void setPrimaryDark( String primaryDark )
+        {
+            this.primaryDark = primaryDark;
+        }
+
+        public String getSecondaryLight()
+        {
+            return secondaryLight;
+        }
+
+        public void setSecondaryLight( String secondaryLight )
+        {
+            this.secondaryLight = secondaryLight;
+        }
+
+        public String getSecondary()
+        {
+            return secondary;
+        }
+
+        public void setSecondary( String secondary )
+        {
+            this.secondary = secondary;
+        }
+
+        public String getSecondaryDark()
+        {
+            return secondaryDark;
+        }
+
+        public void setSecondaryDark( String secondaryDark )
+        {
+            this.secondaryDark = secondaryDark;
+        }
+
         //endregion
     }
 
