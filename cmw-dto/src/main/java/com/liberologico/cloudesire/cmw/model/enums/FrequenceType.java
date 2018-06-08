@@ -10,9 +10,19 @@ public enum FrequenceType
     EVERY_1_HOUR( 3600 ),
     EVERY_24_HOUR( 86400 ),
     EVERY_48_HOUR( 86400 * 2 ),
-    EVERY_WEEK( 86400 * 7);
+    EVERY_WEEK( 86400 * 7 );
 
     private int samplePeriodInSeconds;
+
+    public static FrequenceType getByPeriod( int period )
+    {
+        for ( FrequenceType type : FrequenceType.values() )
+        {
+            if ( type.samplePeriodInSeconds == period ) return type;
+        }
+
+        throw new IllegalArgumentException( "Invalid sample period: " + period );
+    }
 
     FrequenceType( int samplePeriodInSeconds )
     {

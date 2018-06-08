@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient;
 
 import com.cloudesire.platform.apiclient.api.AdminApi;
 import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
+import com.cloudesire.platform.apiclient.api.ApplicationMetricApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
@@ -381,6 +382,11 @@ public class CloudesireClient
     public ApplicationFileApi getApplicationFileApi()
     {
         return retrofit.create( ApplicationFileApi.class );
+    }
+
+    public ApplicationMetricApi getApplicationMetricApi()
+    {
+        return retrofit.create( ApplicationMetricApi.class );
     }
 
     public StackParameterValueApi getStackParameterValueApi()
