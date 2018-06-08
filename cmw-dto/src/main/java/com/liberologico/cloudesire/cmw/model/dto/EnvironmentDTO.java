@@ -894,48 +894,16 @@ public class EnvironmentDTO extends DTO
     public static class EmailPalette
     {
         @NotEmpty
-        private String black;
-
-        @NotEmpty
-        private String white;
-
-        @NotEmpty
         private String primary;
 
         @NotEmpty
-        private String primaryLight;
+        private String textOnPrimary;
 
         @NotEmpty
-        private String primaryDark;
+        private String text;
 
         @NotEmpty
-        private String secondaryLight;
-
-        @NotEmpty
-        private String secondary;
-
-        @NotEmpty
-        private String secondaryDark;
-
-        public String getBlack()
-        {
-            return black;
-        }
-
-        public void setBlack( String black )
-        {
-            this.black = black;
-        }
-
-        public String getWhite()
-        {
-            return white;
-        }
-
-        public void setWhite( String white )
-        {
-            this.white = white;
-        }
+        private String textLight;
 
         public String getPrimary()
         {
@@ -947,54 +915,34 @@ public class EnvironmentDTO extends DTO
             this.primary = primary;
         }
 
-        public String getPrimaryLight()
+        public String getTextOnPrimary()
         {
-            return primaryLight;
+            return textOnPrimary;
         }
 
-        public void setPrimaryLight( String primaryLight )
+        public void setTextOnPrimary( String textOnPrimary )
         {
-            this.primaryLight = primaryLight;
+            this.textOnPrimary = textOnPrimary;
         }
 
-        public String getPrimaryDark()
+        public String getText()
         {
-            return primaryDark;
+            return text;
         }
 
-        public void setPrimaryDark( String primaryDark )
+        public void setText( String text )
         {
-            this.primaryDark = primaryDark;
+            this.text = text;
         }
 
-        public String getSecondaryLight()
+        public String getTextLight()
         {
-            return secondaryLight;
+            return textLight;
         }
 
-        public void setSecondaryLight( String secondaryLight )
+        public void setTextLight( String textLight )
         {
-            this.secondaryLight = secondaryLight;
-        }
-
-        public String getSecondary()
-        {
-            return secondary;
-        }
-
-        public void setSecondary( String secondary )
-        {
-            this.secondary = secondary;
-        }
-
-        public String getSecondaryDark()
-        {
-            return secondaryDark;
-        }
-
-        public void setSecondaryDark( String secondaryDark )
-        {
-            this.secondaryDark = secondaryDark;
+            this.textLight = textLight;
         }
 
         //endregion
