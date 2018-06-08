@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.enums;
 
 public enum CspProductType
 {
+    ARM_TEMPLATE( "arm" ),
     AZURE_MARKETPLACE( "azure" ),
     LICENSE_BASED( "license" );
 
