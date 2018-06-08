@@ -906,19 +906,12 @@ public class EnvironmentDTO extends DTO
         @NotEmpty
         private String textLight;
 
-        public String getPrimary()
-        {
-            return primary;
-        }
+        @NotEmpty
+        private String link;
 
         public void setPrimary( String primary )
         {
             this.primary = primary;
-        }
-
-        public String getTextOnPrimary()
-        {
-            return textOnPrimary;
         }
 
         public void setTextOnPrimary( String textOnPrimary )
@@ -926,24 +919,19 @@ public class EnvironmentDTO extends DTO
             this.textOnPrimary = textOnPrimary;
         }
 
-        public String getText()
-        {
-            return text;
-        }
-
         public void setText( String text )
         {
             this.text = text;
         }
 
-        public String getTextLight()
-        {
-            return textLight;
-        }
-
         public void setTextLight( String textLight )
         {
             this.textLight = textLight;
+        }
+
+        public void setLink( String link )
+        {
+            this.link = link;
         }
 
         public Map<String, String> toMap()
