@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liberologico.cloudesire.cmw.model.constants.RegExp;
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
@@ -15,6 +16,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -893,19 +895,19 @@ public class EnvironmentDTO extends DTO
     @ApiModel( description = "Email palette attributes" )
     public static class EmailPalette
     {
-        @NotEmpty
+        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
         private String primaryColor;
 
-        @NotEmpty
+        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
         private String textOnPrimaryColor;
 
-        @NotEmpty
+        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
         private String textColor;
 
-        @NotEmpty
+        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
         private String textLightColor;
 
-        @NotEmpty
+        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
         private String linkColor;
 
         public String getPrimaryColor()
