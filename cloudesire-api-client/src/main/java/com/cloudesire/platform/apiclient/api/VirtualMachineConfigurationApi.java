@@ -1,7 +1,9 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.VirtualMachineConfigurationDTO;
+import com.liberologico.cloudesire.cmw.model.enums.AssociationType;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -18,32 +20,37 @@ import retrofit2.http.QueryMap;
 import java.util.List;
 import java.util.Map;
 
-public interface VMConfigurationApi
+public interface VirtualMachineConfigurationApi
 {
     @POST( "virtualMachineConfiguration" )
     Call<VirtualMachineConfigurationDTO> create( @Body VirtualMachineConfigurationDTO inputVmc );
 
     @DELETE( "virtualMachineConfiguration/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
+    Call<Void> delete( @Path( "id" ) int id );
 
     @PATCH( "virtualMachineConfiguration/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
 
     @GET( "virtualMachineConfiguration" )
-    Call<List<VirtualMachineConfigurationDTO>> getAllVMC( @QueryMap Map<String, String> pageRequest,
-            @Query( "applicationFileAssociationType" ) String applicationFileAssociationType );
+    Call<List<VirtualMachineConfigurationDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "virtualMachineConfiguration" )
+    Call<List<VirtualMachineConfigurationDTO>> getAll(
+            @Query( "applicationFileAssociationType" ) AssociationType applicationFileAssociationType,
+            @QueryMap Map<String, String> pageRequest
+    );
 
     @GET( "virtualMachineConfiguration/{id}/compose" )
-    Call<List<byte[]>> getDockerCompose( @Path( "id" ) Integer id );
+    Call<ResponseBody> getDockerCompose( @Path( "id" ) int id );
 
     @GET( "virtualMachineConfiguration/{id}" )
-    Call<VirtualMachineConfigurationDTO> getVMC( @Path( "id" ) Integer id );
+    Call<VirtualMachineConfigurationDTO> get( @Path( "id" ) int id );
 
     @Multipart
     @POST( "virtualMachineConfiguration/{id}/compose" )
-    Call<VirtualMachineConfigurationDTO> parseDockerCompose( @Path( "id" ) Integer id,
+    Call<VirtualMachineConfigurationDTO> parseDockerCompose( @Path( "id" ) int id,
             @Part MultipartBody.Part file, @Query( "version" ) String version );
 
     @PUT( "virtualMachineConfiguration/{id}" )
-    Call<VirtualMachineConfigurationDTO> update( @Body VirtualMachineConfigurationDTO vmc, @Path( "id" ) Integer id );
+    Call<VirtualMachineConfigurationDTO> update( @Path( "id" ) int id, @Body VirtualMachineConfigurationDTO vmc );
 }
