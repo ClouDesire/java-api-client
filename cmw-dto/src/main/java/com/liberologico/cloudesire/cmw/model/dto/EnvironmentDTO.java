@@ -894,68 +894,68 @@ public class EnvironmentDTO extends DTO
     public static class EmailPalette
     {
         @NotEmpty
-        private String primary;
+        private String primaryColor;
 
         @NotEmpty
-        private String textOnPrimary;
+        private String textOnPrimaryColor;
 
         @NotEmpty
-        private String text;
+        private String textColor;
 
         @NotEmpty
-        private String textLight;
+        private String textLightColor;
 
         @NotEmpty
-        private String link;
+        private String linkColor;
 
-        public String getPrimary()
+        public String getPrimaryColor()
         {
-            return primary;
+            return primaryColor;
         }
 
-        public void setPrimary( String primary )
+        public void setPrimaryColor( String primaryColor )
         {
-            this.primary = primary;
+            this.primaryColor = primaryColor;
         }
 
-        public String getTextOnPrimary()
+        public String getTextOnPrimaryColor()
         {
-            return textOnPrimary;
+            return textOnPrimaryColor;
         }
 
-        public void setTextOnPrimary( String textOnPrimary )
+        public void setTextOnPrimaryColor( String textOnPrimaryColor )
         {
-            this.textOnPrimary = textOnPrimary;
+            this.textOnPrimaryColor = textOnPrimaryColor;
         }
 
-        public String getText()
+        public String getTextColor()
         {
-            return text;
+            return textColor;
         }
 
-        public void setText( String text )
+        public void setTextColor( String textColor )
         {
-            this.text = text;
+            this.textColor = textColor;
         }
 
-        public String getTextLight()
+        public String getTextLightColor()
         {
-            return textLight;
+            return textLightColor;
         }
 
-        public void setTextLight( String textLight )
+        public void setTextLightColor( String textLightColor )
         {
-            this.textLight = textLight;
+            this.textLightColor = textLightColor;
         }
 
-        public String getLink()
+        public String getLinkColor()
         {
-            return link;
+            return linkColor;
         }
 
-        public void setLink( String link )
+        public void setLinkColor( String linkColor )
         {
-            this.link = link;
+            this.linkColor = linkColor;
         }
 
         //endregion
