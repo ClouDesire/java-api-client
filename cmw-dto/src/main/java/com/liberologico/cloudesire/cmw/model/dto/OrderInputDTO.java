@@ -21,20 +21,16 @@ public class OrderInputDTO extends BaseEntityDTO
     private OrderType type;
 
     @Valid
-    @ApiModelProperty( "Chosen cloud provider - only for managed applications" )
     private UrlEntityDTO cloudProvider;
 
     @NotNull
     @Valid
-    @ApiModelProperty( "The ordered productVersion" )
     private UrlEntityDTO productVersion;
 
     @Valid
-    @ApiModelProperty( "Chosen bandwidth plan - only for managed applications" )
     private UrlEntityDTO bandwidthPricing;
 
     @Valid
-    @ApiModelProperty( value = "Who will pay and use the application" )
     private UrlEntityDTO buyer;
 
     @ApiModelProperty( "Optional discount coupon" )
