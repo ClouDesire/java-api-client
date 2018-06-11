@@ -2,11 +2,18 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.utils.BodyParser;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Size;
+
+@ApiModel( "Reference to a related resource" )
 public class UrlEntityDTO
 {
     @NotEmpty
+    @ApiModelProperty( value = "Reference to another resource", example = "resourceName/ID" )
+    @Size( max = 255 )
     private String url;
 
     public UrlEntityDTO()
@@ -28,6 +35,16 @@ public class UrlEntityDTO
         this.url = entityDTO.getSelf();
     }
 
+    public static UrlEntityDTO empty()
+    {
+        return new UrlEntityDTO();
+    }
+
+    public static UrlEntityDTO of( String url )
+    {
+        return new UrlEntityDTO( url );
+    }
+
     public String getUrl()
     {
         return url;
@@ -39,9 +56,9 @@ public class UrlEntityDTO
     }
 
     @Override
-    public String toString()
+    public int hashCode()
     {
-        return url;
+        return url != null ? url.hashCode() : 0;
     }
 
     @Override
@@ -58,9 +75,9 @@ public class UrlEntityDTO
     }
 
     @Override
-    public int hashCode()
+    public String toString()
     {
-        return url != null ? url.hashCode() : 0;
+        return url;
     }
 
     @JsonIgnore
@@ -87,15 +104,5 @@ public class UrlEntityDTO
         if ( url == null ) return null;
 
         return url.substring( 0, url.indexOf( '/' ) );
-    }
-
-    public static UrlEntityDTO empty()
-    {
-        return new UrlEntityDTO();
-    }
-
-    public static UrlEntityDTO of( String url )
-    {
-        return new UrlEntityDTO( url );
     }
 }
