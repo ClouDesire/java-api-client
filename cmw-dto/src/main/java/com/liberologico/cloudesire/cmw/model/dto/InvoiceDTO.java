@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceOperationType;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceStatus;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -51,6 +52,7 @@ public class InvoiceDTO extends BaseInvoiceDTO
     private BigDecimal revenueSharingQuota;
 
     @NotNull
+    @ApiModelProperty( "List of items that compose the invoice" )
     private List<OrderLineDTO> entries;
 
     private Boolean cashed;

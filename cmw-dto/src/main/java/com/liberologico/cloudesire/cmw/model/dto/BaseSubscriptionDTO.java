@@ -25,7 +25,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "When the subscription expire, if not renewed", readOnly = true )
     private Date endDate;
 
-    @ApiModelProperty( "Current status of the subscription" )
+    @ApiModelProperty( value = "Current status of the subscription", readOnly = true )
     private DeploymentStatusEnum deploymentStatus;
 
     @Valid
@@ -84,7 +84,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
 
     private Set<ActionDTO> availableOperations = null;
 
-    @ApiModelProperty( "If the subscription automatically renew before expiring or not" )
+    @ApiModelProperty( "If the subscription automatically renews before expiring or not" )
     private boolean autoRenew;
 
     @ApiModelProperty( value = "Historical serialized data of the subscription", readOnly = true )
@@ -104,6 +104,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     private UrlEntityDTO coupon;
 
     @Valid
+    @ApiModelProperty( value = "The value chosen by the customer for a list of ConfigurationParameters", example = "{ \"configurationParameter/123\": \"custom_value\"}" )
     private Map<UrlEntityDTO, String> configurationParameters = new HashMap<>();
 
     public UrlEntityDTO getMetadata()

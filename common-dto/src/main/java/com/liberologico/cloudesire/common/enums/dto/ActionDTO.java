@@ -1,14 +1,19 @@
 package com.liberologico.cloudesire.common.enums.dto;
 
 import com.liberologico.cloudesire.common.enums.HttpMethod;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+@ApiModel( "An API call that the current user can execute on the parent resource" )
 public class ActionDTO extends ActionUrlDTO
 {
+    @ApiModelProperty( "A descriptive label for all the actions" )
     private String label;
 
+    @ApiModelProperty( "The list of actions that can be performed" )
     private String[] actions;
 
     public ActionDTO( String label, String url, HttpMethod method, String resourceType, String[] actions )
