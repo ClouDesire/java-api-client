@@ -24,7 +24,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public static final String PUBLISHED_FIELD = "published";
     public static final String SETUP_FEE_FIELD = "setupFee";
 
-    @ApiModelProperty( "Configurations of the virtual machines for this product version" )
+    @ApiModelProperty( "Configurations of the virtual machines for the product version" )
     @Valid
     private Set<UrlEntityDTO> virtualMachineConfiguration;
 
@@ -37,7 +37,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Suggested bandwidth to be payed in advance, decided by vendor" )
     private BigDecimal bandwidthInGB;
 
-    @ApiModelProperty( "Price for this product version, can be null for a catalog-only product plan" )
+    @ApiModelProperty( "Price for the product version, can be null for a catalog-only product plan" )
     private BigDecimal price;
 
     @ApiModelProperty( "Price set by the vendor" )
@@ -51,53 +51,54 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Trial trial;
 
-    @ApiModelProperty( "If the platform earns a fee for the selling of this version" )
+    @ApiModelProperty( "If the platform earns a fee for the selling of the version" )
     private boolean cloudesireFeeActivated = true;
 
-    @ApiModelProperty( "If the emission and payment of this version's invoices must be handled by the vendor" )
+    @ApiModelProperty( "If the emission and payment of the version's invoices must be handled by the vendor" )
     private boolean selfBilling = false;
 
-    @ApiModelProperty( "If this version is published on the marketplace" )
+    @ApiModelProperty( "If the version is published on the marketplace" )
     private Boolean published = false;
 
     @Deprecated
     private List<Integer> availableOrderPeriods;
 
-    @ApiModelProperty( "Lifespan of this product version, in hours" )
+    @ApiModelProperty( "Lifespan of the product version, in hours" )
     private Integer lifespan;
 
-    @ApiModelProperty( "Adds webdav support for this product version deployed instances" )
+    @ApiModelProperty( "Adds webdav support for the product version deployed instances" )
     private Boolean webdavSupport = false;
 
     @ApiModelProperty( "Adds a post-configuration status in the deployment procedure" )
     private boolean postConfiguration;
 
-    @ApiModelProperty( "Billing item values for this product version" )
+    @ApiModelProperty( "Billing item values for the product version" )
     @Valid
     private List<BillingItemValueDTO> billingItemValues = new ArrayList<>();
 
-    @ApiModelProperty( "A one-time price for the setup of this product" )
+    @ApiModelProperty( "A one-time price for the setup of the product" )
     private BigDecimal setupFee;
 
-    @ApiModelProperty( "A one-time price for the setup of this product billed to the vendor" )
+    @ApiModelProperty( "A one-time price for the setup of the product billed to the vendor" )
     private BigDecimal vendorSetupFee;
 
     private Set<ApplicationFileEnvironmentDTO> editableEnvironment = new HashSet<>();
 
+    @ApiModelProperty( "Description of the product version" )
     private String description;
 
-    @ApiModelProperty( "If this product version is in a draft state" )
+    @ApiModelProperty( "If the product version is in a draft state" )
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
-    @ApiModelProperty( "The configuration parameters for this product version" )
+    @ApiModelProperty( "The configuration parameters for the product version" )
     @Valid
     private List<UrlEntityDTO> configurationParameters;
 
     @ApiModelProperty( "An optional ID for integration purposes" )
     private String externalId;
 
-    @ApiModelProperty( "The duration (in days) for a trial of this product version" )
+    @ApiModelProperty( "The duration (in days) for a trial of the product version" )
     @Min( value = 1, message = INVALID_MIN )
     private Integer trialLength = 1;
 
@@ -113,7 +114,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( value = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
     private Map<UrlEntityDTO, BigDecimal> bundle;
 
-    @ApiModelProperty( value = "Metadata for this product version", example = "{\"key\":\"value\"}" )
+    @ApiModelProperty( value = "Metadata for the product version", example = "{\"key\":\"value\"}" )
     private Map<String, Object> metadata;
 
     @ApiModelProperty( "Weight order for displaying on the marketplace" )
@@ -124,17 +125,17 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * @deprecated by {@link #couponConfiguration}
      */
-    @ApiModelProperty( value = "True if this plan can be purchased only with a coupon", hidden = true )
+    @ApiModelProperty( value = "True if the product version can be purchased only with a coupon", hidden = true )
     @Deprecated
     private Boolean unlockable;
 
-    @ApiModelProperty( "The number of markups set for this plan" )
+    @ApiModelProperty( "The number of markups set for the product version" )
     private long markedUp;
 
     @ApiModelProperty( "Automatically set subscriptions to DEPLOYED on payment and UNDEPLOYED on expiry" )
     private boolean autodeploy;
 
-    @ApiModelProperty( value = "Descriptive label of this product version", readOnly = true )
+    @ApiModelProperty( value = "Descriptive label of the product version", readOnly = true )
     private String label;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )

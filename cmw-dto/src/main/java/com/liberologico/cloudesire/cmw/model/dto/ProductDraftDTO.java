@@ -1,6 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -8,28 +10,37 @@ import java.util.Map;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_SIZE;
 
+@ApiModel( "A draft of a product description" )
 public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
 {
     @Valid
     private UrlEntityDTO original;
 
+    @ApiModelProperty( "Short description of the product" )
     @Size( max = 4000, message = INVALID_SIZE )
     private String shortDescription;
 
+    @ApiModelProperty( "Long description of the product" )
     @Size( max = 8192, message = INVALID_SIZE )
     private String longDescription;
 
+    @ApiModelProperty( "Instructions shown to the customer that buys a subscription" )
     private String endUserInstructions;
 
+    @ApiModelProperty( "Terms of service" )
     private String termsOfService;
 
+    @ApiModelProperty( "Privacy policy" )
     private String privacy;
 
+    @ApiModelProperty( "Service level agreement" )
     private String serviceLevelAgreement;
 
+    @ApiModelProperty( "Localized product metadata" )
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, Object> extraData;
 
+    @ApiModelProperty( "Frequently asked questions" )
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 

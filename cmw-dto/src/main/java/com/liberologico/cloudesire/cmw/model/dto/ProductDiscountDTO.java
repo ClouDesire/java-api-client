@@ -1,10 +1,12 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@ApiModel( "Per-product discount of a bundle" )
 public class ProductDiscountDTO implements Comparable<ProductDiscountDTO>
 {
     @ApiModelProperty( value = "A product in a bundle", readOnly = true )

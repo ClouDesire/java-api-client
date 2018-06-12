@@ -52,18 +52,18 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @Deprecated
     private Integer trialLengthDays;
 
-    @ApiModelProperty( "Short description of this product" )
+    @ApiModelProperty( "Short description of the product" )
     @Size( max = 4000, message = INVALID_SIZE )
     private String shortDescription;
 
-    @ApiModelProperty( "Long description of this product" )
+    @ApiModelProperty( "Long description of the product" )
     @Size( max = 8192, message = INVALID_SIZE )
     private String longDescription;
 
-    @ApiModelProperty( value = "Average rating received for this product", readOnly = true )
+    @ApiModelProperty( value = "Average rating received for the product", readOnly = true )
     private BigDecimal averageRating;
 
-    @ApiModelProperty( value = "Number of ratings received for this product", readOnly = true )
+    @ApiModelProperty( value = "Number of ratings received for the product", readOnly = true )
     private Long numberOfRatings;
 
     @ApiModelProperty( hidden = true )
