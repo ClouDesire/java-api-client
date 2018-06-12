@@ -30,7 +30,7 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( value = "If the invoice emission and payment is handled by vendor/reseller or by the platform", readOnly = true )
     private boolean selfBilled = false;
 
-    @ApiModelProperty( value = "If this invoice is subject to the italian electronic document tax", readOnly = true )
+    @ApiModelProperty( value = "If this invoice is subject to the Italian electronic document tax", readOnly = true )
     private boolean stampDuty = false;
 
     @NotNull
@@ -42,7 +42,7 @@ public class InvoiceDTO extends BaseInvoiceDTO
     private String product = "N/A";
 
     @NotNull
-    @ApiModelProperty( value = "The Product version this invoice refers to", readOnly = true )
+    @ApiModelProperty( value = "The ProductVersion name this invoice refers to", readOnly = true )
     private String productVersion = "N/A";
 
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )

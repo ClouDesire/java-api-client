@@ -8,5 +8,5 @@ public enum InvoiceStatus
 {
     @ApiModelProperty( "Payment required" ) UNPAID,
     @ApiModelProperty( "Payment processing" ) PENDING,
-    @ApiModelProperty( "Payment succesfull" ) PAID
+    @ApiModelProperty( "Payment successfull" ) PAID
 }
