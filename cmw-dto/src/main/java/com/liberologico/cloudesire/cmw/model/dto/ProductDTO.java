@@ -20,7 +20,7 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 
 public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 {
-    @ApiModelProperty("Identifier for the product, cannot be changed after creation")
+    @ApiModelProperty( "Identifier of this product, cannot be changed after creation" )
     private String SKU;
 
     @Valid
@@ -34,15 +34,17 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 
     private ProductType type;
 
+    @ApiModelProperty( "The versions of this product" )
     @Valid
     private List<UrlEntityDTO> productVersion;
 
-    @ApiModelProperty("URL where events of syndicated applications are dispatched")
+    @ApiModelProperty( "URL where events of syndicated applications are dispatched" )
     private String syndicatedEndpoint;
 
     @ApiModelProperty( "Base URL for this product's API" )
     private String apiUrl;
 
+    @ApiModelProperty( "The files linked to this product" )
     @Valid
     private List<UrlEntityDTO> files;
 
@@ -50,16 +52,18 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @Deprecated
     private Integer trialLengthDays;
 
+    @ApiModelProperty( "Short description of this product" )
     @Size( max = 4000, message = INVALID_SIZE )
     private String shortDescription;
 
+    @ApiModelProperty( "Long description of this product" )
     @Size( max = 8192, message = INVALID_SIZE )
     private String longDescription;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "Average rating received for this product", readOnly = true )
     private BigDecimal averageRating;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "Number of ratings received for this product", readOnly = true )
     private Long numberOfRatings;
 
     @ApiModelProperty( hidden = true )
@@ -72,61 +76,70 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Instructions shown to the customer that buys a subscription" )
     private String endUserInstructions;
 
+    @ApiModelProperty( "Terms of service" )
     @Size( max = 65536, message = INVALID_SIZE )
     private String termsOfService;
 
+    @ApiModelProperty( "Privacy policy" )
     @Size( max = 65536, message = INVALID_SIZE )
     private String privacy;
 
+    @ApiModelProperty( "Service level agreement" )
     @Size( max = 65536, message = INVALID_SIZE )
     private String serviceLevelAgreement;
 
+    @ApiModelProperty( "Tags associated to this product" )
     private Set<ProductTagDTO> tags;
 
+    @ApiModelProperty( "Application metrics associated to this product" )
     @Valid
     private List<UrlEntityDTO> metrics;
 
+    @ApiModelProperty( "Cloud providers associated to this product" )
     @Valid
     private List<UrlEntityDTO> cloudProviders;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If this product is an API", readOnly = true )
     @JsonProperty( "isApi" )
     private Boolean api;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If this product is a bundle of other products", readOnly = true )
     @JsonProperty( "isBundle" )
     private Boolean bundle;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If this is a deployable product", readOnly = true )
     @JsonProperty( "isManaged" )
     private Boolean managed;
 
-    @ApiModelProperty( value = "Is a CSP importer product", readOnly = true )
+    @ApiModelProperty( value = "If this product is imported from CSP", readOnly = true )
     @JsonProperty( "isCsp" )
     private Boolean csp;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If this product is a service", readOnly = true )
     @JsonProperty( "isService" )
     private Boolean service;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If this product is syndicated", readOnly = true )
     @JsonProperty( "isSyndicated" )
     private Boolean syndicated;
 
+    @ApiModelProperty( "HTTPS certificate for this product's deployments" )
     private String certificate;
 
+    @ApiModelProperty( "HTTPS certificate private key" )
     private String privateKey;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "If HTTPS certificate and private key have been uploaded", readOnly = true )
     private boolean keyPairPresent;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( value = "Wildcard hostname from provided certificate", readOnly = true )
     private String certificateHostname;
 
     @JsonInclude( JsonInclude.Include.NON_NULL )
     @ApiModelProperty( hidden = true )
     private Set<String> environments;
 
+    @ApiModelProperty( "If this product is in a draft state" )
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
@@ -137,9 +150,11 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Localized product metadata" )
     private Map<String, Object> extraData;
 
+    @ApiModelProperty( "Frequently asked questions" )
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 
+    @ApiModelProperty( "The configuration parameters for this product" )
     @Valid
     private List<ConfigurationParameterDTO> configurationParameters;
 
@@ -148,15 +163,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
 
     private ProductDestination destination = ProductDestination.B2C;
 
+    @ApiModelProperty( "If this product will be displayed in an iframe" )
     private Boolean frameable;
 
+    @ApiModelProperty( "Date of first publishing on the marketplace" )
     private Date published;
 
-    /**
-     * This version will be selected by default in the marketplace
-     */
+     @ApiModelProperty( "This version will be selected by default in the marketplace" )
     private UrlEntityDTO recommendedVersion;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
     private int weight;
 
     @ApiModelProperty( "Whether to silent emails to customer regarding product delivery" )

@@ -1,5 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel( "Type of CSP product" )
 public enum CspProductType
 {
     ARM_TEMPLATE( "arm" ),

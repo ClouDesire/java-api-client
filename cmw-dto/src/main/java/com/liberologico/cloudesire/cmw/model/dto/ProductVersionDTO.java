@@ -24,86 +24,99 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public static final String PUBLISHED_FIELD = "published";
     public static final String SETUP_FEE_FIELD = "setupFee";
 
+    @ApiModelProperty( "Configurations of the virtual machines for this product version" )
     @Valid
     private Set<UrlEntityDTO> virtualMachineConfiguration;
 
     @Valid
     private UrlEntityDTO product;
 
+    @ApiModelProperty( "Unique identifier" )
     private String identifier;
 
-    /**
-     * Suggested bandwidth to be payed in advance, decided by vendor
-     */
+    @ApiModelProperty( "Suggested bandwidth to be payed in advance, decided by vendor" )
     private BigDecimal bandwidthInGB;
 
-    @ApiModelProperty( "Can be null for a catalog-only product plan" )
+    @ApiModelProperty( "Price for this product version, can be null for a catalog-only product plan" )
     private BigDecimal price;
 
+    @ApiModelProperty( "Price set by the vendor" )
     private BigDecimal vendorPrice;
 
+    @ApiModelProperty( "How often to bill the customer, in months" )
     private Integer billingPeriod;
 
+    @ApiModelProperty( "Minimum duration for a subscription, in months" )
     private Integer minimumDuration = 1;
 
     private Trial trial;
 
+    @ApiModelProperty( "If the platform earns a fee for the selling of this version" )
     private boolean cloudesireFeeActivated = true;
 
+    @ApiModelProperty( "If the emission and payment of this version's invoices must be handled by the vendor" )
     private boolean selfBilling = false;
 
+    @ApiModelProperty( "If this version is published on the marketplace" )
     private Boolean published = false;
 
     @Deprecated
     private List<Integer> availableOrderPeriods;
 
+    @ApiModelProperty( "Lifespan of this product version, in hours" )
     private Integer lifespan;
 
+    @ApiModelProperty( "Adds webdav support for this product version deployed instances" )
     private Boolean webdavSupport = false;
 
+    @ApiModelProperty( "Adds a post-configuration status in the deployment procedure" )
     private boolean postConfiguration;
 
+    @ApiModelProperty( "Billing item values for this product version" )
     @Valid
     private List<BillingItemValueDTO> billingItemValues = new ArrayList<>();
 
+    @ApiModelProperty( "A one-time price for the setup of this product" )
     private BigDecimal setupFee;
 
+    @ApiModelProperty( "A one-time price for the setup of this product billed to the vendor" )
     private BigDecimal vendorSetupFee;
 
     private Set<ApplicationFileEnvironmentDTO> editableEnvironment = new HashSet<>();
 
     private String description;
 
+    @ApiModelProperty( "If this product version is in a draft state" )
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
+    @ApiModelProperty( "The configuration parameters for this product version" )
     @Valid
     private List<UrlEntityDTO> configurationParameters;
 
+    @ApiModelProperty( "An optional ID for integration purposes" )
     private String externalId;
 
-    /**
-     * The duration (in days) for a trial of this product version
-     */
+    @ApiModelProperty( "The duration (in days) for a trial of this product version" )
     @Min( value = 1, message = INVALID_MIN )
     private Integer trialLength = 1;
 
+    @ApiModelProperty( "The percentage on every invoice for revenue sharing" )
     private BigDecimal revenueSharingQuota;
 
-    /**
-     * Trials of this version automatically convert to normal
-     */
+    @ApiModelProperty( "Trials of this version automatically convert to normal" )
     private boolean autoRenewable;
 
-    /**
-     * This version will be selected by default in the marketplace
-     */
+    @ApiModelProperty( "This version will be selected by default in the marketplace" )
     private boolean recommended;
 
+    @ApiModelProperty( value = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
     private Map<UrlEntityDTO, BigDecimal> bundle;
 
+    @ApiModelProperty( value = "Metadata for this product version", example = "{\"key\":\"value\"}" )
     private Map<String, Object> metadata;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
     private int weight;
 
     private CouponConfiguration couponConfiguration;
