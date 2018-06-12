@@ -26,6 +26,9 @@ public interface OrderApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @GET( "order" )
+    Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "order" )
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
             @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
 
