@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
@@ -13,6 +14,7 @@ public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
 
     @NotEmpty
     @Size( max = 255 )
+    @ApiModelProperty( "A descriptive name of the resource" )
     private String name;
 
     public NamedEntityDTO()

@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
+import io.swagger.annotations.ApiModel;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_SIZE;
 
+@ApiModel( "A parameter that the user can fill for each subscription" )
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
     @Size( max = 250, message = INVALID_SIZE )

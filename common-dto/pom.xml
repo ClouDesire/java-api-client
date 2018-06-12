@@ -21,6 +21,11 @@
 			<version>3.2.1</version>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.14</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
