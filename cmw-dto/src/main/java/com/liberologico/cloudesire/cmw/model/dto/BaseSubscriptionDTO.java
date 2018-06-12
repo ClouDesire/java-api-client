@@ -19,10 +19,10 @@ import java.util.Set;
 
 public abstract class BaseSubscriptionDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "When the first billing period is started, after the successful provisioning" )
+    @ApiModelProperty( value = "When the first billing period is started, after the successful provisioning", readOnly = true )
     private Date startDate;
 
-    @ApiModelProperty( "When the subscription expire, if not renewed" )
+    @ApiModelProperty( value = "When the subscription expire, if not renewed", readOnly = true )
     private Date endDate;
 
     @ApiModelProperty( "Current status of the subscription" )
@@ -35,7 +35,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> deploymentStatusStory = new LinkedList<>();
 
-    @ApiModelProperty( "The list of status updates for the subscription" )
+    @ApiModelProperty( value = "The list of status updates for the subscription", readOnly = true )
     private List<DeploymentStatusDTO> deploymentLog;
 
     @Valid
@@ -44,16 +44,16 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> invoices = new LinkedList<>();
 
-    @ApiModelProperty( "The duration in months of the billing period" )
-    private Integer billingPeriod; // Months
+    @ApiModelProperty( value = "The duration in months of the billing period", readOnly = true )
+    private Integer billingPeriod;
 
-    @ApiModelProperty( "When the next invoice will be emitted" )
+    @ApiModelProperty( value = "When the next invoice will be emitted", readOnly = true )
     private Date nextInvoice;
 
-    @ApiModelProperty( "When the last invoice has been emitted" )
+    @ApiModelProperty( value = "When the last invoice has been emitted", readOnly = true )
     private Date lastInvoice;
 
-    @ApiModelProperty( "The type of this subscription (NORMAL, TRIAL, SANDBOX)" )
+    @ApiModelProperty( value = "The type of this subscription (NORMAL, TRIAL, SANDBOX)", readOnly = true )
     private String type;
 
     @Deprecated
@@ -73,13 +73,13 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO buyer;
 
-    @ApiModelProperty( "When the subscription has been created" )
+    @ApiModelProperty( value = "When the subscription has been created", readOnly = true )
     private Date createdAt;
 
-    @ApiModelProperty( "When the subscription has been modified" )
+    @ApiModelProperty( value = "When the subscription has been modified", readOnly = true )
     private Date updatedAt;
 
-    @ApiModelProperty( "How many bandwidth in GB is available for the subscritpion" )
+    @ApiModelProperty( value = "How many bandwidth in GB is available for the subscritpion", readOnly = true )
     private BigInteger bandwidthInGB;
 
     private Set<ActionDTO> availableOperations = null;
@@ -87,7 +87,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( "If the subscription automatically renew before expiring or not" )
     private boolean autoRenew;
 
-    @ApiModelProperty( "Historical serialized data of the subscription" )
+    @ApiModelProperty( value = "Historical serialized data of the subscription", readOnly = true )
     private String productBillingInfo;
 
     private List<RecurringCostLineDTO> recurringCosts = new ArrayList<>();
@@ -110,8 +110,8 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     {
         return new UrlEntityDTO( getSelf() + "/metadata" );
     }
-    
-    @ApiModelProperty( "if every emitted invoice has been paid" )
+
+    @ApiModelProperty( value = "If every emitted invoice has been paid", readOnly = true )
     private boolean paid;
 
     // region Auto-generated code
