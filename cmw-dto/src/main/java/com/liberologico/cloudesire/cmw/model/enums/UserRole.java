@@ -1,10 +1,11 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
+import io.swagger.annotations.ApiModel;
+
 /**
- * Defines user roles across the applications.
- *
  * Roles are sorted by increasing level of authorization.
  */
+@ApiModel( "Defines user roles across the platform" )
 public enum UserRole
 {
     ROLE_ANONYMOUS,

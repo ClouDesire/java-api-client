@@ -7,6 +7,7 @@ import com.liberologico.cloudesire.cmw.model.enums.UserGroup;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
 import com.liberologico.cloudesire.common.Regexp;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -19,25 +20,39 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-public class MyUserDTO extends NamedEntityDTO
+@ApiModel( "An user recognized by the platform that can perform actions" )
+public class MyUserDTO extends BaseEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
 
     @Pattern( regexp = USERNAME_REGEXP, message = ConstraintKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
+    @ApiModelProperty( "Given Name" )
     @NotEmpty
+    @Size( max = 255 )
+    private String name;
+
+    @ApiModelProperty( "Family Name" )
+    @NotEmpty
+    @Size( max = 255 )
     private String surname;
 
+    @ApiModelProperty( value = "Concatenation of name and surname", readOnly = true )
     private String fullName;
 
+    @ApiModelProperty( "Plain-text password, used only when setting a new password" )
     private String password;
 
+    @ApiModelProperty( value = "The hashed password, visible only to privileged accounts", readOnly = true )
     private String passwordHash;
 
+    @ApiModelProperty( "The preferred user language" )
     @NotNull
+    @Size( max = 2 )
     private String language = "en";
 
+    @ApiModelProperty( "User email address to receive platform notifications" )
     @NotEmpty
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String email;
@@ -45,14 +60,17 @@ public class MyUserDTO extends NamedEntityDTO
     private String phoneNumber;
 
     @Valid
+    @ApiModelProperty( "Company of the user, if userRole is ROLE_VENDOR" )
     private UrlEntityDTO company;
 
-    @ApiModelProperty( hidden = true )
+    @ApiModelProperty( "Company of the user, if userRole is ROLE_USER" )
     @Valid
     private UrlEntityDTO userCompany;
 
+    @ApiModelProperty( "Billing address of the user" )
     private AddressDTO address;
 
+    @ApiModelProperty( "Secondary address of the user" )
     private AddressDTO homeAddress;
 
     @NotNull
@@ -63,70 +81,97 @@ public class MyUserDTO extends NamedEntityDTO
     /**
      * These are used to populate company when creating a ROLE_VENDOR
      **/
+    @ApiModelProperty( "Write-only field to specify a company name when creating a user with userRole ROLE_VENDOR" )
     private String companyName;
 
+    @ApiModelProperty( "Write-only field to specify a company tax code when creating a user with userRole ROLE_VENDOR" )
     private String companyTaxCode;
 
+    @ApiModelProperty( "If the user can login or not" )
     private Boolean enabled;
 
+    @ApiModelProperty( "If the user has a confirmed email address" )
     private Boolean activated;
 
+    @ApiModelProperty( value = "If the user profile can be updated or is synchronized from an external system", readOnly = true )
     private boolean readOnly = false;
 
-    @ApiModelProperty( "User does not wants to be tracked" )
+    @ApiModelProperty( "If the user does not wants to be tracked" )
     private boolean doNotTrack;
 
+    @ApiModelProperty( "If the user has accepted terms and conditions" )
     private Boolean acceptedTerms;
 
+    @ApiModelProperty( value = "The name of the environment this user belongs to", readOnly = true )
     private String environment;
 
+    @ApiModelProperty( "When the user has confirmed successfully his email address" )
     private Date activationDate;
 
+    @ApiModelProperty( "When the user has created his account" )
     private Date creationDate;
 
+    @ApiModelProperty( value = "An externalId if the user is synchronized from an external system", readOnly = true )
     private String externalId;
 
+    @ApiModelProperty( value = "The account id of the user when using the Keycloak SSO integration", readOnly = true )
     private String keycloakToken;
 
+    @ApiModelProperty( "If the current user is authenticated via Keycloak SSO integration" )
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean keycloakAuthenticated;
 
+    @ApiModelProperty( "Fiscal code of a private customer, used only when userRole is ROLE_USER" )
     private String fiscalCode;
 
+    @ApiModelProperty( "IBAN of the user, to receive manually executed refunds" )
     @Size( max = 34 )
     private String iban;
 
+    @ApiModelProperty( value = "If the user has a valid payment method available", readOnly = true )
     private boolean paymentDataSaved;
 
-    /**
-     * Auto generated from language and address.countryCode
-     */
+    @ApiModelProperty( value = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
     private String culture;
 
+    @ApiModelProperty( "The reference number of a VAT Exemption document valid under Italian laws" )
     private String vatExemptionDeclarationNumber;
+
+    @ApiModelProperty( "The declaration date of a VAT Exemption document valid under Italian laws" )
     private Date vatExemptionDeclarationDate;
+
+    @ApiModelProperty( "The internal protocol number of a VAT Exemption document valid under Italian laws" )
     private String vatExemptionInternalProtocolNumber;
 
+    @ApiModelProperty( "If the user has a password set" )
     private boolean passwordAlreadySet;
 
+    @ApiModelProperty( "If the user want to receive email notifications generated by the platform" )
     private boolean subscribedToNotificationEmails = true;
 
+    @ApiModelProperty( "When creating a new user, if a welcome email should be sent" )
     private Boolean sendActivationEmail;
 
+    @ApiModelProperty( value = "If the user has been deleted", readOnly = true )
     private boolean deleted;
 
+    @ApiModelProperty( hidden = true )
     private String vendorNotes;
 
+    @ApiModelProperty( "Birthday date of the user" )
     @JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
     private Date birthday;
 
+    @ApiModelProperty( "Where the user is born" )
     private String birthPlace;
 
+    @ApiModelProperty( value = "Gender of the user", example = "Female" )
     private String gender;
 
     private IdentificationDocumentDTO document;
 
     @Valid
+    @ApiModelProperty( "The risk profile of the user" )
     private UrlEntityDTO riskProfile;
 
     @ApiModelProperty( value = "What roles can this user impersonate", readOnly = true )
@@ -145,6 +190,23 @@ public class MyUserDTO extends NamedEntityDTO
         return this.entityToken;
     }
 
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        MyUserDTO myUserDTO = (MyUserDTO) o;
+        return Objects.equals( userName, myUserDTO.userName ) && Objects.equals( email, myUserDTO.email ) && Objects
+                .equals( userRole, myUserDTO.userRole );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), userName, email, userRole );
+    }
+
     @JsonIgnore
     public String getTaxCountryCode()
     {
@@ -157,11 +219,6 @@ public class MyUserDTO extends NamedEntityDTO
         return userRole;
     }
 
-    public void setUserRole( UserRole userRole )
-    {
-        this.userRole = userRole;
-    }
-
     /**
      * @deprecated use {@link #setUserRole(UserRole)}
      */
@@ -169,6 +226,11 @@ public class MyUserDTO extends NamedEntityDTO
     public void setUserRole( @NotNull String userRole )
     {
         this.userRole = UserRole.valueOf( userRole );
+    }
+
+    public void setUserRole( UserRole userRole )
+    {
+        this.userRole = userRole;
     }
 
     public Set<UserGroup> getGroups()
@@ -367,6 +429,16 @@ public class MyUserDTO extends NamedEntityDTO
     public void setCompanyName( String companyName )
     {
         this.companyName = companyName;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
     }
 
     public String getSurname()
@@ -664,22 +736,4 @@ public class MyUserDTO extends NamedEntityDTO
     {
         return "MyUserDTO{" + "userName='" + userName + '\'' + ", userRole='" + userRole + '\'' + '}';
     }
-
-    @Override
-    public boolean equals( Object o )
-    {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-        if ( !super.equals( o ) ) return false;
-        MyUserDTO myUserDTO = (MyUserDTO) o;
-        return Objects.equals( userName, myUserDTO.userName ) && Objects.equals( email, myUserDTO.email ) && Objects
-                .equals( userRole, myUserDTO.userRole );
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash( super.hashCode(), userName, email, userRole );
-    }
-
 }

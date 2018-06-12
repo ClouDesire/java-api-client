@@ -1,10 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
-/**
- * User groups
- *
- * A generic way of applying labels and permissions to more than one user.
- */
+import io.swagger.annotations.ApiModel;
+
+@ApiModel( "A generic way of applying labels and permissions to more than one user." )
 public enum UserGroup
 {
     MANAGEMENT,
