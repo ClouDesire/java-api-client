@@ -11,13 +11,13 @@ public class ActionUrlDTO implements Serializable
 {
     private static final long serialVersionUID = 5518923410438917060L;
 
-    @ApiModelProperty( "The HTTP URL to execute the action" )
+    @ApiModelProperty( value = "The HTTP URL to execute the action", readOnly = true )
     private String url;
 
-    @ApiModelProperty( "The HTTP method to execute the action" )
+    @ApiModelProperty( value = "The HTTP method to execute the action", readOnly = true )
     private HttpMethod method;
 
-    @ApiModelProperty( value = "The name of the resource", example = "Subscription" )
+    @ApiModelProperty( value = "The name of the resource", example = "Subscription", readOnly = true )
     private String resourceType;
 
     // region Auto-generated code

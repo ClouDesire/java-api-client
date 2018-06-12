@@ -53,7 +53,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "When the last invoice has been emitted", readOnly = true )
     private Date lastInvoice;
 
-    @ApiModelProperty( value = "The type of this subscription (NORMAL, TRIAL, SANDBOX)", readOnly = true )
+    @ApiModelProperty( value = "The type of this subscription", readOnly = true, allowableValues = "NORMAL, TRIAL, SANDBOX" )
     private String type;
 
     @Deprecated
