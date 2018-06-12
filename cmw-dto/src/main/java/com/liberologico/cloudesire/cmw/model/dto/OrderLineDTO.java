@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.cmw.model.enums.LineType;
 import com.liberologico.cloudesire.cmw.model.interfaces.Line;
 import com.liberologico.cloudesire.common.MathConfiguration;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-// Changes here must be reflected to CsvConverterImpl
+@ApiModel( "A billed unit" )
 public class OrderLineDTO implements Line
 {
     @NotNull
