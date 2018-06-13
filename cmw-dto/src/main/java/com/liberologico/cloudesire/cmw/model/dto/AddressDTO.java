@@ -124,22 +124,16 @@ public class AddressDTO extends BaseEntityDTO implements Serializable
     @Override
     public String toString()
     {
-        final StringBuilder sb = new StringBuilder( "Address {" );
-        sb.append( "country='" ).append( country ).append( '\'' );
-        sb.append( ", city='" ).append( city ).append( '\'' );
-        sb.append( ", address='" ).append( address ).append( '\'' );
-        sb.append( ", zipCode='" ).append( zipCode ).append( '\'' );
-        sb.append( ", state='" ).append( state ).append( '\'' );
-        sb.append( '}' );
-        return sb.toString();
+        return "Address {" + "country='" + country + '\'' + ", city='" + city + '\'' + ", address='" + address + '\''
+                + ", zipCode='" + zipCode + '\'' + ", state='" + state + '\'' + ", countryCode='" + countryCode + '\''
+                + '}';
     }
 
     @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( !( o instanceof AddressDTO ) ) return false;
-        if ( !super.equals( o ) ) return false;
+        if ( o == null || getClass() != o.getClass() ) return false;
         AddressDTO that = (AddressDTO) o;
         return Objects.equals( country, that.country ) && Objects.equals( city, that.city ) && Objects
                 .equals( address, that.address ) && Objects.equals( zipCode, that.zipCode ) && Objects
@@ -150,6 +144,6 @@ public class AddressDTO extends BaseEntityDTO implements Serializable
     public int hashCode()
     {
 
-        return Objects.hash( super.hashCode(), country, city, address, zipCode, state, countryCode );
+        return Objects.hash( country, city, address, zipCode, state, countryCode );
     }
 }
