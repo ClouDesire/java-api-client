@@ -139,17 +139,16 @@ public class AddressDTO extends BaseEntityDTO implements Serializable
     {
         if ( this == o ) return true;
         if ( !( o instanceof AddressDTO ) ) return false;
-        if ( !super.equals( o ) ) return false;
         AddressDTO that = (AddressDTO) o;
         return Objects.equals( country, that.country ) && Objects.equals( city, that.city ) && Objects
                 .equals( address, that.address ) && Objects.equals( zipCode, that.zipCode ) && Objects
-                .equals( state, that.state ) && Objects.equals( countryCode, that.countryCode );
+                .equals( state, that.state );
     }
 
     @Override
     public int hashCode()
     {
 
-        return Objects.hash( super.hashCode(), country, city, address, zipCode, state, countryCode );
+        return Objects.hash( country, city, address, zipCode, state );
     }
 }

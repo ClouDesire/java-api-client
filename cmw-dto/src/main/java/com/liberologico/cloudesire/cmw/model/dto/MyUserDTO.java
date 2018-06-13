@@ -190,23 +190,6 @@ public class MyUserDTO extends BaseEntityDTO
         return this.entityToken;
     }
 
-    @Override
-    public boolean equals( Object o )
-    {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-        if ( !super.equals( o ) ) return false;
-        MyUserDTO myUserDTO = (MyUserDTO) o;
-        return Objects.equals( userName, myUserDTO.userName ) && Objects.equals( email, myUserDTO.email ) && Objects
-                .equals( userRole, myUserDTO.userRole );
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash( super.hashCode(), userName, email, userRole );
-    }
-
     @JsonIgnore
     public String getTaxCountryCode()
     {
@@ -735,5 +718,22 @@ public class MyUserDTO extends BaseEntityDTO
     public String toString()
     {
         return "MyUserDTO{" + "userName='" + userName + '\'' + ", userRole='" + userRole + '\'' + '}';
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( !( o instanceof MyUserDTO ) ) return false;
+        if ( !super.equals( o ) ) return false;
+        MyUserDTO myUserDTO = (MyUserDTO) o;
+        return Objects.equals( userName, myUserDTO.userName ) && Objects.equals( email, myUserDTO.email )
+                && userRole == myUserDTO.userRole;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), userName, email, userRole );
     }
 }
