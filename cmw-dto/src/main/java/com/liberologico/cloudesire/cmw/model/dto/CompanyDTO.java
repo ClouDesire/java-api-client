@@ -1,8 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.liberologico.cloudesire.common.Regexp;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
 
@@ -12,51 +11,64 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+@ApiModel( "Vendor company" )
 public class CompanyDTO extends MinimalCompanyDTO
 {
+    @ApiModelProperty( "Receives event notifications targeted to all the company products" )
     private String syndicationEndpoint;
 
+    @ApiModelProperty( "Repertorio economico amministrativo - corporate data for Italian companies" )
     private String rea;
 
+    @ApiModelProperty( "Registro imprese - corporate data for Italian companies" )
     private String ri;
 
-    @ApiModelProperty(value = "Which type of corporate form")
+    @ApiModelProperty( "Type of corporate form" )
     @Size( max = 255 )
     private String form;
 
+    @ApiModelProperty( "Preferred language for the company" )
     private String language = "EN";
 
+    @ApiModelProperty( "Email address that will receive technical notifications" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
 
+    @ApiModelProperty( hidden = true )
     private Boolean enableProviderCredential;
 
     @ApiModelProperty( hidden = true )
     private Integer maxConcurrentInstance;
 
+    @ApiModelProperty( "SSH RSA public key" )
     private String publicKey;
 
     @ApiModelProperty( hidden = true )
     private Integer maxPublishedProducts;
 
+    @ApiModelProperty( value = "Counts the published products on the marketplace for the company", readOnly = true )
     private Integer currentPublishedProducts = 1;
 
     @ApiModelProperty( hidden = true )
     private Boolean trusted;
 
-    @JsonInclude ( Include.NON_NULL )
+    @ApiModelProperty( "An externalId if the company is synchronized from an external system" )
     private String externalId;
 
+    @ApiModelProperty( hidden = true )
     private Date lastInboundInvoice;
 
+    @ApiModelProperty( "Website of the company" )
     @Size( max = 1024 )
     private String companyUrl;
 
+    @ApiModelProperty( "Shared secret used to sign events" )
     private String notificationSecretToken;
 
     @Valid
     private BankAccountDataDTO bankAccountData;
 
+    @ApiModelProperty( "Vendors of the company" )
     private List<UrlEntityDTO> vendors;
 
     @ApiModelProperty( hidden = true )
