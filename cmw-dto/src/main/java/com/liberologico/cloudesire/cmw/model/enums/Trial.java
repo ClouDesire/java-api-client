@@ -1,7 +1,9 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel( "Trial configuration for a product version" )
 public enum Trial
 {
     @ApiModelProperty( "The trial is not permitted" )

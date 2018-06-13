@@ -1,14 +1,21 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 import java.util.Map;
 
+@ApiModel( "Logs an edit of a product" )
 public class ProductRegisterEntryDTO extends DTO
 {
+    @ApiModelProperty( "When the edit occurred" )
     private Date date;
 
+    @ApiModelProperty( "Username of the editor" )
     private String editor;
 
+    @ApiModelProperty( "Edited data" )
     private Map<String, Map<String, String>> entry;
 
     //region Auto-generated code

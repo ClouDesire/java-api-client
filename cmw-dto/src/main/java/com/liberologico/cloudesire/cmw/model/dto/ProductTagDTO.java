@@ -1,11 +1,17 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
 
+@ApiModel( "A label to tag a product" )
 public class ProductTagDTO extends DTO
 {
+    @ApiModelProperty( "Tag description" )
     private String tag;
 
+    @ApiModelProperty( "Tag type" )
     private String type;
 
     //region Auto-generated code

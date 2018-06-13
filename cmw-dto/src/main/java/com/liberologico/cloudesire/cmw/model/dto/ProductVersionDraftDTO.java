@@ -1,12 +1,18 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import java.util.Objects;
 
+@ApiModel( "A draft of a product version description" )
 public class ProductVersionDraftDTO implements ProductVersionL10nDTO
 {
     @Valid
     private UrlEntityDTO original;
+
+    @ApiModelProperty( "Description of the product version" )
     private String description;
 
     @Override
