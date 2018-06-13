@@ -40,7 +40,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Price for the product version, can be null for a catalog-only product plan" )
     private BigDecimal price;
 
-    @ApiModelProperty( "Price set by the vendor" )
+    @ApiModelProperty( "Price set by the vendor. Visible to admin only" )
     private BigDecimal vendorPrice;
 
     @ApiModelProperty( "How often to bill the customer, in months" )
@@ -60,6 +60,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "If the version is published on the marketplace" )
     private Boolean published = false;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private List<Integer> availableOrderPeriods;
 
@@ -79,7 +80,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "A one-time price for the setup of the product" )
     private BigDecimal setupFee;
 
-    @ApiModelProperty( "A one-time price for the setup of the product billed to the vendor" )
+    @ApiModelProperty( "A one-time price for the setup of the product billed to the vendor. Visible to admin only" )
     private BigDecimal vendorSetupFee;
 
     private Set<ApplicationFileEnvironmentDTO> editableEnvironment = new HashSet<>();
