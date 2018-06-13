@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.common.MathConfiguration;
 import com.liberologico.cloudesire.common.MathUtils;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -13,50 +14,59 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+@ApiModel( "Budget estimate" )
 public class BudgetDTO extends BaseEntityDTO
 {
+    @ApiModelProperty( value = "Country code", readOnly = true )
     @NotNull
     private String nation = "IT";
 
+    @ApiModelProperty( value = "URL of the chosen cloud provider", readOnly = true )
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
 
+    @ApiModelProperty( value = "URL of the chosen product version", readOnly = true )
     @NotNull
     @Valid
     private UrlEntityDTO configuration;
 
-    @ApiModelProperty( "Trial duration in days" )
+    @ApiModelProperty( value = "Trial duration in days", readOnly = true )
     private Integer trialLength;
 
+    @ApiModelProperty( value = "Billable entries for the estimate", readOnly = true )
     private List<OrderLineDTO> lines = new LinkedList<>();
 
+    @ApiModelProperty( value = "If this invoice is subject to the Italian electronic document tax", readOnly = true )
     private boolean stampDuty = false;
 
+    @ApiModelProperty( value = "Currency of the prices for the estimate", readOnly = true )
     private String currency;
 
+    @ApiModelProperty( value = "Value added tax, in percentage", readOnly = true )
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private BigDecimal VAT;
 
+    @ApiModelProperty( value = "Discount coupon applied on the estimate", readOnly = true )
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private String couponStatus;
 
-    @ApiModelProperty( "Recurring monthly price" )
+    @ApiModelProperty( value = "Recurring monthly price", readOnly = true )
     private BigDecimal priceExcludingVAT;
 
-    @ApiModelProperty( "Price for the first month, including potential setup fee" )
+    @ApiModelProperty( value = "Price for the first month, including potential setup fee", readOnly = true )
     private BigDecimal firstPriceExcludingVAT;
 
-    @ApiModelProperty( "True if this will generate a self-billed invoice" )
+    @ApiModelProperty( value = "True if this will generate a self-billed invoice", readOnly = true )
     private Boolean selfBilled;
 
-    @ApiModelProperty( "Number of months of a billing cycle for this order" )
+    @ApiModelProperty( value = "Number of months of a billing cycle for this order", readOnly = true )
     private Integer billingPeriod;
 
-    @ApiModelProperty( "Minimum duration of this order in months" )
+    @ApiModelProperty( value = "Minimum duration of this order in months", readOnly = true )
     private Integer minimumDuration;
 
-    @ApiModelProperty( "Duration of this order in hours" )
+    @ApiModelProperty( value = "Duration of this order in hours", readOnly = true )
     private Integer lifespan;
 
     @JsonProperty

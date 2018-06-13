@@ -12,8 +12,10 @@ import java.util.Objects;
 
 public abstract class MinimalCompanyDTO extends TaxCodeDTO
 {
+    @ApiModelProperty( "Description of the company, displayed on the marketplace" )
     private String companyDescription;
 
+    @ApiModelProperty( "Logo of the company, displayed on the marketplace" )
     @Valid
     private UrlEntityDTO logoFile;
 
@@ -25,6 +27,7 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Valid
     private AddressDTO billingAddress;
 
+    @ApiModelProperty( "Tax code" )
     @Size( max = 255 )
     private String taxCode;
 
@@ -32,8 +35,10 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Size( max = 255 )
     private String slug;
 
+    @ApiModelProperty( "Phone number" )
     private String phoneNumber;
 
+    @ApiModelProperty( "Email address" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @NotNull
     private String emailAddress;

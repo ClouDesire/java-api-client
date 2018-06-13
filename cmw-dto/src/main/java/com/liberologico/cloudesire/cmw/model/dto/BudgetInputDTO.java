@@ -1,30 +1,41 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
+@ApiModel( "Budget estimate request" )
 public class BudgetInputDTO
 {
     @NotNull
     private OrderType type = OrderType.NORMAL;
 
+    @ApiModelProperty( "The ID of the chosen product version" )
     @NotNull
     private Integer productVersionId;
 
+    @ApiModelProperty( "The ID of the chosen cloud provider" )
     private Integer providerId;
 
+    @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
+    @ApiModelProperty( "For how many billing periods to request an estimate" )
     private int billingPeriods = 1;
 
+    @ApiModelProperty( "The ID of an existing subscription" )
     private Integer subscriptionId;
 
+    @ApiModelProperty( "The coupon code" )
     private String hashCoupon;
 
+    @ApiModelProperty( value = "The chosen values for the billing items", example = "{\"billingItem/123\":10}")
     private Map<UrlEntityDTO, Integer> billingItems;
 
+    @ApiModelProperty( "The slug of a reseller company" )
     private String reseller;
 
     public OrderType getType()

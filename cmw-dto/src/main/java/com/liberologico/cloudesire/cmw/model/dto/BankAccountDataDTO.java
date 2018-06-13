@@ -1,10 +1,13 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
+@ApiModel( "Bank account data of a company" )
 public class BankAccountDataDTO implements Serializable
 {
     @Size( max = 125 )
@@ -169,18 +172,11 @@ public class BankAccountDataDTO implements Serializable
     @Override
     public String toString()
     {
-        final StringBuilder sb = new StringBuilder( "BankAccountData {" );
-        sb.append( "iban='" ).append( iban ).append( '\'' );
-        sb.append( ", bankName='" ).append( bankName ).append( '\'' );
-        sb.append( ", agency='" ).append( agency ).append( '\'' );
-        sb.append( ", owner=" ).append( owner );
-        sb.append( ", delegateName='" ).append( delegateName ).append( '\'' );
-        sb.append( ", delegateSurname='" ).append( delegateSurname ).append( '\'' );
-        sb.append( ", delegateBirthDay=" ).append( delegateBirthDay );
-        sb.append( ", delegateBirthPlace='" ).append( delegateBirthPlace ).append( '\'' );
-        sb.append( ", delegateGender='" ).append( delegateGender ).append( '\'' );
-        sb.append( ", delegateFiscalCode='" ).append( delegateFiscalCode ).append( '\'' );
-        sb.append( '}' );
-        return sb.toString();
+        return "BankAccountDataDTO{" + "iban='" + iban + '\'' + ", bankName='" + bankName + '\'' + ", agency='" + agency
+                + '\'' + ", owner=" + owner + ", delegateName='" + delegateName + '\'' + ", delegateSurname='"
+                + delegateSurname + '\'' + ", delegateBirthDay=" + delegateBirthDay + ", delegateBirthPlace='"
+                + delegateBirthPlace + '\'' + ", delegateBirthProvince='" + delegateBirthProvince + '\''
+                + ", delegateGender='" + delegateGender + '\'' + ", delegateFiscalCode='" + delegateFiscalCode + '\''
+                + '}';
     }
 }

@@ -1,5 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
@@ -7,35 +10,44 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@ApiModel( "Billing configuration of the ranges for an extra resource" )
 public class BillingItemValueDTO extends BaseEntityDTO
 {
     @NotNull
     @Valid
     private UrlEntityDTO item;
 
+    @ApiModelProperty( "Range start" )
     @Min( 0 )
     @NotNull
     private Integer start;
 
+    @ApiModelProperty( "Range end, null is indefinte" )
     @Min( 1 )
     private Integer end;
 
+    @ApiModelProperty( "Price for the range" )
     @DecimalMin( "0" )
     @NotNull
     private BigDecimal price;
 
+    @ApiModelProperty( "Price set by vendor, visible to admin only" )
     @DecimalMin( "0" )
     private BigDecimal vendorPrice;
 
+    @ApiModelProperty( "Setup fee for the first billing of this range" )
     @DecimalMin( "0" )
     private BigDecimal setup;
 
+    @ApiModelProperty( "Setup fee set by vendor, visible to admin only" )
     @DecimalMin( "0" )
     private BigDecimal vendorSetup;
 
+    @ApiModelProperty( "Recurring cost for every billing period" )
     @DecimalMin( "0" )
     private BigDecimal recurring;
 
+    @ApiModelProperty( "Recurring cost set by vendor, visible to admin only" )
     @DecimalMin( "0" )
     private BigDecimal vendorRecurring;
 

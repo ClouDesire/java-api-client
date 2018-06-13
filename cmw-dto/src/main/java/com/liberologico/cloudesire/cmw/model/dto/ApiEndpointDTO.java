@@ -1,16 +1,21 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.common.enums.HttpMethod;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@ApiModel( "A billed HTTP endpoint" )
 public class ApiEndpointDTO
 {
+    @ApiModelProperty( "The HTTP method" )
     @NotNull
     private HttpMethod method;
 
+    @ApiModelProperty( value = "The endpoint path", example = "/path" )
     @Size( min = 1, max = 2000 )
     private String path;
 

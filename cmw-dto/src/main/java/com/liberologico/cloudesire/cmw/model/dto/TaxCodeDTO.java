@@ -1,11 +1,15 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
 
 public abstract class TaxCodeDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( value = "Validation of tax code for a company", allowableValues = "VALID, NOT_CHECKED, EMPTY, MISMATCH, NOT_FOUND", readOnly = true )
     private String taxValidation;
 
+    @ApiModelProperty( value = "Detailed validation message", readOnly = true )
     private String taxValidationMessage;
 
     public TaxCodeDTO( String name )
