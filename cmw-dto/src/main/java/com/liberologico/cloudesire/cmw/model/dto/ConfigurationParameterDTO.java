@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
@@ -14,21 +15,27 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 @ApiModel( "A parameter that the user can fill for each subscription" )
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( "Identifier for the configuration parameter" )
     @Size( max = 250, message = INVALID_SIZE )
     @Pattern( regexp = "[A-Za-z][A-Za-z0-9_]*", message = ConstraintKeys.ALPHANUMERIC_START_WITH_LETTER )
     private String code;
 
+    @ApiModelProperty( "Extended description" )
     @NotEmpty
     @Size( max = 4096, message = INVALID_SIZE )
     private String description;
 
+    @ApiModelProperty( "Regular expression to validate the parameter value" )
     @RegExp
     private String validation;
 
+    @ApiModelProperty( "Short description to help user compiling the correct value" )
     private String hint;
 
+    @ApiModelProperty( "Whether compiling the parameter is required" )
     private boolean required;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
     private Integer weight;
 
     public ConfigurationParameterDTO( String name, String code, String description )

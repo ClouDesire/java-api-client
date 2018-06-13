@@ -19,7 +19,6 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 public class BillingItemDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Unique identifier of the billing item" )
-    @NotEmpty
     @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ConstraintKeys.ALPHANUMERIC )
     private String identifier;
 
