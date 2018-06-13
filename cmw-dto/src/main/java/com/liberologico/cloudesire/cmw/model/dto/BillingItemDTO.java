@@ -3,6 +3,8 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.liberologico.cloudesire.cmw.model.enums.BillingItemType;
 import com.liberologico.cloudesire.cmw.model.enums.BillingItemValueType;
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -13,15 +15,20 @@ import java.util.Objects;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_SIZE;
 
+@ApiModel( "Definition of the pricing of an extra resource" )
 public class BillingItemDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( "Unique identifier of the billing item" )
+    @NotEmpty
     @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ConstraintKeys.ALPHANUMERIC )
     private String identifier;
 
+    @ApiModelProperty( value = "Descriptive name of a single item", example = "user, license" )
     @NotEmpty
     @Size( max = 255, message = INVALID_SIZE )
     private String unit;
 
+    @ApiModelProperty( "Description of the billing item" )
     @NotEmpty
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
@@ -31,8 +38,10 @@ public class BillingItemDTO extends NamedEntityDTO
 
     private BillingItemValueType valueType;
 
+    @ApiModelProperty( "Percentage of revenues for the platform owner" )
     private BigDecimal cloudesireQuota;
 
+    @ApiModelProperty( "Whether the billing item will be included in every subscription" )
     private boolean required;
 
     private ApiEndpointDTO endpoint;
