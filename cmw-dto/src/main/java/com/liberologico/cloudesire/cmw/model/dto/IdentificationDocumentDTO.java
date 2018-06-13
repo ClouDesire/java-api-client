@@ -1,14 +1,21 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@ApiModel( "An identification document for a user" )
 public class IdentificationDocumentDTO extends DTO implements Serializable
 {
+    @ApiModelProperty( "The identification document type" )
     private String type;
 
+    @ApiModelProperty( "The number of the identification document" )
     private String number;
 
+    @ApiModelProperty( "Who issued the identification document" )
     private String issuer;
 
     public IdentificationDocumentDTO( String type, String number, String issuer )

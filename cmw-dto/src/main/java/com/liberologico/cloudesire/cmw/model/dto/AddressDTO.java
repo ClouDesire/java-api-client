@@ -1,28 +1,38 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 
+@ApiModel( "A physical address" )
 public class AddressDTO extends BaseEntityDTO implements Serializable
 {
     @Size( max = 255 )
+    @ApiModelProperty( "Country name" )
     private String country;
 
     @Size( max = 255 )
+    @ApiModelProperty( "City name" )
     private String city;
 
     @Size( max = 255 )
+    @ApiModelProperty( "Street name, with number" )
     private String address;
 
     @Size( max = 255 )
+    @ApiModelProperty( "Local postal code" )
     private String zipCode;
 
     @Size( min = 2, max = 2 )
+    @ApiModelProperty( "Province/State code" )
     private String state;
 
     @Size( max = 2 )
+    @ApiModelProperty( "Country code" )
     private String countryCode;
 
     public AddressDTO()
@@ -112,36 +122,6 @@ public class AddressDTO extends BaseEntityDTO implements Serializable
     }
 
     @Override
-    public boolean equals( Object o )
-    {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-
-        AddressDTO that = (AddressDTO) o;
-
-        if ( address != null ? !address.equals( that.address ) : that.address != null ) return false;
-        if ( city != null ? !city.equals( that.city ) : that.city != null ) return false;
-        if ( country != null ? !country.equals( that.country ) : that.country != null ) return false;
-        if ( countryCode != null ? !countryCode.equals( that.countryCode ) : that.countryCode != null ) return false;
-        if ( zipCode != null ? !zipCode.equals( that.zipCode ) : that.zipCode != null ) return false;
-        if ( state != null ? !state.equals( that.state ) : that.state != null ) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result = country != null ? country.hashCode() : 0;
-        result = 31 * result + ( city != null ? city.hashCode() : 0 );
-        result = 31 * result + ( address != null ? address.hashCode() : 0 );
-        result = 31 * result + ( zipCode != null ? zipCode.hashCode() : 0 );
-        result = 31 * result + ( state != null ? state.hashCode() : 0 );
-        result = 31 * result + ( countryCode != null ? countryCode.hashCode() : 0 );
-        return result;
-    }
-
-    @Override
     public String toString()
     {
         final StringBuilder sb = new StringBuilder( "Address {" );
@@ -152,5 +132,24 @@ public class AddressDTO extends BaseEntityDTO implements Serializable
         sb.append( ", state='" ).append( state ).append( '\'' );
         sb.append( '}' );
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( !( o instanceof AddressDTO ) ) return false;
+        if ( !super.equals( o ) ) return false;
+        AddressDTO that = (AddressDTO) o;
+        return Objects.equals( country, that.country ) && Objects.equals( city, that.city ) && Objects
+                .equals( address, that.address ) && Objects.equals( zipCode, that.zipCode ) && Objects
+                .equals( state, that.state ) && Objects.equals( countryCode, that.countryCode );
+    }
+
+    @Override
+    public int hashCode()
+    {
+
+        return Objects.hash( super.hashCode(), country, city, address, zipCode, state, countryCode );
     }
 }
