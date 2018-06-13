@@ -108,7 +108,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Trials of this version automatically convert to normal" )
     private boolean autoRenewable;
 
-    @ApiModelProperty( "This version will be selected by default in the marketplace" )
+    @ApiModelProperty( "If the product version will be selected by default in the marketplace" )
     private boolean recommended;
 
     @ApiModelProperty( value = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
