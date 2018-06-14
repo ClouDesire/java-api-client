@@ -1,18 +1,24 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+@ApiModel( "Define stack requirements for a vendor ApplicationFile" )
 public class DependencyDTO extends BaseEntityDTO
 {
     @NotNull
+    @ApiModelProperty( "Ordering used when returning a list of dependencies" )
     private Integer priority = 1;
 
     @Valid
     private UrlEntityDTO nodeRole;
 
     @Deprecated
+    @ApiModelProperty( hidden = true )
     private NodeRoleDTO role;
 
     @NotNull

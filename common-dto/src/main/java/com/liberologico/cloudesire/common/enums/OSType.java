@@ -1,36 +1,35 @@
 package com.liberologico.cloudesire.common.enums;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Locale;
 
+@ApiModel( "The operating system version" )
 public enum OSType
 {
-    /**
-     * Other
-     */
+    @ApiModelProperty("Unsupported operating system")
     OTHER(1, "Other", "", "", OsFamily.UNRECOGNIZED),
-    /**
-     * Ubuntu Precise Pangolin 12.04 LTS 64BIT
-     */
+
+    @ApiModelProperty("Ubuntu Precise Pangolin 12.04 LTS 64BIT" )
     UBUNTU_12_04(11, "Ubuntu", "12.04", "ubuntu-precise-12.04-amd64-server", OsFamily.LINUX),
-    /**
-     * Ubuntu Precise Pangolin 14.04 LTS 64BIT
-     */
+
+    @ApiModelProperty( "Ubuntu Precise Pangolin 14.04 LTS 64BIT" )
     UBUNTU_14_04(12, "Ubuntu", "14.04", "ubuntu-trusty-14.04-amd64-server", OsFamily.LINUX),
-    /**
-     * Debian Wheezy 7 64BIT
-     */
+
+    @ApiModelProperty( "Debian 7" )
     DEBIAN_7(13, "Debian", "7", "wheezy-amd64-pvm", OsFamily.LINUX),
-    /**
-     * Microsoft Windows Server 2008 R2
-     */
+
+    @ApiModelProperty("Microsoft Windows Server 2008 R2")
     WINDOWS_SERVER_2008_R2(101, "Windows", "2008", "Server-2008-R2_SP1-English-64Bit-Base", OsFamily.WINDOWS),
-    /**
-     * Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard 
-     */
+
+    @ApiModelProperty( "Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard" )
     WINDOWS_SERVER_2008_R2_SQL_2008_R2(102, "Windows", "2008", "Windows_Server-2008-R2_SP1-English-64Bit-SQL_2008_R2_SP2_Standard", OsFamily.WINDOWS),
 
+    @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
     WINDOWS_SERVER_2012_SQL_2012_SP1(103, "Windows", "2012", "Windows Server 2012 + SQL Server 2012 SP1 Standard", OsFamily.WINDOWS),
 
+    @ApiModelProperty( "Unknown operating system" )
     UNRECOGNIZED(Integer.MAX_VALUE, "UNRECOGNIZED", "", "", OsFamily.UNRECOGNIZED);
 
     public int getCode()
