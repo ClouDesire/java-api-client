@@ -13,7 +13,6 @@ import static com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO.
 @ApiModel( "Mass actions for reseller pricings" )
 public class ResellerPricingPatchDTO extends DTO
 {
-    @ApiModelProperty( "The defined action" )
     @NotNull
     private Action action;
 
@@ -57,6 +56,7 @@ public class ResellerPricingPatchDTO extends DTO
         this.percentage = percentage;
     }
 
+    @ApiModel( "The defined action" )
     public enum Action
     {
         @ApiModelProperty( "Update price and setup of every reseller pricing" )
