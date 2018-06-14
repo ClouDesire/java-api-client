@@ -106,7 +106,7 @@ public class EnvironmentDTO extends DTO
 
     @ApiModelProperty( "Email palette colors" )
     @Valid
-    private EmailPalette mailPalette;
+    private EmailPalette mailPalette = new EmailPalette();
 
     @ApiModelProperty( "Footer for all the emails" )
     @Size( max = 2048 )
@@ -895,20 +895,25 @@ public class EnvironmentDTO extends DTO
     @ApiModel( description = "Email palette attributes" )
     public static class EmailPalette
     {
+        @NotEmpty
         @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
-        private String primaryColor;
+        private String primaryColor = "#0277bd";
 
+        @NotEmpty
         @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
-        private String textOnPrimaryColor;
+        private String textOnPrimaryColor = "#fff";
 
+        @NotEmpty
         @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
-        private String textColor;
+        private String textColor = "#2f3133";
 
+        @NotEmpty
         @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
-        private String textLightColor;
+        private String textLightColor = "#74787e";
 
+        @NotEmpty
         @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
-        private String linkColor;
+        private String linkColor = "#15c";
 
         public String getPrimaryColor()
         {
