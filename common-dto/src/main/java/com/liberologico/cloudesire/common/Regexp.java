@@ -9,6 +9,8 @@ public class Regexp
 
     public static final String A_POINT = "\\.";
 
+    public static final String HEX_COLOR_LOWERCASE = "(^#[0-9a-f]{6}$)|(^#[0-9a-f]{3}$)";
+
     private Regexp()
     {
     }

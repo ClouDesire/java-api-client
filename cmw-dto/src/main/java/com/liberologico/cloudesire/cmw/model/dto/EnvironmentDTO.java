@@ -1,12 +1,12 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.liberologico.cloudesire.cmw.model.constants.RegExp;
 import com.liberologico.cloudesire.cmw.model.enums.CspProductType;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
@@ -896,23 +896,23 @@ public class EnvironmentDTO extends DTO
     public static class EmailPalette
     {
         @NotEmpty
-        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
         private String primaryColor = "#0277bd";
 
         @NotEmpty
-        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
         private String textOnPrimaryColor = "#fff";
 
         @NotEmpty
-        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
         private String textColor = "#2f3133";
 
         @NotEmpty
-        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
         private String textLightColor = "#74787e";
 
         @NotEmpty
-        @Pattern( regexp = RegExp.HEX_COLOR_LOWERCASE )
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
         private String linkColor = "#15c";
 
         public String getPrimaryColor()
