@@ -2,6 +2,8 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.validators.ApplicationFileURL;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -10,35 +12,41 @@ import java.util.Objects;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_SIZE;
 
-/**
- * DTO for File.
- */
+@ApiModel( "A managed file for the marketplace" )
 public class FileDTO extends BaseEntityDTO
 {
-    // Link to the static resource
+    @ApiModelProperty( "Link to the static resource" )
     @ApplicationFileURL
     private String objectUrl;
 
+    @ApiModelProperty( value = "SHA-512 of the uploaded file", readOnly = true )
     private String sha512;
 
+    @ApiModelProperty( "alt property for an image" )
     @Size( max = 125, message = INVALID_SIZE )
     private String alt;
 
+    @ApiModelProperty( "title property for an image" )
     @Size( max = 125, message = INVALID_SIZE )
     private String title;
 
+    @ApiModelProperty( value = "Size of the uploaded file", readOnly = true )
     private Integer size;
 
+    @ApiModelProperty( value = "When the file has been uploaded", readOnly = true )
     private Date loadDate;
 
     @Valid
     private UrlEntityDTO ownerCompany;
 
+    @ApiModelProperty( value = "Original name of the uploaded file", readOnly = true )
     private String originalFilename;
 
+    @ApiModelProperty( "Tag for a ProductFile" )
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     private String tag;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Integer weight;
 
