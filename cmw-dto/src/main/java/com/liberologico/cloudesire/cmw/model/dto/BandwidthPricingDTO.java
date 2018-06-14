@@ -1,20 +1,26 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@ApiModel( "Defines pricing of bandwidth used by a VM" )
 public class BandwidthPricingDTO extends BaseEntityDTO
 {
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
 
+    @ApiModelProperty( "Chosen price" )
     @Min ( 0 )
     @NotNull
     private BigDecimal price;
 
+    @ApiModelProperty( "Bandwidth sizing" )
     @Min ( 0 )
     @NotNull
     private BigDecimal traffic;

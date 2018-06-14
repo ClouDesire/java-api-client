@@ -1,9 +1,13 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+@ApiModel( "Environment variables for an application" )
 public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
 {
     /**
@@ -12,12 +16,15 @@ public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO applicationFile;
 
+    @ApiModelProperty( "Variable name" )
     @NotNull
     private String variable;
 
+    @ApiModelProperty( "Variable value" )
     @NotNull
     private String value;
 
+    @ApiModelProperty( "Whether the value is editable by a customer" )
     private boolean editableByCustomer = false;
 
     public ApplicationFileEnvironmentDTO( String applicationUrl, String variable, String value )

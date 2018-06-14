@@ -1,6 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -13,26 +15,38 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+@ApiModel( "Application package" )
 public class ApplicationFileDTO extends FileDTO implements INamedEntityDTO
 {
+    @ApiModelProperty( "Package version" )
     @NotEmpty
     private String version;
+
+    @ApiModelProperty( "Package name" )
     @NotEmpty
     private String name;
 
+    @ApiModelProperty( "Endpoint patterns for the application" )
     @Valid
     private Set<EndpointPatternDTO> endpointPatterns = new HashSet<>();
+
+    @ApiModelProperty( "Application metrics linked to the application" )
     @Valid
     private List<UrlEntityDTO> applicationMetrics = new ArrayList<>();
+
+    @ApiModelProperty( "Application stack requirements" )
     @Valid
     private List<DependencyDTO> dependencies = new ArrayList<>();
 
+    @ApiModelProperty( "Whether the application is deployable" )
     @NotNull
     private Boolean installable = false;
 
+    @ApiModelProperty( "Product versions linked to the application" )
     @Valid
     private Set<UrlEntityDTO> configurations;
 
+    @ApiModelProperty( "Environment variables for the application" )
     @Valid
     private Set<ApplicationFileEnvironmentDTO> environment = new HashSet<>();
 

@@ -1,5 +1,6 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -8,38 +9,42 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+@ApiModel( "Defines a pricing for a product version and a reseller" )
 public class ResellerPricingDTO extends BaseEntityDTO
 {
     @NotNull
     @Valid
-    @ApiModelProperty( "The version of this product's reselling pricing, editable by the distributor" )
     private UrlEntityDTO productVersion;
 
     @ApiModelProperty( "If the invoices for this resold product are self billed" )
     private boolean selfBilled;
 
     @Valid
-    @ApiModelProperty( "The reseller of this product, editable by the distributor" )
     private UrlEntityDTO reseller;
 
     @Valid
-    @ApiModelProperty( "The distributor of this product, editable by the admin" )
     private UrlEntityDTO distributor;
 
+    @ApiModelProperty( "The price defined by the reseller" )
     @Valid
     private ResellingPriceDTO price;
 
+    @ApiModelProperty( "The setup fee defined by the reseller" )
     @Valid
     private ResellingPriceDTO setup;
 
+    @ApiModelProperty( "Reselling prices for the billing items" )
     @Valid
     private Set<BillingItemResellingPriceDTO> billingItemResellingPrices;
 
+    @ApiModelProperty( "Reselling prices for the cloud pricings" )
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices;
 
+    @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
+    @ApiModelProperty( "Billing item ranges defined by the reseller" )
     @Valid
     private List<BillingItemValueDTO> billingItemValues;
 
