@@ -12,18 +12,15 @@ public class ResellerPricingDTO extends BaseEntityDTO
 {
     @NotNull
     @Valid
-    @ApiModelProperty( "The version of this product's reselling pricing, editable by the distributor" )
     private UrlEntityDTO productVersion;
 
     @ApiModelProperty( "If the invoices for this resold product are self billed" )
     private boolean selfBilled;
 
     @Valid
-    @ApiModelProperty( "The reseller of this product, editable by the distributor" )
     private UrlEntityDTO reseller;
 
     @Valid
-    @ApiModelProperty( "The distributor of this product, editable by the admin" )
     private UrlEntityDTO distributor;
 
     @Valid

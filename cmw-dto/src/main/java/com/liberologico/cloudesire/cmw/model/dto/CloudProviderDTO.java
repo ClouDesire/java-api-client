@@ -1,25 +1,35 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@ApiModel( "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( "URL of a logo to display on the marketplace" )
     private String logoUrl;
 
+    @ApiModelProperty( "An alias for the cloud provider" )
     private String alias;
 
+    @ApiModelProperty( "Whether the cloud provider is enabled" )
     private boolean enabled;
 
+    @ApiModelProperty( "Whether the cloud provider is private" )
     private Boolean privateCloud = false;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
     private int weight;
 
+    @ApiModelProperty( "Enabled features of the cloud provider" )
     private List<CloudProviderFeatureDTO> features = new ArrayList<>();
 
+    @ApiModelProperty( "Instance pricings for the cloud provider missing a configuration" )
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private List<String> missing = new ArrayList<>();
 
