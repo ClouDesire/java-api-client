@@ -1,15 +1,31 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@ApiModel( "VM instance sizing" )
 public class InstanceTypeDTO extends DTO
 {
+    @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
 
+    @ApiModelProperty( "CPU cores" )
     @NotNull
     private BigDecimal cpu;
+
+    public InstanceTypeDTO( Integer ram, BigDecimal cpu )
+    {
+        this.ram = ram;
+        this.cpu = cpu;
+    }
+
+    public InstanceTypeDTO()
+    {
+    }
 
     public Integer getRam()
     {
@@ -34,6 +50,6 @@ public class InstanceTypeDTO extends DTO
     @Override
     public String toString()
     {
-        return "InstanceTypeDTO{" + "ram=" + ram + ", cpu=" + cpu + "} " + super.toString();
+        return "InstanceTypeDTO{" + "ram=" + ram + ", cpu=" + cpu + "}";
     }
 }
