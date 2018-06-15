@@ -6,6 +6,7 @@ import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.enums.PaymentGateway;
 import com.liberologico.cloudesire.cmw.model.enums.ProductDestination;
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
@@ -15,6 +16,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -101,6 +103,10 @@ public class EnvironmentDTO extends DTO
     @ApiModelProperty( "URL of the logo of all outgoing emails" )
     @URL
     private String mailLogo;
+
+    @ApiModelProperty( "Email palette colors" )
+    @Valid
+    private EmailPalette mailPalette = new EmailPalette();
 
     @ApiModelProperty( "Footer for all the emails" )
     @Size( max = 2048 )
@@ -344,6 +350,16 @@ public class EnvironmentDTO extends DTO
     public void setMailLogo( String mailLogo )
     {
         this.mailLogo = mailLogo;
+    }
+
+    public EmailPalette getMailPalette()
+    {
+        return mailPalette;
+    }
+
+    public void setMailPalette( EmailPalette mailPalette )
+    {
+        this.mailPalette = mailPalette;
     }
 
     public String getMailFooter()
@@ -873,6 +889,82 @@ public class EnvironmentDTO extends DTO
         {
             this.canBeReactivated = canBeReactivated;
         }
+        //endregion
+    }
+
+    @ApiModel( description = "Email palette attributes" )
+    public static class EmailPalette
+    {
+        @NotEmpty
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
+        private String primaryColor = "#0277bd";
+
+        @NotEmpty
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
+        private String textOnPrimaryColor = "#fff";
+
+        @NotEmpty
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
+        private String textColor = "#2f3133";
+
+        @NotEmpty
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
+        private String textLightColor = "#74787e";
+
+        @NotEmpty
+        @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
+        private String linkColor = "#15c";
+
+        public String getPrimaryColor()
+        {
+            return primaryColor;
+        }
+
+        public void setPrimaryColor( String primaryColor )
+        {
+            this.primaryColor = primaryColor;
+        }
+
+        public String getTextOnPrimaryColor()
+        {
+            return textOnPrimaryColor;
+        }
+
+        public void setTextOnPrimaryColor( String textOnPrimaryColor )
+        {
+            this.textOnPrimaryColor = textOnPrimaryColor;
+        }
+
+        public String getTextColor()
+        {
+            return textColor;
+        }
+
+        public void setTextColor( String textColor )
+        {
+            this.textColor = textColor;
+        }
+
+        public String getTextLightColor()
+        {
+            return textLightColor;
+        }
+
+        public void setTextLightColor( String textLightColor )
+        {
+            this.textLightColor = textLightColor;
+        }
+
+        public String getLinkColor()
+        {
+            return linkColor;
+        }
+
+        public void setLinkColor( String linkColor )
+        {
+            this.linkColor = linkColor;
+        }
+
         //endregion
     }
 
