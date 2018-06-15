@@ -1212,17 +1212,18 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Remove customer data from notifications" )
         private boolean gdpr;
 
-        public boolean isExternalSubscriptionHandling()
-        {
-            return externalSubscriptionHandling != null;
-        }
-
+        @ApiModelProperty( hidden = true )
         public boolean isZuoraEnabled()
         {
             return ExternalSubscriptionHandling.ZUORA.equals( externalSubscriptionHandling );
         }
 
         //region Auto-generated getters and setters
+        public boolean isExternalSubscriptionHandling()
+        {
+            return externalSubscriptionHandling != null;
+        }
+
         public boolean getSyndicated()
         {
             return syndicated;
@@ -2268,6 +2269,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @AssertTrue( message = "Missing CSP API connector endpoint" )
+    @ApiModelProperty( hidden = true )
     public boolean isCspConnectorConfigured()
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
