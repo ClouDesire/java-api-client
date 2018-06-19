@@ -2,44 +2,61 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.DeploymentStatusEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+@ApiModel( "Perform an operation on a subscription" )
 public class SubscriptionPatchDTO extends DTO
 {
+    @ApiModelProperty( hidden = true )
     @Deprecated
     public static final String FIELD_ENDPOINTS = "syndicatedEndpoints";
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private String endUserInstructions;
 
+    @ApiModelProperty( "Configuration parameter values for the subscription" )
     private Map<UrlEntityDTO, String> configurationParameters;
 
+    @ApiModelProperty( value = "Deployment status of the subscription", allowableValues = "PENDING, DEPLOYED, UNDEPLOYED, STOPPED, FAILED, PRE_APPROVAL, UNDEPLOY_SENT, POST_CONFIGURATION, PENDING, WAITING_PAYMENT, PAYMENT_EXPIRED" )
     private String deploymentStatus;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private String syndicatedEndpoints;
 
     private Action action;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private Integer months;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private Integer hours;
+
+    @ApiModelProperty( "Whether the subscription automatically renews at the end of the last billing period" )
     private Boolean autoRenew;
+
+    @ApiModelProperty( "Billing item values for the subscription" )
     private Map<UrlEntityDTO, Integer> billingItems;
 
     private UrlEntityDTO productVersion;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private UrlEntityDTO billingItem;
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private Integer value;
 
+    @ApiModelProperty( "Update the subscription paid status" )
     private Boolean paid;
 
     public SubscriptionPatchDTO( Action action )
@@ -249,8 +266,34 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
+    @ApiModel( "Update operation" )
     public enum Action
     {
-        RENEW, START, STOP, KILL, BACKUP, AUTORENEW, @Deprecated UPGRADE, BILLING_ITEM_UPGRADE, SYNDICATED_UPGRADE
+        @ApiModelProperty( "Renew a subscription" )
+        RENEW,
+
+        @ApiModelProperty( "Start a subscription" )
+        START,
+
+        @ApiModelProperty( "Stop a subscription" )
+        STOP,
+
+        @ApiModelProperty( "Kill a subscription" )
+        KILL,
+
+        @ApiModelProperty( "Backup a managed subscription VM data" )
+        BACKUP,
+
+        @ApiModelProperty( "Update subscription auto-renewal status" )
+        AUTORENEW,
+
+        @ApiModelProperty( hidden = true )
+        @Deprecated UPGRADE,
+
+        @ApiModelProperty( "Request an extra resource upgrade" )
+        BILLING_ITEM_UPGRADE,
+
+        @ApiModelProperty( "Request a product plan update for a syndicated subscription" )
+        SYNDICATED_UPGRADE
     }
 }
