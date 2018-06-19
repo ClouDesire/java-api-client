@@ -46,7 +46,6 @@ public class SubscriptionPatchDTO extends DTO
     @ApiModelProperty( "Billing item values for the subscription" )
     private Map<UrlEntityDTO, Integer> billingItems;
 
-    @ApiModelProperty( "New product version after the upgrade" )
     private UrlEntityDTO productVersion;
 
     @ApiModelProperty( hidden = true )
@@ -291,10 +290,10 @@ public class SubscriptionPatchDTO extends DTO
         @ApiModelProperty( hidden = true )
         @Deprecated UPGRADE,
 
-        @ApiModelProperty( "Request a billing item upgrade" )
+        @ApiModelProperty( "Request an extra resource upgrade" )
         BILLING_ITEM_UPGRADE,
 
-        @ApiModelProperty( "Request a product version update for a syndicated subscription" )
+        @ApiModelProperty( "Request a product plan update for a syndicated subscription" )
         SYNDICATED_UPGRADE
     }
 }
