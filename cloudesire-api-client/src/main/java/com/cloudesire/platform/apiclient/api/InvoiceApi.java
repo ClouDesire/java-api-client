@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.InvoiceDTO;
+import com.liberologico.cloudesire.cmw.model.patch.InvoicePaymentReferenceDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,6 +22,13 @@ public interface InvoiceApi
     @DELETE( "invoice/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
+    @PATCH( "invoice/{id}/forcePaid" )
+    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body InvoicePaymentReferenceDTO input );
+
+    /**
+     * @deprecated by {@link #forcePaid(Integer, InvoicePaymentReferenceDTO)}
+     */
+    @Deprecated
     @PATCH( "invoice/{id}/forcePaid" )
     Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
 
