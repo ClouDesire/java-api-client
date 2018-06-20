@@ -12,6 +12,7 @@ import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.EnvironmentApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
+import com.cloudesire.platform.apiclient.api.InstancePricingApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MailEnvironmentApi;
@@ -290,6 +291,11 @@ public class CloudesireClient
     public EnvironmentApi getEnvironmentApi()
     {
         return retrofit.create( EnvironmentApi.class );
+    }
+
+    public InstancePricingApi getInstancePricingApi()
+    {
+        return retrofit.create( InstancePricingApi.class );
     }
 
     public ProductApi getProductApi()
