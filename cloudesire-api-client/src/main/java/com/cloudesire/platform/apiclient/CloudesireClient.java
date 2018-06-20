@@ -276,11 +276,6 @@ public class CloudesireClient
         return retrofit.create( InstancePricingApi.class );
     }
 
-    public MessageApi getMessageApi()
-    {
-        return retrofit.create( MessageApi.class );
-    }
-
     public ProductApi getProductApi()
     {
         return retrofit.create( ProductApi.class );
