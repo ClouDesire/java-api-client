@@ -12,7 +12,6 @@ import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
-import com.cloudesire.platform.apiclient.api.MessageApi;
 import com.cloudesire.platform.apiclient.api.OrderApi;
 import com.cloudesire.platform.apiclient.api.ProductApi;
 import com.cloudesire.platform.apiclient.api.ProductFileApi;
@@ -263,11 +262,6 @@ public class CloudesireClient
     public BudgetEstimateApi getBudgetEstimateApi()
     {
         return retrofit.create( BudgetEstimateApi.class );
-    }
-
-    public MessageApi getMessageApi()
-    {
-        return retrofit.create( MessageApi.class );
     }
 
     public ProductApi getProductApi()
