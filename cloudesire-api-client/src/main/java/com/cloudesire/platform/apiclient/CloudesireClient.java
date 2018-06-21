@@ -57,6 +57,7 @@ public class CloudesireClient
     private final String token;
     private final String impersonate;
     private final String baseUrl;
+    private final String environment;
     private final ObjectMapper mapper;
     private final Interceptor interceptor;
     private final long version;
@@ -68,6 +69,7 @@ public class CloudesireClient
         this.token = builder.token;
         this.impersonate = builder.impersonate;
         this.baseUrl = builder.baseUrl;
+        this.environment = builder.environment;
         this.mapper = builder.mapper;
         this.interceptor = builder.interceptor;
         this.version = builder.version;
@@ -88,6 +90,11 @@ public class CloudesireClient
         if ( impersonate != null )
         {
             clientBuilder.addInterceptor( getHeaderInterceptor( "CMW-As-User", impersonate ) );
+        }
+
+        if ( environment != null )
+        {
+            clientBuilder.addInterceptor( getHeaderInterceptor( "MODE", environment ) );
         }
 
         if ( interceptor != null ) clientBuilder.addInterceptor( interceptor );
@@ -149,6 +156,7 @@ public class CloudesireClient
         private String token;
         private String impersonate;
         private String baseUrl;
+        private String environment;
         private ObjectMapper mapper;
         private Interceptor interceptor;
         private Long version;
@@ -170,6 +178,7 @@ public class CloudesireClient
             this.token = cloudesireClient.token;
             this.impersonate = cloudesireClient.impersonate;
             this.baseUrl = cloudesireClient.baseUrl;
+            this.environment = cloudesireClient.environment;
             this.mapper = cloudesireClient.mapper;
             this.interceptor = cloudesireClient.interceptor;
             this.version = cloudesireClient.version;
@@ -202,6 +211,12 @@ public class CloudesireClient
         public Builder setBaseUrl( String baseUrl )
         {
             this.baseUrl = baseUrl;
+            return this;
+        }
+
+        public Builder setEnvironment( String environment )
+        {
+            this.environment = environment;
             return this;
         }
 
