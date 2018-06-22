@@ -67,6 +67,9 @@ public interface UserApi
     @PATCH( "user/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input );
 
+    @PATCH( "user/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input, @Query( "language" ) String language );
+
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
             @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
