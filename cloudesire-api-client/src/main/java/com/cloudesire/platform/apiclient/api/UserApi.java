@@ -29,7 +29,7 @@ import java.util.Map;
 public interface UserApi
 {
     @POST( "user/{id}" )
-    Call<Void> activateAccountAsAnonymous( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> activateAccountAsAnonymous( @Path( "id" ) Integer id, @Body Map<String, Object> input );
 
     @POST( "user/activate" )
     Call<Void> activateAccountAsAnonymousV2( @Body String tag );
