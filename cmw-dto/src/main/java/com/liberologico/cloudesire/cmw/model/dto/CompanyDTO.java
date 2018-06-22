@@ -28,7 +28,7 @@ public class CompanyDTO extends MinimalCompanyDTO
     private String form;
 
     @ApiModelProperty( "Preferred language for the company" )
-    private String language = "EN";
+    private String language;
 
     @ApiModelProperty( "Email address that will receive technical notifications" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
@@ -47,7 +47,7 @@ public class CompanyDTO extends MinimalCompanyDTO
     private Integer maxPublishedProducts;
 
     @ApiModelProperty( value = "Counts the published products on the marketplace for the company", readOnly = true )
-    private Integer currentPublishedProducts = 1;
+    private Integer currentPublishedProducts;
 
     @ApiModelProperty( hidden = true )
     private Boolean trusted;

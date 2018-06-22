@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.InstancePricingDTO;
+import com.liberologico.cloudesire.cmw.model.patch.InstancePricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -13,7 +14,7 @@ import java.util.List;
 public interface InstancePricingApi
 {
     @PATCH( "instancePricing" )
-    Call<Void> associationTrigger( @Body Object input );
+    Call<Void> patch( @Body InstancePricingPatchDTO input );
 
     @POST( "instancePricing" )
     Call<InstancePricingDTO> create( @Body InstancePricingDTO outres );

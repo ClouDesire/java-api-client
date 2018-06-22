@@ -9,6 +9,7 @@ import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
+import com.liberologico.cloudesire.cmw.model.patch.UserPatchDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -63,6 +64,9 @@ public interface UserApi
 
     @DELETE( "user/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
+
+    @PATCH( "user/{id}" )
+    Call<Void> patch( @Path( "id" ) int id, @Body UserPatchDTO input );
 
     @PATCH( "user/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input );

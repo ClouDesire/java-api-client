@@ -1,6 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.InvoiceDTO;
+import com.liberologico.cloudesire.cmw.model.patch.InvoicePaymentReferenceDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -8,6 +10,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -21,6 +24,13 @@ public interface InvoiceApi
     @DELETE( "invoice/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
+    @PATCH( "invoice/{id}/forcePaid" )
+    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body InvoicePaymentReferenceDTO input );
+
+    /**
+     * @deprecated by {@link #forcePaid(Integer, InvoicePaymentReferenceDTO)}
+     */
+    @Deprecated
     @PATCH( "invoice/{id}/forcePaid" )
     Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
 
@@ -39,6 +49,13 @@ public interface InvoiceApi
     @GET( "invoice/{id}" )
     Call<InvoiceDTO> get( @Path( "id" ) Integer id );
 
+    @POST( "invoice/pay/{id}/stripe" )
+    Call<Void> payWithStripe( @Path( "id" ) int id, @Body CardDataDTO input );
+
+    /**
+     * @deprecated by {@link #payWithStripe(int, CardDataDTO)}
+     */
+    @Deprecated
     @PATCH( "invoice/{id}/payWithStripe" )
     Call<Void> payWithStripe( @Path( "id" ) Integer id, @Body Object input );
 

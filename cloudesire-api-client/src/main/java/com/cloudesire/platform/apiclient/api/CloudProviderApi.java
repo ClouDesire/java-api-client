@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.CloudProviderDTO;
+import com.liberologico.cloudesire.cmw.model.patch.CloudProviderPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -33,7 +34,7 @@ public interface CloudProviderApi
     Call<Map<String, String>> getTags();
 
     @PATCH( "cloudProvider/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body CloudProviderPatchDTO input );
 
     @PUT( "cloudProvider/{id}" )
     Call<CloudProviderDTO> update( @Body CloudProviderDTO providerDTO, @Path( "id" ) Integer id );
