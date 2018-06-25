@@ -42,7 +42,6 @@ import okhttp3.Response;
 import org.apache.commons.lang3.Validate;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -105,7 +104,6 @@ public class CloudesireClient
         clientBuilder.addInterceptor( getParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
         retrofit = new Retrofit.Builder()
-                .addConverterFactory( ScalarsConverterFactory.create() )
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
                 .baseUrl( baseUrl )
                 .client( clientBuilder.build() )
