@@ -9,9 +9,11 @@ import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
+import com.cloudesire.platform.apiclient.api.EnvironmentApi;
 import com.cloudesire.platform.apiclient.api.EventApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
+import com.cloudesire.platform.apiclient.api.MailEnvironmentApi;
 import com.cloudesire.platform.apiclient.api.OrderApi;
 import com.cloudesire.platform.apiclient.api.ProductApi;
 import com.cloudesire.platform.apiclient.api.ProductFileApi;
@@ -27,9 +29,9 @@ import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
-import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
 import com.cloudesire.platform.apiclient.api.VMInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
+import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.ApiVersion;
 import okhttp3.HttpUrl;
@@ -40,6 +42,7 @@ import okhttp3.Response;
 import org.apache.commons.lang3.Validate;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -102,6 +105,7 @@ public class CloudesireClient
         clientBuilder.addInterceptor( getParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
         retrofit = new Retrofit.Builder()
+                .addConverterFactory( ScalarsConverterFactory.create() )
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
                 .baseUrl( baseUrl )
                 .client( clientBuilder.build() )
@@ -279,6 +283,11 @@ public class CloudesireClient
         return retrofit.create( BudgetEstimateApi.class );
     }
 
+    public EnvironmentApi getEnvironmentApi()
+    {
+        return retrofit.create( EnvironmentApi.class );
+    }
+
     public ProductApi getProductApi()
     {
         return retrofit.create( ProductApi.class );
@@ -421,6 +430,11 @@ public class CloudesireClient
     public CompanyLogoApi getCompanyLogoApi()
     {
         return retrofit.create( CompanyLogoApi.class );
+    }
+
+    public MailEnvironmentApi getMailEnvironmentApi()
+    {
+        return retrofit.create( MailEnvironmentApi.class );
     }
     // endregion
 
