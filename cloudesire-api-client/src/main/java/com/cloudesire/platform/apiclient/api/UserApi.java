@@ -29,7 +29,7 @@ import java.util.Map;
 public interface UserApi
 {
     @POST( "user/{id}" )
-    Call<Void> activateAccountAsAnonymous( @Path( "id" ) Integer id, @Body Map<String, Object> input );
+    Call<Void> activateAccountAsAnonymous( @Path( "id" ) int id, @Body Map<String, Object> input );
 
     @POST( "user/activate" )
     Call<Void> activateAccountAsAnonymousV2( @Body String tag );
@@ -56,27 +56,24 @@ public interface UserApi
     Call<MyUserDTO> create( @Body MyUserDTO userDTO );
 
     @DELETE( "user/{id}/payment" )
-    Call<Void> deletePaymentDataForAdmin( @Path( "id" ) Integer id );
+    Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
 
     @DELETE( "user/payment" )
     Call<Void> deletePaymentData();
 
     @DELETE( "user/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
+    Call<Void> delete( @Path( "id" ) int id );
 
     @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
 
     @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Map<String, Object> input, @Query( "language" ) String language );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
 
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
             @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
             @QueryMap Map<String, String> pageRequest );
-
-    @GET( "user/{id}/reseller" )
-    Call<ResellerDTO> getResellerProfile( @Path( "id" ) Integer id );
 
     @GET( "user/typeahead/{query}" )
     Call<List<MyUserDTO>> getTypeahead( @Path( "query" ) String query, @QueryMap Map<String, String> pageRequest,
@@ -89,7 +86,7 @@ public interface UserApi
     Call<MyUserDTO> getByEmail( @Path( "email" ) String email );
 
     @GET( "user/{id}" )
-    Call<MyUserDTO> get( @Path( "id" ) Integer id );
+    Call<MyUserDTO> get( @Path( "id" ) int id );
 
     /**
      * @deprecated look for {@link MyUserDTO#isValidAddress()}
@@ -138,7 +135,7 @@ public interface UserApi
     Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
 
     @PUT( "user/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
 
     @PUT( "user/{id}" )
     Call<MyUserDTO> update( @Path( "id" ) int id, @Body MyUserDTO userDTO );
