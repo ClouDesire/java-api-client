@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw;
 
 public final class ApiVersion
 {
+    public static final long V20180629 = 20180629;
     public static final long V20180504 = 20180504;
     public static final long V20180322 = 20180322;
     public static final long V20180312 = 20180312;
