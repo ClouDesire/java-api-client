@@ -1,20 +1,22 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.StackParameterValueType;
-import org.hibernate.validator.constraints.NotEmpty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotNull;
-
+@ApiModel( "A software stack requirement" )
 public abstract class BaseStackParameterDTO extends BaseEntityDTO
 {
-    @NotEmpty
+    @ApiModelProperty( value = "Identifier of the parameter", readOnly = true )
     private String parameterIdentifier;
 
+    @ApiModelProperty( value = "Regex to validate values of the parameter", readOnly = true )
     private String regexRule;
 
+    @ApiModelProperty( value = "Descriptive label", readOnly = true )
     private String label;
 
-    @NotNull
+    @ApiModelProperty( value = "The type of the parameter's values", readOnly = true )
     private StackParameterValueType type = StackParameterValueType.STRING;
 
     public String getParameterIdentifier()
