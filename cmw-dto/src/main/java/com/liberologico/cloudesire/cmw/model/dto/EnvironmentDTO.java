@@ -122,6 +122,9 @@ public class EnvironmentDTO extends DTO
     @Size( max = 255 )
     private String sendGridTemplateID;
 
+    @ApiModelProperty( "When using SendGrid for email delivery, enable sandbox mode to not actually deliver any emails")
+    private boolean sendGridSandbox;
+
     @ApiModelProperty( "Section of default user values" )
     @NotNull
     @Valid
@@ -831,6 +834,16 @@ public class EnvironmentDTO extends DTO
     public void setChefEnvironmentName( String chefEnvironmentName )
     {
         this.chefEnvironmentName = chefEnvironmentName;
+    }
+
+    public boolean getSendGridSandbox()
+    {
+        return sendGridSandbox;
+    }
+
+    public void setSendGridSandbox( boolean sendGridSandbox )
+    {
+        this.sendGridSandbox = sendGridSandbox;
     }
     //endregion
 
