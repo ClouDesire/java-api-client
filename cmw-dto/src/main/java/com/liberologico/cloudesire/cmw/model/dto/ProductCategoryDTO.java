@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel( "A category of products" )
 public class ProductCategoryDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "How many products for the category are present" )
+    @ApiModelProperty( value = "How many products for the category are present", readOnly = true )
     private Long productCount = 0L;
 
     @Override
