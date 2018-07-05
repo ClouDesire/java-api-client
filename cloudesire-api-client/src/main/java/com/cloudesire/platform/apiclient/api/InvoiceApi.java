@@ -49,7 +49,7 @@ public interface InvoiceApi
     @GET( "invoice/{id}" )
     Call<InvoiceDTO> get( @Path( "id" ) Integer id );
 
-    @POST( "invoice/pay/{id}/stripe" )
+    @POST( "invoice/{id}/pay/stripe" )
     Call<Void> payWithStripe( @Path( "id" ) int id, @Body CardDataDTO input );
 
     /**
