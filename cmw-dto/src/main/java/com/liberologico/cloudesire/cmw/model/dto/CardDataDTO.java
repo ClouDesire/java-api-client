@@ -1,6 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -8,24 +10,30 @@ import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;
 
+@ApiModel( "Credit card data" )
 public class CardDataDTO extends PaymentDataDTO
 {
+    @ApiModelProperty( value = "Month of expiration", example = "09" )
     @NotEmpty
     @Pattern( regexp = "\\d{2}", message = ConstraintKeys.TWO_DIGITS )
     private String expirationMonth;
 
+    @ApiModelProperty( value = "Year of expiration", example = "2021" )
     @NotEmpty
     @Pattern( regexp = "\\d{2}|\\d{4}", message = ConstraintKeys.TWO_OR_FOUR_DIGITS )
     private String expirationYear;
 
+    @ApiModelProperty( "Credit card number" )
     @NotEmpty
     @CreditCardNumber
     private String number;
 
+    @ApiModelProperty( value = "Credit card CVC", example = "321" )
     @NotEmpty
     @Pattern( regexp = "\\d{3}|\\d{4}", message = ConstraintKeys.THREE_OR_FOUR_DIGITS )
     private String cvc;
 
+    @ApiModelProperty( value = "Credit card holder", example = "John Doe" )
     private String holder;
 
     public CardDataDTO( String expirationMonth, String expirationYear, String number, String cvc )
