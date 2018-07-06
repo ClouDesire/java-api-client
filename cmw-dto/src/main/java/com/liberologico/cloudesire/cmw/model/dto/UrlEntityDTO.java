@@ -99,6 +99,12 @@ public class UrlEntityDTO
     }
 
     @JsonIgnore
+    public String getIdentifier()
+    {
+        return BodyParser.getResourceIdentifier( this.url );
+    }
+
+    @JsonIgnore
     public String getResource()
     {
         if ( url == null ) return null;
