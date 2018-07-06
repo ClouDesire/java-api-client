@@ -19,6 +19,6 @@ public interface StackParameterApi
     @GET( "stackParameter" )
     Call<List<StackParameterDTO>> getAll();
 
-    @GET( "stackParameter/{id}" )
-    Call<StackParameterDTO> get( @Path( "id" ) int id );
+    @GET( "stackParameter/identifier={identifier}" )
+    Call<StackParameterDTO> get( @Path( "identifier" ) String identifier );
 }
