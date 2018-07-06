@@ -13,6 +13,7 @@ import retrofit2.http.Query;
 import java.util.List;
 
 import static com.liberologico.cloudesire.cmw.model.constants.Headers.MODE;
+import static com.liberologico.cloudesire.cmw.model.constants.Parameters.DISTRIBUTOR;
 import static com.liberologico.cloudesire.cmw.model.constants.Parameters.RESELLER;
 
 public interface ProductCategoryApi
@@ -25,6 +26,10 @@ public interface ProductCategoryApi
 
     @GET( "category" )
     Call<List<ProductCategoryDTO>> getList( @Header( MODE ) String mode, @Query( RESELLER ) String reseller );
+
+    @GET( "category" )
+    Call<List<ProductCategoryDTO>> getList( @Header( MODE ) String mode, @Query( DISTRIBUTOR ) String distributor,
+            @Query( RESELLER ) String reseller );
 
     @GET( "category/{id}" )
     Call<ProductCategoryDTO> get( @Path( "id" ) int id );
