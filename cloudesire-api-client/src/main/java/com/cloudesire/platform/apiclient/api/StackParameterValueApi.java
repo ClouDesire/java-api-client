@@ -21,6 +21,15 @@ public interface StackParameterValueApi
     Call<Void> delete( @Path( "id" ) int id );
 
     @GET( "stackParameterValue" )
+    Call<List<StackParameterValueDTO>> getAll();
+
+    @GET( "stackParameterValue" )
+    Call<List<StackParameterValueDTO>> getAll( @Query( "stackParameter" ) String stackParameter );
+
+    @GET( "stackParameterValue" )
+    Call<List<StackParameterValueDTO>> getAll( @Query( "dependencyId" ) int dependencyId );
+
+    @GET( "stackParameterValue" )
     Call<List<StackParameterValueDTO>> getAll( @Query( "stackParameter" ) String stackParameter,
             @Query( "dependencyId" ) Integer dependencyId );
 
