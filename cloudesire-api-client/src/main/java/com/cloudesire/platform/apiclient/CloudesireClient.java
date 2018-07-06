@@ -18,6 +18,7 @@ import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MailEnvironmentApi;
 import com.cloudesire.platform.apiclient.api.OrderApi;
 import com.cloudesire.platform.apiclient.api.ProductApi;
+import com.cloudesire.platform.apiclient.api.ProductCategoryApi;
 import com.cloudesire.platform.apiclient.api.ProductFileApi;
 import com.cloudesire.platform.apiclient.api.ProductImageFileApi;
 import com.cloudesire.platform.apiclient.api.ProductVersionApi;
@@ -301,6 +302,11 @@ public class CloudesireClient
     public ProductApi getProductApi()
     {
         return retrofit.create( ProductApi.class );
+    }
+
+    public ProductCategoryApi getProductCategoryApi()
+    {
+        return retrofit.create( ProductCategoryApi.class );
     }
 
     public ProductFileApi getProductFileApi()
