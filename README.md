@@ -4,6 +4,8 @@
 
 Java 7 client to consume the cloudesire API, based on [retrofit](https://github.com/square/retrofit).
 
+Configure latest version number showed in the upper badge instead of `[VERSION_HERE]` mentioned below.
+
 ## Maven usage
 
 Add the dependency to your pom.xml:
@@ -12,7 +14,7 @@ Add the dependency to your pom.xml:
 <dependency>
   <groupId>com.cloudesire.platform</groupId>
   <artifactId>cloudesire-api-client</artifactId>
-  <version>1.2.0</version>
+  <version>[VERSION_HERE]</version>
 </dependency>
 ```
 
@@ -31,7 +33,7 @@ Add JCenter repository to your pom.xml:
 
 Add the dependency to build.gradle:
 
-    compile 'com.cloudesire.platform:cloudesire-api-client:1.2.0'
+    compile 'com.cloudesire.platform:cloudesire-api-client:[VERSION_HERE]'
     
 Add jcenter repository to build.gradle:
 
