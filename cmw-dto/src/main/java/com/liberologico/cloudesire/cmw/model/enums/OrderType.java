@@ -12,7 +12,7 @@ public enum OrderType
     TRIAL,
     @ApiModelProperty( "Test mode for vendors" )
     SANDBOX,
-    @ApiModelProperty( "Deprecated" )
+    @ApiModelProperty( value = "Deprecated", hidden = true )
     UPGRADE,
     @ApiModelProperty( "Change values for the available Billing Item" )
     BILLING_ITEM_UPGRADE,
