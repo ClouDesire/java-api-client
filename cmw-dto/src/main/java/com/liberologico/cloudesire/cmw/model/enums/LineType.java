@@ -1,5 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.enums;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.EnumSet;
@@ -8,6 +10,7 @@ import static com.liberologico.cloudesire.cmw.model.enums.LineType.Option.IS_EXT
 import static com.liberologico.cloudesire.cmw.model.enums.LineType.Option.IS_INCOME;
 import static com.liberologico.cloudesire.cmw.model.enums.LineType.Option.MUST_BE_PAID;
 
+@ApiModel( "Which kind of cost" )
 public enum LineType
 {
     BACKUP,
@@ -19,20 +22,26 @@ public enum LineType
     CLOUDESIREFEE,
     /** Monthly fee */
     CLOUDESIREPRICE( MUST_BE_PAID ),
+    @ApiModelProperty( "License costs" )
     CONFIGURATION( IS_INCOME, MUST_BE_PAID ),
     COUPONDISCOUNT( IS_INCOME ),
-    /** Custom vendor invoice */
+    @ApiModelProperty( "Custom vendor invoice" )
     CUSTOM( IS_INCOME ),
     DISK_UPGRADE( MUST_BE_PAID ),
     DISKSPACE( MUST_BE_PAID ),
     IAASEXPENSE,
-    @Deprecated METRIC( IS_INCOME, MUST_BE_PAID ),
-    @Deprecated PRODUCT,
+    @Deprecated
+    @ApiModelProperty( hidden = true )
+    METRIC( IS_INCOME, MUST_BE_PAID ),
+    @Deprecated
+    @ApiModelProperty( hidden = true )
+    PRODUCT,
     RECURRINGCOST( IS_INCOME ),
     REFUND,
     SETUPFEE( IS_INCOME ),
     /** Bollo */
     STAMPDUTY,
+    @ApiModelProperty( "Cloud costs" )
     VIRTUALMACHINE( MUST_BE_PAID );
 
     private final boolean isExtra;

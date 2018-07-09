@@ -1,16 +1,21 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.common.MathConfiguration;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@ApiModel( "A price" )
 public class PriceDTO extends DTO
 {
     @NotNull
+    @ApiModelProperty( "The price for the current resource" )
     protected BigDecimal price;
 
+    @ApiModelProperty( "The currency of the price" )
     protected String currency;
 
     public PriceDTO( BigDecimal price, String currency )
