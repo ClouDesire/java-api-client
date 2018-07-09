@@ -180,8 +180,11 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "What roles can this user create", readOnly = true )
     private Set<UserRole> canCreate;
 
-    @ApiModelProperty( value = "If this user has a configured valid address", readOnly = true )
+    @ApiModelProperty( value = "If the user has a configured valid address", readOnly = true )
     private boolean validAddress;
+
+    @ApiModelProperty( value = "If the user has a configured SSH public key", readOnly = true )
+    private String publicKey;
 
     @Override
     public String getResourceName()
@@ -712,6 +715,16 @@ public class MyUserDTO extends BaseEntityDTO
     public void setValidAddress( boolean validAddress )
     {
         this.validAddress = validAddress;
+    }
+
+    public String getPublicKey()
+    {
+        return publicKey;
+    }
+
+    public void setPublicKey( String publicKey )
+    {
+        this.publicKey = publicKey;
     }
 
     @Override
