@@ -22,7 +22,7 @@ public enum OrderType
     UNMANAGED,
     @ApiModelProperty( "Request termination of an active subscription" )
     TERMINATION,
-    @ApiModelProperty( "For adding unmanaged costs to an active subscription" )
+    @ApiModelProperty( "Add unmanaged costs to an active subscription" )
     UPSELL,
     @ApiModelProperty( "Upgrade disk space, only for managed products" )
     DISK_UPGRADE,
