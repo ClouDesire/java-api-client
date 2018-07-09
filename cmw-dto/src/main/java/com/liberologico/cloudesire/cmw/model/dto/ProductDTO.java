@@ -123,6 +123,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @JsonProperty( "isSyndicated" )
     private Boolean syndicated;
 
+    @ApiModelProperty( value = "If the product is a naked VM", readOnly = true )
+    @JsonProperty( "isVm" )
+    private Boolean vm;
+
     @ApiModelProperty( "HTTPS certificate for the product's deployed VMs" )
     private String certificate;
 
@@ -484,6 +488,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     public void setSyndicated( Boolean syndicated )
     {
         this.syndicated = syndicated;
+    }
+
+    public Boolean isVm()
+    {
+        return vm;
+    }
+
+    public void setVm( Boolean vm )
+    {
+        this.vm = vm;
     }
 
     public String getPrivateKey()

@@ -33,5 +33,10 @@ public enum ProductType
     /**
      * Provisioning is handled programmatically
      */
-    SYNDICATED
+    SYNDICATED,
+
+    /**
+     * TODO document me
+     */
+    VM
 }
