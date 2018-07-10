@@ -123,7 +123,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @JsonProperty( "isSyndicated" )
     private Boolean syndicated;
 
-    @ApiModelProperty( value = "If the product is a naked VM", readOnly = true )
+    @ApiModelProperty( value = "If the product is a bare VM", readOnly = true )
     @JsonProperty( "isVm" )
     private Boolean vm;
 

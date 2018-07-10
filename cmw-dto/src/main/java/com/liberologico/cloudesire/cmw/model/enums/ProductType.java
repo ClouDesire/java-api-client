@@ -24,6 +24,6 @@ public enum ProductType
     @ApiModelProperty( "Provisioning is handled programmatically" )
     SYNDICATED,
 
-    @ApiModelProperty( "This product provisions a naked virtual machine" )
+    @ApiModelProperty( "This product provisions a bare virtual machine" )
     VM
 }
