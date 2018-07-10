@@ -15,7 +15,7 @@ public class PriceDTO extends DTO
     @ApiModelProperty( "The price for the current resource" )
     protected BigDecimal price;
 
-    @ApiModelProperty( "The currency of the price" )
+    @ApiModelProperty( value = "The currency of the price", example = "EUR" )
     protected String currency;
 
     public PriceDTO( BigDecimal price, String currency )
