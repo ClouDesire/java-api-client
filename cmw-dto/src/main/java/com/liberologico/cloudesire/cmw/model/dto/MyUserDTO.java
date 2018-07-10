@@ -183,7 +183,7 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "If the user has a configured valid address", readOnly = true )
     private boolean validAddress;
 
-    @ApiModelProperty( value = "If the user has a configured SSH public key", readOnly = true )
+    @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
     @Override
