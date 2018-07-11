@@ -33,7 +33,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private List<String> missing = new ArrayList<>();
 
-    @ApiModelProperty( value = "Default username", readOnly = true )
+    @ApiModelProperty( value = "Default SSH username", readOnly = true )
     private String username;
 
     public List<String> getMissing()
