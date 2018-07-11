@@ -33,6 +33,9 @@ public class CloudProviderDTO extends NamedEntityDTO
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private List<String> missing = new ArrayList<>();
 
+    @ApiModelProperty( value = "Default SSH username", readOnly = true )
+    private String username;
+
     public List<String> getMissing()
     {
         return missing;
@@ -101,6 +104,16 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setWeight( int weight )
     {
         this.weight = weight;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername( String username )
+    {
+        this.username = username;
     }
 
     @Override
