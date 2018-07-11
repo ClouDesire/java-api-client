@@ -44,6 +44,13 @@ public interface ProductVersionApi
             @QueryMap Map<String, String> pageRequest );
 
     @GET( "productVersion" )
+    Call<List<ProductVersionDTO>> getAll(
+            @Query( "product" ) Integer product,
+            @Query( "withUnpublished" ) boolean includeUnpublished,
+            @QueryMap Map<String, String> pageRequest
+    );
+
+    @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product, @Query( "reseller" ) String reseller,
             @QueryMap Map<String, String> pageRequest );
 
