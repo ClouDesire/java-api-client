@@ -22,10 +22,13 @@ public class OrderLineDTO implements Line
     @Valid
     private VATPriceDTO price;
 
+    @ApiModelProperty( value = "The quantity", example = "1.0" )
     private BigDecimal quantity = BigDecimal.ONE;
 
+    @ApiModelProperty( "A unit of measurement for the quantity" )
     private String unit;
 
+    @ApiModelProperty( "A description of the service" )
     @Length ( max = 1024 )
     private String description;
 
@@ -39,6 +42,7 @@ public class OrderLineDTO implements Line
     @Valid
     private UrlEntityDTO billingItem;
 
+    @ApiModelProperty( "If this is a one-off cost" )
     private boolean setup;
 
     @ApiModelProperty( value = "Discount percentage if this line is relative to a coupon", example = "20", readOnly = true )
@@ -49,6 +53,7 @@ public class OrderLineDTO implements Line
 
     @Deprecated
     @JsonProperty ( value = "totalPrice" )
+    @ApiModelProperty( hidden = true )
     public BigDecimal calculateTotalPrice()
     {
         return getSubtotal();
@@ -56,11 +61,13 @@ public class OrderLineDTO implements Line
 
     @Deprecated
     @JsonProperty
+    @ApiModelProperty( hidden = true )
     public BigDecimal getPriceExcludingVAT()
     {
         return getSubtotal();
     }
 
+    @ApiModelProperty( readOnly = true )
     public BigDecimal getSubtotal()
     {
         if ( price == null || price.getPrice() == null ) return BigDecimal.ZERO;

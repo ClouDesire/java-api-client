@@ -2,14 +2,19 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.common.MathConfiguration;
 import com.liberologico.cloudesire.common.MathUtils;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@ApiModel( "A price with VAT" )
 public class VATPriceDTO extends PriceDTO
 {
+    @ApiModelProperty( "VAT total amount" )
     private BigDecimal vatSpunOff;
 
+    @ApiModelProperty( value = "VAT percentage", example = "22" )
     private BigDecimal VAT;
 
     public VATPriceDTO( BigDecimal price, String currency, BigDecimal vatSpunOff, BigDecimal VAT )
