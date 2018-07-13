@@ -16,6 +16,11 @@ public class ActionDTO extends ActionUrlDTO
     @ApiModelProperty( value = "The list of actions that can be performed", readOnly = true )
     private String[] actions;
 
+    public ActionDTO( String label, HttpMethod method, String resourceType, String[] actions )
+    {
+        this(label, null, method, resourceType, actions );
+    }
+
     public ActionDTO( String label, String url, HttpMethod method, String resourceType, String[] actions )
     {
         super( url, method, resourceType );
