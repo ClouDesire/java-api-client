@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.FrequenceType;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -12,6 +13,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private UrlEntityDTO billingItem;
 
+    @ApiModelProperty( "If the value of the metric always increment or not")
     private boolean counter = false;
 
     @Valid
@@ -21,6 +23,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     private UrlEntityDTO product;
 
     @NotNull
+    @ApiModelProperty( "URL to fetch a metric for syndicated products or partial path for managed products" )
     private String endpoint;
 
     @NotNull

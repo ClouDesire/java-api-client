@@ -3,23 +3,37 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.CmwEventType;
 import com.liberologico.cloudesire.cmw.model.enums.EventRecipientType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import java.util.Date;
 
 /**
- * This is the object exposed by the API, not the notification sent
+ * This is the object exposed by the API, not the notification sent via HTTP
  *
  * @see EventNotificationDTO
  */
+@ApiModel( "An event dispatched by the platform to a recipient" )
 public class EventDTO extends BaseEntityDTO
 {
+    @ApiModelProperty( value = "The name of the entity", example = "Subscription" )
     private String entityName;
-    private Integer entityId; // All events are entity specific
+
+    @ApiModelProperty( value = "The Id of the entity", example = "123" )
+    private Integer entityId;
+
+    @ApiModelProperty( "If the platform has successfully dispatched this event" )
     private Boolean notified = false;
+
+    @ApiModelProperty( value = "When the event has been generated", readOnly = true )
     private Date date = new Date();
+
     private CmwEventType type;
+
     private EventRecipientType recipient = EventRecipientType.COMPANY;
+
+    @ApiModelProperty( readOnly = true )
     private EventNotificationDTO payload;
 
     @JsonInclude ( JsonInclude.Include.NON_NULL )
@@ -35,6 +49,8 @@ public class EventDTO extends BaseEntityDTO
 
     @Valid
     private UrlEntityDTO entityUrl;
+
+    @ApiModelProperty( value = "Editable only by admin - Generally not used", hidden = true )
     private String environment;
 
     public String getEntityName()
