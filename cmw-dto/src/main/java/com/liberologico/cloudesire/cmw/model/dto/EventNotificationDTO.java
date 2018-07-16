@@ -1,6 +1,8 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.CmwEventType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 import java.util.Map;
@@ -12,13 +14,24 @@ import java.util.Objects;
  *
  * @see EventDTO
  */
+@ApiModel( "Payload sent to the HTTP endpoint" )
 public class EventNotificationDTO extends BaseEntityDTO
 {
+    @ApiModelProperty( value = "The ID of the Event", example = "123" )
     private Integer eventId;
+
+    @ApiModelProperty( value = "The name of the Event", example = "Subscription" )
     private String entity;
+
+    @ApiModelProperty( value = "The date of Event creation" )
     private Date date;
+
     private CmwEventType type;
+
+    @ApiModelProperty( value = "Concatenation of entity name and ID", example = "subscription/123" )
     private String entityUrl;
+
+    @ApiModelProperty( "Generic payload that can be sent along with the event" )
     private Map<String, Object> metadata;
 
     public Integer getEventId()
