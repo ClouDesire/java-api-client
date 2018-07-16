@@ -13,7 +13,7 @@ public class BaseEntityDTO extends DTO implements IBaseEntityDTO
     @ApiModelProperty( readOnly = true )
     private Integer id;
 
-    @ApiModelProperty( readOnly = true, example = "Subscription/123")
+    @ApiModelProperty( readOnly = true, example = "subscription/123" )
     private String self;
 
     /**

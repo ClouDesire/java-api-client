@@ -23,7 +23,7 @@ public class EventDTO extends BaseEntityDTO
     @ApiModelProperty( value = "The Id of the entity", example = "123" )
     private Integer entityId;
 
-    @ApiModelProperty( "If the platform has successfully dispatched this event" )
+    @ApiModelProperty( value = "If the platform has successfully dispatched this event", readOnly = true )
     private Boolean notified = false;
 
     @ApiModelProperty( value = "When the event has been generated", readOnly = true )

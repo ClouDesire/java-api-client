@@ -13,7 +13,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "If the value of the metric always increment or not")
+    @ApiModelProperty( "If the value of the metric always increment or not" )
     private boolean counter = false;
 
     @Valid

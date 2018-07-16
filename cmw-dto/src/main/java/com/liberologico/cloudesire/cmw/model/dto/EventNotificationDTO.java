@@ -17,7 +17,7 @@ import java.util.Objects;
 @ApiModel( "Payload sent to the HTTP endpoint" )
 public class EventNotificationDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "The Id of the Event", example = "123")
+    @ApiModelProperty( value = "The ID of the Event", example = "123" )
     private Integer eventId;
 
     @ApiModelProperty( value = "The name of the Event", example = "Subscription" )
@@ -28,7 +28,7 @@ public class EventNotificationDTO extends BaseEntityDTO
 
     private CmwEventType type;
 
-    @ApiModelProperty( value = "Concatenation of entity name and id", example = "Subscription/123" )
+    @ApiModelProperty( value = "Concatenation of entity name and ID", example = "subscription/123" )
     private String entityUrl;
 
     @ApiModelProperty( "Generic payload that can be sent along with the event" )
