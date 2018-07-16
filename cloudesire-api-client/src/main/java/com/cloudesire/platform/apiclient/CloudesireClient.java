@@ -66,6 +66,7 @@ public class CloudesireClient
     private final ObjectMapper mapper;
     private final Interceptor interceptor;
     private final long version;
+    private final String userAgent;
 
     private CloudesireClient( Builder builder )
     {
@@ -78,6 +79,7 @@ public class CloudesireClient
         this.mapper = builder.mapper;
         this.interceptor = builder.interceptor;
         this.version = builder.version;
+        this.userAgent = builder.userAgent;
 
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
@@ -101,6 +103,17 @@ public class CloudesireClient
         {
             clientBuilder.addInterceptor( getHeaderInterceptor( "MODE", environment ) );
         }
+
+        final String userAgentValue;
+        if ( userAgent == null )
+        {
+            userAgentValue = "Cloudesire API Client " + version;
+        }
+        else
+        {
+            userAgentValue = userAgent;
+        }
+        clientBuilder.addInterceptor( getHeaderInterceptor( "User-Agent", userAgentValue ) );
 
         if ( interceptor != null ) clientBuilder.addInterceptor( interceptor );
 
@@ -165,6 +178,7 @@ public class CloudesireClient
         private ObjectMapper mapper;
         private Interceptor interceptor;
         private Long version;
+        private String userAgent;
 
         public Builder()
         {
@@ -187,6 +201,7 @@ public class CloudesireClient
             this.mapper = cloudesireClient.mapper;
             this.interceptor = cloudesireClient.interceptor;
             this.version = cloudesireClient.version;
+            this.userAgent = cloudesireClient.userAgent;
         }
 
         public Builder setUsername( String username )
@@ -240,6 +255,12 @@ public class CloudesireClient
         public Builder setApiVersion( long version )
         {
             this.version = version;
+            return this;
+        }
+
+        public Builder setUserAgent( String userAgent )
+        {
+            this.userAgent = userAgent;
             return this;
         }
 
