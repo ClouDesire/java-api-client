@@ -25,6 +25,7 @@ public class CloudesireClientTest
                 builder.build();
             }
         } ).isInstanceOf( NullPointerException.class );
+
         builder.setBaseUrl( "http://www.google.it" );
         assertThatThrownBy( new ThrowableAssert.ThrowingCallable()
         {
@@ -34,6 +35,7 @@ public class CloudesireClientTest
                 builder.build();
             }
         } ).isInstanceOf( NullPointerException.class );
+
         builder.setMapper( new ObjectMapper() );
         assertThat( builder.build() ).isNotNull();
     }
@@ -43,12 +45,16 @@ public class CloudesireClientTest
     {
         final CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "http://www.google.it" );
-        builder.setMapper( new ObjectMapper() );
+        builder.setMapper( objectMapper() );
         CloudesireClient client = builder.build();
+
         CloudesireClient.Builder anotherBuilder = client.newBuilder();
+
         assertThat( builder == anotherBuilder ).isFalse();
         assertThat( builder ).isEqualTo( anotherBuilder );
+
         CloudesireClient anotherClient = anotherBuilder.build();
+
         assertThat( client == anotherClient ).isFalse();
         assertThat( client ).isEqualTo( anotherClient );
     }
@@ -59,13 +65,15 @@ public class CloudesireClientTest
         CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "https://httpbin.org" );
         builder.setMapper( objectMapper() );
-        builder.setUserAgent( "PIPPO CLIENT" );
+        builder.setUserAgent( "Client v1" );
         CloudesireClient client = builder.build();
+
         Httpbin api = client.getApi( Httpbin.class );
         HttpbinResponse response = api.get().execute().body();
+
         assertThat( response.getOrigin() ).isNotEmpty();
-        assertThat( response.getHeaders() )
-                .containsValue( "PIPPO CLIENT" );
+        assertThat( response.getHeaders() ).containsKey( "User-Agent" );
+        assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( "Client v1" );
     }
 
     private ObjectMapper objectMapper()
