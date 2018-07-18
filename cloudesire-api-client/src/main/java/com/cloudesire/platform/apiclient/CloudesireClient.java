@@ -27,6 +27,7 @@ import com.cloudesire.platform.apiclient.api.ResellerApi;
 import com.cloudesire.platform.apiclient.api.ResellerPricingApi;
 import com.cloudesire.platform.apiclient.api.ResellingReportApi;
 import com.cloudesire.platform.apiclient.api.RiskProfileApi;
+import com.cloudesire.platform.apiclient.api.StackParameterApi;
 import com.cloudesire.platform.apiclient.api.StackParameterValueApi;
 import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
@@ -54,7 +55,7 @@ import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION
 
 public class CloudesireClient
 {
-    public static final Long LATEST_API_VERSION = ApiVersion.V20180504;
+    public static final Long LATEST_API_VERSION = ApiVersion.V20180629;
 
     private final Retrofit retrofit;
     private final String username;
@@ -442,6 +443,11 @@ public class CloudesireClient
     public ApplicationMetricApi getApplicationMetricApi()
     {
         return retrofit.create( ApplicationMetricApi.class );
+    }
+
+    public StackParameterApi getStackParameterApi()
+    {
+        return retrofit.create( StackParameterApi.class );
     }
 
     public StackParameterValueApi getStackParameterValueApi()
