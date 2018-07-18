@@ -1688,6 +1688,10 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "The default destination for a CSP product" )
         private ProductDestination cspDefaultProductDestination = ProductDestination.B2B;
 
+        @ApiModelProperty( "URL for the Prometheus instance" )
+        @URL
+        private String prometheusUrl;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2090,6 +2094,16 @@ public class EnvironmentDTO extends DTO
         public void setCspDefaultProductDestination( ProductDestination cspDefaultProductDestination )
         {
             this.cspDefaultProductDestination = cspDefaultProductDestination;
+        }
+
+        public String getPrometheusUrl()
+        {
+            return prometheusUrl;
+        }
+
+        public void setPrometheusUrl( String prometheusUrl )
+        {
+            this.prometheusUrl = prometheusUrl;
         }
         //endregion
 
