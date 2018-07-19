@@ -1626,15 +1626,6 @@ public class EnvironmentDTO extends DTO
         @Valid
         private List<SyndicationEndpointDTO> syndicationEndpoints;
 
-        @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
-        @URL
-        private String capValidationServiceUrl;
-
-        // This has priority over the cmw.properties one
-        @ApiModelProperty( "URL to PDF invoice manager" )
-        @URL
-        private String janineInvoiceManagerUrl;
-
         // Works as feature flag too (empty means disabled)
         @ApiModelProperty( "List of Slack Incoming Webhook to send platform notifications" )
         private List<String> slackNotificationEndpoints;
@@ -1642,10 +1633,6 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Slack channel that receives notifications" )
         @Size( max = 255 )
         private String slackChannel;
-
-        @ApiModelProperty( "URL for the Zuora connector" )
-        @URL
-        private String zuoraConnectorUrl;
 
         @ApiModelProperty( "Send activation email on user creation" )
         @NotNull
@@ -1687,6 +1674,10 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "The default destination for a CSP product" )
         private ProductDestination cspDefaultProductDestination = ProductDestination.B2B;
+
+        @ApiModelProperty( "URLs for services" )
+        @Valid
+        private ServiceDirectory serviceDirectory = new ServiceDirectory();
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
@@ -1906,24 +1897,24 @@ public class EnvironmentDTO extends DTO
             return new SyndicationEndpointDTO();
         }
 
-        public String getCapValidationServiceUrl()
-        {
-            return capValidationServiceUrl;
-        }
-
+        /**
+         * @deprecated by {@link #serviceDirectory}
+         */
+        @Deprecated
         public void setCapValidationServiceUrl( String capValidationServiceUrl )
         {
-            this.capValidationServiceUrl = capValidationServiceUrl;
+            if ( serviceDirectory.getCapValidation() != null ) return;
+            serviceDirectory.setCapValidation( capValidationServiceUrl );
         }
 
-        public String getJanineInvoiceManagerUrl()
-        {
-            return janineInvoiceManagerUrl;
-        }
-
+        /**
+         * @deprecated by {@link #serviceDirectory}
+         */
+        @Deprecated
         public void setJanineInvoiceManagerUrl( String janineInvoiceManagerUrl )
         {
-            this.janineInvoiceManagerUrl = janineInvoiceManagerUrl;
+            if ( serviceDirectory.getJanineInvoiceManager() != null ) return;
+            serviceDirectory.setJanineInvoiceManager( janineInvoiceManagerUrl );
         }
 
         public List<String> getSlackNotificationEndpoints()
@@ -1936,20 +1927,23 @@ public class EnvironmentDTO extends DTO
             this.slackNotificationEndpoints = slackNotificationEndpoints;
         }
 
+        /**
+         * @deprecated by {@link #slackNotificationEndpoints}
+         */
         @Deprecated
         public void setSlackNotificationEndpoint( String endpoint )
         {
             if ( endpoint != null ) slackNotificationEndpoints = Collections.singletonList( endpoint );
         }
 
-        public String getZuoraConnectorUrl()
-        {
-            return zuoraConnectorUrl;
-        }
-
+        /**
+         * @deprecated by {@link #serviceDirectory}
+         */
+        @Deprecated
         public void setZuoraConnectorUrl( String zuoraConnectorUrl )
         {
-            this.zuoraConnectorUrl = zuoraConnectorUrl;
+            if ( serviceDirectory.getZuoraConnector() != null ) return;
+            serviceDirectory.setZuoraConnector( zuoraConnectorUrl );
         }
 
         public Boolean getSendActivationEmail()
@@ -2090,6 +2084,16 @@ public class EnvironmentDTO extends DTO
         public void setCspDefaultProductDestination( ProductDestination cspDefaultProductDestination )
         {
             this.cspDefaultProductDestination = cspDefaultProductDestination;
+        }
+
+        public ServiceDirectory getServiceDirectory()
+        {
+            return serviceDirectory;
+        }
+
+        public void setServiceDirectory( ServiceDirectory serviceDirectory )
+        {
+            this.serviceDirectory = serviceDirectory;
         }
         //endregion
 
@@ -2279,6 +2283,65 @@ public class EnvironmentDTO extends DTO
             this.user = user;
         }
         // endregion
+    }
+
+    public static class ServiceDirectory
+    {
+        @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
+        @URL
+        private String capValidation;
+
+        @ApiModelProperty( "URL to PDF invoice manager" )
+        @URL
+        private String janineInvoiceManager;
+
+        @ApiModelProperty( "URL for the Prometheus instance" )
+        @URL
+        private String prometheus;
+
+        @ApiModelProperty( "URL for the Zuora connector" )
+        @URL
+        private String zuoraConnector;
+
+        public String getCapValidation()
+        {
+            return capValidation;
+        }
+
+        public void setCapValidation( String capValidation )
+        {
+            this.capValidation = capValidation;
+        }
+
+        public String getJanineInvoiceManager()
+        {
+            return janineInvoiceManager;
+        }
+
+        public void setJanineInvoiceManager( String janineInvoiceManager )
+        {
+            this.janineInvoiceManager = janineInvoiceManager;
+        }
+
+        public String getPrometheus()
+        {
+            return prometheus;
+        }
+
+        public void setPrometheus( String prometheus )
+        {
+            this.prometheus = prometheus;
+        }
+
+        public String getZuoraConnector()
+        {
+            return zuoraConnector;
+        }
+
+        public void setZuoraConnector( String zuoraConnector )
+        {
+            this.zuoraConnector = zuoraConnector;
+        }
     }
 
     @AssertTrue( message = "Missing CSP API connector endpoint" )
