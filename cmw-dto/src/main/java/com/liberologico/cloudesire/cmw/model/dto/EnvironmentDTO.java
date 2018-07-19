@@ -1688,9 +1688,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "The default destination for a CSP product" )
         private ProductDestination cspDefaultProductDestination = ProductDestination.B2B;
 
-        @ApiModelProperty( "URL for the Prometheus instance" )
-        @URL
-        private String prometheusUrl;
+        @ApiModelProperty( "URLs for services" )
+        @Valid
+        private ServiceDirectory serviceDirectory;
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
@@ -2096,14 +2096,14 @@ public class EnvironmentDTO extends DTO
             this.cspDefaultProductDestination = cspDefaultProductDestination;
         }
 
-        public String getPrometheusUrl()
+        public ServiceDirectory getServiceDirectory()
         {
-            return prometheusUrl;
+            return serviceDirectory;
         }
 
-        public void setPrometheusUrl( String prometheusUrl )
+        public void setServiceDirectory( ServiceDirectory serviceDirectory )
         {
-            this.prometheusUrl = prometheusUrl;
+            this.serviceDirectory = serviceDirectory;
         }
         //endregion
 
@@ -2293,6 +2293,22 @@ public class EnvironmentDTO extends DTO
             this.user = user;
         }
         // endregion
+    }
+
+    public static class ServiceDirectory
+    {
+        @URL
+        private String prometheus;
+
+        public String getPrometheus()
+        {
+            return prometheus;
+        }
+
+        public void setPrometheus( String prometheus )
+        {
+            this.prometheus = prometheus;
+        }
     }
 
     @AssertTrue( message = "Missing CSP API connector endpoint" )
