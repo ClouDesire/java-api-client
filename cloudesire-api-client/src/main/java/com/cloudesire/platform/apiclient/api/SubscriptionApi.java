@@ -103,4 +103,8 @@ public interface SubscriptionApi
     @GET( "subscription" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+
+    @POST( "subscription/refresh/billing" )
+    Call<Void> refreshBilling();
+
 }
