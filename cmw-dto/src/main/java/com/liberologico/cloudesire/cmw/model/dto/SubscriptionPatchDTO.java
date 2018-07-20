@@ -294,6 +294,9 @@ public class SubscriptionPatchDTO extends DTO
         BILLING_ITEM_UPGRADE,
 
         @ApiModelProperty( "Request a product plan update for a syndicated subscription" )
-        SYNDICATED_UPGRADE
+        SYNDICATED_UPGRADE,
+
+        @ApiModelProperty( "Update extra resources ranges with current plan values" )
+        REFRESH_BILLING_ITEM_VALUES,
     }
 }
