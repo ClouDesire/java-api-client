@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
@@ -79,7 +80,14 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "When the subscription has been modified", readOnly = true )
     private Date updatedAt;
 
-    @ApiModelProperty( value = "How many bandwidth in GB is available for the subscritpion", readOnly = true )
+    @ApiModelProperty( value = "How much bandwidth in GB is available for the subscription", readOnly = true )
+    private BigDecimal bandwidth;
+
+    /**
+     * @deprecated by {@link #bandwidth}
+     */
+    @ApiModelProperty( value = "Deprecated", hidden = true )
+    @Deprecated
     private BigInteger bandwidthInGB;
 
     private Set<ActionDTO> availableOperations = null;
@@ -319,6 +327,16 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     public void setUpdatedAt( Date updatedAt )
     {
         this.updatedAt = updatedAt;
+    }
+
+    public BigDecimal getBandwidth()
+    {
+        return bandwidth;
+    }
+
+    public void setBandwidth( BigDecimal bandwidth )
+    {
+        this.bandwidth = bandwidth;
     }
 
     public BigInteger getBandwidthInGB()
