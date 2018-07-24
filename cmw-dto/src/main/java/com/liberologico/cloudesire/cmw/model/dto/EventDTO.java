@@ -172,4 +172,10 @@ public class EventDTO extends BaseEntityDTO
     {
         this.recipient = recipient;
     }
+
+    @Override
+    public String toString()
+    {
+        return entityName + ' ' + type;
+    }
 }
