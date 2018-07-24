@@ -6,6 +6,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.Route;
 
+/**
+ * @see https://github.com/square/okhttp/wiki/Recipes#handling-authentication
+ */
 public class BasicAuthenticator implements Authenticator
 {
     private static final String HEADER_NAME = "Authorization";
