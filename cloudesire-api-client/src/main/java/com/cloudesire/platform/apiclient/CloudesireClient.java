@@ -88,7 +88,7 @@ public class CloudesireClient
 
         if ( username != null && password != null )
         {
-            clientBuilder.addInterceptor( new BasicAuthInterceptor( username, password ) );
+            clientBuilder.authenticator( new BasicAuthenticator( username, password ) );
         }
         else if ( token != null )
         {
