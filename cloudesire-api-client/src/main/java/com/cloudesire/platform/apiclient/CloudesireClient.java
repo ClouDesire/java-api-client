@@ -38,11 +38,13 @@ import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.ApiVersion;
+import okhttp3.Authenticator;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.Route;
 import org.apache.commons.lang3.Validate;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -120,12 +122,23 @@ public class CloudesireClient
 
         clientBuilder.addInterceptor( getParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
+        clientBuilder.authenticator( new NoRetryAuthenticator() );
+
         retrofit = new Retrofit.Builder()
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
                 .baseUrl( baseUrl )
                 .client( clientBuilder.build() )
                 .validateEagerly( true )
                 .build();
+    }
+
+    private static class NoRetryAuthenticator implements Authenticator
+    {
+        @Override
+        public Request authenticate( Route route, Response response ) throws IOException
+        {
+            return null;
+        }
     }
 
     private Interceptor getHeaderInterceptor( final String headerName, final String headerValue )
