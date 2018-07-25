@@ -60,7 +60,6 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )
     private String reseller;
 
-    @ApiModelProperty( "TODO document me" )
     private OSType operatingSystem;
 
     public OrderInputDTO( UrlEntityDTO productVersion )

@@ -27,6 +27,15 @@ public enum OSType
     @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
     WINDOWS_SERVER_2012_SQL_2012_SP1(103, "Windows", "2012", "Windows Server 2012 + SQL Server 2012 SP1 Standard", OsFamily.WINDOWS),
 
+    @ApiModelProperty( "Ubuntu Xenial Xerus 16.04 LTS 64bit" )
+    UBUNTU_16_04( "Ubuntu", "16.04", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Ubuntu Bionic Beaver 18.04 LTS 64bit" )
+    UBUNTU_18_04( "Ubuntu", "18.04", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Debian 9.4" )
+    DEBIAN_9_4( "Debian", "9.4", OsFamily.LINUX ),
+
     @ApiModelProperty( "Unknown operating system" )
     UNRECOGNIZED(Integer.MAX_VALUE, "UNRECOGNIZED", "", "", OsFamily.UNRECOGNIZED);
 
@@ -70,16 +79,6 @@ public enum OSType
         this.family = family;
     }
 
-    public static OSType fromCode( int code )
-    {
-        for ( OSType type : values() )
-        {
-            if ( type.code == code )
-                return type;
-        }
-        return UNRECOGNIZED;
-    }
-
     public static OSType fromNameAndVersion( String name, String version )
     {
         if ( name == null || version == null ) return UNRECOGNIZED;
@@ -100,11 +99,6 @@ public enum OSType
         if ( similarMatch != null ) return similarMatch;
 
         return UNRECOGNIZED;
-    }
-
-    public String getFullName()
-    {
-        return value.concat(" ").concat(description).replaceAll("-", " ").replaceAll("_", " ");
     }
 
     public boolean isWindows()
