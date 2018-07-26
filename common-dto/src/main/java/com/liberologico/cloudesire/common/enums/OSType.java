@@ -7,25 +7,25 @@ import io.swagger.annotations.ApiModelProperty;
 public enum OSType
 {
     @ApiModelProperty("Unsupported operating system")
-    OTHER(1, "Other", "", "", OsFamily.UNRECOGNIZED),
+    OTHER( "Other", "", OsFamily.UNRECOGNIZED ),
 
     @ApiModelProperty("Ubuntu Precise Pangolin 12.04 LTS 64BIT" )
-    UBUNTU_12_04(11, "Ubuntu", "12.04", "ubuntu-precise-12.04-amd64-server", OsFamily.LINUX),
+    UBUNTU_12_04( "Ubuntu", "12.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Ubuntu Precise Pangolin 14.04 LTS 64BIT" )
-    UBUNTU_14_04(12, "Ubuntu", "14.04", "ubuntu-trusty-14.04-amd64-server", OsFamily.LINUX),
+    UBUNTU_14_04( "Ubuntu", "14.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Debian 7" )
-    DEBIAN_7(13, "Debian", "7", "wheezy-amd64-pvm", OsFamily.LINUX),
+    DEBIAN_7( "Debian", "7", OsFamily.LINUX ),
 
     @ApiModelProperty("Microsoft Windows Server 2008 R2")
-    WINDOWS_SERVER_2008_R2(101, "Windows", "2008", "Server-2008-R2_SP1-English-64Bit-Base", OsFamily.WINDOWS),
+    WINDOWS_SERVER_2008_R2( "Windows", "2008", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard" )
-    WINDOWS_SERVER_2008_R2_SQL_2008_R2(102, "Windows", "2008", "Windows_Server-2008-R2_SP1-English-64Bit-SQL_2008_R2_SP2_Standard", OsFamily.WINDOWS),
+    WINDOWS_SERVER_2008_R2_SQL_2008_R2( "Windows", "2008", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
-    WINDOWS_SERVER_2012_SQL_2012_SP1(103, "Windows", "2012", "Windows Server 2012 + SQL Server 2012 SP1 Standard", OsFamily.WINDOWS),
+    WINDOWS_SERVER_2012_SQL_2012_SP1( "Windows", "2012", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Ubuntu Xenial Xerus 16.04 LTS 64bit" )
     UBUNTU_16_04( "Ubuntu", "16.04", OsFamily.LINUX ),
@@ -34,15 +34,7 @@ public enum OSType
     UBUNTU_18_04( "Ubuntu", "18.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Debian 9.4" )
-    DEBIAN_9_4( "Debian", "9.4", OsFamily.LINUX ),
-
-    @ApiModelProperty( "Unknown operating system" )
-    UNRECOGNIZED(Integer.MAX_VALUE, "UNRECOGNIZED", "", "", OsFamily.UNRECOGNIZED);
-
-    public int getCode()
-    {
-        return code;
-    }
+    DEBIAN_9_4( "Debian", "9.4", OsFamily.LINUX );
 
     public String getValue()
     {
@@ -59,29 +51,20 @@ public enum OSType
         return version;
     }
 
-    public String getDescription()
-    {
-        return description;
-    }
-
-    private final int code;
     private final String value;
     private final String version;
-    private final String description;
     private final OsFamily family;
 
-    OSType( int code, String value, String version, String description, OsFamily family )
+    OSType( String value, String version, OsFamily family )
     {
-        this.code = code;
         this.value = value;
         this.version = version;
-        this.description = description;
         this.family = family;
     }
 
     public static OSType fromNameAndVersion( String name, String version )
     {
-        if ( name == null || version == null ) return UNRECOGNIZED;
+        if ( name == null || version == null ) return OTHER;
 
         OSType exactMatch = null;
         OSType similarMatch = null;
@@ -98,7 +81,7 @@ public enum OSType
         if ( exactMatch != null ) return exactMatch;
         if ( similarMatch != null ) return similarMatch;
 
-        return UNRECOGNIZED;
+        return OTHER;
     }
 
     public boolean isWindows()
