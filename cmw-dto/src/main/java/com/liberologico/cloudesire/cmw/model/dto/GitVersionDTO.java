@@ -20,7 +20,6 @@ public class GitVersionDTO
     private String commitMessageShort = UNDEFINED;
     private String commitTime = UNDEFINED;
     private String jenkinsBuild = UNDEFINED;
-    private String pomVersion = UNDEFINED;
 
     public String getBranch()
     {
@@ -152,16 +151,6 @@ public class GitVersionDTO
         this.jenkinsBuild = jenkinsBuild;
     }
 
-    public String getPomVersion()
-    {
-        return pomVersion;
-    }
-
-    public void setPomVersion( String pomVersion )
-    {
-        this.pomVersion = pomVersion;
-    }
-
     @Override
     public String toString()
     {
@@ -179,7 +168,6 @@ public class GitVersionDTO
                 ", commitMessageShort='" + commitMessageShort + '\'' +
                 ", commitTime='" + commitTime + '\'' +
                 ", jenkinsBuild='" + jenkinsBuild + '\'' +
-                ", pomVersion='" + pomVersion + '\'' +
                 '}';
     }
 }
