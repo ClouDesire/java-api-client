@@ -3,8 +3,6 @@ package com.liberologico.cloudesire.common.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Locale;
-
 @ApiModel( "The operating system version" )
 public enum OSType
 {
@@ -84,13 +82,23 @@ public enum OSType
 
     public static OSType fromNameAndVersion( String name, String version )
     {
-        if(name != null && version != null)
-            for ( OSType type : values() )
+        if ( name == null || version == null ) return UNRECOGNIZED;
+
+        OSType exactMatch = null;
+        OSType similarMatch = null;
+
+        for ( OSType type : values() )
+        {
+            if ( type.value.equalsIgnoreCase( name ) )
             {
-                if ( type.value.toLowerCase(Locale.ROOT).equals(name.toLowerCase(Locale.ROOT)) &&
-                        type.version.toLowerCase(Locale.ROOT).equals(version.toLowerCase(Locale.ROOT)))
-                    return type;
+                if ( version.equals( type.version ) ) exactMatch = type;
+                if ( version.contains( type.version ) ) similarMatch = type;
             }
+        }
+
+        if ( exactMatch != null ) return exactMatch;
+        if ( similarMatch != null ) return similarMatch;
+
         return UNRECOGNIZED;
     }
 
