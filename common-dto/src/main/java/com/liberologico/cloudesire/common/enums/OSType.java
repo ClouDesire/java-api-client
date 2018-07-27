@@ -84,21 +84,20 @@ public enum OSType
     {
         if ( name == null || version == null ) return UNRECOGNIZED;
 
-        for ( OSType type : values() )
-        {
-            if ( type.value.equalsIgnoreCase( name ) )
-            {
-                if ( type.version.equals( version ) ) return type;
-            }
-        }
+        OSType exactMatch = null;
+        OSType similarMatch = null;
 
         for ( OSType type : values() )
         {
             if ( type.value.equalsIgnoreCase( name ) )
             {
-                if ( version.contains( type.version ) ) return type;
+                if ( version.equals( type.version ) ) exactMatch = type;
+                if ( version.contains( type.version ) ) similarMatch = type;
             }
         }
+
+        if ( exactMatch != null ) return exactMatch;
+        if ( similarMatch != null ) return similarMatch;
 
         return UNRECOGNIZED;
     }
