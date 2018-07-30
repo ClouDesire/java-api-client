@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.serializer.PriceSerializer;
+import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.dto.ActionUrlDTO;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * This is the output DTO for order
@@ -50,6 +52,8 @@ public class OrderDTO extends BaseEntityDTO
     private UrlEntityDTO productVersion;
 
     private String reseller;
+
+    private OSType operatingSystem;
 
     public ActionUrlDTO getApprove()
     {
@@ -183,6 +187,16 @@ public class OrderDTO extends BaseEntityDTO
         this.reseller = reseller;
     }
 
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -190,29 +204,15 @@ public class OrderDTO extends BaseEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
 
         OrderDTO orderDTO = (OrderDTO) o;
-
-        if ( approve != null ? !approve.equals( orderDTO.approve ) : orderDTO.approve != null ) return false;
-        if ( budget != null ? !budget.equals( orderDTO.budget ) : orderDTO.budget != null ) return false;
-        if ( buyer != null ? !buyer.equals( orderDTO.buyer ) : orderDTO.buyer != null ) return false;
-        if ( currency != null ? !currency.equals( orderDTO.currency ) : orderDTO.currency != null ) return false;
-        if ( date != null ? !date.equals( orderDTO.date ) : orderDTO.date != null ) return false;
-        if ( subscription != null ? !subscription.equals( orderDTO.subscription ) : orderDTO.subscription != null )
-            return false;
-        if ( type != orderDTO.type ) return false;
-
-        return true;
+        return Objects.equals( buyer, orderDTO.buyer ) && Objects.equals( approve, orderDTO.approve ) && Objects
+                .equals( budget, orderDTO.budget ) && type == orderDTO.type && Objects
+                .equals( subscription, orderDTO.subscription ) && Objects.equals( date, orderDTO.date ) && Objects
+                .equals( currency, orderDTO.currency );
     }
 
     @Override
     public int hashCode()
     {
-        int result = buyer != null ? buyer.hashCode() : 0;
-        result = 31 * result + ( approve != null ? approve.hashCode() : 0 );
-        result = 31 * result + ( budget != null ? budget.hashCode() : 0 );
-        result = 31 * result + ( type != null ? type.hashCode() : 0 );
-        result = 31 * result + ( subscription != null ? subscription.hashCode() : 0 );
-        result = 31 * result + ( date != null ? date.hashCode() : 0 );
-        result = 31 * result + ( currency != null ? currency.hashCode() : 0 );
-        return result;
+        return Objects.hash( buyer, approve, budget, type, subscription, date, currency );
     }
 }

@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
 import com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys;
+import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -58,6 +59,8 @@ public class OrderInputDTO extends BaseEntityDTO
 
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )
     private String reseller;
+
+    private OSType operatingSystem;
 
     public OrderInputDTO( UrlEntityDTO productVersion )
     {
@@ -209,6 +212,16 @@ public class OrderInputDTO extends BaseEntityDTO
     public void setReseller( String reseller )
     {
         this.reseller = reseller;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
     }
 
     @Override

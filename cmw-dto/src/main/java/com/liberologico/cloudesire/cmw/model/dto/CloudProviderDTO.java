@@ -1,12 +1,14 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @ApiModel( "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
@@ -35,6 +37,9 @@ public class CloudProviderDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Default SSH username", readOnly = true )
     private String username;
+
+    @ApiModelProperty( value = "Supported operating systems", readOnly = true )
+    private Set<OSType> supportedOperatingSystems;
 
     public List<String> getMissing()
     {
@@ -114,6 +119,16 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setUsername( String username )
     {
         this.username = username;
+    }
+
+    public Set<OSType> getSupportedOperatingSystems()
+    {
+        return supportedOperatingSystems;
+    }
+
+    public void setSupportedOperatingSystems( Set<OSType> supportedOperatingSystems )
+    {
+        this.supportedOperatingSystems = supportedOperatingSystems;
     }
 
     @Override
