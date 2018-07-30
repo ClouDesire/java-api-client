@@ -24,8 +24,12 @@ public interface CloudProviderApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @GET( "cloudProvider" )
-    Call<List<CloudProviderDTO>> getAll( @Query( "excluding" ) List<Integer> excluding,
-            @Query( "withDisabled" ) Boolean withDisabled, @Query( "enabled" ) Boolean enabled );
+    Call<List<CloudProviderDTO>> getAll(
+            @Query( "excluding" ) List<Integer> excluding,
+            @Query( "withDisabled" ) Boolean withDisabled,
+            @Query( "enabled" ) Boolean enabled,
+            @Query( "vmSupport" ) Boolean vmSupport
+    );
 
     @GET( "cloudProvider/{id}" )
     Call<CloudProviderDTO> get( @Path( "id" ) Integer id );
