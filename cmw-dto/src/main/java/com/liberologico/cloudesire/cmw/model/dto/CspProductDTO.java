@@ -15,10 +15,9 @@ public abstract class CspProductDTO extends ProductDTO
 
     CspProductDTO( String name, String identifier, CspProductType type, BigDecimal price, UrlEntityDTO company )
     {
-        super( name, identifier, ProductType.CSP );
+        super( name, identifier, ProductType.CSP, company );
         setCspProductType( type );
         this.price = price;
-        setCompany( company );
     }
 
     CspProductDTO()

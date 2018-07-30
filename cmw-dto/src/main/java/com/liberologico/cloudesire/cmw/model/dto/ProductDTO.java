@@ -197,6 +197,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Authentication header value for the upstream API" )
     private String apiHeaderValue;
 
+    public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
+    {
+        this( name, identifier, type );
+        this.company = company;
+    }
+
     public ProductDTO( String name, String identifier, ProductType type )
     {
         super( name );
