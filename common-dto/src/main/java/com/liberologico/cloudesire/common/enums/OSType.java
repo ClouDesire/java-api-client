@@ -33,8 +33,20 @@ public enum OSType
     @ApiModelProperty( "Ubuntu Bionic Beaver 18.04 LTS 64bit" )
     UBUNTU_18_04( "Ubuntu", "18.04", OsFamily.LINUX ),
 
-    @ApiModelProperty( "Debian 9.4" )
-    DEBIAN_9_4( "Debian", "9.4", OsFamily.LINUX );
+    @ApiModelProperty( "Debian 9" )
+    DEBIAN_9( "Debian", "9", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Red Hat Enterprise 6" )
+    RED_HAT_6( "Red Hat Enterprise", "6", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Red Hat Enterprise 7" )
+    RED_HAT_7( "Red Hat Enterprise", "7", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Centos 6" )
+    CENTOS_6( "Centos", "6", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Centos 7" )
+    CENTOS_7( "Centos", "7", OsFamily.LINUX );
 
     public String getValue()
     {
