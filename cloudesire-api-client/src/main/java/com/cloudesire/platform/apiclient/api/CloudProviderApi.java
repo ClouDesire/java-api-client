@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.CloudProviderDTO;
+import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 import com.liberologico.cloudesire.cmw.model.patch.CloudProviderPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -24,8 +25,12 @@ public interface CloudProviderApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @GET( "cloudProvider" )
-    Call<List<CloudProviderDTO>> getAll( @Query( "excluding" ) List<Integer> excluding,
-            @Query( "withDisabled" ) Boolean withDisabled, @Query( "enabled" ) Boolean enabled );
+    Call<List<CloudProviderDTO>> getAll(
+            @Query( "excluding" ) List<Integer> excluding,
+            @Query( "withDisabled" ) Boolean withDisabled,
+            @Query( "enabled" ) Boolean enabled,
+            @Query( "productType" ) ProductType productType
+    );
 
     @GET( "cloudProvider/{id}" )
     Call<CloudProviderDTO> get( @Path( "id" ) Integer id );
