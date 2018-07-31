@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.cmw.model.enums.SortDirection;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,13 +12,20 @@ import java.util.Map;
 
 public class PageRequestDTO
 {
+    @ApiModelProperty( "Page number to retrieve" )
+    @Min( value = 1, message = "must be > 1" )
     @NotNull
-    @Min ( value = 1, message = "must be > 1" )
     private Integer pageNumber = 1;
+
+    @ApiModelProperty( "Number of elements for the requeste page" )
+    @Max( value = 50, message = "must be < 50" )
     @NotNull
-    @Max ( value = 50, message = "must be < 50" )
     private Integer pageSize = 20;
+
+    @ApiModelProperty( "Elements sort direction" )
     private SortDirection sortDirection;
+
+    @ApiModelProperty( "Field to sort by" )
     private String sortField;
 
     public PageRequestDTO( int pageNumber, int pageSize )
@@ -58,12 +66,14 @@ public class PageRequestDTO
     {
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public boolean isAscending()
     {
         return sortDirection == SortDirection.ASC;
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public boolean isSet()
     {

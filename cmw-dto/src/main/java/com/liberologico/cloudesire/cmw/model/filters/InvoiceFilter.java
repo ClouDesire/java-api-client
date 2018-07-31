@@ -3,20 +3,29 @@ package com.liberologico.cloudesire.cmw.model.filters;
 import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
 import com.liberologico.cloudesire.cmw.model.dto.UrlEntityDTO;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceStatus;
+import io.swagger.annotations.ApiModelProperty;
 
 public final class InvoiceFilter extends PageRequestDTO
 {
+    /**
+     * @deprecated by {@link #status}
+     */
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private Boolean paid;
 
+    @ApiModelProperty( "Filter by nominee" )
     private Boolean nominee;
 
     private UrlEntityDTO company;
 
+    @ApiModelProperty( "Retrieve self-billed Invoices only" )
     private Boolean selfBilled;
 
+    @ApiModelProperty( "Filter by Order type" )
     private String type;
 
+    @ApiModelProperty( "Retrieve expired Invoices only" )
     private Boolean expired;
 
     private InvoiceStatus status;
