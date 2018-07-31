@@ -45,6 +45,9 @@ public interface ProductApi
     @POST( "product/csp/arm" )
     Call<ProductDTO> create( @Body CspArmProductDTO input );
 
+    @POST( "product/vm" )
+    Call<ProductDTO> createBareVm( @Body ProductDTO input );
+
     @DELETE( "product/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
