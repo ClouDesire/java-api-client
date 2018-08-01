@@ -1389,9 +1389,12 @@ public class EnvironmentDTO extends DTO
         public void setEnabledProductTypes( Set<ProductType> enabledProductTypes )
         {
             this.enabledProductTypes.clear();
-            for ( ProductType enabledProductType : enabledProductTypes )
+            if ( enabledProductTypes != null )
             {
-                addProductType( enabledProductType );
+                for ( ProductType enabledProductType : enabledProductTypes )
+                {
+                    addProductType( enabledProductType );
+                }
             }
         }
 
