@@ -1388,8 +1388,16 @@ public class EnvironmentDTO extends DTO
 
         public void setEnabledProductTypes( Set<ProductType> enabledProductTypes )
         {
-            this.enabledProductTypes = enabledProductTypes;
-            this.enabledProductTypes.remove( null );
+            this.enabledProductTypes.clear();
+            for ( ProductType enabledProductType : enabledProductTypes )
+            {
+                addProductType( enabledProductType );
+            }
+        }
+
+        void addProductType( ProductType productType )
+        {
+            if ( productType != null ) this.enabledProductTypes.add( productType );
         }
 
         @ApiModelProperty( "@deprecated use {@link #setEnabledProductTypes(Set)}" )
