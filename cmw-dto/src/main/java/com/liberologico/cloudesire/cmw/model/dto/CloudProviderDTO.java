@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @ApiModel( "Definition of a cloud provider" )
@@ -34,7 +35,14 @@ public class CloudProviderDTO extends NamedEntityDTO
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private List<String> missing = new ArrayList<>();
 
-    @ApiModelProperty( value = "Default SSH username", readOnly = true )
+    @ApiModelProperty( value = "Default SSH username per OS type", readOnly = true )
+    private Map<OSType, String> usernames;
+
+    /**
+     * @deprecated by {@link #usernames}
+     */
+    @ApiModelProperty( hidden = true, value = "Default SSH username", readOnly = true )
+    @Deprecated
     private String username;
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
@@ -108,6 +116,16 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setWeight( int weight )
     {
         this.weight = weight;
+    }
+
+    public Map<OSType, String> getUsernames()
+    {
+        return usernames;
+    }
+
+    public void setUsernames( Map<OSType, String> usernames )
+    {
+        this.usernames = usernames;
     }
 
     public String getUsername()
