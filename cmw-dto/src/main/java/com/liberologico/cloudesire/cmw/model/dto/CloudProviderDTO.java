@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @ApiModel( "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
@@ -39,7 +38,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     private String username;
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
-    private Set<OSType> supportedOperatingSystems;
+    private List<OSType> supportedOperatingSystems;
 
     public List<String> getMissing()
     {
@@ -121,12 +120,12 @@ public class CloudProviderDTO extends NamedEntityDTO
         this.username = username;
     }
 
-    public Set<OSType> getSupportedOperatingSystems()
+    public List<OSType> getSupportedOperatingSystems()
     {
         return supportedOperatingSystems;
     }
 
-    public void setSupportedOperatingSystems( Set<OSType> supportedOperatingSystems )
+    public void setSupportedOperatingSystems( List<OSType> supportedOperatingSystems )
     {
         this.supportedOperatingSystems = supportedOperatingSystems;
     }
