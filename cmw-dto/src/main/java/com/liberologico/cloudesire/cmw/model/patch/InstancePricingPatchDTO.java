@@ -31,8 +31,15 @@ public class InstancePricingPatchDTO extends DTO
 
     public enum Action
     {
+        /**
+         * @deprecated by {@link #RELINK}
+         */
+        @ApiModelProperty( hidden = true )
+        @Deprecated
+        RELINK_VMC( "relink vmc" ),
+
         @ApiModelProperty( "Relink instance pricings to every VM configuration" )
-        RELINK( "relink vmc" );
+        RELINK( "relink" );
 
         private final String toString;
 
