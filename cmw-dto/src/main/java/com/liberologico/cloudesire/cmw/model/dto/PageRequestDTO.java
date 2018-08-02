@@ -17,7 +17,7 @@ public class PageRequestDTO
     @NotNull
     private Integer pageNumber = 1;
 
-    @ApiModelProperty( "Number of elements for the requeste page" )
+    @ApiModelProperty( "Number of elements for the requested page" )
     @Max( value = 50, message = "must be < 50" )
     @NotNull
     private Integer pageSize = 20;

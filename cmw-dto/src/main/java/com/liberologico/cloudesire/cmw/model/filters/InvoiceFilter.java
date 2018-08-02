@@ -29,6 +29,7 @@ public final class InvoiceFilter extends PageRequestDTO
     @ApiModelProperty( "Retrieve expired Invoices only" )
     private Boolean expired;
 
+    @ApiModelProperty( "Filter by Invoice status" )
     private InvoiceStatus status;
 
     public Boolean getPaid()
