@@ -1,11 +1,15 @@
 package com.liberologico.cloudesire.cmw.model.filters;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Map;
 
 public class ResellingReportFilter extends ReportFilter
 {
+    @ApiModelProperty( "Filter by Distributor ID" )
     private Integer distributorId;
 
+    @ApiModelProperty( "Filter by Reseller ID" )
     private Integer resellerId;
 
     public static ResellingReportFilter by()

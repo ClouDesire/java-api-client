@@ -3,22 +3,33 @@ package com.liberologico.cloudesire.cmw.model.filters;
 import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
 import com.liberologico.cloudesire.cmw.model.dto.UrlEntityDTO;
 import com.liberologico.cloudesire.cmw.model.enums.InvoiceStatus;
+import com.liberologico.cloudesire.cmw.model.enums.OrderType;
+import io.swagger.annotations.ApiModelProperty;
 
 public final class InvoiceFilter extends PageRequestDTO
 {
+    /**
+     * @deprecated by {@link #status}
+     */
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private Boolean paid;
 
+    @ApiModelProperty( "Filter by nominee" )
     private Boolean nominee;
 
     private UrlEntityDTO company;
 
+    @ApiModelProperty( "Retrieve self-billed Invoices only" )
     private Boolean selfBilled;
 
-    private String type;
+    @ApiModelProperty( "Filter by Order type" )
+    private OrderType type;
 
+    @ApiModelProperty( "Retrieve expired Invoices only" )
     private Boolean expired;
 
+    @ApiModelProperty( "Filter by Invoice status" )
     private InvoiceStatus status;
 
     public Boolean getPaid()
@@ -61,14 +72,23 @@ public final class InvoiceFilter extends PageRequestDTO
         this.selfBilled = selfBilled;
     }
 
-    public String getType()
+    public OrderType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( OrderType type )
     {
         this.type = type;
+    }
+
+    /**
+     * @deprecated by {@link #setType(OrderType)}
+     */
+    @Deprecated
+    public void setType( String type )
+    {
+        this.type = OrderType.valueOf( type );
     }
 
     public Boolean getExpired()

@@ -80,30 +80,35 @@ public class UrlEntityDTO
         return url;
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public boolean isNull()
     {
         return url == null;
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public boolean hasId( Integer id )
     {
         return url.substring( url.lastIndexOf( '/' ) + 1 ).equals( id.toString() );
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public Integer getId()
     {
         return BodyParser.getResourceId( this.url );
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public String getIdentifier()
     {
         return BodyParser.getResourceIdentifier( this.url );
     }
 
+    @ApiModelProperty( hidden = true )
     @JsonIgnore
     public String getResource()
     {
