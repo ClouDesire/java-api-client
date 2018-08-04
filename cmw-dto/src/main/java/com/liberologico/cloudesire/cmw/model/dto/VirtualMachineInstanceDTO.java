@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.BackupFrequency;
+import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -35,6 +36,8 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     private String password;
 
     private List<ApplicationDTO> installation;
+
+    private OSType operatingSystem;
 
     public UrlEntityDTO getSubscription()
     {
@@ -144,6 +147,16 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     public void setInstallation( List<ApplicationDTO> installation )
     {
         this.installation = installation;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
     }
 
     @Override
