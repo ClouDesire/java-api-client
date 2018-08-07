@@ -18,11 +18,11 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @NotNull
     private BigDecimal cpu;
 
-    @ApiModelProperty( "Initial RAM configuration, in MB" )
+    @ApiModelProperty( "Memory available, in MB" )
     @NotNull
     private Integer ram;
 
-    @ApiModelProperty( "Predefined disk space to be allocated as user data, in GB" )
+    @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
     @Min( 0 )
     @NotNull
     private Integer diskSpace;
