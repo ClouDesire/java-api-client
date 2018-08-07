@@ -3,10 +3,12 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.liberologico.cloudesire.common.enums.OSType;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
@@ -19,6 +21,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     private Integer ram;
 
     // In GB, Predefined disk space to be allocated as user data
+    @Min( 0 )
     @NotNull
     private Integer diskSpace;
 
@@ -38,6 +41,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 
     private OSType osType = OSType.UBUNTU_12_04;
 
+    // region Auto-generated code
     public BigDecimal getCpu()
     {
         return cpu;
@@ -139,4 +143,22 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     {
         this.latestApplications = latestApplications;
     }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        VirtualMachineConfigurationDTO that = (VirtualMachineConfigurationDTO) o;
+        return Objects.equals( cpu, that.cpu ) && Objects.equals( ram, that.ram ) && Objects
+                .equals( diskSpace, that.diskSpace );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cpu, ram, diskSpace );
+    }
+    // endregion
 }
