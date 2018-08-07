@@ -1,25 +1,35 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.common.enums.OSType;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( "CPU cores" )
+    @Min( 1 )
+    @Max( 128 )
     @NotNull
     private BigDecimal cpu;
 
-    // Initial ram configuration, in MB.
+    @ApiModelProperty( "Memory available, in MB" )
     @NotNull
+    @Min( 1024 )
     private Integer ram;
 
-    // In GB, Predefined disk space to be allocated as user data
+    @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
     @NotNull
+    @Min( 0 )
+    @Max( 2048 )
     private Integer diskSpace;
 
     @Valid
@@ -34,10 +44,12 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> latestApplications = new ArrayList<>();
 
+    @ApiModelProperty( "GPU support" )
     private boolean gpu = false;
 
     private OSType osType = OSType.UBUNTU_12_04;
 
+    // region Auto-generated code
     public BigDecimal getCpu()
     {
         return cpu;
@@ -139,4 +151,22 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     {
         this.latestApplications = latestApplications;
     }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        VirtualMachineConfigurationDTO that = (VirtualMachineConfigurationDTO) o;
+        return Objects.equals( cpu, that.cpu ) && Objects.equals( ram, that.ram ) && Objects
+                .equals( diskSpace, that.diskSpace );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cpu, ram, diskSpace );
+    }
+    // endregion
 }
