@@ -27,7 +27,7 @@ public class InstancePricingDTO extends BaseEntityDTO
     @NotNull
     private BigDecimal cpu;
 
-    @ApiModelProperty( "Disk space" )
+    @ApiModelProperty( "Root disk space" )
     private Integer diskSpace;
 
     @ApiModelProperty( "Operating system" )

@@ -17,7 +17,7 @@ public class InstanceTypeDTO extends DTO
     @NotNull
     private BigDecimal cpu;
 
-    @ApiModelProperty( "Disk space" )
+    @ApiModelProperty( "Root disk space" )
     private Integer diskSpace;
 
     public InstanceTypeDTO( Integer ram, BigDecimal cpu, Integer diskSpace )
