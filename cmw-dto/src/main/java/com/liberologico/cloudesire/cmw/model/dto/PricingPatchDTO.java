@@ -13,6 +13,15 @@ public class PricingPatchDTO extends DTO
     @ApiModelProperty( "The new price" )
     private BigDecimal price;
 
+    public PricingPatchDTO( @NotNull BigDecimal price )
+    {
+        this.price = price;
+    }
+
+    public PricingPatchDTO()
+    {
+    }
+
     public BigDecimal getPrice()
     {
         return price;

@@ -27,6 +27,9 @@ public class InstancePricingDTO extends BaseEntityDTO
     @NotNull
     private BigDecimal cpu;
 
+    @ApiModelProperty( "Root disk space" )
+    private Integer diskSpace;
+
     @ApiModelProperty( "Operating system" )
     @NotNull
     private OsFamily osFamily = OsFamily.LINUX;
@@ -69,6 +72,16 @@ public class InstancePricingDTO extends BaseEntityDTO
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
+    }
+
+    public Integer getDiskSpace()
+    {
+        return diskSpace;
+    }
+
+    public void setDiskSpace( Integer diskSpace )
+    {
+        this.diskSpace = diskSpace;
     }
 
     public OsFamily getOsFamily()

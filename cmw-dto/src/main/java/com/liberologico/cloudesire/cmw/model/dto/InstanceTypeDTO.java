@@ -17,10 +17,14 @@ public class InstanceTypeDTO extends DTO
     @NotNull
     private BigDecimal cpu;
 
-    public InstanceTypeDTO( Integer ram, BigDecimal cpu )
+    @ApiModelProperty( "Root disk space" )
+    private Integer diskSpace;
+
+    public InstanceTypeDTO( Integer ram, BigDecimal cpu, Integer diskSpace )
     {
         this.ram = ram;
         this.cpu = cpu;
+        this.diskSpace = diskSpace;
     }
 
     public InstanceTypeDTO()
@@ -45,6 +49,16 @@ public class InstanceTypeDTO extends DTO
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
+    }
+
+    public Integer getDiskSpace()
+    {
+        return diskSpace;
+    }
+
+    public void setDiskSpace( Integer diskSpace )
+    {
+        this.diskSpace = diskSpace;
     }
 
     @Override
