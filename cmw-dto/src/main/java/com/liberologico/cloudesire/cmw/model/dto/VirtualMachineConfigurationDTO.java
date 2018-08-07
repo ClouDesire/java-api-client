@@ -4,6 +4,7 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -15,16 +16,19 @@ import java.util.Set;
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "CPU cores" )
+    @Min( 1 )
+    @Max( 128 )
     @NotNull
     private BigDecimal cpu;
 
     @ApiModelProperty( "Memory available, in MB" )
     @NotNull
+    @Min( 1024 )
     private Integer ram;
 
     @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
-    @Min( 0 )
     @NotNull
+    @Max( 2048 )
     private Integer diskSpace;
 
     @Valid
