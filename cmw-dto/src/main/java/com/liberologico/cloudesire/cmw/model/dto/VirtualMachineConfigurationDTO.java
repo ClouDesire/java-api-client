@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.common.enums.OSType;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -13,14 +14,15 @@ import java.util.Set;
 
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 {
+    @ApiModelProperty( "CPU cores" )
     @NotNull
     private BigDecimal cpu;
 
-    // Initial ram configuration, in MB.
+    @ApiModelProperty( "Initial RAM configuration, in MB" )
     @NotNull
     private Integer ram;
 
-    // In GB, Predefined disk space to be allocated as user data
+    @ApiModelProperty( "Predefined disk space to be allocated as user data, in GB" )
     @Min( 0 )
     @NotNull
     private Integer diskSpace;
@@ -37,6 +39,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> latestApplications = new ArrayList<>();
 
+    @ApiModelProperty( "GPU support" )
     private boolean gpu = false;
 
     private OSType osType = OSType.UBUNTU_12_04;
