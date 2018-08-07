@@ -28,6 +28,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 
     @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
     @NotNull
+    @Min( 0 )
     @Max( 2048 )
     private Integer diskSpace;
 
