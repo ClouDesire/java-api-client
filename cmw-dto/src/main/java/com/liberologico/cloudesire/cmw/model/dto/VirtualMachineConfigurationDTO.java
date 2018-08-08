@@ -47,7 +47,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @ApiModelProperty( "GPU support" )
     private boolean gpu = false;
 
-    private OSType osType = OSType.UBUNTU_12_04;
+    private OSType osType;
 
     // region Auto-generated code
     public BigDecimal getCpu()
