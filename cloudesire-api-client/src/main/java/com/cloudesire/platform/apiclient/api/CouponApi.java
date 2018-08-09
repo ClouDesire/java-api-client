@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.ISO8601Date;
 import com.cloudesire.platform.apiclient.ISO8601DateTime;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
+import com.liberologico.cloudesire.cmw.model.patch.CouponPatchDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -43,8 +44,22 @@ public interface CouponApi
             @Query( "days" ) Integer days, @Query( "plafond" ) BigDecimal plafond );
 
     @PATCH( "coupon/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body CouponPatchDTO actions );
+
+    @PATCH( "coupon/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body CouponPatchDTO actions, @Query( "language" ) String language );
+
+    /**
+     * @deprecated by {@link #partialUpdate(Integer, CouponPatchDTO)}
+     */
+    @Deprecated
+    @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
 
+    /**
+     * @deprecated by {@link #partialUpdate(Integer, CouponPatchDTO, String)}
+     */
+    @Deprecated
     @PATCH( "coupon/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
 
