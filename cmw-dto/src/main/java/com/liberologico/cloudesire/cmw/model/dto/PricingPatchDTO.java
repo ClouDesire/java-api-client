@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @ApiModel( "Request a price change for a cloud price" )
 public class PricingPatchDTO extends DTO
 {
-    @NotNull
     @ApiModelProperty( "The new price" )
     private BigDecimal price;
 

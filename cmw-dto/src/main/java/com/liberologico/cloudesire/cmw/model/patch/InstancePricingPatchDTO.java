@@ -10,14 +10,6 @@ public class InstancePricingPatchDTO extends DTO
     @NotNull
     private Action action;
 
-    private Integer id;
-
-    public InstancePricingPatchDTO( @NotNull Action action, @NotNull Integer id )
-    {
-        this( action );
-        this.id = id;
-    }
-
     public InstancePricingPatchDTO( @NotNull Action action )
     {
         this.action = action;
@@ -37,21 +29,8 @@ public class InstancePricingPatchDTO extends DTO
         this.action = action;
     }
 
-    public Integer getId()
-    {
-        return id;
-    }
-
-    public void setId( Integer id )
-    {
-        this.id = id;
-    }
-
     public enum Action
     {
-        @ApiModelProperty( "Unlink an Instance Pricing from any Virtual Machine Configuration" )
-        DEPRECATE( "deprecate" ),
-
         /**
          * @deprecated by {@link #RELINK}
          */
