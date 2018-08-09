@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.liberologico.cloudesire.cmw.model.dto.SingleInstancePricingPatchDTO;
 import com.liberologico.cloudesire.cmw.model.dto.InstancePricingDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PricingPatchDTO;
 import com.liberologico.cloudesire.cmw.model.patch.InstancePricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,7 +29,7 @@ public interface InstancePricingApi
     Call<Void> patch( @Body InstancePricingPatchDTO input );
 
     @PATCH( "instancePricing/{id}" )
-    Call<Void> patch( @Path( "id" ) int id, @Body PricingPatchDTO input );
+    Call<Void> patch( @Path( "id" ) int id, @Body SingleInstancePricingPatchDTO input );
 
     @DELETE( "instancePricing/{id}" )
     Call<Void> delete( @Path( "id" ) int id );

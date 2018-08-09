@@ -10,7 +10,7 @@ public class InstancePricingPatchDTO extends DTO
     @NotNull
     private Action action;
 
-    public InstancePricingPatchDTO( Action action )
+    public InstancePricingPatchDTO( @NotNull Action action )
     {
         this.action = action;
     }
