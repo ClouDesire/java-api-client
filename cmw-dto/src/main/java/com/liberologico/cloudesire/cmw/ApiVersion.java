@@ -8,6 +8,8 @@ public final class ApiVersion
     public static final long V20180312 = 20180312;
     public static final long V20180101 = 20180101;
 
+    public static final Long LATEST_API_VERSION = V20180629;
+
     private ApiVersion()
     {
     }
