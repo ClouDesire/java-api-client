@@ -29,9 +29,6 @@ import java.util.Map;
 
 public interface UserApi
 {
-    @POST( "user/{id}" )
-    Call<Void> activateAccountAsAnonymous( @Path( "id" ) int id, @Body Map<String, Object> input );
-
     @POST( "user/activate" )
     Call<Void> activateAccount( @Body UserActivationDTO payload );
 
