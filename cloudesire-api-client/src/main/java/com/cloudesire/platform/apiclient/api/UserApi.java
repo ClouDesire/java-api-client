@@ -8,6 +8,7 @@ import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
+import com.liberologico.cloudesire.cmw.model.dto.request.UserActivationDTO;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -32,7 +33,7 @@ public interface UserApi
     Call<Void> activateAccountAsAnonymous( @Path( "id" ) int id, @Body Map<String, Object> input );
 
     @POST( "user/activate" )
-    Call<Void> activateAccountAsAnonymousV2( @Body String tag );
+    Call<Void> activateAccount( @Body UserActivationDTO payload );
 
     @GET( "user/amIAdmin" )
     Call<Void> amIAdmin();
