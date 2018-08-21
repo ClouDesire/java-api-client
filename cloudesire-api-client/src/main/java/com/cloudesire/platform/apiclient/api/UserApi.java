@@ -1,11 +1,9 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
-import com.liberologico.cloudesire.cmw.model.dto.DistributorDTO;
 import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.request.UserActivationDTO;
@@ -29,9 +27,6 @@ import java.util.Map;
 
 public interface UserApi
 {
-    @POST( "user/{id}" )
-    Call<Void> activateAccountAsAnonymous( @Path( "id" ) int id, @Body Map<String, Object> input );
-
     @POST( "user/activate" )
     Call<Void> activateAccount( @Body UserActivationDTO payload );
 
@@ -119,18 +114,6 @@ public interface UserApi
 
     @POST( "user/payment/token" )
     Call<Void> saveTokenData( @Body TokenDataDTO data );
-
-    @GET( "user/{id}/distributor" )
-    Call<DistributorDTO> getDistributorProfile( @Path( "id" ) int id );
-
-    @GET( "user/{id}/reseller" )
-    Call<ResellerDTO> getResellerProfile( @Path( "id" ) int id );
-
-    @PUT( "user/{id}/distributor" )
-    Call<DistributorDTO> saveDistributorProfile( @Path( "id" ) int id, @Body DistributorDTO profile );
-
-    @PUT( "user/{id}/reseller" )
-    Call<ResellerDTO> saveResellerProfile( @Path( "id" ) int id, @Body ResellerDTO profile );
 
     @GET( "user/{id}/metadata" )
     Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
