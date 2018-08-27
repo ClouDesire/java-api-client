@@ -4,9 +4,12 @@ import com.liberologico.cloudesire.cmw.model.dto.ResellerPricingDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -18,10 +21,41 @@ public interface ResellerPricingApi
     @POST( "resellerPricing" )
     Call<ResellerPricingDTO> create( @Body ResellerPricingDTO dto );
 
+    @GET( "resellerPricing/{id}" )
+    Call<ResellerPricingDTO> get( @Path( "id" ) int id );
+
+    @GET( "resellerPricing" )
+    Call<List<ResellerPricingDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "resellerPricing" )
+    Call<List<ResellerPricingDTO>> getAll(
+            @Query( "resellerId" ) Integer resellerId,
+            @QueryMap Map<String, String> pageRequest
+    );
+
+    @GET( "resellerPricing" )
+    Call<List<ResellerPricingDTO>> getAll(
+            @Query( "resellerId" ) Integer resellerId,
+            @Query( "productId" ) Integer productId,
+            @QueryMap Map<String, String> pageRequest
+    );
+
+    @GET( "resellerPricing" )
+    Call<List<ResellerPricingDTO>> getAll(
+            @Query( "unpriced" ) Boolean unpriced,
+            @QueryMap Map<String, String> pageRequest
+    );
+
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll( @Query( "resellerId" ) Integer resellerId,
             @Query( "unpriced" ) Boolean unpriced, @QueryMap Map<String, String> pageRequest );
 
+    @PUT( "resellerPricing/{id}" )
+    Call<ResellerPricingDTO> update( @Path( "id" ) int id, @Body ResellerPricingDTO input );
+
     @PATCH( "resellerPricing" )
     Call<Void> patch( @Body ResellerPricingPatchDTO input );
+
+    @DELETE( "resellerPricing/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }
