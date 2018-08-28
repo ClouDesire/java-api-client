@@ -2,57 +2,34 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 
-public class ProductQuery extends PageRequestQuery
+public class ProductQuery extends BaseQuery
 {
-    private String name;
-
-    private String reseller;
-
-    private ProductType productType;
-
-    private Boolean ownCompany;
-
-    public String getName()
+    public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
-        return name;
-    }
-
-    public ProductQuery setName( String name )
-    {
-        this.name = name;
+        putAll( pageRequestQuery );
         return this;
     }
-
-    public String getReseller()
+    public ProductQuery setName( String name )
     {
-        return reseller;
+        put( "name", name );
+        return this;
     }
 
     public ProductQuery setReseller( String reseller )
     {
-        this.reseller = reseller;
+        put( "reseller", reseller );
         return this;
-    }
-
-    public ProductType getProductType()
-    {
-        return productType;
     }
 
     public ProductQuery setProductType( ProductType productType )
     {
-        this.productType = productType;
+        put( "productType", productType.toString() );
         return this;
-    }
-
-    public Boolean getOwnCompany()
-    {
-        return ownCompany;
     }
 
     public ProductQuery setOwnCompany( Boolean ownCompany )
     {
-        this.ownCompany = ownCompany;
+        put( "ownCompany", ownCompany.toString() );
         return this;
     }
 }

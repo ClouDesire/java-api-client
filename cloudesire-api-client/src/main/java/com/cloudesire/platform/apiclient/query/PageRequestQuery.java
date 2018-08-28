@@ -1,55 +1,31 @@
 package com.cloudesire.platform.apiclient.query;
 
+import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
 import com.liberologico.cloudesire.cmw.model.enums.SortDirection;
 
-public abstract class PageRequestQuery extends BaseQuery
+public final class PageRequestQuery extends BaseQuery
 {
-    private Integer pageNumber;
-    private Integer pageSize;
-    private SortDirection sortDirection;
-    private String sortField;
-
-    public String getSortField()
-    {
-        return sortField;
-    }
-
     public PageRequestQuery setSortField( String sortField )
     {
-        this.sortField = sortField;
+        put( PageRequestDTO.Fields.SORT_FIELD, sortField );
         return this;
-    }
-
-    public SortDirection getSortDirection()
-    {
-        return sortDirection;
     }
 
     public PageRequestQuery setSortDirection( SortDirection sortDirection )
     {
-        this.sortDirection = sortDirection;
+        put( PageRequestDTO.Fields.SORT_DIRECTION, sortDirection.toString() );
         return this;
-    }
-
-    public Integer getPageSize()
-    {
-        return pageSize;
     }
 
     public PageRequestQuery setPageSize( Integer pageSize )
     {
-        this.pageSize = pageSize;
+        put( PageRequestDTO.Fields.PAGE_SIZE, pageSize.toString() );
         return this;
-    }
-
-    public Integer getPageNumber()
-    {
-        return pageNumber;
     }
 
     public PageRequestQuery setPageNumber( Integer pageNumber )
     {
-        this.pageNumber = pageNumber;
+        put( PageRequestDTO.Fields.SORT_FIELD, pageNumber.toString() );
         return this;
     }
 }

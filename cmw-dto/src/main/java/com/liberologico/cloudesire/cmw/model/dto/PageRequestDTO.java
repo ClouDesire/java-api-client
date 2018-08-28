@@ -46,13 +46,21 @@ public class PageRequestDTO
         this.sortDirection = sortDirection;
     }
 
+    public class Fields
+    {
+        public static final String PAGE_NUMBER = "pageNumber";
+        public static final String PAGE_SIZE = "pageSize";
+        public static final String SORT_DIRECTION = "sortDirection";
+        public static final String SORT_FIELD = "sortField";
+    }
+
     public Map<String, String> toMap()
     {
         Map<String, String> map = new HashMap<>();
-        map.put( "pageNumber", Integer.toString( pageNumber ) );
-        map.put( "pageSize", Integer.toString( pageSize ) );
-        if ( sortDirection != null ) map.put( "sortDirection", sortDirection.toString() );
-        if ( sortField != null ) map.put( "sortField", sortField );
+        map.put( Fields.PAGE_NUMBER, Integer.toString( pageNumber ) );
+        map.put( Fields.PAGE_SIZE, Integer.toString( pageSize ) );
+        if ( sortDirection != null ) map.put( Fields.SORT_DIRECTION, sortDirection.toString() );
+        if ( sortField != null ) map.put( Fields.SORT_FIELD, sortField );
         return map;
     }
 
