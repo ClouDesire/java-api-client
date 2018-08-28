@@ -67,6 +67,9 @@ public interface UserApi
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
 
     @GET( "user" )
+    Call<List<MyUserDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
             @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
             @QueryMap Map<String, String> pageRequest );
