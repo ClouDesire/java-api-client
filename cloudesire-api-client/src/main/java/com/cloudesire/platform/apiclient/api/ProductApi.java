@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
+import com.cloudesire.platform.apiclient.query.ProductQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CspArmProductDTO;
 import com.liberologico.cloudesire.cmw.model.dto.CspAzureProductDTO;
 import com.liberologico.cloudesire.cmw.model.dto.CspLicenseProductDTO;
@@ -67,30 +69,10 @@ public interface ProductApi
     Call<List<ProductDTO>> getAll( @Header( MODE ) String mode );
 
     @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+    Call<List<ProductDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name,
-            @Query( "reseller" ) String reseller );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "reseller" ) String reseller,
-            @Query( "productType" ) ProductType productType );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name,
-            @Query( "reseller" ) String reseller, @Query( "productType" ) ProductType productType );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name,
-            @Query( "ownCompany" ) boolean ownCompany );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "name" ) String name,
-            @Query( "ownCompany" ) boolean ownCompany, @Query( "productType" ) ProductType productType );
+    Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query );
 
     @GET( "product/approvalRequests" )
     Call<List<ProductDTO>> getApprovalRequests( @QueryMap Map<String, String> pageRequest );
