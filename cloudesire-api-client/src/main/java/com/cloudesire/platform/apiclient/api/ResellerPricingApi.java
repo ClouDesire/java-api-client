@@ -47,8 +47,12 @@ public interface ResellerPricingApi
     );
 
     @GET( "resellerPricing" )
-    Call<List<ResellerPricingDTO>> getAll( @Query( "resellerId" ) Integer resellerId,
-            @Query( "unpriced" ) Boolean unpriced, @QueryMap Map<String, String> pageRequest );
+    Call<List<ResellerPricingDTO>> getAll(
+            @Query( "resellerId" ) Integer resellerId,
+            @Query( "productId" ) Integer productId,
+            @Query( "unpriced" ) Boolean unpriced,
+            @QueryMap Map<String, String> pageRequest
+    );
 
     @PUT( "resellerPricing/{id}" )
     Call<ResellerPricingDTO> update( @Path( "id" ) int id, @Body ResellerPricingDTO input );
