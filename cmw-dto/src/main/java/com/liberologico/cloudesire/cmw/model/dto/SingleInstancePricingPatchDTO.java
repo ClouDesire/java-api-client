@@ -13,11 +13,6 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
     @ApiModelProperty( "Change associated diskSpace" )
     private Integer diskSpace;
 
-    public SingleInstancePricingPatchDTO( @NotNull Boolean deprecated )
-    {
-        this.deprecated = deprecated;
-    }
-
     public SingleInstancePricingPatchDTO( @NotNull BigDecimal price )
     {
         super( price );
