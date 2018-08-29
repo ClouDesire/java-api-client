@@ -25,6 +25,11 @@ public interface InstancePricingApi
     @GET( "instancePricing" )
     Call<List<InstancePricingDTO>> getAll( @Query( "cloudProvider" ) Integer cloudProvider );
 
+    @GET( "instancePricing" )
+    Call<List<InstancePricingDTO>> getAll(
+            @Query( "cloudProvider" ) int cloudProvider, @Query( "deprecated" ) Boolean deprecated
+    );
+
     @PATCH( "instancePricing" )
     Call<Void> patch( @Body InstancePricingPatchDTO input );
 

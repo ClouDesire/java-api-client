@@ -34,6 +34,9 @@ public class InstancePricingDTO extends BaseEntityDTO
     @NotNull
     private OsFamily osFamily = OsFamily.LINUX;
 
+    @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
+    private Boolean deprecated;
+
     public UrlEntityDTO getCloudProvider()
     {
         return cloudProvider;
@@ -92,5 +95,15 @@ public class InstancePricingDTO extends BaseEntityDTO
     public void setOsFamily( OsFamily osFamily )
     {
         this.osFamily = osFamily;
+    }
+
+    public Boolean getDeprecated()
+    {
+        return deprecated;
+    }
+
+    public void setDeprecated( Boolean deprecated )
+    {
+        this.deprecated = deprecated;
     }
 }
