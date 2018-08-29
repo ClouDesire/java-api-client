@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -85,8 +86,15 @@ public class CouponDTO extends BaseEntityDTO
     @ApiModelProperty( value = "Whether the coupon is reusable", readOnly = true )
     private boolean reusable;
 
-    @ApiModelProperty( value = "Whether the coupon applies to the license cost only", readOnly = true )
-    private boolean licenseOnly = true;
+    @ApiModelProperty( value = "What lines does the coupon affect", readOnly = true )
+    private CouponDestination destination;
+
+    /**
+     * @deprecated by {@link #destination}
+     */
+    @ApiModelProperty( value = "Whether the coupon applies to the license cost only", hidden = true )
+    @Deprecated
+    private Boolean licenseOnly;
 
     public String getEmailCustomer()
     {
@@ -228,6 +236,20 @@ public class CouponDTO extends BaseEntityDTO
         this.reusable = reusable;
     }
 
+    public CouponDestination getDestination()
+    {
+        return destination;
+    }
+
+    public void setDestination( CouponDestination destination )
+    {
+        this.destination = destination;
+    }
+
+    /**
+     * @deprecated by {@link #getDestination()}
+     */
+    @Deprecated
     public boolean isLicenseOnly()
     {
         return licenseOnly;
