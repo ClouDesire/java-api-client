@@ -27,9 +27,10 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
         return deprecated;
     }
 
-    public void setDeprecated( Boolean deprecated )
+    public SingleInstancePricingPatchDTO setDeprecated( Boolean deprecated )
     {
         this.deprecated = deprecated;
+        return this;
     }
 
     public Integer getDiskSpace()
@@ -37,8 +38,9 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
         return diskSpace;
     }
 
-    public void setDiskSpace( Integer diskSpace )
+    public SingleInstancePricingPatchDTO setDiskSpace( Integer diskSpace )
     {
         this.diskSpace = diskSpace;
+        return this;
     }
 }
