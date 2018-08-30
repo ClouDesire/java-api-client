@@ -28,13 +28,13 @@ public class ProductQuery extends BaseQuery
 
     public ProductQuery setProductType( ProductType productType )
     {
-        put( PRODUCT_TYPE, productType.toString() );
+        put( PRODUCT_TYPE, productType );
         return this;
     }
 
     public ProductQuery setOwnCompany( Boolean ownCompany )
     {
-        put( OWN_COMPANY, ownCompany.toString() );
+        put( OWN_COMPANY, ownCompany );
         return this;
     }
 }

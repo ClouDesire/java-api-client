@@ -23,25 +23,25 @@ public class CouponGeneratorQuery extends BaseQuery
 
     public CouponGeneratorQuery setProductVersion( Integer productVersion )
     {
-        put( PRODUCT_VERSION, productVersion.toString() );
+        put( PRODUCT_VERSION, productVersion );
         return this;
     }
 
     public CouponGeneratorQuery setProduct( Integer product )
     {
-        put( PRODUCT, product.toString() );
+        put( PRODUCT, product );
         return this;
     }
 
     public CouponGeneratorQuery setExpiration( ISO8601DateTime expiration )
     {
-        put( EXPIRATION, expiration.toString() );
+        put( EXPIRATION, expiration );
         return this;
     }
 
     public CouponGeneratorQuery setDestination( CouponDestination destination )
     {
-        put( DESTINATION, destination.toString() );
+        put( DESTINATION, destination );
         return this;
     }
 
@@ -53,7 +53,7 @@ public class CouponGeneratorQuery extends BaseQuery
 
     public CouponGeneratorQuery setValue( BigDecimal value )
     {
-        put( VALUE, value.toString() );
+        put( VALUE, value );
         return this;
     }
 

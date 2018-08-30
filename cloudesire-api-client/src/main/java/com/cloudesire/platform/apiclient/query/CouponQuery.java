@@ -23,37 +23,37 @@ public class CouponQuery extends BaseQuery
 
     public CouponQuery setProductVersion( Integer productVersion )
     {
-        put( PRODUCT_VERSION, productVersion.toString() );
+        put( PRODUCT_VERSION, productVersion );
         return this;
     }
 
     public CouponQuery setProduct( Integer product )
     {
-        put( PRODUCT, product.toString() );
+        put( PRODUCT, product );
         return this;
     }
 
     public CouponQuery setExpiration( ISO8601DateTime expiration )
     {
-        put( EXPIRATION_DATE, expiration.toString() );
+        put( EXPIRATION_DATE, expiration );
         return this;
     }
 
     public CouponQuery setDestination( CouponDestination destination )
     {
-        put( DESTINATION, destination.toString() );
+        put( DESTINATION, destination );
         return this;
     }
 
     public CouponQuery setNumber( BigDecimal number )
     {
-        put( NUMBER, number.toString() );
+        put( NUMBER, number );
         return this;
     }
 
     public CouponQuery setHowMany( Integer howMany )
     {
-        put( HOW_MANY, howMany.toString() );
+        put( HOW_MANY, howMany );
         return this;
     }
 
