@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.ISO8601Date;
 import com.cloudesire.platform.apiclient.ISO8601DateTime;
+import com.cloudesire.platform.apiclient.query.CouponGeneratorQuery;
 import com.cloudesire.platform.apiclient.query.CouponQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
 import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
@@ -42,10 +43,10 @@ public interface CouponApi
             @Query( "howMany" ) Integer howMany );
 
     @POST( "coupon" )
-    Call<CouponDTO> generateGenerator( @QueryMap CouponQuery query );
+    Call<CouponDTO> generateGenerator( @QueryMap CouponGeneratorQuery query );
 
     /**
-     * @deprecated by {@link #generateGenerator(CouponQuery)}
+     * @deprecated by {@link #generateGenerator(CouponGeneratorQuery)}
      */
     @Deprecated
     @POST( "coupon" )
