@@ -14,7 +14,6 @@ public class VATPriceDTO extends PriceDTO
     @ApiModelProperty( "VAT total amount" )
     private BigDecimal vatSpunOff;
 
-    @ApiModelProperty( value = "VAT percentage", example = "22" )
     private BigDecimal VAT;
 
     public VATPriceDTO( BigDecimal price, String currency, BigDecimal vatSpunOff, BigDecimal VAT )
@@ -41,6 +40,7 @@ public class VATPriceDTO extends PriceDTO
     {
     }
 
+    @ApiModelProperty( value = "Amount plus VAT", readOnly = true )
     @Override
     public BigDecimal getTotal()
     {
@@ -59,6 +59,7 @@ public class VATPriceDTO extends PriceDTO
         this.vatSpunOff = vatSpunOff;
     }
 
+    @ApiModelProperty( value = "VAT percentage", example = "22" )
     public BigDecimal getVAT()
     {
         return VAT;

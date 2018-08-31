@@ -17,8 +17,8 @@ import java.util.Objects;
 
 public class OrderInputDTO extends BaseEntityDTO
 {
-    @NotNull
     @ApiModelProperty( "Which type of order" )
+    @NotNull
     private OrderType type;
 
     @Valid
@@ -60,6 +60,7 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )
     private String reseller;
 
+    @ApiModelProperty( "Operating system for a bare VM" )
     private OSType operatingSystem;
 
     public OrderInputDTO( UrlEntityDTO productVersion )
