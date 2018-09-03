@@ -77,6 +77,7 @@ public class OrderLineDTO implements Line
                 .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
     }
 
+    @ApiModelProperty( value = "VAT total amount", readOnly = true )
     @JsonProperty( value = "vatSpunOff" )
     public BigDecimal getVATSpunOff()
     {

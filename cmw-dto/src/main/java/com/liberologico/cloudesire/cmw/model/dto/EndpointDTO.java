@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.EndpointType;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Size;
@@ -10,11 +11,13 @@ import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID
 
 public class EndpointDTO extends BaseEntityDTO
 {
+    @ApiModelProperty( "Endpoint URL" )
     @URL
     private String endpoint;
 
     private EndpointType category;
 
+    @ApiModelProperty( "Endpoint description" )
     @Size( max = 1024, message = INVALID_SIZE )
     private String description;
 
@@ -33,6 +36,7 @@ public class EndpointDTO extends BaseEntityDTO
     {
     }
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     public String getName()
     {

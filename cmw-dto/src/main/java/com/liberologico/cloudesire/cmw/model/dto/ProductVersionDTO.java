@@ -188,6 +188,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * @deprecated replaced by {@link #getTrial()}
      */
+    @ApiModelProperty( hidden = true )
     @Deprecated
     public Boolean getTriable()
     {

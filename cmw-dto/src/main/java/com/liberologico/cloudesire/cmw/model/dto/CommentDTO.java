@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.HttpMethods;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -10,18 +11,23 @@ import java.util.Set;
 
 public class CommentDTO extends BaseEntityDTO
 {
+    @ApiModelProperty( "The username of the commenting User" )
     private String userName;
 
+    @ApiModelProperty( "The real name of the commenting User" )
     private String realName;
 
     @Valid
     private UrlEntityDTO product;
 
+    @ApiModelProperty( "Product rating" )
     private int rating = 3;
 
+    @ApiModelProperty( "The actual comment" )
     @NotNull
     private String comment;
 
+    @ApiModelProperty( "Comment date" )
     private Date date = new Date();
 
     private Set<HttpMethods> availableOperations = null;

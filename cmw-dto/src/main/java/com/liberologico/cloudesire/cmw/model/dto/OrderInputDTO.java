@@ -17,8 +17,8 @@ import java.util.Objects;
 
 public class OrderInputDTO extends BaseEntityDTO
 {
-    @NotNull
     @ApiModelProperty( "Which type of order" )
+    @NotNull
     private OrderType type;
 
     @Valid
