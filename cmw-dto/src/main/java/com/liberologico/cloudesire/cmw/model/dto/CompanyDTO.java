@@ -40,7 +40,7 @@ public class CompanyDTO extends MinimalCompanyDTO
     @ApiModelProperty( hidden = true )
     private Integer maxConcurrentInstance;
 
-    @ApiModelProperty( "SSH RSA public key" )
+    @ApiModelProperty( value = "SSH RSA public keys for every employee", readOnly = true )
     private String publicKey;
 
     @ApiModelProperty( hidden = true )
