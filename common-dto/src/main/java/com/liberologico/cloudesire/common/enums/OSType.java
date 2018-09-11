@@ -18,14 +18,20 @@ public enum OSType
     @ApiModelProperty( "Debian 7" )
     DEBIAN_7( "Debian", "7", OsFamily.LINUX ),
 
-    @ApiModelProperty("Microsoft Windows Server 2008 R2")
-    WINDOWS_SERVER_2008_R2( "Windows", "2008", OsFamily.WINDOWS ),
+    @ApiModelProperty( "Microsoft Windows Server 2008 R2" )
+    WINDOWS_SERVER_2008_R2( "Microsoft Windows", "Server 2008 R2", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard" )
-    WINDOWS_SERVER_2008_R2_SQL_2008_R2( "Windows", "2008", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2008_R2_SQL_2008_R2( "Microsoft Windows", "Server 2008 R2", OsFamily.WINDOWS ),
+
+    @ApiModelProperty( "Microsoft Windows Server 2012 R2" )
+    WINDOWS_SERVER_2012_R2( "Microsoft Windows", "Server 2012 R2", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
-    WINDOWS_SERVER_2012_SQL_2012_SP1( "Windows", "2012", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2012_SQL_2012_SP1( "Microsoft Windows", "Server 2012", OsFamily.WINDOWS ),
+
+    @ApiModelProperty( "Microsoft Windows Server 2016" )
+    WINDOWS_SERVER_2016( "Microsoft Windows", "Server 2016", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Ubuntu Xenial Xerus 16.04 LTS 64bit" )
     UBUNTU_16_04( "Ubuntu", "16.04", OsFamily.LINUX ),
