@@ -10,5 +10,8 @@ import java.util.List;
 public interface InstanceTypeApi
 {
     @GET( "instanceType" )
+    Call<List<InstanceTypeDTO>> getAll();
+
+    @GET( "instanceType" )
     Call<List<InstanceTypeDTO>> getAll( @Query( "cloudProviderId" ) int cloudProviderId );
 }
