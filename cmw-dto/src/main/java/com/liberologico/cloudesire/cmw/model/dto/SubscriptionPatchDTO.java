@@ -30,6 +30,7 @@ public class SubscriptionPatchDTO extends DTO
     @Deprecated
     private String syndicatedEndpoints;
 
+    @ApiModelProperty( value = "Update operation", allowableValues = "RENEW, START, STOP, KILL, BACKUP, AUTORENEW, BILLING_ITEM_UPGRADE, SYNDICATED_UPGRADE, REFRESH_BILLING_ITEM_VALUES" )
     private Action action;
 
     @ApiModelProperty( hidden = true )
@@ -151,6 +152,7 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
+    @ApiModelProperty( hidden = true )
     @Deprecated
     public void setStatus( String status )
     {
@@ -266,7 +268,6 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
-    @ApiModel( "Update operation" )
     public enum Action
     {
         @ApiModelProperty( "Renew a subscription" )

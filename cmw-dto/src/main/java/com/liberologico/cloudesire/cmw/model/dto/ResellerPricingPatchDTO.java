@@ -24,6 +24,7 @@ public class ResellerPricingPatchDTO extends DTO
         this.action = action;
     }
 
+    @ApiModelProperty( hidden = true )
     @AssertTrue( message = "Missing percentage value" )
     public boolean isValidAction()
     {
