@@ -18,7 +18,7 @@ import java.util.Set;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_SIZE;
 
-public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
+public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Comparable<ProductDTO>
 {
     @ApiModelProperty( "Identifier of the product, cannot be changed after creation" )
     private String SKU;
@@ -208,6 +208,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO
         super( name );
         this.SKU = identifier;
         this.type = type;
+    }
+
+    @Override
+    public int compareTo( ProductDTO o )
+    {
+        return getSKU().compareTo( o.getSKU() );
     }
 
     //region Auto-generated code
