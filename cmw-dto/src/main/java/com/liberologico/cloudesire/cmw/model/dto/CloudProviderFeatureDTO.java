@@ -2,10 +2,18 @@ package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.CloudProviderTags;
 
+import java.util.Objects;
+
 public class CloudProviderFeatureDTO
 {
     private CloudProviderTags feature;
     private Integer value;
+
+    public CloudProviderFeatureDTO( CloudProviderTags feature, Integer value )
+    {
+        this( feature );
+        this.value = value;
+    }
 
     public CloudProviderFeatureDTO( CloudProviderTags feature )
     {
@@ -43,18 +51,12 @@ public class CloudProviderFeatureDTO
         if ( o == null || getClass() != o.getClass() ) return false;
 
         CloudProviderFeatureDTO that = (CloudProviderFeatureDTO) o;
-
-        if ( feature != that.feature ) return false;
-        if ( value != null ? !value.equals( that.value ) : that.value != null ) return false;
-
-        return true;
+        return feature == that.feature && Objects.equals( value, that.value );
     }
 
     @Override
     public int hashCode()
     {
-        int result = feature != null ? feature.hashCode() : 0;
-        result = 31 * result + ( value != null ? value.hashCode() : 0 );
-        return result;
+        return Objects.hash( feature, value );
     }
 }
