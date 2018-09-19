@@ -1,6 +1,5 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -31,10 +30,6 @@ public class CloudProviderDTO extends NamedEntityDTO
     @ApiModelProperty( "Enabled features of the cloud provider" )
     private List<CloudProviderFeatureDTO> features = new ArrayList<>();
 
-    @ApiModelProperty( "Instance pricings for the cloud provider missing a configuration" )
-    @JsonInclude ( JsonInclude.Include.NON_EMPTY )
-    private List<String> missing = new ArrayList<>();
-
     @ApiModelProperty( value = "Default SSH username per OS type", readOnly = true )
     private Map<OSType, String> usernames;
 
@@ -47,16 +42,6 @@ public class CloudProviderDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
     private List<OSType> supportedOperatingSystems;
-
-    public List<String> getMissing()
-    {
-        return missing;
-    }
-
-    public void setMissing( List<String> missing )
-    {
-        this.missing = missing;
-    }
 
     public String getAlias()
     {
