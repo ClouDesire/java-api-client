@@ -31,7 +31,10 @@ public interface InstancePricingApi
     );
 
     @GET( "instancePricing" )
-    Call<List<InstancePricingDTO>> getLinked( @Query( "cloudProvider" ) int cloudProvider, @Query( "vmc" ) int vmc );
+    Call<List<InstancePricingDTO>> getLinked(
+            @Query( "cloudProvider" ) int cloudProvider,
+            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration
+    );
 
     @PATCH( "instancePricing" )
     Call<Void> patch( @Body InstancePricingPatchDTO input );
