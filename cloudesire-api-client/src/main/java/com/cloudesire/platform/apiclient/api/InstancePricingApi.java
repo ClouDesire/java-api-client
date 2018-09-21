@@ -30,6 +30,12 @@ public interface InstancePricingApi
             @Query( "cloudProvider" ) int cloudProvider, @Query( "deprecated" ) Boolean deprecated
     );
 
+    @GET( "instancePricing" )
+    Call<List<InstancePricingDTO>> getLinked(
+            @Query( "cloudProvider" ) int cloudProvider,
+            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration
+    );
+
     @PATCH( "instancePricing" )
     Call<Void> patch( @Body InstancePricingPatchDTO input );
 
