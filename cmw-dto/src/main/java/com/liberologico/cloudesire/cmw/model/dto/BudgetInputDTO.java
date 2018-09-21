@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import com.liberologico.cloudesire.cmw.model.enums.OrderType;
+import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -37,6 +38,8 @@ public class BudgetInputDTO
 
     @ApiModelProperty( "The slug of a reseller company" )
     private String reseller;
+
+    private OSType operatingSystem;
 
     public OrderType getType()
     {
@@ -134,6 +137,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setReseller( String reseller )
     {
         this.reseller = reseller;
+        return this;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public BudgetInputDTO setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
         return this;
     }
 }
