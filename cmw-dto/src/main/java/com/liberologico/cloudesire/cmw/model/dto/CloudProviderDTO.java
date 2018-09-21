@@ -140,21 +140,19 @@ public class CloudProviderDTO extends NamedEntityDTO
         if ( !( o instanceof CloudProviderDTO ) ) return false;
         CloudProviderDTO that = (CloudProviderDTO) o;
         return enabled == that.enabled && weight == that.weight && Objects.equals( logoUrl, that.logoUrl ) && Objects
-                .equals( alias, that.alias ) && Objects.equals( privateCloud, that.privateCloud ) && Objects
-                .equals( features, that.features );
+                .equals( alias, that.alias ) && Objects.equals( privateCloud, that.privateCloud );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( logoUrl, alias, enabled, privateCloud, weight, features );
+        return Objects.hash( logoUrl, alias, enabled, privateCloud, weight );
     }
 
     @Override
     public String toString()
     {
         return "CloudProviderDTO{" + "logoUrl='" + logoUrl + '\'' + ", alias='" + alias + '\'' + ", enabled=" + enabled
-                + ", privateCloud=" + privateCloud + ", weight=" + weight + ", features=" + features + "} " + super
-                .toString();
+                + ", privateCloud=" + privateCloud + ", weight=" + weight + "} " + super.toString();
     }
 }
