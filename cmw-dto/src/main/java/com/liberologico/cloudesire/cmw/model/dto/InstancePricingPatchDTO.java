@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-public class SingleInstancePricingPatchDTO extends PricingPatchDTO
+public class InstancePricingPatchDTO extends PricingPatchDTO
 {
     @ApiModelProperty( "Unlink the Instance Pricing from any Virtual Machine Configuration" )
     private Boolean deprecated;
@@ -13,12 +13,12 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
     @ApiModelProperty( "Change associated diskSpace" )
     private Integer diskSpace;
 
-    public SingleInstancePricingPatchDTO( @NotNull BigDecimal price )
+    public InstancePricingPatchDTO( @NotNull BigDecimal price )
     {
         super( price );
     }
 
-    public SingleInstancePricingPatchDTO()
+    public InstancePricingPatchDTO()
     {
     }
 
@@ -27,7 +27,7 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
         return deprecated;
     }
 
-    public SingleInstancePricingPatchDTO setDeprecated( Boolean deprecated )
+    public InstancePricingPatchDTO setDeprecated( Boolean deprecated )
     {
         this.deprecated = deprecated;
         return this;
@@ -38,7 +38,7 @@ public class SingleInstancePricingPatchDTO extends PricingPatchDTO
         return diskSpace;
     }
 
-    public SingleInstancePricingPatchDTO setDiskSpace( Integer diskSpace )
+    public InstancePricingPatchDTO setDiskSpace( Integer diskSpace )
     {
         this.diskSpace = diskSpace;
         return this;
