@@ -31,7 +31,7 @@ public interface InstancePricingApi
     );
 
     @GET( "instancePricing" )
-    Call<List<InstancePricingDTO>> getLinked(
+    Call<List<InstancePricingDTO>> getCompatible(
             @Query( "cloudProvider" ) int cloudProvider,
             @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration,
             @Query( "osType" ) OSType osType

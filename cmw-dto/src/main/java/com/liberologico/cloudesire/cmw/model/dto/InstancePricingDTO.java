@@ -31,7 +31,7 @@ public class InstancePricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Root disk space" )
     private Integer diskSpace;
 
-    @ApiModelProperty( value = "Operating system", hidden = true )
+    @ApiModelProperty( "Operating system family" )
     private OsFamily osFamily;
 
     @ApiModelProperty( "Operating system" )
