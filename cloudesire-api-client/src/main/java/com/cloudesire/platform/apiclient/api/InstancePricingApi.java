@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.InstancePricingDTO;
 import com.liberologico.cloudesire.cmw.model.dto.InstancePricingPatchDTO;
+import com.liberologico.cloudesire.common.enums.OSType;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -32,7 +33,8 @@ public interface InstancePricingApi
     @GET( "instancePricing" )
     Call<List<InstancePricingDTO>> getLinked(
             @Query( "cloudProvider" ) int cloudProvider,
-            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration
+            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration,
+            @Query( "osType" ) OSType osType
     );
 
     @PATCH( "instancePricing/{id}" )
