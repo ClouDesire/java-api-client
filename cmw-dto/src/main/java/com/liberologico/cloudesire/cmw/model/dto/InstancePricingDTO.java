@@ -1,5 +1,6 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,9 +31,11 @@ public class InstancePricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Root disk space" )
     private Integer diskSpace;
 
+    @ApiModelProperty( "Operating system family" )
+    private OsFamily osFamily;
+
     @ApiModelProperty( "Operating system" )
-    @NotNull
-    private OsFamily osFamily = OsFamily.LINUX;
+    private OSType operatingSystem;
 
     @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
     private Boolean deprecated;
@@ -95,6 +98,16 @@ public class InstancePricingDTO extends BaseEntityDTO
     public void setOsFamily( OsFamily osFamily )
     {
         this.osFamily = osFamily;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
     }
 
     public Boolean getDeprecated()

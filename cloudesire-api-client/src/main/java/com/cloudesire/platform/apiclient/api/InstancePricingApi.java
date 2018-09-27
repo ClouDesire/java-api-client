@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.SingleInstancePricingPatchDTO;
 import com.liberologico.cloudesire.cmw.model.dto.InstancePricingDTO;
-import com.liberologico.cloudesire.cmw.model.patch.InstancePricingPatchDTO;
+import com.liberologico.cloudesire.cmw.model.dto.InstancePricingPatchDTO;
+import com.liberologico.cloudesire.common.enums.OSType;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -31,16 +31,14 @@ public interface InstancePricingApi
     );
 
     @GET( "instancePricing" )
-    Call<List<InstancePricingDTO>> getLinked(
+    Call<List<InstancePricingDTO>> getCompatible(
             @Query( "cloudProvider" ) int cloudProvider,
-            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration
+            @Query( "virtualMachineConfiguration" ) int virtualMachineConfiguration,
+            @Query( "osType" ) OSType osType
     );
 
-    @PATCH( "instancePricing" )
-    Call<Void> patch( @Body InstancePricingPatchDTO input );
-
     @PATCH( "instancePricing/{id}" )
-    Call<Void> patch( @Path( "id" ) int id, @Body SingleInstancePricingPatchDTO input );
+    Call<Void> patch( @Path( "id" ) int id, @Body InstancePricingPatchDTO input );
 
     @DELETE( "instancePricing/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
