@@ -15,14 +15,18 @@ public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
 
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup, ResellingConfigurationType markupType )
     {
-        this( cloudPricing );
-        this.price = new ResellingPriceDTO( markup, markupType );
+        this( cloudPricing, new ResellingPriceDTO( markup, markupType ) );
     }
 
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup )
     {
+        this( cloudPricing, new ResellingPriceDTO( markup ) );
+    }
+
+    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, ResellingPriceDTO price )
+    {
         this( cloudPricing );
-        this.price = new ResellingPriceDTO( markup );
+        this.price = price;
     }
 
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing )
