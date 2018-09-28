@@ -145,7 +145,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     }
 
     /**
-     * @deprecated Use getBillingItemResellingPrices
+     * @deprecated by {@link #getBillingItemResellingPrices()}
      */
     @Deprecated
     public Set<BillingItemResellingPriceDTO> getBillingItems()
@@ -154,7 +154,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     }
 
     /**
-     * @deprecated Use setBillingItemResellingPrices
+     * @deprecated by {@link #setBillingItemResellingPrices(Set)}
      */
     @Deprecated
     public void setBillingItems( Set<BillingItemResellingPriceDTO> billingItems )
@@ -163,7 +163,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     }
 
     /**
-     * @deprecated Use getCloudPricingResellingPrices
+     * @deprecated by {@link #getCloudPricingResellingPrices()}
      */
     @Deprecated
     public Set<CloudPricingResellingPriceDTO> getCloudPricings()
@@ -172,7 +172,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     }
 
     /**
-     * @deprecated Use setCloudPricingResellingPrices
+     * @deprecated by {@link #setCloudPricingResellingPrices(Set)}
      */
     @Deprecated
     public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )

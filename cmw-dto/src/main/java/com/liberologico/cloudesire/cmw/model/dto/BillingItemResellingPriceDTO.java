@@ -17,10 +17,15 @@ public class BillingItemResellingPriceDTO extends BaseResellingPriceDTO
     @Valid
     private ResellingPriceDTO recurring;
 
-    public BillingItemResellingPriceDTO( int billingItemValueId, String markup )
+    public BillingItemResellingPriceDTO( int billingItemValueId, BigDecimal markup, BigDecimal sellout )
     {
         this( billingItemValueId );
-        this.price = new ResellingPriceDTO( new BigDecimal( markup ) );
+        this.price = new ResellingPriceDTO( markup, sellout );
+    }
+
+    public BillingItemResellingPriceDTO( int billingItemValueId, String markup )
+    {
+        this( billingItemValueId, new BigDecimal( markup ), null );
     }
 
     public BillingItemResellingPriceDTO( int billingItemValueId )
