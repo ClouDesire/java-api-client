@@ -51,6 +51,10 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @DecimalMin( "0" )
     private BigDecimal vendorRecurring;
 
+    @ApiModelProperty( "Increment amount" )
+    @Min( 1 )
+    private Integer step;
+
     public BillingItemValueDTO( BillingItemDTO item, Integer start, Integer end, double price )
     {
         this( new UrlEntityDTO( item ), start, end, price );
@@ -190,6 +194,17 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public BillingItemValueDTO setVendorRecurring( BigDecimal vendorRecurring )
     {
         this.vendorRecurring = vendorRecurring;
+        return this;
+    }
+
+    public Integer getStep()
+    {
+        return step;
+    }
+
+    public BillingItemValueDTO setStep( Integer step )
+    {
+        this.step = step;
         return this;
     }
 
