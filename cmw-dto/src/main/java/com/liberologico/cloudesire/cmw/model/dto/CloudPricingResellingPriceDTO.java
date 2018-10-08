@@ -13,14 +13,9 @@ public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
     @Valid
     private UrlEntityDTO cloudPricing;
 
-    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup, ResellingConfigurationType markupType )
+    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal sellout, ResellingConfigurationType selloutType )
     {
-        this( cloudPricing, new ResellingPriceDTO( markup, markupType ) );
-    }
-
-    public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal markup )
-    {
-        this( cloudPricing, new ResellingPriceDTO( markup ) );
+        this( cloudPricing, ResellingPriceDTO.sellout( sellout, selloutType ) );
     }
 
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, ResellingPriceDTO price )

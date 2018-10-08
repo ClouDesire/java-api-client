@@ -1,10 +1,13 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import com.liberologico.cloudesire.cmw.ApiVersion;
+import com.liberologico.cloudesire.cmw.annotations.UnsupportedAPI;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -12,7 +15,6 @@ import java.util.Set;
 @ApiModel( "Defines a pricing for a product version and a reseller" )
 public class ResellerPricingDTO extends BaseEntityDTO
 {
-    @NotNull
     @Valid
     private UrlEntityDTO productVersion;
 
@@ -22,8 +24,9 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO reseller;
 
+    @NotNull
     @Valid
-    private UrlEntityDTO distributor;
+    private UrlEntityDTO distributorPricing;
 
     @ApiModelProperty( "The price defined by the reseller" )
     @Valid
@@ -37,9 +40,19 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private Set<BillingItemResellingPriceDTO> billingItemResellingPrices;
 
+    @ApiModelProperty( hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20180312 )
+    @Valid
+    private Set<BillingItemResellingPriceDTO> billingItems;
+
     @ApiModelProperty( "Reselling prices for the cloud pricings" )
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices;
+
+    @ApiModelProperty( hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20180312 )
+    @Valid
+    private Set<CloudPricingResellingPriceDTO> cloudPricings;
 
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
@@ -48,15 +61,15 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private List<BillingItemValueDTO> billingItemValues;
 
-    public ResellerPricingDTO( UrlEntityDTO distributor, UrlEntityDTO productVersion )
+    public ResellerPricingDTO( UrlEntityDTO distributorPricing, BigDecimal sellout )
     {
-        this( productVersion );
-        this.distributor = distributor;
+        this( distributorPricing );
+        this.price = new ResellingPriceDTO( null, sellout );
     }
 
-    public ResellerPricingDTO( UrlEntityDTO productVersion )
+    public ResellerPricingDTO( UrlEntityDTO distributorPricing )
     {
-        this.productVersion = productVersion;
+        this.distributorPricing = distributorPricing;
     }
 
     // region Auto-generated code
@@ -94,14 +107,14 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.reseller = reseller;
     }
 
-    public UrlEntityDTO getDistributor()
+    public UrlEntityDTO getDistributorPricing()
     {
-        return distributor;
+        return distributorPricing;
     }
 
-    public void setDistributor( UrlEntityDTO distributor )
+    public void setDistributorPricing( UrlEntityDTO distributorPricing )
     {
-        this.distributor = distributor;
+        this.distributorPricing = distributorPricing;
     }
 
     public ResellingPriceDTO getPrice()
@@ -150,7 +163,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Deprecated
     public Set<BillingItemResellingPriceDTO> getBillingItems()
     {
-        return getBillingItemResellingPrices();
+        return billingItems;
     }
 
     /**
@@ -159,7 +172,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Deprecated
     public void setBillingItems( Set<BillingItemResellingPriceDTO> billingItems )
     {
-        setBillingItemResellingPrices( billingItems );
+        this.billingItems = billingItems;
     }
 
     /**
@@ -168,7 +181,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Deprecated
     public Set<CloudPricingResellingPriceDTO> getCloudPricings()
     {
-        return getCloudPricingResellingPrices();
+        return cloudPricings;
     }
 
     /**
@@ -177,7 +190,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Deprecated
     public void setCloudPricings( Set<CloudPricingResellingPriceDTO> cloudPricings )
     {
-        setCloudPricingResellingPrices( cloudPricings );
+        this.cloudPricings = cloudPricings;
     }
 
     public Boolean getLocked()
@@ -206,13 +219,14 @@ public class ResellerPricingDTO extends BaseEntityDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         ResellerPricingDTO that = (ResellerPricingDTO) o;
-        return Objects.equals( productVersion, that.productVersion ) && Objects.equals( distributor, that.distributor );
+        return Objects.equals( productVersion, that.productVersion ) && Objects
+                .equals( distributorPricing, that.distributorPricing );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( productVersion, distributor );
+        return Objects.hash( productVersion, distributorPricing );
     }
     // endregion
 }

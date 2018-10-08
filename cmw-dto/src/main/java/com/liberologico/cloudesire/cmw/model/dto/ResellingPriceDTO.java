@@ -23,6 +23,11 @@ public class ResellingPriceDTO extends DTO
     @ApiModelProperty( "The sell-out type, editable by a reseller" )
     private ResellingConfigurationType selloutType;
 
+    public static ResellingPriceDTO sellout( BigDecimal value, ResellingConfigurationType type )
+    {
+        return new ResellingPriceDTO( null, null, value, type );
+    }
+
     // region Auto-generated code
     public ResellingPriceDTO( BigDecimal markup, BigDecimal sellout )
     {
@@ -39,6 +44,15 @@ public class ResellingPriceDTO extends DTO
     public ResellingPriceDTO( BigDecimal markup )
     {
         this.markup = markup;
+    }
+
+    private ResellingPriceDTO( BigDecimal markup, ResellingConfigurationType markupType, BigDecimal sellout,
+            ResellingConfigurationType selloutType )
+    {
+        this.markup = markup;
+        this.markupType = markupType;
+        this.sellout = sellout;
+        this.selloutType = selloutType;
     }
 
     public ResellingPriceDTO()
