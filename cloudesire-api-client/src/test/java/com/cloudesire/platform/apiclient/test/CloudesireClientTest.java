@@ -1,9 +1,12 @@
 package com.cloudesire.platform.apiclient.test;
 
 import com.cloudesire.platform.apiclient.CloudesireClient;
+import com.cloudesire.platform.apiclient.CloudesireClientCallExecutor;
+import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.ThrowableAssert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,6 +16,53 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class CloudesireClientTest
 {
+    private static final String USER_AGENT = "httbin-client-v1";
+    private CloudesireClientCallExecutor executor;
+
+    @Before
+    public void setup()
+    {
+        executor = new CloudesireClientCallExecutor( objectMapper() );
+    }
+
+    private ObjectMapper objectMapper()
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
+        return mapper;
+    }
+
+    @Test
+    public void userAgent() throws IOException
+    {
+        Httpbin api = getHttbinClient();
+        HttpbinResponse response = api.get().execute().body();
+
+        assertThat( response.getOrigin() ).isNotEmpty();
+        assertThat( response.getHeaders() ).containsKey( "User-Agent" );
+        assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
+    }
+
+    private Httpbin getHttbinClient()
+    {
+        CloudesireClient.Builder builder = new CloudesireClient.Builder();
+        builder.setBaseUrl( "https://httpbin.org" );
+        builder.setMapper( objectMapper() );
+        builder.setUserAgent( USER_AGENT );
+        return builder.build().getApi( Httpbin.class );
+    }
+
+    @Test
+    public void callExecutorBasic()
+    {
+        Httpbin api = getHttbinClient();
+        HttpbinResponse response = this.executor.execute( api.get() );
+
+        assertThat( response.getOrigin() ).isNotEmpty();
+        assertThat( response.getHeaders() ).containsKey( "User-Agent" );
+        assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
+    }
+
     @Test
     public void builderMandatoryParameters()
     {
@@ -60,26 +110,12 @@ public class CloudesireClientTest
     }
 
     @Test
-    public void userAgent() throws IOException
+    public void callExecutorFullResponse()
     {
-        CloudesireClient.Builder builder = new CloudesireClient.Builder();
-        builder.setBaseUrl( "https://httpbin.org" );
-        builder.setMapper( objectMapper() );
-        builder.setUserAgent( "Client v1" );
-        CloudesireClient client = builder.build();
+        Httpbin api = getHttbinClient();
+        CallResponse<HttpbinResponse> response = this.executor.executeFullResponse( api.get() );
 
-        Httpbin api = client.getApi( Httpbin.class );
-        HttpbinResponse response = api.get().execute().body();
-
-        assertThat( response.getOrigin() ).isNotEmpty();
-        assertThat( response.getHeaders() ).containsKey( "User-Agent" );
-        assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( "Client v1" );
-    }
-
-    private ObjectMapper objectMapper()
-    {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
-        return mapper;
+        assertThat( response.getHeader( "server" ) ).isNotEmpty();
+        assertThat( response.paginator().getPageNumber() ).isNull();
     }
 }
