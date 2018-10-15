@@ -35,7 +35,7 @@ public class CloudesireClientTest
     @Test
     public void userAgent() throws IOException
     {
-        Httpbin api = getHttbinClient();
+        Httpbin api = getHttpbinApi();
         HttpbinResponse response = api.get().execute().body();
 
         assertThat( response.getOrigin() ).isNotEmpty();
@@ -43,7 +43,7 @@ public class CloudesireClientTest
         assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
     }
 
-    private Httpbin getHttbinClient()
+    private Httpbin getHttpbinApi()
     {
         CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "https://httpbin.org" );
@@ -55,7 +55,7 @@ public class CloudesireClientTest
     @Test
     public void callExecutorBasic()
     {
-        Httpbin api = getHttbinClient();
+        Httpbin api = getHttpbinApi();
         HttpbinResponse response = this.executor.execute( api.get() );
 
         assertThat( response.getOrigin() ).isNotEmpty();
@@ -112,7 +112,7 @@ public class CloudesireClientTest
     @Test
     public void callExecutorFullResponse()
     {
-        Httpbin api = getHttbinClient();
+        Httpbin api = getHttpbinApi();
         CallResponse<HttpbinResponse> response = this.executor.executeFullResponse( api.get() );
 
         assertThat( response.getHeader( "server" ) ).isNotEmpty();
