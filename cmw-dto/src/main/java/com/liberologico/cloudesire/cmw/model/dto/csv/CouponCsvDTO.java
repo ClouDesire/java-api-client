@@ -2,6 +2,7 @@ package com.liberologico.cloudesire.cmw.model.dto.csv;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.liberologico.cloudesire.cmw.model.dto.DTO;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,7 +13,7 @@ public class CouponCsvDTO extends DTO
 {
     private String applicationName;
 
-    private String type;
+    private CouponType type;
 
     private boolean reusable;
 
@@ -48,12 +49,12 @@ public class CouponCsvDTO extends DTO
         this.applicationName = applicationName;
     }
 
-    public String getType()
+    public CouponType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( CouponType type )
     {
         this.type = type;
     }

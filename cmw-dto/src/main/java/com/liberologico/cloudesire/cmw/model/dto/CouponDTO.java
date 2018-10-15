@@ -3,6 +3,7 @@ package com.liberologico.cloudesire.cmw.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -23,12 +24,6 @@ import static com.liberologico.cloudesire.common.JsonFormatters.DATE_PATTERN;
 @ApiModel( "A generated coupon" )
 public class CouponDTO extends BaseEntityDTO
 {
-    public static final String DISCOUNT = "discount";
-    public static final String EXTENDED_TRIAL = "extendedTrial";
-    public static final String FIXED_PRICE = "fixedPrice";
-    public static final String DISCOUNT_GENERATOR = "discountGenerator";
-    public static final String FIXED_PRICE_GENERATOR = "fixedPriceGenerator";
-
     @ApiModelProperty( value = "Email address to notify customer of the coupon", readOnly = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String emailCustomer;
@@ -49,7 +44,7 @@ public class CouponDTO extends BaseEntityDTO
 
     @ApiModelProperty( value = "Coupon type", allowableValues = "bundle, discount, extendedTrial, fixedPrice", readOnly = true )
     @NotNull
-    private String type;
+    private CouponType type;
 
     @ApiModelProperty( value = "When the coupon has been created", readOnly = true )
     @NotNull
@@ -186,12 +181,12 @@ public class CouponDTO extends BaseEntityDTO
         this.percentage = percentage;
     }
 
-    public String getType()
+    public CouponType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( CouponType type )
     {
         this.type = type;
     }

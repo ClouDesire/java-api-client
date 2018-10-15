@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.ISO8601DateTime;
 import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 
 import java.math.BigDecimal;
 
@@ -14,10 +15,11 @@ public class CouponGeneratorQuery extends BaseQuery
     private static final String DESTINATION = "destination";
     private static final String CODE = "code";
     private static final String VALUE = "value";
+    private static final String REUSABLE = "reusable";
 
-    public CouponGeneratorQuery setType( String type )
+    public CouponGeneratorQuery setType( CouponType type )
     {
-        put( TYPE, type );
+        put( TYPE, type.toString() );
         return this;
     }
 
@@ -54,6 +56,12 @@ public class CouponGeneratorQuery extends BaseQuery
     public CouponGeneratorQuery setValue( BigDecimal value )
     {
         put( VALUE, value );
+        return this;
+    }
+
+    public CouponGeneratorQuery setReusable( Boolean reusable )
+    {
+        put( REUSABLE, String.valueOf( reusable ) );
         return this;
     }
 

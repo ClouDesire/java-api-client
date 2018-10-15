@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.ISO8601DateTime;
 import com.cloudesire.platform.apiclient.query.CouponGeneratorQuery;
 import com.cloudesire.platform.apiclient.query.CouponQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CouponDTO;
-import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 import com.liberologico.cloudesire.cmw.model.patch.CouponPatchDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,9 +37,13 @@ public interface CouponApi
      */
     @Deprecated
     @POST( "coupon" )
-    Call<List<CouponDTO>> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
-            @Query( "product" ) Integer product, @Query( "expirationDate" ) ISO8601DateTime expiration,
-            @Query( "licenseOnly" ) Boolean licenseOnly, @Query( "number" ) BigDecimal number,
+    Call<List<CouponDTO>> generate(
+            @Query( "type" ) CouponType type,
+            @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product,
+            @Query( "expirationDate" ) ISO8601DateTime expiration,
+            @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "number" ) BigDecimal number,
             @Query( "howMany" ) Integer howMany );
 
     @POST( "coupon" )
@@ -50,13 +54,17 @@ public interface CouponApi
      */
     @Deprecated
     @POST( "coupon" )
-    Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
-            @Query( "product" ) Integer product, @Query( "expiration" ) ISO8601DateTime expiration,
-            @Query( "licenseOnly" ) Boolean licenseOnly, @Query( "code" ) String code,
+    Call<CouponDTO> generate(
+            @Query( "type" ) CouponType type,
+            @Query( "productVersion" ) Integer productVersion,
+            @Query( "product" ) Integer product,
+            @Query( "expiration" ) ISO8601DateTime expiration,
+            @Query( "licenseOnly" ) Boolean licenseOnly,
+            @Query( "code" ) String code,
             @Query( "value" ) BigDecimal value );
 
     @POST( "coupon" )
-    Call<CouponDTO> generate( @Query( "type" ) String type, @Query( "productVersion" ) Integer productVersion,
+    Call<CouponDTO> generate( @Query( "type" ) CouponType type, @Query( "productVersion" ) Integer productVersion,
             @Query( "product" ) Integer product, @Query( "expirationDate" ) ISO8601DateTime expiration,
             @Query( "days" ) Integer days, @Query( "plafond" ) BigDecimal plafond );
 
@@ -87,16 +95,30 @@ public interface CouponApi
     Call<CouponDTO> retrieveByHash( @Path( "hash" ) String hash );
 
     @GET( "coupon" )
-    Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
+    Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) CouponType type,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
+            @Query( "unused" ) Boolean unused );
+
+    @GET( "coupon" )
+    Call<List<CouponDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) CouponType type,
+            @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
+            @Query( "unused" ) Boolean unused, @Query( "reusable" ) boolean reusable );
+
+    @Streaming
+    @GET( "coupon" )
+    @Headers( { "Accept:text/csv" } )
+    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) CouponType type,
             @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
             @Query( "unused" ) Boolean unused );
 
     @Streaming
     @GET( "coupon" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
+    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) CouponType type,
             @Query( "product" ) Integer product, @Query( "createdAfter" ) ISO8601Date createdAfter,
-            @Query( "unused" ) Boolean unused );
+            @Query( "unused" ) Boolean unused, @Query( "reusable" ) boolean reusable );
+
+    // TODO parameter object
 
     @Streaming
     @GET( "coupon" )
