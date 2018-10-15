@@ -8,6 +8,7 @@ import com.cloudesire.platform.apiclient.exceptions.InternalServerErrorException
 import com.cloudesire.platform.apiclient.exceptions.NetworkException;
 import com.cloudesire.platform.apiclient.exceptions.ResourceNotFoundException;
 import com.cloudesire.platform.apiclient.exceptions.UnprocessableEntityException;
+import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
 import org.slf4j.Logger;
@@ -31,12 +32,17 @@ public class CloudesireClientCallExecutor
 
     public <T> T execute( Call<T> call )
     {
+        return executeFullResponse( call ).getBody();
+    }
+
+    public <T> CallResponse<T> executeFullResponse( Call<T> call )
+    {
         try
         {
             debugRequest( call );
             retrofit2.Response<T> response = call.execute();
             debugResponse( response );
-            if ( response.isSuccessful() ) return response.body();
+            if ( response.isSuccessful() ) return new CallResponse<>( response.body(), response.headers().toMultimap() );
             else throw exceptionHandling( response );
         }
         catch ( IOException e )
