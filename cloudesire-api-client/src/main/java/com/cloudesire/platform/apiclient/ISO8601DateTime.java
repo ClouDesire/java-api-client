@@ -5,7 +5,7 @@ import java.util.Date;
 
 import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
 
-public final class ISO8601DateTime extends ClientDate
+public final class ISO8601DateTime extends DateFormatter
 {
     public ISO8601DateTime( Date date )
     {

@@ -3,11 +3,11 @@ package com.cloudesire.platform.apiclient;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-abstract class ClientDate
+abstract class DateFormatter
 {
     protected final Date date;
 
-    ClientDate( Date date )
+    DateFormatter( Date date )
     {
         this.date = date;
     }
@@ -15,14 +15,8 @@ abstract class ClientDate
     @Override
     public String toString()
     {
-        final SimpleDateFormat dateFormat = getDateFormat();
-        return dateFormat.format( date );
+        return getDateFormat().format( date );
     }
 
     public abstract SimpleDateFormat getDateFormat();
-
-    public Date getDate()
-    {
-        return date;
-    }
 }
