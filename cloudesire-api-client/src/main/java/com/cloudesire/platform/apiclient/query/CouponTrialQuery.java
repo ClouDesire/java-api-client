@@ -14,10 +14,9 @@ public class CouponTrialQuery extends BaseQuery
     private static final String DAYS = "days";
     private static final String PLAFOND = "plafond";
 
-    public CouponTrialQuery setType( CouponType type )
+    public CouponTrialQuery()
     {
-        put( TYPE, type.toString() );
-        return this;
+        put( TYPE, CouponType.EXTENDED_TRIAL.toString() );
     }
 
     public CouponTrialQuery setProductVersion( Integer productVersion )
