@@ -3,7 +3,9 @@ package com.cloudesire.platform.apiclient;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ISO8601DateTime extends ISO8601Date
+import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
+
+public final class ISO8601DateTime extends ClientDate
 {
     public ISO8601DateTime( Date date )
     {
@@ -13,6 +15,6 @@ public class ISO8601DateTime extends ISO8601Date
     @Override
     public SimpleDateFormat getDateFormat()
     {
-        return new SimpleDateFormat( "yyyy-MM-dd hh:mm" );
+        return new SimpleDateFormat( DATE_TIME_PATTERN );
     }
 }

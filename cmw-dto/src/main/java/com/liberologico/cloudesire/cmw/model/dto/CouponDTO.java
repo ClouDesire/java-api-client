@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
-import static com.liberologico.cloudesire.common.JsonFormatters.DATE_PATTERN;
+import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
 
 @ApiModel( "A generated coupon" )
 public class CouponDTO extends BaseEntityDTO
@@ -48,11 +48,11 @@ public class CouponDTO extends BaseEntityDTO
 
     @ApiModelProperty( value = "When the coupon has been created", readOnly = true )
     @NotNull
-    @JsonFormat( pattern = DATE_PATTERN )
+    @JsonFormat( pattern = DATE_TIME_PATTERN )
     private Date creationDate = new Date();
 
     @ApiModelProperty( value = "When the coupon will expire", readOnly = true )
-    @JsonFormat( pattern = DATE_PATTERN )
+    @JsonFormat( pattern = DATE_TIME_PATTERN )
     private Date expirationDate;
 
     @ApiModelProperty( value = "Fixed price", readOnly = true )
