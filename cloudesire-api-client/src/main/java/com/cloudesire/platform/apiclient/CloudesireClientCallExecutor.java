@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.exceptions.BackendException;
 import com.cloudesire.platform.apiclient.exceptions.BadRequestException;
 import com.cloudesire.platform.apiclient.exceptions.ConflictException;
 import com.cloudesire.platform.apiclient.exceptions.InternalServerErrorException;
+import com.cloudesire.platform.apiclient.exceptions.MethodNotAllowedException;
 import com.cloudesire.platform.apiclient.exceptions.NetworkException;
 import com.cloudesire.platform.apiclient.exceptions.ResourceNotFoundException;
 import com.cloudesire.platform.apiclient.exceptions.UnprocessableEntityException;
@@ -86,6 +87,7 @@ public class CloudesireClientCallExecutor
             case 401: return new AccessDeniedException( errorMessage, error );
             case 403: return new AccessDeniedException( errorMessage, error );
             case 404: return new ResourceNotFoundException( errorMessage, error );
+            case 405: return new MethodNotAllowedException( errorMessage, error );
             case 409: return new ConflictException( errorMessage, error );
             case 422: return new UnprocessableEntityException( errorMessage, error );
             case 500: return new InternalServerErrorException( errorMessage, error );
