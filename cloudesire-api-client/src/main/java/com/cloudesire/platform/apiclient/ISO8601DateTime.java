@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient;
 
+import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
 
 public final class ISO8601DateTime extends DateFormatter
 {
@@ -15,6 +15,6 @@ public final class ISO8601DateTime extends DateFormatter
     @Override
     public SimpleDateFormat getDateFormat()
     {
-        return new SimpleDateFormat( DATE_TIME_PATTERN );
+        return SimpleDateFormatFactory.dateTimeFormat();
     }
 }
