@@ -1,5 +1,6 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -633,18 +634,21 @@ public class MailEnvironmentDTO extends DTO
         this.vendorReport = vendorReport;
     }
 
-    public String getCouponEmailSubject( String couponType, String language )
+    public String getCouponEmailSubject( CouponType couponType, String language )
     {
         return getCouponConfiguration( couponType ).getSubject( language );
     }
 
-    public MailConfiguration getCouponConfiguration( String couponType )
+    public MailConfiguration getCouponConfiguration( CouponType couponType )
     {
         switch (couponType)
         {
-            case "discount":        return getDiscountCoupon();
-            case "fixedPrice":      return getFixedPriceCoupon();
-            case "extendedTrial":   return getExtendedTrialCoupon();
+            case DISCOUNT:
+                return getDiscountCoupon();
+            case FIXED_PRICE:
+                return getFixedPriceCoupon();
+            case EXTENDED_TRIAL:
+                return getExtendedTrialCoupon();
             default:                return null;
         }
     }

@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.ISO8601DateTime;
 import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
+import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 
 import java.math.BigDecimal;
 
@@ -15,9 +16,9 @@ public class CouponQuery extends BaseQuery
     private static final String NUMBER = "number";
     private static final String HOW_MANY = "howMany";
 
-    public CouponQuery setType( String type )
+    public CouponQuery setType( CouponType type )
     {
-        put( TYPE, type );
+        put( TYPE, type.toString() );
         return this;
     }
 

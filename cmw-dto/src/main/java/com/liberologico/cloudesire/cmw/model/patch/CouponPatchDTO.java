@@ -22,9 +22,10 @@ public class CouponPatchDTO extends DTO
         return email;
     }
 
-    public void setEmail( String email )
+    public CouponPatchDTO setEmail( String email )
     {
         this.email = email;
+        return this;
     }
 
     public BigDecimal getPlafond()
@@ -32,9 +33,10 @@ public class CouponPatchDTO extends DTO
         return plafond;
     }
 
-    public void setPlafond( BigDecimal plafond )
+    public CouponPatchDTO setPlafond( BigDecimal plafond )
     {
         this.plafond = plafond;
+        return this;
     }
 
     public Date getExpiration()
@@ -42,8 +44,9 @@ public class CouponPatchDTO extends DTO
         return expiration;
     }
 
-    public void setExpiration( Date expiration )
+    public CouponPatchDTO setExpiration( Date expiration )
     {
         this.expiration = expiration;
+        return this;
     }
 }

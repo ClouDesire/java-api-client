@@ -5,7 +5,9 @@ public enum CouponType
     BUNDLE( "bundle" ),
     DISCOUNT( "discount" ),
     EXTENDED_TRIAL( "extendedTrial" ),
-    FIXED_PRICE( "fixedPrice" );
+    FIXED_PRICE( "fixedPrice" ),
+    DISCOUNT_GENERATOR( "discountGenerator" ),
+    FIXED_PRICE_GENERATOR( "fixedPriceGenerator" );
 
     private final String toString;
 
