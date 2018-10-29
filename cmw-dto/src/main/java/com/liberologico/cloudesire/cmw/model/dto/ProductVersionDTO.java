@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import static com.liberologico.cloudesire.cmw.model.utils.ConstraintKeys.INVALID_MIN;
@@ -138,6 +139,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     @ApiModelProperty( value = "Descriptive label of the product version", readOnly = true )
     private String label;
+
+    @ApiModelProperty( "Whether a subscription from the product version can be upgraded to another one" )
+    private Boolean upgradable;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -565,52 +569,32 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.label = label;
     }
 
+    public Boolean isUpgradable()
+    {
+        return upgradable;
+    }
+
+    public void setUpgradable( Boolean upgradable )
+    {
+        this.upgradable = upgradable;
+    }
+
     @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-
+        if ( ! super.equals( o ) ) return false;
         ProductVersionDTO that = (ProductVersionDTO) o;
-
-        if ( cloudesireFeeActivated != that.cloudesireFeeActivated ) return false;
-        if ( selfBilling != that.selfBilling ) return false;
-        if ( postConfiguration != that.postConfiguration ) return false;
-        if ( virtualMachineConfiguration != null ?
-                !virtualMachineConfiguration.equals( that.virtualMachineConfiguration ) :
-                that.virtualMachineConfiguration != null ) return false;
-        if ( product != null ? !product.equals( that.product ) : that.product != null ) return false;
-        if ( bandwidthInGB != null ? !bandwidthInGB.equals( that.bandwidthInGB ) : that.bandwidthInGB != null )
-            return false;
-        if ( price != null ? !price.equals( that.price ) : that.price != null ) return false;
-        if ( billingPeriod != null ? !billingPeriod.equals( that.billingPeriod ) : that.billingPeriod != null )
-            return false;
-        if ( trial != null ? !trial.equals( that.trial ) : that.trial != null ) return false;
-        if ( published != null ? !published.equals( that.published ) : that.published != null ) return false;
-        if ( lifespan != null ? !lifespan.equals( that.lifespan ) : that.lifespan != null ) return false;
-        if ( webdavSupport != null ? !webdavSupport.equals( that.webdavSupport ) : that.webdavSupport != null )
-            return false;
-        if ( setupFee != null ? ! setupFee.equals( that.setupFee ) : that.setupFee != null ) return false;
-        return true;
+        return drafted == that.drafted && recommended == that.recommended && weight == that.weight && Objects
+                .equals( product, that.product ) && Objects.equals( identifier, that.identifier ) && Objects
+                .equals( published, that.published );
     }
 
     @Override
     public int hashCode()
     {
-        int result = virtualMachineConfiguration != null ? virtualMachineConfiguration.hashCode() : 0;
-        result = 31 * result + ( product != null ? product.hashCode() : 0 );
-        result = 31 * result + ( bandwidthInGB != null ? bandwidthInGB.hashCode() : 0 );
-        result = 31 * result + ( price != null ? price.hashCode() : 0 );
-        result = 31 * result + ( billingPeriod != null ? billingPeriod.hashCode() : 0 );
-        result = 31 * result + ( trial != null ? trial.hashCode() : 0 );
-        result = 31 * result + ( cloudesireFeeActivated ? 1 : 0 );
-        result = 31 * result + ( selfBilling ? 1 : 0 );
-        result = 31 * result + ( published != null ? published.hashCode() : 0 );
-        result = 31 * result + ( lifespan != null ? lifespan.hashCode() : 0 );
-        result = 31 * result + ( webdavSupport != null ? webdavSupport.hashCode() : 0 );
-        result = 31 * result + ( setupFee != null ? setupFee.hashCode() : 0 );
-        result = 31 * result + ( postConfiguration ? 1 : 0 );
-        return result;
+        return Objects.hash( super.hashCode(), product, identifier, published, drafted, recommended, weight );
     }
     //endregion
 }
