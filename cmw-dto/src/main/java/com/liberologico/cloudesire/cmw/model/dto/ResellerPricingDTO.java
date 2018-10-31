@@ -21,8 +21,9 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "If the invoices for this resold product are self billed" )
     private boolean selfBilled;
 
+    @NotNull
     @Valid
-    private UrlEntityDTO reseller;
+    private UrlEntityDTO resellerCatalog;
 
     @NotNull
     @Valid
@@ -61,14 +62,9 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private List<BillingItemValueDTO> billingItemValues;
 
-    public ResellerPricingDTO( UrlEntityDTO distributorPricing, BigDecimal sellout )
+    public ResellerPricingDTO( UrlEntityDTO resellerCatalog, UrlEntityDTO distributorPricing )
     {
-        this( distributorPricing );
-        this.price = new ResellingPriceDTO( null, sellout );
-    }
-
-    public ResellerPricingDTO( UrlEntityDTO distributorPricing )
-    {
+        this.resellerCatalog = resellerCatalog;
         this.distributorPricing = distributorPricing;
     }
 
@@ -97,14 +93,14 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.selfBilled = selfBilled;
     }
 
-    public UrlEntityDTO getReseller()
+    public UrlEntityDTO getResellerCatalog()
     {
-        return reseller;
+        return resellerCatalog;
     }
 
-    public void setReseller( UrlEntityDTO reseller )
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
     {
-        this.reseller = reseller;
+        this.resellerCatalog = resellerCatalog;
     }
 
     public UrlEntityDTO getDistributorPricing()

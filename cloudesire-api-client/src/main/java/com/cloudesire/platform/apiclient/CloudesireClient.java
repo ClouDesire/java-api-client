@@ -27,6 +27,7 @@ import com.cloudesire.platform.apiclient.api.ProductImageFileApi;
 import com.cloudesire.platform.apiclient.api.ProductVersionApi;
 import com.cloudesire.platform.apiclient.api.PublicUserFileApi;
 import com.cloudesire.platform.apiclient.api.ResellerApi;
+import com.cloudesire.platform.apiclient.api.ResellerCatalogApi;
 import com.cloudesire.platform.apiclient.api.ResellerPricingApi;
 import com.cloudesire.platform.apiclient.api.ResellingReportApi;
 import com.cloudesire.platform.apiclient.api.RiskProfileApi;
@@ -405,6 +406,11 @@ public class CloudesireClient
     public DistributorPricingApi getDistributorPricingApi()
     {
         return retrofit.create( DistributorPricingApi.class );
+    }
+
+    public ResellerCatalogApi getResellerCatalogApi()
+    {
+        return retrofit.create( ResellerCatalogApi.class );
     }
 
     public ResellerPricingApi getResellerPricingApi()

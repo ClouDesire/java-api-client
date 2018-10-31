@@ -35,13 +35,6 @@ public interface ResellerPricingApi
 
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll(
-            @Query( "resellerId" ) Integer resellerId,
-            @Query( "productId" ) Integer productId,
-            @QueryMap Map<String, String> pageRequest
-    );
-
-    @GET( "resellerPricing" )
-    Call<List<ResellerPricingDTO>> getAll(
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest
     );
@@ -49,6 +42,7 @@ public interface ResellerPricingApi
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll(
             @Query( "resellerId" ) Integer resellerId,
+            @Query( "catalogId" ) Integer catalogId,
             @Query( "productId" ) Integer productId,
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest

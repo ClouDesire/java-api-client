@@ -173,6 +173,10 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( "The risk profile of the user" )
     private UrlEntityDTO riskProfile;
 
+    @ApiModelProperty( "The reseller catalog associated to the user" )
+    @Valid
+    private UrlEntityDTO resellerCatalog;
+
     @ApiModelProperty( value = "What roles can this user impersonate", readOnly = true )
     private Set<UserRole> canImpersonate;
 
@@ -684,6 +688,16 @@ public class MyUserDTO extends BaseEntityDTO
     public void setRiskProfile( UrlEntityDTO riskProfile )
     {
         this.riskProfile = riskProfile;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 
     public Set<UserRole> getCanImpersonate()
