@@ -14,6 +14,7 @@ public class ProductQuery extends BaseQuery
         putAll( pageRequestQuery );
         return this;
     }
+
     public ProductQuery setName( String name )
     {
         put( NAME, name );
