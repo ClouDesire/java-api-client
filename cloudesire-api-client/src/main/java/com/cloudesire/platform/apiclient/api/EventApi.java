@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.EventQuery;
 import com.liberologico.cloudesire.cmw.model.dto.EventDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -10,7 +11,6 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import java.util.List;
-import java.util.Map;
 
 public interface EventApi
 {
@@ -21,24 +21,10 @@ public interface EventApi
     Call<List<EventDTO>> getAll();
 
     @GET( "event" )
-    Call<List<EventDTO>> getAll( @Query("type") EventType type );
-
-    @GET( "event" )
-    Call<List<EventDTO>> getAll( @Query("type") EventType type, @Query("entity") String entity, @Query("id") int entiyId );
+    Call<List<EventDTO>> getAll( @QueryMap EventQuery query );
 
     @GET( "event/annotated")
     Call<List<String>> getAnnotated();
-
-    @GET( "event?type=all" )
-    Call<List<EventDTO>> getAll( @QueryMap Map<String, String> pageRequest );
-
-    @GET( "event?type=entity" )
-    Call<List<EventDTO>> getAll(
-            @Query( "entity" ) String entity,
-            @Query( "id" ) Integer id );
-
-    @GET( "event?type=all" )
-    Call<List<EventDTO>> getAll( @Query("type") boolean notified );
 
     @DELETE( "event" )
     Call<Void> delete();
