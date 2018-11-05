@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.ProductVersionPatchQuery;
 import com.liberologico.cloudesire.cmw.model.dto.ProductVersionDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ProductVersionDraftDTO;
 import retrofit2.Call;
@@ -30,10 +31,10 @@ public interface ProductVersionApi
     Call<Void> delete( @Path( "id" ) int id );
 
     @PATCH( "productVersion/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body ProductVersionPatchQuery input );
 
     @PATCH( "productVersion/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input,
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body ProductVersionPatchQuery input,
             @Query( "language" ) String language );
 
     @GET( "productVersion" )
