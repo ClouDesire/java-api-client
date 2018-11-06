@@ -1,21 +1,19 @@
 package com.cloudesire.platform.apiclient.body;
 
-import com.liberologico.cloudesire.cmw.model.enums.FeaturedType;
-
 public class ProductPatch
 {
-    private FeaturedType action;
-    private String privacy;
+    private ProductPatchAction action;
+    private String syndicatedEndpoint;
 
-    public ProductPatch setAction( FeaturedType value )
+    public ProductPatch setAction( ProductPatchAction value )
     {
         this.action = value;
         return this;
     }
 
-    public ProductPatch setPrivacy( String value )
+    public ProductPatch setSyndicatedEndpoint( String syndicatedEndpoint )
     {
-        this.privacy = value;
+        this.syndicatedEndpoint = syndicatedEndpoint;
         return this;
     }
 }
