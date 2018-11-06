@@ -50,18 +50,6 @@ public interface ProductApi
     @POST( "product/vm" )
     Call<ProductDTO> createBareVm( @Body ProductDTO input );
 
-    @DELETE( "product/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
-    @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
-
-    @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
-
-    @GET( "product" )
-    Call<List<ProductDTO>> getAllWithFunnyFilters( @QueryMap Map<String, String> filters );
-
     @GET( "product" )
     Call<List<ProductDTO>> getAll();
 
@@ -69,10 +57,10 @@ public interface ProductApi
     Call<List<ProductDTO>> getAll( @Header( MODE ) String mode );
 
     @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
+    Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query );
 
     @GET( "product" )
-    Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query );
+    Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query, @Header( MODE ) String mode );
 
     @GET( "product/approvalRequests" )
     Call<List<ProductDTO>> getApprovalRequests( @QueryMap Map<String, String> pageRequest );
@@ -89,12 +77,6 @@ public interface ProductApi
     @GET( "product/{id}" )
     Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
 
-    @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
-
-    @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input, @Query( "language" ) String language );
-
     @GET( "product/{id}/bundled" )
     Call<List<ProductBundleDTO>> getBundled( @Path( "id" ) Integer id );
 
@@ -105,13 +87,28 @@ public interface ProductApi
     Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @GET( "product/draft" )
-    Call<List<ProductDraftDTO>> getDrafts( @QueryMap Map<String, String> pageRequest );
+    Call<List<ProductDraftDTO>> getDrafts( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "product/draft" )
-    Call<List<ProductDraftDTO>> getDrafts( @QueryMap Map<String, String> pageRequest, @Query( "language" ) String language );
+    Call<List<ProductDraftDTO>> getDrafts( @QueryMap PageRequestQuery pageRequest, @Query( "language" ) String language );
 
     @GET( "product/{id}/register" )
     Call<List<ProductRegisterEntryDTO>> getRegister( @Path( "id" ) Integer id );
+
+    @PUT( "product/{id}" )
+    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
+
+    @PUT( "product/{id}" )
+    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input, @Query( "language" ) String language );
+
+    @DELETE( "product/{id}" )
+    Call<Void> delete( @Path( "id" ) Integer id );
+
+    @PATCH( "product/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
+
+    @PATCH( "product/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
 
     @Streaming
     @GET( "product" )
