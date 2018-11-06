@@ -8,6 +8,11 @@ public class EventQuery extends PageRequestQuery
     private static final String ENTITY = "entity";
     private static final String ID = "id";
 
+    public static EventQuery all()
+    {
+        return new EventQuery().setType( EventApi.EventType.ALL );
+    }
+
     public EventQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
