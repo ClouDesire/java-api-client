@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.body.ProductPatch;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import com.cloudesire.platform.apiclient.query.ProductQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CspArmProductDTO;
@@ -54,10 +55,10 @@ public interface ProductApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch actions );
 
     @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch action, @Query( "language" ) String language );
 
     @GET( "product" )
     Call<List<ProductDTO>> getAllWithFunnyFilters( @QueryMap Map<String, String> filters );

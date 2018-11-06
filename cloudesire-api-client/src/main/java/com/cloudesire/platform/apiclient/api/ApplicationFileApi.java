@@ -6,7 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -18,12 +17,6 @@ public interface ApplicationFileApi
 {
     @POST( "applicationFile" )
     Call<ApplicationFileDTO> create( @Body ApplicationFileDTO file );
-
-    @DELETE( "applicationFile/{id}" )
-    Call<Void> delete( @Path( "id" ) int id );
-
-    @PATCH( "applicationFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
 
     @GET( "applicationFile/active" )
     Call<ApplicationFileDTO> getActive( @Query( "virtualMachineConfiguration" ) Integer virtualMachineConfiguration,
@@ -40,4 +33,7 @@ public interface ApplicationFileApi
 
     @PUT( "applicationFile/{id}" )
     Call<ApplicationFileDTO> update( @Path( "id" ) int id, @Body ApplicationFileDTO input );
+
+    @DELETE( "applicationFile/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }

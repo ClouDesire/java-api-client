@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.body.CompanyPatch;
 import com.liberologico.cloudesire.cmw.model.dto.CompanyDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -49,7 +50,7 @@ public interface CompanyApi
     Call<CompanyDTO> get( @Path( "id" ) int id );
 
     @PATCH( "company/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body CompanyPatch input );
 
     @PUT( "company/{id}" )
     Call<CompanyDTO> update( @Path( "id" ) int id, @Body CompanyDTO company );

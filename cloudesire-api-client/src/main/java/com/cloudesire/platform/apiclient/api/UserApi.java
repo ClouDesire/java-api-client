@@ -6,6 +6,7 @@ import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
 import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
+import com.liberologico.cloudesire.cmw.model.dto.body.UserPatch;
 import com.liberologico.cloudesire.cmw.model.dto.request.UserActivationDTO;
 import com.liberologico.cloudesire.cmw.model.enums.UserRole;
 import okhttp3.ResponseBody;
@@ -64,10 +65,7 @@ public interface UserApi
     Call<Void> delete( @Path( "id" ) int id );
 
     @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
-
-    @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body UserPatch input );
 
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @QueryMap Map<String, String> pageRequest );

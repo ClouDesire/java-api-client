@@ -6,7 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -28,13 +27,6 @@ public interface ProductVersionApi
 
     @DELETE( "productVersion/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
-
-    @PATCH( "productVersion/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
-
-    @PATCH( "productVersion/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input,
-            @Query( "language" ) String language );
 
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product );
