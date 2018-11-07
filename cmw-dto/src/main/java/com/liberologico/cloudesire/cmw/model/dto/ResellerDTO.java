@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,9 @@ public class ResellerDTO extends ParentChildCompanyDTO
 
     @Size( max = 125 )
     private String storeName;
+
+    @Valid
+    private UrlEntityDTO defaultCatalog;
 
     public ResellerDTO( String name, String email )
     {
@@ -129,6 +133,16 @@ public class ResellerDTO extends ParentChildCompanyDTO
     public void setStoreName( String storeName )
     {
         this.storeName = storeName;
+    }
+
+    public UrlEntityDTO getDefaultCatalog()
+    {
+        return defaultCatalog;
+    }
+
+    public void setDefaultCatalog( UrlEntityDTO defaultCatalog )
+    {
+        this.defaultCatalog = defaultCatalog;
     }
 
     @Override

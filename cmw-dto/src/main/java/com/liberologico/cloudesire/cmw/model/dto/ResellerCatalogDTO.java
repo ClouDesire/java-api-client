@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import javax.validation.Valid;
+import java.util.Objects;
 import java.util.Set;
 
 public class ResellerCatalogDTO extends NamedEntityDTO
@@ -49,5 +50,21 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setPricings( Set<UrlEntityDTO> pricings )
     {
         this.pricings = pricings;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        ResellerCatalogDTO that = (ResellerCatalogDTO) o;
+        return Objects.equals( reseller, that.reseller );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), reseller );
     }
 }
