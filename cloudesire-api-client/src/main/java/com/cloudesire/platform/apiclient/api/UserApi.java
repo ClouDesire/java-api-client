@@ -51,6 +51,9 @@ public interface UserApi
     @POST( "user" )
     Call<MyUserDTO> create( @Body MyUserDTO userDTO );
 
+    @POST( "user" )
+    Call<MyUserDTO> create( @Body MyUserDTO userDTO, @Query( "reseller" ) String reseller );
+
     @DELETE( "user/{id}/payment" )
     Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
 
