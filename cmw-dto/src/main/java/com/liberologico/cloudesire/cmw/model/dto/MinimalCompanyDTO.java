@@ -43,6 +43,9 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @NotNull
     private String emailAddress;
 
+    @ApiModelProperty( "Preferred language for the company" )
+    private String language = "EN";
+
     public MinimalCompanyDTO( String name, String emailAddress )
     {
         this( name );
@@ -152,6 +155,16 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public void setEmailAddress( String emailAddress )
     {
         this.emailAddress = emailAddress;
+    }
+
+    public String getLanguage()
+    {
+        return language;
+    }
+
+    public void setLanguage( String language )
+    {
+        this.language = language;
     }
 
     @Override

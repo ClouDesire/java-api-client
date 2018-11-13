@@ -27,9 +27,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     @Size( max = 255 )
     private String form;
 
-    @ApiModelProperty( "Preferred language for the company" )
-    private String language = "EN";
-
     @ApiModelProperty( "Email address that will receive technical notifications" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
@@ -103,16 +100,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setTechnicalEmailAddress( String technicalEmailAddress )
     {
         this.technicalEmailAddress = technicalEmailAddress;
-    }
-
-    public String getLanguage()
-    {
-        return language;
-    }
-
-    public void setLanguage( String language )
-    {
-        this.language = language;
     }
 
     public String getRea()
