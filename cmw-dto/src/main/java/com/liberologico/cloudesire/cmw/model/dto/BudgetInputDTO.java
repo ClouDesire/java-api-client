@@ -39,6 +39,8 @@ public class BudgetInputDTO
     @ApiModelProperty( "The slug of a reseller company" )
     private String reseller;
 
+    private Integer catalogId;
+
     private OSType operatingSystem;
 
     public OrderType getType()
@@ -137,6 +139,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setReseller( String reseller )
     {
         this.reseller = reseller;
+        return this;
+    }
+
+    public Integer getCatalogId()
+    {
+        return catalogId;
+    }
+
+    public BudgetInputDTO setCatalogId( Integer catalogId )
+    {
+        this.catalogId = catalogId;
         return this;
     }
 
