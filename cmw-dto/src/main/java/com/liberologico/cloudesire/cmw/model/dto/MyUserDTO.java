@@ -47,10 +47,9 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "The hashed password, visible only to privileged accounts", readOnly = true )
     private String passwordHash;
 
-    @ApiModelProperty( "The preferred user language" )
-    @NotNull
-    @Size( max = 2 )
-    private String language = "en";
+    @ApiModelProperty( "Preferred user language" )
+    @Size( min = 2, max = 2 )
+    private String language;
 
     @ApiModelProperty( "User email address to receive platform notifications" )
     @NotEmpty
@@ -509,7 +508,7 @@ public class MyUserDTO extends BaseEntityDTO
 
     public String getLanguage()
     {
-        return language.toLowerCase();
+        return language;
     }
 
     public void setLanguage( String language )

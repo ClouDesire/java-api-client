@@ -43,8 +43,9 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @NotNull
     private String emailAddress;
 
-    @ApiModelProperty( "Preferred language for the company" )
-    private String language = "EN";
+    @ApiModelProperty( "Preferred company language" )
+    @Size( min = 2, max = 2 )
+    private String language;
 
     public MinimalCompanyDTO( String name, String emailAddress )
     {
