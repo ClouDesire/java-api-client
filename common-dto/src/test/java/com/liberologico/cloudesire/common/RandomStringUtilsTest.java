@@ -3,8 +3,8 @@ package com.liberologico.cloudesire.common;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class RandomStringUtilsTest
 {

@@ -11,8 +11,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class CloudesireClientTest
 {
@@ -70,7 +70,7 @@ public class CloudesireClientTest
         assertThatThrownBy( new ThrowableAssert.ThrowingCallable()
         {
             @Override
-            public void call() throws Throwable
+            public void call()
             {
                 builder.build();
             }
@@ -80,7 +80,7 @@ public class CloudesireClientTest
         assertThatThrownBy( new ThrowableAssert.ThrowingCallable()
         {
             @Override
-            public void call() throws Throwable
+            public void call()
             {
                 builder.build();
             }
