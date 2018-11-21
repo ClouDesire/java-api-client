@@ -27,7 +27,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     private UrlEntityDTO company;
 
     @Valid
-    private UrlEntityDTO reseller;
+    private UrlEntityDTO resellerCatalog;
 
     @Valid
     private UrlEntityDTO category;
@@ -241,14 +241,14 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.company = company;
     }
 
-    public UrlEntityDTO getReseller()
+    public UrlEntityDTO getResellerCatalog()
     {
-        return reseller;
+        return resellerCatalog;
     }
 
-    public void setReseller( UrlEntityDTO reseller )
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
     {
-        this.reseller = reseller;
+        this.resellerCatalog = resellerCatalog;
     }
 
     public ProductType getType()

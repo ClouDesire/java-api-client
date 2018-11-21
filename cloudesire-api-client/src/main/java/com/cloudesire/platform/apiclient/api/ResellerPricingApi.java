@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.ResellerPricingDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO;
+import com.liberologico.cloudesire.cmw.model.dto.PercentagePricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -35,13 +35,6 @@ public interface ResellerPricingApi
 
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll(
-            @Query( "resellerId" ) Integer resellerId,
-            @Query( "productId" ) Integer productId,
-            @QueryMap Map<String, String> pageRequest
-    );
-
-    @GET( "resellerPricing" )
-    Call<List<ResellerPricingDTO>> getAll(
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest
     );
@@ -49,6 +42,7 @@ public interface ResellerPricingApi
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll(
             @Query( "resellerId" ) Integer resellerId,
+            @Query( "catalogId" ) Integer catalogId,
             @Query( "productId" ) Integer productId,
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest
@@ -58,7 +52,7 @@ public interface ResellerPricingApi
     Call<ResellerPricingDTO> update( @Path( "id" ) int id, @Body ResellerPricingDTO input );
 
     @PATCH( "resellerPricing" )
-    Call<Void> patch( @Body ResellerPricingPatchDTO input );
+    Call<Void> patch( @Body PercentagePricingPatchDTO input );
 
     @DELETE( "resellerPricing/{id}" )
     Call<Void> delete( @Path( "id" ) int id );

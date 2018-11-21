@@ -8,6 +8,7 @@ public class ProductQuery extends BaseQuery
     private static final String RESELLER = "reseller";
     private static final String PRODUCT_TYPE = "productType";
     private static final String OWN_COMPANY = "ownCompany";
+    private static final String CATALOG_ID = "catalogId";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -38,4 +39,11 @@ public class ProductQuery extends BaseQuery
         put( OWN_COMPANY, ownCompany );
         return this;
     }
+
+    public ProductQuery setCatalogId( Integer catalogId )
+    {
+        put( CATALOG_ID, catalogId );
+        return this;
+    }
+
 }

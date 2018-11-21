@@ -7,11 +7,11 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-import static com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO.Action.MASS_UPDATE;
-import static com.liberologico.cloudesire.cmw.model.dto.ResellerPricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
+import static com.liberologico.cloudesire.cmw.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE;
+import static com.liberologico.cloudesire.cmw.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
 
-@ApiModel( "Mass actions for reseller pricings" )
-public class ResellerPricingPatchDTO extends DTO
+@ApiModel( "Mass actions for resold pricings" )
+public class PercentagePricingPatchDTO extends DTO
 {
     @NotNull
     private Action action;
@@ -19,7 +19,7 @@ public class ResellerPricingPatchDTO extends DTO
     @ApiModelProperty( "Price change in percentage" )
     private BigDecimal percentage;
 
-    public ResellerPricingPatchDTO( Action action )
+    public PercentagePricingPatchDTO( Action action )
     {
         this.action = action;
     }
@@ -33,7 +33,7 @@ public class ResellerPricingPatchDTO extends DTO
         return true;
     }
 
-    public ResellerPricingPatchDTO()
+    public PercentagePricingPatchDTO()
     {
     }
 
@@ -60,10 +60,10 @@ public class ResellerPricingPatchDTO extends DTO
     @ApiModel( "The defined action" )
     public enum Action
     {
-        @ApiModelProperty( "Update price and setup of every reseller pricing" )
+        @ApiModelProperty( "Update price and setup of every pricing" )
         MASS_UPDATE,
 
-        @ApiModelProperty( "Update price of every cloud pricing defined in the reseller pricings" )
+        @ApiModelProperty( "Update price of every cloud pricing defined in the pricings" )
         MASS_UPDATE_CLOUD_PRICINGS
     }
 }

@@ -60,6 +60,8 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )
     private String reseller;
 
+    private Integer catalogId;
+
     private OSType operatingSystem;
 
     public OrderInputDTO( UrlEntityDTO productVersion )
@@ -212,6 +214,16 @@ public class OrderInputDTO extends BaseEntityDTO
     public void setReseller( String reseller )
     {
         this.reseller = reseller;
+    }
+
+    public Integer getCatalogId()
+    {
+        return catalogId;
+    }
+
+    public void setCatalogId( Integer catalogId )
+    {
+        this.catalogId = catalogId;
     }
 
     public OSType getOperatingSystem()
