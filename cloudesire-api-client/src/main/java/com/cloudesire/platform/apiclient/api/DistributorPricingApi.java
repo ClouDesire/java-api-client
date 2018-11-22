@@ -31,6 +31,7 @@ public interface DistributorPricingApi
     Call<List<DistributorPricingDTO>> getAll(
             @Query( "productId" ) Integer productId,
             @Query( "catalogId" ) Integer catalogId,
+            @Query( "deprecated" ) Boolean deprecated,
             @QueryMap Map<String, String> pageRequest
     );
 

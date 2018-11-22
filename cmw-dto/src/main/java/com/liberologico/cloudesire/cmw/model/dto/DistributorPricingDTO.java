@@ -39,6 +39,8 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
+    private Boolean deprecated;
+
     public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion, BigDecimal markup )
     {
         this( distributorCatalog, productVersion );
@@ -129,6 +131,16 @@ public class DistributorPricingDTO extends BaseEntityDTO
     public void setLocked( Boolean locked )
     {
         this.locked = locked;
+    }
+
+    public Boolean getDeprecated()
+    {
+        return deprecated;
+    }
+
+    public void setDeprecated( Boolean deprecated )
+    {
+        this.deprecated = deprecated;
     }
 
     @Override
