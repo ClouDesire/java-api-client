@@ -15,11 +15,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * This is the output DTO for order
- *
- * @see OrderInputDTO the input DTO
- */
 public abstract class BaseOrderDTO extends BaseEntityDTO
 {
     @Valid

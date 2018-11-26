@@ -1,5 +1,10 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+/**
+ * This is the output DTO for order
+ *
+ * @see OrderInputDTO the input DTO
+ */
 public class OrderDTO extends BaseOrderDTO
 {
     private UrlEntityDTO distributor;
