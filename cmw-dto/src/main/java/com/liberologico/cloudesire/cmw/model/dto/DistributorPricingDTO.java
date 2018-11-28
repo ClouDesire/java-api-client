@@ -39,14 +39,11 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
-    @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
+    @ApiModelProperty( value = "Whether the pricing is part of an expired catalog", readOnly = true )
     private Boolean deprecated;
 
-    public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion, BigDecimal markup )
-    {
-        this( distributorCatalog, productVersion );
-        this.price = new ResellingPriceDTO( markup );
-    }
+    @ApiModelProperty( value = "Whether the pricing is part of a future catalog", readOnly = true )
+    private Boolean inactive;
 
     public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion )
     {
@@ -142,6 +139,16 @@ public class DistributorPricingDTO extends BaseEntityDTO
     public void setDeprecated( Boolean deprecated )
     {
         this.deprecated = deprecated;
+    }
+
+    public Boolean getInactive()
+    {
+        return inactive;
+    }
+
+    public void setInactive( Boolean inactive )
+    {
+        this.inactive = inactive;
     }
 
     @Override
