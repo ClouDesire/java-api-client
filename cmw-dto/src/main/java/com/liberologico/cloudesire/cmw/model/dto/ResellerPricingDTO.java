@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
