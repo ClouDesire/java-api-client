@@ -32,7 +32,7 @@ public interface CompanyLogoApi
     Call<FileDTO> get( @Path( "id" ) Integer id );
 
     @PATCH( "companyLogoFile/{id}" )
-    Call<FileDTO> partialUpdate( @Path( "id" ) Integer id, @Body FilePatch file, @Query( "language" ) String language );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body FilePatch file, @Query( "language" ) String language );
 
     @DELETE( "companyLogoFile/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );

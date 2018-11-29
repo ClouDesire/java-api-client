@@ -33,6 +33,8 @@ import static com.liberologico.cloudesire.cmw.model.constants.Headers.MODE;
 
 public interface ProductApi
 {
+    /* CREATE */
+
     @POST( "product" )
     Call<ProductDTO> create( @Body ProductDTO input );
 
@@ -51,14 +53,7 @@ public interface ProductApi
     @POST( "product/vm" )
     Call<ProductDTO> createBareVm( @Body ProductDTO input );
 
-    @DELETE( "product/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
-    @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch actions );
-
-    @PATCH( "product/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch action, @Query( "language" ) String language );
+    /* RETRIEVE */
 
     @GET( "product" )
     Call<List<ProductDTO>> getAllWithFunnyFilters( @QueryMap Map<String, String> filters );
@@ -78,32 +73,8 @@ public interface ProductApi
     @GET( "product/approvalRequests" )
     Call<List<ProductDTO>> getApprovalRequests( @QueryMap Map<String, String> pageRequest );
 
-    @GET( "product/sku/{sku}" )
-    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku );
-
-    @GET( "product/sku/{sku}" )
-    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku, @Query( "language" ) String language );
-
-    @GET( "product/{id}" )
-    Call<ProductDTO> get( @Path( "id" ) int id );
-
-    @GET( "product/{id}" )
-    Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
-
-    @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
-
-    @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input, @Query( "language" ) String language );
-
     @GET( "product/{id}/bundled" )
     Call<List<ProductBundleDTO>> getBundled( @Path( "id" ) Integer id );
-
-    @GET( "product/{id}/draft" )
-    Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id );
-
-    @GET( "product/{id}/draft" )
-    Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @GET( "product/draft" )
     Call<List<ProductDraftDTO>> getDrafts( @QueryMap Map<String, String> pageRequest );
@@ -114,6 +85,24 @@ public interface ProductApi
     @GET( "product/{id}/register" )
     Call<List<ProductRegisterEntryDTO>> getRegister( @Path( "id" ) Integer id );
 
+    @GET( "product/{id}" )
+    Call<ProductDTO> get( @Path( "id" ) int id );
+
+    @GET( "product/{id}" )
+    Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+
+    @GET( "product/sku/{sku}" )
+    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku );
+
+    @GET( "product/sku/{sku}" )
+    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku, @Query( "language" ) String language );
+
+    @GET( "product/{id}/draft" )
+    Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id );
+
+    @GET( "product/{id}/draft" )
+    Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id, @Query( "language" ) String language );
+
     @Streaming
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
@@ -123,4 +112,23 @@ public interface ProductApi
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "productType" ) ProductType productType );
+
+    /* UPDATE */
+
+    @PUT( "product/{id}" )
+    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
+
+    @PUT( "product/{id}" )
+    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input, @Query( "language" ) String language );
+
+    @PATCH( "product/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch actions );
+
+    @PATCH( "product/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductPatch action, @Query( "language" ) String language );
+
+    /* DELETE */
+
+    @DELETE( "product/{id}" )
+    Call<Void> delete( @Path( "id" ) Integer id );
 }

@@ -6,6 +6,12 @@ public class VMInstancePatch
 {
     private BackupFrequency backupFrequency;
 
+
+    public BackupFrequency getBackupFrequency()
+    {
+        return backupFrequency;
+    }
+
     public VMInstancePatch setBackupFrequency( BackupFrequency value )
     {
         this.backupFrequency = value;
