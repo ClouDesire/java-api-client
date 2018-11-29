@@ -14,6 +14,11 @@ public class ProductPatch
         return this;
     }
 
+    public ProductAction getAction()
+    {
+        return action;
+    }
+
     public enum ProductAction
     {
         ENABLED("enabled"),
