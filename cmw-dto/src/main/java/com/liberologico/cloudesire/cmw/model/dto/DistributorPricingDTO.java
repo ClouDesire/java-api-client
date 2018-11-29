@@ -39,14 +39,10 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
+    private BigDecimal recommendedPriceIncrease;
+
     @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
     private Boolean deprecated;
-
-    public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion, BigDecimal markup )
-    {
-        this( distributorCatalog, productVersion );
-        this.price = new ResellingPriceDTO( markup );
-    }
 
     public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion )
     {
@@ -132,6 +128,16 @@ public class DistributorPricingDTO extends BaseEntityDTO
     public void setLocked( Boolean locked )
     {
         this.locked = locked;
+    }
+
+    public BigDecimal getRecommendedPriceIncrease()
+    {
+        return recommendedPriceIncrease;
+    }
+
+    public void setRecommendedPriceIncrease( BigDecimal recommendedPriceIncrease )
+    {
+        this.recommendedPriceIncrease = recommendedPriceIncrease;
     }
 
     public Boolean getDeprecated()
