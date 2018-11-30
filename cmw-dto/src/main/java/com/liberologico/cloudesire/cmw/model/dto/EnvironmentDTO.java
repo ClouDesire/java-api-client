@@ -112,6 +112,10 @@ public class EnvironmentDTO extends DTO
     @Size( max = 2048 )
     private String mailFooter;
 
+    @ApiModelProperty( "URL to unsubscribe from emails" )
+    @URL
+    private String mailUnsubscribe;
+
     @ApiModelProperty( "Support email for customers" )
     @Email
     @NotEmpty
@@ -373,6 +377,16 @@ public class EnvironmentDTO extends DTO
     public void setMailFooter( String mailFooter )
     {
         this.mailFooter = mailFooter;
+    }
+
+    public String getMailUnsubscribe()
+    {
+        return mailUnsubscribe;
+    }
+
+    public void setMailUnsubscribe( String mailUnsubscribe )
+    {
+        this.mailUnsubscribe = mailUnsubscribe;
     }
 
     public String getSupportMail()
