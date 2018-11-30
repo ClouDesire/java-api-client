@@ -39,7 +39,8 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
-    private BigDecimal recommendedPriceIncrease;
+    @ApiModelProperty( "Default percentage sellout for new Reseller catalogs" )
+    private BigDecimal recommendedSelloutPercentage;
 
     @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
     private Boolean deprecated;
@@ -130,14 +131,14 @@ public class DistributorPricingDTO extends BaseEntityDTO
         this.locked = locked;
     }
 
-    public BigDecimal getRecommendedPriceIncrease()
+    public BigDecimal getRecommendedSelloutPercentage()
     {
-        return recommendedPriceIncrease;
+        return recommendedSelloutPercentage;
     }
 
-    public void setRecommendedPriceIncrease( BigDecimal recommendedPriceIncrease )
+    public void setRecommendedSelloutPercentage( BigDecimal recommendedSelloutPercentage )
     {
-        this.recommendedPriceIncrease = recommendedPriceIncrease;
+        this.recommendedSelloutPercentage = recommendedSelloutPercentage;
     }
 
     public Boolean getDeprecated()
