@@ -43,14 +43,6 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @DecimalMin( "0" )
     private BigDecimal vendorSetup;
 
-    @ApiModelProperty( "Recurring cost for every billing period" )
-    @DecimalMin( "0" )
-    private BigDecimal recurring;
-
-    @ApiModelProperty( "Recurring cost set by vendor, visible to admin only" )
-    @DecimalMin( "0" )
-    private BigDecimal vendorRecurring;
-
     @ApiModelProperty( "Increment amount" )
     @Min( 1 )
     private Integer step;
@@ -76,11 +68,6 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public void setResoldSetup( BigDecimal sellout )
     {
         if ( sellout != null ) setup = sellout;
-    }
-
-    public void setResoldRecurring( BigDecimal sellout )
-    {
-        if ( sellout != null ) recurring = sellout;
     }
 
     public static BillingItemValueDTO of( UrlEntityDTO billingItem, int start, int end, BigDecimal price )
@@ -175,28 +162,6 @@ public class BillingItemValueDTO extends BaseEntityDTO
         return this;
     }
 
-    public BigDecimal getRecurring()
-    {
-        return recurring;
-    }
-
-    public BillingItemValueDTO setRecurring( BigDecimal recurring )
-    {
-        this.recurring = recurring;
-        return this;
-    }
-
-    public BigDecimal getVendorRecurring()
-    {
-        return vendorRecurring;
-    }
-
-    public BillingItemValueDTO setVendorRecurring( BigDecimal vendorRecurring )
-    {
-        this.vendorRecurring = vendorRecurring;
-        return this;
-    }
-
     public Integer getStep()
     {
         return step;
@@ -212,7 +177,7 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public String toString()
     {
         return "BillingItemValueDTO{" + "item=" + item + ", start=" + start + ", end=" + end + ", price=" + price
-                + ", setup=" + setup + ", recurring=" + recurring + '}';
+                + ", setup=" + setup + '}';
     }
 
     @Override
@@ -225,14 +190,13 @@ public class BillingItemValueDTO extends BaseEntityDTO
                 Objects.equals( start, that.start ) &&
                 Objects.equals( end, that.end ) &&
                 price.compareTo( that.price ) == 0 &&
-                Objects.equals( setup, that.setup ) &&
-                Objects.equals( recurring, that.recurring );
+                Objects.equals( setup, that.setup );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( item, start, end, price, setup, recurring );
+        return Objects.hash( item, start, end, price, setup );
     }
     // endregion
 }
