@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -40,6 +41,7 @@ public class DistributorPricingDTO extends BaseEntityDTO
     private Boolean locked;
 
     @ApiModelProperty( "Default percentage sellout for new Reseller catalogs" )
+    @Min( 0 )
     private BigDecimal recommendedSelloutPercentage;
 
     @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
