@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ public class ResellerCatalogDTO extends NamedEntityDTO
 
     private Set<UrlEntityDTO> customers;
 
-    private Set<UrlEntityDTO> pricings;
+    private List<UrlEntityDTO> pricings;
 
     public ResellerCatalogDTO( String name )
     {
@@ -42,12 +43,12 @@ public class ResellerCatalogDTO extends NamedEntityDTO
         this.customers = customers;
     }
 
-    public Set<UrlEntityDTO> getPricings()
+    public List<UrlEntityDTO> getPricings()
     {
         return pricings;
     }
 
-    public void setPricings( Set<UrlEntityDTO> pricings )
+    public void setPricings( List<UrlEntityDTO> pricings )
     {
         this.pricings = pricings;
     }
