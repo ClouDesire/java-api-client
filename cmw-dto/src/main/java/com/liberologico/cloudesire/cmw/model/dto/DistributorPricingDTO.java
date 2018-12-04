@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -39,14 +40,12 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
+    @ApiModelProperty( "Default percentage sellout for new Reseller catalogs" )
+    @Min( 0 )
+    private BigDecimal recommendedSelloutPercentage;
+
     @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
     private Boolean deprecated;
-
-    public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion, BigDecimal markup )
-    {
-        this( distributorCatalog, productVersion );
-        this.price = new ResellingPriceDTO( markup );
-    }
 
     public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion )
     {
@@ -132,6 +131,16 @@ public class DistributorPricingDTO extends BaseEntityDTO
     public void setLocked( Boolean locked )
     {
         this.locked = locked;
+    }
+
+    public BigDecimal getRecommendedSelloutPercentage()
+    {
+        return recommendedSelloutPercentage;
+    }
+
+    public void setRecommendedSelloutPercentage( BigDecimal recommendedSelloutPercentage )
+    {
+        this.recommendedSelloutPercentage = recommendedSelloutPercentage;
     }
 
     public Boolean getDeprecated()

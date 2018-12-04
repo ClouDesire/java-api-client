@@ -1,7 +1,6 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import javax.validation.Valid;
-import java.util.Collections;
 import java.util.Set;
 
 public class DistributorCatalogDTO extends NamedEntityDTO
