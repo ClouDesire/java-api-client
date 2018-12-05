@@ -1,5 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
@@ -15,8 +17,10 @@ public class ResellerCatalogDTO extends NamedEntityDTO
 
     private List<UrlEntityDTO> pricings;
 
+    @ApiModelProperty( value = "When the catalog has been created", readOnly = true )
     private Date createdAt;
 
+    @ApiModelProperty( value = "When the catalog has been last modified", readOnly = true )
     private Date updatedAt;
 
     public ResellerCatalogDTO( String name )
