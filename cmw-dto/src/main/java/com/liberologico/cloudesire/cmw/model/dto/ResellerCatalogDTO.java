@@ -1,6 +1,7 @@
 package com.liberologico.cloudesire.cmw.model.dto;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -13,6 +14,10 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     private Set<UrlEntityDTO> customers;
 
     private List<UrlEntityDTO> pricings;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 
     public ResellerCatalogDTO( String name )
     {
@@ -51,6 +56,26 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setPricings( List<UrlEntityDTO> pricings )
     {
         this.pricings = pricings;
+    }
+
+    public Date getCreatedAt()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt( Date createdAt )
+    {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt()
+    {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt( Date updatedAt )
+    {
+        this.updatedAt = updatedAt;
     }
 
     @Override
