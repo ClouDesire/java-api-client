@@ -16,11 +16,6 @@ public class BillingItemValueV1DTO extends BillingItemValueDTO
     @Min( 0 )
     private BigDecimal vendorRecurring;
 
-    public void setResoldRecurring( BigDecimal sellout )
-    {
-        if ( sellout != null ) recurring = sellout;
-    }
-
     public BigDecimal getRecurring()
     {
         return recurring;
