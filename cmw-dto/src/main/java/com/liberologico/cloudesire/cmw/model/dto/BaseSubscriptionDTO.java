@@ -77,7 +77,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "When the subscription has been created", readOnly = true )
     private Date createdAt;
 
-    @ApiModelProperty( value = "When the subscription has been modified", readOnly = true )
+    @ApiModelProperty( value = "When the subscription has been last modified", readOnly = true )
     private Date updatedAt;
 
     @ApiModelProperty( value = "How much bandwidth in GB is available", readOnly = true )
