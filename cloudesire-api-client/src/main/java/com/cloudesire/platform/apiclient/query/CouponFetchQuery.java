@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.cloudesire.platform.apiclient.ISO8601Date;
+import com.cloudesire.platform.apiclient.date.ISO8601Date;
 import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 
 public class CouponFetchQuery extends PageRequestQuery

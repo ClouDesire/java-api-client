@@ -1,49 +1,47 @@
-package com.liberologico.cloudesire.cmw.model.dto;
+package com.cloudesire.platform.apiclient.response.error;
 
-import com.liberologico.cloudesire.cmw.model.utils.ErrorHolder;
 import com.liberologico.cloudesire.common.Slugger;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @deprecated use ErrorResponseDTO in base api client package
- */
-@Deprecated
-public class ErrorResponseDTO
+public class ErrorResponse
 {
     private List<String> errors = new ArrayList<>();
-    private List<ErrorHolder> errorHolders = new ArrayList<>();
+    private List<ErrorResponseEntry> errorHolders = new ArrayList<>();
 
-    public ErrorResponseDTO()
+    public ErrorResponse()
     {
     }
 
-    public ErrorResponseDTO( List<ErrorHolder> errorHolder )
+    public ErrorResponse( List<ErrorResponseEntry> errorHolder )
     {
         this.setErrorHolders( errorHolder );
     }
 
-    public ErrorResponseDTO( Throwable throwable )
+    public ErrorResponse( Throwable throwable )
     {
         this( throwable, throwable.getMessage() );
     }
 
-    public ErrorResponseDTO( Throwable throwable, String message )
+    public ErrorResponse( Throwable throwable, String message )
     {
-        this( ErrorHolder.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ), message ) );
+        this( ErrorResponseEntry.errorHolderDefault( Slugger.slugify( throwable.getClass().getSimpleName() ), message ) );
     }
 
-    public ErrorResponseDTO( ErrorHolder errorHolder )
+    public ErrorResponse( ErrorResponseEntry errorHolder )
     {
         this.setErrorHolders( Collections.singletonList( errorHolder ) );
     }
 
+    /**
+     * @deprecated see {@link com.liberologico.cloudesire.cmw.model.utils.ErrorResponseFactory}
+     */
     @Deprecated
-    public ErrorResponseDTO( String error )
+    public ErrorResponse( String error )
     {
-        this( ErrorHolder.errorHolderDefault( error ) );
+        this( ErrorResponseEntry.errorHolderDefault( error ) );
     }
 
     /**
@@ -53,7 +51,7 @@ public class ErrorResponseDTO
     public List<String> getErrors()
     {
         List<String> errors = new ArrayList<>();
-        for ( ErrorHolder errorHolder : errorHolders )
+        for ( ErrorResponseEntry errorHolder : errorHolders )
         {
             errors.add( errorHolder.toString() );
         }
@@ -70,7 +68,7 @@ public class ErrorResponseDTO
     }
 
     /**
-     * @deprecated use {@link #addErrorHolder(ErrorHolder)} ()}
+     * @deprecated use {@link #addErrorHolder(ErrorResponseEntry)} ()}
      */
     @Deprecated
     public void addError( String error )
@@ -78,23 +76,23 @@ public class ErrorResponseDTO
         this.errors.add( error );
     }
 
-    public List<ErrorHolder> getErrorHolders()
+    public List<ErrorResponseEntry> getErrorHolders()
     {
         return errorHolders;
     }
 
-    public ErrorResponseDTO setErrorHolders( List<ErrorHolder> errorHolders )
+    public ErrorResponse setErrorHolders( List<ErrorResponseEntry> errorHolders )
     {
         this.errorHolders = errorHolders;
         return this;
     }
 
-    public void addErrorHolder( ErrorHolder errorHolder )
+    public void addErrorHolder( ErrorResponseEntry errorHolder )
     {
         errorHolders.add( errorHolder );
     }
 
-    public ErrorHolder firstErrorHolder()
+    public ErrorResponseEntry firstErrorHolder()
     {
         if ( this.errorHolders == null || this.errorHolders.isEmpty() ) return null;
         return this.errorHolders.get( 0 );

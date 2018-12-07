@@ -46,7 +46,7 @@ public class PageRequestDTO
         this.sortDirection = sortDirection;
     }
 
-    public class Fields
+    public class PaginatorQueryParam
     {
         public static final String PAGE_NUMBER = "pageNumber";
         public static final String PAGE_SIZE = "pageSize";
@@ -57,10 +57,10 @@ public class PageRequestDTO
     public Map<String, String> toMap()
     {
         Map<String, String> map = new HashMap<>();
-        map.put( Fields.PAGE_NUMBER, Integer.toString( pageNumber ) );
-        map.put( Fields.PAGE_SIZE, Integer.toString( pageSize ) );
-        if ( sortDirection != null ) map.put( Fields.SORT_DIRECTION, sortDirection.toString() );
-        if ( sortField != null ) map.put( Fields.SORT_FIELD, sortField );
+        map.put( PaginatorQueryParam.PAGE_NUMBER, Integer.toString( pageNumber ) );
+        map.put( PaginatorQueryParam.PAGE_SIZE, Integer.toString( pageSize ) );
+        if ( sortDirection != null ) map.put( PaginatorQueryParam.SORT_DIRECTION, sortDirection.toString() );
+        if ( sortField != null ) map.put( PaginatorQueryParam.SORT_FIELD, sortField );
         return map;
     }
 

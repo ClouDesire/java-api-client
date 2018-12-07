@@ -28,7 +28,7 @@ import retrofit2.http.Streaming;
 import java.util.List;
 import java.util.Map;
 
-import static com.liberologico.cloudesire.cmw.model.constants.Headers.MODE;
+import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 
 public interface ProductApi
 {

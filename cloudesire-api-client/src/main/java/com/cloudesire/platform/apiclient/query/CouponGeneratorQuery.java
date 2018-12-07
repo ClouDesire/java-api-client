@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.cloudesire.platform.apiclient.ISO8601DateTime;
+import com.cloudesire.platform.apiclient.date.ISO8601DateTime;
 import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
 import com.liberologico.cloudesire.cmw.model.enums.CouponType;
 

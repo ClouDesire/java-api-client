@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.exceptions;
 
-import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
+import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 
 public class MethodNotAllowedException extends BackendException
 {
-    public MethodNotAllowedException( String message, ErrorResponseDTO error )
+    public MethodNotAllowedException( String message, ErrorResponse error )
     {
         super( message, error );
     }

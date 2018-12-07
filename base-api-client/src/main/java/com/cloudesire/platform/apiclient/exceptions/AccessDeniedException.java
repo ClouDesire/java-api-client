@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.exceptions;
 
-import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
+import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 
 public class AccessDeniedException extends BackendException
 {
-    public AccessDeniedException( String message, ErrorResponseDTO error )
+    public AccessDeniedException( String message, ErrorResponse error )
     {
         super( message, error );
     }

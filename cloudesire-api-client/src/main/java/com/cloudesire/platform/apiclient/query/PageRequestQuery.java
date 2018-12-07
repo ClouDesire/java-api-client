@@ -7,25 +7,25 @@ public class PageRequestQuery extends BaseQuery
 {
     public PageRequestQuery setPageNumber( Integer pageNumber )
     {
-        put( PageRequestDTO.Fields.PAGE_NUMBER, pageNumber );
+        put( PageRequestDTO.PaginatorQueryParam.PAGE_NUMBER, pageNumber );
         return this;
     }
 
     public PageRequestQuery setPageSize( Integer pageSize )
     {
-        put( PageRequestDTO.Fields.PAGE_SIZE, pageSize );
+        put( PageRequestDTO.PaginatorQueryParam.PAGE_SIZE, pageSize );
         return this;
     }
 
     public PageRequestQuery setSortField( String sortField )
     {
-        put( PageRequestDTO.Fields.SORT_FIELD, sortField );
+        put( PageRequestDTO.PaginatorQueryParam.SORT_FIELD, sortField );
         return this;
     }
 
     public PageRequestQuery setSortDirection( SortDirection sortDirection )
     {
-        put( PageRequestDTO.Fields.SORT_DIRECTION, sortDirection );
+        put( PageRequestDTO.PaginatorQueryParam.SORT_DIRECTION, sortDirection );
         return this;
     }
 }

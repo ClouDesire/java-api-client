@@ -1,4 +1,4 @@
-package com.cloudesire.platform.apiclient;
+package com.cloudesire.platform.apiclient.date;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

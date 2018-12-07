@@ -9,34 +9,36 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>cloudesire-api-client</artifactId>
-
-	<description>ClouDesire API client built on Retrofit2</description>
+	<artifactId>base-api-client</artifactId>
+	<version>1.7.1-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
-			<artifactId>base-api-client</artifactId>
+			<artifactId>common-dto</artifactId>
 			<version>1.7.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.cloudesire.platform</groupId>
-			<artifactId>cmw-dto</artifactId>
-			<version>1.7.1-SNAPSHOT</version>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.1.11</version>
-			<scope>test</scope>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-jackson</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.0.Final</version>
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>bintray</id>
-			<url>https://api.bintray.com/maven/cloudesire/maven-releases/cloudesire-api-client/;publish=1</url>
-		</repository>
-	</distributionManagement>
 
 </project>

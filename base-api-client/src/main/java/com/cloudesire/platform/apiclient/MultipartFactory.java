@@ -10,7 +10,7 @@ import okhttp3.RequestBody;
 public class MultipartFactory
 {
     /**
-     * Build a {@link okhttp3.MultipartBody.Part} object to be used when uploading files via API
+     * Build a {@link MultipartBody.Part} object to be used when uploading files via API
      * @param fileName the name of the uploaded file
      * @param payload the contents of the uploaded file
      * @param contentType the suggested content-type of the uploaded file
