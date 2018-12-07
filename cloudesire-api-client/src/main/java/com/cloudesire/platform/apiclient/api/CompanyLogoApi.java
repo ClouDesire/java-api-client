@@ -13,6 +13,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Streaming;
 
 public interface CompanyLogoApi
@@ -26,6 +27,9 @@ public interface CompanyLogoApi
 
     @PATCH( "companyLogoFile/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
+
+    @PATCH( "companyLogoFile/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input, @Query( "language" ) String language );
 
     @GET( "companyLogoFile/{id}/static" )
     @Headers( "Accept: image/*" )
