@@ -3,6 +3,10 @@ package com.cloudesire.platform.apiclient;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Factory to easily build MultipartBody.Part instances
@@ -32,6 +36,11 @@ public class MultipartFactory
     public static MultipartBody.Part build( String fileName, byte[] payload )
     {
         return build( fileName, payload, "application/octet-stream" );
+    }
+
+    public static MultipartBody.Part build( String fileName, InputStream payload ) throws IOException
+    {
+        return build( fileName, IOUtils.toByteArray( payload ), "application/octet-stream" );
     }
 
     private MultipartFactory()
