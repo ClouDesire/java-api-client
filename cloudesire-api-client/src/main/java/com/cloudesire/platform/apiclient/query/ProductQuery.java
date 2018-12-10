@@ -5,6 +5,7 @@ import com.liberologico.cloudesire.cmw.model.enums.ProductType;
 public class ProductQuery extends BaseQuery
 {
     private static final String NAME = "name";
+    private static final String DISTRIBUTOR = "distributor";
     private static final String RESELLER = "reseller";
     private static final String PRODUCT_TYPE = "productType";
     private static final String OWN_COMPANY = "ownCompany";
@@ -19,6 +20,12 @@ public class ProductQuery extends BaseQuery
     public ProductQuery setName( String name )
     {
         put( NAME, name );
+        return this;
+    }
+
+    public ProductQuery setDistributor( String distributor )
+    {
+        put( DISTRIBUTOR, distributor );
         return this;
     }
 
