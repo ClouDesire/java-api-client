@@ -2,19 +2,16 @@ package com.cloudesire.platform.apiclient.baseclient;
 
 import com.cloudesire.platform.apiclient.interceptors.UserAgentHeaderInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractCloudesireClient
 {
     protected String baseUrl;
-    protected String userAgent;
     protected ObjectMapper mapper;
     protected Retrofit retrofit;
     protected OkHttpClient okHttpClient;
@@ -23,13 +20,12 @@ public abstract class AbstractCloudesireClient
     {
         this.baseUrl = baseUrl;
         this.mapper = mapper;
-        this.userAgent = userAgent;
 
         OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder()
                 .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
                 .readTimeout( 60, TimeUnit.SECONDS );        // socket timeout
 
-        replaceInterceptor( okhttpClientBuilder, new UserAgentHeaderInterceptor( this.userAgent ) );
+        okhttpClientBuilder.addInterceptor( new UserAgentHeaderInterceptor( userAgent ) );
         generateClients( okhttpClientBuilder );
     }
 
@@ -37,20 +33,6 @@ public abstract class AbstractCloudesireClient
     {
         okHttpClient = okhttpClientBuilder.build();
         retrofit = buildRetrofit( okHttpClient );
-    }
-
-    protected void replaceInterceptor( OkHttpClient.Builder okhttpClientBuilder, Interceptor newInterceptor )
-    {
-        List<Interceptor> interceptors = okhttpClientBuilder.interceptors();
-        for ( Interceptor interceptor : interceptors )
-        {
-            if ( interceptor.getClass().equals( newInterceptor.getClass() ) )
-            {
-                interceptors.remove( interceptor );
-                break;
-            }
-        }
-        interceptors.add( newInterceptor );
     }
 
     public <T> T getApi( Class<T> api )
@@ -74,12 +56,12 @@ public abstract class AbstractCloudesireClient
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         AbstractCloudesireClient that = (AbstractCloudesireClient) o;
-        return Objects.equals( baseUrl, that.baseUrl ) && Objects.equals( userAgent, that.userAgent );
+        return Objects.equals( baseUrl, that.baseUrl );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( baseUrl, userAgent );
+        return Objects.hash( baseUrl );
     }
 }
