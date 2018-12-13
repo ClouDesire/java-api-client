@@ -52,7 +52,7 @@ public interface UserApi
     Call<MyUserDTO> create( @Body MyUserDTO userDTO );
 
     @POST( "user" )
-    Call<MyUserDTO> create( @Body MyUserDTO userDTO, @Query( "reseller" ) String reseller );
+    Call<MyUserDTO> create( @Body MyUserDTO userDTO, @QueryMap Map<String, String> queryMap );
 
     @DELETE( "user/{id}/payment" )
     Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
