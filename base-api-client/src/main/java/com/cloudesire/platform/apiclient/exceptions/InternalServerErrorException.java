@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.exceptions;
 
-import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
+import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 
 public class InternalServerErrorException extends BackendException
 {
-    public InternalServerErrorException( String message, ErrorResponseDTO error )
+    public InternalServerErrorException( String message, ErrorResponse error )
     {
         super( message, error );
     }

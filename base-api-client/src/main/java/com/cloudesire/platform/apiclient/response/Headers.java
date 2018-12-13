@@ -1,4 +1,4 @@
-package com.liberologico.cloudesire.cmw.model.constants;
+package com.cloudesire.platform.apiclient.response;
 
 public final class Headers
 {

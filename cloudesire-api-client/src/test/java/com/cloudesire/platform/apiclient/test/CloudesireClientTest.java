@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CloudesireClientTest
 {
-    private static final String USER_AGENT = "httbin-client-v1";
+    private static final String USER_AGENT = "Cloudesire API Client 20181126";
     private CloudesireClientCallExecutor executor;
 
     @Before
@@ -48,7 +48,6 @@ public class CloudesireClientTest
         CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "https://httpbin.org" );
         builder.setMapper( objectMapper() );
-        builder.setUserAgent( USER_AGENT );
         return builder.build().getApi( Httpbin.class );
     }
 

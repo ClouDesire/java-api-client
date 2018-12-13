@@ -1,4 +1,4 @@
-package com.cloudesire.platform.apiclient;
+package com.cloudesire.platform.apiclient.date;
 
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 

@@ -40,130 +40,58 @@ import com.cloudesire.platform.apiclient.api.UserCompanyApi;
 import com.cloudesire.platform.apiclient.api.VMInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
+import com.cloudesire.platform.apiclient.baseclient.BasicAuthCloudesireClient;
+import com.cloudesire.platform.apiclient.interceptors.HeaderInterceptor;
+import com.cloudesire.platform.apiclient.interceptors.ParameterInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liberologico.cloudesire.cmw.ApiVersion;
-import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.apache.commons.lang3.Validate;
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import java.io.IOException;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION;
 
-public class CloudesireClient
+public class CloudesireClient extends BasicAuthCloudesireClient
 {
-
-    private final Retrofit retrofit;
-    private final String username;
-    private final String password;
     private final String token;
     private final String impersonate;
-    private final String baseUrl;
     private final String environment;
-    private final ObjectMapper mapper;
     private final Interceptor interceptor;
     private final long version;
-    private final String userAgent;
 
     private CloudesireClient( Builder builder )
     {
-        this.username = builder.username;
-        this.password = builder.password;
+        super( builder.mapper, builder.baseUrl, "Cloudesire API Client " + builder.version, builder.username, builder.password );
         this.token = builder.token;
         this.impersonate = builder.impersonate;
-        this.baseUrl = builder.baseUrl;
         this.environment = builder.environment;
-        this.mapper = builder.mapper;
         this.interceptor = builder.interceptor;
         this.version = builder.version;
-        this.userAgent = builder.userAgent;
 
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
-                .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
-                .readTimeout( 60, TimeUnit.SECONDS );       // socket timeout
+        OkHttpClient.Builder okhttpClientBuilder = okHttpClient.newBuilder();
 
-        if ( username != null && password != null )
+        if ( token != null )
         {
-            clientBuilder.addInterceptor( new BasicAuthInterceptor( username, password ) );
-        }
-        else if ( token != null )
-        {
-            clientBuilder.addInterceptor( getHeaderInterceptor( "CMW-Auth-Token", token ) );
+            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "CMW-Auth-Token", token ) );
         }
 
         if ( impersonate != null )
         {
-            clientBuilder.addInterceptor( getHeaderInterceptor( "CMW-As-User", impersonate ) );
+            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "CMW-As-User", impersonate ) );
         }
 
         if ( environment != null )
         {
-            clientBuilder.addInterceptor( getHeaderInterceptor( "MODE", environment ) );
+            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "MODE", environment ) );
         }
 
-        final String userAgentValue;
-        if ( userAgent == null )
-        {
-            userAgentValue = "Cloudesire API Client " + version;
-        }
-        else
-        {
-            userAgentValue = userAgent;
-        }
-        clientBuilder.addInterceptor( getHeaderInterceptor( "User-Agent", userAgentValue ) );
+        if ( interceptor != null ) okhttpClientBuilder.addInterceptor( interceptor );
 
-        if ( interceptor != null ) clientBuilder.addInterceptor( interceptor );
+        okhttpClientBuilder.addInterceptor( new ParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
-        clientBuilder.addInterceptor( getParameterInterceptor( VERSION, String.valueOf( version ) ) );
-
-        retrofit = new Retrofit.Builder()
-                .addConverterFactory( JacksonConverterFactory.create( mapper ) )
-                .baseUrl( baseUrl )
-                .client( clientBuilder.build() )
-                .validateEagerly( true )
-                .build();
-    }
-
-    private Interceptor getHeaderInterceptor( final String headerName, final String headerValue )
-    {
-        return new Interceptor()
-        {
-            @Override
-            public Response intercept( Chain chain ) throws IOException
-            {
-                Request request = chain.request().newBuilder()
-                        .addHeader( headerName, headerValue ).build();
-                return chain.proceed( request );
-            }
-        };
-    }
-
-    private Interceptor getParameterInterceptor( final String parameterName, final String parameterValue )
-    {
-        return new Interceptor()
-        {
-            @Override
-            public Response intercept( Chain chain ) throws IOException
-            {
-                Request original = chain.request();
-                HttpUrl originalHttpUrl = original.url();
-
-                HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter( parameterName, parameterValue )
-                        .build();
-
-                Request.Builder requestBuilder = original.newBuilder().url( url );
-                Request request = requestBuilder.build();
-                return chain.proceed( request );
-            }
-        };
+        generateClients( okhttpClientBuilder );
     }
 
     public Builder newBuilder()
@@ -173,16 +101,15 @@ public class CloudesireClient
 
     public static class Builder
     {
+        private ObjectMapper mapper;
+        private Interceptor interceptor;
         private String username;
         private String password;
         private String token;
         private String impersonate;
         private String baseUrl;
         private String environment;
-        private ObjectMapper mapper;
-        private Interceptor interceptor;
         private Long version;
-        private String userAgent;
 
         public Builder()
         {
@@ -205,7 +132,6 @@ public class CloudesireClient
             this.mapper = cloudesireClient.mapper;
             this.interceptor = cloudesireClient.interceptor;
             this.version = cloudesireClient.version;
-            this.userAgent = cloudesireClient.userAgent;
         }
 
         public Builder setUsername( String username )
@@ -259,12 +185,6 @@ public class CloudesireClient
         public Builder setApiVersion( long version )
         {
             this.version = version;
-            return this;
-        }
-
-        public Builder setUserAgent( String userAgent )
-        {
-            this.userAgent = userAgent;
             return this;
         }
 
@@ -504,26 +424,21 @@ public class CloudesireClient
     }
     // endregion
 
-    public <T> T getApi( Class<T> api )
-    {
-        return retrofit.create( api );
-    }
-
     @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( !( o instanceof CloudesireClient ) ) return false;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
         CloudesireClient that = (CloudesireClient) o;
-        return Objects.equals( username, that.username ) && Objects.equals( password, that.password ) && Objects
-                .equals( token, that.token ) && Objects.equals( impersonate, that.impersonate ) && Objects
-                .equals( baseUrl, that.baseUrl ) && Objects.equals( mapper, that.mapper ) && Objects
-                .equals( interceptor, that.interceptor );
+        return version == that.version && Objects.equals( username, that.username ) && Objects
+                .equals( password, that.password ) && Objects.equals( token, that.token ) && Objects
+                .equals( impersonate, that.impersonate ) && Objects.equals( environment, that.environment );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( username, password, token, impersonate, baseUrl, mapper, interceptor );
+        return Objects.hash( super.hashCode(), username, password, token, impersonate, environment, version );
     }
 }

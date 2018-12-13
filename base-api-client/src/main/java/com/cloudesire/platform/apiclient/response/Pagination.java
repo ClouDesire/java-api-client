@@ -1,7 +1,5 @@
 package com.cloudesire.platform.apiclient.response;
 
-import com.liberologico.cloudesire.cmw.model.constants.Headers;
-
 import java.util.List;
 import java.util.Map;
 

@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.exceptions;
 
-import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
+import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 
 public class BackendException extends RuntimeException
 {
-    private final transient ErrorResponseDTO error;
+    private final transient ErrorResponse error;
 
-    public BackendException( String message, ErrorResponseDTO error )
+    public BackendException( String message, ErrorResponse error )
     {
         super( message );
         this.error = error;
@@ -24,7 +24,7 @@ public class BackendException extends RuntimeException
         this.error = null;
     }
 
-    public ErrorResponseDTO getError()
+    public ErrorResponse getError()
     {
         return error;
     }

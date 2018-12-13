@@ -12,6 +12,18 @@ import java.util.Map;
 
 public class PageRequestDTO
 {
+    public class Fields
+    {
+        public static final String PAGE_NUMBER = "pageNumber";
+        public static final String PAGE_SIZE = "pageSize";
+        public static final String SORT_DIRECTION = "sortDirection";
+        public static final String SORT_FIELD = "sortField";
+
+        private Fields()
+        {
+        }
+    }
+
     @ApiModelProperty( "Page number to retrieve" )
     @Min( value = 1, message = "must be > 1" )
     @NotNull
@@ -44,14 +56,6 @@ public class PageRequestDTO
     {
         this( pageNumber, pageSize, sortField );
         this.sortDirection = sortDirection;
-    }
-
-    public class Fields
-    {
-        public static final String PAGE_NUMBER = "pageNumber";
-        public static final String PAGE_SIZE = "pageSize";
-        public static final String SORT_DIRECTION = "sortDirection";
-        public static final String SORT_FIELD = "sortField";
     }
 
     public Map<String, String> toMap()

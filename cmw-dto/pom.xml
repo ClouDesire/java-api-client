@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
-			<artifactId>common-dto</artifactId>
+			<artifactId>base-api-client</artifactId>
 			<version>1.7.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

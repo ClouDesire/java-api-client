@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient;
 
+import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.cloudesire.platform.apiclient.exceptions.AccessDeniedException;
 import com.cloudesire.platform.apiclient.exceptions.BackendException;
 import com.cloudesire.platform.apiclient.exceptions.BadRequestException;
@@ -9,9 +10,8 @@ import com.cloudesire.platform.apiclient.exceptions.MethodNotAllowedException;
 import com.cloudesire.platform.apiclient.exceptions.NetworkException;
 import com.cloudesire.platform.apiclient.exceptions.ResourceNotFoundException;
 import com.cloudesire.platform.apiclient.exceptions.UnprocessableEntityException;
-import com.cloudesire.platform.apiclient.response.CallResponse;
+import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.liberologico.cloudesire.cmw.model.dto.ErrorResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Call;
@@ -68,10 +68,10 @@ public class CloudesireClientCallExecutor
     private <T> RuntimeException exceptionHandling( retrofit2.Response<T> response )
     {
         String errorMessage = String.valueOf( response.code() );
-        ErrorResponseDTO error;
+        ErrorResponse error;
         try
         {
-            error = mapper.readValue( response.errorBody().byteStream(), ErrorResponseDTO.class );
+            error = mapper.readValue( response.errorBody().byteStream(), ErrorResponse.class );
             String errors = error.getErrorHolders().toString();
             log.trace( "Parsed error: {}", errors );
             errorMessage = errorMessage + " " + errors;
