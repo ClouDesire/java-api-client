@@ -7,7 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-import static com.liberologico.cloudesire.cmw.model.constants.Headers.MODE;
+import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 
 public interface BudgetEstimateApi
 {

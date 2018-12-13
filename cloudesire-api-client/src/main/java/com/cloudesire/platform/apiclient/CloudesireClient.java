@@ -7,6 +7,7 @@ import com.cloudesire.platform.apiclient.api.BackupApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CloudProviderApi;
+import com.cloudesire.platform.apiclient.api.CommentApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
@@ -229,6 +230,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     public BudgetEstimateApi getBudgetEstimateApi()
     {
         return retrofit.create( BudgetEstimateApi.class );
+    }
+
+    public CommentApi getCommentApi()
+    {
+        return retrofit.create( CommentApi.class );
     }
 
     public CloudProviderApi getCloudProviderApi()
