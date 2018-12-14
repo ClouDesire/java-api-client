@@ -45,6 +45,9 @@ public interface CompanyApi
     Call<List<CompanyDTO>> getAllPaged( @QueryMap Map<String, String> pageRequest, @Query( "email" ) String email,
             @Query( "companyName" ) String companyName, @Query( "like" ) Boolean like );
 
+    @GET( "company" )
+    Call<List<CompanyDTO>> getAll( @Query( "enabled" ) Boolean enabled, @QueryMap Map<String, String> pageRequest );
+
     @GET( "company/externalId={extId}" )
     Call<CompanyDTO> getByExternalId( @Path( "extId" ) String extId, @Query( "language ") String language );
 

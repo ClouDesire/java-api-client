@@ -29,6 +29,12 @@ public interface DistributorApi
             @Query( "textField" ) String textField,
             @QueryMap Map<String, String> pageRequest );
 
+    @GET( "distributor" )
+    Call<List<DistributorDTO>> getAll(
+            @Query( "textField" ) String textField,
+            @Query( "enabled" ) Boolean enabled,
+            @QueryMap Map<String, String> pageRequest );
+
     @PUT( "distributor/{id}" )
     Call<DistributorDTO> update( @Path( "id" ) int id, @Body DistributorDTO distributor );
 
