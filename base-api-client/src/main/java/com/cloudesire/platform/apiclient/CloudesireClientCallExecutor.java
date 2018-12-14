@@ -91,7 +91,7 @@ public class CloudesireClientCallExecutor
             case 409: return new ConflictException( errorMessage, error );
             case 422: return new UnprocessableEntityException( errorMessage, error );
             case 500: return new InternalServerErrorException( errorMessage, error );
-            default: return new BackendException( String.valueOf( response.code() ), error );
+            default: return new BackendException( errorMessage, error );
         }
     }
 }

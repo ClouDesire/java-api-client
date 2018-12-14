@@ -12,7 +12,7 @@ import java.util.List;
 public interface BackupApi
 {
     @GET( "backup" )
-    Call<List<BackupDTO>> getAll( @Query( "instance" ) Integer instanceId );
+    Call<List<BackupDTO>> getAll( @Query( "instance" ) int instanceId );
 
     @GET( "backup/{id}" )
     Call<BackupDTO> get( @Path( "id" ) int id );
