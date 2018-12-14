@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.date.ISO8601Date;
-import com.liberologico.cloudesire.cmw.model.enums.CouponType;
+import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
 
 public class CouponFetchQuery extends PageRequestQuery
 {

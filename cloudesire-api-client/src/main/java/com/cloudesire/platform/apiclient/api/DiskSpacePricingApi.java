@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.DiskSpacePricingDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PricingPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.DiskSpacePricingDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

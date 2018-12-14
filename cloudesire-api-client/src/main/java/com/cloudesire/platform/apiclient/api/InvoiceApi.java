@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.CardDataDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.InvoiceDTO;
+import com.cloudesire.platform.apiclient.dto.model.patch.InvoicePaymentReferenceDTO;
 import com.cloudesire.platform.apiclient.query.InvoiceQuery;
-import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
-import com.liberologico.cloudesire.cmw.model.dto.InvoiceDTO;
-import com.liberologico.cloudesire.cmw.model.patch.InvoicePaymentReferenceDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

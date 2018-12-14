@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
-import com.liberologico.cloudesire.cmw.model.enums.SortDirection;
+import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.SortDirection;
 
 public class PageRequestQuery extends BaseQuery
 {

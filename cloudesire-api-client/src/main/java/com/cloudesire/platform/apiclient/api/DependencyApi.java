@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.DependencyDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.DependencyDTO;
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -11,7 +12,6 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 import java.util.List;
-import java.util.Map;
 
 public interface DependencyApi
 {
@@ -19,7 +19,10 @@ public interface DependencyApi
     Call<DependencyDTO> create( @Body DependencyDTO dependency );
 
     @GET( "dependency" )
-    Call<List<DependencyDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+    Call<List<DependencyDTO>> getAll();
+
+    @GET( "dependency" )
+    Call<List<DependencyDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "dependency/{id}" )
     Call<DependencyDTO> get( @Path( "id" ) int id );

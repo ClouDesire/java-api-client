@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.ProductVersionDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ProductVersionDraftDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDraftDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -16,7 +16,7 @@ import retrofit2.http.QueryMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.LANGUAGE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.LANGUAGE;
 
 public interface ProductVersionApi
 {

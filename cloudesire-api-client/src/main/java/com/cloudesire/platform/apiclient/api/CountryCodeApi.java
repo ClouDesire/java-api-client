@@ -1,13 +1,13 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.CountryCodeDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.CountryCodeDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 import java.util.List;
 
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.LANGUAGE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.LANGUAGE;
 
 public interface CountryCodeApi
 {

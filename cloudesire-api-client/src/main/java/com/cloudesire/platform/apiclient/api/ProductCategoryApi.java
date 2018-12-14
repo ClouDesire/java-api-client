@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.ProductCategoryDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProductCategoryDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -13,8 +13,8 @@ import retrofit2.http.Query;
 import java.util.List;
 
 import static com.cloudesire.platform.apiclient.response.Headers.MODE;
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.DISTRIBUTOR;
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.RESELLER;
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.DISTRIBUTOR;
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.RESELLER;
 
 public interface ProductCategoryApi
 {

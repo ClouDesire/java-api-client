@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.liberologico.cloudesire.cmw.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 
 public class InvoiceQuery extends BaseQuery
 {

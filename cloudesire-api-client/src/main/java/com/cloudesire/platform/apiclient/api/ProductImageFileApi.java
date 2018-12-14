@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.FileDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ProductImageFilePatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.FileDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProductImageFilePatchDTO;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

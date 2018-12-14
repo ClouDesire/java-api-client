@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.VirtualMachineConfigurationDTO;
-import com.liberologico.cloudesire.cmw.model.enums.AssociationType;
+import com.cloudesire.platform.apiclient.dto.model.dto.VirtualMachineConfigurationDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.AssociationType;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.ResellingReportLineDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ResellingTotalsDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ResellingReportLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ResellingTotalsDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;

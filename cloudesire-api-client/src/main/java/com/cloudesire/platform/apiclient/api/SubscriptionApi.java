@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.EndpointDTO;
-import com.liberologico.cloudesire.cmw.model.dto.RecurringCostLineDTO;
-import com.liberologico.cloudesire.cmw.model.dto.SubscriptionDTO;
-import com.liberologico.cloudesire.cmw.model.dto.SubscriptionPatchDTO;
-import com.liberologico.cloudesire.cmw.model.dto.VendorOrderLineDTO;
-import com.liberologico.cloudesire.cmw.model.enums.DeploymentStatusEnum;
-import com.liberologico.cloudesire.cmw.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.dto.EndpointDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

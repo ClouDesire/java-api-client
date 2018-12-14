@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.InstancePricingDTO;
-import com.liberologico.cloudesire.cmw.model.dto.InstancePricingPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.InstancePricingDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.InstancePricingPatchDTO;
 import com.liberologico.cloudesire.common.enums.OSType;
 import retrofit2.Call;
 import retrofit2.http.Body;
