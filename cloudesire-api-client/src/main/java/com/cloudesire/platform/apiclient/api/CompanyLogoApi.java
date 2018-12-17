@@ -22,20 +22,20 @@ public interface CompanyLogoApi
     @POST( "companyLogoFile" )
     Call<FileDTO> create( @Part MultipartBody.Part file );
 
-    @DELETE( "companyLogoFile/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
-    @PATCH( "companyLogoFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input );
-
-    @PATCH( "companyLogoFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object input, @Query( "language" ) String language );
+    @GET( "companyLogoFile/{id}" )
+    Call<FileDTO> get( @Path( "id" ) int id );
 
     @GET( "companyLogoFile/{id}/static" )
     @Headers( "Accept: image/*" )
     @Streaming
-    Call<ResponseBody> getFile( @Path( "id" ) Integer id );
+    Call<ResponseBody> getFile( @Path( "id" ) int id );
 
-    @GET( "companyLogoFile/{id}" )
-    Call<FileDTO> get( @Path( "id" ) Integer id );
+    @PATCH( "companyLogoFile/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
+
+    @PATCH( "companyLogoFile/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input, @Query( "language" ) String language );
+
+    @DELETE( "companyLogoFile/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }

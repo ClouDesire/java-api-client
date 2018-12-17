@@ -16,21 +16,21 @@ import java.util.List;
 
 public interface CommentApi
 {
-    @POST("comment")
+    @POST( "comment" )
     Call<CommentDTO> create( @Body CommentDTO comment );
 
-    @GET("comment/{id}")
-    Call<CommentDTO> get( @Path("id") int id );
+    @GET( "comment/{id}" )
+    Call<CommentDTO> get( @Path( "id" ) int id );
 
-    @GET("comment")
-    Call<List<CommentDTO>> getListByProduct( @Query("productId") int productId );
+    @GET( "comment" )
+    Call<List<CommentDTO>> getListByProduct( @Query( "productId" ) int productId );
 
-    @GET("comment")
-    Call<List<CommentDTO>> getListByProduct( @Query("productId") int productId, @QueryMap PageRequestQuery pager );
+    @GET( "comment" )
+    Call<List<CommentDTO>> getListByProduct( @Query( "productId" ) int productId, @QueryMap PageRequestQuery pager );
 
-    @PUT("comment/{id}")
+    @PUT( "comment/{id}" )
     Call<CommentDTO> update( @Path( "id" ) int productId, @Body CommentDTO comment );
 
-    @DELETE("comment/{id}")
+    @DELETE( "comment/{id}" )
     Call<Void> delete( @Path( "id" ) int productId );
 }
