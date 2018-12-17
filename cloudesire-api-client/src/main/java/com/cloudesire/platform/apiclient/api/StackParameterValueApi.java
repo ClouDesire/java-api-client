@@ -17,9 +17,6 @@ public interface StackParameterValueApi
     @POST( "stackParameterValue" )
     Call<StackParameterValueDTO> create( @Body StackParameterValueDTO input );
 
-    @DELETE( "stackParameterValue/{id}" )
-    Call<Void> delete( @Path( "id" ) int id );
-
     @GET( "stackParameterValue" )
     Call<List<StackParameterValueDTO>> getAll();
 
@@ -30,12 +27,15 @@ public interface StackParameterValueApi
     Call<List<StackParameterValueDTO>> getAll( @Query( "dependencyId" ) int dependencyId );
 
     @GET( "stackParameterValue" )
-    Call<List<StackParameterValueDTO>> getAll( @Query( "stackParameter" ) String stackParameter,
-            @Query( "dependencyId" ) Integer dependencyId );
+    Call<List<StackParameterValueDTO>> getAll( @Query( "stackParameter" ) String stackParameterName,
+            @Query( "dependencyId" ) int dependencyId );
 
     @GET( "stackParameterValue/{id}" )
     Call<StackParameterValueDTO> get( @Path( "id" ) int id );
 
     @PUT( "stackParameterValue/{id}" )
     Call<StackParameterValueDTO> update( @Path( "id" ) int id, @Body StackParameterValueDTO input );
+
+    @DELETE( "stackParameterValue/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }
