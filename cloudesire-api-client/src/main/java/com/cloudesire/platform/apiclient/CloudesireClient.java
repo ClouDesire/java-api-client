@@ -11,6 +11,7 @@ import com.cloudesire.platform.apiclient.api.CommentApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
+import com.cloudesire.platform.apiclient.api.DependencyApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.DistributorCatalogApi;
 import com.cloudesire.platform.apiclient.api.DistributorPricingApi;
@@ -439,6 +440,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     public NodeRoleApi getNodeRoleApi()
     {
         return retrofit.create( NodeRoleApi.class );
+    }
+
+    public DependencyApi getDependencyApi()
+    {
+        return retrofit.create( DependencyApi.class );
     }
 
     public NotifyApi getNotifyApi()
