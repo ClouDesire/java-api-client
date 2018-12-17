@@ -58,6 +58,10 @@ public class PageRequestDTO
         this.sortDirection = sortDirection;
     }
 
+    /**
+     * @deprecated migrate to PageRequestQuery
+     */
+    @Deprecated
     public Map<String, String> toMap()
     {
         Map<String, String> map = new HashMap<>();
@@ -68,11 +72,19 @@ public class PageRequestDTO
         return map;
     }
 
+    /**
+     * @deprecated migrate to PageRequestQuery
+     */
+    @Deprecated
     public static Map<String, String> pager( int number, int size )
     {
         return new PageRequestDTO( number, size ).toMap();
     }
 
+    /**
+     * @deprecated migrate to PageRequestQuery
+     */
+    @Deprecated
     public static Map<String, String> defaultPager()
     {
         return new PageRequestDTO().toMap();
