@@ -68,6 +68,11 @@ public class PageRequestDTO
         return map;
     }
 
+    public static Map<String, String> pager( int number, int size )
+    {
+        return new PageRequestDTO( number, size ).toMap();
+    }
+
     public static Map<String, String> defaultPager()
     {
         return new PageRequestDTO().toMap();

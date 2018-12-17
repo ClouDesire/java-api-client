@@ -25,4 +25,10 @@ public interface AdminApi
 
     @DELETE( "admin/report/purge" )
     Call<Void> purgeReports();
+
+    @DELETE( "admin/zip" )
+    Call<Void> reloadZipFileConfiguration();
+
+    @DELETE( "cache" )
+    Call<Void> emptyCache();
 }

@@ -3,9 +3,11 @@ package com.cloudesire.platform.apiclient;
 import com.cloudesire.platform.apiclient.api.AdminApi;
 import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
 import com.cloudesire.platform.apiclient.api.ApplicationMetricApi;
+import com.cloudesire.platform.apiclient.api.BackupApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CloudProviderApi;
+import com.cloudesire.platform.apiclient.api.CommentApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
@@ -19,6 +21,7 @@ import com.cloudesire.platform.apiclient.api.InstanceTypeApi;
 import com.cloudesire.platform.apiclient.api.InvoiceApi;
 import com.cloudesire.platform.apiclient.api.LoginApi;
 import com.cloudesire.platform.apiclient.api.MailEnvironmentApi;
+import com.cloudesire.platform.apiclient.api.NodeRoleApi;
 import com.cloudesire.platform.apiclient.api.OrderApi;
 import com.cloudesire.platform.apiclient.api.ProductApi;
 import com.cloudesire.platform.apiclient.api.ProductCategoryApi;
@@ -229,6 +232,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( BudgetEstimateApi.class );
     }
 
+    public CommentApi getCommentApi()
+    {
+        return retrofit.create( CommentApi.class );
+    }
+
     public CloudProviderApi getCloudProviderApi()
     {
         return retrofit.create( CloudProviderApi.class );
@@ -421,6 +429,16 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     public MailEnvironmentApi getMailEnvironmentApi()
     {
         return retrofit.create( MailEnvironmentApi.class );
+    }
+
+    public BackupApi getBackupApi()
+    {
+        return retrofit.create( BackupApi.class );
+    }
+
+    public NodeRoleApi getNodeRoleApi()
+    {
+        return retrofit.create( NodeRoleApi.class );
     }
     // endregion
 

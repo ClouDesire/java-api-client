@@ -10,6 +10,7 @@ public class ProductQuery extends BaseQuery
     private static final String PRODUCT_TYPE = "productType";
     private static final String OWN_COMPANY = "ownCompany";
     private static final String CATALOG_ID = "catalogId";
+    private static final String COMPANY = "company";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -53,4 +54,9 @@ public class ProductQuery extends BaseQuery
         return this;
     }
 
+    public ProductQuery setCompany( int companyId )
+    {
+        put( COMPANY, companyId );
+        return this;
+    }
 }

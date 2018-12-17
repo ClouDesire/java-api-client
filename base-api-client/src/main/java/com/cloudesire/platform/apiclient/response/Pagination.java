@@ -12,29 +12,30 @@ public class Pagination
         this.headers = headers;
     }
 
-    public String getPageSize()
+    public Integer getPageSize()
     {
         return extractFirst( headers.get( Headers.PAGE_SIZE ) );
     }
 
-    public String getPageNumber()
+    public Integer getPageNumber()
     {
         return extractFirst( headers.get( Headers.PAGE_NUMBER ) );
     }
 
-    public String getTotalItems()
+    public Integer getTotalItems()
     {
         return extractFirst( headers.get( Headers.TOTAL_ITEMS ) );
     }
 
-    public String getTotalPages()
+    public Integer getTotalPages()
     {
         return extractFirst( headers.get( Headers.TOTAL_PAGES ) );
     }
 
-    private String extractFirst( List<String> values )
+    private Integer extractFirst( List<String> values )
     {
-        if ( values != null && values.size() == 1 ) return values.get( 0 );
-        return null;
+        if ( values == null || values.size() != 1 ) return null;
+
+        return Integer.valueOf( values.get( 0 ) );
     }
 }

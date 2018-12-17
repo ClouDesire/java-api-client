@@ -25,6 +25,9 @@ public interface CloudProviderApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @GET( "cloudProvider" )
+    Call<List<CloudProviderDTO>> getAll();
+
+    @GET( "cloudProvider" )
     Call<List<CloudProviderDTO>> getAll(
             @Query( "excluding" ) List<Integer> excluding,
             @Query( "withDisabled" ) Boolean withDisabled,
@@ -42,5 +45,5 @@ public interface CloudProviderApi
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body CloudProviderPatchDTO input );
 
     @PUT( "cloudProvider/{id}" )
-    Call<CloudProviderDTO> update( @Body CloudProviderDTO providerDTO, @Path( "id" ) Integer id );
+    Call<CloudProviderDTO> update( @Path( "id" ) int id, @Body CloudProviderDTO providerDTO );
 }

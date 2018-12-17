@@ -32,15 +32,21 @@ public interface CompanyApi
     @DELETE( "company/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 
+    @DELETE( "company/{id}" )
+    Call<Void> deepDelete( @Path( "id" ) int id, @Query( "deep" ) boolean deep );
+
     @PATCH( "company/externalId={extId}" )
     Call<Void> partialUpdate( @Path( "extId" ) String extId, @Body Object input );
+
+    @GET( "company" )
+    Call<List<CompanyDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
     @GET( "company" )
     Call<List<CompanyDTO>> getAllPaged( @QueryMap Map<String, String> pageRequest, @Query( "email" ) String email,
             @Query( "companyName" ) String companyName, @Query( "like" ) Boolean like );
 
     @GET( "company/externalId={extId}" )
-    Call<CompanyDTO> getByExternalId( @Path( "extId" ) String extId );
+    Call<CompanyDTO> getByExternalId( @Path( "extId" ) String extId, @Query( "language ") String language );
 
     @GET( "company/typeahead/{query}" )
     Call<List<CompanyDTO>> getTypeahead( @Path( "query" ) String query );
@@ -48,11 +54,18 @@ public interface CompanyApi
     @GET( "company/{id}" )
     Call<CompanyDTO> get( @Path( "id" ) int id );
 
+    @GET( "company/{id}" )
+    Call<CompanyDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+
+    // TODO use a real object
     @PATCH( "company/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
 
     @PUT( "company/{id}" )
     Call<CompanyDTO> update( @Path( "id" ) int id, @Body CompanyDTO company );
+
+    @PUT( "company/{id}" )
+    Call<CompanyDTO> update( @Path( "id" ) int id, @Body CompanyDTO company, @Query( "language" ) String language );
 
     @Streaming
     @GET( "company" )
