@@ -13,12 +13,13 @@ import java.util.Map;
 
 public interface EventTestApi
 {
-    @GET( "test/user/{id}")
+    @GET( "test/user/{id}" )
     Call<MyUserDTO> getUser( @Path( "id" ) int userId );
 
-    @GET( "test/invoicePaid/{id}")
+    @GET( "test/invoicePaid/{id}" )
     Call<InvoiceDTO> getInvoice( @Path( "id" ) int invoiceId );
 
-    @PATCH ("test/subscription/{id}")
-    Call<Void> patch( @Path( "id" ) int subscriptionId, @Body Map<String, Object> emptyMap, @Query("language") String language );
+    @PATCH( "test/subscription/{id}" )
+    Call<Void> patch( @Path( "id" ) int subscriptionId, @Body Map<String, Object> emptyMap,
+            @Query( "language" ) String language );
 }
