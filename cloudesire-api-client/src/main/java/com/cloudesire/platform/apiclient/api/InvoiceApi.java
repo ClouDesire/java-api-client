@@ -35,6 +35,9 @@ public interface InvoiceApi
     Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
 
     @GET( "invoice" )
+    Call<List<InvoiceDTO>> getAll();
+
+    @GET( "invoice" )
     Call<List<InvoiceDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
     @GET( "invoice/{id}/pdf" )
