@@ -40,7 +40,7 @@ import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
-import com.cloudesire.platform.apiclient.api.VMInstanceApi;
+import com.cloudesire.platform.apiclient.api.VirtualMachineInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
 import com.cloudesire.platform.apiclient.baseclient.BasicAuthCloudesireClient;
@@ -381,9 +381,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( OrderApi.class );
     }
 
-    public VMInstanceApi getVMInstanceApi()
+    public VirtualMachineInstanceApi getVirtualMachineInstanceApi()
     {
-        return retrofit.create( VMInstanceApi.class );
+        return retrofit.create( VirtualMachineInstanceApi.class );
     }
 
     public ApplicationFileApi getApplicationFileApi()

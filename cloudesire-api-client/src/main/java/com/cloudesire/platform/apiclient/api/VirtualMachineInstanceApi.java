@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 import java.util.List;
 import java.util.Map;
 
-public interface VMInstanceApi
+public interface VirtualMachineInstanceApi
 {
     @GET( "virtualMachineInstance" )
     Call<List<VirtualMachineInstanceDTO>> getAll();
