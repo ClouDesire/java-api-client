@@ -41,9 +41,9 @@ import com.cloudesire.platform.apiclient.api.StatisticsApi;
 import com.cloudesire.platform.apiclient.api.SubscriptionApi;
 import com.cloudesire.platform.apiclient.api.UserApi;
 import com.cloudesire.platform.apiclient.api.UserCompanyApi;
-import com.cloudesire.platform.apiclient.api.VirtualMachineInstanceApi;
 import com.cloudesire.platform.apiclient.api.VendorReportApi;
 import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
+import com.cloudesire.platform.apiclient.api.VirtualMachineInstanceApi;
 import com.cloudesire.platform.apiclient.baseclient.BasicAuthCloudesireClient;
 import com.cloudesire.platform.apiclient.interceptors.HeaderInterceptor;
 import com.cloudesire.platform.apiclient.interceptors.ParameterInterceptor;
@@ -456,6 +456,12 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     {
         return retrofit.create( NotifyApi.class );
     }
+
+    public EnumApi getEnumApi()
+    {
+        return retrofit.create( EnumApi.class );
+    }
+
     // endregion
 
     @Override
