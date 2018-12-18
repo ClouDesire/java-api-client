@@ -41,7 +41,7 @@ public interface ApplicationFileApi
             @Query( "name" ) String name );
 
     @GET( "applicationFile" )
-    Call<List<ApplicationFileDTO>> getAllVersions( @Query( "virtualMachineInstance" ) String virtualMachineInstance );
+    Call<List<ApplicationFileDTO>> getAllVersions( @Query( "virtualMachineInstance" ) int virtualMachineInstanceId );
 
     @GET( "applicationFile/{id}/environment" )
     Call<List<ApplicationFileEnvironmentDTO>> getEnvironments( @Path( "id" ) int id );
