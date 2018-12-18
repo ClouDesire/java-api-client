@@ -23,28 +23,32 @@ public interface ProductFileApi
 {
     @Multipart
     @POST( "file" )
+    Call<FileDTO> create( @Part MultipartBody.Part file, @Query( "tag" ) String tag );
+
+    @Multipart
+    @POST( "file" )
     Call<FileDTO> create( @Part MultipartBody.Part file, @Query( "tag" ) String tag,
             @Query( "weight" ) Integer weight );
 
-    @DELETE( "file/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
-    @PATCH( "file/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body ProductFilePatchDTO input );
-
     @GET( "file" )
-    Call<List<FileDTO>> getAll( @Query( "productId" ) Integer productId, @Query( "tag" ) String tag );
+    Call<List<FileDTO>> getAll( @Query( "productId" ) int productId, @Query( "tag" ) String tag );
 
-    @GET( "file/static/{name}" )
-    @Deprecated
-    @Streaming
-    Call<ResponseBody> getFile( @Path( "name" ) String name );
+    @GET( "file/{id}" )
+    Call<FileDTO> get( @Path( "id" ) int id );
 
     @GET( "file/{id}/static" )
     @Headers( "Accept: image/*" )
     @Streaming
-    Call<ResponseBody> getFile( @Path( "id" ) Integer id );
+    Call<ResponseBody> getFile( @Path( "id" ) int id );
 
-    @GET( "file/{id}" )
-    Call<FileDTO> get( @Path( "id" ) Integer id );
+    @Deprecated
+    @GET( "file/static/{name}" )
+    @Streaming
+    Call<ResponseBody> getFile( @Path( "name" ) String name );
+
+    @PATCH( "file/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body ProductFilePatchDTO input );
+
+    @DELETE( "file/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }

@@ -8,7 +8,7 @@ public class ProductFilePatchDTO extends FileDTO
 
     public boolean isProductNulled()
     {
-        return product == null;
+        return product == null || product.isNull();
     }
 
     public UrlEntityDTO getProduct()

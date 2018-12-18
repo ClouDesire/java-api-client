@@ -16,6 +16,9 @@ import retrofit2.http.Query;
 
 import java.util.List;
 
+/**
+ * @deprecated by {@link ProductFileApi}
+ */
 @Deprecated
 public interface ProductImageFileApi
 {
