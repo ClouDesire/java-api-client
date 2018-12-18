@@ -23,6 +23,10 @@ public interface ProductFileApi
 {
     @Multipart
     @POST( "file" )
+    Call<FileDTO> create( @Part MultipartBody.Part file, @Query( "tag" ) String tag );
+
+    @Multipart
+    @POST( "file" )
     Call<FileDTO> create( @Part MultipartBody.Part file, @Query( "tag" ) String tag,
             @Query( "weight" ) Integer weight );
 
