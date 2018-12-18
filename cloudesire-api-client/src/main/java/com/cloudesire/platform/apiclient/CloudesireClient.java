@@ -442,6 +442,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( NodeRoleApi.class );
     }
 
+    public EventTestApi getEventTestApi()
+    {
+        return retrofit.create( EventTestApi.class );
+    }
+
     public DependencyApi getDependencyApi()
     {
         return retrofit.create( DependencyApi.class );

@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
@@ -70,7 +71,7 @@ public interface UserApi
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
 
     @GET( "user" )
-    Call<List<MyUserDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+    Call<List<MyUserDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
