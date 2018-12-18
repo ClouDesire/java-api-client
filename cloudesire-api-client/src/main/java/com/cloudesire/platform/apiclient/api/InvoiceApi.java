@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.InvoiceQuery;
 import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
 import com.liberologico.cloudesire.cmw.model.dto.InvoiceDTO;
 import com.liberologico.cloudesire.cmw.model.patch.InvoicePaymentReferenceDTO;
@@ -21,18 +22,8 @@ import java.util.Map;
 
 public interface InvoiceApi
 {
-    @DELETE( "invoice/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
-    @PATCH( "invoice/{id}/forcePaid" )
-    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body InvoicePaymentReferenceDTO input );
-
-    /**
-     * @deprecated by {@link #forcePaid(Integer, InvoicePaymentReferenceDTO)}
-     */
-    @Deprecated
-    @PATCH( "invoice/{id}/forcePaid" )
-    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
+    @GET( "invoice" )
+    Call<List<InvoiceDTO>> getAll( @QueryMap InvoiceQuery query );
 
     @GET( "invoice" )
     Call<List<InvoiceDTO>> getAll();
@@ -40,8 +31,8 @@ public interface InvoiceApi
     @GET( "invoice" )
     Call<List<InvoiceDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
-    @GET( "invoice/{id}/pdf" )
-    Call<List<byte[]>> getPdf( @Path( "id" ) Integer id );
+    @GET( "invoice/{id}" )
+    Call<InvoiceDTO> get( @Path( "id" ) int id );
 
     @GET( "invoice/remoteId={remoteId}" )
     Call<InvoiceDTO> getByRemoteId( @Path( "remoteId" ) String remoteId );
@@ -49,18 +40,9 @@ public interface InvoiceApi
     @GET( "invoice/remoteInvoiceId={remoteId}" )
     Call<InvoiceDTO> getByRemoteInvoiceId( @Path( "remoteId" ) String remoteId );
 
-    @GET( "invoice/{id}" )
-    Call<InvoiceDTO> get( @Path( "id" ) Integer id );
-
-    @POST( "invoice/{id}/pay/stripe" )
-    Call<Void> payWithStripe( @Path( "id" ) int id, @Body CardDataDTO input );
-
-    /**
-     * @deprecated by {@link #payWithStripe(int, CardDataDTO)}
-     */
-    @Deprecated
-    @PATCH( "invoice/{id}/payWithStripe" )
-    Call<Void> payWithStripe( @Path( "id" ) Integer id, @Body Object input );
+    @GET( "invoice/{id}/pdf" )
+    @Streaming
+    Call<ResponseBody> getPdf( @Path( "id" ) int id );
 
     @Streaming
     @GET( "invoice" )
@@ -73,4 +55,36 @@ public interface InvoiceApi
     @GET( "invoice" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+
+    @GET( "invoice/{id}/refresh" )
+    Call<String> refreshPayment( @Path( "id" ) int id );
+
+    @PATCH( "invoice/{id}/forcePaid" )
+    Call<Void> forcePaid( @Path( "id" ) int id, @Body InvoicePaymentReferenceDTO input );
+
+    /**
+     * @deprecated by {@link #forcePaid(int, InvoicePaymentReferenceDTO)}
+     */
+    @Deprecated
+    @PATCH( "invoice/{id}/forcePaid" )
+    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
+
+    @POST( "invoice/{id}/pdf/regenerate" )
+    Call<Void> regeneratePdf( @Path( "id" ) int id );
+
+    @PATCH( "invoice/{id}/confirmPaypalPayment" )
+    Call<Void> payWithPaypal( @Path( "id" ) int id, @Body Map<String, String> input );
+
+    @POST( "invoice/{id}/pay/stripe" )
+    Call<Void> payWithStripe( @Path( "id" ) int id, @Body CardDataDTO input );
+
+    /**
+     * @deprecated by {@link #payWithStripe(int, CardDataDTO)}
+     */
+    @Deprecated
+    @PATCH( "invoice/{id}/payWithStripe" )
+    Call<Void> payWithStripe( @Path( "id" ) Integer id, @Body Object input );
+
+    @DELETE( "invoice/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }
