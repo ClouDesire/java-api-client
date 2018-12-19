@@ -4,12 +4,15 @@ import com.cloudesire.platform.apiclient.api.AdminApi;
 import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
 import com.cloudesire.platform.apiclient.api.ApplicationMetricApi;
 import com.cloudesire.platform.apiclient.api.BackupApi;
+import com.cloudesire.platform.apiclient.api.BandwidthPricingApi;
 import com.cloudesire.platform.apiclient.api.BillingItemApi;
 import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
 import com.cloudesire.platform.apiclient.api.CloudProviderApi;
 import com.cloudesire.platform.apiclient.api.CommentApi;
 import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
+import com.cloudesire.platform.apiclient.api.ConfigurationParameterApi;
+import com.cloudesire.platform.apiclient.api.CountryCodeApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DependencyApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
@@ -462,6 +465,20 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( EnumApi.class );
     }
 
+    public BandwidthPricingApi getBandwidthPricingApi()
+    {
+        return retrofit.create( BandwidthPricingApi.class );
+    }
+
+    public ConfigurationParameterApi getConfigurationParameterApi()
+    {
+        return retrofit.create( ConfigurationParameterApi.class );
+    }
+
+    public CountryCodeApi getCountryCodeApi()
+    {
+        return retrofit.create( CountryCodeApi.class );
+    }
     // endregion
 
     @Override

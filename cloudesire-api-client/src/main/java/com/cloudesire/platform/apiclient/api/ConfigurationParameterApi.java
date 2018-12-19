@@ -8,5 +8,5 @@ import retrofit2.http.Path;
 public interface ConfigurationParameterApi
 {
     @GET( "configurationParameter/{id}" )
-    Call<ConfigurationParameterDTO> get( @Path( "id" ) Integer id );
+    Call<ConfigurationParameterDTO> get( @Path( "id" ) int id );
 }

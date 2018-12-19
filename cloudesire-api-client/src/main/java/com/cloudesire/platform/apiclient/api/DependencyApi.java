@@ -18,15 +18,15 @@ public interface DependencyApi
     @POST( "dependency" )
     Call<DependencyDTO> create( @Body DependencyDTO dependency );
 
-    @DELETE( "dependency/{id}" )
-    Call<Void> delete( @Path( "id" ) Integer id );
-
     @GET( "dependency" )
     Call<List<DependencyDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
     @GET( "dependency/{id}" )
-    Call<DependencyDTO> get( @Path( "id" ) Integer id );
+    Call<DependencyDTO> get( @Path( "id" ) int id );
 
     @PUT( "dependency/{id}" )
-    Call<DependencyDTO> update( @Body DependencyDTO dependency, @Path( "id" ) Integer id );
+    Call<DependencyDTO> update( @Path( "id" ) int id, @Body DependencyDTO dependency );
+
+    @DELETE( "dependency/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }
