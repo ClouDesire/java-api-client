@@ -1,12 +1,16 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import com.liberologico.cloudesire.cmw.model.dto.ApplicationFileDTO;
 import com.liberologico.cloudesire.cmw.model.dto.ApplicationFileEnvironmentDTO;
+import com.liberologico.cloudesire.cmw.model.enums.AssociationType;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -14,8 +18,11 @@ import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ApplicationFileApi
 {
@@ -24,21 +31,15 @@ public interface ApplicationFileApi
 
     @Multipart
     @POST( "applicationFile" )
-    Call<ApplicationFileDTO> create(
-            @Part MultipartBody.Part file,
-            @Query( "stack" ) String[] stacks,
-            @Query( "version" ) String version
-    );
+    Call<ApplicationFileDTO> create( @Part MultipartBody.Part file, @Query( "stack" ) String[] stacks,
+            @Query( "version" ) String version );
 
-    @DELETE( "applicationFile/{id}" )
-    Call<Void> delete( @Path( "id" ) int id );
+    @GET( "applicationFile" )
+    Call<List<ApplicationFileDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
-    @PATCH( "applicationFile/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Object input );
-
-    @GET( "applicationFile/active" )
-    Call<ApplicationFileDTO> getActive( @Query( "virtualMachineConfiguration" ) Integer virtualMachineConfiguration,
-            @Query( "name" ) String name );
+    @GET( "applicationFile" )
+    Call<List<ApplicationFileDTO>> getAll( @QueryMap PageRequestQuery pageRequest,
+            @Query( "associationType" ) AssociationType type );
 
     @GET( "applicationFile" )
     Call<List<ApplicationFileDTO>> getAllVersions( @Query( "virtualMachineInstance" ) int virtualMachineInstanceId );
@@ -46,9 +47,34 @@ public interface ApplicationFileApi
     @GET( "applicationFile/{id}/environment" )
     Call<List<ApplicationFileEnvironmentDTO>> getEnvironments( @Path( "id" ) int id );
 
+    @GET( "applicationFile/active" )
+    Call<ApplicationFileDTO> getActive( @Query( "virtualMachineConfiguration" ) Integer virtualMachineConfiguration,
+            @Query( "name" ) String name );
+
     @GET( "applicationFile/{id}" )
     Call<ApplicationFileDTO> get( @Path( "id" ) int id );
 
+    @GET( "applicationFile/private/{id}" )
+    @Headers( "Accept: image/*" )
+    @Streaming
+    Call<ResponseBody> getFile( @Path( "id" ) int id );
+
+    @GET( "applicationFile/static/{secret}/{id}" )
+    @Headers( "Accept: image/*" )
+    @Streaming
+    Call<ResponseBody> getFile( @Path( "id" ) int id, @Path( "secret" ) String secret );
+
     @PUT( "applicationFile/{id}" )
     Call<ApplicationFileDTO> update( @Path( "id" ) int id, @Body ApplicationFileDTO input );
+
+    @PATCH( "applicationFile/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
+
+    @PATCH( "applicationFile/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input,
+            @Query( "language" ) String language );
+
+    @DELETE( "applicationFile/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
+
 }

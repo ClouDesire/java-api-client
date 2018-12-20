@@ -15,6 +15,7 @@ import com.cloudesire.platform.apiclient.api.ConfigurationParameterApi;
 import com.cloudesire.platform.apiclient.api.CountryCodeApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DependencyApi;
+import com.cloudesire.platform.apiclient.api.DiskSpacePricingApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.DistributorCatalogApi;
 import com.cloudesire.platform.apiclient.api.DistributorPricingApi;
@@ -478,6 +479,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     public CountryCodeApi getCountryCodeApi()
     {
         return retrofit.create( CountryCodeApi.class );
+    }
+
+    public DiskSpacePricingApi getDiskSpacePricingApi()
+    {
+        return retrofit.create( DiskSpacePricingApi.class );
     }
     // endregion
 
