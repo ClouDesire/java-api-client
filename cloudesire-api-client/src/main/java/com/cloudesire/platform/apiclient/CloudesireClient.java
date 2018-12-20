@@ -12,6 +12,7 @@ import com.cloudesire.platform.apiclient.api.CompanyApi;
 import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
 import com.cloudesire.platform.apiclient.api.CouponApi;
 import com.cloudesire.platform.apiclient.api.DependencyApi;
+import com.cloudesire.platform.apiclient.api.DiskSpacePricingApi;
 import com.cloudesire.platform.apiclient.api.DistributorApi;
 import com.cloudesire.platform.apiclient.api.DistributorCatalogApi;
 import com.cloudesire.platform.apiclient.api.DistributorPricingApi;
@@ -462,6 +463,10 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( EnumApi.class );
     }
 
+    public DiskSpacePricingApi getDiskSpacePricingApi()
+    {
+        return retrofit.create( DiskSpacePricingApi.class );
+    }
     // endregion
 
     @Override

@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.liberologico.cloudesire.cmw.model.dto.CacheDTO;
 import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
 import com.liberologico.cloudesire.cmw.model.dto.TaskExecutorDTO;
 import retrofit2.Call;
@@ -28,6 +29,9 @@ public interface AdminApi
 
     @DELETE( "admin/zip" )
     Call<Void> reloadZipFileConfiguration();
+
+    @GET( "cache" )
+    Call<CacheDTO> getCache();
 
     @DELETE( "cache" )
     Call<Void> emptyCache();
