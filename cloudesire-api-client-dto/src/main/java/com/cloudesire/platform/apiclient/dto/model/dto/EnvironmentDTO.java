@@ -1601,6 +1601,9 @@ public class EnvironmentDTO extends DTO
         @Size( max = 3 )
         private String currency = "EUR";
 
+        @Valid
+        private AddressDTO address;
+
         @ApiModelProperty( "Default nation" )
         @NotEmpty
         @Size( max = 2 )
@@ -1665,6 +1668,9 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "Content types of supported public files, null or empty disables feature" )
         private List<String> supportedPublicUserFileTypes;
+
+        @NotNull
+        private VatService vatService;
 
         @ApiModelProperty( "If configured, every invoice line will have this VAT" )
         private BigDecimal customVat;
@@ -1778,8 +1784,20 @@ public class EnvironmentDTO extends DTO
             this.currency = currency;
         }
 
+        public AddressDTO getAddress()
+        {
+            return address;
+        }
+
+        public void setAddress( AddressDTO address )
+        {
+            this.address = address;
+        }
+
         public String getNation()
         {
+            if ( address != null ) return address.getCountryCode();
+
             return nation;
         }
 
@@ -1978,6 +1996,16 @@ public class EnvironmentDTO extends DTO
             this.maxFileSize = maxFileSize;
         }
 
+        public VatService getVatService()
+        {
+            return vatService;
+        }
+
+        public void setVatService( VatService vatService )
+        {
+            this.vatService = vatService;
+        }
+
         public BigDecimal getCustomVat()
         {
             return customVat;
@@ -2119,6 +2147,11 @@ public class EnvironmentDTO extends DTO
 
             @ApiModelProperty( "No check is done" )
             UNLIMITED
+        }
+
+        public enum VatService
+        {
+            INTERNAL, TAXJAR
         }
     }
 
