@@ -1,10 +1,12 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.liberologico.cloudesire.cmw.model.dto.ResellerDTO;
+import com.liberologico.cloudesire.cmw.model.patch.BaseCompanyPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -30,11 +32,14 @@ public interface ResellerApi
     @GET( "reseller" )
     Call<List<ResellerDTO>> getAll(
             @Query( "textField" ) String textField,
-            @Query( "showEmpty" ) boolean showEmpty,
+            @Query( "enabled" ) Boolean enabled,
             @QueryMap Map<String, String> pageRequest );
 
     @PUT( "reseller/{id}" )
     Call<ResellerDTO> update( @Path( "id" ) int id, @Body ResellerDTO reseller );
+
+    @PATCH( "reseller/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body BaseCompanyPatchDTO patch );
 
     @DELETE( "reseller/{id}" )
     Call<Void> delete( @Path( "id" ) int id );

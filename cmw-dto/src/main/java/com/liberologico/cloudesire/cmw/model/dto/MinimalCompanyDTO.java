@@ -47,6 +47,8 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Size( min = 2, max = 2 )
     private String language;
 
+    private Boolean enabled;
+
     public MinimalCompanyDTO( String name, String emailAddress )
     {
         this( name );
@@ -166,6 +168,16 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public void setLanguage( String language )
     {
         this.language = language;
+    }
+
+    public Boolean getEnabled()
+    {
+        return enabled;
+    }
+
+    public void setEnabled( Boolean enabled )
+    {
+        this.enabled = enabled;
     }
 
     @Override
