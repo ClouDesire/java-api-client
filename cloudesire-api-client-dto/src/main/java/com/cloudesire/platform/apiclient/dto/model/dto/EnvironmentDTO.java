@@ -2402,8 +2402,8 @@ public class EnvironmentDTO extends DTO
         }
     }
 
-    @AssertTrue( message = "Missing CSP API connector endpoint" )
     @ApiModelProperty( hidden = true )
+    @AssertTrue( message = "Missing CSP API connector endpoint" )
     public boolean isCspConnectorConfigured()
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
@@ -2411,6 +2411,18 @@ public class EnvironmentDTO extends DTO
             Map<CspProductType, String> endpoints = configuration.cspApiEndpoints;
             return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProductType.class ) );
         }
+
+        return true;
+    }
+
+    @ApiModelProperty( hidden = true )
+    @AssertTrue( message = "Internal VAT service is available in Italy only" )
+    public boolean isInternalVatServiceInItalyOnly()
+    {
+        boolean italianInstallation = configuration.getNation().equalsIgnoreCase( "it" );
+        boolean internalVatService = configuration.getVatService() == ConfigurationEnvironment.VatService.INTERNAL;
+
+        if ( internalVatService ) return italianInstallation;
 
         return true;
     }
