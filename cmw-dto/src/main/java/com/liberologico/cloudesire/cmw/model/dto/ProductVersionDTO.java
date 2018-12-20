@@ -154,6 +154,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.billingItemValues.add( billingItemValueDTO );
     }
 
+    public void replaceBillingItemValues( List<? extends BillingItemValueDTO> billingItemValues )
+    {
+        this.billingItemValues = new ArrayList<>();
+
+        for ( BillingItemValueDTO billingItemValue : billingItemValues )
+        {
+            addBillingItemValue( billingItemValue );
+        }
+    }
+
     //region Auto-generated code
     public ProductVersionDTO()
     {
