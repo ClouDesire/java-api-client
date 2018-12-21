@@ -1601,11 +1601,15 @@ public class EnvironmentDTO extends DTO
         @Size( max = 3 )
         private String currency = "EUR";
 
+        @ApiModelProperty( "The address from which invoices are generated" )
         @Valid
-        private AddressDTO address;
+        private AddressDTO platformAddress;
 
+        /**
+         * @deprecated by {@link #platformAddress}
+         */
         @ApiModelProperty( "Default nation" )
-        @NotEmpty
+        @Deprecated
         @Size( max = 2 )
         private String nation = "IT";
 
@@ -1669,6 +1673,7 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Content types of supported public files, null or empty disables feature" )
         private List<String> supportedPublicUserFileTypes;
 
+        @ApiModelProperty( "The VAT calculator on placed orders" )
         @NotNull
         private VatService vatService;
 
@@ -1784,23 +1789,27 @@ public class EnvironmentDTO extends DTO
             this.currency = currency;
         }
 
-        public AddressDTO getAddress()
+        public AddressDTO getPlatformAddress()
         {
-            return address;
+            return platformAddress;
         }
 
-        public void setAddress( AddressDTO address )
+        public void setPlatformAddress( AddressDTO platformAddress )
         {
-            this.address = address;
+            this.platformAddress = platformAddress;
         }
 
         public String getNation()
         {
-            if ( address != null ) return address.getCountryCode();
+            if ( platformAddress != null ) return platformAddress.getCountryCode();
 
             return nation;
         }
 
+        /**
+         * @deprecated by {@link #setPlatformAddress(AddressDTO)}
+         */
+        @Deprecated
         public void setNation( String nation )
         {
             this.nation = nation;
