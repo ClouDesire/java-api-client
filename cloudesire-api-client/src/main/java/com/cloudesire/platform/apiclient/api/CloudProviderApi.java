@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.CloudProviderDTO;
-import com.liberologico.cloudesire.cmw.model.enums.ProductType;
-import com.liberologico.cloudesire.cmw.model.patch.CloudProviderPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.CloudProviderDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.patch.CloudProviderPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

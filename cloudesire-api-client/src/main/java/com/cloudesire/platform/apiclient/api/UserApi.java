@@ -1,14 +1,14 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.query.PageRequestQuery;
-import com.liberologico.cloudesire.cmw.model.dto.CardDataDTO;
-import com.liberologico.cloudesire.cmw.model.dto.MyUserDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PasswordRecoveryDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PasswordResetDTO;
-import com.liberologico.cloudesire.cmw.model.dto.SepaDataDTO;
-import com.liberologico.cloudesire.cmw.model.dto.TokenDataDTO;
-import com.liberologico.cloudesire.cmw.model.dto.request.UserActivationDTO;
-import com.liberologico.cloudesire.cmw.model.enums.UserRole;
+import com.cloudesire.platform.apiclient.dto.model.dto.CardDataDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.MyUserDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PasswordRecoveryDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PasswordResetDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SepaDataDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.TokenDataDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.request.UserActivationDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
+import com.cloudesire.platform.apiclient.query.UserQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -28,8 +28,27 @@ import java.util.Map;
 
 public interface UserApi
 {
-    @POST( "user/activate" )
-    Call<Void> activateAccount( @Body UserActivationDTO payload );
+    // Creates
+    @POST( "user" )
+    Call<MyUserDTO> create( @Body MyUserDTO userDTO );
+
+    @POST( "user" )
+    Call<MyUserDTO> create( @Body MyUserDTO userDTO, @QueryMap Map<String, String> queryMap );
+
+    // Retrieves
+    @GET( "user" )
+    Call<List<MyUserDTO>> getAll();
+
+    @GET( "user" )
+    Call<List<MyUserDTO>> getAll( @QueryMap UserQuery request );
+
+    @GET( "user" )
+    Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
+            @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
+            @QueryMap Map<String, String> pageRequest );
+
+    @GET( "user/me" )
+    Call<MyUserDTO> getMe();
 
     @GET( "user/amIAdmin" )
     Call<Void> amIAdmin();
@@ -45,38 +64,6 @@ public interface UserApi
 
     @GET( "user/amIVendor" )
     Call<Void> amIVendor();
-
-    @GET( "user/me" )
-    Call<MyUserDTO> getMe();
-
-    @POST( "user" )
-    Call<MyUserDTO> create( @Body MyUserDTO userDTO );
-
-    @POST( "user" )
-    Call<MyUserDTO> create( @Body MyUserDTO userDTO, @QueryMap Map<String, String> queryMap );
-
-    @DELETE( "user/{id}/payment" )
-    Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
-
-    @DELETE( "user/payment" )
-    Call<Void> deletePaymentData();
-
-    @DELETE( "user/{id}" )
-    Call<Void> delete( @Path( "id" ) int id );
-
-    @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
-
-    @PATCH( "user/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
-
-    @GET( "user" )
-    Call<List<MyUserDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
-
-    @GET( "user" )
-    Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
-            @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
-            @QueryMap Map<String, String> pageRequest );
 
     @GET( "user/typeahead/{query}" )
     Call<List<MyUserDTO>> getTypeahead( @Path( "query" ) String query, @QueryMap Map<String, String> pageRequest,
@@ -97,6 +84,31 @@ public interface UserApi
     @Deprecated
     @GET( "user/isMyAddressValid" )
     Call<Boolean> isMyAddressValid();
+
+    @GET( "user/{id}/metadata" )
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+
+    @Streaming
+    @GET( "user" )
+    @Headers( { "Accept:text/csv" } )
+    Call<ResponseBody> getCsv( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
+            @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled,
+            @QueryMap Map<String, String> pageRequest );
+
+    @Streaming
+    @GET( "user" )
+    @Headers( { "Accept:text/csv" } )
+    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+
+    // Updates
+    @PUT( "user/{id}" )
+    Call<MyUserDTO> update( @Path( "id" ) int id, @Body MyUserDTO userDTO );
+
+    @PUT( "user/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+
+    @POST( "user/activate" )
+    Call<Void> activateAccount( @Body UserActivationDTO payload );
 
     @POST( "user/password/recovery" )
     Call<Void> passwordRecovery( @Body PasswordRecoveryDTO request );
@@ -122,24 +134,19 @@ public interface UserApi
     @POST( "user/payment/token" )
     Call<Void> saveTokenData( @Body TokenDataDTO data );
 
-    @GET( "user/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+    @PATCH( "user/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
 
-    @PUT( "user/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+    @PATCH( "user/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
 
-    @PUT( "user/{id}" )
-    Call<MyUserDTO> update( @Path( "id" ) int id, @Body MyUserDTO userDTO );
+    // Deletes
+    @DELETE( "user/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 
-    @Streaming
-    @GET( "user" )
-    @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
-            @Query( "role" ) String role, @Query( "disabled" ) Boolean disabled,
-            @QueryMap Map<String, String> pageRequest );
+    @DELETE( "user/{id}/payment" )
+    Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
 
-    @Streaming
-    @GET( "user" )
-    @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+    @DELETE( "user/payment" )
+    Call<Void> deletePaymentData();
 }

@@ -1,65 +1,18 @@
 package com.cloudesire.platform.apiclient;
 
-import com.cloudesire.platform.apiclient.api.AdminApi;
-import com.cloudesire.platform.apiclient.api.ApplicationFileApi;
-import com.cloudesire.platform.apiclient.api.ApplicationMetricApi;
-import com.cloudesire.platform.apiclient.api.BackupApi;
-import com.cloudesire.platform.apiclient.api.BandwidthPricingApi;
-import com.cloudesire.platform.apiclient.api.BillingItemApi;
-import com.cloudesire.platform.apiclient.api.BudgetEstimateApi;
-import com.cloudesire.platform.apiclient.api.CloudProviderApi;
-import com.cloudesire.platform.apiclient.api.CommentApi;
-import com.cloudesire.platform.apiclient.api.CompanyApi;
-import com.cloudesire.platform.apiclient.api.CompanyLogoApi;
-import com.cloudesire.platform.apiclient.api.ConfigurationParameterApi;
-import com.cloudesire.platform.apiclient.api.CountryCodeApi;
-import com.cloudesire.platform.apiclient.api.CouponApi;
-import com.cloudesire.platform.apiclient.api.DependencyApi;
-import com.cloudesire.platform.apiclient.api.DiskSpacePricingApi;
-import com.cloudesire.platform.apiclient.api.DistributorApi;
-import com.cloudesire.platform.apiclient.api.DistributorCatalogApi;
-import com.cloudesire.platform.apiclient.api.DistributorPricingApi;
-import com.cloudesire.platform.apiclient.api.EnvironmentApi;
-import com.cloudesire.platform.apiclient.api.EventApi;
-import com.cloudesire.platform.apiclient.api.InstancePricingApi;
-import com.cloudesire.platform.apiclient.api.InstanceTypeApi;
-import com.cloudesire.platform.apiclient.api.InvoiceApi;
-import com.cloudesire.platform.apiclient.api.LoginApi;
-import com.cloudesire.platform.apiclient.api.MailEnvironmentApi;
-import com.cloudesire.platform.apiclient.api.NodeRoleApi;
-import com.cloudesire.platform.apiclient.api.OrderApi;
-import com.cloudesire.platform.apiclient.api.ProductApi;
-import com.cloudesire.platform.apiclient.api.ProductCategoryApi;
-import com.cloudesire.platform.apiclient.api.ProductFileApi;
-import com.cloudesire.platform.apiclient.api.ProductImageFileApi;
-import com.cloudesire.platform.apiclient.api.ProductVersionApi;
-import com.cloudesire.platform.apiclient.api.PublicUserFileApi;
-import com.cloudesire.platform.apiclient.api.ResellerApi;
-import com.cloudesire.platform.apiclient.api.ResellerCatalogApi;
-import com.cloudesire.platform.apiclient.api.ResellerPricingApi;
-import com.cloudesire.platform.apiclient.api.ResellingReportApi;
-import com.cloudesire.platform.apiclient.api.RiskProfileApi;
-import com.cloudesire.platform.apiclient.api.StackParameterApi;
-import com.cloudesire.platform.apiclient.api.StackParameterValueApi;
-import com.cloudesire.platform.apiclient.api.StatisticsApi;
-import com.cloudesire.platform.apiclient.api.SubscriptionApi;
-import com.cloudesire.platform.apiclient.api.UserApi;
-import com.cloudesire.platform.apiclient.api.UserCompanyApi;
-import com.cloudesire.platform.apiclient.api.VendorReportApi;
-import com.cloudesire.platform.apiclient.api.VirtualMachineConfigurationApi;
-import com.cloudesire.platform.apiclient.api.VirtualMachineInstanceApi;
+import com.cloudesire.platform.apiclient.api.*;
 import com.cloudesire.platform.apiclient.baseclient.BasicAuthCloudesireClient;
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.interceptors.HeaderInterceptor;
 import com.cloudesire.platform.apiclient.interceptors.ParameterInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.liberologico.cloudesire.cmw.ApiVersion;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.Validate;
 
 import java.util.Objects;
 
-import static com.liberologico.cloudesire.cmw.model.constants.Parameters.VERSION;
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.VERSION;
 
 public class CloudesireClient extends BasicAuthCloudesireClient
 {

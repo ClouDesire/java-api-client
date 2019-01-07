@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.BackupDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.BackupDTO;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;

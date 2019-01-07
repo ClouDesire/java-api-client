@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.date.ISO8601DateTime;
-import com.liberologico.cloudesire.cmw.model.enums.CouponDestination;
-import com.liberologico.cloudesire.cmw.model.enums.CouponType;
+import com.cloudesire.platform.apiclient.dto.model.enums.CouponDestination;
+import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
 
 import java.math.BigDecimal;
 

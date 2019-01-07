@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.liberologico.cloudesire.cmw.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 
 public class ProductQuery extends BaseQuery
 {

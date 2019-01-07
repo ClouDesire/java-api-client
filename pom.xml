@@ -22,7 +22,7 @@
 
 	<modules>
 		<module>cloudesire-api-client</module>
-		<module>cmw-dto</module>
+		<module>cloudesire-api-client-dto</module>
 		<module>common-dto</module>
 		<module>base-api-client</module>
 	</modules>

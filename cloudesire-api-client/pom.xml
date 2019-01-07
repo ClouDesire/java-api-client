@@ -21,7 +21,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
-			<artifactId>cmw-dto</artifactId>
+			<artifactId>cloudesire-api-client-dto</artifactId>
 			<version>1.7.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

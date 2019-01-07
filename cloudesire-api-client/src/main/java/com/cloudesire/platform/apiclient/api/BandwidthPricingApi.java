@@ -1,9 +1,10 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.BandwidthPricingDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PricingPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.BandwidthPricingDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PricingPatchDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -29,4 +30,7 @@ public interface BandwidthPricingApi
 
     @PATCH( "bandwidthPricing/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body PricingPatchDTO input );
+
+    @DELETE( "bandwidthPricing/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 }

@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.StackParameterDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.StackParameterDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

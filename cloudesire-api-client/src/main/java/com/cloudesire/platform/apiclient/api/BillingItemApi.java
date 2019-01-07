@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.BillingItemDTO;
-import com.liberologico.cloudesire.cmw.model.enums.BillingItemValueType;
+import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.EnvironmentDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.OrderDTO;
-import com.liberologico.cloudesire.cmw.model.dto.OrderInputDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.OrderDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.OrderInputDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -24,6 +24,9 @@ public interface OrderApi
 
     @DELETE( "order/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
+
+    @GET( "order" )
+    Call<List<OrderDTO>> getAll();
 
     @GET( "order" )
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest );

@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.CacheDTO;
-import com.liberologico.cloudesire.cmw.model.dto.PageRequestDTO;
-import com.liberologico.cloudesire.cmw.model.dto.TaskExecutorDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.CacheDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.TaskExecutorDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

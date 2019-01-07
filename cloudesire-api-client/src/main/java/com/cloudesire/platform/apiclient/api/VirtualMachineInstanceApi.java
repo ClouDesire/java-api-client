@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.liberologico.cloudesire.cmw.model.dto.VirtualMachineInstanceDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.VirtualMachineInstanceDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

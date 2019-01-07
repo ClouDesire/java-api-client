@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationFileDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationFileEnvironmentDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.AssociationType;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
-import com.liberologico.cloudesire.cmw.model.dto.ApplicationFileDTO;
-import com.liberologico.cloudesire.cmw.model.dto.ApplicationFileEnvironmentDTO;
-import com.liberologico.cloudesire.cmw.model.enums.AssociationType;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -76,5 +76,4 @@ public interface ApplicationFileApi
 
     @DELETE( "applicationFile/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
-
 }

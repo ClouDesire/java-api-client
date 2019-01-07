@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.CommentDTO;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
-import com.liberologico.cloudesire.cmw.model.dto.CommentDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
