@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
+import static com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO.MailCustomization.DEFAULT_MAIL_LANGUAGE;
+
 public class MailEnvironmentDTO extends DTO
 {
     /**
@@ -218,6 +220,10 @@ public class MailEnvironmentDTO extends DTO
     @NotNull
     @Valid
     private MailConfiguration vendorRegistrationNotification;
+
+    @NotNull
+    @Valid
+    private UnsubscribeLink unsubscribeLink;
 
     public MailConfiguration getDeployCompleteCustomer()
     {
@@ -520,6 +526,16 @@ public class MailEnvironmentDTO extends DTO
         this.vendorRegistrationNotification = vendorRegistrationNotification;
     }
 
+    public UnsubscribeLink getUnsubscribeLink()
+    {
+        return unsubscribeLink;
+    }
+
+    public void setUnsubscribeLink( UnsubscribeLink unsubscribeLink )
+    {
+        this.unsubscribeLink = unsubscribeLink;
+    }
+
     /**
      * An instance of email template to be sent at certain events
      */
@@ -547,10 +563,7 @@ public class MailEnvironmentDTO extends DTO
 
         public String getSubject( String language )
         {
-            if ( subject == null ) return null;
-            String localizedSubject = subject.get( language.toLowerCase() );
-            if ( localizedSubject == null ) localizedSubject = subject.get( EnvironmentDTO.MailCustomization.DEFAULT_MAIL_LANGUAGE );
-            return localizedSubject;
+            return localize( subject, language );
         }
 
         public Map<String, String> getSubject()
@@ -563,6 +576,35 @@ public class MailEnvironmentDTO extends DTO
             this.subject = subject;
         }
         //endregion
+    }
+
+    public static class UnsubscribeLink
+    {
+        @NotNull
+        private Map<String, String> text;
+
+        public String getText( String language )
+        {
+            return localize( text, language );
+        }
+
+        public Map<String, String> getText()
+        {
+            return text;
+        }
+
+        public void setText( Map<String, String> text )
+        {
+            this.text = text;
+        }
+    }
+
+    private static String localize( Map<String, String> map, String language )
+    {
+        if ( map == null || language == null ) return null;
+        String localized = map.get( language.toLowerCase() );
+        if ( localized == null ) localized = map.get( DEFAULT_MAIL_LANGUAGE );
+        return localized;
     }
 
     /**
