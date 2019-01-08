@@ -1601,8 +1601,15 @@ public class EnvironmentDTO extends DTO
         @Size( max = 3 )
         private String currency = "EUR";
 
+        @ApiModelProperty( "The address from which invoices are generated" )
+        @Valid
+        private AddressDTO platformAddress;
+
+        /**
+         * @deprecated by {@link #platformAddress}
+         */
         @ApiModelProperty( "Default nation" )
-        @NotEmpty
+        @Deprecated
         @Size( max = 2 )
         private String nation = "IT";
 
@@ -1665,6 +1672,10 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "Content types of supported public files, null or empty disables feature" )
         private List<String> supportedPublicUserFileTypes;
+
+        @ApiModelProperty( "The VAT calculator on placed orders" )
+        @NotNull
+        private VatService vatService;
 
         @ApiModelProperty( "If configured, every invoice line will have this VAT" )
         private BigDecimal customVat;
@@ -1778,11 +1789,27 @@ public class EnvironmentDTO extends DTO
             this.currency = currency;
         }
 
+        public AddressDTO getPlatformAddress()
+        {
+            return platformAddress;
+        }
+
+        public void setPlatformAddress( AddressDTO platformAddress )
+        {
+            this.platformAddress = platformAddress;
+        }
+
         public String getNation()
         {
+            if ( platformAddress != null ) return platformAddress.getCountryCode();
+
             return nation;
         }
 
+        /**
+         * @deprecated by {@link #setPlatformAddress(AddressDTO)}
+         */
+        @Deprecated
         public void setNation( String nation )
         {
             this.nation = nation;
@@ -1978,6 +2005,16 @@ public class EnvironmentDTO extends DTO
             this.maxFileSize = maxFileSize;
         }
 
+        public VatService getVatService()
+        {
+            return vatService;
+        }
+
+        public void setVatService( VatService vatService )
+        {
+            this.vatService = vatService;
+        }
+
         public BigDecimal getCustomVat()
         {
             return customVat;
@@ -2119,6 +2156,11 @@ public class EnvironmentDTO extends DTO
 
             @ApiModelProperty( "No check is done" )
             UNLIMITED
+        }
+
+        public enum VatService
+        {
+            INTERNAL, TAXJAR
         }
     }
 
@@ -2369,8 +2411,8 @@ public class EnvironmentDTO extends DTO
         }
     }
 
-    @AssertTrue( message = "Missing CSP API connector endpoint" )
     @ApiModelProperty( hidden = true )
+    @AssertTrue( message = "Missing CSP API connector endpoint" )
     public boolean isCspConnectorConfigured()
     {
         if ( features.enabledProductTypes.contains( ProductType.CSP ) )
@@ -2378,6 +2420,18 @@ public class EnvironmentDTO extends DTO
             Map<CspProductType, String> endpoints = configuration.cspApiEndpoints;
             return endpoints != null && endpoints.keySet().containsAll( EnumSet.allOf( CspProductType.class ) );
         }
+
+        return true;
+    }
+
+    @ApiModelProperty( hidden = true )
+    @AssertTrue( message = "Internal VAT service is available in Italy only" )
+    public boolean isInternalVatServiceInItalyOnly()
+    {
+        boolean italianInstallation = configuration.getNation().equalsIgnoreCase( "it" );
+        boolean internalVatService = configuration.getVatService() == ConfigurationEnvironment.VatService.INTERNAL;
+
+        if ( internalVatService ) return italianInstallation;
 
         return true;
     }
