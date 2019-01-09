@@ -1,11 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
+import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -72,8 +72,7 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( "Secondary address of the user" )
     private AddressDTO homeAddress;
 
-    @NotNull
-    private UserRole userRole = UserRole.ROLE_USER;
+    private UserRole userRole;
 
     private Set<UserGroup> groups;
 
