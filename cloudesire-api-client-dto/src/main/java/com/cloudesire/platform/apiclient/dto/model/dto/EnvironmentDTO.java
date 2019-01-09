@@ -1675,7 +1675,7 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "The VAT calculator on placed orders" )
         @NotNull
-        private VatService vatService;
+        private VatService vatService = VatService.INTERNAL;
 
         @ApiModelProperty( "If configured, every invoice line will have this VAT" )
         private BigDecimal customVat;
