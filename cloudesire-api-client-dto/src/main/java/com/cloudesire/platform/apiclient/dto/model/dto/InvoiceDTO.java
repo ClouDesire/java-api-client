@@ -74,6 +74,9 @@ public class InvoiceDTO extends BaseInvoiceDTO
 
     private InvoiceStatus status;
 
+    @ApiModelProperty( value = "Who resold the Product", readOnly = true )
+    private UrlEntityDTO reseller;
+
     @Deprecated
     @ApiModelProperty( hidden = true )
     private BigDecimal totalPrice;
@@ -304,6 +307,16 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setStatus( InvoiceStatus status )
     {
         this.status = status;
+    }
+
+    public UrlEntityDTO getReseller()
+    {
+        return reseller;
+    }
+
+    public void setReseller( UrlEntityDTO reseller )
+    {
+        this.reseller = reseller;
     }
 
     /**
