@@ -62,7 +62,7 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( value = "The reference to a PDF version of the invoice", readOnly = true )
     private String remoteId;
 
-    @ApiModelProperty( value = "The quota that received the platform owner when the invoice has been issued", readOnly = true )
+    @ApiModelProperty( value = "The quota received by the platform owner when the invoice has been issued", readOnly = true )
     private BigDecimal revenueSharingQuota;
 
     @NotNull
