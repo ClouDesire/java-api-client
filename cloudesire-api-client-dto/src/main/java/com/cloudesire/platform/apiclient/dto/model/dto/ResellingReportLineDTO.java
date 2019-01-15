@@ -29,10 +29,7 @@ public class ResellingReportLineDTO extends ReportLineDTO
     private CostsDTO costs;
 
     @ApiModelProperty( value = "The gross proceeds for the reseller", readOnly = true )
-    public BigDecimal getSellout()
-    {
-        return sellin.add( netSellout );
-    }
+    private BigDecimal sellout;
 
     // region Auto-generated code
     public UrlEntityDTO getDistributor()
@@ -103,6 +100,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setCosts( CostsDTO costs )
     {
         this.costs = costs;
+    }
+
+    public BigDecimal getSellout()
+    {
+        return sellout;
+    }
+
+    public void setSellout( BigDecimal sellout )
+    {
+        this.sellout = sellout;
     }
 
     @Override
