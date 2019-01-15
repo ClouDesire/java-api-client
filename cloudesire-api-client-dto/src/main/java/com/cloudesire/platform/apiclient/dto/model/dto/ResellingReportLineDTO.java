@@ -16,6 +16,9 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @ApiModelProperty( value = "The vendor of this product", readOnly = true )
     private UrlEntityDTO vendor;
 
+    @ApiModelProperty( value = "The proceeds for the parent", readOnly = true )
+    private BigDecimal wholesale;
+
     @ApiModelProperty( value = "The proceeds for the distributor", readOnly = true )
     private BigDecimal sellin;
 
@@ -60,6 +63,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setVendor( UrlEntityDTO vendor )
     {
         this.vendor = vendor;
+    }
+
+    public BigDecimal getWholesale()
+    {
+        return wholesale;
+    }
+
+    public void setWholesale( BigDecimal wholesale )
+    {
+        this.wholesale = wholesale;
     }
 
     public BigDecimal getSellin()
