@@ -22,14 +22,15 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @ApiModelProperty( value = "The proceeds for the distributor", readOnly = true )
     private BigDecimal sellin;
 
+    /**
+     * @deprecated by {@link #margin}
+     */
     @ApiModelProperty( value = "The proceeds for the reseller", readOnly = true )
+    @Deprecated
     private BigDecimal netSellout;
 
     @ApiModelProperty( value = "The costs for the distributor", readOnly = true )
     private CostsDTO costs;
-
-    @ApiModelProperty( value = "The gross proceeds for the reseller", readOnly = true )
-    private BigDecimal sellout;
 
     @ApiModelProperty( value = "Total earnings minus total costs", readOnly = true )
     private BigDecimal margin;
@@ -85,11 +86,19 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.sellin = sellin;
     }
 
+    /**
+     * @deprecated by {@link #getMargin()}
+     */
+    @Deprecated
     public BigDecimal getNetSellout()
     {
         return netSellout;
     }
 
+    /**
+     * @deprecated by {@link #setMargin(BigDecimal)}
+     */
+    @Deprecated
     public void setNetSellout( BigDecimal netSellout )
     {
         this.netSellout = netSellout;
@@ -103,16 +112,6 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setCosts( CostsDTO costs )
     {
         this.costs = costs;
-    }
-
-    public BigDecimal getSellout()
-    {
-        return sellout;
-    }
-
-    public void setSellout( BigDecimal sellout )
-    {
-        this.sellout = sellout;
     }
 
     public BigDecimal getMargin()
