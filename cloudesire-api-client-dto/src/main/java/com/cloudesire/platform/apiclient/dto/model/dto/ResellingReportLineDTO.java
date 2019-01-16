@@ -31,6 +31,9 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @ApiModelProperty( value = "The gross proceeds for the reseller", readOnly = true )
     private BigDecimal sellout;
 
+    @ApiModelProperty( value = "Total earnings minus total costs", readOnly = true )
+    private BigDecimal margin;
+
     // region Auto-generated code
     public UrlEntityDTO getDistributor()
     {
@@ -112,6 +115,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.sellout = sellout;
     }
 
+    public BigDecimal getMargin()
+    {
+        return margin;
+    }
+
+    public void setMargin( BigDecimal margin )
+    {
+        this.margin = margin;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -146,6 +159,13 @@ public class ResellingReportLineDTO extends ReportLineDTO
 
         public CostsDTO()
         {
+        }
+
+        public BigDecimal getTotal()
+        {
+            if ( license == null ) return iaas;
+            else if ( iaas == null ) return license;
+            else return license.add( iaas );
         }
 
         public BigDecimal getLicense()
