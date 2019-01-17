@@ -104,7 +104,9 @@ public class VATPriceDTO extends PriceDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         VATPriceDTO priceDTO = (VATPriceDTO) o;
-        return Objects.equals( price, priceDTO.price ) && Objects.equals( VAT, priceDTO.VAT );
+        return Objects.equals( price, priceDTO.price ) &&
+                Objects.equals( VAT, priceDTO.VAT ) &&
+                Objects.equals( currency, priceDTO.currency );
     }
 
     @Override
