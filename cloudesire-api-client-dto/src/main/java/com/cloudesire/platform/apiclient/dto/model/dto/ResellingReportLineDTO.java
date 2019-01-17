@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 public class ResellingReportLineDTO extends ReportLineDTO
@@ -34,6 +35,8 @@ public class ResellingReportLineDTO extends ReportLineDTO
 
     @ApiModelProperty( value = "Total earnings minus total costs", readOnly = true )
     private BigDecimal margin;
+
+    private List<OrderLineDTO> detail;
 
     // region Auto-generated code
     public UrlEntityDTO getDistributor()
@@ -122,6 +125,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setMargin( BigDecimal margin )
     {
         this.margin = margin;
+    }
+
+    public List<OrderLineDTO> getDetail()
+    {
+        return detail;
+    }
+
+    public void setDetail( List<OrderLineDTO> detail )
+    {
+        this.detail = detail;
     }
 
     @Override
