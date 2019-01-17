@@ -42,6 +42,10 @@ public interface UserApi
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @QueryMap UserQuery request );
 
+    /**
+     * @deprecated by {@link #getAll(UserQuery)}
+     */
+    @Deprecated
     @GET( "user" )
     Call<List<MyUserDTO>> getAll( @Query( "textField" ) String textField, @Query( "companyId" ) Integer companyId,
             @Query( "role" ) UserRole role, @Query( "disabled" ) Boolean disabled,
