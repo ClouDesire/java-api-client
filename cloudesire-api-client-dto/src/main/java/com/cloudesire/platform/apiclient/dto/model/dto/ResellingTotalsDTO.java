@@ -6,39 +6,39 @@ import java.math.BigDecimal;
 
 public class ResellingTotalsDTO extends DTO
 {
-    @ApiModelProperty( value = "The total proceeds for the distributor", readOnly = true )
-    private BigDecimal sellin;
+    @ApiModelProperty( value = "The total earnings", readOnly = true )
+    private BigDecimal earnings;
 
-    @ApiModelProperty( value = "The total proceeds for the reseller", readOnly = true )
-    private BigDecimal netSellout;
+    @ApiModelProperty( value = "The total costs", readOnly = true )
+    private BigDecimal costs;
 
-    public ResellingTotalsDTO( BigDecimal sellin, BigDecimal netSellout )
+    public ResellingTotalsDTO( BigDecimal earnings, BigDecimal costs )
     {
-        this.sellin = sellin;
-        this.netSellout = netSellout;
+        this.earnings = earnings;
+        this.costs = costs;
     }
 
     public ResellingTotalsDTO()
     {
     }
 
-    public BigDecimal getSellin()
+    public BigDecimal getEarnings()
     {
-        return sellin;
+        return earnings;
     }
 
-    public void setSellin( BigDecimal sellin )
+    public void setEarnings( BigDecimal earnings )
     {
-        this.sellin = sellin;
+        this.earnings = earnings;
     }
 
-    public BigDecimal getNetSellout()
+    public BigDecimal getCosts()
     {
-        return netSellout;
+        return costs;
     }
 
-    public void setNetSellout( BigDecimal netSellout )
+    public void setCosts( BigDecimal costs )
     {
-        this.netSellout = netSellout;
+        this.costs = costs;
     }
 }
