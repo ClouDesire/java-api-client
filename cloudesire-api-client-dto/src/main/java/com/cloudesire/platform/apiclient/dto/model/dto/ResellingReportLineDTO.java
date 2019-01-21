@@ -22,12 +22,8 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @ApiModelProperty( value = "The proceeds for the distributor", readOnly = true )
     private BigDecimal sellin;
 
-    /**
-     * @deprecated by {@link #margin}
-     */
     @ApiModelProperty( value = "The proceeds for the reseller", readOnly = true )
-    @Deprecated
-    private BigDecimal netSellout;
+    private BigDecimal sellout;
 
     @ApiModelProperty( value = "The costs for the distributor", readOnly = true )
     private CostsDTO costs;
@@ -86,22 +82,14 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.sellin = sellin;
     }
 
-    /**
-     * @deprecated by {@link #getMargin()}
-     */
-    @Deprecated
-    public BigDecimal getNetSellout()
+    public BigDecimal getSellout()
     {
-        return netSellout;
+        return sellout;
     }
 
-    /**
-     * @deprecated by {@link #setMargin(BigDecimal)}
-     */
-    @Deprecated
-    public void setNetSellout( BigDecimal netSellout )
+    public void setSellout( BigDecimal sellout )
     {
-        this.netSellout = netSellout;
+        this.sellout = sellout;
     }
 
     public CostsDTO getCosts()
@@ -132,13 +120,13 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( ! super.equals( o ) ) return false;
         ResellingReportLineDTO that = (ResellingReportLineDTO) o;
         return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller ) && Objects
-                .equals( sellin, that.sellin ) && Objects.equals( netSellout, that.netSellout );
+                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), distributor, reseller, sellin, netSellout );
+        return Objects.hash( super.hashCode(), distributor, reseller, sellin, sellout );
     }
     // endregion
 
