@@ -36,9 +36,9 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>artifactory</id>
-			<name>libs-snapshot-local</name>
-			<url>https://artifactory.cloudesire.com/artifactory/libs-snapshot-local</url>
+			<id>snapshots</id>
+			<name>snapshots</name>
+			<url>http://archiva.cloudesire.com/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>bintray</id>
