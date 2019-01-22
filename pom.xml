@@ -38,7 +38,7 @@
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>snapshots</name>
-			<url>http://archiva.cloudesire.com/repository/snapshots/</url>
+			<url>https://archiva.cloudesire.com/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>bintray</id>
