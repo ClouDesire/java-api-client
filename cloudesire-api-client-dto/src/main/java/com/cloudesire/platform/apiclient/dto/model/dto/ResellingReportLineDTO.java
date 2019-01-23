@@ -120,13 +120,15 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( ! super.equals( o ) ) return false;
         ResellingReportLineDTO that = (ResellingReportLineDTO) o;
         return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller ) && Objects
-                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout );
+                .equals( vendor, that.vendor ) && Objects.equals( wholesale, that.wholesale ) && Objects
+                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout ) && Objects
+                .equals( margin, that.margin );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), distributor, reseller, sellin, sellout );
+        return Objects.hash( super.hashCode(), distributor, reseller, vendor, wholesale, sellin, sellout, margin );
     }
     // endregion
 

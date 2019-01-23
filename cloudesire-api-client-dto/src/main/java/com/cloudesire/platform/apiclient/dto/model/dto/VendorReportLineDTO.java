@@ -124,13 +124,15 @@ public class VendorReportLineDTO extends ReportLineDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         VendorReportLineDTO that = (VendorReportLineDTO) o;
-        return Objects.equals( company, that.company ) && Objects.equals( type, that.type ) && Objects
+        return Objects.equals( company, that.company ) && Objects.equals( income, that.income ) && Objects
+                .equals( license, that.license ) && Objects.equals( expenses, that.expenses ) && Objects
+                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type && Objects
                 .equals( invoice, that.invoice );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), company, type, invoice );
+        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type, invoice );
     }
 }
