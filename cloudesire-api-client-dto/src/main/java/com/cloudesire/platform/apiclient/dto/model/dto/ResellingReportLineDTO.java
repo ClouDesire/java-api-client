@@ -13,20 +13,23 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @ApiModelProperty( value = "The reseller who sold this", readOnly = true )
     private UrlEntityDTO reseller;
 
+    @ApiModelProperty( value = "The vendor of this product", readOnly = true )
+    private UrlEntityDTO vendor;
+
+    @ApiModelProperty( value = "The proceeds for the parent", readOnly = true )
+    private BigDecimal wholesale;
+
     @ApiModelProperty( value = "The proceeds for the distributor", readOnly = true )
     private BigDecimal sellin;
 
     @ApiModelProperty( value = "The proceeds for the reseller", readOnly = true )
-    private BigDecimal netSellout;
+    private BigDecimal sellout;
 
     @ApiModelProperty( value = "The costs for the distributor", readOnly = true )
     private CostsDTO costs;
 
-    @ApiModelProperty( value = "The gross proceeds for the reseller", readOnly = true )
-    public BigDecimal getSellout()
-    {
-        return sellin.add( netSellout );
-    }
+    @ApiModelProperty( value = "Total earnings minus total costs", readOnly = true )
+    private BigDecimal margin;
 
     // region Auto-generated code
     public UrlEntityDTO getDistributor()
@@ -49,6 +52,26 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.reseller = reseller;
     }
 
+    public UrlEntityDTO getVendor()
+    {
+        return vendor;
+    }
+
+    public void setVendor( UrlEntityDTO vendor )
+    {
+        this.vendor = vendor;
+    }
+
+    public BigDecimal getWholesale()
+    {
+        return wholesale;
+    }
+
+    public void setWholesale( BigDecimal wholesale )
+    {
+        this.wholesale = wholesale;
+    }
+
     public BigDecimal getSellin()
     {
         return sellin;
@@ -59,14 +82,14 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.sellin = sellin;
     }
 
-    public BigDecimal getNetSellout()
+    public BigDecimal getSellout()
     {
-        return netSellout;
+        return sellout;
     }
 
-    public void setNetSellout( BigDecimal netSellout )
+    public void setSellout( BigDecimal sellout )
     {
-        this.netSellout = netSellout;
+        this.sellout = sellout;
     }
 
     public CostsDTO getCosts()
@@ -79,6 +102,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.costs = costs;
     }
 
+    public BigDecimal getMargin()
+    {
+        return margin;
+    }
+
+    public void setMargin( BigDecimal margin )
+    {
+        this.margin = margin;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -87,13 +120,15 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( ! super.equals( o ) ) return false;
         ResellingReportLineDTO that = (ResellingReportLineDTO) o;
         return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller ) && Objects
-                .equals( sellin, that.sellin ) && Objects.equals( netSellout, that.netSellout );
+                .equals( vendor, that.vendor ) && Objects.equals( wholesale, that.wholesale ) && Objects
+                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout ) && Objects
+                .equals( margin, that.margin );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), distributor, reseller, sellin, netSellout );
+        return Objects.hash( super.hashCode(), distributor, reseller, vendor, wholesale, sellin, sellout, margin );
     }
     // endregion
 
@@ -113,6 +148,13 @@ public class ResellingReportLineDTO extends ReportLineDTO
 
         public CostsDTO()
         {
+        }
+
+        public BigDecimal getTotal()
+        {
+            if ( license == null ) return iaas;
+            else if ( iaas == null ) return license;
+            else return license.add( iaas );
         }
 
         public BigDecimal getLicense()

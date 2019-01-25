@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigDecimal;
 
 @JsonPropertyOrder( { "product", "distributor", "reseller", "buyer", "purchased", "vendorIncome", "sellin",
-        "netSellout", "vat" } )
+        "sellout", "vat" } )
 public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
 {
     private String distributor;
@@ -16,7 +16,7 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
 
     private BigDecimal sellin;
 
-    private BigDecimal netSellout;
+    private BigDecimal sellout;
 
     // region Auto-generated codess
 
@@ -50,14 +50,14 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
         this.sellin = sellin;
     }
 
-    public BigDecimal getNetSellout()
+    public BigDecimal getSellout()
     {
-        return netSellout;
+        return sellout;
     }
 
-    public void setNetSellout( BigDecimal netSellout )
+    public void setSellout( BigDecimal sellout )
     {
-        this.netSellout = netSellout;
+        this.sellout = sellout;
     }
 
     public BigDecimal getVendorIncome()
