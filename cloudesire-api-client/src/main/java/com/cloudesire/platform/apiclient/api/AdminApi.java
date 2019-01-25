@@ -1,15 +1,16 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CacheDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.TaskExecutorDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 import java.util.List;
 
@@ -21,10 +22,13 @@ public interface AdminApi
     @PATCH( "task/{className}" )
     Call<Void> executeTask( @Path ( "className" ) String className );
 
-    @POST( "admin/report/generate" )
-    Call<Void> generateMissingReports( @Body PageRequestDTO page );
+    @GET( "admin/report" )
+    Call<List<UrlEntityDTO>> retrieveInvoicesWithoutReport( @QueryMap PageRequestQuery page );
 
-    @DELETE( "admin/report/purge" )
+    @POST( "admin/report" )
+    Call<Void> generateMissingReports( @QueryMap PageRequestQuery page );
+
+    @DELETE( "admin/report" )
     Call<Void> purgeReports();
 
     @DELETE( "admin/zip" )
