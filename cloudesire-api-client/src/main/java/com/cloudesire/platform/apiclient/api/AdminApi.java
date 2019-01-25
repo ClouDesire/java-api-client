@@ -23,7 +23,7 @@ public interface AdminApi
     Call<Void> executeTask( @Path ( "className" ) String className );
 
     @GET( "admin/report" )
-    Call<List<UrlEntityDTO>> getMissingReports( @QueryMap PageRequestQuery page );
+    Call<List<UrlEntityDTO>> retrieveInvoicesWithoutReport( @QueryMap PageRequestQuery page );
 
     @POST( "admin/report" )
     Call<Void> generateMissingReports( @QueryMap PageRequestQuery page );
