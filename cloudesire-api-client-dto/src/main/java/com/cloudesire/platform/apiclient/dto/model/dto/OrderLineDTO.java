@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( "A billed unit" )
-public class OrderLineDTO implements Line
+public class OrderLineDTO extends BillingItemCostLineDTO implements Line
 {
     @NotNull
     @Valid

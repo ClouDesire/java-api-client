@@ -1,10 +1,9 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemCostLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,7 +12,7 @@ import java.util.Date;
         "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
         "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItem", "setup", "discount", "maximum"
 } )
-public class InvoiceCsvDTO extends DTO
+public class InvoiceCsvDTO extends BillingItemCostLineDTO
 {
     private String remoteId;
 
@@ -51,13 +50,9 @@ public class InvoiceCsvDTO extends DTO
 
     private LineType lineType;
 
-    private UrlEntityDTO billingItem;
-
     private boolean setup;
 
     private BigDecimal discount;
-
-    private Integer maximum;
 
     // region Auto-generated code
     public String getRemoteId()
@@ -240,16 +235,6 @@ public class InvoiceCsvDTO extends DTO
         this.lineType = lineType;
     }
 
-    public UrlEntityDTO getBillingItem()
-    {
-        return billingItem;
-    }
-
-    public void setBillingItem( UrlEntityDTO billingItem )
-    {
-        this.billingItem = billingItem;
-    }
-
     public boolean isSetup()
     {
         return setup;
@@ -268,16 +253,6 @@ public class InvoiceCsvDTO extends DTO
     public void setDiscount( BigDecimal discount )
     {
         this.discount = discount;
-    }
-
-    public Integer getMaximum()
-    {
-        return maximum;
-    }
-
-    public void setMaximum( Integer maximum )
-    {
-        this.maximum = maximum;
     }
     // endregion
 }
