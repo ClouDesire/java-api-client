@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
@@ -12,6 +13,7 @@ public class InvoiceQuery extends BaseQuery
     private static final String NOMINEE = "nominee";
     private static final String PAID = "paid";
     private static final String SELF_BILLED = "selfBilled";
+    private static final String STATUS = "status";
     private static final String TO = "to";
     private static final String TYPE = "type";
 
@@ -48,6 +50,12 @@ public class InvoiceQuery extends BaseQuery
     public InvoiceQuery setSelfBilled( Boolean selfBilled )
     {
         put( SELF_BILLED, selfBilled );
+        return this;
+    }
+
+    public InvoiceQuery setStatus( InvoiceStatus status )
+    {
+        put( STATUS, status );
         return this;
     }
 
