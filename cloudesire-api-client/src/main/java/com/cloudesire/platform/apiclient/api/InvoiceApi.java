@@ -13,7 +13,6 @@ import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
@@ -47,9 +46,7 @@ public interface InvoiceApi
     @Streaming
     @GET( "invoice" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv(  @Query( "paid" ) Boolean paid, @Query( "nominee" ) Boolean nominee,
-            @Query( "selfBilled" ) Boolean selfBilled, @Query( "type" ) String type,
-            @Query( "expired" ) Boolean expired, @QueryMap Map<String, String> pageRequest  );
+    Call<ResponseBody> getCsv( @QueryMap InvoiceQuery query );
 
     @Streaming
     @GET( "invoice" )

@@ -1,17 +1,32 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemCostLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
+import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@JsonPropertyOrder( { "remoteId", "nominee", "description", "type", "paymentReceived", "currency", "price", "vat" } )
-public class InvoiceCsvDTO extends DTO
+@JsonPropertyOrder( {
+        "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
+        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItem", "setup", "discount", "maximum"
+} )
+public class InvoiceCsvDTO extends BillingItemCostLineDTO
 {
     private String remoteId;
 
+    private InvoiceStatus status;
+
+    private Date date;
+
     private String nominee;
+
+    private String company;
+
+    private Integer subscriptionId;
+
+    private boolean selfBilled;
 
     private String description;
 
@@ -19,14 +34,27 @@ public class InvoiceCsvDTO extends DTO
 
     private Date paymentReceived;
 
-    protected String currency;
+    private String currency;
 
-    protected BigDecimal price;
+    private BigDecimal price;
 
     private BigDecimal vat;
 
-    // region Auto-generated code
+    private BigDecimal linePrice;
 
+    private BigDecimal quantity = BigDecimal.ONE;
+
+    private String unit;
+
+    private String lineDescription;
+
+    private LineType lineType;
+
+    private boolean setup;
+
+    private BigDecimal discount;
+
+    // region Auto-generated code
     public String getRemoteId()
     {
         return remoteId;
@@ -37,6 +65,26 @@ public class InvoiceCsvDTO extends DTO
         this.remoteId = remoteId;
     }
 
+    public InvoiceStatus getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus( InvoiceStatus status )
+    {
+        this.status = status;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate( Date date )
+    {
+        this.date = date;
+    }
+
     public String getNominee()
     {
         return nominee;
@@ -45,6 +93,36 @@ public class InvoiceCsvDTO extends DTO
     public void setNominee( String nominee )
     {
         this.nominee = nominee;
+    }
+
+    public String getCompany()
+    {
+        return company;
+    }
+
+    public void setCompany( String company )
+    {
+        this.company = company;
+    }
+
+    public Integer getSubscriptionId()
+    {
+        return subscriptionId;
+    }
+
+    public void setSubscriptionId( Integer subscriptionId )
+    {
+        this.subscriptionId = subscriptionId;
+    }
+
+    public boolean isSelfBilled()
+    {
+        return selfBilled;
+    }
+
+    public void setSelfBilled( boolean selfBilled )
+    {
+        this.selfBilled = selfBilled;
     }
 
     public String getDescription()
@@ -107,5 +185,74 @@ public class InvoiceCsvDTO extends DTO
         this.vat = vat;
     }
 
+    public BigDecimal getLinePrice()
+    {
+        return linePrice;
+    }
+
+    public void setLinePrice( BigDecimal linePrice )
+    {
+        this.linePrice = linePrice;
+    }
+
+    public BigDecimal getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity( BigDecimal quantity )
+    {
+        this.quantity = quantity;
+    }
+
+    public String getUnit()
+    {
+        return unit;
+    }
+
+    public void setUnit( String unit )
+    {
+        this.unit = unit;
+    }
+
+    public String getLineDescription()
+    {
+        return lineDescription;
+    }
+
+    public void setLineDescription( String lineDescription )
+    {
+        this.lineDescription = lineDescription;
+    }
+
+    public LineType getLineType()
+    {
+        return lineType;
+    }
+
+    public void setLineType( LineType lineType )
+    {
+        this.lineType = lineType;
+    }
+
+    public boolean isSetup()
+    {
+        return setup;
+    }
+
+    public void setSetup( boolean setup )
+    {
+        this.setup = setup;
+    }
+
+    public BigDecimal getDiscount()
+    {
+        return discount;
+    }
+
+    public void setDiscount( BigDecimal discount )
+    {
+        this.discount = discount;
+    }
     // endregion
 }
