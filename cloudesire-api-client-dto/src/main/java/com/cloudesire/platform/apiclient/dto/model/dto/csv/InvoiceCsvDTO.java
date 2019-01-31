@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
@@ -30,7 +31,7 @@ public class InvoiceCsvDTO extends DTO
 
     private String description;
 
-    private String type = "NORMAL";
+    private OrderType type;
 
     private Date paymentReceived;
 
@@ -137,12 +138,12 @@ public class InvoiceCsvDTO extends DTO
         this.description = description;
     }
 
-    public String getType()
+    public OrderType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( OrderType type )
     {
         this.type = type;
     }
