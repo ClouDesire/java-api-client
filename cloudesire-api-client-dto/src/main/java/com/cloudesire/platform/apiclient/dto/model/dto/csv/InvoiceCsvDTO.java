@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemCostLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -10,9 +10,9 @@ import java.util.Date;
 
 @JsonPropertyOrder( {
         "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
-        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItem", "setup", "discount", "maximum"
+        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "setup", "discount"
 } )
-public class InvoiceCsvDTO extends BillingItemCostLineDTO
+public class InvoiceCsvDTO extends DTO
 {
     private String remoteId;
 
@@ -49,6 +49,8 @@ public class InvoiceCsvDTO extends BillingItemCostLineDTO
     private String lineDescription;
 
     private LineType lineType;
+
+    private String billingItemIdentifier;
 
     private boolean setup;
 
@@ -254,5 +256,16 @@ public class InvoiceCsvDTO extends BillingItemCostLineDTO
     {
         this.discount = discount;
     }
+
+    public String getBillingItemIdentifier()
+    {
+        return billingItemIdentifier;
+    }
+
+    public void setBillingItemIdentifier( String billingItemIdentifier )
+    {
+        this.billingItemIdentifier = billingItemIdentifier;
+    }
+
     // endregion
 }
