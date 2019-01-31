@@ -11,7 +11,7 @@ import java.util.Date;
 
 @JsonPropertyOrder( {
         "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
-        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "setup", "discount"
+        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
 {
@@ -52,8 +52,6 @@ public class InvoiceCsvDTO extends DTO
     private LineType lineType;
 
     private String billingItemIdentifier;
-
-    private boolean setup;
 
     private BigDecimal discount;
 
@@ -238,16 +236,6 @@ public class InvoiceCsvDTO extends DTO
         this.lineType = lineType;
     }
 
-    public boolean isSetup()
-    {
-        return setup;
-    }
-
-    public void setSetup( boolean setup )
-    {
-        this.setup = setup;
-    }
-
     public BigDecimal getDiscount()
     {
         return discount;
@@ -267,6 +255,5 @@ public class InvoiceCsvDTO extends DTO
     {
         this.billingItemIdentifier = billingItemIdentifier;
     }
-
     // endregion
 }
