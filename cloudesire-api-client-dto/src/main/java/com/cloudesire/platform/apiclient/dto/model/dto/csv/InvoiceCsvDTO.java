@@ -10,11 +10,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
+        "id", "remoteId", "status", "date", "nominee", "email", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
         "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
 {
+    private Integer id;
+
     private String remoteId;
 
     private InvoiceStatus status;
@@ -22,6 +24,8 @@ public class InvoiceCsvDTO extends DTO
     private Date date;
 
     private String nominee;
+
+    private String email;
 
     private String company;
 
@@ -56,6 +60,16 @@ public class InvoiceCsvDTO extends DTO
     private BigDecimal discount;
 
     // region Auto-generated code
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId( Integer id )
+    {
+        this.id = id;
+    }
+
     public String getRemoteId()
     {
         return remoteId;
@@ -94,6 +108,16 @@ public class InvoiceCsvDTO extends DTO
     public void setNominee( String nominee )
     {
         this.nominee = nominee;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail( String email )
+    {
+        this.email = email;
     }
 
     public String getCompany()
