@@ -197,6 +197,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "Authentication header value for the upstream API" )
     private String apiHeaderValue;
 
+    @ApiModelProperty( "The URL to call for validate the order request" )
+    private String validationUrl;
+
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
         this( name, identifier, type );
@@ -757,5 +760,14 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     {
         this.requestedForApproval = requestedForApproval;
     }
+
+    public String getValidationUrl() {
+        return validationUrl;
+    }
+
+    public void setValidationUrl(String validationUrl) {
+        this.validationUrl = validationUrl;
+    }
+
     //endregion
 }
