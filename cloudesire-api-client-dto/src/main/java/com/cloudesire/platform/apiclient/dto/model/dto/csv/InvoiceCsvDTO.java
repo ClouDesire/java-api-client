@@ -3,17 +3,20 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "remoteId", "status", "date", "nominee", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
-        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "setup", "discount"
+        "id", "remoteId", "status", "date", "nominee", "email", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
+        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
 {
+    private Integer id;
+
     private String remoteId;
 
     private InvoiceStatus status;
@@ -21,6 +24,8 @@ public class InvoiceCsvDTO extends DTO
     private Date date;
 
     private String nominee;
+
+    private String email;
 
     private String company;
 
@@ -30,7 +35,7 @@ public class InvoiceCsvDTO extends DTO
 
     private String description;
 
-    private String type = "NORMAL";
+    private OrderType type;
 
     private Date paymentReceived;
 
@@ -52,11 +57,19 @@ public class InvoiceCsvDTO extends DTO
 
     private String billingItemIdentifier;
 
-    private boolean setup;
-
     private BigDecimal discount;
 
     // region Auto-generated code
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId( Integer id )
+    {
+        this.id = id;
+    }
+
     public String getRemoteId()
     {
         return remoteId;
@@ -95,6 +108,16 @@ public class InvoiceCsvDTO extends DTO
     public void setNominee( String nominee )
     {
         this.nominee = nominee;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail( String email )
+    {
+        this.email = email;
     }
 
     public String getCompany()
@@ -137,12 +160,12 @@ public class InvoiceCsvDTO extends DTO
         this.description = description;
     }
 
-    public String getType()
+    public OrderType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( OrderType type )
     {
         this.type = type;
     }
@@ -237,16 +260,6 @@ public class InvoiceCsvDTO extends DTO
         this.lineType = lineType;
     }
 
-    public boolean isSetup()
-    {
-        return setup;
-    }
-
-    public void setSetup( boolean setup )
-    {
-        this.setup = setup;
-    }
-
     public BigDecimal getDiscount()
     {
         return discount;
@@ -266,6 +279,5 @@ public class InvoiceCsvDTO extends DTO
     {
         this.billingItemIdentifier = billingItemIdentifier;
     }
-
     // endregion
 }
