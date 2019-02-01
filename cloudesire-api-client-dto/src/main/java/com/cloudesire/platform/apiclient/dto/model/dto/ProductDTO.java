@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -40,6 +41,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     @ApiModelProperty( "URL where events of syndicated applications are dispatched" )
     private String syndicatedEndpoint;
+
+    @URL
+    @ApiModelProperty( "The URL to call for validate the order request" )
+    private String validationEndpoint;
 
     @ApiModelProperty( "Base URL for the product's API" )
     private String apiUrl;
@@ -196,9 +201,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     @ApiModelProperty( "Authentication header value for the upstream API" )
     private String apiHeaderValue;
-
-    @ApiModelProperty( "The URL to call for validate the order request" )
-    private String validationUrl;
 
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
@@ -423,6 +425,14 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setSyndicatedEndpoint( String syndicatedEndpoint )
     {
         this.syndicatedEndpoint = syndicatedEndpoint;
+    }
+
+    public String getValidationEndpoint() {
+        return validationEndpoint;
+    }
+
+    public void setValidationEndpoint(String validationEndpoint) {
+        this.validationEndpoint = validationEndpoint;
     }
 
     public String getApiUrl()
@@ -759,14 +769,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setRequestedForApproval( boolean requestedForApproval )
     {
         this.requestedForApproval = requestedForApproval;
-    }
-
-    public String getValidationUrl() {
-        return validationUrl;
-    }
-
-    public void setValidationUrl(String validationUrl) {
-        this.validationUrl = validationUrl;
     }
 
     //endregion
