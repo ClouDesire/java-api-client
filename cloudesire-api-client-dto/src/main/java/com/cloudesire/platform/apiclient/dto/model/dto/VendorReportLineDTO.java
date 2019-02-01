@@ -34,9 +34,6 @@ public class VendorReportLineDTO extends ReportLineDTO
 
     private OrderType type;
 
-    @ApiModelProperty( value = "The invoice generating this", readOnly = true )
-    private UrlEntityDTO invoice;
-
     public UrlEntityDTO getCompany()
     {
         return company;
@@ -107,16 +104,6 @@ public class VendorReportLineDTO extends ReportLineDTO
         this.type = type;
     }
 
-    public UrlEntityDTO getInvoice()
-    {
-        return invoice;
-    }
-
-    public void setInvoice( UrlEntityDTO invoice )
-    {
-        this.invoice = invoice;
-    }
-
     @Override
     public boolean equals( Object o )
     {
@@ -126,13 +113,12 @@ public class VendorReportLineDTO extends ReportLineDTO
         VendorReportLineDTO that = (VendorReportLineDTO) o;
         return Objects.equals( company, that.company ) && Objects.equals( income, that.income ) && Objects
                 .equals( license, that.license ) && Objects.equals( expenses, that.expenses ) && Objects
-                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type && Objects
-                .equals( invoice, that.invoice );
+                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type, invoice );
+        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type );
     }
 }
