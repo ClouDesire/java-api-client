@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "id", "remoteId", "status", "date", "nominee", "email", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
+        "id", "remoteId", "status", "date", "nominee", "email", "address", "fiscalCode", "taxCode", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "total", "vat",
         "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
@@ -27,7 +27,11 @@ public class InvoiceCsvDTO extends DTO
 
     private String email;
 
-    private String company;
+    private String address;
+
+    private String fiscalCode;
+
+    private String taxCode;
 
     private Integer subscriptionId;
 
@@ -35,13 +39,15 @@ public class InvoiceCsvDTO extends DTO
 
     private String description;
 
+    private String vendor;
+
     private OrderType type;
 
     private Date paymentReceived;
 
     private String currency;
 
-    private BigDecimal price;
+    private BigDecimal total;
 
     private BigDecimal vat;
 
@@ -120,14 +126,34 @@ public class InvoiceCsvDTO extends DTO
         this.email = email;
     }
 
-    public String getCompany()
+    public String getAddress()
     {
-        return company;
+        return address;
     }
 
-    public void setCompany( String company )
+    public void setAddress( String address )
     {
-        this.company = company;
+        this.address = address;
+    }
+
+    public String getFiscalCode()
+    {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode( String fiscalCode )
+    {
+        this.fiscalCode = fiscalCode;
+    }
+
+    public String getTaxCode()
+    {
+        return taxCode;
+    }
+
+    public void setTaxCode( String taxCode )
+    {
+        this.taxCode = taxCode;
     }
 
     public Integer getSubscriptionId()
@@ -160,6 +186,16 @@ public class InvoiceCsvDTO extends DTO
         this.description = description;
     }
 
+    public String getVendor()
+    {
+        return vendor;
+    }
+
+    public void setVendor( String vendor )
+    {
+        this.vendor = vendor;
+    }
+
     public OrderType getType()
     {
         return type;
@@ -190,14 +226,14 @@ public class InvoiceCsvDTO extends DTO
         this.currency = currency;
     }
 
-    public BigDecimal getPrice()
+    public BigDecimal getTotal()
     {
-        return price;
+        return total;
     }
 
-    public void setPrice( BigDecimal price )
+    public void setTotal( BigDecimal total )
     {
-        this.price = price;
+        this.total = total;
     }
 
     public BigDecimal getVat()
