@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "id", "remoteId", "status", "date", "nominee", "email", "company", "subscriptionId", "selfBilled", "description", "type", "paymentReceived", "currency", "price", "vat",
+        "id", "remoteId", "status", "date", "nominee", "email", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "price", "vat",
         "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
@@ -27,13 +27,13 @@ public class InvoiceCsvDTO extends DTO
 
     private String email;
 
-    private String company;
-
     private Integer subscriptionId;
 
     private boolean selfBilled;
 
     private String description;
+
+    private String vendor;
 
     private OrderType type;
 
@@ -120,16 +120,6 @@ public class InvoiceCsvDTO extends DTO
         this.email = email;
     }
 
-    public String getCompany()
-    {
-        return company;
-    }
-
-    public void setCompany( String company )
-    {
-        this.company = company;
-    }
-
     public Integer getSubscriptionId()
     {
         return subscriptionId;
@@ -158,6 +148,16 @@ public class InvoiceCsvDTO extends DTO
     public void setDescription( String description )
     {
         this.description = description;
+    }
+
+    public String getVendor()
+    {
+        return vendor;
+    }
+
+    public void setVendor( String vendor )
+    {
+        this.vendor = vendor;
     }
 
     public OrderType getType()
