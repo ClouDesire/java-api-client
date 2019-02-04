@@ -11,10 +11,10 @@ public class StatisticsDTO extends DTO
     private BigDecimal licenseExpenses;
     // endregion
 
-    // region root/supervisor/vendor fields
-    private BigDecimal earnings;
+    // region root/parent/supervisor/distributor/reseller/vendor fields
+    private BigDecimal margin;
 
-    private BigDecimal grossEarnings;
+    private BigDecimal earnings;
 
     private BigDecimal normalExpenses;
 
@@ -67,6 +67,16 @@ public class StatisticsDTO extends DTO
         this.licenseExpenses = licenseExpenses;
     }
 
+    public BigDecimal getMargin()
+    {
+        return margin;
+    }
+
+    public void setMargin( BigDecimal margin )
+    {
+        this.margin = margin;
+    }
+
     public BigDecimal getEarnings()
     {
         return earnings;
@@ -75,16 +85,6 @@ public class StatisticsDTO extends DTO
     public void setEarnings( BigDecimal earnings )
     {
         this.earnings = earnings;
-    }
-
-    public BigDecimal getGrossEarnings()
-    {
-        return grossEarnings;
-    }
-
-    public void setGrossEarnings( BigDecimal grossEarnings )
-    {
-        this.grossEarnings = grossEarnings;
     }
 
     public BigDecimal getNormalExpenses()
@@ -245,7 +245,7 @@ public class StatisticsDTO extends DTO
         StatisticsDTO that = (StatisticsDTO) o;
         return Objects.equals( iaasExpenses, that.iaasExpenses )
                 && Objects.equals( licenseExpenses, that.licenseExpenses )
-                && Objects.equals( earnings, that.earnings )
+                && Objects.equals( margin, that.margin )
                 && Objects.equals( normalExpenses, that.normalExpenses )
                 && Objects.equals( trialExpenses, that.trialExpenses )
                 && Objects.equals( sandboxExpenses, that.sandboxExpenses )
@@ -266,7 +266,7 @@ public class StatisticsDTO extends DTO
     public int hashCode()
     {
         return Objects.hash(
-                iaasExpenses, licenseExpenses, earnings, normalExpenses, trialExpenses, sandboxExpenses,
+                iaasExpenses, licenseExpenses, margin, normalExpenses, trialExpenses, sandboxExpenses,
                 customersCount, companiesCount, subscriptionsCount, deployedSubscriptionsCount,
                 pendingSubscriptionsCount, failedSubscriptionsCount, productsCount, publishedProductsCount,
                 normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount
