@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "id", "remoteId", "status", "date", "nominee", "email", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "price", "vat",
+        "id", "remoteId", "status", "date", "nominee", "email", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "total", "vat",
         "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
@@ -41,7 +41,7 @@ public class InvoiceCsvDTO extends DTO
 
     private String currency;
 
-    private BigDecimal price;
+    private BigDecimal total;
 
     private BigDecimal vat;
 
@@ -190,14 +190,14 @@ public class InvoiceCsvDTO extends DTO
         this.currency = currency;
     }
 
-    public BigDecimal getPrice()
+    public BigDecimal getTotal()
     {
-        return price;
+        return total;
     }
 
-    public void setPrice( BigDecimal price )
+    public void setTotal( BigDecimal total )
     {
-        this.price = price;
+        this.total = total;
     }
 
     public BigDecimal getVat()
