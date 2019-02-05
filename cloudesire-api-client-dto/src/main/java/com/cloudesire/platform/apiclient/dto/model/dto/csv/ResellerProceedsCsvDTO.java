@@ -4,27 +4,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( {
-        "product", "distributor", "reseller", "vendor", "buyer", "purchased", "vendorIncome", "cloudCosts", "sellin",
-        "sellout", "wholesale"
-} )
-public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
+@JsonPropertyOrder( { "product", "distributor", "vendor", "buyer", "purchased", "sellin", "sellout" } )
+public class ResellerProceedsCsvDTO extends ResellingProceedsCsvDTO
 {
     private String distributor;
 
-    private String reseller;
-
-    private String vendor;
-
-    private BigDecimal vendorIncome;
-
-    private BigDecimal cloudCosts;
+    private String buyer;
 
     private BigDecimal sellin;
 
     private BigDecimal sellout;
-
-    private BigDecimal wholesale;
 
     // region Auto-generated codess
     public String getDistributor()
@@ -37,44 +26,14 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
         this.distributor = distributor;
     }
 
-    public String getReseller()
+    public String getBuyer()
     {
-        return reseller;
+        return buyer;
     }
 
-    public void setReseller( String reseller )
+    public void setBuyer( String buyer )
     {
-        this.reseller = reseller;
-    }
-
-    public String getVendor()
-    {
-        return vendor;
-    }
-
-    public void setVendor( String vendor )
-    {
-        this.vendor = vendor;
-    }
-
-    public BigDecimal getVendorIncome()
-    {
-        return vendorIncome;
-    }
-
-    public void setVendorIncome( BigDecimal vendorIncome )
-    {
-        this.vendorIncome = vendorIncome;
-    }
-
-    public BigDecimal getCloudCosts()
-    {
-        return cloudCosts;
-    }
-
-    public void setCloudCosts( BigDecimal cloudCosts )
-    {
-        this.cloudCosts = cloudCosts;
+        this.buyer = buyer;
     }
 
     public BigDecimal getSellin()
@@ -95,16 +54,6 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
     public void setSellout( BigDecimal sellout )
     {
         this.sellout = sellout;
-    }
-
-    public BigDecimal getWholesale()
-    {
-        return wholesale;
-    }
-
-    public void setWholesale( BigDecimal wholesale )
-    {
-        this.wholesale = wholesale;
     }
     // endregion
 }
