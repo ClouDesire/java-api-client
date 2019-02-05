@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -12,6 +13,8 @@ public class ResellingReportLineDTO extends ReportLineDTO
 
     @ApiModelProperty( value = "The reseller who sold this", readOnly = true )
     private UrlEntityDTO reseller;
+
+    private LineType type;
 
     @ApiModelProperty( value = "The vendor of this product", readOnly = true )
     private UrlEntityDTO vendor;
@@ -50,6 +53,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setReseller( UrlEntityDTO reseller )
     {
         this.reseller = reseller;
+    }
+
+    public LineType getType()
+    {
+        return type;
+    }
+
+    public void setType( LineType type )
+    {
+        this.type = type;
     }
 
     public UrlEntityDTO getVendor()
@@ -119,16 +132,18 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         ResellingReportLineDTO that = (ResellingReportLineDTO) o;
-        return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller ) && Objects
-                .equals( vendor, that.vendor ) && Objects.equals( wholesale, that.wholesale ) && Objects
-                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout ) && Objects
+        return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller )
+                && type == that.type && Objects.equals( vendor, that.vendor ) && Objects
+                .equals( wholesale, that.wholesale ) && Objects.equals( sellin, that.sellin ) && Objects
+                .equals( sellout, that.sellout ) && Objects.equals( costs, that.costs ) && Objects
                 .equals( margin, that.margin );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), distributor, reseller, vendor, wholesale, sellin, sellout, margin );
+        return Objects.hash( super.hashCode(), distributor, reseller, type, vendor, wholesale, sellin, sellout, costs,
+                margin );
     }
     // endregion
 
