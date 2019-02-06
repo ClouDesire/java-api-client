@@ -191,5 +191,20 @@ public class ResellingReportLineDTO extends ReportLineDTO
         {
             this.iaas = iaas;
         }
+
+        @Override
+        public boolean equals( Object o )
+        {
+            if ( this == o ) return true;
+            if ( o == null || getClass() != o.getClass() ) return false;
+            CostsDTO costsDTO = (CostsDTO) o;
+            return Objects.equals( license, costsDTO.license ) && Objects.equals( iaas, costsDTO.iaas );
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash( license, iaas );
+        }
     }
 }
