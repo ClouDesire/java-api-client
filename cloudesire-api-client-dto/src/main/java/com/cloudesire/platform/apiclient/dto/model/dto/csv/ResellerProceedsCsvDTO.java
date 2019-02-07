@@ -4,22 +4,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "product", "distributor", "reseller", "buyer", "purchased", "vendorIncome", "sellin",
-        "sellout", "vat" } )
-public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
+@JsonPropertyOrder( { "product", "distributor", "vendor", "buyer", "purchased", "sellin", "sellout" } )
+public class ResellerProceedsCsvDTO extends ResellingProceedsCsvDTO
 {
     private String distributor;
 
-    private String reseller;
-
-    private BigDecimal vendorIncome;
+    private String buyer;
 
     private BigDecimal sellin;
 
     private BigDecimal sellout;
 
     // region Auto-generated codess
-
     public String getDistributor()
     {
         return distributor;
@@ -30,14 +26,14 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
         this.distributor = distributor;
     }
 
-    public String getReseller()
+    public String getBuyer()
     {
-        return reseller;
+        return buyer;
     }
 
-    public void setReseller( String reseller )
+    public void setBuyer( String buyer )
     {
-        this.reseller = reseller;
+        this.buyer = buyer;
     }
 
     public BigDecimal getSellin()
@@ -59,16 +55,5 @@ public class ResellerProceedsCsvDTO extends ProceedsCsvDTO
     {
         this.sellout = sellout;
     }
-
-    public BigDecimal getVendorIncome()
-    {
-        return vendorIncome;
-    }
-
-    public void setVendorIncome( BigDecimal vendorIncome )
-    {
-        this.vendorIncome = vendorIncome;
-    }
-
     // endregion
 }

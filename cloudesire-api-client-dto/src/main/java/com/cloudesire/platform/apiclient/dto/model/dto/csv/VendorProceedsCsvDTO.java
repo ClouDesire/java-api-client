@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 @JsonPropertyOrder( { "product", "buyer", "invoice", "purchased", "license", "iaas", "fees", "charge", "earnings" } )
 public class VendorProceedsCsvDTO extends ProceedsCsvDTO
 {
+    private String buyer;
+
     private String invoice;
 
     private BigDecimal license;
@@ -19,7 +21,15 @@ public class VendorProceedsCsvDTO extends ProceedsCsvDTO
 
     private BigDecimal earnings;
 
-    // region Auto-generated codess
+    public String getBuyer()
+    {
+        return buyer;
+    }
+
+    public void setBuyer( String buyer )
+    {
+        this.buyer = buyer;
+    }
 
     public String getInvoice()
     {
@@ -80,6 +90,4 @@ public class VendorProceedsCsvDTO extends ProceedsCsvDTO
     {
         this.earnings = earnings;
     }
-
-    // endregion
 }
