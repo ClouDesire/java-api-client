@@ -8,15 +8,18 @@ import java.util.Objects;
 
 public class ResellingReportLineDTO extends ReportLineDTO
 {
-    @ApiModelProperty( value = "The distributor of this product", readOnly = true )
     private UrlEntityDTO distributor;
 
-    @ApiModelProperty( value = "The reseller who sold this", readOnly = true )
     private UrlEntityDTO reseller;
 
     private LineType type;
 
-    @ApiModelProperty( value = "The vendor of this product", readOnly = true )
+    @ApiModelProperty( value = "The description of the invoice line", readOnly = true )
+    private String description;
+
+    @ApiModelProperty( value = "The quantity sold", readOnly = true )
+    private BigDecimal quantity;
+
     private UrlEntityDTO vendor;
 
     @ApiModelProperty( value = "The proceeds for the parent", readOnly = true )
@@ -63,6 +66,26 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setType( LineType type )
     {
         this.type = type;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription( String description )
+    {
+        this.description = description;
+    }
+
+    public BigDecimal getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity( BigDecimal quantity )
+    {
+        this.quantity = quantity;
     }
 
     public UrlEntityDTO getVendor()
