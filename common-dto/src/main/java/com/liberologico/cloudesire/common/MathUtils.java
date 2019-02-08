@@ -76,6 +76,16 @@ public final class MathUtils
         return ! isZero( number );
     }
 
+    public static boolean allZeroes( BigDecimal... numbers )
+    {
+        for ( BigDecimal number : numbers )
+        {
+            if ( isNotZero( number ) ) return false;
+        }
+
+        return true;
+    }
+
     public static BigDecimal parseFloat( Float amount )
     {
         return BigDecimal.valueOf( amount )

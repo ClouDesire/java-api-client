@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -7,13 +8,18 @@ import java.util.Objects;
 
 public class ResellingReportLineDTO extends ReportLineDTO
 {
-    @ApiModelProperty( value = "The distributor of this product", readOnly = true )
     private UrlEntityDTO distributor;
 
-    @ApiModelProperty( value = "The reseller who sold this", readOnly = true )
     private UrlEntityDTO reseller;
 
-    @ApiModelProperty( value = "The vendor of this product", readOnly = true )
+    private LineType type;
+
+    @ApiModelProperty( value = "The description of the invoice line", readOnly = true )
+    private String description;
+
+    @ApiModelProperty( value = "The quantity sold", readOnly = true )
+    private BigDecimal quantity;
+
     private UrlEntityDTO vendor;
 
     @ApiModelProperty( value = "The proceeds for the parent", readOnly = true )
@@ -50,6 +56,36 @@ public class ResellingReportLineDTO extends ReportLineDTO
     public void setReseller( UrlEntityDTO reseller )
     {
         this.reseller = reseller;
+    }
+
+    public LineType getType()
+    {
+        return type;
+    }
+
+    public void setType( LineType type )
+    {
+        this.type = type;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription( String description )
+    {
+        this.description = description;
+    }
+
+    public BigDecimal getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity( BigDecimal quantity )
+    {
+        this.quantity = quantity;
     }
 
     public UrlEntityDTO getVendor()
@@ -119,16 +155,18 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         ResellingReportLineDTO that = (ResellingReportLineDTO) o;
-        return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller ) && Objects
-                .equals( vendor, that.vendor ) && Objects.equals( wholesale, that.wholesale ) && Objects
-                .equals( sellin, that.sellin ) && Objects.equals( sellout, that.sellout ) && Objects
+        return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller )
+                && type == that.type && Objects.equals( vendor, that.vendor ) && Objects
+                .equals( wholesale, that.wholesale ) && Objects.equals( sellin, that.sellin ) && Objects
+                .equals( sellout, that.sellout ) && Objects.equals( costs, that.costs ) && Objects
                 .equals( margin, that.margin );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), distributor, reseller, vendor, wholesale, sellin, sellout, margin );
+        return Objects.hash( super.hashCode(), distributor, reseller, type, vendor, wholesale, sellin, sellout, costs,
+                margin );
     }
     // endregion
 
@@ -175,6 +213,21 @@ public class ResellingReportLineDTO extends ReportLineDTO
         public void setIaas( BigDecimal iaas )
         {
             this.iaas = iaas;
+        }
+
+        @Override
+        public boolean equals( Object o )
+        {
+            if ( this == o ) return true;
+            if ( o == null || getClass() != o.getClass() ) return false;
+            CostsDTO costsDTO = (CostsDTO) o;
+            return Objects.equals( license, costsDTO.license ) && Objects.equals( iaas, costsDTO.iaas );
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash( license, iaas );
         }
     }
 }
