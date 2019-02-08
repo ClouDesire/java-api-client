@@ -16,6 +16,8 @@ public class StatisticsDTO extends DTO
 
     private BigDecimal earnings;
 
+    private BigDecimal costs;
+
     private BigDecimal normalExpenses;
 
     private BigDecimal trialExpenses;
@@ -85,6 +87,16 @@ public class StatisticsDTO extends DTO
     public void setEarnings( BigDecimal earnings )
     {
         this.earnings = earnings;
+    }
+
+    public BigDecimal getCosts()
+    {
+        return costs;
+    }
+
+    public void setCosts( BigDecimal costs )
+    {
+        this.costs = costs;
     }
 
     public BigDecimal getNormalExpenses()
@@ -246,6 +258,8 @@ public class StatisticsDTO extends DTO
         return Objects.equals( iaasExpenses, that.iaasExpenses )
                 && Objects.equals( licenseExpenses, that.licenseExpenses )
                 && Objects.equals( margin, that.margin )
+                && Objects.equals( earnings, that.earnings )
+                && Objects.equals( costs, that.costs )
                 && Objects.equals( normalExpenses, that.normalExpenses )
                 && Objects.equals( trialExpenses, that.trialExpenses )
                 && Objects.equals( sandboxExpenses, that.sandboxExpenses )
@@ -266,7 +280,7 @@ public class StatisticsDTO extends DTO
     public int hashCode()
     {
         return Objects.hash(
-                iaasExpenses, licenseExpenses, margin, normalExpenses, trialExpenses, sandboxExpenses,
+                iaasExpenses, licenseExpenses, earnings, costs, margin, normalExpenses, trialExpenses, sandboxExpenses,
                 customersCount, companiesCount, subscriptionsCount, deployedSubscriptionsCount,
                 pendingSubscriptionsCount, failedSubscriptionsCount, productsCount, publishedProductsCount,
                 normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount
