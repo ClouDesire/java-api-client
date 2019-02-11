@@ -21,8 +21,8 @@ public interface DistributorPricingApi
     @POST( "distributorPricing" )
     Call<DistributorPricingDTO> create( @Body DistributorPricingDTO dto );
 
-    @GET( "distributorPricing/{id}" )
-    Call<DistributorPricingDTO> get( @Path( "id" ) int id );
+     @GET( "distributorPricing" )
+    Call<List<DistributorPricingDTO>> getAll();
 
     @GET( "distributorPricing" )
     Call<List<DistributorPricingDTO>> getAll( @QueryMap Map<String, String> pageRequest );
@@ -34,6 +34,9 @@ public interface DistributorPricingApi
             @Query( "deprecated" ) Boolean deprecated,
             @QueryMap Map<String, String> pageRequest
     );
+
+    @GET( "distributorPricing/{id}" )
+    Call<DistributorPricingDTO> get( @Path( "id" ) int id );
 
     @PUT( "distributorPricing/{id}" )
     Call<DistributorPricingDTO> update( @Path( "id" ) int id, @Body DistributorPricingDTO input );

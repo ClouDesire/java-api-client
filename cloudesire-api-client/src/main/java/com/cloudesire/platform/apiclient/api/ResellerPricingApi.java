@@ -1,7 +1,8 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.ResellerPricingDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ResellerPricingDTO;
+import com.cloudesire.platform.apiclient.query.ResellerPricingQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -21,25 +22,28 @@ public interface ResellerPricingApi
     @POST( "resellerPricing" )
     Call<ResellerPricingDTO> create( @Body ResellerPricingDTO dto );
 
-    @GET( "resellerPricing/{id}" )
-    Call<ResellerPricingDTO> get( @Path( "id" ) int id );
+    @GET( "resellerPricing" )
+    Call<List<ResellerPricingDTO>> getAll();
 
     @GET( "resellerPricing" )
-    Call<List<ResellerPricingDTO>> getAll( @QueryMap Map<String, String> pageRequest );
+    Call<List<ResellerPricingDTO>> getAll( @QueryMap ResellerPricingQuery query );
 
     @GET( "resellerPricing" )
+    @Deprecated
     Call<List<ResellerPricingDTO>> getAll(
             @Query( "resellerId" ) Integer resellerId,
             @QueryMap Map<String, String> pageRequest
     );
 
     @GET( "resellerPricing" )
+    @Deprecated
     Call<List<ResellerPricingDTO>> getAll(
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest
     );
 
     @GET( "resellerPricing" )
+    @Deprecated
     Call<List<ResellerPricingDTO>> getAll(
             @Query( "resellerId" ) Integer resellerId,
             @Query( "catalogId" ) Integer catalogId,
@@ -47,6 +51,9 @@ public interface ResellerPricingApi
             @Query( "unpriced" ) Boolean unpriced,
             @QueryMap Map<String, String> pageRequest
     );
+
+    @GET( "resellerPricing/{id}" )
+    Call<ResellerPricingDTO> get( @Path( "id" ) int id );
 
     @PUT( "resellerPricing/{id}" )
     Call<ResellerPricingDTO> update( @Path( "id" ) int id, @Body ResellerPricingDTO input );
