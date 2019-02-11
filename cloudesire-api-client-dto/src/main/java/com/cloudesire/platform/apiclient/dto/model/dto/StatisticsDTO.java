@@ -1,53 +1,71 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class StatisticsDTO extends DTO
 {
-    // region Customer fields
+    @ApiModelProperty( value = "IAAS expenses for customer", readOnly = true )
     private BigDecimal iaasExpenses;
 
+    @ApiModelProperty( value = "License expenses for customer", readOnly = true )
     private BigDecimal licenseExpenses;
-    // endregion
 
-    // region root/parent/supervisor/distributor/reseller/vendor fields
+    @ApiModelProperty( value = "Difference between earnings and costs", readOnly = true )
     private BigDecimal margin;
 
+    @ApiModelProperty( value = "Total earnings", readOnly = true )
     private BigDecimal earnings;
 
+    @ApiModelProperty( value = "Total costs", readOnly = true )
     private BigDecimal costs;
 
+    @ApiModelProperty( value = "Expenses for NORMAL orders", readOnly = true )
     private BigDecimal normalExpenses;
 
+    @ApiModelProperty( value = "Expenses for TRIAL orders", readOnly = true )
     private BigDecimal trialExpenses;
 
+    @ApiModelProperty( value = "Expenses for SANDBOX orders", readOnly = true )
     private BigDecimal sandboxExpenses;
 
+    @ApiModelProperty( value = "Active customers", readOnly = true )
     private Long customersCount;
 
+    @ApiModelProperty( value = "Registered companies", readOnly = true )
     private Long companiesCount;
 
+    @ApiModelProperty( value = "Active subscriptions", readOnly = true )
     private Long subscriptionsCount;
 
+    @ApiModelProperty( value = "Subscriptions in DEPLOYED status", readOnly = true )
     private Long deployedSubscriptionsCount;
 
+    @ApiModelProperty( value = "Subscriptions in PENDING status", readOnly = true )
     private Long pendingSubscriptionsCount;
 
+    @ApiModelProperty( value = "Subscriptions in FAILED status", readOnly = true )
     private Long failedSubscriptionsCount;
 
+    @ApiModelProperty( value = "Products count", readOnly = true )
     private Long productsCount;
 
+    @ApiModelProperty( value = "Published products count", readOnly = true )
     private Long publishedProductsCount;
 
+    @ApiModelProperty( value = "Paid NORMAL orders", readOnly = true )
     private Long normalOrdersCount;
 
+    @ApiModelProperty( value = "Trial orders", readOnly = true )
     private Long trialOrdersCount;
 
+    @ApiModelProperty( value = "Renewal orders", readOnly = true )
     private Long renewalOrdersCount;
 
+    @ApiModelProperty( value = "Upsell orders", readOnly = true )
     private Long upsellOrdersCount;
-    // endregion
 
     public BigDecimal getIaasExpenses()
     {
