@@ -15,10 +15,21 @@ import java.util.Map;
 public interface ResellingReportApi
 {
     @GET( "proceedsReport/reselling" )
+    Call<List<ResellingReportLineDTO>> getAll();
+
+    @GET( "proceedsReport/reselling" )
     Call<List<ResellingReportLineDTO>> getAll( @QueryMap Map<String, String> filters );
 
     @GET( "proceedsReport/reselling/totals" )
+    Call<ResellingTotalsDTO> getTotals();
+
+    @GET( "proceedsReport/reselling/totals" )
     Call<ResellingTotalsDTO> getTotals( @QueryMap Map<String, String> filters );
+
+    @Streaming
+    @GET( "proceedsReport/reselling" )
+    @Headers( { "Accept:text/csv" } )
+    Call<ResponseBody> getCsv();
 
     @Streaming
     @GET( "proceedsReport/reselling" )

@@ -5,8 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
-import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
-import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -27,6 +26,18 @@ import java.util.Map;
 
 public interface SubscriptionApi
 {
+    @HEAD( "subscription" )
+    Call<Void> getAllPagedHead();
+
+    @HEAD( "subscription" )
+    Call<Void> getAllPagedHead( @QueryMap SubscriptionQuery query );
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAll();
+
+    @GET( "subscription" )
+    Call<List<SubscriptionDTO>> getAll( @QueryMap SubscriptionQuery query );
+
     @POST( "subscription/{id}/invoice/recurring" )
     Call<SubscriptionDTO> addRecurringCosts( @Path( "id" ) Integer id, @Body List<RecurringCostLineDTO> lines );
 
@@ -39,33 +50,6 @@ public interface SubscriptionApi
     @PATCH( "subscription/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input,
             @Query( "language" ) String language );
-
-    @HEAD( "subscription" )
-    Call<Void> getAllPagedHead( @Query( "filter" ) String filter, @Query( "status" ) String status,
-            @Query( "type" ) String type, @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged( @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged(
-            @Query( "status" ) DeploymentStatusEnum status, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged(
-            @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged(
-            @Query( "type" ) OrderType type, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged(
-            @Query( "filter" ) String filter, @QueryMap Map<String, String> pageRequest );
-
-    @GET( "subscription" )
-    Call<List<SubscriptionDTO>> getAllPaged( @Query( "filter" ) String filter, @Query( "status" ) String status,
-            @Query( "type" ) String type, @Query( "product" ) Integer product, @QueryMap Map<String, String> pageRequest );
 
     @GET( "subscription/expiring" )
     Call<List<SubscriptionDTO>> getExpiring();
@@ -95,13 +79,11 @@ public interface SubscriptionApi
     @Streaming
     @GET( "subscription" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @Query( "filter" ) String filter, @Query( "status" ) String status,
-            @Query( "type" ) String type, @Query( "product" ) Integer product,
-            @QueryMap Map<String, String> pageRequest );
+    Call<ResponseBody> getCsv();
 
     @Streaming
     @GET( "subscription" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+    Call<ResponseBody> getCsv( @QueryMap SubscriptionQuery query );
 
 }
