@@ -21,7 +21,7 @@ public interface DistributorPricingApi
     @POST( "distributorPricing" )
     Call<DistributorPricingDTO> create( @Body DistributorPricingDTO dto );
 
-     @GET( "distributorPricing" )
+    @GET( "distributorPricing" )
     Call<List<DistributorPricingDTO>> getAll();
 
     @GET( "distributorPricing" )

@@ -2,10 +2,10 @@ package com.cloudesire.platform.apiclient.query;
 
 public class ResellerPricingQuery extends BaseQuery
 {
-    private static final String resellerId = "resellerId";
-    private static final String catalogId = "catalogId";
-    private static final String productId = "productId";
-    private static final String unpriced = "unpriced";
+    private static final String RESELLER_ID = "resellerId";
+    private static final String CATALOG_ID = "catalogId";
+    private static final String PRODUCT_ID = "productId";
+    private static final String UNPRICED = "unpriced";
 
     public ResellerPricingQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -15,25 +15,25 @@ public class ResellerPricingQuery extends BaseQuery
 
     public ResellerPricingQuery setResellerId( Integer name )
     {
-        put( resellerId, name );
+        put( RESELLER_ID, name );
         return this;
     }
 
     public ResellerPricingQuery setCatalogId( Integer name )
     {
-        put( catalogId, name );
+        put( CATALOG_ID, name );
         return this;
     }
 
     public ResellerPricingQuery setProductId( Integer name )
     {
-        put( productId, name );
+        put( PRODUCT_ID, name );
         return this;
     }
 
     public ResellerPricingQuery setUnpriced( Boolean name )
     {
-        put( unpriced, name );
+        put( UNPRICED, name );
         return this;
     }
 }
