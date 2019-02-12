@@ -8,31 +8,26 @@ import java.util.Objects;
 
 public class VendorReportLineDTO extends ReportLineDTO
 {
-    @ApiModelProperty( value = "The company who sold this", readOnly = true )
     private UrlEntityDTO company;
 
     @ApiModelProperty( value = "Income for the vendor", readOnly = true )
     private BigDecimal income;
 
-    /**
-     * License component of the total income
-     */
+    @ApiModelProperty( value = "License component of the total income", readOnly = true )
     private BigDecimal license;
 
     @ApiModelProperty( value = "Expenses for the vendor", readOnly = true )
     private BigDecimal expenses;
 
-    /**
-     * Infrastructure cost component of the total expenses
-     */
+    @ApiModelProperty( value = "Infrastructure cost component of the total expenses", readOnly = true )
     private BigDecimal iaas;
 
-    /**
-     * Our fees
-     */
+    @ApiModelProperty( value = "Platform fees", readOnly = true )
     private BigDecimal fees;
 
     private OrderType type;
+
+    private UrlEntityDTO order;
 
     public UrlEntityDTO getCompany()
     {
@@ -104,6 +99,16 @@ public class VendorReportLineDTO extends ReportLineDTO
         this.type = type;
     }
 
+    public UrlEntityDTO getOrder()
+    {
+        return order;
+    }
+
+    public void setOrder( UrlEntityDTO order )
+    {
+        this.order = order;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -113,12 +118,13 @@ public class VendorReportLineDTO extends ReportLineDTO
         VendorReportLineDTO that = (VendorReportLineDTO) o;
         return Objects.equals( company, that.company ) && Objects.equals( income, that.income ) && Objects
                 .equals( license, that.license ) && Objects.equals( expenses, that.expenses ) && Objects
-                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type;
+                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type && Objects
+                .equals( order, that.order );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type );
+        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type, order );
     }
 }
