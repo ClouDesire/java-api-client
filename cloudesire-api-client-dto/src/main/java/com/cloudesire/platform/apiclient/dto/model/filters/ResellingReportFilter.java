@@ -12,6 +12,9 @@ public class ResellingReportFilter extends ReportFilter
     @ApiModelProperty( "Filter by Reseller ID" )
     private Integer resellerId;
 
+    @ApiModelProperty( "Filter by vendor ID" )
+    private Integer companyId;
+
     public static ResellingReportFilter by()
     {
         return new ResellingReportFilter();
@@ -34,6 +37,12 @@ public class ResellingReportFilter extends ReportFilter
         this.resellerId = resellerId;
         return this;
     }
+
+    public ResellingReportFilter company( Integer comanyId )
+    {
+        this.companyId = comanyId;
+        return this;
+    }
     // endregion
 
     @Override
@@ -42,6 +51,7 @@ public class ResellingReportFilter extends ReportFilter
         Map<String, String> map = super.toMap();
         if ( distributorId != null ) map.put( "distributorId", distributorId.toString() );
         if ( resellerId != null ) map.put( "resellerId", resellerId.toString() );
+        if ( companyId != null ) map.put( "companyId", companyId.toString() );
         return map;
     }
 
@@ -64,6 +74,16 @@ public class ResellingReportFilter extends ReportFilter
     public void setResellerId( Integer resellerId )
     {
         this.resellerId = resellerId;
+    }
+
+    public Integer getCompanyId()
+    {
+        return companyId;
+    }
+
+    public void setCompanyId( Integer companyId )
+    {
+        this.companyId = companyId;
     }
     // endregion
 }
