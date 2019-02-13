@@ -15,6 +15,9 @@ import java.util.Map;
 public interface VendorReportApi
 {
     @GET( "proceedsReport/vendor" )
+    Call<List<VendorReportLineDTO>> getAll();
+
+    @GET( "proceedsReport/vendor" )
     Call<List<VendorReportLineDTO>> getAll( @QueryMap Map<String, String> filters );
 
     @GET( "proceedsReport/vendor/totals" )
