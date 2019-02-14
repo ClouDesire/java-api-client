@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
-import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -13,13 +13,13 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_SIZE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( "Definition of the pricing of an extra resource" )
 public class BillingItemDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Unique identifier of the billing item" )
-    @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ConstraintKeys.ALPHANUMERIC )
+    @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ErrorKeys.ALPHANUMERIC )
     private String identifier;
 
     @ApiModelProperty( value = "Descriptive name of a single item", example = "user, license" )

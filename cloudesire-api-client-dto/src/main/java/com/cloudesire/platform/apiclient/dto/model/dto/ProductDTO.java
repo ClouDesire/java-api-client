@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_SIZE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Comparable<ProductDTO>
 {

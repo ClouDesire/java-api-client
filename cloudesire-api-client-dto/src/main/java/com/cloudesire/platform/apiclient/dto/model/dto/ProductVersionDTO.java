@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_MIN;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_MIN;
 
 public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL10nDTO
 {

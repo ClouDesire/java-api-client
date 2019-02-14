@@ -1,12 +1,13 @@
-package com.cloudesire.platform.apiclient.dto.model.utils;
+package com.cloudesire.platform.apiclient.dto.model.constants;
 
 /**
  * Hibernate validator exceptions message patterns
  */
-public final class ConstraintKeys
+public final class ErrorKeys
 {
     public static final String INVALID_SIZE = "{wrong.size.%element%.%max%.%min%}";
     public static final String INVALID_MIN = "{must.be.greater.than.or.equal.to.%min%}";
+    public static final String INVALID_MAX = "{must.be.lower.than.or.equal.to.%max%}";
     public static final String ALPHANUMERIC = "{must.be.alphanumeric.%element%}";
     public static final String ALPHANUMERIC_START_WITH_LETTER = "{must.be.alphanumeric.and.start.with.letter.%element%}";
     public static final String TWO_DIGITS = "{must.contain.two.digits.%element%}";
@@ -18,7 +19,7 @@ public final class ConstraintKeys
     public static final String COMPANY_NOT_ALLOWED = "{company.not.allowed.%element%}";
     public static final String FEATURE_DISABLED = "{feature.disabled.%element%}";
 
-    private ConstraintKeys()
+    private ErrorKeys()
     {
     }
 }
