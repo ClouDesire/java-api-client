@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 
 public abstract class ResellingProceedsCsvDTO extends ProceedsCsvDTO
 {
-    private Integer invoiceId;
-
     private String vendor;
 
     private Integer lineId;
@@ -17,16 +15,6 @@ public abstract class ResellingProceedsCsvDTO extends ProceedsCsvDTO
     private String description;
 
     private BigDecimal quantity;
-
-    public Integer getInvoiceId()
-    {
-        return invoiceId;
-    }
-
-    public void setInvoiceId( Integer invoiceId )
-    {
-        this.invoiceId = invoiceId;
-    }
 
     public String getVendor()
     {
