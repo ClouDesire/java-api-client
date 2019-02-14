@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "invoiceId", "product", "buyer", "purchased", "license", "iaas", "fees", "charge", "earnings" } )
+@JsonPropertyOrder( { "invoiceId", "product", "customer", "email", "purchased", "license", "iaas", "fees", "charge", "earnings" } )
 public class VendorProceedsCsvDTO extends ProceedsCsvDTO
 {
-    private String buyer;
+    private String customer;
+
+    private String email;
 
     private BigDecimal license;
 
@@ -19,14 +21,24 @@ public class VendorProceedsCsvDTO extends ProceedsCsvDTO
 
     private BigDecimal earnings;
 
-    public String getBuyer()
+    public String getCustomer()
     {
-        return buyer;
+        return customer;
     }
 
-    public void setBuyer( String buyer )
+    public void setCustomer( String customer )
     {
-        this.buyer = buyer;
+        this.customer = customer;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail( String email )
+    {
+        this.email = email;
     }
 
     public BigDecimal getLicense()
