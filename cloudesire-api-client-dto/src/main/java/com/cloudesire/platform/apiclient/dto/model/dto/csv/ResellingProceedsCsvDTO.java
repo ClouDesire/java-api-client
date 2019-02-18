@@ -8,6 +8,8 @@ public abstract class ResellingProceedsCsvDTO extends ProceedsCsvDTO
 {
     private String vendor;
 
+    private Integer lineId;
+
     private LineType type;
 
     private String description;
@@ -22,6 +24,16 @@ public abstract class ResellingProceedsCsvDTO extends ProceedsCsvDTO
     public void setVendor( String vendor )
     {
         this.vendor = vendor;
+    }
+
+    public Integer getLineId()
+    {
+        return lineId;
+    }
+
+    public void setLineId( Integer lineId )
+    {
+        this.lineId = lineId;
     }
 
     public LineType getType()
