@@ -15,11 +15,11 @@ import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CouponApi
 {
@@ -50,7 +50,7 @@ public interface CouponApi
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body CouponPatchDTO actions );
 
     @PATCH( "coupon/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body CouponPatchDTO actions, @Query( "language" ) String language );
+    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body CouponPatchDTO actions, @QueryMap Map<String, String> queryMap );
 
     @DELETE( "coupon/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
