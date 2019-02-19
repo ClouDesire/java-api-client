@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.EndpointDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
@@ -40,7 +41,7 @@ public interface SubscriptionApi
     Call<List<SubscriptionDTO>> getAll( @QueryMap SubscriptionQuery query );
 
     @POST( "subscription/{id}/invoice/recurring" )
-    Call<SubscriptionDTO> addRecurringCosts( @Path( "id" ) Integer id, @Body List<RecurringCostLineDTO> lines );
+    Call<SubscriptionDetailDTO> addRecurringCosts( @Path( "id" ) Integer id, @Body List<RecurringCostLineDTO> lines );
 
     @DELETE( "subscription/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
@@ -56,10 +57,10 @@ public interface SubscriptionApi
     Call<List<SubscriptionDTO>> getExpiring();
 
     @GET( "subscription/{id}" )
-    Call<SubscriptionDTO> get( @Path( "id" ) Integer id );
+    Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id );
 
     @GET( "subscription/{id}" )
-    Call<SubscriptionDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
+    Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @GET( "subscription/{id}/upgrades" )
     Call<List<UrlEntityDTO>> getPossibleUpgrades( @Path( "id" ) int id );
@@ -69,10 +70,10 @@ public interface SubscriptionApi
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/instructions" )
-    Call<SubscriptionDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Map<String, String> instructions );
+    Call<SubscriptionDetailDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Map<String, String> instructions );
 
     @POST( "subscription/{id}/endpoints" )
-    Call<SubscriptionDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );
+    Call<SubscriptionDetailDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );
 
     @GET( "subscription/{id}/metadata" )
     Call<Map<String, Object>> getMetadata( @Path( "id" ) Integer id );

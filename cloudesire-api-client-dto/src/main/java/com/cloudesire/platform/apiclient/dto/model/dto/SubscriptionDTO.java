@@ -1,21 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.liberologico.cloudesire.common.enums.dto.ActionDTO;
+import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Set;
+import java.util.List;
 
-public class SubscriptionDTO extends SubscriptionListDTO
+public class SubscriptionDTO extends BaseSubscriptionDTO
 {
-    private Set<ActionDTO> availableOperations = null;
+    @ApiModelProperty( value = "Extra resources for this subscription", readOnly = true )
+    private List<SubscriptionBillingItemDTO> billingItems;
 
-    public Set<ActionDTO> getAvailableOperations()
+    public List<SubscriptionBillingItemDTO> getBillingItems()
     {
-        return availableOperations;
+        return billingItems;
     }
 
-    public void setAvailableOperations( Set<ActionDTO> availableOperations )
+    public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
-        this.availableOperations = availableOperations;
+        this.billingItems = billingItems;
     }
-
 }
