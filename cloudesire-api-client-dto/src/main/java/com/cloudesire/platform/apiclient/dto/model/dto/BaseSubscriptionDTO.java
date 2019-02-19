@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
-import com.liberologico.cloudesire.common.enums.dto.ActionDTO;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -89,8 +88,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "Deprecated", hidden = true )
     @Deprecated
     private BigInteger bandwidthInGB;
-
-    private Set<ActionDTO> availableOperations = null;
 
     @ApiModelProperty( "If the subscription automatically renews before expiring or not" )
     private boolean autoRenew;
@@ -347,16 +344,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     public void setBandwidthInGB( BigInteger bandwidthInGB )
     {
         this.bandwidthInGB = bandwidthInGB;
-    }
-
-    public Set<ActionDTO> getAvailableOperations()
-    {
-        return availableOperations;
-    }
-
-    public void setAvailableOperations( Set<ActionDTO> availableOperations )
-    {
-        this.availableOperations = availableOperations;
     }
 
     public boolean getAutoRenew()
