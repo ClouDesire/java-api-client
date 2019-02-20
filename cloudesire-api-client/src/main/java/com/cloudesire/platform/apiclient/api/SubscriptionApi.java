@@ -5,7 +5,6 @@ import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
@@ -61,9 +60,6 @@ public interface SubscriptionApi
 
     @GET( "subscription/{id}" )
     Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
-
-    @GET( "subscription/{id}/upgrades" )
-    Call<List<UrlEntityDTO>> getPossibleUpgrades( @Path( "id" ) int id );
 
     @POST( "subscription/{id}/invoice" )
     Call<Void> postOrderLines( @Path( "id" ) Integer id, @Body List<VendorOrderLineDTO> lines,
