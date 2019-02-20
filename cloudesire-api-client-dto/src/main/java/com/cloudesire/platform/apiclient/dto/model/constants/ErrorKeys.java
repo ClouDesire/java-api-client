@@ -1,8 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.constants;
 
-/**
- * Hibernate validator exceptions message patterns
- */
 public final class ErrorKeys
 {
     public static final String INVALID_SIZE = "wrong.size.%max%.%min%";
