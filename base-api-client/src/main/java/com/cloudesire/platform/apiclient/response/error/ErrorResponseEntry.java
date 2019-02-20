@@ -5,9 +5,7 @@ import com.liberologico.cloudesire.common.Slugger;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ErrorResponseEntry implements Serializable
@@ -22,24 +20,31 @@ public class ErrorResponseEntry implements Serializable
     @JsonInclude( JsonInclude.Include.NON_EMPTY )
     private String requestId;
 
-    @JsonInclude( JsonInclude.Include.NON_EMPTY )
-    private List<Serializable> contexts = new ArrayList<>();
-
     // for jackson
     private ErrorResponseEntry()
     {
         this.error = "";
     }
 
+    public ErrorResponseEntry( String key, String message )
+    {
+        this( key, message, null, null );
+    }
+
+
+    public ErrorResponseEntry( String key, String message, Map<String, String> extraFields )
+    {
+        this( key, message, extraFields, null );
+    }
+
     /**
-     * @param error can contains placeholders in the form of {placeholder} that will be substituted with extraFields contents.
+     * @param message can contains placeholders in the form of {placeholder} that will be substituted with extraFields contents.
      */
-    private ErrorResponseEntry( String key, String error, Map<String, String> extraFields, String requestId,
-            List<Serializable> contexts )
+    public ErrorResponseEntry( String key, String message, Map<String, String> extraFields, String requestId )
     {
         if ( extraFields != null )
         {
-            String replacedError = error;
+            String replacedError = message;
             for ( Map.Entry<String, String> entry : extraFields.entrySet() )
             {
                 replacedError = replacedError.replace( String.format( "{%s}", entry.getKey() ), entry.getValue() );
@@ -47,9 +52,8 @@ public class ErrorResponseEntry implements Serializable
             this.error = replacedError;
             this.extraFields.putAll( extraFields );
         }
-        else this.error = error;
+        else this.error = message;
         this.requestId = requestId;
-        this.contexts = contexts;
         this.key = generateKey( key );
     }
 
@@ -57,46 +61,6 @@ public class ErrorResponseEntry implements Serializable
     {
         if ( key != null ) return key;
         return Slugger.slugify( error.trim() );
-    }
-
-    public static ErrorResponseEntry errorHolderDefault( String error )
-    {
-        return new ErrorResponseEntry( null, error, null, null, null );
-    }
-
-    public static ErrorResponseEntry errorHolderDefault( String key, String error )
-    {
-        return new ErrorResponseEntry( key, error, null, null, null );
-    }
-
-    public static ErrorResponseEntry errorHolderWithExtraFields( String error, Map<String, String> extraFields )
-    {
-        return new ErrorResponseEntry( null, error, extraFields, null, null );
-    }
-
-    public static ErrorResponseEntry errorHolderWithExtraFields( String key, String error, Map<String, String> extraFields )
-    {
-        return new ErrorResponseEntry( key, error, extraFields, null, null );
-    }
-
-    public static ErrorResponseEntry errorHolderWithRequestID( String error, String requestId )
-    {
-        return new ErrorResponseEntry( null, error, null, requestId, null );
-    }
-
-    public static ErrorResponseEntry errorHolderWithRequestID( String key, String error, String requestId )
-    {
-        return new ErrorResponseEntry( key, error, null, requestId, null );
-    }
-
-    public static ErrorResponseEntry errorHolderWithContexts( String error, List<Serializable> contexts )
-    {
-        return new ErrorResponseEntry( null, error, null, null, contexts );
-    }
-
-    public static ErrorResponseEntry errorHolderWithContexts( String key, String error, List<Serializable> contexts )
-    {
-        return new ErrorResponseEntry( key, error, null, null, contexts );
     }
 
     public String getKey()
@@ -139,24 +103,16 @@ public class ErrorResponseEntry implements Serializable
         this.requestId = requestId;
     }
 
-    public List<Serializable> getContexts()
-    {
-        return contexts;
-    }
-
-    public void setContexts( List<Serializable> contexts )
-    {
-        this.contexts = contexts;
-    }
-
     @Override
     public String toString()
     {
         StringBuilder support = new StringBuilder();
 
-        if ( requestId != null && requestId.length() > 0 ) support.append( "reqId: " ).append( requestId ).append( " " );
+        if ( requestId != null && requestId.length() > 0 )
+        {
+            support.append( "reqId: " ).append( requestId ).append( " " );
+        }
         if ( error != null && error.length() > 0 ) support.append( error ).append( " " );
-        if ( contexts != null && !contexts.isEmpty() ) support.append( "contexts: " ).append( contexts );
 
         return support.toString().trim();
     }
