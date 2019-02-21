@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -15,12 +15,12 @@ public class CardDataDTO extends PaymentDataDTO
 {
     @ApiModelProperty( value = "Month of expiration", example = "09" )
     @NotEmpty
-    @Pattern( regexp = "\\d{2}", message = ConstraintKeys.TWO_DIGITS )
+    @Pattern( regexp = "\\d{2}", message = ErrorKeys.TWO_DIGITS )
     private String expirationMonth;
 
     @ApiModelProperty( value = "Year of expiration", example = "2021" )
     @NotEmpty
-    @Pattern( regexp = "\\d{2}|\\d{4}", message = ConstraintKeys.TWO_OR_FOUR_DIGITS )
+    @Pattern( regexp = "\\d{2}|\\d{4}", message = ErrorKeys.TWO_OR_FOUR_DIGITS )
     private String expirationYear;
 
     @ApiModelProperty( "Credit card number" )
@@ -30,7 +30,7 @@ public class CardDataDTO extends PaymentDataDTO
 
     @ApiModelProperty( value = "Credit card CVC", example = "321" )
     @NotEmpty
-    @Pattern( regexp = "\\d{3}|\\d{4}", message = ConstraintKeys.THREE_OR_FOUR_DIGITS )
+    @Pattern( regexp = "\\d{3}|\\d{4}", message = ErrorKeys.THREE_OR_FOUR_DIGITS )
     private String cvc;
 
     @ApiModelProperty( value = "Credit card holder", example = "John Doe" )

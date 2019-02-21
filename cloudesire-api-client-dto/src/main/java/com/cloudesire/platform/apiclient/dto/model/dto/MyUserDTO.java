@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
-import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -25,7 +25,7 @@ public class MyUserDTO extends BaseEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
 
-    @Pattern( regexp = USERNAME_REGEXP, message = ConstraintKeys.CHARACTERS_NOT_PERMITTED )
+    @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
     @ApiModelProperty( "Given Name" )

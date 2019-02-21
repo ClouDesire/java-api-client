@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_SIZE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 public class EndpointDTO extends BaseEntityDTO
 {

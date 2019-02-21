@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
-import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -54,7 +54,7 @@ public class OrderInputDTO extends BaseEntityDTO
     private List<ApplicationFileEnvironmentDTO> environment;
 
     @ApiModelProperty( "An external id of your choice" )
-    @Pattern( regexp = "[A-Za-z0-9-_]+", message = ConstraintKeys.ALPHANUMERIC_UNDERSCORE )
+    @Pattern( regexp = "[A-Za-z0-9-_]+", message = ErrorKeys.ALPHANUMERIC_UNDERSCORE )
     private String externalReference;
 
     @ApiModelProperty( "When in reseller mode, specify the reseller username" )

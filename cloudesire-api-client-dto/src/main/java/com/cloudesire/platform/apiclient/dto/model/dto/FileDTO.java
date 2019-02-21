@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_SIZE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( "A managed file for the marketplace" )
 public class FileDTO extends BaseEntityDTO

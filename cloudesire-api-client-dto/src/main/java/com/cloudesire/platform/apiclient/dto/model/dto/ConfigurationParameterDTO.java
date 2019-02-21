@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,14 +10,14 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-import static com.cloudesire.platform.apiclient.dto.model.utils.ConstraintKeys.INVALID_SIZE;
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( "A parameter that the user can fill for each subscription" )
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Identifier for the configuration parameter" )
     @Size( max = 250, message = INVALID_SIZE )
-    @Pattern( regexp = "[A-Za-z][A-Za-z0-9_]*", message = ConstraintKeys.ALPHANUMERIC_START_WITH_LETTER )
+    @Pattern( regexp = "[A-Za-z][A-Za-z0-9_]*", message = ErrorKeys.ALPHANUMERIC_START_WITH_LETTER )
     private String code;
 
     @ApiModelProperty( "Extended description" )
