@@ -103,15 +103,16 @@ public class VATPriceDTO extends PriceDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        VATPriceDTO priceDTO = (VATPriceDTO) o;
-        return Objects.equals( price, priceDTO.price ) &&
-                Objects.equals( VAT, priceDTO.VAT ) &&
-                Objects.equals( currency, priceDTO.currency );
+        if ( ! super.equals( o ) ) return false;
+
+        VATPriceDTO that = (VATPriceDTO) o;
+
+        return VAT != null ? VAT.compareTo( that.VAT ) == 0 : that.VAT == null;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( price, VAT, currency );
+        return Objects.hash( super.hashCode(), VAT );
     }
 }
