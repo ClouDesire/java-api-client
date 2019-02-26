@@ -102,6 +102,11 @@ public enum OSType
         return OTHER;
     }
 
+    public static OSType getDefaultOs()
+    {
+        return OSType.UBUNTU_18_04;
+    }
+
     public boolean isWindows()
     {
         return OsFamily.WINDOWS.equals( family );
