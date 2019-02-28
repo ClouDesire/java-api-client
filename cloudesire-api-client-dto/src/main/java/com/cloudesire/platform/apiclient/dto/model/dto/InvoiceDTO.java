@@ -237,12 +237,18 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.revenueSharingQuota = revenueSharingQuota;
     }
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     public BigDecimal getTotalPrice()
     {
         return totalPrice;
     }
 
+    /**
+     * @deprecated use {@link #setTotal(VATPriceDTO)}
+     */
     @Deprecated
     public void setTotalPrice( BigDecimal totalPrice )
     {
