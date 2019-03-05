@@ -17,6 +17,9 @@ public class ResellerCatalogDTO extends NamedEntityDTO
 
     private List<UrlEntityDTO> pricings;
 
+    @Valid
+    private UrlEntityDTO featured;
+
     @ApiModelProperty( value = "When the catalog has been created", readOnly = true )
     private Date createdAt;
 
@@ -60,6 +63,16 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setPricings( List<UrlEntityDTO> pricings )
     {
         this.pricings = pricings;
+    }
+
+    public UrlEntityDTO getFeatured()
+    {
+        return featured;
+    }
+
+    public void setFeatured( UrlEntityDTO featured )
+    {
+        this.featured = featured;
     }
 
     public Date getCreatedAt()
