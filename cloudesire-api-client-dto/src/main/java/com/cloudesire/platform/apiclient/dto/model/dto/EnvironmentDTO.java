@@ -1614,7 +1614,7 @@ public class EnvironmentDTO extends DTO
         private String nation = "IT";
 
         @ApiModelProperty( "Enable validation of VAT ID for companies" )
-        private boolean taxCodeValidation = false;
+        private boolean taxCodeValidation;
 
         @ApiModelProperty( "The default maximum number of published products for a newly created company" )
         private int companyMaxPublishedProducts = -1;
