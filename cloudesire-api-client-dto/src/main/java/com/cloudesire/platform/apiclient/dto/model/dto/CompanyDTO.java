@@ -32,9 +32,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     private String technicalEmailAddress;
 
     @ApiModelProperty( hidden = true )
-    private Boolean enableProviderCredential;
-
-    @ApiModelProperty( hidden = true )
     private Integer maxConcurrentInstance;
 
     @ApiModelProperty( value = "SSH RSA public keys for every employee", readOnly = true )
@@ -120,16 +117,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setRi( String ri )
     {
         this.ri = ri;
-    }
-
-    public Boolean getEnableProviderCredential()
-    {
-        return enableProviderCredential;
-    }
-
-    public void setEnableProviderCredential( Boolean enableProviderCredential )
-    {
-        this.enableProviderCredential = enableProviderCredential;
     }
 
     public Integer getMaxConcurrentInstance()
