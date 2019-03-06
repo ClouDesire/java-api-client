@@ -143,6 +143,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Whether a subscription from the product version can be upgraded to another one" )
     private Boolean upgradable;
 
+    @ApiModelProperty( "Whether IAAS costs should be payed per-use or in advance" )
+    private Boolean iaasPayPerUse;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -587,6 +590,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setUpgradable( Boolean upgradable )
     {
         this.upgradable = upgradable;
+    }
+
+    public Boolean getIaasPayPerUse()
+    {
+        return iaasPayPerUse;
+    }
+
+    public void setIaasPayPerUse( Boolean iaasPayPerUse )
+    {
+        this.iaasPayPerUse = iaasPayPerUse;
     }
 
     @Override
