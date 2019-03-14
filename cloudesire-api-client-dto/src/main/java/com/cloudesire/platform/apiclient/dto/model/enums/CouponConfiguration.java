@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel( "Coupon configuration for a product version" )
+@ApiModel( description = "Coupon configuration for a product version" )
 public enum CouponConfiguration
 {
     @ApiModelProperty( "A coupon can be used to buy this plan" )

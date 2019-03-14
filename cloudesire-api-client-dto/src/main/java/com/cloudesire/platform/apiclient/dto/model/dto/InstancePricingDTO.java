@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@ApiModel( "Defines pricing of disk usage of a VM" )
+@ApiModel( description = "Defines pricing of disk usage of a VM" )
 public class InstancePricingDTO extends BaseEntityDTO
 {
     @NotNull

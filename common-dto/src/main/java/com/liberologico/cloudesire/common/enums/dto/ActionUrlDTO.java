@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
-@ApiModel("How to execute an API call")
+@ApiModel( description = "How to execute an API call" )
 public class ActionUrlDTO implements Serializable
 {
     private static final long serialVersionUID = 5518923410438917060L;

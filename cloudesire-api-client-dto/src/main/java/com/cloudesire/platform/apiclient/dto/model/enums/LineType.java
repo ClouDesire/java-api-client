@@ -10,7 +10,7 @@ import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_INCOME;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.MUST_BE_PAID;
 
-@ApiModel( "Which kind of cost" )
+@ApiModel( description = "Which kind of cost" )
 public enum LineType
 {
     BACKUP,

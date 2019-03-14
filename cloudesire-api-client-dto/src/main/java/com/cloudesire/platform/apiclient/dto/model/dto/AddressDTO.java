@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
-@ApiModel( "A physical address" )
+@ApiModel( description = "A physical address" )
 public class AddressDTO extends BaseEntityDTO implements Serializable
 {
     @Size( max = 255 )

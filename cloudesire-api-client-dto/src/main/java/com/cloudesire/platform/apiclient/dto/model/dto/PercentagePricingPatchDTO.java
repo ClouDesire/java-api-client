@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE;
 import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
 
-@ApiModel( "Mass actions for resold pricings" )
+@ApiModel( description = "Mass actions for resold pricings" )
 public class PercentagePricingPatchDTO extends DTO
 {
     @NotNull
@@ -57,7 +57,7 @@ public class PercentagePricingPatchDTO extends DTO
         this.percentage = percentage;
     }
 
-    @ApiModel( "The defined action" )
+    @ApiModel( description = "The defined action" )
     public enum Action
     {
         @ApiModelProperty( "Update price and setup of every pricing" )

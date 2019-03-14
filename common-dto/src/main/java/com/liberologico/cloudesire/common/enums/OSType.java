@@ -3,7 +3,7 @@ package com.liberologico.cloudesire.common.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel( "The operating system version" )
+@ApiModel( description = "The operating system version" )
 public enum OSType
 {
     @ApiModelProperty("Unsupported operating system")

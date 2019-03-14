@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( "A user that can login on the platform" )
+@ApiModel( description = "A user that can login on the platform" )
 public class MyUserDTO extends BaseEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";

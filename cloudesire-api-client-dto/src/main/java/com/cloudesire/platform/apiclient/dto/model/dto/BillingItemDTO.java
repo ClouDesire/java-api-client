@@ -15,7 +15,7 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( "Definition of the pricing of an extra resource" )
+@ApiModel( description = "Definition of the pricing of an extra resource" )
 public class BillingItemDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Unique identifier of the billing item" )

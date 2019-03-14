@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import java.util.Map;
 
-@ApiModel( "Logs an edit of a product" )
+@ApiModel( description = "Logs an edit of a product" )
 public class ProductRegisterEntryDTO extends DTO
 {
     @ApiModelProperty( "When the edit occurred" )

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( "Billing configuration of the ranges for an extra resource" )
+@ApiModel( description = "Billing configuration of the ranges for an extra resource" )
 public class BillingItemValueDTO extends BaseEntityDTO
 {
     @NotNull

@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
-@ApiModel( "Budget estimate request" )
+@ApiModel( description = "Budget estimate request" )
 public class BudgetInputDTO
 {
     @NotNull

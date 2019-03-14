@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.StackParameterValueType
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel( "A software stack requirement" )
+@ApiModel( description = "A software stack requirement" )
 public abstract class BaseStackParameterDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "Identifier of the parameter", readOnly = true )

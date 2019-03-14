@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@ApiModel( "Defines pricing of bandwidth used by a VM" )
+@ApiModel( description = "Defines pricing of bandwidth used by a VM" )
 public class BandwidthPricingDTO extends BaseEntityDTO
 {
     @NotNull

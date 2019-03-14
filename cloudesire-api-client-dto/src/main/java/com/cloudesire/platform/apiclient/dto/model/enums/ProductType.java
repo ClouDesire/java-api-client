@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel( "The product type" )
+@ApiModel( description = "The product type" )
 public enum ProductType
 {
     @ApiModelProperty( "This product is billed per API call" )

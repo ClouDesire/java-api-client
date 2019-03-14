@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( "A price" )
+@ApiModel( description = "A price" )
 public class PriceDTO extends DTO
 {
     @NotNull

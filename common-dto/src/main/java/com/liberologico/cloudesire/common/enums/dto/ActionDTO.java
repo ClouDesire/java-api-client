@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Arrays;
 import java.util.Objects;
 
-@ApiModel( "An API call that the current user can execute on the parent resource" )
+@ApiModel( description = "An API call that the current user can execute on the parent resource" )
 public class ActionDTO extends ActionUrlDTO
 {
     @ApiModelProperty( value = "A descriptive label for all the actions", readOnly = true )

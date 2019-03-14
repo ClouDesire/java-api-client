@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * @see EventNotificationDTO
  */
-@ApiModel( "An event dispatched by the platform to a recipient" )
+@ApiModel( description = "An event dispatched by the platform to a recipient" )
 public class EventDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "The name of the entity", example = "Subscription" )

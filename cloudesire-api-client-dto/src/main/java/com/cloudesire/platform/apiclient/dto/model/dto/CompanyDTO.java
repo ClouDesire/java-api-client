@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( "Vendor company" )
+@ApiModel( description = "Vendor company" )
 public class CompanyDTO extends MinimalCompanyDTO
 {
     @ApiModelProperty( "Receives event notifications targeted to all the company products" )

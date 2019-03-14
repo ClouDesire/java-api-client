@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 
-@ApiModel( "An identification document for a user" )
+@ApiModel( description = "An identification document for a user" )
 public class IdentificationDocumentDTO extends DTO implements Serializable
 {
     @ApiModelProperty( "The identification document type" )

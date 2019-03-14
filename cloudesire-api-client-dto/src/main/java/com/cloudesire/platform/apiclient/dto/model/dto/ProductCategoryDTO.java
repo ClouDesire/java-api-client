@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel( "A category of products" )
+@ApiModel( description = "A category of products" )
 public class ProductCategoryDTO extends NamedEntityDTO
 {
     @ApiModelProperty( value = "How many products for the category are present", readOnly = true )

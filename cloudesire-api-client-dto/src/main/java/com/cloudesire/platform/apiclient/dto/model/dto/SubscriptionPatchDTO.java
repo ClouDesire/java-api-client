@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-@ApiModel( "Perform an operation on a subscription" )
+@ApiModel( description = "Perform an operation on a subscription" )
 public class SubscriptionPatchDTO extends DTO
 {
     @ApiModelProperty( hidden = true )

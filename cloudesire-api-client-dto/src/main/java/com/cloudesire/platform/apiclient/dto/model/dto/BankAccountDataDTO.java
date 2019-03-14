@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
-@ApiModel( "Bank account data of a company" )
+@ApiModel( description = "Bank account data of a company" )
 public class BankAccountDataDTO implements Serializable
 {
     @Size( max = 125 )

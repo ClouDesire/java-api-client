@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 /**
  * Roles are sorted by increasing level of authorization.
  */
-@ApiModel( "Defines user roles across the platform" )
+@ApiModel( description = "Defines user roles across the platform" )
 public enum UserRole
 {
     ROLE_ANONYMOUS,
