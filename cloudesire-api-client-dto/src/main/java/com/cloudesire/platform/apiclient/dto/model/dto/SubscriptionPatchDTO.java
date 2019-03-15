@@ -12,8 +12,6 @@ import java.util.Map;
 @ApiModel( description = "Perform an operation on a subscription" )
 public class SubscriptionPatchDTO extends DTO
 {
-    @ApiModelProperty( hidden = true )
-    @Deprecated
     public static final String FIELD_ENDPOINTS = "syndicatedEndpoints";
 
     @ApiModelProperty( hidden = true )
@@ -23,15 +21,15 @@ public class SubscriptionPatchDTO extends DTO
     @ApiModelProperty( "Configuration parameter values for the subscription" )
     private Map<UrlEntityDTO, String> configurationParameters;
 
-    @ApiModelProperty( value = "Deployment status of the subscription", allowableValues = "PENDING, DEPLOYED, UNDEPLOYED, STOPPED, FAILED, PRE_APPROVAL, UNDEPLOY_SENT, POST_CONFIGURATION, PENDING, WAITING_PAYMENT, PAYMENT_EXPIRED" )
-    private String deploymentStatus;
+    @ApiModelProperty( "Deployment status of the subscription" )
+    private DeploymentStatusEnum deploymentStatus;
 
     @ApiModelProperty( hidden = true )
     @Deprecated
     private String syndicatedEndpoints;
 
-    @ApiModelProperty( value = "Update operation", allowableValues = "RENEW, START, STOP, KILL, BACKUP, AUTORENEW, BILLING_ITEM_UPGRADE, SYNDICATED_UPGRADE, REFRESH_BILLING_ITEM_VALUES" )
-    private Action action;
+    @ApiModelProperty( "Update operation" )
+    private SubscriptionPatchAction action;
 
     @ApiModelProperty( hidden = true )
     @Deprecated
@@ -60,7 +58,7 @@ public class SubscriptionPatchDTO extends DTO
     @ApiModelProperty( "Update the subscription paid status" )
     private Boolean paid;
 
-    public SubscriptionPatchDTO( Action action )
+    public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
         this.action = action;
     }
@@ -124,39 +122,13 @@ public class SubscriptionPatchDTO extends DTO
 
     public DeploymentStatusEnum getDeploymentStatus()
     {
-        if ( deploymentStatus == null ) return null;
-
-        try
-        {
-            return DeploymentStatusEnum.valueOf( deploymentStatus );
-        }
-        catch ( ClassCastException e )
-        {
-            throw new IllegalArgumentException( e );
-        }
-    }
-
-    /**
-     * @deprecated by {@link #setDeploymentStatus(DeploymentStatusEnum)}
-     */
-    @Deprecated
-    public SubscriptionPatchDTO setDeploymentStatus( String deploymentStatus )
-    {
-        this.deploymentStatus = deploymentStatus;
-        return this;
+        return deploymentStatus;
     }
 
     public SubscriptionPatchDTO setDeploymentStatus( DeploymentStatusEnum deploymentStatus )
     {
-        if ( deploymentStatus != null ) this.deploymentStatus = deploymentStatus.toString();
+        this.deploymentStatus = deploymentStatus;
         return this;
-    }
-
-    @ApiModelProperty( hidden = true )
-    @Deprecated
-    public void setStatus( String status )
-    {
-        this.deploymentStatus = status;
     }
 
     public String getSyndicatedEndpoints()
@@ -169,14 +141,14 @@ public class SubscriptionPatchDTO extends DTO
         this.syndicatedEndpoints = syndicatedEndpoints;
     }
 
-    public Action getAction()
+    public SubscriptionPatchAction getAction()
     {
         return action;
     }
 
     public SubscriptionPatchDTO setAction( String action )
     {
-        this.action = Action.valueOf( action.toUpperCase() );
+        this.action = SubscriptionPatchAction.valueOf( action.toUpperCase() );
         return this;
     }
 
@@ -268,7 +240,7 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
-    public enum Action
+    public enum SubscriptionPatchAction
     {
         @ApiModelProperty( "Renew a subscription" )
         RENEW,

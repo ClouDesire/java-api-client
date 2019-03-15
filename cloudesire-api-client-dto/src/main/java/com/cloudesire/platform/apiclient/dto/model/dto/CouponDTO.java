@@ -42,9 +42,9 @@ public class CouponDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO product;
 
-    @ApiModelProperty( value = "Coupon type", allowableValues = "bundle, discount, extendedTrial, fixedPrice", readOnly = true )
+    @ApiModelProperty( value = "Coupon type", readOnly = true )
     @NotNull
-    private CouponType type;
+    private CouponType type = CouponType.DISCOUNT;
 
     @ApiModelProperty( value = "When the coupon has been created", readOnly = true )
     @NotNull
