@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( "A parameter that the user can fill for each subscription" )
+@ApiModel( description = "A parameter that the user can fill for each subscription" )
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Identifier for the configuration parameter" )

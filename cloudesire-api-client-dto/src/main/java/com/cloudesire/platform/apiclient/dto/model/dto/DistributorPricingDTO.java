@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( "Defines a pricing for a product version" )
+@ApiModel( description = "Defines a pricing for a product version" )
 public class DistributorPricingDTO extends BaseEntityDTO
 {
     @NotNull

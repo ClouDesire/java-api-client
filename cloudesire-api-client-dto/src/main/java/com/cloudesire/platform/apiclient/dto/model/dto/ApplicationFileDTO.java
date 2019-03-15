@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( "Application package" )
+@ApiModel( description = "Application package" )
 public class ApplicationFileDTO extends FileDTO implements INamedEntityDTO
 {
     @ApiModelProperty( "Package version" )

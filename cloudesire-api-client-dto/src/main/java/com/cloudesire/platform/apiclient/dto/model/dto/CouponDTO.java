@@ -21,7 +21,7 @@ import java.util.Objects;
 
 import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
 
-@ApiModel( "A generated coupon" )
+@ApiModel( description = "A generated coupon" )
 public class CouponDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "Email address to notify customer of the coupon", readOnly = true )

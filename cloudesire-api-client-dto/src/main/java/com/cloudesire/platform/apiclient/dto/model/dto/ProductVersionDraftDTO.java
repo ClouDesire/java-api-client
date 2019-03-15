@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import java.util.Objects;
 
-@ApiModel( "A draft of a product version description" )
+@ApiModel( description = "A draft of a product version description" )
 public class ProductVersionDraftDTO implements ProductVersionL10nDTO
 {
     @Valid

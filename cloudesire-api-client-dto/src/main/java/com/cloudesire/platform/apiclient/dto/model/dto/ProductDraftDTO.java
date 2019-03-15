@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( "A draft of a product description" )
+@ApiModel( description = "A draft of a product description" )
 public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
 {
     @Valid

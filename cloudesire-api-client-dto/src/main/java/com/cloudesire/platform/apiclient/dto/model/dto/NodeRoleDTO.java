@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( "A software dependency that can be provisioned automatically on a VM" )
+@ApiModel( description = "A software dependency that can be provisioned automatically on a VM" )
 public class NodeRoleDTO extends NamedEntityDTO
 {
     @NotNull

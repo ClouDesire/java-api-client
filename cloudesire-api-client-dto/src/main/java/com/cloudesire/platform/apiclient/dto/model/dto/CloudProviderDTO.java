@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@ApiModel( "Definition of a cloud provider" )
+@ApiModel( description = "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "URL of a logo to display on the marketplace" )

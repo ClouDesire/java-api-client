@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@ApiModel( "Environment variables for an application" )
+@ApiModel( description = "Environment variables for an application" )
 public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
 {
     /**

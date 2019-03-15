@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( "Defines a pricing for a product version and a reseller" )
+@ApiModel( description = "Defines a pricing for a product version and a reseller" )
 public class ResellerPricingDTO extends BaseEntityDTO
 {
     @Valid

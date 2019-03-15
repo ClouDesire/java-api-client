@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( "Budget estimate" )
+@ApiModel( description = "Budget estimate" )
 public class BudgetDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "Country code", readOnly = true )

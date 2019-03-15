@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 
-@ApiModel( "Reference to a related resource" )
+@ApiModel( description = "Reference to a related resource" )
 public class UrlEntityDTO
 {
     @NotEmpty

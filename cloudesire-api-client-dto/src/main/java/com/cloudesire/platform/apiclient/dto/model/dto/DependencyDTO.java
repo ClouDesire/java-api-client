@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@ApiModel( "Define stack requirements for a vendor ApplicationFile" )
+@ApiModel( description = "Define stack requirements for a vendor ApplicationFile" )
 public class DependencyDTO extends BaseEntityDTO
 {
     @NotNull

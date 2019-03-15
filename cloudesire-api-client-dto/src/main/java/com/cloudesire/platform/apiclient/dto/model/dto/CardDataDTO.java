@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;
 
-@ApiModel( "Credit card data" )
+@ApiModel( description = "Credit card data" )
 public class CardDataDTO extends PaymentDataDTO
 {
     @ApiModelProperty( value = "Month of expiration", example = "09" )

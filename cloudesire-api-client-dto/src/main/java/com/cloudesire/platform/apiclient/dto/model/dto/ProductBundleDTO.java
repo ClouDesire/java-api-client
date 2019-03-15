@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;
 
-@ApiModel( "A bundle of different products" )
+@ApiModel( description = "A bundle of different products" )
 public class ProductBundleDTO extends ProductDTO
 {
     @ApiModelProperty( value = "Products included in this bundle with their discount", readOnly = true )

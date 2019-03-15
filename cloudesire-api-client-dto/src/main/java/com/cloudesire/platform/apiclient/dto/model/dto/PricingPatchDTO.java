@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@ApiModel( "Request a price change for a cloud price" )
+@ApiModel( description = "Request a price change for a cloud price" )
 public class PricingPatchDTO extends DTO
 {
     @ApiModelProperty( "The new price" )

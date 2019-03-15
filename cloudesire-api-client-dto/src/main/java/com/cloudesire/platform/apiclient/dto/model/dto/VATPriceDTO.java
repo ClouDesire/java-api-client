@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( "A price with VAT" )
+@ApiModel( description = "A price with VAT" )
 public class VATPriceDTO extends PriceDTO
 {
     @ApiModelProperty( "VAT total amount" )

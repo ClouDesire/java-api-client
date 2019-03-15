@@ -14,7 +14,7 @@ import java.util.Objects;
  *
  * @see EventDTO
  */
-@ApiModel( "Payload sent to the HTTP endpoint" )
+@ApiModel( description = "Payload sent to the HTTP endpoint" )
 public class EventNotificationDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "The ID of the Event", example = "123" )

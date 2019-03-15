@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( "A billed unit" )
+@ApiModel( description = "A billed unit" )
 public class OrderLineDTO implements Line
 {
     @NotNull

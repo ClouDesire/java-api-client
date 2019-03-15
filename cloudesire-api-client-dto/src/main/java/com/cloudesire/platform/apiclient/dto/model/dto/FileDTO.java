@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( "A managed file for the marketplace" )
+@ApiModel( description = "A managed file for the marketplace" )
 public class FileDTO extends BaseEntityDTO
 {
     @ApiModelProperty( "Link to the static resource" )

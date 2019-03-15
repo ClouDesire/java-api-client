@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-@ApiModel( "VM instance sizing" )
+@ApiModel( description = "VM instance sizing" )
 public class InstanceTypeDTO extends DTO
 {
     @ApiModelProperty( "RAM quantity" )
