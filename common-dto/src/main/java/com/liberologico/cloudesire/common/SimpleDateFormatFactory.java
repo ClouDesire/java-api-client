@@ -19,6 +19,11 @@ public class SimpleDateFormatFactory
         return new SimpleDateFormat( DateFormats.ISO8601_PATTERN );
     }
 
+    public static SimpleDateFormat sqlFormat()
+    {
+        return new SimpleDateFormat( DateFormats.SQL_PATTERN );
+    }
+
     private SimpleDateFormatFactory()
     {
     }
