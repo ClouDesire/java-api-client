@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel( "When IAAS costs of a Product Version should be billed" )
-public enum IaasPayment
+public enum IaasBilling
 {
     @ApiModelProperty( "IAAS costs should be billed in advance" )
     PRE_PAID,
