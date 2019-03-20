@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponConfiguration;
-import com.cloudesire.platform.apiclient.dto.model.enums.IaasPayment;
+import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.cloudesire.platform.apiclient.dto.model.enums.Trial;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
@@ -144,7 +144,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Whether a subscription from the product version can be upgraded to another one" )
     private Boolean upgradable;
 
-    private IaasPayment iaasPayment;
+    private IaasBilling iaasBilling;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -592,14 +592,14 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.upgradable = upgradable;
     }
 
-    public IaasPayment getIaasPayment()
+    public IaasBilling getIaasBilling()
     {
-        return iaasPayment;
+        return iaasBilling;
     }
 
-    public void setIaasPayment( IaasPayment iaasPayment )
+    public void setIaasBilling( IaasBilling iaasBilling )
     {
-        this.iaasPayment = iaasPayment;
+        this.iaasBilling = iaasBilling;
     }
 
     @Override
