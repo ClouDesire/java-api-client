@@ -6,7 +6,7 @@ import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
 
-public class InvoiceQuery extends BaseQuery
+public class InvoiceQuery extends PageRequestQuery
 {
     private static final String EXPIRED = "expired";
     private static final String FROM = "from";
