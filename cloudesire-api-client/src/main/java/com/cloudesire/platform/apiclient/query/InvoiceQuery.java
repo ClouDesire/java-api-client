@@ -16,6 +16,7 @@ public class InvoiceQuery extends PageRequestQuery
     private static final String STATUS = "status";
     private static final String TO = "to";
     private static final String TYPE = "type";
+    private static final String COMPANY = "company";
 
     public InvoiceQuery setExpired( boolean expired )
     {
@@ -68,6 +69,12 @@ public class InvoiceQuery extends PageRequestQuery
     public InvoiceQuery setType( OrderType type )
     {
         put( TYPE, type.toString() );
+        return this;
+    }
+
+    public InvoiceQuery setCompany( Integer company )
+    {
+        put( COMPANY, company );
         return this;
     }
 }
