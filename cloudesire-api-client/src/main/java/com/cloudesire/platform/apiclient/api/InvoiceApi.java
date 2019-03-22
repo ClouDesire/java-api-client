@@ -48,11 +48,6 @@ public interface InvoiceApi
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap InvoiceQuery query );
 
-    @Streaming
-    @GET( "invoice" )
-    @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
-
     @GET( "invoice/{id}/refresh" )
     Call<String> refreshPayment( @Path( "id" ) int id );
 
