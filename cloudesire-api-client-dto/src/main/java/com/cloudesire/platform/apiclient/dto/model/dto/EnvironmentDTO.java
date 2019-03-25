@@ -1403,7 +1403,10 @@ public class EnvironmentDTO extends DTO
             if ( productType != null ) this.enabledProductTypes.add( productType );
         }
 
-        @ApiModelProperty( "@deprecated use {@link #setEnabledProductTypes(Set)}" )
+        /**
+         * @deprecated use {@link #setEnabledProductTypes(Set)}
+         */
+        @ApiModelProperty( hidden = true )
         @Deprecated
         public void setProductBundles( boolean productBundles )
         {
@@ -1577,6 +1580,9 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "Default trials duration" )
         private int trialLengthInDays = 1;
+
+        @ApiModelProperty( "Permit trials for bundles" )
+        private boolean trialForBundles;
 
         @ApiModelProperty( "Default sandbox duration" )
         private int sandboxLengthInHour = 1;
@@ -2143,6 +2149,16 @@ public class EnvironmentDTO extends DTO
         public void setServiceDirectory( ServiceDirectory serviceDirectory )
         {
             this.serviceDirectory = serviceDirectory;
+        }
+
+        public boolean isTrialForBundles()
+        {
+            return trialForBundles;
+        }
+
+        public void setTrialForBundles( boolean trialForBundles )
+        {
+            this.trialForBundles = trialForBundles;
         }
         //endregion
 
