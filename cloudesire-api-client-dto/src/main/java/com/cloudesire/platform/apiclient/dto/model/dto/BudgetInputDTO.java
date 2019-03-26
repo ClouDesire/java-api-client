@@ -24,8 +24,8 @@ public class BudgetInputDTO
     @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
-    @ApiModelProperty( "For how many billing periods to request an estimate" )
-    private int billingPeriods = 1;
+    @ApiModelProperty( "For how many hours to request an estimate" )
+    private Integer hours;
 
     @ApiModelProperty( "The ID of an existing subscription" )
     private Integer subscriptionId;
@@ -87,14 +87,14 @@ public class BudgetInputDTO
         return this;
     }
 
-    public int getBillingPeriods()
+    public Integer getHours()
     {
-        return billingPeriods;
+        return hours;
     }
 
-    public BudgetInputDTO setBillingPeriods( int billingPeriods )
+    public BudgetInputDTO setHours( Integer hours )
     {
-        this.billingPeriods = billingPeriods;
+        this.hours = hours;
         return this;
     }
 
