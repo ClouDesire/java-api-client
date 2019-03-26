@@ -1,11 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -1587,10 +1587,6 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Default sandbox duration" )
         private int sandboxLengthInHour = 1;
 
-        @ApiModelProperty( "Amount of the one-time fee per deploy" )
-        @NotNull
-        private BigDecimal monthlyRunningFee = BigDecimal.ZERO;
-
         @NotNull
         @ApiModelProperty( "Percentage kept by platform owner set by default on new products" )
         private BigDecimal cloudesirePercentage = new BigDecimal( 15 );
@@ -1737,22 +1733,6 @@ public class EnvironmentDTO extends DTO
         public void setSandboxLengthInHour( Integer sandboxLengthInHour )
         {
             this.sandboxLengthInHour = sandboxLengthInHour;
-        }
-
-        public BigDecimal getMonthlyRunningFee()
-        {
-            return monthlyRunningFee;
-        }
-
-        public void setMonthlyRunningFee( BigDecimal monthlyRunningFee )
-        {
-            this.monthlyRunningFee = monthlyRunningFee;
-        }
-
-        @Deprecated
-        public void setCloudesireCost( BigDecimal cloudesireCost )
-        {
-            this.monthlyRunningFee = cloudesireCost;
         }
 
         public BigDecimal getCloudesirePercentage()

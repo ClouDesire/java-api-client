@@ -53,9 +53,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private Trial trial;
 
-    @ApiModelProperty( "If the platform earns a fee for the selling of the version" )
-    private boolean cloudesireFeeActivated = true;
-
     @ApiModelProperty( "If the emission and payment of the version's invoices must be handled by the vendor" )
     private boolean selfBilling = false;
 
@@ -282,16 +279,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setBandwidthInGB( BigDecimal bandwidthInGB )
     {
         this.bandwidthInGB = bandwidthInGB;
-    }
-
-    public boolean isCloudesireFeeActivated()
-    {
-        return cloudesireFeeActivated;
-    }
-
-    public void setCloudesireFeeActivated( boolean cloudesireFeeActivated )
-    {
-        this.cloudesireFeeActivated = cloudesireFeeActivated;
     }
 
     public boolean isSelfBilling()

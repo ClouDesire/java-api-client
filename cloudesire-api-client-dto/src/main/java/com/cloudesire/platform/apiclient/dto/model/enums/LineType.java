@@ -21,7 +21,6 @@ public enum LineType
     /** What cloudesire takes out of product price */
     CLOUDESIREFEE,
     /** Monthly fee */
-    CLOUDESIREPRICE( MUST_BE_PAID ),
     @ApiModelProperty( "License costs" )
     CONFIGURATION( IS_INCOME, MUST_BE_PAID ),
     COUPONDISCOUNT( IS_INCOME ),
