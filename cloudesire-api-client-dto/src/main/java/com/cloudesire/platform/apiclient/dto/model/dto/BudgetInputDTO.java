@@ -6,6 +6,7 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class BudgetInputDTO
     private Integer bandwidthPricingId;
 
     @ApiModelProperty( "For how many hours to request an estimate" )
+    @Max( 720 )
     private Integer hours;
 
     @ApiModelProperty( "The ID of an existing subscription" )
