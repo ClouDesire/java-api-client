@@ -132,9 +132,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "The number of markups set for the product version" )
     private long markedUp;
 
-    @ApiModelProperty( "Automatically set subscriptions to DEPLOYED on payment and UNDEPLOYED on expiry" )
-    private boolean autodeploy;
-
     @ApiModelProperty( value = "Descriptive label of the product version", readOnly = true )
     private String label;
 
@@ -547,16 +544,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setMarkedUp( long markedUp )
     {
         this.markedUp = markedUp;
-    }
-
-    public boolean isAutodeploy()
-    {
-        return autodeploy;
-    }
-
-    public void setAutodeploy( boolean autodeploy )
-    {
-        this.autodeploy = autodeploy;
     }
 
     public String getLabel()
