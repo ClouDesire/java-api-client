@@ -52,4 +52,10 @@ public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
     {
         return Objects.hash( super.hashCode(), name );
     }
+
+    @Override
+    public String toString()
+    {
+        return getClass().getSimpleName() + "{" + "id=" + getId() + " name=" + getName() + '}';
+    }
 }
