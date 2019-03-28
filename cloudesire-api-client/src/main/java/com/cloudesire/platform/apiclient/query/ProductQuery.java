@@ -11,6 +11,7 @@ public class ProductQuery extends BaseQuery
     private static final String OWN_COMPANY = "ownCompany";
     private static final String CATALOG_ID = "catalogId";
     private static final String COMPANY = "company";
+    private static final String FEATURED = "featured";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -59,4 +60,11 @@ public class ProductQuery extends BaseQuery
         put( COMPANY, companyId );
         return this;
     }
+
+    public ProductQuery setFeatured( boolean featured )
+    {
+        put( FEATURED, featured );
+        return this;
+    }
+
 }
