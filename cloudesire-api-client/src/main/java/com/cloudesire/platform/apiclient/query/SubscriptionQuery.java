@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 
 public class SubscriptionQuery extends PageRequestQuery
 {
@@ -9,6 +10,7 @@ public class SubscriptionQuery extends PageRequestQuery
     private static final String STATUS = "status";
     private static final String TYPE = "type";
     private static final String PRODUCT = "product";
+    private static final String PRODUCT_TYPE = "productType";
 
 
     public SubscriptionQuery setPageRequest( PageRequestQuery pageRequestQuery )
@@ -38,6 +40,12 @@ public class SubscriptionQuery extends PageRequestQuery
     public SubscriptionQuery setProduct( Integer value )
     {
         put( PRODUCT, value );
+        return this;
+    }
+
+    public SubscriptionQuery setProductType( ProductType value )
+    {
+        put( PRODUCT_TYPE, value );
         return this;
     }
 }

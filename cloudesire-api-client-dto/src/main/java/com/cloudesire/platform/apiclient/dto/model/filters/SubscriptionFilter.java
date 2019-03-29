@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.filters;
 import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
 
 public final class SubscriptionFilter extends PageRequestDTO
@@ -18,6 +19,8 @@ public final class SubscriptionFilter extends PageRequestDTO
 
     @ApiModelProperty( "Filter by Product ID" )
     private Integer product;
+
+    private ProductType productType;
 
     public String getFilter()
     {
@@ -57,5 +60,15 @@ public final class SubscriptionFilter extends PageRequestDTO
     public void setProduct( Integer product )
     {
         this.product = product;
+    }
+
+    public ProductType getProductType()
+    {
+        return productType;
+    }
+
+    public void setProductType( ProductType productType )
+    {
+        this.productType = productType;
     }
 }

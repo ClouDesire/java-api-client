@@ -84,4 +84,10 @@ public class BaseEntityDTO extends DTO implements IBaseEntityDTO
     {
         return Objects.hash( id );
     }
+
+    @Override
+    public String toString()
+    {
+        return getClass().getSimpleName() + "{" + "id=" + id + '}';
+    }
 }
