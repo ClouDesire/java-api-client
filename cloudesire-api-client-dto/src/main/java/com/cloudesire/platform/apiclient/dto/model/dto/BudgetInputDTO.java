@@ -1,10 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.IaasBudget;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
@@ -24,8 +26,9 @@ public class BudgetInputDTO
     @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
-    @ApiModelProperty( "For how many billing periods to request an estimate" )
-    private int billingPeriods = 1;
+    @ApiModelProperty( "For how many hours to request an estimate" )
+    @Max( 720 )
+    private Integer hours;
 
     @ApiModelProperty( "The ID of an existing subscription" )
     private Integer subscriptionId;
@@ -42,6 +45,8 @@ public class BudgetInputDTO
     private Integer catalogId;
 
     private OSType operatingSystem;
+
+    private IaasBudget iaas;
 
     public OrderType getType()
     {
@@ -87,14 +92,14 @@ public class BudgetInputDTO
         return this;
     }
 
-    public int getBillingPeriods()
+    public Integer getHours()
     {
-        return billingPeriods;
+        return hours;
     }
 
-    public BudgetInputDTO setBillingPeriods( int billingPeriods )
+    public BudgetInputDTO setHours( Integer hours )
     {
-        this.billingPeriods = billingPeriods;
+        this.hours = hours;
         return this;
     }
 
@@ -161,6 +166,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setOperatingSystem( OSType operatingSystem )
     {
         this.operatingSystem = operatingSystem;
+        return this;
+    }
+
+    public IaasBudget getIaas()
+    {
+        return iaas;
+    }
+
+    public BudgetInputDTO setIaas( IaasBudget iaas )
+    {
+        this.iaas = iaas;
         return this;
     }
 }

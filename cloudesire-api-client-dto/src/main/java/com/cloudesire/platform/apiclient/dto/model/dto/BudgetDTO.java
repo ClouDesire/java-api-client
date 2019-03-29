@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.common.MathConfiguration;
@@ -68,6 +69,8 @@ public class BudgetDTO extends BaseEntityDTO
 
     @ApiModelProperty( value = "Duration of this order in hours", readOnly = true )
     private Integer lifespan;
+
+    private IaasBilling iaasBilling;
 
     @JsonProperty
     public BigDecimal getTotalPrice()
@@ -258,6 +261,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setLifespan( Integer lifespan )
     {
         this.lifespan = lifespan;
+    }
+
+    public IaasBilling getIaasBilling()
+    {
+        return iaasBilling;
+    }
+
+    public void setIaasBilling( IaasBilling iaasBilling )
+    {
+        this.iaasBilling = iaasBilling;
     }
 
     @Override
