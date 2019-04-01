@@ -13,7 +13,8 @@ public enum CloudProviderTags
     LINUX( OsFamily.LINUX ),
     MINIMUM_DISK, // Takes a value, in GB
     MINIMUM_WINDOWS_RAM_GB,
-    WINDOWS( OsFamily.WINDOWS );
+    WINDOWS( OsFamily.WINDOWS ),
+    BANDWIDTH_HARVESTING;
 
     private final OsFamily support;
 
