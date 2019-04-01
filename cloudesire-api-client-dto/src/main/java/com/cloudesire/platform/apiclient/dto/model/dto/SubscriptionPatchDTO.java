@@ -84,7 +84,7 @@ public class SubscriptionPatchDTO extends DTO
 
     public boolean hasValidUpgradeData()
     {
-        return billingItem != null && value != null || ! billingItems.isEmpty();
+        return billingItem != null && value != null || billingItems != null && ! billingItems.isEmpty();
     }
 
     @Deprecated
