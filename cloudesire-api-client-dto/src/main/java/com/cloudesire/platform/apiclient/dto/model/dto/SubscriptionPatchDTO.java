@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -80,11 +80,6 @@ public class SubscriptionPatchDTO extends DTO
     public int getUnit()
     {
         return months != null ? Calendar.MONTH : Calendar.HOUR;
-    }
-
-    public boolean hasValidUpgradeData()
-    {
-        return billingItem != null && value != null || ! billingItems.isEmpty();
     }
 
     @Deprecated
