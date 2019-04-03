@@ -266,5 +266,8 @@ public class SubscriptionPatchDTO extends DTO
 
         @ApiModelProperty( "Update extra resources ranges with current plan values" )
         REFRESH_BILLING_ITEM_VALUES,
+
+        @ApiModelProperty( "Approve a subscription" )
+        APPROVE
     }
 }
