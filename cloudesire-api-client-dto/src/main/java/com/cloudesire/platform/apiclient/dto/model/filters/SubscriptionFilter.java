@@ -6,13 +6,15 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Set;
+
 public final class SubscriptionFilter extends PageRequestDTO
 {
     @ApiModelProperty( "Fuzzy match by buyer, product or company" )
     private String filter;
 
     @ApiModelProperty( "Filter by deployment status" )
-    private DeploymentStatusEnum status;
+    private Set<DeploymentStatusEnum> status;
 
     @ApiModelProperty( "Filter by Order type" )
     private OrderType type;
@@ -32,12 +34,12 @@ public final class SubscriptionFilter extends PageRequestDTO
         this.filter = filter;
     }
 
-    public DeploymentStatusEnum getStatus()
+    public Set<DeploymentStatusEnum> getStatus()
     {
         return status;
     }
 
-    public void setStatus( DeploymentStatusEnum status )
+    public void setStatus( Set<DeploymentStatusEnum> status )
     {
         this.status = status;
     }
