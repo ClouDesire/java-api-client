@@ -89,6 +89,9 @@ public interface ProductApi
     @GET( "product/{id}" )
     Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
 
+    @GET( "product/{id}" )
+    Call<ProductDTO> get( @Path( "id" ) int id, @QueryMap Map<String, String> parameters );
+
     @PUT( "product/{id}" )
     Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
 
