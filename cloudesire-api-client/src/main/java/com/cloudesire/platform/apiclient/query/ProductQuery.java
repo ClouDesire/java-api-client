@@ -2,20 +2,24 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 
-public class ProductQuery extends BaseQuery
+public class ProductQuery extends ResellerCatalogQuery
 {
     private static final String NAME = "name";
     private static final String DISTRIBUTOR = "distributor";
-    private static final String RESELLER = "reseller";
     private static final String PRODUCT_TYPE = "productType";
     private static final String OWN_COMPANY = "ownCompany";
-    private static final String CATALOG_ID = "catalogId";
     private static final String COMPANY = "company";
     private static final String FEATURED = "featured";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
+        return this;
+    }
+
+    public ProductQuery setResellerCatalog( ResellerCatalogQuery resellerCatalogQuery )
+    {
+        putAll( resellerCatalogQuery );
         return this;
     }
 
@@ -31,12 +35,6 @@ public class ProductQuery extends BaseQuery
         return this;
     }
 
-    public ProductQuery setReseller( String reseller )
-    {
-        put( RESELLER, reseller );
-        return this;
-    }
-
     public ProductQuery setProductType( ProductType productType )
     {
         put( PRODUCT_TYPE, productType );
@@ -46,12 +44,6 @@ public class ProductQuery extends BaseQuery
     public ProductQuery setOwnCompany( Boolean ownCompany )
     {
         put( OWN_COMPANY, ownCompany );
-        return this;
-    }
-
-    public ProductQuery setCatalogId( Integer catalogId )
-    {
-        put( CATALOG_ID, catalogId );
         return this;
     }
 
