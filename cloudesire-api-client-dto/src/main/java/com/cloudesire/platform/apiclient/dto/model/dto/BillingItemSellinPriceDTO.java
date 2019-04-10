@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -20,6 +22,8 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
     @Valid
     private ResellingPriceDTO setup;
 
+    @ApiModelProperty( hidden = true )
+    @Deprecated
     @Valid
     private ResellingPriceDTO recurring;
 
@@ -79,11 +83,13 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
         this.setup = setup;
     }
 
+    @Deprecated
     public ResellingPriceDTO getRecurring()
     {
         return recurring;
     }
 
+    @Deprecated
     public void setRecurring( ResellingPriceDTO recurring )
     {
         this.recurring = recurring;

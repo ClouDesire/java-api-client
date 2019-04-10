@@ -17,6 +17,8 @@ public enum LineType
     BANDWIDTH( MUST_BE_PAID ),
     BILLINGITEMCOST( IS_EXTRA, IS_INCOME ),
     BILLINGITEMSETUP( IS_EXTRA, IS_INCOME ),
+    @ApiModelProperty( hidden = true )
+    @Deprecated
     BILLINGITEMRECURRING( IS_EXTRA, IS_INCOME ),
     /** What cloudesire takes out of product price */
     CLOUDESIREFEE,
