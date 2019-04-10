@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import org.apache.commons.lang3.StringUtils;
 
 public class SubscriptionQuery extends PageRequestQuery
 {
@@ -25,8 +26,9 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setStatus( DeploymentStatusEnum value )
+    public SubscriptionQuery setStatus( DeploymentStatusEnum... values )
     {
+        String value = StringUtils.join( values, ',' );
         put( STATUS, value );
         return this;
     }
