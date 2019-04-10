@@ -17,7 +17,6 @@ public class BudgetInputDTO
     private OrderType type = OrderType.NORMAL;
 
     @ApiModelProperty( "The ID of the chosen product version" )
-    @NotNull
     private Integer productVersionId;
 
     @ApiModelProperty( "The ID of the chosen cloud provider" )
