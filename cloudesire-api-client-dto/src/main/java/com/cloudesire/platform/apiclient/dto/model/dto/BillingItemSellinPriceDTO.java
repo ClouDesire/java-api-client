@@ -20,9 +20,6 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
     @Valid
     private ResellingPriceDTO setup;
 
-    @Valid
-    private ResellingPriceDTO recurring;
-
     public BillingItemSellinPriceDTO( int billingItemValueId, String markup )
     {
         this( billingItemValueId );
@@ -77,16 +74,6 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
     public void setSetup( ResellingPriceDTO setup )
     {
         this.setup = setup;
-    }
-
-    public ResellingPriceDTO getRecurring()
-    {
-        return recurring;
-    }
-
-    public void setRecurring( ResellingPriceDTO recurring )
-    {
-        this.recurring = recurring;
     }
 
     @Override
