@@ -33,6 +33,7 @@ public interface ResellerApi
     Call<List<ResellerDTO>> getAll(
             @Query( "textField" ) String textField,
             @Query( "enabled" ) Boolean enabled,
+            @Query( "distributorId" ) Integer distributorId,
             @QueryMap Map<String, String> pageRequest );
 
     @PUT( "reseller/{id}" )
