@@ -10,6 +10,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.ProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductDraftDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductRegisterEntryDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.query.ResellerCatalogQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -88,6 +89,9 @@ public interface ProductApi
 
     @GET( "product/{id}" )
     Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+
+    @GET( "product/{id}" )
+    Call<ProductDTO> get( @Path( "id" ) int id, @QueryMap ResellerCatalogQuery parameters );
 
     @PUT( "product/{id}" )
     Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );

@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 public class MinimumCostDTO extends DTO
 {
@@ -43,5 +44,21 @@ public class MinimumCostDTO extends DTO
     public UrlEntityDTO getCheapest()
     {
         return cheapest;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        MinimumCostDTO that = (MinimumCostDTO) o;
+        return Objects.equals( cost, that.cost ) && Objects.equals( billingPeriod, that.billingPeriod ) && Objects
+                .equals( lifespan, that.lifespan ) && Objects.equals( cheapest, that.cheapest );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( cost, billingPeriod, lifespan, cheapest );
     }
 }
