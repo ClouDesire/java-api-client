@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import java.util.List;
+
 /**
  * This is the output DTO for order
  *
@@ -10,6 +12,8 @@ public class OrderDTO extends BaseOrderDTO
     private UrlEntityDTO distributor;
 
     private UrlEntityDTO reseller;
+
+    private List<SubscriptionBillingItemDTO> billingItems;
 
     public UrlEntityDTO getDistributor()
     {
@@ -29,5 +33,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setReseller( UrlEntityDTO reseller )
     {
         this.reseller = reseller;
+    }
+
+    public List<SubscriptionBillingItemDTO> getBillingItems()
+    {
+        return billingItems;
+    }
+
+    public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
+    {
+        this.billingItems = billingItems;
     }
 }
