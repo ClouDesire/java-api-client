@@ -168,6 +168,14 @@ public class ResellingReportLineDTO extends ReportLineDTO
         return Objects.hash( super.hashCode(), distributor, reseller, type, vendor, wholesale, sellin, sellout, costs,
                 margin );
     }
+
+    @Override
+    public String toString()
+    {
+        return "ResellingReportLineDTO{" + "description='" + description + '\'' + ", quantity=" + quantity
+                + ", wholesale=" + wholesale + ", sellin=" + sellin + ", sellout=" + sellout + '}';
+    }
+
     // endregion
 
     public static class CostsDTO
