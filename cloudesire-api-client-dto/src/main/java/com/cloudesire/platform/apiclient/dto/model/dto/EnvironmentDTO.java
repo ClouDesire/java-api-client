@@ -125,6 +125,12 @@ public class EnvironmentDTO extends DTO
     @ApiModelProperty( "When using SendGrid for email delivery, enable sandbox mode to not actually deliver any emails")
     private boolean sendGridSandbox;
 
+    @ApiModelProperty( "The full URL for the documentation" )
+    @NotEmpty
+    @URL
+    @Size( max = 2048 )
+    private String documentationUrl;
+
     @ApiModelProperty( "Section of default user values" )
     @NotNull
     @Valid
@@ -844,6 +850,16 @@ public class EnvironmentDTO extends DTO
     public void setSendGridSandbox( boolean sendGridSandbox )
     {
         this.sendGridSandbox = sendGridSandbox;
+    }
+
+    public String getDocumentationUrl()
+    {
+        return documentationUrl;
+    }
+
+    public void setDocumentationUrl( String documentationUrl )
+    {
+        this.documentationUrl = documentationUrl;
     }
     //endregion
 
