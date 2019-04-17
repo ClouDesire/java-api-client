@@ -25,6 +25,11 @@ public class MathConfiguration
      */
     public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
+    public static MathContext computationMathContext()
+    {
+        return new MathContext( COMPUTATION_PRECISION, ROUNDING_MODE );
+    }
+
     public static MathContext dayScaleMathContext()
     {
         return new MathContext( DAY_SCALE_PRECISION, ROUNDING_MODE );
