@@ -2,8 +2,7 @@ package com.liberologico.cloudesire.common;
 
 import java.math.BigDecimal;
 
-import static com.liberologico.cloudesire.common.MathConfiguration.COMPUTATION_PRECISION;
-import static com.liberologico.cloudesire.common.MathConfiguration.ROUNDING_MODE;
+import static com.liberologico.cloudesire.common.MathConfiguration.computationMathContext;
 
 public final class MathUtils
 {
@@ -104,8 +103,8 @@ public final class MathUtils
 
     public static BigDecimal bytesToGigabytes( BigDecimal bytes )
     {
-        return bytes.divide( new BigDecimal( 1073741824 ), // rescale to GB, 1024 * 1024 * 1024
-                COMPUTATION_PRECISION, ROUNDING_MODE );
+        BigDecimal rescale = new BigDecimal( 1073741824 );  // rescale to GB, 1024 * 1024 * 1024
+        return bytes.divide( rescale, computationMathContext() );
     }
 
     private MathUtils() {}
