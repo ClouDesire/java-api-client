@@ -87,4 +87,6 @@ public interface SubscriptionApi
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap SubscriptionQuery query );
 
+    @GET( "subscription/{id}/bandwidth" )
+    Call<Map<String, Object>> getBandwidth( @Path( "id" ) Integer subscriptionId );
 }
