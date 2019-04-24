@@ -126,11 +126,13 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
+    @Deprecated
     public String getSyndicatedEndpoints()
     {
         return syndicatedEndpoints;
     }
 
+    @Deprecated
     public void setSyndicatedEndpoints( String syndicatedEndpoints )
     {
         this.syndicatedEndpoints = syndicatedEndpoints;
@@ -268,6 +270,9 @@ public class SubscriptionPatchDTO extends DTO
         REFRESH_BILLING_ITEM_VALUES,
 
         @ApiModelProperty( "Approve a subscription" )
-        APPROVE
+        APPROVE,
+
+        @ApiModelProperty( "Provision a subscription" )
+        DEPLOY
     }
 }

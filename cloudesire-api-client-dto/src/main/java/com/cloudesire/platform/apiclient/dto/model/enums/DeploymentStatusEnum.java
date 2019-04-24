@@ -37,6 +37,11 @@ public enum DeploymentStatusEnum
         return EnumSet.of( DEPLOYED );
     }
 
+    public static Collection<DeploymentStatusEnum> deployable()
+    {
+        return EnumSet.of( PENDING, POST_CONFIGURATION );
+    }
+
     /**
      * The statuses in which the subscription are no longer active
      */
