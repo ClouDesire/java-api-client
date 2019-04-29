@@ -23,6 +23,11 @@ public class ResellingPriceDTO extends DTO
     @ApiModelProperty( "The sell-out type, editable by a reseller" )
     private ResellingConfigurationType selloutType;
 
+    public static ResellingPriceDTO markup( BigDecimal value, ResellingConfigurationType type )
+    {
+        return new ResellingPriceDTO( value, type, null, null );
+    }
+
     public static ResellingPriceDTO sellout( BigDecimal value, ResellingConfigurationType type )
     {
         return new ResellingPriceDTO( null, null, value, type );
