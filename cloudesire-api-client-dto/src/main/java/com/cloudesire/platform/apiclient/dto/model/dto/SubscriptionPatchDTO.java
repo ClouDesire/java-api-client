@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +59,11 @@ public class SubscriptionPatchDTO extends DTO
 
     @ApiModelProperty( "Update the subscription paid status" )
     private Boolean paid;
+
+    @ApiModelProperty( "A descriptive name for the subscription" )
+    @NotEmpty
+    @Size( max = 255 )
+    private String name;
 
     public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
@@ -237,6 +244,17 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
+    public SubscriptionPatchDTO setName( String name )
+    {
+        this.name = name;
+        return this;
+    }
+
     public enum SubscriptionPatchAction
     {
         @ApiModelProperty( "Renew a subscription" )
@@ -273,6 +291,9 @@ public class SubscriptionPatchDTO extends DTO
         APPROVE,
 
         @ApiModelProperty( "Provision a subscription" )
-        DEPLOY
+        DEPLOY,
+
+        @ApiModelProperty( "Set a descriptive name for a subscription" )
+        SET_NAME
     }
 }
