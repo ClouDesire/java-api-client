@@ -28,6 +28,7 @@ public interface DiskSpacePricingApi
     @PUT( "diskSpacePricing/{id}" )
     Call<DiskSpacePricingDTO> update( @Path( "id" ) int id, @Body DiskSpacePricingDTO pricing );
 
+    @Deprecated
     @PATCH( "diskSpacePricing/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body PricingPatchDTO price );
 

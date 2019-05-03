@@ -16,7 +16,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CloudesireClientTest
 {
-    private static final String USER_AGENT = "Cloudesire API Client 20181220";
+    private static final String USER_AGENT = "Cloudesire API Client 20190503";
+
     private CloudesireClientCallExecutor executor;
 
     @Before
@@ -37,7 +38,7 @@ public class CloudesireClientTest
     {
         Httpbin api = getHttpbinApi();
         HttpbinResponse response = api.get().execute().body();
-
+        assertThat( response ).isNotNull();
         assertThat( response.getOrigin() ).isNotEmpty();
         assertThat( response.getHeaders() ).containsKey( "User-Agent" );
         assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
