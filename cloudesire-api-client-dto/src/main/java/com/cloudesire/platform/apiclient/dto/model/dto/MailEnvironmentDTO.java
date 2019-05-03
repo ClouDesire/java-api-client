@@ -270,13 +270,6 @@ public class MailEnvironmentDTO extends DTO
         @Valid
         private MailConfiguration vendorRegistrationNotification;
 
-        /**
-         * Vendor proceeds report
-         */
-        @NotNull
-        @Valid
-        private MailConfiguration vendorReport;
-
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
             return getCouponConfiguration( couponType ).getSubject( language );
@@ -669,16 +662,6 @@ public class MailEnvironmentDTO extends DTO
         public void setVendorRegistrationNotification( MailConfiguration vendorRegistrationNotification )
         {
             this.vendorRegistrationNotification = vendorRegistrationNotification;
-        }
-
-        public MailConfiguration getVendorReport()
-        {
-            return vendorReport;
-        }
-
-        public void setVendorReport( MailConfiguration vendorReport )
-        {
-            this.vendorReport = vendorReport;
         }
         //endregion
     }

@@ -274,11 +274,6 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private MailCustomization vendorRegistrationNotification = new MailCustomization();
 
-    @ApiModelProperty( "Vendor proceeds report" )
-    @Valid
-    @NotNull
-    private MailCustomization vendorReport = new MailCustomization();
-
     @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
     @Valid
     @NotNull
@@ -780,16 +775,6 @@ public class EnvironmentDTO extends DTO
     public void setVendorRegistrationNotification( MailCustomization vendorRegistrationNotification )
     {
         this.vendorRegistrationNotification = vendorRegistrationNotification;
-    }
-
-    public MailCustomization getVendorReport()
-    {
-        return vendorReport;
-    }
-
-    public void setVendorReport( MailCustomization vendorReport )
-    {
-        this.vendorReport = vendorReport;
     }
 
     public NotificationMailCustomization getInvoiceReminder()
