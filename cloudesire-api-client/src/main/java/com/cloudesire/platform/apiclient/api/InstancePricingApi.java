@@ -9,6 +9,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -37,6 +38,10 @@ public interface InstancePricingApi
             @Query( "osType" ) OSType osType
     );
 
+    @PUT( "instancePricing/{id}" )
+    Call<InstancePricingDTO> update( @Path( "id" ) int id, @Body InstancePricingDTO resource );
+
+    @Deprecated
     @PATCH( "instancePricing/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body InstancePricingPatchDTO input );
 

@@ -419,6 +419,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( EnumApi.class );
     }
 
+    public BackupPricingApi getBackupPricingApi()
+    {
+        return retrofit.create( BackupPricingApi.class );
+    }
+
     public BandwidthPricingApi getBandwidthPricingApi()
     {
         return retrofit.create( BandwidthPricingApi.class );
