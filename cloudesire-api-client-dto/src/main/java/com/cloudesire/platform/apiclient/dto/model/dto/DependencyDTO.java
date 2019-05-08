@@ -27,8 +27,8 @@ public class DependencyDTO extends BaseEntityDTO
 
     public DependencyDTO( ApplicationFileDTO applicationFile, NodeRoleDTO nodeRole )
     {
-        this.file = new UrlEntityDTO( applicationFile );
-        this.nodeRole = new UrlEntityDTO( nodeRole );
+        this.file = applicationFile.urlEntity();
+        this.nodeRole = nodeRole.urlEntity();
     }
 
     public DependencyDTO()

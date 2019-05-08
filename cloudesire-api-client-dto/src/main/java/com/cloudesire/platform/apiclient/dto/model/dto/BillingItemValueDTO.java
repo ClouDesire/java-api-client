@@ -49,7 +49,7 @@ public class BillingItemValueDTO extends BaseEntityDTO
 
     public BillingItemValueDTO( BillingItemDTO item, Integer start, Integer end, double price )
     {
-        this( new UrlEntityDTO( item ), start, end, price );
+        this( item.urlEntity(), start, end, price );
     }
 
     public BillingItemValueDTO( UrlEntityDTO item, Integer start, Integer end, double price )
