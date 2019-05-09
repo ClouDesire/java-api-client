@@ -14,12 +14,9 @@ public class DependencyDTO extends BaseEntityDTO
     @ApiModelProperty( "Ordering used when returning a list of dependencies" )
     private Integer priority = 1;
 
+    @NotNull
     @Valid
     private UrlEntityDTO nodeRole;
-
-    @Deprecated
-    @ApiModelProperty( hidden = true )
-    private NodeRoleDTO role;
 
     @NotNull
     @Valid
@@ -55,18 +52,6 @@ public class DependencyDTO extends BaseEntityDTO
         this.nodeRole = nodeRole;
     }
 
-    @Deprecated
-    public NodeRoleDTO getRole()
-    {
-        return role;
-    }
-
-    @Deprecated
-    public void setRole( NodeRoleDTO role )
-    {
-        this.role = role;
-    }
-
     public UrlEntityDTO getFile()
     {
         return file;
@@ -78,23 +63,17 @@ public class DependencyDTO extends BaseEntityDTO
     }
 
     @Override
-    public String toString()
-    {
-        return "DependencyDTO [priority=" + priority + ", role=" + role + ", file=" + file + "]";
-    }
-
-    @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         DependencyDTO that = (DependencyDTO) o;
-        return Objects.equals( role, that.role ) && Objects.equals( file, that.file );
+        return Objects.equals( nodeRole, that.nodeRole ) && Objects.equals( file, that.file );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( role, file );
+        return Objects.hash( nodeRole, file );
     }
 }
