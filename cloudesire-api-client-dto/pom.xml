@@ -7,14 +7,14 @@
 	<parent>
 		<groupId>com.cloudesire.platform</groupId>
 		<artifactId>java-api-client</artifactId>
-		<version>1.9.0</version>
+		<version>1.9.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>cloudesire-api-client-dto</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>base-api-client</artifactId>
-			<version>1.9.0</version>
+			<version>1.9.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -5,12 +5,12 @@
 	<parent>
 		<artifactId>java-api-client</artifactId>
 		<groupId>com.cloudesire.platform</groupId>
-		<version>1.9.0</version>
+		<version>1.9.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>base-api-client</artifactId>
-	<version>1.9.0</version>
+	<version>1.9.1-SNAPSHOT</version>
 
 	<properties>
 		<retrofit.version>2.5.0</retrofit.version>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>common-dto</artifactId>
-			<version>1.9.0</version>
+			<version>1.9.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.retrofit2</groupId>
