@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationFileDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationFileEnvironmentDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.AssociationType;
+import com.cloudesire.platform.apiclient.query.ApplicationFileQuery;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -37,6 +38,13 @@ public interface ApplicationFileApi
     @GET( "applicationFile" )
     Call<List<ApplicationFileDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
+    @GET( "applicationFile" )
+    Call<List<ApplicationFileDTO>> getAll( @QueryMap ApplicationFileQuery pageRequest );
+
+    /**
+     * @deprecated by {@link #getAll(ApplicationFileQuery)}
+     */
+    @Deprecated
     @GET( "applicationFile" )
     Call<List<ApplicationFileDTO>> getAll( @QueryMap PageRequestQuery pageRequest,
             @Query( "associationType" ) AssociationType type );
