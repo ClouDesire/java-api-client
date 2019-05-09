@@ -32,6 +32,8 @@ public class BillingItemDTO extends NamedEntityDTO
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 
+    private UrlEntityDTO reseller;
+
     @NotNull
     private BillingItemType type;
 
@@ -89,6 +91,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setDescription( String description )
     {
         this.description = description;
+        return this;
+    }
+
+    public UrlEntityDTO getReseller()
+    {
+        return reseller;
+    }
+
+    public BillingItemDTO setReseller( UrlEntityDTO reseller )
+    {
+        this.reseller = reseller;
         return this;
     }
 
