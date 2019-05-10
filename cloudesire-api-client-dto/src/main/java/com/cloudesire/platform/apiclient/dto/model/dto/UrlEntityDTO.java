@@ -30,6 +30,7 @@ public class UrlEntityDTO
         this.url = url;
     }
 
+    @Deprecated
     public UrlEntityDTO( BaseEntityDTO entityDTO )
     {
         this.url = entityDTO.getSelf();
