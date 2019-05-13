@@ -31,9 +31,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
 
-    @ApiModelProperty( hidden = true )
-    private Integer maxConcurrentInstance;
-
     @ApiModelProperty( value = "SSH RSA public keys for every employee", readOnly = true )
     private String publicKey;
 
@@ -117,16 +114,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setRi( String ri )
     {
         this.ri = ri;
-    }
-
-    public Integer getMaxConcurrentInstance()
-    {
-        return maxConcurrentInstance;
-    }
-
-    public void setMaxConcurrentInstance( Integer maxConcurrentInstance )
-    {
-        this.maxConcurrentInstance = maxConcurrentInstance;
     }
 
     public String getPublicKey()
@@ -274,7 +261,6 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     public static class Fields
     {
-        public static final String MAX_CONCURRENT_INSTANCE = "maxConcurrentInstance";
         public static final String MAX_PUBLISHED_PRODUCTS = "maxPublishedProducts";
         public static final String TRUSTED = "trusted";
 
