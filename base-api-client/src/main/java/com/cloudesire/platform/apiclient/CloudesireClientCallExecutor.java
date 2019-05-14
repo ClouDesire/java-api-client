@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient;
 
-import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.cloudesire.platform.apiclient.exceptions.AccessDeniedException;
 import com.cloudesire.platform.apiclient.exceptions.BackendException;
 import com.cloudesire.platform.apiclient.exceptions.BadRequestException;
@@ -10,6 +9,7 @@ import com.cloudesire.platform.apiclient.exceptions.MethodNotAllowedException;
 import com.cloudesire.platform.apiclient.exceptions.NetworkException;
 import com.cloudesire.platform.apiclient.exceptions.ResourceNotFoundException;
 import com.cloudesire.platform.apiclient.exceptions.UnprocessableEntityException;
+import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.cloudesire.platform.apiclient.response.error.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -40,9 +40,7 @@ public class CloudesireClientCallExecutor
     {
         try
         {
-            debugRequest( call );
             retrofit2.Response<T> response = call.execute();
-            debugResponse( response );
             if ( response.isSuccessful() ) return new CallResponse<>( response.body(), response.headers().toMultimap() );
             else throw exceptionHandling( response );
         }
@@ -50,19 +48,6 @@ public class CloudesireClientCallExecutor
         {
             throw new NetworkException( e );
         }
-    }
-
-    private <T> void debugResponse( retrofit2.Response<T> response )
-    {
-        String responseMessage = response.message();
-        log.debug( "<<<< {} {}", response.code(), responseMessage );
-    }
-
-    private <T> void debugRequest( Call<T> call )
-    {
-        String method = call.request().method();
-        String url = call.request().url().toString();
-        log.debug( ">>>> {} {}", method, url );
     }
 
     private <T> RuntimeException exceptionHandling( retrofit2.Response<T> response )
@@ -84,8 +69,9 @@ public class CloudesireClientCallExecutor
         switch ( response.code() )
         {
             case 400: return new BadRequestException( errorMessage, error );
-            case 401: return new AccessDeniedException( errorMessage, error );
-            case 403: return new AccessDeniedException( errorMessage, error );
+            case 401:
+            case 403:
+                return new AccessDeniedException( errorMessage, error );
             case 404: return new ResourceNotFoundException( errorMessage, error );
             case 405: return new MethodNotAllowedException( errorMessage, error );
             case 409: return new ConflictException( errorMessage, error );
