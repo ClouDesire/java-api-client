@@ -7,8 +7,9 @@ import com.cloudesire.platform.apiclient.interceptors.HeaderInterceptor;
 import com.cloudesire.platform.apiclient.interceptors.ParameterInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
@@ -16,6 +17,8 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.V
 
 public class CloudesireClient extends BasicAuthCloudesireClient
 {
+    private static final Logger log = LoggerFactory.getLogger( CloudesireClient.class );
+
     private final String token;
     private final String impersonate;
     private final String environment;
@@ -31,28 +34,26 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         this.interceptor = builder.interceptor;
         this.version = builder.version;
 
-        OkHttpClient.Builder okhttpClientBuilder = okHttpClient.newBuilder();
-
         if ( token != null )
         {
-            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "CMW-Auth-Token", token ) );
+            addInterceptor( new HeaderInterceptor( "CMW-Auth-Token", token ) );
         }
 
         if ( impersonate != null )
         {
-            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "CMW-As-User", impersonate ) );
+            addInterceptor( new HeaderInterceptor( "CMW-As-User", impersonate ) );
         }
 
         if ( environment != null )
         {
-            okhttpClientBuilder.addInterceptor( new HeaderInterceptor( "MODE", environment ) );
+            addInterceptor( new HeaderInterceptor( "MODE", environment ) );
         }
 
-        if ( interceptor != null ) okhttpClientBuilder.addInterceptor( interceptor );
+        if ( interceptor != null ) addInterceptor( interceptor );
 
-        okhttpClientBuilder.addInterceptor( new ParameterInterceptor( VERSION, String.valueOf( version ) ) );
+        addInterceptor( new ParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
-        generateClients( okhttpClientBuilder );
+        initialize();
     }
 
     public Builder newBuilder()
@@ -444,6 +445,12 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return retrofit.create( DiskSpacePricingApi.class );
     }
     // endregion
+
+    @Override
+    protected Logger getLogger()
+    {
+        return log;
+    }
 
     @Override
     public boolean equals( Object o )
