@@ -20,7 +20,8 @@ public enum LineType
     @ApiModelProperty( hidden = true )
     @Deprecated
     BILLINGITEMRECURRING( IS_EXTRA, IS_INCOME ),
-    /** What cloudesire takes out of product price */
+    @ApiModelProperty( hidden = true )
+    @Deprecated
     CLOUDESIREFEE,
     /** Monthly fee */
     @ApiModelProperty( "License costs" )
