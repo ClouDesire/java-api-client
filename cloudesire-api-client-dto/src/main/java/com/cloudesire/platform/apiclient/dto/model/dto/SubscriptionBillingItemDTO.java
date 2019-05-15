@@ -1,13 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Objects;
 
 public class SubscriptionBillingItemDTO extends DTO
 {
     private UrlEntityDTO billingItem;
 
+    @ApiModelProperty( "The chosen value for this billing item" )
     private Integer value;
 
+    @ApiModelProperty( "Whether the chosen value is in the last range of the possible values" )
     private Boolean unlimited;
 
     private ApiEndpointDTO endpoint;
