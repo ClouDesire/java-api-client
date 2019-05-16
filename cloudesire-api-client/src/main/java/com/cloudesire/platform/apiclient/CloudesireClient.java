@@ -183,52 +183,52 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     // region retrofit factories
     public AdminApi getAdminApi()
     {
-        return retrofit.create( AdminApi.class );
+        return getApi( AdminApi.class );
     }
 
     public BudgetEstimateApi getBudgetEstimateApi()
     {
-        return retrofit.create( BudgetEstimateApi.class );
+        return getApi( BudgetEstimateApi.class );
     }
 
     public CommentApi getCommentApi()
     {
-        return retrofit.create( CommentApi.class );
+        return getApi( CommentApi.class );
     }
 
     public CloudProviderApi getCloudProviderApi()
     {
-        return retrofit.create( CloudProviderApi.class );
+        return getApi( CloudProviderApi.class );
     }
 
     public EnvironmentApi getEnvironmentApi()
     {
-        return retrofit.create( EnvironmentApi.class );
+        return getApi( EnvironmentApi.class );
     }
 
     public InstancePricingApi getInstancePricingApi()
     {
-        return retrofit.create( InstancePricingApi.class );
+        return getApi( InstancePricingApi.class );
     }
 
     public InstanceTypeApi getInstanceTypeApi()
     {
-        return retrofit.create( InstanceTypeApi.class );
+        return getApi( InstanceTypeApi.class );
     }
 
     public ProductApi getProductApi()
     {
-        return retrofit.create( ProductApi.class );
+        return getApi( ProductApi.class );
     }
 
     public ProductCategoryApi getProductCategoryApi()
     {
-        return retrofit.create( ProductCategoryApi.class );
+        return getApi( ProductCategoryApi.class );
     }
 
     public ProductFileApi getProductFileApi()
     {
-        return retrofit.create( ProductFileApi.class );
+        return getApi( ProductFileApi.class );
     }
 
     /**
@@ -237,212 +237,212 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     @Deprecated
     public ProductImageFileApi getProductImageFileApi()
     {
-        return retrofit.create( ProductImageFileApi.class );
+        return getApi( ProductImageFileApi.class );
     }
 
     public ProductVersionApi getProductVersionApi()
     {
-        return retrofit.create( ProductVersionApi.class );
+        return getApi( ProductVersionApi.class );
     }
 
     public RiskProfileApi getRiskProfileApi()
     {
-        return retrofit.create( RiskProfileApi.class );
+        return getApi( RiskProfileApi.class );
     }
 
     public SubscriptionApi getSubscriptionApi()
     {
-        return retrofit.create( SubscriptionApi.class );
+        return getApi( SubscriptionApi.class );
     }
 
     public UserApi getUserApi()
     {
-        return retrofit.create( UserApi.class );
+        return getApi( UserApi.class );
     }
 
     public BillingItemApi getBillingItemApi()
     {
-        return retrofit.create( BillingItemApi.class );
+        return getApi( BillingItemApi.class );
     }
 
     public PublicUserFileApi getPublicUserFileApi()
     {
-        return retrofit.create( PublicUserFileApi.class );
+        return getApi( PublicUserFileApi.class );
     }
 
     public LoginApi getLoginApi()
     {
-        return retrofit.create( LoginApi.class );
+        return getApi( LoginApi.class );
     }
 
     public CouponApi getCouponApi()
     {
-        return retrofit.create( CouponApi.class );
+        return getApi( CouponApi.class );
     }
 
     public InvoiceApi getInvoiceApi()
     {
-        return retrofit.create( InvoiceApi.class );
+        return getApi( InvoiceApi.class );
     }
 
     public DistributorCatalogApi getDistributorCatalogApi()
     {
-        return retrofit.create( DistributorCatalogApi.class );
+        return getApi( DistributorCatalogApi.class );
     }
 
     public DistributorPricingApi getDistributorPricingApi()
     {
-        return retrofit.create( DistributorPricingApi.class );
+        return getApi( DistributorPricingApi.class );
     }
 
     public ResellerCatalogApi getResellerCatalogApi()
     {
-        return retrofit.create( ResellerCatalogApi.class );
+        return getApi( ResellerCatalogApi.class );
     }
 
     public ResellerPricingApi getResellerPricingApi()
     {
-        return retrofit.create( ResellerPricingApi.class );
+        return getApi( ResellerPricingApi.class );
     }
 
     public ResellingReportApi getResellingReportApi()
     {
-        return retrofit.create( ResellingReportApi.class );
+        return getApi( ResellingReportApi.class );
     }
 
     public VendorReportApi getVendorReportApi()
     {
-        return retrofit.create( VendorReportApi.class );
+        return getApi( VendorReportApi.class );
     }
 
     public CompanyApi getCompanyApi()
     {
-        return retrofit.create( CompanyApi.class );
+        return getApi( CompanyApi.class );
     }
 
     public UserCompanyApi getUserCompanyApi()
     {
-        return retrofit.create( UserCompanyApi.class );
+        return getApi( UserCompanyApi.class );
     }
 
     public DistributorApi getDistributorApi()
     {
-        return retrofit.create( DistributorApi.class );
+        return getApi( DistributorApi.class );
     }
 
     public ResellerApi getResellerApi()
     {
-        return retrofit.create( ResellerApi.class );
+        return getApi( ResellerApi.class );
     }
 
     public OrderApi getOrderApi()
     {
-        return retrofit.create( OrderApi.class );
+        return getApi( OrderApi.class );
     }
 
     public VirtualMachineInstanceApi getVirtualMachineInstanceApi()
     {
-        return retrofit.create( VirtualMachineInstanceApi.class );
+        return getApi( VirtualMachineInstanceApi.class );
     }
 
     public ApplicationFileApi getApplicationFileApi()
     {
-        return retrofit.create( ApplicationFileApi.class );
+        return getApi( ApplicationFileApi.class );
     }
 
     public ApplicationMetricApi getApplicationMetricApi()
     {
-        return retrofit.create( ApplicationMetricApi.class );
+        return getApi( ApplicationMetricApi.class );
     }
 
     public StackParameterApi getStackParameterApi()
     {
-        return retrofit.create( StackParameterApi.class );
+        return getApi( StackParameterApi.class );
     }
 
     public StackParameterValueApi getStackParameterValueApi()
     {
-        return retrofit.create( StackParameterValueApi.class );
+        return getApi( StackParameterValueApi.class );
     }
 
     public StatisticsApi getStatisticsApi()
     {
-        return retrofit.create( StatisticsApi.class );
+        return getApi( StatisticsApi.class );
     }
 
     public VirtualMachineConfigurationApi getVirtualMachineConfigurationApi()
     {
-        return retrofit.create( VirtualMachineConfigurationApi.class );
+        return getApi( VirtualMachineConfigurationApi.class );
     }
 
     public EventApi getEventApi()
     {
-        return retrofit.create( EventApi.class );
+        return getApi( EventApi.class );
     }
 
     public CompanyLogoApi getCompanyLogoApi()
     {
-        return retrofit.create( CompanyLogoApi.class );
+        return getApi( CompanyLogoApi.class );
     }
 
     public MailEnvironmentApi getMailEnvironmentApi()
     {
-        return retrofit.create( MailEnvironmentApi.class );
+        return getApi( MailEnvironmentApi.class );
     }
 
     public BackupApi getBackupApi()
     {
-        return retrofit.create( BackupApi.class );
+        return getApi( BackupApi.class );
     }
 
     public NodeRoleApi getNodeRoleApi()
     {
-        return retrofit.create( NodeRoleApi.class );
+        return getApi( NodeRoleApi.class );
     }
 
     public EventTestApi getEventTestApi()
     {
-        return retrofit.create( EventTestApi.class );
+        return getApi( EventTestApi.class );
     }
 
     public DependencyApi getDependencyApi()
     {
-        return retrofit.create( DependencyApi.class );
+        return getApi( DependencyApi.class );
     }
 
     public NotifyApi getNotifyApi()
     {
-        return retrofit.create( NotifyApi.class );
+        return getApi( NotifyApi.class );
     }
 
     public EnumApi getEnumApi()
     {
-        return retrofit.create( EnumApi.class );
+        return getApi( EnumApi.class );
     }
 
     public BackupPricingApi getBackupPricingApi()
     {
-        return retrofit.create( BackupPricingApi.class );
+        return getApi( BackupPricingApi.class );
     }
 
     public BandwidthPricingApi getBandwidthPricingApi()
     {
-        return retrofit.create( BandwidthPricingApi.class );
+        return getApi( BandwidthPricingApi.class );
     }
 
     public ConfigurationParameterApi getConfigurationParameterApi()
     {
-        return retrofit.create( ConfigurationParameterApi.class );
+        return getApi( ConfigurationParameterApi.class );
     }
 
     public CountryCodeApi getCountryCodeApi()
     {
-        return retrofit.create( CountryCodeApi.class );
+        return getApi( CountryCodeApi.class );
     }
 
     public DiskSpacePricingApi getDiskSpacePricingApi()
     {
-        return retrofit.create( DiskSpacePricingApi.class );
+        return getApi( DiskSpacePricingApi.class );
     }
     // endregion
 
