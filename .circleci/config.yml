@@ -7,15 +7,23 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: java-api-client-root
+          keys:
+            - m2-{{ checksum "pom.xml" }}-v1
+            - java-api-client-root
       - run:
           name: Configure Maven repository
           command: mkdir -p ~/.m2 && cp ~/java-api-client/.circleci/settings.xml ~/.m2
       - run:
           name: Build
           command: ./mvnw -B install -Dmaven.test.skip=true
+      - run: git clone -b sonar git@github.com:ClouDesire/ci-scripts.git
+      - run:
+          name: Run Sonar
+          command: |
+            source ci-scripts/sonar.sh
+            run_sonar
       - save_cache:
-          key: java-api-client-root
+          key: m2-{{ checksum "pom.xml" }}-v1
           paths:
             - "~/.m2"
       - run:
