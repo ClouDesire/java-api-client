@@ -71,7 +71,7 @@ public abstract class AbstractCloudesireClient
     protected void initialize()
     {
         okHttpClient = okhttpClientBuilder.build();
-        retrofit = buildRetrofit( okHttpClient );
+        retrofit = buildRetrofit();
     }
 
     public <T> T getApi( Class<T> api )
@@ -79,7 +79,12 @@ public abstract class AbstractCloudesireClient
         return retrofit.create( api );
     }
 
-    private Retrofit buildRetrofit( OkHttpClient okHttpClient )
+    public OkHttpClient getOkHttpClient()
+    {
+        return okhttpClientBuilder.build();
+    }
+
+    private Retrofit buildRetrofit()
     {
         return new Retrofit.Builder()
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
