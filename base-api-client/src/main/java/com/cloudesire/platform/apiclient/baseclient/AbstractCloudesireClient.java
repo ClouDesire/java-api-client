@@ -17,10 +17,10 @@ public abstract class AbstractCloudesireClient
     private final OkHttpClient.Builder okhttpClientBuilder;
     private final HttpLoggingInterceptor httpLoggingInterceptor;
 
+    private Retrofit retrofit;
+    private OkHttpClient okHttpClient;
     protected String baseUrl;
     protected ObjectMapper mapper;
-    protected Retrofit retrofit;
-    protected OkHttpClient okHttpClient;
 
     protected AbstractCloudesireClient( ObjectMapper mapper, String baseUrl, String userAgent )
     {
@@ -29,7 +29,7 @@ public abstract class AbstractCloudesireClient
 
         okhttpClientBuilder = new OkHttpClient.Builder()
                 .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
-                .readTimeout( 60, TimeUnit.SECONDS );        // socket timeout
+                .readTimeout( 60, TimeUnit.SECONDS );       // socket timeout
 
         addInterceptor( new UserAgentHeaderInterceptor( userAgent ) );
 
@@ -47,13 +47,6 @@ public abstract class AbstractCloudesireClient
         initialize();
     }
 
-    protected void addInterceptor( Interceptor interceptor )
-    {
-        okhttpClientBuilder.addInterceptor( interceptor );
-    }
-
-    protected abstract Logger getLogger();
-
     /**
      * Set logging level at runtime
      *
@@ -64,6 +57,23 @@ public abstract class AbstractCloudesireClient
         httpLoggingInterceptor.setLevel( level );
     }
 
+    public <T> T getApi( Class<T> api )
+    {
+        return retrofit.create( api );
+    }
+
+    public OkHttpClient getOkHttpClient()
+    {
+        return okhttpClientBuilder.build();
+    }
+
+    protected abstract Logger getLogger();
+
+    protected void addInterceptor( Interceptor interceptor )
+    {
+        okhttpClientBuilder.addInterceptor( interceptor );
+    }
+
     /**
      * When implementing a new class, invoke this method at the end of the constructor
      * to correctly initialize the client
@@ -71,15 +81,10 @@ public abstract class AbstractCloudesireClient
     protected void initialize()
     {
         okHttpClient = okhttpClientBuilder.build();
-        retrofit = buildRetrofit( okHttpClient );
+        retrofit = buildRetrofit();
     }
 
-    public <T> T getApi( Class<T> api )
-    {
-        return retrofit.create( api );
-    }
-
-    private Retrofit buildRetrofit( OkHttpClient okHttpClient )
+    private Retrofit buildRetrofit()
     {
         return new Retrofit.Builder()
                 .addConverterFactory( JacksonConverterFactory.create( mapper ) )
