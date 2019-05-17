@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: openjdk:8-jdk
+        environment:
+          CI_SCRIPTS_BRANCH: master
     working_directory: ~/java-api-client
     steps:
       - checkout
@@ -16,7 +18,7 @@ jobs:
       - run:
           name: Build
           command: ./mvnw -B install -Dmaven.test.skip=true
-      - run: git clone -b sonar git@github.com:ClouDesire/ci-scripts.git
+      - run: git clone -b $CI_SCRIPTS_BRANCH git@github.com:ClouDesire/ci-scripts.git
       - run:
           name: Run Sonar
           command: |
