@@ -5,7 +5,9 @@ import com.cloudesire.platform.apiclient.dto.model.enums.VirtualMachineState;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Objects;
 
+@SuppressWarnings( "squid:S2637" )
 public class VirtualMachineStatusDTO extends BaseEntityDTO
 {
     @Valid
@@ -83,5 +85,27 @@ public class VirtualMachineStatusDTO extends BaseEntityDTO
     {
         if ( date != null ) this.date = (Date) date.clone();
         this.date = date;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        VirtualMachineStatusDTO that = (VirtualMachineStatusDTO) o;
+        return Objects.equals( virtualMachineInstance, that.virtualMachineInstance ) && Objects
+                .equals( statusMessage, that.statusMessage ) && Objects
+                .equals( descriptiveMessage, that.descriptiveMessage ) && Objects
+                .equals( progressPercentage, that.progressPercentage )
+                && virtualMachineState == that.virtualMachineState && date.equals( that.date );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects
+                .hash( super.hashCode(), virtualMachineInstance, statusMessage, descriptiveMessage, progressPercentage,
+                        virtualMachineState, date );
     }
 }

@@ -1423,12 +1423,9 @@ public class EnvironmentDTO extends DTO
         public void setExternalSubscriptionHandling( Object externalSubscriptionHandling )
         {
             /* @deprecated */
-            if ( externalSubscriptionHandling instanceof Boolean )
+            if ( externalSubscriptionHandling instanceof Boolean && (Boolean) externalSubscriptionHandling )
             {
-                if ( (Boolean) externalSubscriptionHandling )
-                {
-                    this.externalSubscriptionHandling = ExternalSubscriptionHandling.ZUORA;
-                }
+                this.externalSubscriptionHandling = ExternalSubscriptionHandling.ZUORA;
             }
 
             if ( externalSubscriptionHandling instanceof String )
@@ -1895,21 +1892,15 @@ public class EnvironmentDTO extends DTO
             this.syndicationEndpoints = syndicationEndpoints;
         }
 
+        /**
+         * @deprecated use {@link #setSyndicationEndpoints(List)}
+         */
         @Deprecated
         public void setSyndicationEndpoint( String syndicationEndpoint )
         {
             if ( syndicationEndpoint == null ) return;
             SyndicationEndpointDTO endpoint = getCurrentOrNewEndpoint();
             endpoint.setUrl( syndicationEndpoint );
-            syndicationEndpoints = Collections.singletonList( endpoint );
-        }
-
-        @Deprecated
-        public void setSyndicationEndpointSecretToken( String syndicationEndpointSecretToken )
-        {
-            if ( syndicationEndpointSecretToken == null ) return;
-            SyndicationEndpointDTO endpoint = getCurrentOrNewEndpoint();
-            endpoint.setSecret( syndicationEndpointSecretToken );
             syndicationEndpoints = Collections.singletonList( endpoint );
         }
 

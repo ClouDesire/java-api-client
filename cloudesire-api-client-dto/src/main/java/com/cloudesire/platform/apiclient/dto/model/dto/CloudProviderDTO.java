@@ -113,11 +113,19 @@ public class CloudProviderDTO extends NamedEntityDTO
         this.usernames = usernames;
     }
 
+    /**
+     * @deprecated unsupported
+     */
+    @Deprecated
     public String getUsername()
     {
         return username;
     }
 
+    /**
+     * @deprecated unsupported
+     */
+    @Deprecated
     public void setUsername( String username )
     {
         this.username = username;

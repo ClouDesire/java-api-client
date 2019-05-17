@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class CspAzureProductDTO extends CspProductDTO
 {
@@ -57,5 +58,22 @@ public class CspAzureProductDTO extends CspProductDTO
     public void setAzureSku( String azureSku )
     {
         this.azureSku = azureSku;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        CspAzureProductDTO that = (CspAzureProductDTO) o;
+        return Objects.equals( azurePublisher, that.azurePublisher ) && Objects.equals( azureOffer, that.azureOffer )
+                && Objects.equals( azureSku, that.azureSku );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), azurePublisher, azureOffer, azureSku );
     }
 }

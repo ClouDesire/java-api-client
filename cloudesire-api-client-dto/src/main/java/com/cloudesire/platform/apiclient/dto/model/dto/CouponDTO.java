@@ -250,6 +250,10 @@ public class CouponDTO extends BaseEntityDTO
         return licenseOnly;
     }
 
+    /**
+     * @deprecated use {@link #setDestination(CouponDestination)}
+     */
+    @Deprecated
     public void setLicenseOnly( boolean licenseOnly )
     {
         this.licenseOnly = licenseOnly;

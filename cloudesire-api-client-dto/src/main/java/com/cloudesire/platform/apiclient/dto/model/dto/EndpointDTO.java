@@ -36,6 +36,9 @@ public class EndpointDTO extends BaseEntityDTO
     {
     }
 
+    /**
+     * @deprecated use {@link #getEndpoint()}
+     */
     @ApiModelProperty( hidden = true )
     @Deprecated
     public String getName()
@@ -43,6 +46,9 @@ public class EndpointDTO extends BaseEntityDTO
         return getEndpoint();
     }
 
+    /**
+     * @deprecated use {@link #setEndpoint(String)}
+     */
     @Deprecated
     public EndpointDTO setName( String name )
     {
