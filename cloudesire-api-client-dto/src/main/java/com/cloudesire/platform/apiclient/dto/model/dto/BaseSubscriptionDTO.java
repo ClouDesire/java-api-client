@@ -31,6 +31,9 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @Valid
     private Set<UrlEntityDTO> virtualMachineInstance = new HashSet<>();
 
+    /**
+     * @deprecated use {@link #deploymentLog}
+     */
     @Deprecated
     @Valid
     private List<UrlEntityDTO> deploymentStatusStory = new LinkedList<>();
@@ -56,6 +59,9 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "The type of this subscription", readOnly = true, allowableValues = "NORMAL, TRIAL, SANDBOX" )
     private String type;
 
+    /**
+     * @deprecated use {@link #endpoints}
+     */
     @Deprecated
     @ApiModelProperty( hidden = true )
     private Set<String> syndicatedEndpoints;
@@ -222,12 +228,18 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         return this;
     }
 
+    /**
+     * @deprecated use {@link #getEndpoints()}
+     */
     @Deprecated
     public Set<String> getSyndicatedEndpoints()
     {
         return syndicatedEndpoints;
     }
 
+    /**
+     * @deprecated use {@link #setEndpoints(Set)}
+     */
     @Deprecated
     public void setSyndicatedEndpoints( Set<String> syndicatedEndpoints )
     {
@@ -254,12 +266,18 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         this.virtualMachineInstance = virtualMachineInstance;
     }
 
+    /**
+     * @deprecated use {@link #getDeploymentLog()}
+     */
     @Deprecated
     public List<UrlEntityDTO> getDeploymentStatusStory()
     {
         return deploymentStatusStory;
     }
 
+    /**
+     * @deprecated use {@link #setDeploymentLog(List)}
+     */
     @Deprecated
     public void setDeploymentStatusStory( List<UrlEntityDTO> deploymentStatusStory )
     {
@@ -336,11 +354,19 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         this.bandwidth = bandwidth;
     }
 
+    /**
+     * @deprecated use {@link #getBandwidth()}
+     */
+    @Deprecated
     public BigInteger getBandwidthInGB()
     {
         return bandwidthInGB;
     }
 
+    /**
+     * @deprecated use {@link #setBandwidth(BigDecimal)}
+     */
+    @Deprecated
     public void setBandwidthInGB( BigInteger bandwidthInGB )
     {
         this.bandwidthInGB = bandwidthInGB;

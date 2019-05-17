@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @ApiModel( description = "Environment variables for an application" )
+@SuppressWarnings( "squid:S2637" )
 public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
 {
     /**

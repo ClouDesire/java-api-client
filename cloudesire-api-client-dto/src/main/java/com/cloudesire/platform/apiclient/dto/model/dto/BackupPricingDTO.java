@@ -6,8 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @ApiModel( description = "Defines pricing of a backup of a VM" )
+@SuppressWarnings( "squid:S2637" )
 public class BackupPricingDTO extends BaseEntityDTO
 {
     @NotNull
@@ -46,5 +48,21 @@ public class BackupPricingDTO extends BaseEntityDTO
     public void setPrice( BigDecimal price )
     {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        BackupPricingDTO that = (BackupPricingDTO) o;
+        return cloudProvider.equals( that.cloudProvider ) && price.equals( that.price );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cloudProvider, price );
     }
 }

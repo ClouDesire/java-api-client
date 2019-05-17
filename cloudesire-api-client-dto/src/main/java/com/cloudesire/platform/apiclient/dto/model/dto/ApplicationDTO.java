@@ -9,6 +9,9 @@ public class ApplicationDTO
 {
     private Integer id;
 
+    /**
+     * @deprecated unsupported
+     */
     @Deprecated
     private List<EndpointDTO> endpoint;
     @Valid
@@ -49,12 +52,18 @@ public class ApplicationDTO
         this.name = name;
     }
 
+    /**
+     * @deprecated unsupported
+     */
     @Deprecated
     public List<EndpointDTO> getEndpoint()
     {
         return endpoint;
     }
 
+    /**
+     * @deprecated unsupported
+     */
     @Deprecated
     public void setEndpoint( List<EndpointDTO> endpoint )
     {
@@ -96,7 +105,6 @@ public class ApplicationDTO
     {
         return "ApplicationDTO{" +
                 "id=" + id +
-                ", endpoint=" + endpoint +
                 ", applicationFile=" + applicationFile +
                 ", availableVersions=" + availableVersions +
                 ", name='" + name + '\'' +
