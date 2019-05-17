@@ -107,5 +107,12 @@ public final class MathUtils
         return bytes.divide( rescale, computationMathContext() );
     }
 
+    public static boolean equalsByComparing( BigDecimal a, BigDecimal b )
+    {
+        if ( a == null ) return b == null;
+        if ( b == null ) return false;
+        return a.compareTo( b ) == 0;
+    }
+
     private MathUtils() {}
 }
