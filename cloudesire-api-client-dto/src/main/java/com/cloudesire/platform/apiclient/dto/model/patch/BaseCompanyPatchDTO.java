@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
+@SuppressWarnings( "squid:S2637" )
 public class BaseCompanyPatchDTO extends DTO
 {
     @NotNull

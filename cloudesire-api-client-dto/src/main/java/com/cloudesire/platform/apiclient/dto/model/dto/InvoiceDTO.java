@@ -77,14 +77,23 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( value = "Who resold the Product", readOnly = true )
     private UrlEntityDTO reseller;
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     @ApiModelProperty( hidden = true )
     private BigDecimal totalPrice;
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     @ApiModelProperty( hidden = true )
     private BigDecimal priceExcludingVAT;
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     @ApiModelProperty( hidden = true )
     private BigDecimal vatSpunOff;
@@ -211,10 +220,13 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.stampDuty = stampDuty;
     }
 
+    /**
+     * @deprecated use {@link #getRemoteId()}
+     */
     @Deprecated
     public String getRemoteInvoiceId()
     {
-        return remoteId;
+        return getRemoteId();
     }
 
     public String getRemoteId()
@@ -255,30 +267,45 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     public BigDecimal getPriceExcludingVAT()
     {
         return priceExcludingVAT;
     }
 
+    /**
+     * @deprecated use {@link #setTotal(VATPriceDTO)}
+     */
     @Deprecated
     public void setPriceExcludingVAT( BigDecimal priceExcludingVAT )
     {
         this.priceExcludingVAT = priceExcludingVAT;
     }
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     public BigDecimal getVatSpunOff()
     {
         return vatSpunOff;
     }
 
+    /**
+     * @deprecated use {@link #setTotal(VATPriceDTO)}
+     */
     @Deprecated
     public void setVatSpunOff( BigDecimal vatSpunOff )
     {
         this.vatSpunOff = vatSpunOff;
     }
 
+    /**
+     * @deprecated use {@link #getTotal()}
+     */
     @Deprecated
     public BigDecimal getVAT()
     {

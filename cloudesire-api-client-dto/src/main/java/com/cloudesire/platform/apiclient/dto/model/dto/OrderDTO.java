@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This is the output DTO for order
@@ -43,5 +44,21 @@ public class OrderDTO extends BaseOrderDTO
     public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        OrderDTO orderDTO = (OrderDTO) o;
+        return Objects.equals( distributor, orderDTO.distributor ) && Objects.equals( reseller, orderDTO.reseller );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), distributor, reseller );
     }
 }

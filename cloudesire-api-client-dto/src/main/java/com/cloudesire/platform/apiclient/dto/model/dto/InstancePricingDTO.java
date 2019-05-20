@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @ApiModel( description = "Defines pricing of disk usage of a VM" )
 public class InstancePricingDTO extends BaseEntityDTO
@@ -118,5 +119,24 @@ public class InstancePricingDTO extends BaseEntityDTO
     public void setDeprecated( Boolean deprecated )
     {
         this.deprecated = deprecated;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        InstancePricingDTO that = (InstancePricingDTO) o;
+        return cloudProvider.equals( that.cloudProvider ) && price.equals( that.price ) && ram.equals( that.ram ) && cpu
+                .equals( that.cpu ) && Objects.equals( diskSpace, that.diskSpace ) && osFamily == that.osFamily
+                && operatingSystem == that.operatingSystem && Objects.equals( deprecated, that.deprecated );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cloudProvider, price, ram, cpu, diskSpace, osFamily, operatingSystem,
+                deprecated );
     }
 }

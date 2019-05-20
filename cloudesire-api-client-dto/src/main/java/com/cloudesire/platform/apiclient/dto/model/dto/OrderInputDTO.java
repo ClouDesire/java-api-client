@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@SuppressWarnings( "squid:S2637" )
 public class OrderInputDTO extends BaseEntityDTO
 {
     @ApiModelProperty( "Which type of order" )
@@ -37,6 +38,9 @@ public class OrderInputDTO extends BaseEntityDTO
     @ApiModelProperty( "Optional discount coupon" )
     private String hashCoupon;
 
+    /**
+     * @deprecated removed support for buying for multiple billing periods
+     */
     @Deprecated
     @Min ( 1 )
     @ApiModelProperty( value = "How many periods to buy", hidden = true )
@@ -74,6 +78,9 @@ public class OrderInputDTO extends BaseEntityDTO
     {
     }
 
+    /**
+     * @deprecated removed support for buying for multiple billing periods
+     */
     @Deprecated
     public void setBillingPeriods( Integer billingPeriods )
     {
@@ -123,7 +130,7 @@ public class OrderInputDTO extends BaseEntityDTO
     @JsonIgnore
     public UrlEntityDTO getConfiguration()
     {
-        return productVersion;
+        return getProductVersion();
     }
 
     public void setConfiguration( UrlEntityDTO configuration )
@@ -141,6 +148,9 @@ public class OrderInputDTO extends BaseEntityDTO
         this.bandwidthPricing = bandwidthPricing;
     }
 
+    /**
+     * @deprecated removed support for buying for multiple billing periods
+     */
     @Deprecated
     public Integer getBillingPeriods()
     {
@@ -246,7 +256,7 @@ public class OrderInputDTO extends BaseEntityDTO
         return type == that.type && Objects.equals( cloudProvider, that.cloudProvider ) && Objects
                 .equals( productVersion, that.productVersion ) && Objects
                 .equals( bandwidthPricing, that.bandwidthPricing ) && Objects.equals( buyer, that.buyer ) && Objects
-                .equals( hashCoupon, that.hashCoupon ) && Objects.equals( billingPeriods, that.billingPeriods )
+                .equals( hashCoupon, that.hashCoupon )
                 && Objects.equals( reseller, that.reseller );
     }
 
@@ -254,6 +264,6 @@ public class OrderInputDTO extends BaseEntityDTO
     public int hashCode()
     {
         return Objects.hash( super.hashCode(), type, cloudProvider, productVersion, bandwidthPricing, buyer, hashCoupon,
-                billingPeriods, reseller );
+                reseller );
     }
 }

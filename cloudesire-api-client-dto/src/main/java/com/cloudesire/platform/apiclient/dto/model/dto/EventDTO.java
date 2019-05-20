@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * This is the object exposed by the API, not the notification sent via HTTP
@@ -177,5 +178,24 @@ public class EventDTO extends BaseEntityDTO
     public String toString()
     {
         return entityName + ' ' + type;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        EventDTO eventDTO = (EventDTO) o;
+        return Objects.equals( entityName, eventDTO.entityName ) && Objects.equals( entityId, eventDTO.entityId )
+                && Objects.equals( notified, eventDTO.notified ) && Objects.equals( date, eventDTO.date )
+                && type == eventDTO.type && recipient == eventDTO.recipient && Objects
+                .equals( product, eventDTO.product ) && Objects.equals( vendor, eventDTO.vendor );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), entityName, entityId, notified, date, type, recipient, product, vendor );
     }
 }

@@ -1605,14 +1605,6 @@ public class EnvironmentDTO extends DTO
         @Valid
         private AddressDTO platformAddress;
 
-        /**
-         * @deprecated by {@link #platformAddress}
-         */
-        @ApiModelProperty( "Default nation" )
-        @Deprecated
-        @Size( max = 2 )
-        private String nation = "IT";
-
         @ApiModelProperty( "Enable validation of VAT ID for companies" )
         private boolean taxCodeValidation;
 
@@ -1786,8 +1778,7 @@ public class EnvironmentDTO extends DTO
         public String getNation()
         {
             if ( platformAddress != null ) return platformAddress.getCountryCode();
-
-            return nation;
+            else return "IT";
         }
 
         /**
@@ -1796,7 +1787,8 @@ public class EnvironmentDTO extends DTO
         @Deprecated
         public void setNation( String nation )
         {
-            this.nation = nation;
+            if ( platformAddress != null ) platformAddress.setCountryCode( nation );
+            else platformAddress = new AddressDTO( nation );
         }
 
         public boolean isTaxCodeValidation()
