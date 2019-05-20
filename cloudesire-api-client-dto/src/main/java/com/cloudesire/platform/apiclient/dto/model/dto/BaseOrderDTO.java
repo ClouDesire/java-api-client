@@ -185,17 +185,18 @@ public abstract class BaseOrderDTO extends BaseEntityDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-
-        BaseOrderDTO orderDTO = (BaseOrderDTO) o;
-        return Objects.equals( buyer, orderDTO.buyer ) && Objects.equals( approve, orderDTO.approve ) && Objects
-                .equals( budget, orderDTO.budget ) && type == orderDTO.type && Objects
-                .equals( subscription, orderDTO.subscription ) && Objects.equals( date, orderDTO.date ) && Objects
-                .equals( currency, orderDTO.currency );
+        if ( !super.equals( o ) ) return false;
+        BaseOrderDTO that = (BaseOrderDTO) o;
+        return Objects.equals( buyer, that.buyer ) && type == that.type && Objects
+                .equals( subscription, that.subscription ) && Objects.equals( date, that.date ) && Objects
+                .equals( externalReference, that.externalReference ) && Objects
+                .equals( productVersion, that.productVersion ) && operatingSystem == that.operatingSystem;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( buyer, approve, budget, type, subscription, date, currency );
+        return Objects.hash( super.hashCode(), buyer, type, subscription, date, externalReference, productVersion,
+                operatingSystem );
     }
 }
