@@ -1226,6 +1226,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Remove customer data from notifications" )
         private boolean gdpr;
 
+        @ApiModelProperty( "Enables custom cloud credentials" )
+        private CustomerCloudCredentials customerCloudCredentials;
+
         @ApiModelProperty( hidden = true )
         public boolean isZuoraEnabled()
         {
@@ -1538,6 +1541,26 @@ public class EnvironmentDTO extends DTO
         public void setGdpr( boolean gdpr )
         {
             this.gdpr = gdpr;
+        }
+
+        public CustomerCloudCredentials getCustomerCloudCredentials()
+        {
+            return customerCloudCredentials;
+        }
+
+        public void setCustomerCloudCredentials( CustomerCloudCredentials customerCloudCredentials )
+        {
+            this.customerCloudCredentials = customerCloudCredentials;
+        }
+
+        public enum CustomerCloudCredentials
+        {
+            ENABLED, ENFORCED, DISABLED;
+
+            public boolean isEnabled()
+            {
+                return this != DISABLED;
+            }
         }
 
         public enum ExternalSubscriptionHandling

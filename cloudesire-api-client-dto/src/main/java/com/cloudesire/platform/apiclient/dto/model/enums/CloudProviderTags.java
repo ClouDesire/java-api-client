@@ -7,7 +7,7 @@ public enum CloudProviderTags
     ADDITIONAL_DISKS,
     BACKUP,
     BANDWIDTH_UPGRADE,
-    CUSTOM_CREDENTIAL,
+    CUSTOM_CREDENTIALS,
     DISK_SPACE_UPGRADE,
     GPU,
     LINUX( OsFamily.LINUX ),
