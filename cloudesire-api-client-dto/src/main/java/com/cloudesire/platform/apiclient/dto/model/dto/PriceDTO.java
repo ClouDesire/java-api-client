@@ -24,6 +24,7 @@ public class PriceDTO extends DTO
         this.currency = currency;
     }
 
+    @SuppressWarnings( "squid:S2637" )
     public PriceDTO()
     {
     }
@@ -40,12 +41,12 @@ public class PriceDTO extends DTO
 
     public BigDecimal getPrice()
     {
-        if ( price == null ) return null;
-
-        return price.setScale( MathConfiguration.COMPUTATION_PRECISION, MathConfiguration.ROUNDING_MODE );
+        return price != null ?
+                price.setScale( MathConfiguration.COMPUTATION_PRECISION, MathConfiguration.ROUNDING_MODE ) :
+                null;
     }
 
-    public void setPrice( BigDecimal price )
+    public void setPrice( @NotNull BigDecimal price )
     {
         this.price = price;
     }

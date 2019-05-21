@@ -20,7 +20,7 @@ public class RecurringCostLineDTO extends OrderLineDTO
 
     public RecurringCostLineDTO( BigDecimal price, double vat )
     {
-        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( new BigDecimal( vat ) ) );
+        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( BigDecimal.valueOf( vat ) ) );
     }
 
     public RecurringCostLineDTO()
@@ -37,6 +37,7 @@ public class RecurringCostLineDTO extends OrderLineDTO
     @Override
     public void setType( LineType type )
     {
+        // not required
     }
 
     public UrlEntityDTO getSubscription()
