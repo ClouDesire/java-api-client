@@ -120,16 +120,22 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
         this.osType = osType;
     }
 
+    /**
+     * @deprecated use {@link #getStableApplications()}
+     */
     @Deprecated
     public List<UrlEntityDTO> getActiveApplicationFile()
     {
-        return stableApplications;
+        return getStableApplications();
     }
 
+    /**
+     * @deprecated use {@link #setStableApplications(List)}
+     */
     @Deprecated
     public void setActiveApplicationFile( List<UrlEntityDTO> activeApplicationFile )
     {
-        this.stableApplications = activeApplicationFile;
+        setStableApplications( activeApplicationFile );
     }
 
     public List<UrlEntityDTO> getStableApplications()

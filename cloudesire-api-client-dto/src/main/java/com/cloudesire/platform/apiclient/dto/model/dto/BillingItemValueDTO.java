@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "Billing configuration of the ranges for an extra resource" )
+@SuppressWarnings( "squid:S2637" )
 public class BillingItemValueDTO extends BaseEntityDTO
 {
     @NotNull

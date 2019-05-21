@@ -1423,12 +1423,9 @@ public class EnvironmentDTO extends DTO
         public void setExternalSubscriptionHandling( Object externalSubscriptionHandling )
         {
             /* @deprecated */
-            if ( externalSubscriptionHandling instanceof Boolean )
+            if ( externalSubscriptionHandling instanceof Boolean && (Boolean) externalSubscriptionHandling )
             {
-                if ( (Boolean) externalSubscriptionHandling )
-                {
-                    this.externalSubscriptionHandling = ExternalSubscriptionHandling.ZUORA;
-                }
+                this.externalSubscriptionHandling = ExternalSubscriptionHandling.ZUORA;
             }
 
             if ( externalSubscriptionHandling instanceof String )
@@ -1608,14 +1605,6 @@ public class EnvironmentDTO extends DTO
         @Valid
         private AddressDTO platformAddress;
 
-        /**
-         * @deprecated by {@link #platformAddress}
-         */
-        @ApiModelProperty( "Default nation" )
-        @Deprecated
-        @Size( max = 2 )
-        private String nation = "IT";
-
         @ApiModelProperty( "Enable validation of VAT ID for companies" )
         private boolean taxCodeValidation;
 
@@ -1789,8 +1778,7 @@ public class EnvironmentDTO extends DTO
         public String getNation()
         {
             if ( platformAddress != null ) return platformAddress.getCountryCode();
-
-            return nation;
+            else return "IT";
         }
 
         /**
@@ -1799,7 +1787,8 @@ public class EnvironmentDTO extends DTO
         @Deprecated
         public void setNation( String nation )
         {
-            this.nation = nation;
+            if ( platformAddress != null ) platformAddress.setCountryCode( nation );
+            else platformAddress = new AddressDTO( nation );
         }
 
         public boolean isTaxCodeValidation()
@@ -1895,21 +1884,15 @@ public class EnvironmentDTO extends DTO
             this.syndicationEndpoints = syndicationEndpoints;
         }
 
+        /**
+         * @deprecated use {@link #setSyndicationEndpoints(List)}
+         */
         @Deprecated
         public void setSyndicationEndpoint( String syndicationEndpoint )
         {
             if ( syndicationEndpoint == null ) return;
             SyndicationEndpointDTO endpoint = getCurrentOrNewEndpoint();
             endpoint.setUrl( syndicationEndpoint );
-            syndicationEndpoints = Collections.singletonList( endpoint );
-        }
-
-        @Deprecated
-        public void setSyndicationEndpointSecretToken( String syndicationEndpointSecretToken )
-        {
-            if ( syndicationEndpointSecretToken == null ) return;
-            SyndicationEndpointDTO endpoint = getCurrentOrNewEndpoint();
-            endpoint.setSecret( syndicationEndpointSecretToken );
             syndicationEndpoints = Collections.singletonList( endpoint );
         }
 

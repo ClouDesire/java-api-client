@@ -10,34 +10,34 @@ public enum OSType
     OTHER( "Other", "", OsFamily.UNRECOGNIZED ),
 
     @ApiModelProperty("Ubuntu Precise Pangolin 12.04 LTS 64BIT" )
-    UBUNTU_12_04( "Ubuntu", "12.04", OsFamily.LINUX ),
+    UBUNTU_12_04( Constants.UBUNTU, "12.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Ubuntu Precise Pangolin 14.04 LTS 64BIT" )
-    UBUNTU_14_04( "Ubuntu", "14.04", OsFamily.LINUX ),
+    UBUNTU_14_04( Constants.UBUNTU, "14.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Debian 7" )
     DEBIAN_7( "Debian", "7", OsFamily.LINUX ),
 
     @ApiModelProperty( "Microsoft Windows Server 2008 R2" )
-    WINDOWS_SERVER_2008_R2( "Microsoft Windows", "Server 2008 R2", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2008_R2( Constants.MICROSOFT_WINDOWS, "Server 2008 R2", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard" )
-    WINDOWS_SERVER_2008_R2_SQL_2008_R2( "Microsoft Windows", "Server 2008 R2", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2008_R2_SQL_2008_R2( Constants.MICROSOFT_WINDOWS, "Server 2008 R2", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Microsoft Windows Server 2012 R2" )
-    WINDOWS_SERVER_2012_R2( "Microsoft Windows", "Server 2012 R2", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2012_R2( Constants.MICROSOFT_WINDOWS, "Server 2012 R2", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
-    WINDOWS_SERVER_2012_SQL_2012_SP1( "Microsoft Windows", "Server 2012", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2012_SQL_2012_SP1( Constants.MICROSOFT_WINDOWS, "Server 2012", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Microsoft Windows Server 2016" )
-    WINDOWS_SERVER_2016( "Microsoft Windows", "Server 2016", OsFamily.WINDOWS ),
+    WINDOWS_SERVER_2016( Constants.MICROSOFT_WINDOWS, "Server 2016", OsFamily.WINDOWS ),
 
     @ApiModelProperty( "Ubuntu Xenial Xerus 16.04 LTS 64bit" )
-    UBUNTU_16_04( "Ubuntu", "16.04", OsFamily.LINUX ),
+    UBUNTU_16_04( Constants.UBUNTU, "16.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Ubuntu Bionic Beaver 18.04 LTS 64bit" )
-    UBUNTU_18_04( "Ubuntu", "18.04", OsFamily.LINUX ),
+    UBUNTU_18_04( Constants.UBUNTU, "18.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Debian 9" )
     DEBIAN_9( "Debian", "9", OsFamily.LINUX ),
@@ -115,5 +115,11 @@ public enum OSType
     public boolean isLinux()
     {
         return OsFamily.LINUX.equals( family );
+    }
+
+    private static class Constants
+    {
+        private static final String UBUNTU = "Ubuntu";
+        private static final String MICROSOFT_WINDOWS = "Microsoft Windows";
     }
 }

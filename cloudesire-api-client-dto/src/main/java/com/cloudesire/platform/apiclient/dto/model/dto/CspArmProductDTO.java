@@ -6,7 +6,9 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
+@SuppressWarnings( "squid:S2637" )
 public class CspArmProductDTO extends CspProductDTO
 {
     @ApiModelProperty( "The ARM template URL" )
@@ -31,5 +33,21 @@ public class CspArmProductDTO extends CspProductDTO
     public void setTemplate( String template )
     {
         this.template = template;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        CspArmProductDTO that = (CspArmProductDTO) o;
+        return template.equals( that.template );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), template );
     }
 }

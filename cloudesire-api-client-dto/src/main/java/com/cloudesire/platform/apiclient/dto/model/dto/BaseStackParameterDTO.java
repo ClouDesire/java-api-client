@@ -4,6 +4,8 @@ import com.cloudesire.platform.apiclient.dto.model.enums.StackParameterValueType
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Objects;
+
 @ApiModel( description = "A software stack requirement" )
 public abstract class BaseStackParameterDTO extends BaseEntityDTO
 {
@@ -57,5 +59,22 @@ public abstract class BaseStackParameterDTO extends BaseEntityDTO
     public void setType( StackParameterValueType type )
     {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        BaseStackParameterDTO that = (BaseStackParameterDTO) o;
+        return Objects.equals( parameterIdentifier, that.parameterIdentifier ) && Objects
+                .equals( regexRule, that.regexRule ) && Objects.equals( label, that.label ) && type == that.type;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), parameterIdentifier, regexRule, label, type );
     }
 }

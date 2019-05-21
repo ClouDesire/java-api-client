@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class DeploymentStatusDTO extends BaseEntityDTO
 {
@@ -98,5 +99,25 @@ public class DeploymentStatusDTO extends BaseEntityDTO
     public void setProgressPercentage( Integer progressPercentage )
     {
         this.progressPercentage = progressPercentage;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        DeploymentStatusDTO that = (DeploymentStatusDTO) o;
+        return Objects.equals( statusMessage, that.statusMessage ) && Objects
+                .equals( descriptiveMessage, that.descriptiveMessage ) && Objects.equals( error, that.error ) && Objects
+                .equals( attemptsLeft, that.attemptsLeft ) && Objects.equals( temporaryFailure, that.temporaryFailure )
+                && Objects.equals( phaseName, that.phaseName );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), statusMessage, descriptiveMessage, error, attemptsLeft, temporaryFailure,
+                phaseName );
     }
 }

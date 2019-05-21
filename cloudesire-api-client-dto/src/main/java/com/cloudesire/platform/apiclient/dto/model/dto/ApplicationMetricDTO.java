@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 public class ApplicationMetricDTO extends BaseEntityDTO
 {
@@ -99,5 +100,23 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     public boolean isSyndicated()
     {
         return product != null && applicationFile == null;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        ApplicationMetricDTO that = (ApplicationMetricDTO) o;
+        return counter == that.counter && billingItem.equals( that.billingItem ) && Objects
+                .equals( applicationFile, that.applicationFile ) && Objects.equals( product, that.product ) && endpoint
+                .equals( that.endpoint ) && frequence == that.frequence;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), billingItem, counter, applicationFile, product, endpoint, frequence );
     }
 }

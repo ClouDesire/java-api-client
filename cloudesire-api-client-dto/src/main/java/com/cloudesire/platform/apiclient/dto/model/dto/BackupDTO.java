@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class BackupDTO extends BaseEntityDTO
 {
@@ -90,5 +91,24 @@ public class BackupDTO extends BaseEntityDTO
     public void setDeletion( Date deletion )
     {
         this.deletion = deletion;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        BackupDTO backupDTO = (BackupDTO) o;
+        return completed == backupDTO.completed && Objects.equals( date, backupDTO.date ) && Objects
+                .equals( size, backupDTO.size ) && Objects
+                .equals( virtualMachineInstance, backupDTO.virtualMachineInstance ) && Objects
+                .equals( deletion, backupDTO.deletion );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), date, size, completed, virtualMachineInstance, deletion );
     }
 }

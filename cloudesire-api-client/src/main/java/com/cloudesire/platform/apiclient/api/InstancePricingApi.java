@@ -41,6 +41,9 @@ public interface InstancePricingApi
     @PUT( "instancePricing/{id}" )
     Call<InstancePricingDTO> update( @Path( "id" ) int id, @Body InstancePricingDTO resource );
 
+    /**
+     * @deprecated use {@link #update(int, InstancePricingDTO)}
+     */
     @Deprecated
     @PATCH( "instancePricing/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body InstancePricingPatchDTO input );

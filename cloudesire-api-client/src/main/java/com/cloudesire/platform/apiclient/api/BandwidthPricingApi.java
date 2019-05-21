@@ -28,6 +28,9 @@ public interface BandwidthPricingApi
     @PUT( "bandwidthPricing/{id}" )
     Call<BandwidthPricingDTO> update( @Path( "id" ) int id, @Body BandwidthPricingDTO resource );
 
+    /**
+     * @deprecated use {@link #update(int, BandwidthPricingDTO)}
+     */
     @Deprecated
     @PATCH( "bandwidthPricing/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body PricingPatchDTO input );

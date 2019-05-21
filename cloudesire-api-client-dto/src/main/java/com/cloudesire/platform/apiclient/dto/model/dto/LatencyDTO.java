@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class LatencyDTO extends BaseEntityDTO
 {
@@ -69,5 +70,23 @@ public class LatencyDTO extends BaseEntityDTO
     public void setDate( Date date )
     {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( !super.equals( o ) ) return false;
+        LatencyDTO that = (LatencyDTO) o;
+        return version == that.version && Objects.equals( url, that.url ) && Objects
+                .equals( parameters, that.parameters ) && Objects.equals( method, that.method ) && Objects
+                .equals( date, that.date );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), url, parameters, method, version, date );
     }
 }

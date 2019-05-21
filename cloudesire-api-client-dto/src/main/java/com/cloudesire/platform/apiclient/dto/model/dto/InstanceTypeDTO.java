@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @ApiModel( description = "VM instance sizing" )
+@SuppressWarnings( "squid:S2637" )
 public class InstanceTypeDTO extends DTO
 {
     @ApiModelProperty( "RAM quantity" )

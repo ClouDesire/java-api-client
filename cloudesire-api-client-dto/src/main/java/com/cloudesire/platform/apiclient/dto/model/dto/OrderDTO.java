@@ -7,6 +7,7 @@ import java.util.List;
  *
  * @see OrderInputDTO the input DTO
  */
+@SuppressWarnings( "squid:S2160" )
 public class OrderDTO extends BaseOrderDTO
 {
     private UrlEntityDTO distributor;

@@ -52,12 +52,12 @@ public class ErrorResponseDTO
     @Deprecated
     public List<String> getErrors()
     {
-        List<String> errors = new ArrayList<>();
+        List<String> errorsList = new ArrayList<>();
         for ( ErrorHolder errorHolder : errorHolders )
         {
-            errors.add( errorHolder.toString() );
+            errorsList.add( errorHolder.toString() );
         }
-        return errors;
+        return errorsList;
     }
 
     /**
