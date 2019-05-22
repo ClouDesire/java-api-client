@@ -77,6 +77,9 @@ public interface InvoiceApi
     @PATCH( "invoice/{id}/payWithStripe" )
     Call<Void> payWithStripe( @Path( "id" ) Integer id, @Body Object input );
 
+    @GET( "invoice/{id}/stripePaymentClientSecret" )
+    Call<String> getStripePaymentClientSecret( @Path( "id" ) int id );
+
     @DELETE( "invoice/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 }
