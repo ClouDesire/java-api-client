@@ -130,9 +130,17 @@ public interface UserApi
     @POST( "user/verification" )
     Call<Void> requestVerification();
 
+    /**
+     * @deprecated look for {@link #savePaymentMethod(PaymentMethodDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/card" )
     Call<Void> saveCardData( @Body CardDataDTO data );
 
+    /**
+     * @deprecated look for {@link #saveTokenData(TokenDataDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/sepa" )
     Call<Void> saveSepaData( @Body SepaDataDTO data );
 
