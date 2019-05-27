@@ -33,6 +33,7 @@ public class PercentagePricingPatchDTO extends DTO
         return true;
     }
 
+    @SuppressWarnings( "squid:S2637" )
     public PercentagePricingPatchDTO()
     {
     }

@@ -68,6 +68,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
     }
 
     // region Auto-generated code
+    @SuppressWarnings( "squid:S2637" )
     public ResellerPricingDTO()
     {
     }
