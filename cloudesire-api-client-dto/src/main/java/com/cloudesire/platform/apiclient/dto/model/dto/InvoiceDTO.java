@@ -53,6 +53,10 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( value = "When the payment of the invoice has completed successfully", readOnly = true )
     private Date paymentReceived;
 
+    @JsonInclude ( JsonInclude.Include.NON_EMPTY )
+    @ApiModelProperty( value = "The last payment error if any", readOnly = true )
+    private String lastPaymentError;
+
     @Valid
     private UrlEntityDTO subscription;
 
@@ -350,6 +354,17 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setReseller( UrlEntityDTO reseller )
     {
         this.reseller = reseller;
+    }
+
+    public String getLastPaymentError()
+    {
+        return lastPaymentError;
+    }
+
+    public void setLastPaymentError( String lastPaymentError )
+
+    {
+        this.lastPaymentError = lastPaymentError;
     }
 
     /**

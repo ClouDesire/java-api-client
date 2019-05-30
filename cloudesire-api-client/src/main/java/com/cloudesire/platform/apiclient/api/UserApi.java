@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.CardDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.MyUserDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PasswordRecoveryDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PasswordResetDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PaymentMethodDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SepaDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.TokenDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.UserPatchDTO;
@@ -130,14 +131,25 @@ public interface UserApi
     @POST( "user/verification" )
     Call<Void> requestVerification();
 
+    /**
+     * @deprecated look for {@link #savePaymentMethod(PaymentMethodDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/card" )
     Call<Void> saveCardData( @Body CardDataDTO data );
 
+    /**
+     * @deprecated look for {@link #saveTokenData(TokenDataDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/sepa" )
     Call<Void> saveSepaData( @Body SepaDataDTO data );
 
     @POST( "user/payment/token" )
     Call<Void> saveTokenData( @Body TokenDataDTO data );
+
+    @POST( "user/payment/method" )
+    Call<Void> savePaymentMethod( @Body PaymentMethodDTO data );
 
     @PATCH( "user/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body UserPatchDTO input );
