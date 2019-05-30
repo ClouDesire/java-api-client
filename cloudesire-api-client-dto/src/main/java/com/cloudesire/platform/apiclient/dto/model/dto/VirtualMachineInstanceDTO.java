@@ -31,6 +31,8 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO cloudProvider;
 
+    private UrlEntityDTO cloudCredential;
+
     private String user;
 
     private String password;
@@ -107,6 +109,16 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public UrlEntityDTO getCloudCredential()
+    {
+        return cloudCredential;
+    }
+
+    public void setCloudCredential( UrlEntityDTO cloudCredential )
+    {
+        this.cloudCredential = cloudCredential;
     }
 
     public BackupFrequency getBackupFrequency()

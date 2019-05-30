@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CloudProviderDTO;
+import com.cloudesire.platform.apiclient.dto.model.enums.CloudProviderTags;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.patch.CloudProviderPatchDTO;
 import retrofit2.Call;
@@ -32,7 +33,8 @@ public interface CloudProviderApi
             @Query( "excluding" ) List<Integer> excluding,
             @Query( "withDisabled" ) Boolean withDisabled,
             @Query( "enabled" ) Boolean enabled,
-            @Query( "productType" ) ProductType productType
+            @Query( "productType" ) ProductType productType,
+            @Query( "feature" ) CloudProviderTags feature
     );
 
     @GET( "cloudProvider/{id}" )

@@ -6,6 +6,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.PasswordRecoveryDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PasswordResetDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SepaDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.TokenDataDTO;
+import com.cloudesire.platform.apiclient.dto.model.patch.UserPatchDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.request.UserActivationDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.cloudesire.platform.apiclient.query.UserQuery;
@@ -139,8 +140,22 @@ public interface UserApi
     Call<Void> saveTokenData( @Body TokenDataDTO data );
 
     @PATCH( "user/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body UserPatchDTO input );
+
+    @PATCH( "user/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body UserPatchDTO input, @Query( "language" ) String language );
+
+    /**
+     * @deprecated by {@link #partialUpdate(int, UserPatchDTO)}
+     */
+    @Deprecated
+    @PATCH( "user/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input );
 
+    /**
+     * @deprecated by {@link #partialUpdate(int, UserPatchDTO, String)}
+     */
+    @Deprecated
     @PATCH( "user/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input, @Query( "language" ) String language );
 

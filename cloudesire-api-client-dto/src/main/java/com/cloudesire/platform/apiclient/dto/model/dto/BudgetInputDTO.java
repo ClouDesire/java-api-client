@@ -22,6 +22,9 @@ public class BudgetInputDTO
     @ApiModelProperty( "The ID of the chosen cloud provider" )
     private Integer providerId;
 
+    @ApiModelProperty( "The ID of the custom cloud credentials" )
+    private Integer credentialId;
+
     @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
@@ -77,6 +80,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setProviderId( Integer providerId )
     {
         this.providerId = providerId;
+        return this;
+    }
+
+    public Integer getCredentialId()
+    {
+        return credentialId;
+    }
+
+    public BudgetInputDTO setCredentialId( Integer credentialId )
+    {
+        this.credentialId = credentialId;
         return this;
     }
 

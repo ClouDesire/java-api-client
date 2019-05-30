@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
-import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

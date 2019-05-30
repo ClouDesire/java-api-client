@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -24,6 +24,9 @@ public class OrderInputDTO extends BaseEntityDTO
 
     @Valid
     private UrlEntityDTO cloudProvider;
+
+    @Valid
+    private UrlEntityDTO cloudCredential;
 
     @NotNull
     @Valid
@@ -115,6 +118,16 @@ public class OrderInputDTO extends BaseEntityDTO
     public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public UrlEntityDTO getCloudCredential()
+    {
+        return cloudCredential;
+    }
+
+    public void setCloudCredential( UrlEntityDTO cloudCredential )
+    {
+        this.cloudCredential = cloudCredential;
     }
 
     public UrlEntityDTO getProductVersion()

@@ -201,6 +201,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return getApi( CloudProviderApi.class );
     }
 
+    public CloudCredentialApi getCloudCredentialApi()
+    {
+        return getApi( CloudCredentialApi.class );
+    }
+
     public EnvironmentApi getEnvironmentApi()
     {
         return getApi( EnvironmentApi.class );
