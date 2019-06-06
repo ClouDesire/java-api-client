@@ -10,7 +10,11 @@ import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @deprecated by {@link TokenDataDTO}
+ */
 @ApiModel( description = "Credit card data" )
+@Deprecated
 public class CardDataDTO extends PaymentDataDTO
 {
     @ApiModelProperty( value = "Month of expiration", example = "09" )

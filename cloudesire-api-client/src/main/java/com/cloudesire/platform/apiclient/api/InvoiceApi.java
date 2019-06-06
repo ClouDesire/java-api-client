@@ -68,6 +68,13 @@ public interface InvoiceApi
     Call<Void> payWithPaypal( @Path( "id" ) int id, @Body Map<String, String> input );
 
     @POST( "invoice/{id}/pay/stripe" )
+    Call<Void> payWithStripe( @Path( "id" ) int id );
+
+    /**
+     * @deprecated by {@link #payWithStripe(int)}
+     */
+    @Deprecated
+    @POST( "invoice/{id}/pay/stripe" )
     Call<Void> payWithStripe( @Path( "id" ) int id, @Body CardDataDTO input );
 
     /**
