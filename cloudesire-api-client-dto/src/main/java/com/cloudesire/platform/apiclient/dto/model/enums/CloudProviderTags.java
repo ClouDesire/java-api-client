@@ -11,7 +11,10 @@ public enum CloudProviderTags
     DISK_SPACE_UPGRADE,
     GPU,
     LINUX( OsFamily.LINUX ),
-    MINIMUM_DISK, // Takes a value, in GB
+    /**
+     * Minimum size for data volumes in GB
+     */
+    MINIMUM_DISK,
     MINIMUM_WINDOWS_RAM_GB,
     WINDOWS( OsFamily.WINDOWS );
 
