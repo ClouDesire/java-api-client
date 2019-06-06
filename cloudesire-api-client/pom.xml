@@ -5,7 +5,7 @@
 	<parent>
 		<artifactId>java-api-client</artifactId>
 		<groupId>com.cloudesire.platform</groupId>
-		<version>1.9.1-SNAPSHOT</version>
+		<version>1.10.0</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
@@ -17,12 +17,12 @@
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>base-api-client</artifactId>
-			<version>1.9.1-SNAPSHOT</version>
+			<version>1.10.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>cloudesire-api-client-dto</artifactId>
-			<version>1.9.1-SNAPSHOT</version>
+			<version>1.10.0</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
