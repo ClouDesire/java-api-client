@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceOperationType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -65,9 +65,6 @@ public class InvoiceDTO extends BaseInvoiceDTO
 
     @ApiModelProperty( value = "The reference to a PDF version of the invoice", readOnly = true )
     private String remoteId;
-
-    @ApiModelProperty( value = "The quota received by the platform owner when the invoice has been issued", readOnly = true )
-    private BigDecimal revenueSharingQuota;
 
     @NotNull
     @ApiModelProperty( "The billed lines of the invoice" )
@@ -241,16 +238,6 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setRemoteId( String remoteId )
     {
         this.remoteId = remoteId;
-    }
-
-    public BigDecimal getRevenueSharingQuota()
-    {
-        return revenueSharingQuota;
-    }
-
-    public void setRevenueSharingQuota( BigDecimal revenueSharingQuota )
-    {
-        this.revenueSharingQuota = revenueSharingQuota;
     }
 
     /**
