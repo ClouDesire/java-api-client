@@ -66,6 +66,9 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( value = "The reference to a PDF version of the invoice", readOnly = true )
     private String remoteId;
 
+    @ApiModelProperty( value = "The quota received by the platform owner when the invoice has been issued", readOnly = true )
+    private BigDecimal revenueSharingQuota;
+
     @NotNull
     @ApiModelProperty( "The billed lines of the invoice" )
     private List<OrderLineDTO> entries;
@@ -238,6 +241,16 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setRemoteId( String remoteId )
     {
         this.remoteId = remoteId;
+    }
+
+    public BigDecimal getRevenueSharingQuota()
+    {
+        return revenueSharingQuota;
+    }
+
+    public void setRevenueSharingQuota( BigDecimal revenueSharingQuota )
+    {
+        this.revenueSharingQuota = revenueSharingQuota;
     }
 
     /**
