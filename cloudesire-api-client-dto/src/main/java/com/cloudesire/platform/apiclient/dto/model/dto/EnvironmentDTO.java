@@ -1227,7 +1227,7 @@ public class EnvironmentDTO extends DTO
         private boolean gdpr;
 
         @ApiModelProperty( "Enables custom cloud credentials" )
-        private CustomerCloudCredentials customerCloudCredentials;
+        private CustomerCloudCredentials customerCloudCredentials = CustomerCloudCredentials.DISABLED;
 
         @ApiModelProperty( hidden = true )
         public boolean isZuoraEnabled()
