@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceOperationType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

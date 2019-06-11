@@ -102,9 +102,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @Min( value = 1, message = INVALID_MIN )
     private Integer trialLength = 1;
 
-    @ApiModelProperty( "The percentage on every invoice for revenue sharing" )
-    private BigDecimal revenueSharingQuota;
-
     @ApiModelProperty( "Trials of this version automatically convert to normal" )
     private boolean autoRenewable;
 
@@ -434,28 +431,6 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setTrialLength( Integer trialLength )
     {
         this.trialLength = trialLength;
-    }
-
-    public BigDecimal getRevenueSharingQuota()
-    {
-        return revenueSharingQuota;
-    }
-
-    public void setRevenueSharingQuota( BigDecimal revenueSharingQuota )
-    {
-        this.revenueSharingQuota = revenueSharingQuota;
-    }
-
-    @Deprecated
-    public BigDecimal getCloudesireQuota()
-    {
-        return revenueSharingQuota;
-    }
-
-    @Deprecated
-    public void setCloudesireQuota( BigDecimal cloudesireQuota )
-    {
-        if ( revenueSharingQuota == null ) revenueSharingQuota = cloudesireQuota;
     }
 
     public boolean isAutoRenewable()
