@@ -13,7 +13,7 @@ abstract class CloudPricingDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( "Chosen price" )
+    @ApiModelProperty( "Wholesale price" )
     @NotNull
     private BigDecimal price;
 
