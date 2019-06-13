@@ -5,22 +5,13 @@ import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "Defines pricing of disk usage of a VM" )
-public class InstancePricingDTO extends BaseEntityDTO
+public class InstancePricingDTO extends CloudPricingDTO
 {
-    @NotNull
-    @Valid
-    private UrlEntityDTO cloudProvider;
-
-    @ApiModelProperty( "Chosen price" )
-    @NotNull
-    private BigDecimal price;
-
     @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
@@ -40,26 +31,6 @@ public class InstancePricingDTO extends BaseEntityDTO
 
     @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
     private Boolean deprecated;
-
-    public UrlEntityDTO getCloudProvider()
-    {
-        return cloudProvider;
-    }
-
-    public void setCloudProvider( UrlEntityDTO cloudProvider )
-    {
-        this.cloudProvider = cloudProvider;
-    }
-
-    public BigDecimal getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice( BigDecimal price )
-    {
-        this.price = price;
-    }
 
     public Integer getRam()
     {
@@ -126,17 +97,16 @@ public class InstancePricingDTO extends BaseEntityDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        if ( !super.equals( o ) ) return false;
+        if ( ! super.equals( o ) ) return false;
         InstancePricingDTO that = (InstancePricingDTO) o;
-        return cloudProvider.equals( that.cloudProvider ) && price.equals( that.price ) && ram.equals( that.ram ) && cpu
-                .equals( that.cpu ) && Objects.equals( diskSpace, that.diskSpace ) && osFamily == that.osFamily
-                && operatingSystem == that.operatingSystem && Objects.equals( deprecated, that.deprecated );
+        return ram.equals( that.ram ) && cpu.equals( that.cpu ) && Objects.equals( diskSpace, that.diskSpace )
+                && osFamily == that.osFamily && operatingSystem == that.operatingSystem && Objects
+                .equals( deprecated, that.deprecated );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), cloudProvider, price, ram, cpu, diskSpace, osFamily, operatingSystem,
-                deprecated );
+        return Objects.hash( super.hashCode(), ram, cpu, diskSpace, osFamily, operatingSystem, deprecated );
     }
 }
