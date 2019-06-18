@@ -11,4 +11,7 @@ public interface LoginApi
 
     @POST( "login" )
     Call<String> login( @Query( "expire" ) Boolean expire );
+
+    @POST( "logout" )
+    Call<Void> logout();
 }
