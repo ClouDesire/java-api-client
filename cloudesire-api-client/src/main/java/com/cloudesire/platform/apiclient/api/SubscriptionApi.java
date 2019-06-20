@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchResponseDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
@@ -46,10 +47,10 @@ public interface SubscriptionApi
     Call<Void> delete( @Path( "id" ) Integer id );
 
     @PATCH( "subscription/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input );
+    Call<SubscriptionPatchResponseDTO> partialUpdate( @Path( "id" ) int id, @Body SubscriptionPatchDTO input );
 
     @PATCH( "subscription/{id}" )
-    Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body SubscriptionPatchDTO input,
+    Call<SubscriptionPatchResponseDTO> partialUpdate( @Path( "id" ) int id, @Body SubscriptionPatchDTO input,
             @Query( "language" ) String language );
 
     @GET( "subscription/expiring" )
