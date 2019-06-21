@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
-import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -32,6 +32,8 @@ public class BillingItemDTO extends NamedEntityDTO
     @NotEmpty
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
+
+    private UrlEntityDTO owner;
 
     private UrlEntityDTO reseller;
 
@@ -92,6 +94,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setDescription( String description )
     {
         this.description = description;
+        return this;
+    }
+
+    public UrlEntityDTO getOwner()
+    {
+        return owner;
+    }
+
+    public BillingItemDTO setOwner( UrlEntityDTO owner )
+    {
+        this.owner = owner;
         return this;
     }
 
