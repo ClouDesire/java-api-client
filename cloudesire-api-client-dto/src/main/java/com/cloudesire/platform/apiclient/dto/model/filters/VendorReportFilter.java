@@ -4,6 +4,10 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 
 import java.util.Map;
 
+/**
+ * @deprecated by {@link ProceedsReportFilter}
+ */
+@Deprecated
 public class VendorReportFilter extends ReportFilter
 {
     private Integer companyId;

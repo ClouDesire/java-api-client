@@ -310,11 +310,24 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return getApi( ResellerPricingApi.class );
     }
 
+    public ProceedsReportApi getProceedsReportApi()
+    {
+        return getApi( ProceedsReportApi.class );
+    }
+
+    /**
+     * @deprecated by {@link #getProceedsReportApi()}
+     */
+    @Deprecated
     public ResellingReportApi getResellingReportApi()
     {
         return getApi( ResellingReportApi.class );
     }
 
+    /**
+     * @deprecated by {@link #getProceedsReportApi()}
+     */
+    @Deprecated
     public VendorReportApi getVendorReportApi()
     {
         return getApi( VendorReportApi.class );

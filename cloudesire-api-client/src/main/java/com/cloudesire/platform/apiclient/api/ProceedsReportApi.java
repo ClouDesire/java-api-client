@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProceedsReportLineDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.ResellingTotalsDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,31 +11,21 @@ import retrofit2.http.Streaming;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @deprecated by {@link ProceedsReportApi}
- */
-@Deprecated
-public interface ResellingReportApi
+public interface ProceedsReportApi
 {
-    @GET( "proceedsReport/reselling" )
+    @GET( "proceedsReport" )
     Call<List<ProceedsReportLineDTO>> getAll();
 
-    @GET( "proceedsReport/reselling" )
+    @GET( "proceedsReport" )
     Call<List<ProceedsReportLineDTO>> getAll( @QueryMap Map<String, String> filters );
 
-    @GET( "proceedsReport/reselling/totals" )
-    Call<ResellingTotalsDTO> getTotals();
-
-    @GET( "proceedsReport/reselling/totals" )
-    Call<ResellingTotalsDTO> getTotals( @QueryMap Map<String, String> filters );
-
     @Streaming
-    @GET( "proceedsReport/reselling" )
+    @GET( "proceedsReport" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv();
 
     @Streaming
-    @GET( "proceedsReport/reselling" )
+    @GET( "proceedsReport" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
 }
