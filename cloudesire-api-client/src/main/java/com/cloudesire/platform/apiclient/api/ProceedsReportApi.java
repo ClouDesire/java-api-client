@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProceedsReportLineDTO;
+import com.cloudesire.platform.apiclient.query.ProceedsReportQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,7 +10,6 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ProceedsReportApi
 {
@@ -17,7 +17,7 @@ public interface ProceedsReportApi
     Call<List<ProceedsReportLineDTO>> getAll();
 
     @GET( "proceedsReport" )
-    Call<List<ProceedsReportLineDTO>> getAll( @QueryMap Map<String, String> filters );
+    Call<List<ProceedsReportLineDTO>> getAll( @QueryMap ProceedsReportQuery query );
 
     @Streaming
     @GET( "proceedsReport" )
@@ -27,5 +27,5 @@ public interface ProceedsReportApi
     @Streaming
     @GET( "proceedsReport" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+    Call<ResponseBody> getCsv( @QueryMap ProceedsReportQuery query );
 }
