@@ -12,6 +12,10 @@ import retrofit2.http.Streaming;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @deprecated by {@link ResellingReportApi}
+ */
+@Deprecated
 public interface VendorReportApi
 {
     @GET( "proceedsReport/vendor" )

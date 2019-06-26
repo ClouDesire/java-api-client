@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto;
 
 public final class ApiVersion
 {
+    public static final long V20190624 = 20190624;
     public static final long V20190523 = 20190523;
     public static final long V20190503 = 20190503;
     public static final long V20181220 = 20181220;
@@ -15,7 +16,7 @@ public final class ApiVersion
     public static final long V20180101 = 20180101;
     public static final long NO_VERSION = 0;
 
-    public static final Long LATEST_API_VERSION = V20190523;
+    public static final Long LATEST_API_VERSION = V20190624;
 
     private ApiVersion()
     {

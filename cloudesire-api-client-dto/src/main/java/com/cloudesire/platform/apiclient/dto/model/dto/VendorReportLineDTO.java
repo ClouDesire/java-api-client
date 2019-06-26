@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+/**
+ * @deprecated by {@link ProceedsReportLineDTO}
+ */
+@Deprecated
 public class VendorReportLineDTO extends ReportLineDTO
 {
     private UrlEntityDTO company;

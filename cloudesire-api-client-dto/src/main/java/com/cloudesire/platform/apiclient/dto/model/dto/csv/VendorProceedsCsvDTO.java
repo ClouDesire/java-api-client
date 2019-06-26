@@ -4,22 +4,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "invoiceId", "product", "customer", "email", "purchased", "license", "iaas", "fees", "charge", "earnings" } )
-public class VendorProceedsCsvDTO extends ProceedsCsvDTO
+@JsonPropertyOrder( { "invoiceId", "product", "customer", "email", "purchased", "vendorIncome", "cloudCosts", "wholesale" } )
+public class VendorProceedsCsvDTO extends ResellingProceedsCsvDTO
 {
     private String customer;
 
     private String email;
 
-    private BigDecimal license;
+    private BigDecimal vendorIncome;
 
-    private BigDecimal iaas;
+    private BigDecimal cloudCosts;
 
-    private BigDecimal fees;
-
-    private BigDecimal charge;
-
-    private BigDecimal earnings;
+    private BigDecimal wholesale;
 
     public String getCustomer()
     {
@@ -41,53 +37,33 @@ public class VendorProceedsCsvDTO extends ProceedsCsvDTO
         this.email = email;
     }
 
-    public BigDecimal getLicense()
+    public BigDecimal getVendorIncome()
     {
-        return license;
+        return vendorIncome;
     }
 
-    public void setLicense( BigDecimal license )
+    public void setVendorIncome( BigDecimal vendorIncome )
     {
-        this.license = license;
+        this.vendorIncome = vendorIncome;
     }
 
-    public BigDecimal getIaas()
+    public BigDecimal getCloudCosts()
     {
-        return iaas;
+        return cloudCosts;
     }
 
-    public void setIaas( BigDecimal iaas )
+    public void setCloudCosts( BigDecimal cloudCosts )
     {
-        this.iaas = iaas;
+        this.cloudCosts = cloudCosts;
     }
 
-    public BigDecimal getFees()
+    public BigDecimal getWholesale()
     {
-        return fees;
+        return wholesale;
     }
 
-    public void setFees( BigDecimal fees )
+    public void setWholesale( BigDecimal wholesale )
     {
-        this.fees = fees;
-    }
-
-    public BigDecimal getCharge()
-    {
-        return charge;
-    }
-
-    public void setCharge( BigDecimal charge )
-    {
-        this.charge = charge;
-    }
-
-    public BigDecimal getEarnings()
-    {
-        return earnings;
-    }
-
-    public void setEarnings( BigDecimal earnings )
-    {
-        this.earnings = earnings;
+        this.wholesale = wholesale;
     }
 }

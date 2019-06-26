@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ResellingReportLineDTO extends ReportLineDTO
+public class ProceedsReportLineDTO extends ReportLineDTO
 {
     private UrlEntityDTO distributor;
 
@@ -30,6 +30,9 @@ public class ResellingReportLineDTO extends ReportLineDTO
 
     @ApiModelProperty( value = "The proceeds for the reseller", readOnly = true )
     private BigDecimal sellout;
+
+    @ApiModelProperty( value = "The proceeds for the vendor", readOnly = true )
+    private BigDecimal vendorIncome;
 
     @ApiModelProperty( value = "The costs for the distributor", readOnly = true )
     private CostsDTO costs;
@@ -128,6 +131,16 @@ public class ResellingReportLineDTO extends ReportLineDTO
         this.sellout = sellout;
     }
 
+    public BigDecimal getVendorIncome()
+    {
+        return vendorIncome;
+    }
+
+    public void setVendorIncome( BigDecimal vendorIncome )
+    {
+        this.vendorIncome = vendorIncome;
+    }
+
     public CostsDTO getCosts()
     {
         return costs;
@@ -154,7 +167,7 @@ public class ResellingReportLineDTO extends ReportLineDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
-        ResellingReportLineDTO that = (ResellingReportLineDTO) o;
+        ProceedsReportLineDTO that = (ProceedsReportLineDTO) o;
         return Objects.equals( distributor, that.distributor ) && Objects.equals( reseller, that.reseller )
                 && type == that.type && Objects.equals( vendor, that.vendor ) && Objects
                 .equals( wholesale, that.wholesale ) && Objects.equals( sellin, that.sellin ) && Objects
@@ -172,7 +185,7 @@ public class ResellingReportLineDTO extends ReportLineDTO
     @Override
     public String toString()
     {
-        return "ResellingReportLineDTO{" + "description='" + description + '\'' + ", quantity=" + quantity
+        return "ResellingReportLineDTO{" + "type='" + type + '\'' + ", quantity=" + quantity
                 + ", wholesale=" + wholesale + ", sellin=" + sellin + ", sellout=" + sellout + '}';
     }
 

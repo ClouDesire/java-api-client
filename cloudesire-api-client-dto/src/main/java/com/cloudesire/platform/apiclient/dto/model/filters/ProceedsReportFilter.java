@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Map;
 
-public class ResellingReportFilter extends ReportFilter
+public class ProceedsReportFilter extends ReportFilter
 {
     @ApiModelProperty( "Filter by Distributor ID" )
     private Integer distributorId;
@@ -15,30 +15,30 @@ public class ResellingReportFilter extends ReportFilter
     @ApiModelProperty( "Filter by vendor ID" )
     private Integer companyId;
 
-    public static ResellingReportFilter by()
+    public static ProceedsReportFilter by()
     {
-        return new ResellingReportFilter();
+        return new ProceedsReportFilter();
     }
 
-    private ResellingReportFilter()
+    private ProceedsReportFilter()
     {
         super();
     }
 
     // region Builder
-    public ResellingReportFilter distributor( int distributorId )
+    public ProceedsReportFilter distributor( int distributorId )
     {
         this.distributorId = distributorId;
         return this;
     }
 
-    public ResellingReportFilter reseller( int resellerId )
+    public ProceedsReportFilter reseller( int resellerId )
     {
         this.resellerId = resellerId;
         return this;
     }
 
-    public ResellingReportFilter company( Integer comanyId )
+    public ProceedsReportFilter company( Integer comanyId )
     {
         this.companyId = comanyId;
         return this;
