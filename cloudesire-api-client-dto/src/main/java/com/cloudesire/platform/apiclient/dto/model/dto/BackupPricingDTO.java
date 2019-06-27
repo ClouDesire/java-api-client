@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @ApiModel( description = "Defines pricing of a backup of a VM" )
-@SuppressWarnings( "squid:S2637" )
 public class BackupPricingDTO extends CloudPricingDTO
 {
     public BackupPricingDTO( @NotNull UrlEntityDTO cloudProvider, @NotNull BigDecimal price )
