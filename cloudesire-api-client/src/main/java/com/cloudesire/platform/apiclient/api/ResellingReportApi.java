@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProceedsReportLineDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.ResellingTotalsDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProceedsTotalsDTO;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -25,10 +25,10 @@ public interface ResellingReportApi
     Call<List<ProceedsReportLineDTO>> getAll( @QueryMap Map<String, String> filters );
 
     @GET( "proceedsReport/reselling/totals" )
-    Call<ResellingTotalsDTO> getTotals();
+    Call<ProceedsTotalsDTO> getTotals();
 
     @GET( "proceedsReport/reselling/totals" )
-    Call<ResellingTotalsDTO> getTotals( @QueryMap Map<String, String> filters );
+    Call<ProceedsTotalsDTO> getTotals( @QueryMap Map<String, String> filters );
 
     @Streaming
     @GET( "proceedsReport/reselling" )

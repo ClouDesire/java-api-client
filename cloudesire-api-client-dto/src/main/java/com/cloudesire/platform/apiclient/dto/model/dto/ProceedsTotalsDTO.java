@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 
-public class ResellingTotalsDTO extends DTO
+public class ProceedsTotalsDTO extends DTO
 {
     @ApiModelProperty( value = "The total earnings", readOnly = true )
     private BigDecimal earnings;
@@ -12,13 +12,13 @@ public class ResellingTotalsDTO extends DTO
     @ApiModelProperty( value = "The total costs", readOnly = true )
     private BigDecimal costs;
 
-    public ResellingTotalsDTO( BigDecimal earnings, BigDecimal costs )
+    public ProceedsTotalsDTO( BigDecimal earnings, BigDecimal costs )
     {
         this.earnings = earnings;
         this.costs = costs;
     }
 
-    public ResellingTotalsDTO()
+    public ProceedsTotalsDTO()
     {
     }
 
