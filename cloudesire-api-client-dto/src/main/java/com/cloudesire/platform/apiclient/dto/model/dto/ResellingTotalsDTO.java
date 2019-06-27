@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @deprecated by headers in GET /proceedsReport
  */
 @Deprecated
-public class ProceedsTotalsDTO extends DTO
+public class ResellingTotalsDTO extends DTO
 {
     @ApiModelProperty( value = "The total earnings", readOnly = true )
     private BigDecimal earnings;
@@ -16,13 +16,13 @@ public class ProceedsTotalsDTO extends DTO
     @ApiModelProperty( value = "The total costs", readOnly = true )
     private BigDecimal costs;
 
-    public ProceedsTotalsDTO( BigDecimal earnings, BigDecimal costs )
+    public ResellingTotalsDTO( BigDecimal earnings, BigDecimal costs )
     {
         this.earnings = earnings;
         this.costs = costs;
     }
 
-    public ProceedsTotalsDTO()
+    public ResellingTotalsDTO()
     {
     }
 
