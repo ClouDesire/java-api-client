@@ -10,6 +10,8 @@ public final class Headers
     public static final String TOTAL_PAGES = "CMW-TotalPages";
     public static final String RELATED_RESOURCE = "CMW-Related-Resource";
     public static final String SIGNATURE_HEADER = "CMW-Event-Signature";
+    public static final String PROCEEDS_EARNINGS = "CMW-Proceeds-Earnings";
+    public static final String PROCEEDS_COSTS = "CMW-Proceeds-Costs";
 
     private Headers()
     {

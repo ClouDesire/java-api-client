@@ -4,6 +4,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 
+/**
+ * @deprecated by headers in GET /proceedsReport
+ */
+@Deprecated
 public class ResellingTotalsDTO extends DTO
 {
     @ApiModelProperty( value = "The total earnings", readOnly = true )
