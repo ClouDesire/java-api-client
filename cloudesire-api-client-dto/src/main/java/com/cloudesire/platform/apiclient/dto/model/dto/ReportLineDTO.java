@@ -7,17 +7,16 @@ import java.util.Objects;
 
 public abstract class ReportLineDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "The version of the product sold", readOnly = true )
     protected UrlEntityDTO productVersion;
 
     @ApiModelProperty( value = "When were the proceeds registered", readOnly = true, example = "2017-05-29" )
     protected Date purchased;
 
-    @ApiModelProperty( value = "The user who bought this", readOnly = true )
     protected UrlEntityDTO buyer;
 
-    @ApiModelProperty( value = "The invoice generating this", readOnly = true )
     protected UrlEntityDTO invoice;
+
+    private UrlEntityDTO order;
 
     public UrlEntityDTO getProductVersion()
     {
@@ -59,6 +58,16 @@ public abstract class ReportLineDTO extends BaseEntityDTO
         this.invoice = invoice;
     }
 
+    public UrlEntityDTO getOrder()
+    {
+        return order;
+    }
+
+    public void setOrder( UrlEntityDTO order )
+    {
+        this.order = order;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -66,12 +75,12 @@ public abstract class ReportLineDTO extends BaseEntityDTO
         if ( ! ( o instanceof ReportLineDTO ) ) return false;
         ReportLineDTO that = (ReportLineDTO) o;
         return Objects.equals( productVersion, that.productVersion ) && Objects.equals( purchased, that.purchased )
-                && Objects.equals( buyer, that.buyer ) && Objects.equals( invoice, that.invoice );
+                && Objects.equals( order, that.order );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( productVersion, purchased, buyer );
+        return Objects.hash( productVersion, purchased, order );
     }
 }
