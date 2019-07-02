@@ -31,8 +31,6 @@ public class VendorReportLineDTO extends ReportLineDTO
 
     private OrderType type;
 
-    private UrlEntityDTO order;
-
     public UrlEntityDTO getCompany()
     {
         return company;
@@ -103,16 +101,6 @@ public class VendorReportLineDTO extends ReportLineDTO
         this.type = type;
     }
 
-    public UrlEntityDTO getOrder()
-    {
-        return order;
-    }
-
-    public void setOrder( UrlEntityDTO order )
-    {
-        this.order = order;
-    }
-
     @Override
     public boolean equals( Object o )
     {
@@ -122,13 +110,12 @@ public class VendorReportLineDTO extends ReportLineDTO
         VendorReportLineDTO that = (VendorReportLineDTO) o;
         return Objects.equals( company, that.company ) && Objects.equals( income, that.income ) && Objects
                 .equals( license, that.license ) && Objects.equals( expenses, that.expenses ) && Objects
-                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type && Objects
-                .equals( order, that.order );
+                .equals( iaas, that.iaas ) && Objects.equals( fees, that.fees ) && type == that.type;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type, order );
+        return Objects.hash( super.hashCode(), company, income, license, expenses, iaas, fees, type );
     }
 }
