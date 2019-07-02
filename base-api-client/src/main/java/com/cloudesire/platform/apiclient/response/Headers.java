@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.response;
 
 public final class Headers
 {
-    public static final String CORS = "Access-Control-Expose-Headers";
+    public static final String ACCESS_CONTROL_EXPOSE_HEADERS = "Access-Control-Expose-Headers";
     public static final String MISTICA = "CMW-As-User";
     public static final String MODE = "Mode";
     public static final String PAGE_SIZE = "CMW-PageSize";
