@@ -4,7 +4,7 @@ import java.text.Normalizer;
 import java.util.Collections;
 import java.util.List;
 
-public class Slugger
+public final class Slugger
 {
     public static String slugifyError( String errorMessage, boolean forceLowerCase )
     {
@@ -56,5 +56,9 @@ public class Slugger
         }
 
         return slug;
+    }
+
+    private Slugger()
+    {
     }
 }

@@ -26,5 +26,6 @@ public class VendorOrderLineDTO extends OrderLineDTO
     @Override
     public void setType( LineType type )
     {
+        // type is fixed to CUSTOM
     }
 }

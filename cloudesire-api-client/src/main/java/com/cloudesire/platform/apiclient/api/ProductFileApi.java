@@ -41,6 +41,9 @@ public interface ProductFileApi
     @Streaming
     Call<ResponseBody> getFile( @Path( "id" ) int id );
 
+    /**
+     * @deprecated by {@link #getFile(int)}
+     */
     @Deprecated
     @GET( "file/static/{name}" )
     @Streaming

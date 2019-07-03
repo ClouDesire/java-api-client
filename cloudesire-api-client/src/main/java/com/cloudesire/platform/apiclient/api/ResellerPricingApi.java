@@ -28,6 +28,9 @@ public interface ResellerPricingApi
     @GET( "resellerPricing" )
     Call<List<ResellerPricingDTO>> getAll( @QueryMap ResellerPricingQuery query );
 
+    /**
+     * @deprecated by {@link #getAll(ResellerPricingQuery)}
+     */
     @GET( "resellerPricing" )
     @Deprecated
     Call<List<ResellerPricingDTO>> getAll(
@@ -35,6 +38,9 @@ public interface ResellerPricingApi
             @QueryMap Map<String, String> pageRequest
     );
 
+    /**
+     * @deprecated by {@link #getAll(ResellerPricingQuery)}
+     */
     @GET( "resellerPricing" )
     @Deprecated
     Call<List<ResellerPricingDTO>> getAll(
@@ -42,6 +48,9 @@ public interface ResellerPricingApi
             @QueryMap Map<String, String> pageRequest
     );
 
+    /**
+     * @deprecated by {@link #getAll(ResellerPricingQuery)}
+     */
     @GET( "resellerPricing" )
     @Deprecated
     Call<List<ResellerPricingDTO>> getAll(

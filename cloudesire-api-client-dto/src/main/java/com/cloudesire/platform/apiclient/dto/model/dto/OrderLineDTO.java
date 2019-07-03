@@ -51,6 +51,9 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15", readOnly = true )
     private Integer maximum;
 
+    /**
+     * @deprecated by {@link #getSubtotal()}
+     */
     @Deprecated
     @JsonProperty ( value = "totalPrice" )
     @ApiModelProperty( hidden = true )
@@ -59,6 +62,9 @@ public class OrderLineDTO implements Line
         return getSubtotal();
     }
 
+    /**
+     * @deprecated by {@link #getSubtotal()}
+     */
     @Deprecated
     @JsonProperty
     @ApiModelProperty( hidden = true )
@@ -142,11 +148,6 @@ public class OrderLineDTO implements Line
     public void setUnit( String unit )
     {
         this.unit = unit;
-    }
-
-    public void setTotalPrice( BigDecimal price )
-    {
-
     }
 
     public UrlEntityDTO getInvoice()
