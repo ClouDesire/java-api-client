@@ -106,14 +106,14 @@ public class SubscriptionPatchDTO extends DTO
     {
         if ( this.configurationParameters == null ) return null;
 
-        Map<Integer, String> configurationParameters = new HashMap<>();
+        Map<Integer, String> parameters = new HashMap<>();
 
         for ( Map.Entry<UrlEntityDTO, String> entry : this.configurationParameters.entrySet() )
         {
-            configurationParameters.put( entry.getKey().getId(), entry.getValue() );
+            parameters.put( entry.getKey().getId(), entry.getValue() );
         }
 
-        return configurationParameters;
+        return parameters;
     }
 
     public SubscriptionPatchDTO setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )

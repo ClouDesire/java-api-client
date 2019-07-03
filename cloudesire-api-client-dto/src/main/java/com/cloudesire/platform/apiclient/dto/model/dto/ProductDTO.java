@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -47,10 +47,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "The files linked to the product" )
     @Valid
     private List<UrlEntityDTO> files;
-
-    @ApiModelProperty( hidden = true )
-    @Deprecated
-    private Integer trialLengthDays;
 
     @ApiModelProperty( "Short description of the product" )
     @Size( max = 4000, message = INVALID_SIZE )

@@ -7,6 +7,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class RegExpValidator implements ConstraintValidator<RegExp, String>
 {
+    @Override
     public void initialize( RegExp constraint )
     {
         // Implementation not needed
