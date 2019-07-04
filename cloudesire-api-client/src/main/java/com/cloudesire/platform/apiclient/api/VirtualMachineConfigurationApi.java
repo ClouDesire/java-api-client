@@ -54,7 +54,7 @@ public interface VirtualMachineConfigurationApi
     @Multipart
     @POST( "virtualMachineConfiguration/{id}/compose" )
     Call<VirtualMachineConfigurationDTO> parseDockerCompose( @Path( "id" ) int id,
-            @Part MultipartBody.Part file, @Query( "prefix" ) String prefix, @Query( "version" ) String version );
+            @Part MultipartBody.Part file, @Query( "update" ) boolean update, @Query( "version" ) String version );
 
     @PUT( "virtualMachineConfiguration/{id}" )
     Call<VirtualMachineConfigurationDTO> update( @Path( "id" ) int id, @Body VirtualMachineConfigurationDTO vmc );
