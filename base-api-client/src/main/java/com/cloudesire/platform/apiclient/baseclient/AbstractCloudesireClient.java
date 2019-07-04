@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient.baseclient;
 
-import com.cloudesire.platform.apiclient.baseclient.Timeout.TimeoutBuilder;
 import com.cloudesire.platform.apiclient.interceptors.UserAgentHeaderInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.Interceptor;
@@ -29,21 +28,21 @@ public abstract class AbstractCloudesireClient
                 mapper,
                 baseUrl,
                 userAgent,
-                new TimeoutBuilder()
+                new TimeoutConfig.Builder()
                         .setConnectTimeout( 30, TimeUnit.SECONDS )
                         .setReadTimeout( 60, TimeUnit.SECONDS )
                         .build()
         );
     }
 
-    protected AbstractCloudesireClient( ObjectMapper mapper, String baseUrl, String userAgent, Timeout timeout )
+    protected AbstractCloudesireClient( ObjectMapper mapper, String baseUrl, String userAgent, TimeoutConfig timeoutConfig )
     {
         this.baseUrl = baseUrl;
         this.mapper = mapper;
 
         okhttpClientBuilder = new OkHttpClient.Builder()
-                .connectTimeout( timeout.getConnectTimeout(), TimeUnit.MILLISECONDS )     // connect timeout
-                .readTimeout( timeout.getReadTimeout(), TimeUnit.MILLISECONDS );          // socket timeout
+                .connectTimeout( timeoutConfig.getConnectTimeout(), TimeUnit.MILLISECONDS )     // connect timeout
+                .readTimeout( timeoutConfig.getReadTimeout(), TimeUnit.MILLISECONDS );          // socket timeout
 
         addInterceptor( new UserAgentHeaderInterceptor( userAgent ) );
 

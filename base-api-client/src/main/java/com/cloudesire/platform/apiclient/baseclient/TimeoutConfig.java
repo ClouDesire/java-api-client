@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.baseclient;
 
 import java.util.concurrent.TimeUnit;
 
-public class Timeout
+public class TimeoutConfig
 {
     private long connectTimeout;
     private long readTimeout;
@@ -17,32 +17,32 @@ public class Timeout
         return readTimeout;
     }
 
-    private Timeout( TimeoutBuilder builder )
+    private TimeoutConfig( Builder builder )
     {
         this.readTimeout = builder.readTimeout;
         this.connectTimeout = builder.connectTimeout;
     }
 
-    public static class TimeoutBuilder
+    public static class Builder
     {
         private long connectTimeout;
         private long readTimeout;
 
-        public TimeoutBuilder setConnectTimeout( int timeout, TimeUnit unit )
+        public Builder setConnectTimeout( int timeout, TimeUnit unit )
         {
             this.connectTimeout = unit.toMillis( timeout );
             return this;
         }
 
-        public TimeoutBuilder setReadTimeout( int timeout, TimeUnit unit )
+        public Builder setReadTimeout( int timeout, TimeUnit unit )
         {
             this.readTimeout = unit.toMillis( timeout );
             return this;
         }
 
-        public Timeout build()
+        public TimeoutConfig build()
         {
-            return new Timeout( this );
+            return new TimeoutConfig( this );
         }
     }
 }
