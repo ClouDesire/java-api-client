@@ -24,12 +24,25 @@ public abstract class AbstractCloudesireClient
 
     protected AbstractCloudesireClient( ObjectMapper mapper, String baseUrl, String userAgent )
     {
+        this(
+                mapper,
+                baseUrl,
+                userAgent,
+                new TimeoutConfig.Builder()
+                        .setConnectTimeout( 30, TimeUnit.SECONDS )
+                        .setReadTimeout( 60, TimeUnit.SECONDS )
+                        .build()
+        );
+    }
+
+    protected AbstractCloudesireClient( ObjectMapper mapper, String baseUrl, String userAgent, TimeoutConfig timeoutConfig )
+    {
         this.baseUrl = baseUrl;
         this.mapper = mapper;
 
         okhttpClientBuilder = new OkHttpClient.Builder()
-                .connectTimeout( 30, TimeUnit.SECONDS )     // connect timeout
-                .readTimeout( 60, TimeUnit.SECONDS );       // socket timeout
+                .connectTimeout( timeoutConfig.getConnectTimeout(), timeoutConfig.getDefaultTimeUnit() ) // connect timeout
+                .readTimeout( timeoutConfig.getReadTimeout(), timeoutConfig.getDefaultTimeUnit() );      // socket timeout
 
         addInterceptor( new UserAgentHeaderInterceptor( userAgent ) );
 
