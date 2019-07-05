@@ -41,8 +41,8 @@ public abstract class AbstractCloudesireClient
         this.mapper = mapper;
 
         okhttpClientBuilder = new OkHttpClient.Builder()
-                .connectTimeout( timeoutConfig.getConnectTimeout(), TimeUnit.MILLISECONDS )     // connect timeout
-                .readTimeout( timeoutConfig.getReadTimeout(), TimeUnit.MILLISECONDS );          // socket timeout
+                .connectTimeout( timeoutConfig.getConnectTimeout(), timeoutConfig.getDefaultTimeUnit() ) // connect timeout
+                .readTimeout( timeoutConfig.getReadTimeout(), timeoutConfig.getDefaultTimeUnit() );      // socket timeout
 
         addInterceptor( new UserAgentHeaderInterceptor( userAgent ) );
 

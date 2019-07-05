@@ -6,6 +6,7 @@ public class TimeoutConfig
 {
     private long connectTimeout;
     private long readTimeout;
+    private TimeUnit defaultTimeUnit = TimeUnit.MILLISECONDS;
 
     public long getConnectTimeout()
     {
@@ -15,6 +16,11 @@ public class TimeoutConfig
     public long getReadTimeout()
     {
         return readTimeout;
+    }
+
+    public TimeUnit getDefaultTimeUnit()
+    {
+        return defaultTimeUnit;
     }
 
     private TimeoutConfig( Builder builder )
