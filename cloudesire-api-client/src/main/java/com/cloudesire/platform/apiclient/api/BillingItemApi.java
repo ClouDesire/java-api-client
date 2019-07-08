@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
+import com.cloudesire.platform.apiclient.query.BillingItemQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -26,6 +27,13 @@ public interface BillingItemApi
     @DELETE( "billingItem/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
 
+    @GET( "billingItem" )
+    Call<List<BillingItemDTO>> getAll( @QueryMap BillingItemQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(BillingItemQuery)}
+     */
+    @Deprecated
     @GET( "billingItem" )
     Call<List<BillingItemDTO>> getAll(
             @QueryMap Map<String, String> pageRequest,

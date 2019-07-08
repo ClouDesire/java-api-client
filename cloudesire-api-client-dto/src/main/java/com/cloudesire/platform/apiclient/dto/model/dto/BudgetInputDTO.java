@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.IaasBudget;
+import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
@@ -48,7 +48,7 @@ public class BudgetInputDTO
 
     private OSType operatingSystem;
 
-    private IaasBudget iaas;
+    private PropertyFilter iaas;
 
     public OrderType getType()
     {
@@ -182,12 +182,12 @@ public class BudgetInputDTO
         return this;
     }
 
-    public IaasBudget getIaas()
+    public PropertyFilter getIaas()
     {
         return iaas;
     }
 
-    public BudgetInputDTO setIaas( IaasBudget iaas )
+    public BudgetInputDTO setIaas( PropertyFilter iaas )
     {
         this.iaas = iaas;
         return this;
