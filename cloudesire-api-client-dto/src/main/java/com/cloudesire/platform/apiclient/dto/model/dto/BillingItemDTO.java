@@ -33,6 +33,9 @@ public class BillingItemDTO extends NamedEntityDTO
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 
+    @ApiModelProperty( "Extended description of the billing item" )
+    private String longDescription;
+
     private UrlEntityDTO owner;
 
     private UrlEntityDTO reseller;
@@ -94,6 +97,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setDescription( String description )
     {
         this.description = description;
+        return this;
+    }
+
+    public String getLongDescription()
+    {
+        return longDescription;
+    }
+
+    public BillingItemDTO setLongDescription( String longDescription )
+    {
+        this.longDescription = longDescription;
         return this;
     }
 
