@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
+import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 
 public class BillingItemQuery extends PageRequestQuery
 {
@@ -27,9 +28,9 @@ public class BillingItemQuery extends PageRequestQuery
         return this;
     }
 
-    public BillingItemQuery api( BaseQuery.Filter api )
+    public BillingItemQuery api( PropertyFilter filter )
     {
-        put( API, api );
+        put( API, filter );
         return this;
     }
 
