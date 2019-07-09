@@ -11,6 +11,7 @@ public class SubscriptionBillingItemDTO extends DTO
     @ApiModelProperty( "The chosen value for this billing item" )
     private Integer value;
 
+    @ApiModelProperty( "The chosen tag for this billing item" )
     private String tag;
 
     @ApiModelProperty( "Whether the chosen value is in the last range of the possible values" )

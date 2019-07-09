@@ -51,9 +51,11 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @Min( 1 )
     private Integer step;
 
+    @ApiModelProperty( "The tag for the range, for tagged stairstep values" )
     @Size( max = 125, message = INVALID_SIZE )
     private String tag;
 
+    @ApiModelProperty( "The description for the tagged range" )
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 
