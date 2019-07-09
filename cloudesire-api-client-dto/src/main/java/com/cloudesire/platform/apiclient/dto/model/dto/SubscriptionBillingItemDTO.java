@@ -11,6 +11,8 @@ public class SubscriptionBillingItemDTO extends DTO
     @ApiModelProperty( "The chosen value for this billing item" )
     private Integer value;
 
+    private String tag;
+
     @ApiModelProperty( "Whether the chosen value is in the last range of the possible values" )
     private Boolean unlimited;
 
@@ -44,6 +46,16 @@ public class SubscriptionBillingItemDTO extends DTO
     public void setValue( Integer value )
     {
         this.value = value;
+    }
+
+    public String getTag()
+    {
+        return tag;
+    }
+
+    public void setTag( String tag )
+    {
+        this.tag = tag;
     }
 
     public Boolean getUnlimited()
