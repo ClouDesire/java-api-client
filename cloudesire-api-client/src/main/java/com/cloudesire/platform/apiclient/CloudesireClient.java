@@ -14,6 +14,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.VERSION;
+import static com.cloudesire.platform.apiclient.response.Headers.AUTH_TOKEN;
+import static com.cloudesire.platform.apiclient.response.Headers.MISTICA;
+import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 
 public class CloudesireClient extends BasicAuthCloudesireClient
 {
@@ -36,17 +39,17 @@ public class CloudesireClient extends BasicAuthCloudesireClient
 
         if ( token != null )
         {
-            addInterceptor( new HeaderInterceptor( "CMW-Auth-Token", token ) );
+            addInterceptor( new HeaderInterceptor( AUTH_TOKEN, token ) );
         }
 
         if ( impersonate != null )
         {
-            addInterceptor( new HeaderInterceptor( "CMW-As-User", impersonate ) );
+            addInterceptor( new HeaderInterceptor( MISTICA, impersonate ) );
         }
 
         if ( environment != null )
         {
-            addInterceptor( new HeaderInterceptor( "MODE", environment ) );
+            addInterceptor( new HeaderInterceptor( MODE, environment ) );
         }
 
         if ( interceptor != null ) addInterceptor( interceptor );
