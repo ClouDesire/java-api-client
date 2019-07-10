@@ -19,7 +19,7 @@ public final class MathUtils
     {
         if ( base == null ) return BigDecimal.ZERO;
 
-        return base.subtract( percentage( base, pct ) );
+        return base.subtract( percentage( base, pct, MathConfiguration.DEFAULT_PRECISION ) );
     }
 
     public static BigDecimal percentage( BigDecimal base, BigDecimal pct )
