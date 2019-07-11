@@ -6,12 +6,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
+
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( description = "Defines pricing of disk usage of a VM" )
 public class InstancePricingDTO extends CloudPricingDTO
 {
+    @ApiModelProperty( "Descriptive name of the pricing" )
+    @Size( max = 125, message = INVALID_SIZE )
+    private String name;
+
     @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
@@ -31,6 +38,16 @@ public class InstancePricingDTO extends CloudPricingDTO
 
     @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
     private Boolean deprecated;
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
+    }
 
     public Integer getRam()
     {
