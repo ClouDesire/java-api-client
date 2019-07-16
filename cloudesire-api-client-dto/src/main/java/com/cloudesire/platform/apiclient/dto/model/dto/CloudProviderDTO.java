@@ -44,6 +44,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
     private List<OSType> supportedOperatingSystems;
 
+    @ApiModelProperty( "Map a minimum order duration to a discount percentage for IAAS costs" )
     private Map<Integer, BigDecimal> discounts;
 
     public String getAlias()
