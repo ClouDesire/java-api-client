@@ -28,7 +28,7 @@ public class BudgetInputDTO
     @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
-    @ApiModelProperty( "For how many hours to request an estimate" )
+    @ApiModelProperty( "For how many hours to request an estimate, 0 for hours since last invoice" )
     @Max( 720 )
     private Integer hours;
 
