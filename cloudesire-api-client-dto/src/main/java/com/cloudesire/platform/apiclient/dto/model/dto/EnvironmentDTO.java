@@ -1717,6 +1717,9 @@ public class EnvironmentDTO extends DTO
         @Valid
         private ServiceDirectory serviceDirectory = new ServiceDirectory();
 
+        @ApiModelProperty( "Keep data disk after Subscription undeploy" )
+        private Boolean keepDataDisk = true;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2136,6 +2139,16 @@ public class EnvironmentDTO extends DTO
         public void setServiceDirectory( ServiceDirectory serviceDirectory )
         {
             this.serviceDirectory = serviceDirectory;
+        }
+
+        public Boolean getKeepDataDisk()
+        {
+            return keepDataDisk;
+        }
+
+        public void setKeepDataDisk( Boolean keepDataDisk )
+        {
+            this.keepDataDisk = keepDataDisk;
         }
 
         public boolean isTrialForBundles()
