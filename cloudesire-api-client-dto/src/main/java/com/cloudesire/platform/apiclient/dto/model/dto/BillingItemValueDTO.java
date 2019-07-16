@@ -7,8 +7,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
+
+import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( description = "Billing configuration of the ranges for an extra resource" )
 @SuppressWarnings( "squid:S2637" )
@@ -47,6 +50,14 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @ApiModelProperty( "Increment amount" )
     @Min( 1 )
     private Integer step;
+
+    @ApiModelProperty( "The tag for the range, for tagged stairstep values" )
+    @Size( max = 125, message = INVALID_SIZE )
+    private String tag;
+
+    @ApiModelProperty( "The description for the tagged range, supports localization" )
+    @Size( max = 8192, message = INVALID_SIZE )
+    private String description;
 
     public BillingItemValueDTO( BillingItemDTO item, Integer start, Integer end, double price )
     {
@@ -171,6 +182,28 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public BillingItemValueDTO setStep( Integer step )
     {
         this.step = step;
+        return this;
+    }
+
+    public String getTag()
+    {
+        return tag;
+    }
+
+    public BillingItemValueDTO setTag( String tag )
+    {
+        this.tag = tag;
+        return this;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public BillingItemValueDTO setDescription( String description )
+    {
+        this.description = description;
         return this;
     }
 
