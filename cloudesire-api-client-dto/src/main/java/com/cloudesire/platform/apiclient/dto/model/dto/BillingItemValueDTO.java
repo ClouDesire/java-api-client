@@ -55,7 +55,7 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @Size( max = 125, message = INVALID_SIZE )
     private String tag;
 
-    @ApiModelProperty( "The description for the tagged range" )
+    @ApiModelProperty( "The description for the tagged range, supports localization" )
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 
