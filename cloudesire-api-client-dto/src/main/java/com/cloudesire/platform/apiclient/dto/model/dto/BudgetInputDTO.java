@@ -1,12 +1,13 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
@@ -28,9 +29,13 @@ public class BudgetInputDTO
     @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
     private Integer bandwidthPricingId;
 
-    @ApiModelProperty( "For how many hours to request an estimate, 0 for hours since last invoice" )
+    @ApiModelProperty( "For how many hours to request an estimate" )
+    @Min( 1 )
     @Max( 720 )
     private Integer hours;
+
+    @ApiModelProperty( "Show current or projected pay-per-use costs" )
+    private PayPerUseCosts payPerUseCosts;
 
     @ApiModelProperty( "The ID of an existing subscription" )
     private Integer subscriptionId;
@@ -116,6 +121,17 @@ public class BudgetInputDTO
         return this;
     }
 
+    public PayPerUseCosts getPayPerUseCosts()
+    {
+        return payPerUseCosts;
+    }
+
+    public BudgetInputDTO setPayPerUseCosts( PayPerUseCosts payPerUseCosts )
+    {
+        this.payPerUseCosts = payPerUseCosts;
+        return this;
+    }
+
     public Integer getSubscriptionId()
     {
         return subscriptionId;
@@ -191,5 +207,10 @@ public class BudgetInputDTO
     {
         this.iaas = iaas;
         return this;
+    }
+
+    public enum PayPerUseCosts
+    {
+        CURRENT, PROJECTED
     }
 }
