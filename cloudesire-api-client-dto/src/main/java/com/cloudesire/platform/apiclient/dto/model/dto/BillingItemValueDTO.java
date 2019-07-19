@@ -27,7 +27,7 @@ public class BillingItemValueDTO extends BaseEntityDTO
     private Integer start;
 
     @ApiModelProperty( "Range end, null is indefinte" )
-    @Min( 1 )
+    @Min( 0 )
     private Integer end;
 
     @ApiModelProperty( "Price for the range" )
