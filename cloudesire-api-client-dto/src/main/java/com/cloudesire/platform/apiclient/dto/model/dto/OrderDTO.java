@@ -16,7 +16,7 @@ public class OrderDTO extends BaseOrderDTO
 
     private List<SubscriptionBillingItemDTO> billingItems;
 
-    private UrlEntityDTO cloudCredential;
+    private Boolean customCloudCredentials;
 
     public UrlEntityDTO getDistributor()
     {
@@ -48,13 +48,13 @@ public class OrderDTO extends BaseOrderDTO
         this.billingItems = billingItems;
     }
 
-    public UrlEntityDTO getCloudCredential()
+    public Boolean getCustomCloudCredentials()
     {
-        return cloudCredential;
+        return customCloudCredentials;
     }
 
-    public void setCloudCredential( UrlEntityDTO cloudCredential )
+    public void setCustomCloudCredentials( Boolean customCloudCredentials )
     {
-        this.cloudCredential = cloudCredential;
+        this.customCloudCredentials = customCloudCredentials;
     }
 }
