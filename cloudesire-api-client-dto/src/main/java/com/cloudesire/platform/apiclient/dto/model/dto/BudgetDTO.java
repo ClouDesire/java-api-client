@@ -72,6 +72,8 @@ public class BudgetDTO extends BaseEntityDTO
 
     private IaasBilling iaasBilling;
 
+    private Integer rootDiskSpace;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -271,6 +273,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setIaasBilling( IaasBilling iaasBilling )
     {
         this.iaasBilling = iaasBilling;
+    }
+
+    public Integer getRootDiskSpace()
+    {
+        return rootDiskSpace;
+    }
+
+    public void setRootDiskSpace( Integer rootDiskSpace )
+    {
+        this.rootDiskSpace = rootDiskSpace;
     }
 
     @Override
