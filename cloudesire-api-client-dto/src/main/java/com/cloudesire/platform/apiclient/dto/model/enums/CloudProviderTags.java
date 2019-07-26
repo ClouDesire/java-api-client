@@ -33,8 +33,11 @@ public enum CloudProviderTags
     public static String measureUnit( CloudProviderTags tag )
     {
         if ( tag.equals( CloudProviderTags.MINIMUM_DISK ) || tag.equals( CloudProviderTags.MINIMUM_WINDOWS_RAM_GB ) )
+        {
             return "integer - Gigabytes";
-        return null;
+        }
+
+        return "";
     }
 
     public boolean supports( OsFamily family )
