@@ -77,6 +77,8 @@ public class BudgetDTO extends BaseEntityDTO
 
     private Integer rootDiskSpace;
 
+    private Integer dataDiskSpace;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -296,6 +298,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setRootDiskSpace( Integer rootDiskSpace )
     {
         this.rootDiskSpace = rootDiskSpace;
+    }
+
+    public Integer getDataDiskSpace()
+    {
+        return dataDiskSpace;
+    }
+
+    public void setDataDiskSpace( Integer dataDiskSpace )
+    {
+        this.dataDiskSpace = dataDiskSpace;
     }
 
     @Override
