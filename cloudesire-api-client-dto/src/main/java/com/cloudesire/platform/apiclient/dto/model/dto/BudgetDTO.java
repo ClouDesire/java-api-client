@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.common.MathConfiguration;
 import com.liberologico.cloudesire.common.MathUtils;
+import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -71,6 +72,8 @@ public class BudgetDTO extends BaseEntityDTO
     private Integer lifespan;
 
     private IaasBilling iaasBilling;
+
+    private OSType operatingSystem;
 
     private Integer rootDiskSpace;
 
@@ -273,6 +276,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setIaasBilling( IaasBilling iaasBilling )
     {
         this.iaasBilling = iaasBilling;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
     }
 
     public Integer getRootDiskSpace()
