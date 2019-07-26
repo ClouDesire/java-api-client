@@ -260,10 +260,10 @@ public class SubscriptionPatchDTO extends DTO
         @ApiModelProperty( "Renew a subscription" )
         RENEW,
 
-        @ApiModelProperty( "Start a subscription" )
+        @ApiModelProperty( "Start a subscription's VM" )
         START,
 
-        @ApiModelProperty( "Stop a subscription" )
+        @ApiModelProperty( "Stop a subscription's VM" )
         STOP,
 
         @ApiModelProperty( "Kill a subscription" )
