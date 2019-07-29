@@ -137,7 +137,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private IaasBilling iaasBilling;
 
-    private UrlEntityDTO linkedVersion;
+    private UrlEntityDTO comparableVersion;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -553,14 +553,14 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.iaasBilling = iaasBilling;
     }
 
-    public UrlEntityDTO getLinkedVersion()
+    public UrlEntityDTO getComparableVersion()
     {
-        return linkedVersion;
+        return comparableVersion;
     }
 
-    public void setLinkedVersion( UrlEntityDTO linkedVersion )
+    public void setComparableVersion( UrlEntityDTO comparableVersion )
     {
-        this.linkedVersion = linkedVersion;
+        this.comparableVersion = comparableVersion;
     }
 
     @Override
