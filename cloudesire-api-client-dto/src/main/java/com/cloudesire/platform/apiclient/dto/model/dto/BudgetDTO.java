@@ -72,6 +72,8 @@ public class BudgetDTO extends BaseEntityDTO
 
     private IaasBilling iaasBilling;
 
+    private BudgetVMConfigurationDTO vmConfiguration;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -271,6 +273,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setIaasBilling( IaasBilling iaasBilling )
     {
         this.iaasBilling = iaasBilling;
+    }
+
+    public BudgetVMConfigurationDTO getVmConfiguration()
+    {
+        return vmConfiguration;
+    }
+
+    public void setVmConfiguration( BudgetVMConfigurationDTO vmConfiguration )
+    {
+        this.vmConfiguration = vmConfiguration;
     }
 
     @Override
