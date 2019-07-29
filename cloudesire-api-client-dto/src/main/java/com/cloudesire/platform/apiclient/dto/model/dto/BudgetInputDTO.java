@@ -211,6 +211,6 @@ public class BudgetInputDTO
 
     public enum PayPerUseCosts
     {
-        CURRENT, PROJECTED
+        NONE, CURRENT, PROJECTED
     }
 }
