@@ -1229,6 +1229,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enables custom cloud credentials" )
         private CustomerCloudCredentials customerCloudCredentials = CustomerCloudCredentials.DISABLED;
 
+        @ApiModelProperty( "Pairs of Product Version IDs to be estimated together" )
+        private List<List<Integer>> linkedProductVersions;
+
         @ApiModelProperty( hidden = true )
         public boolean isZuoraEnabled()
         {
@@ -1551,6 +1554,16 @@ public class EnvironmentDTO extends DTO
         public void setCustomerCloudCredentials( CustomerCloudCredentials customerCloudCredentials )
         {
             this.customerCloudCredentials = customerCloudCredentials;
+        }
+
+        public List<List<Integer>> getLinkedProductVersions()
+        {
+            return linkedProductVersions;
+        }
+
+        public void setLinkedProductVersions( List<List<Integer>> linkedProductVersions )
+        {
+            this.linkedProductVersions = linkedProductVersions;
         }
 
         public enum CustomerCloudCredentials
