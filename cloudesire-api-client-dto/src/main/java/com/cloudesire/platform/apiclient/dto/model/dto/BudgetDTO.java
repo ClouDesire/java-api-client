@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.common.MathConfiguration;
 import com.liberologico.cloudesire.common.MathUtils;
-import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -73,11 +72,7 @@ public class BudgetDTO extends BaseEntityDTO
 
     private IaasBilling iaasBilling;
 
-    private OSType operatingSystem;
-
-    private Integer rootDiskSpace;
-
-    private Integer dataDiskSpace;
+    private BudgetVMConfigurationDTO vmConfiguration;
 
     @JsonProperty
     public BigDecimal getTotalPrice()
@@ -280,34 +275,14 @@ public class BudgetDTO extends BaseEntityDTO
         this.iaasBilling = iaasBilling;
     }
 
-    public OSType getOperatingSystem()
+    public BudgetVMConfigurationDTO getVmConfiguration()
     {
-        return operatingSystem;
+        return vmConfiguration;
     }
 
-    public void setOperatingSystem( OSType operatingSystem )
+    public void setVmConfiguration( BudgetVMConfigurationDTO vmConfiguration )
     {
-        this.operatingSystem = operatingSystem;
-    }
-
-    public Integer getRootDiskSpace()
-    {
-        return rootDiskSpace;
-    }
-
-    public void setRootDiskSpace( Integer rootDiskSpace )
-    {
-        this.rootDiskSpace = rootDiskSpace;
-    }
-
-    public Integer getDataDiskSpace()
-    {
-        return dataDiskSpace;
-    }
-
-    public void setDataDiskSpace( Integer dataDiskSpace )
-    {
-        this.dataDiskSpace = dataDiskSpace;
+        this.vmConfiguration = vmConfiguration;
     }
 
     @Override
