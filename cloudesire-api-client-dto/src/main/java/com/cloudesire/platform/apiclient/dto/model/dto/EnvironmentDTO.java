@@ -1720,6 +1720,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Keep customer data disk after Subscription undeploy" )
         private Boolean keepCustomerDataDisk = true;
 
+        @ApiModelProperty( "Pairs of Product Version IDs to be estimated together" )
+        private List<List<Integer>> comparableProductVersions;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2159,6 +2162,16 @@ public class EnvironmentDTO extends DTO
         public void setTrialForBundles( boolean trialForBundles )
         {
             this.trialForBundles = trialForBundles;
+        }
+
+        public List<List<Integer>> getComparableProductVersions()
+        {
+            return comparableProductVersions;
+        }
+
+        public void setComparableProductVersions( List<List<Integer>> comparableProductVersions )
+        {
+            this.comparableProductVersions = comparableProductVersions;
         }
         //endregion
 
