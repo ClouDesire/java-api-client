@@ -4,7 +4,9 @@ public enum CouponType
 {
     BUNDLE( "bundle" ),
     DISCOUNT( "discount" ),
-    EXTENDED_TRIAL( "extendedTrial" ),
+    TRIAL( "trial" ),
+    @Deprecated
+    EXTENDED_TRIAL( "trial" ),
     FIXED_PRICE( "fixedPrice" ),
     DISCOUNT_GENERATOR( "discountGenerator" ),
     FIXED_PRICE_GENERATOR( "fixedPriceGenerator" );

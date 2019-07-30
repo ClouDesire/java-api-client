@@ -58,7 +58,7 @@ public class MailEnvironmentDTO extends DTO
          */
         @NotNull
         @Valid
-        private MailConfiguration extendedTrialCoupon;
+        private MailConfiguration trialCoupon;
 
         /**
          * Email sent for registration
@@ -283,8 +283,9 @@ public class MailEnvironmentDTO extends DTO
                     return getDiscountCoupon();
                 case FIXED_PRICE:
                     return getFixedPriceCoupon();
+                case TRIAL:
                 case EXTENDED_TRIAL:
-                    return getExtendedTrialCoupon();
+                    return getTrialCoupon();
                 default:
                     return null;
             }
@@ -353,14 +354,14 @@ public class MailEnvironmentDTO extends DTO
             this.fixedPriceCoupon = fixedPriceCoupon;
         }
 
-        public MailConfiguration getExtendedTrialCoupon()
+        public MailConfiguration getTrialCoupon()
         {
-            return extendedTrialCoupon;
+            return trialCoupon;
         }
 
-        public void setExtendedTrialCoupon( MailConfiguration extendedTrialCoupon )
+        public void setTrialCoupon( MailConfiguration trialCoupon )
         {
-            this.extendedTrialCoupon = extendedTrialCoupon;
+            this.trialCoupon = trialCoupon;
         }
 
         public MailConfiguration getRegistration()

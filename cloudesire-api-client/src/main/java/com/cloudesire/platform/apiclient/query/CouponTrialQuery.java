@@ -16,7 +16,7 @@ public class CouponTrialQuery extends BaseQuery
 
     public CouponTrialQuery()
     {
-        put( TYPE, CouponType.EXTENDED_TRIAL.toString() );
+        put( TYPE, CouponType.TRIAL.toString() );
     }
 
     public CouponTrialQuery setProductVersion( Integer productVersion )
