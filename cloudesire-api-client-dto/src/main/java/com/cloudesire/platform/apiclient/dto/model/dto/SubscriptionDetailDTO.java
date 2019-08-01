@@ -4,7 +4,6 @@ import java.util.List;
 
 public class SubscriptionDetailDTO extends SubscriptionDTO
 {
-
     private List<UrlEntityDTO> possibleUpgrades;
 
     public List<UrlEntityDTO> getPossibleUpgrades()

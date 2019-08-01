@@ -4,49 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.beans.Introspector;
 import java.util.Objects;
 
 @JsonPropertyOrder ( { "id" } )
-public class BaseEntityDTO extends DTO implements IBaseEntityDTO
+public abstract class BaseEntityDTO extends DTO implements IBaseEntityDTO
 {
     @ApiModelProperty( readOnly = true )
     private Integer id;
 
     @ApiModelProperty( readOnly = true, example = "subscription/123" )
     private String self;
-
-    /**
-     * Set to override the guessing of resource name from main DTO class.
-     */
-    protected String entityToken;
-
-    public String getSelf()
-    {
-        if ( self != null ) return self;
-        if ( id != null ) return getResourceName() + "/" + id;
-        else return null;
-    }
-
-    @ApiModelProperty( readOnly = true )
-    @JsonIgnore
-    public String getResourceName()
-    {
-        if ( this.entityToken == null )
-        {
-            return Introspector.decapitalize( this.getClass().getSimpleName().replace( "DTO", "" ) );
-        }
-        else
-        {
-            return this.entityToken;
-        }
-    }
-
-    @JsonIgnore
-    public void setEntityToken( String entityToken )
-    {
-        this.entityToken = entityToken;
-    }
 
     @JsonIgnore
     public UrlEntityDTO urlEntity()
@@ -63,6 +30,11 @@ public class BaseEntityDTO extends DTO implements IBaseEntityDTO
     public void setId( Integer id )
     {
         this.id = id;
+    }
+
+    public String getSelf()
+    {
+        return self;
     }
 
     public void setSelf( String self )

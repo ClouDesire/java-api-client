@@ -179,13 +179,6 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
-    @Override
-    public String getResourceName()
-    {
-        if ( this.entityToken == null ) return "user";
-        return this.entityToken;
-    }
-
     @JsonIgnore
     public String getTaxCountryCode()
     {

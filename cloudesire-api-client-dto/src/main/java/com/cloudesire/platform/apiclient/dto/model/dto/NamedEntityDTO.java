@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @JsonPropertyOrder ( { "id", "name" } )
-public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
+public abstract class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String NAME_FIELD = "name";
 
