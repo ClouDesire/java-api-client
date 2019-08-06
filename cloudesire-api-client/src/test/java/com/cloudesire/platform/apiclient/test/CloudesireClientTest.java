@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CloudesireClientTest
 {
-    private static final String USER_AGENT = "Cloudesire API Client 20190730";
+    private static final String USER_AGENT = "Cloudesire API Client 20190806";
 
     private CloudesireClientCallExecutor executor;
 
