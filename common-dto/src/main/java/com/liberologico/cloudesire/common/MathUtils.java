@@ -70,7 +70,7 @@ public final class MathUtils
 
     public static boolean isZero( BigDecimal number )
     {
-        return equalsByComparing( BigDecimal.ZERO, number);
+        return equalsByComparing( number, BigDecimal.ZERO );
     }
 
     public static boolean isNotZero( BigDecimal number )
