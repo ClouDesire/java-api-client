@@ -36,9 +36,6 @@ public class InstancePricingDTO extends CloudPricingDTO
     @ApiModelProperty( "Operating system" )
     private OSType operatingSystem;
 
-    @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
-    private Boolean deprecated;
-
     public String getName()
     {
         return name;
@@ -99,16 +96,6 @@ public class InstancePricingDTO extends CloudPricingDTO
         this.operatingSystem = operatingSystem;
     }
 
-    public Boolean getDeprecated()
-    {
-        return deprecated;
-    }
-
-    public void setDeprecated( Boolean deprecated )
-    {
-        this.deprecated = deprecated;
-    }
-
     @Override
     public boolean equals( Object o )
     {
@@ -117,13 +104,12 @@ public class InstancePricingDTO extends CloudPricingDTO
         if ( ! super.equals( o ) ) return false;
         InstancePricingDTO that = (InstancePricingDTO) o;
         return ram.equals( that.ram ) && cpu.equals( that.cpu ) && Objects.equals( diskSpace, that.diskSpace )
-                && osFamily == that.osFamily && operatingSystem == that.operatingSystem && Objects
-                .equals( deprecated, that.deprecated );
+                && osFamily == that.osFamily && operatingSystem == that.operatingSystem;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), ram, cpu, diskSpace, osFamily, operatingSystem, deprecated );
+        return Objects.hash( super.hashCode(), ram, cpu, diskSpace, osFamily, operatingSystem );
     }
 }
