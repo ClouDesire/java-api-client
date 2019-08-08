@@ -1,24 +1,23 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel( "How the customer can pay" )
 public enum PaymentGateway
 {
-    /**
-     * PayPal payment gateway
-     */
+    @ApiModelProperty( "PayPal payment gateway" )
     PAYPAL,
 
-    /**
-     * Stripe credit card
-     */
+    @ApiModelProperty( "Stripe credit card" )
     STRIPE,
 
-    /**
-     * Stripe SEPA direct debit
-     */
+    @ApiModelProperty( "Stripe SEPA direct debit" )
     STRIPE_SEPA,
 
-    /**
-     * Directly save the customer's IBAN on his profile
-     */
-    IBAN
+    @ApiModelProperty( "Archive the customer's IBAN on his profile for offline usage" )
+    IBAN,
+
+    @ApiModelProperty( "Pay offline" )
+    MANUAL
 }

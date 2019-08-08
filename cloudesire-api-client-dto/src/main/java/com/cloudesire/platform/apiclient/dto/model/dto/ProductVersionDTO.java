@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponConfiguration;
 import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
+import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.Trial;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
@@ -138,6 +139,8 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     private IaasBilling iaasBilling;
 
     private UrlEntityDTO comparableVersion;
+
+    private Set<PaymentGateway> paymentGateways;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -561,6 +564,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setComparableVersion( UrlEntityDTO comparableVersion )
     {
         this.comparableVersion = comparableVersion;
+    }
+
+    public Set<PaymentGateway> getPaymentGateways()
+    {
+        return paymentGateways;
+    }
+
+    public void setPaymentGateways( Set<PaymentGateway> paymentGateways )
+    {
+        this.paymentGateways = paymentGateways;
     }
 
     @Override
