@@ -140,7 +140,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private UrlEntityDTO comparableVersion;
 
-    private Set<PaymentGateway> paymentGateways;
+    private Set<PaymentGateway> paymentGateways = new HashSet<>();
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
