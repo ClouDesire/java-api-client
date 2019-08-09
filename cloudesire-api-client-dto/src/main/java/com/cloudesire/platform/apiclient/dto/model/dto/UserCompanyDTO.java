@@ -1,21 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Date;
 
 @ApiModel( description = "Company data of a business customer" )
 public class UserCompanyDTO extends CompanyDTO
 {
-    @ApiModelProperty( "The reference number of a VAT Exemption document valid under Italian laws" )
-    private String vatExemptionDeclarationNumber;
-
-    @ApiModelProperty( "The declaration date of a VAT Exemption document valid under Italian laws" )
-    private Date vatExemptionDeclarationDate;
-
-    @ApiModelProperty( "The internal protocol number of a VAT Exemption document valid under Italian laws" )
-    private String vatExemptionInternalProtocolNumber;
+    private VatExemptionDTO vatExemption;
 
     public UserCompanyDTO( String name, String email )
     {
@@ -33,33 +23,13 @@ public class UserCompanyDTO extends CompanyDTO
         super();
     }
 
-    public String getVatExemptionDeclarationNumber()
+    public VatExemptionDTO getVatExemption()
     {
-        return vatExemptionDeclarationNumber;
+        return vatExemption;
     }
 
-    public void setVatExemptionDeclarationNumber( String vatExemptionDeclarationNumber )
+    public void setVatExemption( VatExemptionDTO vatExemption )
     {
-        this.vatExemptionDeclarationNumber = vatExemptionDeclarationNumber;
-    }
-
-    public Date getVatExemptionDeclarationDate()
-    {
-        return vatExemptionDeclarationDate;
-    }
-
-    public void setVatExemptionDeclarationDate( Date vatExemptionDeclarationDate )
-    {
-        this.vatExemptionDeclarationDate = vatExemptionDeclarationDate;
-    }
-
-    public String getVatExemptionInternalProtocolNumber()
-    {
-        return vatExemptionInternalProtocolNumber;
-    }
-
-    public void setVatExemptionInternalProtocolNumber( String vatExemptionInternalProtocolNumber )
-    {
-        this.vatExemptionInternalProtocolNumber = vatExemptionInternalProtocolNumber;
+        this.vatExemption = vatExemption;
     }
 }
