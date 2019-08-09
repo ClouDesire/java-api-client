@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModel;
 @ApiModel( description = "Company data of a business customer" )
 public class UserCompanyDTO extends CompanyDTO
 {
+    private VatExemptionDTO vatExemption;
+
     public UserCompanyDTO( String name, String email )
     {
         super( name );
@@ -19,5 +21,15 @@ public class UserCompanyDTO extends CompanyDTO
     public UserCompanyDTO()
     {
         super();
+    }
+
+    public VatExemptionDTO getVatExemption()
+    {
+        return vatExemption;
+    }
+
+    public void setVatExemption( VatExemptionDTO vatExemption )
+    {
+        this.vatExemption = vatExemption;
     }
 }

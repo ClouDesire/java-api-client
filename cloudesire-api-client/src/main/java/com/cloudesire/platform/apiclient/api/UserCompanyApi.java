@@ -15,6 +15,13 @@ import retrofit2.http.Path;
 public interface UserCompanyApi
 {
     @POST( "userCompany" )
+    Call<UserCompanyDTO> create( @Body UserCompanyDTO company );
+
+    /**
+     * @deprecated by {@link #create(UserCompanyDTO)}
+     */
+    @Deprecated
+    @POST( "userCompany" )
     Call<UserCompanyDTO> create( @Body MinimalCompanyDTO company );
 
     @GET( "userCompany/externalId={extId}" )

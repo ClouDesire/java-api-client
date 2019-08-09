@@ -132,15 +132,6 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
     private String culture;
 
-    @ApiModelProperty( "The reference number of a VAT Exemption document valid under Italian laws" )
-    private String vatExemptionDeclarationNumber;
-
-    @ApiModelProperty( "The declaration date of a VAT Exemption document valid under Italian laws" )
-    private Date vatExemptionDeclarationDate;
-
-    @ApiModelProperty( "The internal protocol number of a VAT Exemption document valid under Italian laws" )
-    private String vatExemptionInternalProtocolNumber;
-
     @ApiModelProperty( "If the user has a password set" )
     private boolean passwordAlreadySet;
 
@@ -557,36 +548,6 @@ public class MyUserDTO extends BaseEntityDTO
     public void setCulture( String culture )
     {
         this.culture = culture;
-    }
-
-    public String getVatExemptionDeclarationNumber()
-    {
-        return vatExemptionDeclarationNumber;
-    }
-
-    public void setVatExemptionDeclarationNumber( String vatExemptionDeclarationNumber )
-    {
-        this.vatExemptionDeclarationNumber = vatExemptionDeclarationNumber;
-    }
-
-    public Date getVatExemptionDeclarationDate()
-    {
-        return vatExemptionDeclarationDate;
-    }
-
-    public void setVatExemptionDeclarationDate( Date vatExemptionDeclarationDate )
-    {
-        this.vatExemptionDeclarationDate = vatExemptionDeclarationDate;
-    }
-
-    public String getVatExemptionInternalProtocolNumber()
-    {
-        return vatExemptionInternalProtocolNumber;
-    }
-
-    public void setVatExemptionInternalProtocolNumber( String vatExemptionInternalProtocolNumber )
-    {
-        this.vatExemptionInternalProtocolNumber = vatExemptionInternalProtocolNumber;
     }
 
     public boolean isPasswordAlreadySet()
