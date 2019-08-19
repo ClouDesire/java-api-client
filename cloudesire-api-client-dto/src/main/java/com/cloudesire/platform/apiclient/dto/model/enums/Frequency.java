@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-public enum FrequenceType
+public enum Frequency
 {
     EVERY_30_SECONDS( 30 ),
     EVERY_1_MINUTE( 60 ),
@@ -14,9 +14,9 @@ public enum FrequenceType
 
     private int samplePeriodInSeconds;
 
-    public static FrequenceType getByPeriod( int period )
+    public static Frequency getByPeriod( int period )
     {
-        for ( FrequenceType type : FrequenceType.values() )
+        for ( Frequency type : Frequency.values() )
         {
             if ( type.samplePeriodInSeconds == period ) return type;
         }
@@ -24,7 +24,7 @@ public enum FrequenceType
         throw new IllegalArgumentException( "Invalid sample period: " + period );
     }
 
-    FrequenceType( int samplePeriodInSeconds )
+    Frequency( int samplePeriodInSeconds )
     {
         this.samplePeriodInSeconds = samplePeriodInSeconds;
     }
