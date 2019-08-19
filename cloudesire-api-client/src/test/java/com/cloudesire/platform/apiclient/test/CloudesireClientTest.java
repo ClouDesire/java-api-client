@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.test;
 
 import com.cloudesire.platform.apiclient.CloudesireClient;
 import com.cloudesire.platform.apiclient.CloudesireClientCallExecutor;
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CloudesireClientTest
 {
-    private static final String USER_AGENT = "Cloudesire API Client 20190806";
+    private static final String USER_AGENT = "Cloudesire API Client " + ApiVersion.LATEST_API_VERSION;
 
     private CloudesireClientCallExecutor executor;
 
