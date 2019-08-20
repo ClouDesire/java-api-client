@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -1212,7 +1213,7 @@ public class EnvironmentDTO extends DTO
 
         @ApiModelProperty( "Enabled payment gateways" )
         @Valid
-        private List<PaymentGateway> enabledPaymentGateways = Collections.singletonList( PaymentGateway.STRIPE );
+        private Set<PaymentGateway> enabledPaymentGateways = Collections.singleton( PaymentGateway.STRIPE );
 
         @ApiModelProperty( "Customize reseller emails" )
         private boolean resellerMailCustomization;
@@ -1493,14 +1494,14 @@ public class EnvironmentDTO extends DTO
             this.billingItems = billingItems;
         }
 
-        public List<PaymentGateway> getEnabledPaymentGateways()
+        public Set<PaymentGateway> getEnabledPaymentGateways()
         {
-            return enabledPaymentGateways;
+            return new HashSet<>( enabledPaymentGateways );
         }
 
-        public void setEnabledPaymentGateways( List<PaymentGateway> enabledPaymentGateways )
+        public void setEnabledPaymentGateways( Set<PaymentGateway> enabledPaymentGateways )
         {
-            this.enabledPaymentGateways = enabledPaymentGateways;
+            this.enabledPaymentGateways = new HashSet<>( enabledPaymentGateways );
         }
 
         public boolean isResellerMailCustomization()

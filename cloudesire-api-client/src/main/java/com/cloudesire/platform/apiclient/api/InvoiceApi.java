@@ -51,15 +51,8 @@ public interface InvoiceApi
     @GET( "invoice/{id}/refresh" )
     Call<String> refreshPayment( @Path( "id" ) int id );
 
-    @PATCH( "invoice/{id}/forcePaid" )
-    Call<Void> forcePaid( @Path( "id" ) int id, @Body InvoicePaymentReferenceDTO input );
-
-    /**
-     * @deprecated by {@link #forcePaid(int, InvoicePaymentReferenceDTO)}
-     */
-    @Deprecated
-    @PATCH( "invoice/{id}/forcePaid" )
-    Call<Void> forcePaid( @Path( "id" ) Integer id, @Body Map<String, String> input );
+    @PATCH( "invoice/{id}/pay" )
+    Call<Void> setPaid( @Path( "id" ) int id, @Body InvoicePaymentReferenceDTO input );
 
     @POST( "invoice/{id}/pdf/regenerate" )
     Call<Void> regeneratePdf( @Path( "id" ) int id );
