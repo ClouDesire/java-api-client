@@ -11,12 +11,14 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "A billed unit" )
 public class OrderLineDTO implements Line
 {
+    @NotNull
     @Valid
     private VATPriceDTO price;
 
