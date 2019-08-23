@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 public class UrlEntityDTO
 {
     @NotBlank
+    @NotNull
     @ApiModelProperty( value = "Reference to another resource", example = "resourceName/ID" )
     @Size( max = 255 )
     private String url;
