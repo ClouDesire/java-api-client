@@ -16,6 +16,7 @@ public enum CloudProviderTags
      */
     MINIMUM_DISK,
     MINIMUM_WINDOWS_RAM_GB,
+    RAM_MULTIPLE_OF_MB,
     WINDOWS( OsFamily.WINDOWS );
 
     private final OsFamily support;
