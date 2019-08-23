@@ -20,10 +20,6 @@ public class EndpointPatternDTO extends BaseEntityDTO
 
     private String description;
 
-    public EndpointPatternDTO()
-    {
-    }
-
     public String getName()
     {
         return name;
