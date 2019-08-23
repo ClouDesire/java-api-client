@@ -1,18 +1,18 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cloudesire.platform.apiclient.dto.model.utils.BodyParser;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @ApiModel( description = "Reference to a related resource" )
 public class UrlEntityDTO
 {
-    @NotEmpty
+    @NotBlank
     @ApiModelProperty( value = "Reference to another resource", example = "resourceName/ID" )
     @Size( max = 255 )
     private String url;
