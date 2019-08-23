@@ -1,7 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
+import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.cloudesire.platform.apiclient.dto.model.enums.FrequenceType;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -24,11 +25,13 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     private UrlEntityDTO product;
 
     @NotNull
-    @ApiModelProperty( "URL to fetch a metric for syndicated products or partial path for managed products" )
+    private ApplicationMetricType type = ApplicationMetricType.EXTERNAL;
+
+    @ApiModelProperty( "URL to fetch a metric for syndicated products, a relative path for managed products or null if metric is harvested by platform prometheus" )
     private String endpoint;
 
     @NotNull
-    private FrequenceType frequence;
+    private Frequency frequency = Frequency.EVERY_1_HOUR;
 
     public UrlEntityDTO getBillingItem()
     {
@@ -50,6 +53,17 @@ public class ApplicationMetricDTO extends BaseEntityDTO
         this.counter = counter;
     }
 
+    @NotNull
+    public ApplicationMetricType getType()
+    {
+        return type;
+    }
+
+    public void setType( @NotNull ApplicationMetricType type )
+    {
+        this.type = type;
+    }
+
     public String getEndpoint()
     {
         return endpoint;
@@ -60,14 +74,34 @@ public class ApplicationMetricDTO extends BaseEntityDTO
         this.endpoint = endpoint;
     }
 
-    public FrequenceType getFrequence()
+    /**
+     * @deprecated use {@link #getFrequency()}
+     */
+    @Deprecated
+    public Frequency getFrequence()
     {
-        return frequence;
+        return getFrequency();
     }
 
-    public void setFrequence( FrequenceType frequence )
+    /**
+     * @deprecated use {@link #setFrequency(Frequency)}
+     * @param frequence
+     */
+    @Deprecated
+    public void setFrequence( Frequency frequence )
     {
-        this.frequence = frequence;
+        setFrequency( frequence );
+    }
+
+    @NotNull
+    public Frequency getFrequency()
+    {
+        return frequency;
+    }
+
+    public void setFrequency( @NotNull Frequency frequency )
+    {
+        this.frequency = frequency;
     }
 
     public UrlEntityDTO getApplicationFile()
@@ -111,12 +145,12 @@ public class ApplicationMetricDTO extends BaseEntityDTO
         ApplicationMetricDTO that = (ApplicationMetricDTO) o;
         return counter == that.counter && billingItem.equals( that.billingItem ) && Objects
                 .equals( applicationFile, that.applicationFile ) && Objects.equals( product, that.product ) && endpoint
-                .equals( that.endpoint ) && frequence == that.frequence;
+                .equals( that.endpoint ) && frequency == that.frequency;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), billingItem, counter, applicationFile, product, endpoint, frequence );
+        return Objects.hash( super.hashCode(), billingItem, counter, applicationFile, product, endpoint, frequency );
     }
 }
