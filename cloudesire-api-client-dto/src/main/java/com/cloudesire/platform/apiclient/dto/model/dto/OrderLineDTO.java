@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.cloudesire.platform.apiclient.dto.model.interfaces.Line;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
-import com.cloudesire.platform.apiclient.dto.model.interfaces.Line;
 import com.liberologico.cloudesire.common.MathConfiguration;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
