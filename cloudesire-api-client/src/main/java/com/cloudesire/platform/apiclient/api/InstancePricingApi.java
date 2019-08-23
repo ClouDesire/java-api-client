@@ -31,6 +31,7 @@ public interface InstancePricingApi
             @Query( "cloudProvider" ) int cloudProvider, @Query( "deprecated" ) Boolean deprecated
     );
 
+    @Deprecated
     @GET( "instancePricing" )
     Call<List<InstancePricingDTO>> getCompatible(
             @Query( "cloudProvider" ) int cloudProvider,

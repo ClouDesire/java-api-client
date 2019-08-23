@@ -15,14 +15,16 @@ import java.util.Set;
 
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "CPU cores" )
+    @NotNull
+    @Valid
+    private UrlEntityDTO instancePricing;
+
+    @ApiModelProperty( value = "CPU cores", hidden = true )
     @Min( 1 )
     @Max( 128 )
-    @NotNull
     private BigDecimal cpu;
 
-    @ApiModelProperty( "Memory available, in MB" )
-    @NotNull
+    @ApiModelProperty( value = "Memory available, in MB", hidden = true )
     @Min( 1024 )
     private Integer ram;
 
@@ -49,11 +51,22 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     private OSType osType;
 
     // region Auto-generated code
+    public UrlEntityDTO getInstancePricing()
+    {
+        return instancePricing;
+    }
+
+    public void setInstancePricing( UrlEntityDTO instancePricing )
+    {
+        this.instancePricing = instancePricing;
+    }
+
     public BigDecimal getCpu()
     {
         return cpu;
     }
 
+    @Deprecated
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
@@ -64,6 +77,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
         return ram;
     }
 
+    @Deprecated
     public void setRam( Integer ram )
     {
         this.ram = ram;

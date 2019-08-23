@@ -5,6 +5,7 @@ import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 public class InstancePricingDTO extends CloudPricingDTO
 {
     @ApiModelProperty( "Descriptive name of the pricing" )
+    @NotEmpty
     @Size( max = 125, message = INVALID_SIZE )
     private String name;
 
