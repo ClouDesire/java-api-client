@@ -30,8 +30,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @ApiModelProperty( "URL to fetch a metric for syndicated products, a relative path for managed products or null if metric is harvested by platform prometheus" )
     private String endpoint;
 
-    @NotNull
-    private Frequency frequency = Frequency.EVERY_1_HOUR;
+    private Frequency frequency;
 
     public UrlEntityDTO getBillingItem()
     {
@@ -93,13 +92,12 @@ public class ApplicationMetricDTO extends BaseEntityDTO
         setFrequency( frequence );
     }
 
-    @NotNull
     public Frequency getFrequency()
     {
         return frequency;
     }
 
-    public void setFrequency( @NotNull Frequency frequency )
+    public void setFrequency( Frequency frequency )
     {
         this.frequency = frequency;
     }
