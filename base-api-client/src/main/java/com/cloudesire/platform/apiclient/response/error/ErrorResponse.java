@@ -39,6 +39,10 @@ public class ErrorResponse
         errorHolders.add( errorHolder );
     }
 
+    /**
+     * @deprecated better use {@link #singleErrorHolder()} to inadvertently losing multiple error messages
+     */
+    @Deprecated
     public ErrorResponseEntry firstErrorHolder()
     {
         if ( this.errorHolders == null || this.errorHolders.isEmpty() ) return null;
@@ -47,9 +51,13 @@ public class ErrorResponse
 
     public ErrorResponseEntry singleErrorHolder()
     {
-        if ( this.errorHolders == null || this.errorHolders.size() != 1 )
+        if ( this.errorHolders == null )
         {
             throw new IllegalStateException( "No errors to fetch" );
+        }
+        else if ( this.errorHolders.size() != 1 )
+        {
+            throw new IllegalStateException( "More than one error to fetch" );
         }
         return this.errorHolders.get( 0 );
     }
