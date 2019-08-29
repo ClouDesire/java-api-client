@@ -1,24 +1,33 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.EndpointType;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
-public class EndpointPatternDTO extends NamedEntityDTO
+public class EndpointPatternDTO extends BaseEntityDTO
 {
-    private EndpointType category;
+    @ApiModelProperty( "The URL representation that must contain {nodename} as hostname placeholder" )
+    @NotBlank
+    @Size( max = 4096 )
+    private String name;
+
+    @NotNull
+    private EndpointType category = EndpointType.APP;
 
     private String description;
 
-    public EndpointPatternDTO()
+    public String getName()
     {
+        return name;
     }
 
-    public EndpointPatternDTO( String name, EndpointType category, String description )
+    public void setName( String name )
     {
-        super( name );
-        this.category = category;
-        this.description = description;
+        this.name = name;
     }
 
     public EndpointType getCategory()
@@ -47,22 +56,20 @@ public class EndpointPatternDTO extends NamedEntityDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         EndpointPatternDTO that = (EndpointPatternDTO) o;
-        return Objects.equals( getName(), that.getName() )
-                && category == that.category
-                && Objects.equals( description, that.description );
+        return name.equals( that.name ) && category == that.category;
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( getName(), category, description );
+        return Objects.hash( super.hashCode(), name, category );
     }
 
     @Override
     public String toString()
     {
         return "EndpointPatternDTO{" +
-                "name=" + getName() +
+                "name=" + name +
                 ", category=" + category +
                 ", description='" + description +
                 '\'' + '}';
