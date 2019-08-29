@@ -3,13 +3,18 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @ApiModel( description = "VM instance sizing" )
-@SuppressWarnings( "squid:S2637" )
-public class InstanceTypeDTO extends DTO
+public class InstanceTypeDTO extends NamedEntityDTO
 {
+    @NotNull
+    @Valid
+    private UrlEntityDTO cloudProvider;
+
     @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
@@ -21,15 +26,14 @@ public class InstanceTypeDTO extends DTO
     @ApiModelProperty( "Root disk space" )
     private Integer diskSpace;
 
-    public InstanceTypeDTO( Integer ram, BigDecimal cpu, Integer diskSpace )
+    public UrlEntityDTO getCloudProvider()
     {
-        this.ram = ram;
-        this.cpu = cpu;
-        this.diskSpace = diskSpace;
+        return cloudProvider;
     }
 
-    public InstanceTypeDTO()
+    public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
+        this.cloudProvider = cloudProvider;
     }
 
     public Integer getRam()
@@ -60,6 +64,23 @@ public class InstanceTypeDTO extends DTO
     public void setDiskSpace( Integer diskSpace )
     {
         this.diskSpace = diskSpace;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        InstanceTypeDTO that = (InstanceTypeDTO) o;
+        return Objects.equals( cloudProvider, that.cloudProvider ) && Objects.equals( ram, that.ram ) && Objects
+                .equals( cpu, that.cpu );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cloudProvider, ram, cpu );
     }
 
     @Override
