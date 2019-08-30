@@ -1,5 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
 import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,6 +33,10 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @ApiModelProperty( "URL to fetch a metric for syndicated products, a relative path for managed products or null if metric is harvested by platform prometheus" )
     private String endpoint;
 
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190819 )
+    private Frequency frequence;
+
+    @FieldAPI( sinceVersion = ApiVersion.V20190819 )
     private Frequency frequency;
 
     public UrlEntityDTO getBillingItem()
@@ -79,17 +86,16 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @Deprecated
     public Frequency getFrequence()
     {
-        return getFrequency();
+        return this.frequence;
     }
 
     /**
      * @deprecated use {@link #setFrequency(Frequency)}
-     * @param frequence
      */
     @Deprecated
     public void setFrequence( Frequency frequence )
     {
-        setFrequency( frequence );
+        this.frequence = frequence;
     }
 
     public Frequency getFrequency()
