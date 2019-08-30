@@ -10,8 +10,8 @@ public class UserCompanyDTO extends CompanyDTO
 {
     private VatExemptionDTO vatExemption;
 
-    @ApiModelProperty( "If this customer can pay later" )
-    private boolean delayedPayment;
+    @ApiModelProperty( "If this customer can pay later, only for admin" )
+    private Boolean delayedPayment;
 
     public UserCompanyDTO( String name, String email )
     {
@@ -39,12 +39,12 @@ public class UserCompanyDTO extends CompanyDTO
         this.vatExemption = vatExemption;
     }
 
-    public boolean isDelayedPayment()
+    public Boolean isDelayedPayment()
     {
         return delayedPayment;
     }
 
-    public void setDelayedPayment( boolean delayedPayment )
+    public void setDelayedPayment( Boolean delayedPayment )
     {
         this.delayedPayment = delayedPayment;
     }
@@ -56,7 +56,8 @@ public class UserCompanyDTO extends CompanyDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( !super.equals( o ) ) return false;
         UserCompanyDTO that = (UserCompanyDTO) o;
-        return delayedPayment == that.delayedPayment && Objects.equals( vatExemption, that.vatExemption );
+        return Objects.equals( vatExemption, that.vatExemption ) && Objects
+                .equals( delayedPayment, that.delayedPayment );
     }
 
     @Override
