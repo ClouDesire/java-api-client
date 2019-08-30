@@ -24,7 +24,8 @@ public class InstanceTypeDTO extends NamedEntityDTO
     private BigDecimal cpu;
 
     @ApiModelProperty( "Root disk space" )
-    private Integer diskSpace;
+    @NotNull
+    private Integer rootDiskSpace;
 
     public UrlEntityDTO getCloudProvider()
     {
@@ -56,14 +57,14 @@ public class InstanceTypeDTO extends NamedEntityDTO
         this.cpu = cpu;
     }
 
-    public Integer getDiskSpace()
+    public Integer getRootDiskSpace()
     {
-        return diskSpace;
+        return rootDiskSpace;
     }
 
-    public void setDiskSpace( Integer diskSpace )
+    public void setRootDiskSpace( Integer rootDiskSpace )
     {
-        this.diskSpace = diskSpace;
+        this.rootDiskSpace = rootDiskSpace;
     }
 
     @Override
@@ -74,13 +75,13 @@ public class InstanceTypeDTO extends NamedEntityDTO
         if ( ! super.equals( o ) ) return false;
         InstanceTypeDTO that = (InstanceTypeDTO) o;
         return Objects.equals( cloudProvider, that.cloudProvider ) && Objects.equals( ram, that.ram ) && Objects
-                .equals( cpu, that.cpu );
+                .equals( cpu, that.cpu ) && Objects.equals( rootDiskSpace, that.rootDiskSpace );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), cloudProvider, ram, cpu );
+        return Objects.hash( super.hashCode(), cloudProvider, ram, cpu, rootDiskSpace );
     }
 
     @Override
