@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.annotations.ApiModel;
@@ -21,20 +23,20 @@ public class InstancePricingDTO extends CloudPricingDTO
     private UrlEntityDTO instanceType;
 
     @ApiModelProperty( value = "Descriptive name of the pricing", hidden = true )
-    @Deprecated
     @Size( max = 125, message = INVALID_SIZE )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private String name;
 
     @ApiModelProperty( value = "RAM quantity", hidden = true )
-    @Deprecated
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer ram;
 
     @ApiModelProperty( value = "CPU Cores", hidden = true )
-    @Deprecated
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private BigDecimal cpu;
 
     @ApiModelProperty( value = "Root disk space", hidden = true )
-    @Deprecated
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer diskSpace;
 
     @ApiModelProperty( "Operating system family" )
@@ -56,48 +58,72 @@ public class InstancePricingDTO extends CloudPricingDTO
         this.instanceType = instanceType;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public String getName()
     {
         return name;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public void setName( String name )
     {
         this.name = name;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public Integer getRam()
     {
         return ram;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public void setRam( Integer ram )
     {
         this.ram = ram;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public BigDecimal getCpu()
     {
         return cpu;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public Integer getDiskSpace()
     {
         return diskSpace;
     }
 
+    /**
+     * @deprecated by {@link InstanceTypeDTO}
+     */
     @Deprecated
     public void setDiskSpace( Integer diskSpace )
     {

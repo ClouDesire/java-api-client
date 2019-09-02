@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -21,12 +23,12 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @ApiModelProperty( value = "CPU cores", hidden = true )
     @Min( 1 )
     @Max( 128 )
-    @Deprecated
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private BigDecimal cpu;
 
     @ApiModelProperty( value = "Memory available, in MB", hidden = true )
     @Min( 1024 )
-    @Deprecated
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer ram;
 
     @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
@@ -62,24 +64,36 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
         this.instanceTypes = instanceTypes;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
     @Deprecated
     public BigDecimal getCpu()
     {
         return cpu;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
     @Deprecated
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
     @Deprecated
     public Integer getRam()
     {
         return ram;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
     @Deprecated
     public void setRam( Integer ram )
     {

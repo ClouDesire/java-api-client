@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "VM instance sizing" )
@@ -15,13 +14,13 @@ public class InstanceTypeDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO cloudProvider;
 
+    @ApiModelProperty( "CPU cores" )
+    @NotNull
+    private Integer cpu;
+
     @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
-
-    @ApiModelProperty( "CPU cores" )
-    @NotNull
-    private BigDecimal cpu;
 
     @ApiModelProperty( "Root disk space" )
     @NotNull
@@ -37,6 +36,16 @@ public class InstanceTypeDTO extends NamedEntityDTO
         this.cloudProvider = cloudProvider;
     }
 
+    public Integer getCpu()
+    {
+        return cpu;
+    }
+
+    public void setCpu( Integer cpu )
+    {
+        this.cpu = cpu;
+    }
+
     public Integer getRam()
     {
         return ram;
@@ -45,16 +54,6 @@ public class InstanceTypeDTO extends NamedEntityDTO
     public void setRam( Integer ram )
     {
         this.ram = ram;
-    }
-
-    public BigDecimal getCpu()
-    {
-        return cpu;
-    }
-
-    public void setCpu( BigDecimal cpu )
-    {
-        this.cpu = cpu;
     }
 
     public Integer getRootDiskSpace()
@@ -74,19 +73,13 @@ public class InstanceTypeDTO extends NamedEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         InstanceTypeDTO that = (InstanceTypeDTO) o;
-        return Objects.equals( cloudProvider, that.cloudProvider ) && Objects.equals( ram, that.ram ) && Objects
-                .equals( cpu, that.cpu ) && Objects.equals( rootDiskSpace, that.rootDiskSpace );
+        return Objects.equals( cloudProvider, that.cloudProvider ) && Objects.equals( cpu, that.cpu ) && Objects
+                .equals( ram, that.ram ) && Objects.equals( rootDiskSpace, that.rootDiskSpace );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), cloudProvider, ram, cpu, rootDiskSpace );
-    }
-
-    @Override
-    public String toString()
-    {
-        return "InstanceTypeDTO{" + "ram=" + ram + ", cpu=" + cpu + "}";
+        return Objects.hash( super.hashCode(), cloudProvider, cpu, ram, rootDiskSpace );
     }
 }
