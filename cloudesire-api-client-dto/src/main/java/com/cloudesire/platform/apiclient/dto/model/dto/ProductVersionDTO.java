@@ -18,6 +18,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_MIN;
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
 public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL10nDTO
 {
@@ -141,6 +142,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     private UrlEntityDTO comparableVersion;
 
     private Set<PaymentGateway> paymentGateways = new HashSet<>();
+
+    @ApiModelProperty( value = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
+    private Set<UrlEntityDTO> cloudProviders;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -574,6 +578,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setPaymentGateways( Set<PaymentGateway> paymentGateways )
     {
         this.paymentGateways = paymentGateways;
+    }
+
+    public Set<UrlEntityDTO> getCloudProviders()
+    {
+        return cloudProviders;
+    }
+
+    public void setCloudProviders( Set<UrlEntityDTO> cloudProviders )
+    {
+        this.cloudProviders = cloudProviders;
     }
 
     @Override
