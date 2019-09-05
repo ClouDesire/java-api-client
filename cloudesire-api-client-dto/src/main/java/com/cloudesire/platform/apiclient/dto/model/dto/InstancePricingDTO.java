@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
@@ -47,6 +48,9 @@ public class InstancePricingDTO extends CloudPricingDTO
 
     @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
     private Boolean deprecated;
+
+    @ApiModelProperty( "Configure pricing according to order minimum duration" )
+    private Map<Integer, BigDecimal> hourlyPrices;
 
     public UrlEntityDTO getInstanceType()
     {
@@ -158,6 +162,16 @@ public class InstancePricingDTO extends CloudPricingDTO
     public void setDeprecated( Boolean deprecated )
     {
         this.deprecated = deprecated;
+    }
+
+    public Map<Integer, BigDecimal> getHourlyPrices()
+    {
+        return hourlyPrices;
+    }
+
+    public void setHourlyPrices( Map<Integer, BigDecimal> hourlyPrices )
+    {
+        this.hourlyPrices = hourlyPrices;
     }
 
     @Override
