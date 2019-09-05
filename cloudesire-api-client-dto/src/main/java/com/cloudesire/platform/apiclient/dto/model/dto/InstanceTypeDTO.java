@@ -3,33 +3,47 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
+import java.util.Objects;
 
 @ApiModel( description = "VM instance sizing" )
-@SuppressWarnings( "squid:S2637" )
-public class InstanceTypeDTO extends DTO
+public class InstanceTypeDTO extends NamedEntityDTO
 {
+    @NotNull
+    @Valid
+    private UrlEntityDTO cloudProvider;
+
+    @ApiModelProperty( "CPU cores" )
+    @NotNull
+    private Integer cpu;
+
     @ApiModelProperty( "RAM quantity" )
     @NotNull
     private Integer ram;
 
-    @ApiModelProperty( "CPU cores" )
-    @NotNull
-    private BigDecimal cpu;
-
     @ApiModelProperty( "Root disk space" )
-    private Integer diskSpace;
+    @NotNull
+    private Integer rootDiskSpace;
 
-    public InstanceTypeDTO( Integer ram, BigDecimal cpu, Integer diskSpace )
+    public UrlEntityDTO getCloudProvider()
     {
-        this.ram = ram;
-        this.cpu = cpu;
-        this.diskSpace = diskSpace;
+        return cloudProvider;
     }
 
-    public InstanceTypeDTO()
+    public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
+        this.cloudProvider = cloudProvider;
+    }
+
+    public Integer getCpu()
+    {
+        return cpu;
+    }
+
+    public void setCpu( Integer cpu )
+    {
+        this.cpu = cpu;
     }
 
     public Integer getRam()
@@ -42,29 +56,30 @@ public class InstanceTypeDTO extends DTO
         this.ram = ram;
     }
 
-    public BigDecimal getCpu()
+    public Integer getRootDiskSpace()
     {
-        return cpu;
+        return rootDiskSpace;
     }
 
-    public void setCpu( BigDecimal cpu )
+    public void setRootDiskSpace( Integer rootDiskSpace )
     {
-        this.cpu = cpu;
-    }
-
-    public Integer getDiskSpace()
-    {
-        return diskSpace;
-    }
-
-    public void setDiskSpace( Integer diskSpace )
-    {
-        this.diskSpace = diskSpace;
+        this.rootDiskSpace = rootDiskSpace;
     }
 
     @Override
-    public String toString()
+    public boolean equals( Object o )
     {
-        return "InstanceTypeDTO{" + "ram=" + ram + ", cpu=" + cpu + "}";
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        InstanceTypeDTO that = (InstanceTypeDTO) o;
+        return Objects.equals( cloudProvider, that.cloudProvider ) && Objects.equals( cpu, that.cpu ) && Objects
+                .equals( ram, that.ram ) && Objects.equals( rootDiskSpace, that.rootDiskSpace );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), cloudProvider, cpu, ram, rootDiskSpace );
     }
 }

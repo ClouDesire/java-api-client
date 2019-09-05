@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -15,15 +17,18 @@ import java.util.Set;
 
 public class VirtualMachineConfigurationDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "CPU cores" )
+    @Valid
+    private Set<UrlEntityDTO> instanceTypes;
+
+    @ApiModelProperty( value = "CPU cores", hidden = true )
     @Min( 1 )
     @Max( 128 )
-    @NotNull
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private BigDecimal cpu;
 
-    @ApiModelProperty( "Memory available, in MB" )
-    @NotNull
+    @ApiModelProperty( value = "Memory available, in MB", hidden = true )
     @Min( 1024 )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer ram;
 
     @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
@@ -49,21 +54,47 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     private OSType osType;
 
     // region Auto-generated code
+    public Set<UrlEntityDTO> getInstanceTypes()
+    {
+        return instanceTypes;
+    }
+
+    public void setInstanceTypes( Set<UrlEntityDTO> instanceTypes )
+    {
+        this.instanceTypes = instanceTypes;
+    }
+
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
+    @Deprecated
     public BigDecimal getCpu()
     {
         return cpu;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
+    @Deprecated
     public void setCpu( BigDecimal cpu )
     {
         this.cpu = cpu;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
+    @Deprecated
     public Integer getRam()
     {
         return ram;
     }
 
+    /**
+     * @deprecated by {@link #instanceTypes}
+     */
+    @Deprecated
     public void setRam( Integer ram )
     {
         this.ram = ram;
