@@ -1236,6 +1236,9 @@ public class EnvironmentDTO extends DTO
             return ExternalSubscriptionHandling.ZUORA.equals( externalSubscriptionHandling );
         }
 
+        @ApiModelProperty( "Enabled geocall data fields for the customer profile" )
+        private boolean geocallProfile;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1552,6 +1555,16 @@ public class EnvironmentDTO extends DTO
         public void setCustomerCloudCredentials( CustomerCloudCredentials customerCloudCredentials )
         {
             this.customerCloudCredentials = customerCloudCredentials;
+        }
+
+        public boolean isGeocallProfile()
+        {
+            return geocallProfile;
+        }
+
+        public void setGeocallProfile( boolean geocallProfile )
+        {
+            this.geocallProfile = geocallProfile;
         }
 
         public enum CustomerCloudCredentials
