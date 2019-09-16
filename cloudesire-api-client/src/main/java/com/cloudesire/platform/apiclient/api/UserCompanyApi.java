@@ -12,6 +12,8 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+import java.util.Map;
+
 public interface UserCompanyApi
 {
     @POST( "userCompany" )
@@ -30,8 +32,14 @@ public interface UserCompanyApi
     @GET( "userCompany/{id}" )
     Call<UserCompanyDTO> get( @Path( "id" ) int id );
 
+    @GET( "userCompany/{id}/metadata" )
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+
     @PUT( "userCompany/{id}" )
     Call<UserCompanyDTO> update( @Path( "id" ) int id, @Body UserCompanyDTO company );
+
+    @PUT( "userCompany/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
 
     @PATCH( "userCompany/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body BaseCompanyPatchDTO patch );
