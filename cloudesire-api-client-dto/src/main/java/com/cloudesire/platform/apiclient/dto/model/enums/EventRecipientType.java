@@ -8,6 +8,8 @@ public enum EventRecipientType
 {
     @ApiModelProperty( "The event recipient is an endpoint defined by the vendor" )
     COMPANY,
+    @ApiModelProperty( "The event recipient is an endpoint relative to the product" )
+    PRODUCT,
     @ApiModelProperty( "The event recipient is a platform endpoint" )
     PLATFORM
 }
