@@ -1,5 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
@@ -38,7 +41,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @Valid
     private List<UrlEntityDTO> productVersion;
 
-    @ApiModelProperty( "URL where events of syndicated applications are dispatched" )
+    @ApiModelProperty( "URLs where events of syndicated applications are dispatched" )
+    @FieldAPI( sinceVersion = ApiVersion.V20190916 )
+    private Set<String> syndicationEndpoints;
+
+    @ApiModelProperty( value = "URL where events of syndicated applications are dispatched", hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20190916 )
     private String syndicatedEndpoint;
 
     @ApiModelProperty( "Base URL for the product's API" )
@@ -408,11 +416,29 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.tags = tags;
     }
 
+    public Set<String> getSyndicationEndpoints()
+    {
+        return syndicationEndpoints;
+    }
+
+    public void setSyndicationEndpoints( Set<String> syndicationEndpoints )
+    {
+        this.syndicationEndpoints = syndicationEndpoints;
+    }
+
+    /**
+     * @deprecated by {@link #getSyndicationEndpoints()}
+     */
+    @Deprecated
     public String getSyndicatedEndpoint()
     {
         return syndicatedEndpoint;
     }
 
+    /**
+     * @deprecated by {@link #setSyndicationEndpoints(Set)}
+     */
+    @Deprecated
     public void setSyndicatedEndpoint( String syndicatedEndpoint )
     {
         this.syndicatedEndpoint = syndicatedEndpoint;
