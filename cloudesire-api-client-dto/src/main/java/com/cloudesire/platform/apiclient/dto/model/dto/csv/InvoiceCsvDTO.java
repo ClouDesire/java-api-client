@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "id", "remoteId", "status", "date", "nominee", "email", "address", "fiscalCode", "taxCode", "sku", "plan",
-        "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "total", "vat",
-        "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
+        "id", "remoteId", "status", "date", "nomineeId", "nominee", "email", "address", "fiscalCode", "taxCode", "sku",
+        "plan", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "total",
+        "vat", "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
 } )
 public class InvoiceCsvDTO extends DTO
 {
@@ -23,6 +23,8 @@ public class InvoiceCsvDTO extends DTO
     private InvoiceStatus status;
 
     private Date date;
+
+    private Integer nomineeId;
 
     private String nominee;
 
@@ -109,6 +111,16 @@ public class InvoiceCsvDTO extends DTO
     public void setDate( Date date )
     {
         this.date = date;
+    }
+
+    public Integer getNomineeId()
+    {
+        return nomineeId;
+    }
+
+    public void setNomineeId( Integer nomineeId )
+    {
+        this.nomineeId = nomineeId;
     }
 
     public String getNominee()
