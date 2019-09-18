@@ -20,17 +20,7 @@ public class ItalianElectronicInvoicingDTO
     @Size( min = 7, max = 256 )
     private String pec;
 
-    public ItalianElectronicInvoicingDTO( String cuu, String pec )
-    {
-        this.cuu = cuu;
-        this.pec = pec;
-    }
-
     // region Auto-generated code
-    public ItalianElectronicInvoicingDTO()
-    {
-    }
-
     public String getCuu()
     {
         return cuu;
