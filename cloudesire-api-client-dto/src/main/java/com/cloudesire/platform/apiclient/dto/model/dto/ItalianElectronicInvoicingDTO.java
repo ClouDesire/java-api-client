@@ -9,30 +9,25 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @ApiModel( description = "Electronic invoicing data for Italian business companies" )
-public class ElectronicInvoicingDTO
+public class ItalianElectronicInvoicingDTO
 {
     @ApiModelProperty( "Codice univoco ufficio" )
-    @Size( max = 125 )
+    @Size( min = 6, max = 7 )
     private String cuu;
 
     @ApiModelProperty( "Posta elettronica certificata" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
-    @Size( max = 125 )
+    @Size( min = 7, max = 256 )
     private String pec;
 
-    @ApiModelProperty( "Cassetto fiscale" )
-    @Size( max = 125 )
-    private String taxBox;
-
-    public ElectronicInvoicingDTO( String cuu, String pec, String taxBox )
+    public ItalianElectronicInvoicingDTO( String cuu, String pec )
     {
         this.cuu = cuu;
         this.pec = pec;
-        this.taxBox = taxBox;
     }
 
     // region Auto-generated code
-    public ElectronicInvoicingDTO()
+    public ItalianElectronicInvoicingDTO()
     {
     }
 
@@ -56,30 +51,19 @@ public class ElectronicInvoicingDTO
         this.pec = pec;
     }
 
-    public String getTaxBox()
-    {
-        return taxBox;
-    }
-
-    public void setTaxBox( String taxBox )
-    {
-        this.taxBox = taxBox;
-    }
-
     @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        ElectronicInvoicingDTO that = (ElectronicInvoicingDTO) o;
-        return Objects.equals( cuu, that.cuu ) && Objects.equals( pec, that.pec ) && Objects
-                .equals( taxBox, that.taxBox );
+        ItalianElectronicInvoicingDTO that = (ItalianElectronicInvoicingDTO) o;
+        return Objects.equals( cuu, that.cuu ) && Objects.equals( pec, that.pec );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( cuu, pec, taxBox );
+        return Objects.hash( cuu, pec );
     }
     // endregion
 }
