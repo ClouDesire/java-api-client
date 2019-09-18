@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -52,9 +52,15 @@ public class MyUserDTO extends BaseEntityDTO
     private String language;
 
     @ApiModelProperty( "User email address to receive platform notifications" )
-    @NotEmpty
     @Email( regexp = Regexp.INTERNET_EMAIL )
+    @NotEmpty
+    @Size( max = 255 )
     private String email;
+
+    @ApiModelProperty( "User PEC address for Italian electronic invoicing" )
+    @Email( regexp = Regexp.INTERNET_EMAIL )
+    @Size( min = 7, max = 256 )
+    private String pec;
 
     private String phoneNumber;
 
@@ -303,6 +309,16 @@ public class MyUserDTO extends BaseEntityDTO
     public void setEmail( String email )
     {
         this.email = email;
+    }
+
+    public String getPec()
+    {
+        return pec;
+    }
+
+    public void setPec( String pec )
+    {
+        this.pec = pec;
     }
 
     public String getUserName()
