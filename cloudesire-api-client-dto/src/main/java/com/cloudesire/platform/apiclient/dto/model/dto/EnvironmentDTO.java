@@ -279,14 +279,21 @@ public class EnvironmentDTO extends DTO
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceReminder = new NotificationMailCustomization();
+
     @ApiModelProperty( "Alert to inform the user that the subscription has been put to sleep" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceSleep = new NotificationMailCustomization();
+
     @ApiModelProperty( "Alert to inform the user that the subscription has been destroyed" )
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceDeath = new NotificationMailCustomization();
+
+    @ApiModelProperty("Email report sent to notify of new users")
+    @NotNull
+    @Valid
+    private MailCustomization dailyNewUsersReport = new MailCustomization();
 
     @ApiModelProperty( "Features section" )
     @Valid
@@ -818,6 +825,16 @@ public class EnvironmentDTO extends DTO
         this.subscriptionTermAlarm = subscriptionTermAlarm;
     }
 
+    public MailCustomization getDailyNewUsersReport()
+    {
+        return dailyNewUsersReport;
+    }
+
+    public void setDailyNewUsersReport( MailCustomization dailyNewUsersReport )
+    {
+        this.dailyNewUsersReport = dailyNewUsersReport;
+    }
+
     public String getChefEnvironmentName()
     {
         return chefEnvironmentName;
@@ -1027,6 +1044,11 @@ public class EnvironmentDTO extends DTO
         public List<String> getTo()
         {
             return to;
+        }
+
+        public String[] getToAsArray()
+        {
+            return to != null ? to.toArray( new String[0] ) : null;
         }
 
         public void setTo( List<String> to )
