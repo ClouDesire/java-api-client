@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.util.Date;
 
@@ -23,6 +24,9 @@ public class MyUserCsvDTO extends DTO
     private Boolean active;
 
     private Date activationDate;
+
+    @JsonUnwrapped( prefix = "company." )
+    private Company company;
 
     // region Auto-generated code
     public String getName()
@@ -104,5 +108,52 @@ public class MyUserCsvDTO extends DTO
     {
         this.activationDate = activationDate;
     }
+
+    public Company getCompany()
+    {
+        return company;
+    }
+
+    public void setCompany( Company company )
+    {
+        this.company = company;
+    }
     // endregion
+
+    public static class Company
+    {
+        private String geocallId;
+
+        private String sialId;
+
+        public Company( String geocallId, String sialId )
+        {
+            this.geocallId = geocallId;
+            this.sialId = sialId;
+        }
+
+        public Company()
+        {
+        }
+
+        public String getGeocallId()
+        {
+            return geocallId;
+        }
+
+        public void setGeocallId( String geocallId )
+        {
+            this.geocallId = geocallId;
+        }
+
+        public String getSialId()
+        {
+            return sialId;
+        }
+
+        public void setSialId( String sialId )
+        {
+            this.sialId = sialId;
+        }
+    }
 }
