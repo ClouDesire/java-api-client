@@ -13,7 +13,7 @@ public class ItalianElectronicInvoicingDTO
 {
     @ApiModelProperty( "Codice univoco ufficio" )
     @Size( min = 6, max = 7 )
-    private String cuu;
+    private String sdiCode;
 
     @ApiModelProperty( "Posta elettronica certificata" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
@@ -21,14 +21,14 @@ public class ItalianElectronicInvoicingDTO
     private String pec;
 
     // region Auto-generated code
-    public String getCuu()
+    public String getSdiCode()
     {
-        return cuu;
+        return sdiCode;
     }
 
-    public void setCuu( String cuu )
+    public void setSdiCode( String sdiCode )
     {
-        this.cuu = cuu;
+        this.sdiCode = sdiCode;
     }
 
     public String getPec()
@@ -47,13 +47,13 @@ public class ItalianElectronicInvoicingDTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         ItalianElectronicInvoicingDTO that = (ItalianElectronicInvoicingDTO) o;
-        return Objects.equals( cuu, that.cuu ) && Objects.equals( pec, that.pec );
+        return Objects.equals( sdiCode, that.sdiCode ) && Objects.equals( pec, that.pec );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( cuu, pec );
+        return Objects.hash( sdiCode, pec );
     }
     // endregion
 }
