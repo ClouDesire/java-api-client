@@ -10,6 +10,8 @@ public class UserCompanyDTO extends CompanyDTO
 {
     private VatExemptionDTO vatExemption;
 
+    private ItalianElectronicInvoicingDTO italianElectronicInvoicing;
+
     @ApiModelProperty( "If this customer can pay later, only for admin" )
     private Boolean delayedPayment;
 
@@ -37,6 +39,16 @@ public class UserCompanyDTO extends CompanyDTO
     public void setVatExemption( VatExemptionDTO vatExemption )
     {
         this.vatExemption = vatExemption;
+    }
+
+    public ItalianElectronicInvoicingDTO getItalianElectronicInvoicing()
+    {
+        return italianElectronicInvoicing;
+    }
+
+    public void setItalianElectronicInvoicing( ItalianElectronicInvoicingDTO italianElectronicInvoicing )
+    {
+        this.italianElectronicInvoicing = italianElectronicInvoicing;
     }
 
     public Boolean isDelayedPayment()
