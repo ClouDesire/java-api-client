@@ -11,7 +11,7 @@ import java.util.Objects;
 @ApiModel( description = "Electronic invoicing data for Italian business companies" )
 public class ItalianElectronicInvoicingDTO
 {
-    @ApiModelProperty( "Codice univoco ufficio" )
+    @ApiModelProperty( "Codice univoco ufficio/Codice destinatario" )
     @Size( min = 6, max = 7 )
     private String sdiCode;
 
