@@ -5,31 +5,54 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import java.util.Date;
 
-@JsonPropertyOrder( { "fullName", "email", "userRole", "company", "creationDate", "activationDate" } )
+@JsonPropertyOrder( { "name", "surname", "phone", "email", "geocallId", "creationDate", "active", "activationDate" } )
 public class MyUserCsvDTO extends DTO
 {
-    private String fullName;
+    private String name;
+
+    private String surname;
+
+    private String phone;
 
     private String email;
 
-    private String userRole = "ROLE_USER";
-
-    private String company;
+    private String geocallId;
 
     private Date creationDate;
+
+    private Boolean active;
 
     private Date activationDate;
 
     // region Auto-generated code
-
-    public String getFullName()
+    public String getName()
     {
-        return fullName;
+        return name;
     }
 
-    public void setFullName( String fullName )
+    public void setName( String name )
     {
-        this.fullName = fullName;
+        this.name = name;
+    }
+
+    public String getSurname()
+    {
+        return surname;
+    }
+
+    public void setSurname( String surname )
+    {
+        this.surname = surname;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone( String phone )
+    {
+        this.phone = phone;
     }
 
     public String getEmail()
@@ -42,24 +65,14 @@ public class MyUserCsvDTO extends DTO
         this.email = email;
     }
 
-    public String getUserRole()
+    public String getGeocallId()
     {
-        return userRole;
+        return geocallId;
     }
 
-    public void setUserRole( String userRole )
+    public void setGeocallId( String geocallId )
     {
-        this.userRole = userRole;
-    }
-
-    public String getCompany()
-    {
-        return company;
-    }
-
-    public void setCompany( String company )
-    {
-        this.company = company;
+        this.geocallId = geocallId;
     }
 
     public Date getCreationDate()
@@ -72,6 +85,16 @@ public class MyUserCsvDTO extends DTO
         this.creationDate = creationDate;
     }
 
+    public Boolean getActive()
+    {
+        return active;
+    }
+
+    public void setActive( Boolean active )
+    {
+        this.active = active;
+    }
+
     public Date getActivationDate()
     {
         return activationDate;
@@ -81,6 +104,5 @@ public class MyUserCsvDTO extends DTO
     {
         this.activationDate = activationDate;
     }
-
     // endregion
 }
