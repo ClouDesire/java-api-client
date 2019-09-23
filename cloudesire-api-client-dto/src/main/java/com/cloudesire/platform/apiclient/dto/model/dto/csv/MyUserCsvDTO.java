@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.util.Date;
@@ -132,9 +132,25 @@ public class MyUserCsvDTO extends DTO
     }
     // endregion
 
-    @JsonPropertyOrder( { "geocallId", "sialId", "sdiCode", "pec" } )
+    @JsonPropertyOrder( {
+            "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sialId", "sdiCode", "pec", "type"
+    } )
     public static class Company
     {
+        private String name;
+
+        private String vat;
+
+        private String country;
+
+        private String address;
+
+        private String city;
+
+        private String state;
+
+        private String zip;
+
         private String geocallId;
 
         private String sialId;
@@ -143,16 +159,76 @@ public class MyUserCsvDTO extends DTO
 
         private String pec;
 
-        public Company( String geocallId, String sialId, String sdiCode, String pec )
+        private String type;
+
+        public String getName()
         {
-            this.geocallId = geocallId;
-            this.sialId = sialId;
-            this.sdiCode = sdiCode;
-            this.pec = pec;
+            return name;
         }
 
-        public Company()
+        public void setName( String name )
         {
+            this.name = name;
+        }
+
+        public String getVat()
+        {
+            return vat;
+        }
+
+        public void setVat( String vat )
+        {
+            this.vat = vat;
+        }
+
+        public String getCountry()
+        {
+            return country;
+        }
+
+        public void setCountry( String country )
+        {
+            this.country = country;
+        }
+
+        public String getAddress()
+        {
+            return address;
+        }
+
+        public void setAddress( String address )
+        {
+            this.address = address;
+        }
+
+        public String getCity()
+        {
+            return city;
+        }
+
+        public void setCity( String city )
+        {
+            this.city = city;
+        }
+
+        public String getState()
+        {
+            return state;
+        }
+
+        public void setState( String state )
+        {
+            this.state = state;
+        }
+
+        public String getZip()
+        {
+            return zip;
+        }
+
+        public void setZip( String zip )
+        {
+            this.zip = zip;
         }
 
         public String getGeocallId()
@@ -193,6 +269,16 @@ public class MyUserCsvDTO extends DTO
         public void setPec( String pec )
         {
             this.pec = pec;
+        }
+
+        public String getType()
+        {
+            return type;
+        }
+
+        public void setType( String type )
+        {
+            this.type = type;
         }
     }
 }
