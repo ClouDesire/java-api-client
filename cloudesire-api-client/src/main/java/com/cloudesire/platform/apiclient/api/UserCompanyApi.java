@@ -3,19 +3,14 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.MinimalCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.UserCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.BaseCompanyPatchDTO;
-import com.cloudesire.platform.apiclient.query.PageRequestQuery;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
-import retrofit2.http.Streaming;
 
 import java.util.Map;
 
@@ -30,11 +25,6 @@ public interface UserCompanyApi
     @Deprecated
     @POST( "userCompany" )
     Call<UserCompanyDTO> create( @Body MinimalCompanyDTO company );
-
-    @GET( "userCompany" )
-    @Headers( "Accept:text/csv" )
-    @Streaming
-    Call<ResponseBody> getCsv( @QueryMap PageRequestQuery query );
 
     @GET( "userCompany/externalId={extId}" )
     Call<UserCompanyDTO> getByExternalId( @Path( "extId" ) String extId );
