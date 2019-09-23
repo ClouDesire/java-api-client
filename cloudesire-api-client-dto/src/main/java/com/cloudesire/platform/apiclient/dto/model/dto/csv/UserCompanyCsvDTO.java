@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sialId", "creationDate", "active",
-        "activationDate", "type"
+        "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sialId", "sdiCode", "pec",
+        "creationDate", "active", "activationDate", "type"
 } )
 public class UserCompanyCsvDTO extends DTO
 {
@@ -28,6 +28,10 @@ public class UserCompanyCsvDTO extends DTO
     private String geocallId;
 
     private String sialId;
+
+    private String sdiCode;
+
+    private String pec;
 
     private Date creationDate;
 
@@ -126,6 +130,26 @@ public class UserCompanyCsvDTO extends DTO
     public void setSialId( String sialId )
     {
         this.sialId = sialId;
+    }
+
+    public String getSdiCode()
+    {
+        return sdiCode;
+    }
+
+    public void setSdiCode( String sdiCode )
+    {
+        this.sdiCode = sdiCode;
+    }
+
+    public String getPec()
+    {
+        return pec;
+    }
+
+    public void setPec( String pec )
+    {
+        this.pec = pec;
     }
 
     public Date getCreationDate()

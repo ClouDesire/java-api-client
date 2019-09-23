@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import java.util.Date;
 
-@JsonPropertyOrder( { "name", "surname", "phone", "email", "geocallId", "creationDate", "active", "activationDate" } )
+@JsonPropertyOrder( { "name", "surname", "phone", "email", "pec", "geocallId", "creationDate", "active", "activationDate" } )
 public class MyUserCsvDTO extends DTO
 {
     private String name;
@@ -16,6 +16,8 @@ public class MyUserCsvDTO extends DTO
     private String phone;
 
     private String email;
+
+    private String pec;
 
     private String geocallId;
 
@@ -69,6 +71,16 @@ public class MyUserCsvDTO extends DTO
         this.email = email;
     }
 
+    public String getPec()
+    {
+        return pec;
+    }
+
+    public void setPec( String pec )
+    {
+        this.pec = pec;
+    }
+
     public String getGeocallId()
     {
         return geocallId;
@@ -120,16 +132,23 @@ public class MyUserCsvDTO extends DTO
     }
     // endregion
 
+    @JsonPropertyOrder( { "geocallId", "sialId", "sdiCode", "pec" } )
     public static class Company
     {
         private String geocallId;
 
         private String sialId;
 
-        public Company( String geocallId, String sialId )
+        private String sdiCode;
+
+        private String pec;
+
+        public Company( String geocallId, String sialId, String sdiCode, String pec )
         {
             this.geocallId = geocallId;
             this.sialId = sialId;
+            this.sdiCode = sdiCode;
+            this.pec = pec;
         }
 
         public Company()
@@ -154,6 +173,26 @@ public class MyUserCsvDTO extends DTO
         public void setSialId( String sialId )
         {
             this.sialId = sialId;
+        }
+
+        public String getSdiCode()
+        {
+            return sdiCode;
+        }
+
+        public void setSdiCode( String sdiCode )
+        {
+            this.sdiCode = sdiCode;
+        }
+
+        public String getPec()
+        {
+            return pec;
+        }
+
+        public void setPec( String pec )
+        {
+            this.pec = pec;
         }
     }
 }

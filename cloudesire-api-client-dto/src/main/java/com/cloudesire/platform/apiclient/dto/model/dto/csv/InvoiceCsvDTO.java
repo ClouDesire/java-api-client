@@ -10,9 +10,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @JsonPropertyOrder( {
-        "id", "remoteId", "status", "date", "nomineeId", "nominee", "email", "address", "fiscalCode", "taxCode", "sku",
-        "plan", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency", "total",
-        "vat", "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier", "discount"
+        "id", "remoteId", "status", "date", "nomineeId", "nominee", "email", "pec", "address", "fiscalCode", "taxCode",
+        "sku", "plan", "subscriptionId", "selfBilled", "description", "vendor", "type", "paymentReceived", "currency",
+        "total", "vat", "linePrice", "quantity", "unit", "lineDescription", "lineType", "billingItemIdentifier",
+        "discount"
 } )
 public class InvoiceCsvDTO extends DTO
 {
@@ -29,6 +30,8 @@ public class InvoiceCsvDTO extends DTO
     private String nominee;
 
     private String email;
+
+    private String pec;
 
     private String address;
 
@@ -141,6 +144,16 @@ public class InvoiceCsvDTO extends DTO
     public void setEmail( String email )
     {
         this.email = email;
+    }
+
+    public String getPec()
+    {
+        return pec;
+    }
+
+    public void setPec( String pec )
+    {
+        this.pec = pec;
     }
 
     public String getAddress()
