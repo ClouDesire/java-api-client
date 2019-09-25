@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 public enum UserMetadata
 {
     GEOCALL_ID( "Geocall_ID" ),
-    SIAL_ID;
+    GEOCALL_REQUESTER_ID( "Geocall_requester_ID" );
 
     private final String key;
 
@@ -12,16 +12,9 @@ public enum UserMetadata
         this.key = key;
     }
 
-    UserMetadata()
-    {
-        this( null );
-    }
-
     @Override
     public String toString()
     {
-        if ( key == null ) return super.toString();
-
         return key;
     }
 }

@@ -133,7 +133,7 @@ public class MyUserCsvDTO extends DTO
     // endregion
 
     @JsonPropertyOrder( {
-            "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sialId", "sdiCode", "pec", "type"
+            "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sdiCode", "pec", "type"
     } )
     public static class Company
     {
@@ -152,8 +152,6 @@ public class MyUserCsvDTO extends DTO
         private String zip;
 
         private String geocallId;
-
-        private String sialId;
 
         private String sdiCode;
 
@@ -239,16 +237,6 @@ public class MyUserCsvDTO extends DTO
         public void setGeocallId( String geocallId )
         {
             this.geocallId = geocallId;
-        }
-
-        public String getSialId()
-        {
-            return sialId;
-        }
-
-        public void setSialId( String sialId )
-        {
-            this.sialId = sialId;
         }
 
         public String getSdiCode()
