@@ -18,6 +18,8 @@ public class OrderDTO extends BaseOrderDTO
 
     private Boolean customerCloudCredential;
 
+    private Boolean deferred;
+
     public UrlEntityDTO getDistributor()
     {
         return distributor;
@@ -56,5 +58,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setCustomerCloudCredential( Boolean customerCloudCredential )
     {
         this.customerCloudCredential = customerCloudCredential;
+    }
+
+    public Boolean getDeferred()
+    {
+        return deferred;
+    }
+
+    public void setDeferred( Boolean deferred )
+    {
+        this.deferred = deferred;
     }
 }
