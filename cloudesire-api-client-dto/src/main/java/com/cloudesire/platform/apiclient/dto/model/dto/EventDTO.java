@@ -1,12 +1,15 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
 import com.cloudesire.platform.apiclient.dto.model.enums.EventRecipientType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,17 +22,21 @@ import java.util.Objects;
 public class EventDTO extends BaseEntityDTO
 {
     @ApiModelProperty( value = "The name of the entity", example = "Subscription" )
+    @NotEmpty
     private String entityName;
 
     @ApiModelProperty( value = "The Id of the entity", example = "123" )
+    @NotNull
     private Integer entityId;
 
     @ApiModelProperty( value = "If the platform has successfully dispatched this event", readOnly = true )
+    @NotNull
     private Boolean notified = false;
 
     @ApiModelProperty( value = "When the event has been generated", readOnly = true )
     private Date date = new Date();
 
+    @NotNull
     private CmwEventType type;
 
     private EventRecipientType recipient = EventRecipientType.COMPANY;
@@ -53,6 +60,10 @@ public class EventDTO extends BaseEntityDTO
 
     @ApiModelProperty( value = "Editable only by admin - Generally not used", hidden = true )
     private String environment;
+
+    @NotNull
+    @URL
+    private String endpoint;
 
     public String getEntityName()
     {
@@ -174,6 +185,16 @@ public class EventDTO extends BaseEntityDTO
         this.recipient = recipient;
     }
 
+    public String getEndpoint()
+    {
+        return endpoint;
+    }
+
+    public void setEndpoint( String endpoint )
+    {
+        this.endpoint = endpoint;
+    }
+
     @Override
     public String toString()
     {
@@ -185,17 +206,18 @@ public class EventDTO extends BaseEntityDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        if ( !super.equals( o ) ) return false;
-        EventDTO eventDTO = (EventDTO) o;
-        return Objects.equals( entityName, eventDTO.entityName ) && Objects.equals( entityId, eventDTO.entityId )
-                && Objects.equals( notified, eventDTO.notified ) && Objects.equals( date, eventDTO.date )
-                && type == eventDTO.type && recipient == eventDTO.recipient && Objects
-                .equals( product, eventDTO.product ) && Objects.equals( vendor, eventDTO.vendor );
+        if ( ! super.equals( o ) ) return false;
+        EventDTO that = (EventDTO) o;
+        return Objects.equals( entityName, that.entityName ) && Objects.equals( entityId, that.entityId ) && Objects
+                .equals( notified, that.notified ) && Objects.equals( date, that.date ) && type == that.type
+                && recipient == that.recipient && Objects.equals( product, that.product ) && Objects
+                .equals( vendor, that.vendor ) && Objects.equals( endpoint, that.endpoint );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), entityName, entityId, notified, date, type, recipient, product, vendor );
+        return Objects.hash( super.hashCode(), entityName, entityId, notified, date, type, recipient, product, vendor,
+                endpoint );
     }
 }
