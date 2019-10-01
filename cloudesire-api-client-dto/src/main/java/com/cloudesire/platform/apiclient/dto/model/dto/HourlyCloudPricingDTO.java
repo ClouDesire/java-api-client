@@ -1,17 +1,35 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.Objects;
 
-@ApiModel( description = "Configure pricing according to order minimum duration" )
-public class HourlyCloudPricingDTO extends BaseEntityDTO
+public class HourlyCloudPricingDTO extends DTO
 {
+    @ApiModelProperty( "One-time upfront cost" )
+    @NotNull
     private BigDecimal upfront;
 
-    private Map<Integer, BigDecimal> prices;
+    @ApiModelProperty( "Monthly price" )
+    @NotNull
+    private BigDecimal price;
+
+    public HourlyCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price )
+    {
+        this.upfront = upfront;
+        this.price = price;
+    }
+
+    public HourlyCloudPricingDTO( @NotNull BigDecimal price )
+    {
+        this( new BigDecimal( "0.00" ), price );
+    }
+
+    public HourlyCloudPricingDTO()
+    {
+    }
 
     public BigDecimal getUpfront()
     {
@@ -23,14 +41,14 @@ public class HourlyCloudPricingDTO extends BaseEntityDTO
         this.upfront = upfront;
     }
 
-    public Map<Integer, BigDecimal> getPrices()
+    public BigDecimal getPrice()
     {
-        return prices;
+        return price;
     }
 
-    public void setPrices( Map<Integer, BigDecimal> prices )
+    public void setPrice( BigDecimal price )
     {
-        this.prices = prices;
+        this.price = price;
     }
 
     @Override
@@ -38,14 +56,19 @@ public class HourlyCloudPricingDTO extends BaseEntityDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        if ( ! super.equals( o ) ) return false;
         HourlyCloudPricingDTO that = (HourlyCloudPricingDTO) o;
-        return Objects.equals( upfront, that.upfront ) && Objects.equals( prices, that.prices );
+        return Objects.equals( upfront, that.upfront ) && Objects.equals( price, that.price );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), upfront, prices );
+        return Objects.hash( upfront, price );
+    }
+
+    @Override
+    public String toString()
+    {
+        return "HourlyCloudPricingDTO{" + "upfront=" + upfront + ", price=" + price + '}';
     }
 }
