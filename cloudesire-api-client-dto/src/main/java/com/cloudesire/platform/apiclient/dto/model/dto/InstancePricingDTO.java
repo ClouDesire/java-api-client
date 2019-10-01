@@ -51,7 +51,7 @@ public class InstancePricingDTO extends CloudPricingDTO
 
     @ApiModelProperty( "Configure pricing according to order minimum duration" )
     @Valid
-    private Map<Integer, HourlyCloudPricingDTO> hourlyCloudPricing;
+    private Map<Integer, ReservedCloudPricingDTO> reservedCloudPricing;
 
     public UrlEntityDTO getInstanceType()
     {
@@ -165,14 +165,14 @@ public class InstancePricingDTO extends CloudPricingDTO
         this.deprecated = deprecated;
     }
 
-    public Map<Integer, HourlyCloudPricingDTO> getHourlyCloudPricing()
+    public Map<Integer, ReservedCloudPricingDTO> getReservedCloudPricing()
     {
-        return hourlyCloudPricing;
+        return reservedCloudPricing;
     }
 
-    public void setHourlyCloudPricing( Map<Integer, HourlyCloudPricingDTO> hourlyCloudPricing )
+    public void setReservedCloudPricing( Map<Integer, ReservedCloudPricingDTO> reservedCloudPricing )
     {
-        this.hourlyCloudPricing = hourlyCloudPricing;
+        this.reservedCloudPricing = reservedCloudPricing;
     }
 
     @Override

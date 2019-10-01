@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class HourlyCloudPricingDTO extends DTO
+public class ReservedCloudPricingDTO extends DTO
 {
     @ApiModelProperty( "One-time upfront cost" )
     @NotNull
@@ -16,18 +16,18 @@ public class HourlyCloudPricingDTO extends DTO
     @NotNull
     private BigDecimal price;
 
-    public HourlyCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price )
+    public ReservedCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price )
     {
         this.upfront = upfront;
         this.price = price;
     }
 
-    public HourlyCloudPricingDTO( @NotNull BigDecimal price )
+    public ReservedCloudPricingDTO( @NotNull BigDecimal price )
     {
         this( new BigDecimal( "0.00" ), price );
     }
 
-    public HourlyCloudPricingDTO()
+    public ReservedCloudPricingDTO()
     {
     }
 
@@ -56,7 +56,7 @@ public class HourlyCloudPricingDTO extends DTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        HourlyCloudPricingDTO that = (HourlyCloudPricingDTO) o;
+        ReservedCloudPricingDTO that = (ReservedCloudPricingDTO) o;
         return Objects.equals( upfront, that.upfront ) && Objects.equals( price, that.price );
     }
 
@@ -69,6 +69,6 @@ public class HourlyCloudPricingDTO extends DTO
     @Override
     public String toString()
     {
-        return "HourlyCloudPricingDTO{" + "upfront=" + upfront + ", price=" + price + '}';
+        return "ReservedCloudPricingDTO{" + "upfront=" + upfront + ", price=" + price + '}';
     }
 }
