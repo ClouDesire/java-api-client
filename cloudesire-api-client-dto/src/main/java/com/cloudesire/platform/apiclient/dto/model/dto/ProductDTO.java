@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO.ConfigurationEnvironment.SubscriptionsPerProduct;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
@@ -200,6 +201,8 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     @ApiModelProperty( "Authentication header value for the upstream API" )
     private String apiHeaderValue;
+
+    private SubscriptionsPerProduct subscriptionsPerProduct;
 
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
@@ -742,6 +745,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setApiHeaderValue( String apiHeaderValue )
     {
         this.apiHeaderValue = apiHeaderValue;
+    }
+
+    public SubscriptionsPerProduct getSubscriptionsPerProduct()
+    {
+        return subscriptionsPerProduct;
+    }
+
+    public void setSubscriptionsPerProduct( SubscriptionsPerProduct subscriptionsPerProduct )
+    {
+        this.subscriptionsPerProduct = subscriptionsPerProduct;
     }
 
     @Override
