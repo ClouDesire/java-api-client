@@ -180,4 +180,7 @@ public interface UserApi
 
     @DELETE( "user/payment" )
     Call<Void> deletePaymentData();
+
+    @DELETE( "user/{id}/metadata/{metadata}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "metadata" ) String metadata );
 }
