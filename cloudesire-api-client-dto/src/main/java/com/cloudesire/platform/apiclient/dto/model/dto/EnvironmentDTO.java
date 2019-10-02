@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
@@ -2210,18 +2211,6 @@ public class EnvironmentDTO extends DTO
             this.comparableProductVersions = comparableProductVersions;
         }
         //endregion
-
-        public enum SubscriptionsPerProduct
-        {
-            @ApiModelProperty( "One subscription per product at a time is allowed" )
-            ONE,
-
-            @ApiModelProperty( "Only one trial per product" )
-            TRIAL,
-
-            @ApiModelProperty( "No check is done" )
-            UNLIMITED
-        }
 
         public enum VatService
         {
