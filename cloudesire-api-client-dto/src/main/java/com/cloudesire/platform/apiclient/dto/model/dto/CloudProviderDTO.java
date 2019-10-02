@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,6 +47,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     private List<OSType> supportedOperatingSystems;
 
     @ApiModelProperty( "Map a minimum order duration to a discount percentage for IAAS costs" )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20191002 )
     private Map<Integer, BigDecimal> discounts;
 
     public String getAlias()
@@ -145,11 +148,19 @@ public class CloudProviderDTO extends NamedEntityDTO
         this.supportedOperatingSystems = supportedOperatingSystems;
     }
 
+    /**
+     * @deprecated use {@link InstancePricingDTO#getReservedCloudPricing()}
+     */
+    @Deprecated
     public Map<Integer, BigDecimal> getDiscounts()
     {
         return discounts;
     }
 
+    /**
+     * @deprecated use {@link InstancePricingDTO#setReservedCloudPricing(Map)}
+     */
+    @Deprecated
     public void setDiscounts( Map<Integer, BigDecimal> discounts )
     {
         this.discounts = discounts;
