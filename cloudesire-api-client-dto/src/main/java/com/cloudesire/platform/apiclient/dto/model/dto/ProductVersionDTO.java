@@ -144,7 +144,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     private Set<PaymentGateway> paymentGateways = new HashSet<>();
 
     @ApiModelProperty( value = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
-    private Set<UrlEntityDTO> cloudProviders;
+    private List<UrlEntityDTO> cloudProviders;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -580,12 +580,12 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.paymentGateways = paymentGateways;
     }
 
-    public Set<UrlEntityDTO> getCloudProviders()
+    public List<UrlEntityDTO> getCloudProviders()
     {
         return cloudProviders;
     }
 
-    public void setCloudProviders( Set<UrlEntityDTO> cloudProviders )
+    public void setCloudProviders( List<UrlEntityDTO> cloudProviders )
     {
         this.cloudProviders = cloudProviders;
     }
