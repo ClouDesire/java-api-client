@@ -4,7 +4,6 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,9 +42,6 @@ public class CloudProviderDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
     private List<OSType> supportedOperatingSystems;
-
-    @ApiModelProperty( "Map a minimum order duration to a discount percentage for IAAS costs" )
-    private Map<Integer, BigDecimal> discounts;
 
     public String getAlias()
     {
@@ -143,16 +139,6 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setSupportedOperatingSystems( List<OSType> supportedOperatingSystems )
     {
         this.supportedOperatingSystems = supportedOperatingSystems;
-    }
-
-    public Map<Integer, BigDecimal> getDiscounts()
-    {
-        return discounts;
-    }
-
-    public void setDiscounts( Map<Integer, BigDecimal> discounts )
-    {
-        this.discounts = discounts;
     }
 
     @Override

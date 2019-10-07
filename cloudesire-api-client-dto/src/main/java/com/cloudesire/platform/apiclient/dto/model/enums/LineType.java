@@ -43,6 +43,8 @@ public enum LineType
     SETUPFEE( IS_INCOME ),
     /** Bollo */
     STAMPDUTY,
+    @ApiModelProperty( "Cloud provider upfront costs" )
+    UPFRONT,
     @ApiModelProperty( "Cloud costs" )
     VIRTUALMACHINE( MUST_BE_PAID );
 

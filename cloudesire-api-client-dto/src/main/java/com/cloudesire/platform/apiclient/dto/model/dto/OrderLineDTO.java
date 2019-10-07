@@ -223,8 +223,7 @@ public class OrderLineDTO implements Line
     @Override
     public String toString()
     {
-        return "OrderLineDTO{" + "price=" + price + ", quantity=" + quantity + ", unit='" + unit + '\''
-                + ", description='" + description + '\'' + ", type=" + type + ", invoice=" + invoice + ", total="
-                + getSubtotal() + '}';
+        return "OrderLineDTO{" + "type=" + type + ", price='" + price.price + ", quantity=" + quantity + '\''
+                + ", total=" + getSubtotal() + '}';
     }
 }
