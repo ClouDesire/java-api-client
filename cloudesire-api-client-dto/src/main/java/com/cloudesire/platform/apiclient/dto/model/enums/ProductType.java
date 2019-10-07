@@ -3,6 +3,9 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Arrays;
+import java.util.List;
+
 @ApiModel( description = "The product type" )
 public enum ProductType
 {
@@ -25,5 +28,10 @@ public enum ProductType
     SYNDICATED,
 
     @ApiModelProperty( "This product provisions a bare virtual machine" )
-    VM
+    VM;
+
+    public static List<ProductType> syndicated()
+    {
+        return Arrays.asList( API, CSP, SERVICE, SYNDICATED );
+    }
 }
