@@ -1760,6 +1760,10 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Pairs of Product Version IDs to be estimated together" )
         private List<List<Integer>> comparableProductVersions;
 
+        @ApiModelProperty( "Password policy" )
+        @Valid
+        private PasswordPolicy passwordPolicy = new PasswordPolicy();
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2210,6 +2214,16 @@ public class EnvironmentDTO extends DTO
         {
             this.comparableProductVersions = comparableProductVersions;
         }
+
+        public PasswordPolicy getPasswordPolicy()
+        {
+            return passwordPolicy;
+        }
+
+        public void setPasswordPolicy( PasswordPolicy passwordPolicy )
+        {
+            this.passwordPolicy = passwordPolicy;
+        }
         //endregion
 
         public enum VatService
@@ -2462,6 +2476,87 @@ public class EnvironmentDTO extends DTO
         public void setZuoraConnector( String zuoraConnector )
         {
             this.zuoraConnector = zuoraConnector;
+        }
+    }
+
+    public static class PasswordPolicy
+    {
+        @ApiModelProperty( "Minimum length of a password" )
+        private int min;
+
+        @ApiModelProperty( "Maximum length of a password" )
+        private int max = Integer.MAX_VALUE;
+
+        @ApiModelProperty( "Upper case characters" )
+        private int upper;
+
+        @ApiModelProperty( "Lower case characters" )
+        private int lower;
+
+        @ApiModelProperty( "Digit characters" )
+        private int digit;
+
+        @ApiModelProperty( "Special characters" )
+        private int special;
+
+        public int getMin()
+        {
+            return min;
+        }
+
+        public void setMin( int min )
+        {
+            this.min = min;
+        }
+
+        public int getMax()
+        {
+            return max;
+        }
+
+        public void setMax( int max )
+        {
+            this.max = max;
+        }
+
+        public int getUpper()
+        {
+            return upper;
+        }
+
+        public void setUpper( int upper )
+        {
+            this.upper = upper;
+        }
+
+        public int getLower()
+        {
+            return lower;
+        }
+
+        public void setLower( int lower )
+        {
+            this.lower = lower;
+        }
+
+        public int getDigit()
+        {
+            return digit;
+        }
+
+        public void setDigit( int digit )
+        {
+            this.digit = digit;
+        }
+
+        public int getSpecial()
+        {
+            return special;
+        }
+
+        public void setSpecial( int special )
+        {
+            this.special = special;
         }
     }
 
