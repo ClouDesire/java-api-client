@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 
@@ -54,9 +55,9 @@ public class InvoiceQuery extends PageRequestQuery
         return this;
     }
 
-    public InvoiceQuery setStatus( InvoiceStatus status )
+    public InvoiceQuery setStatus( InvoiceStatus... status )
     {
-        put( STATUS, status );
+        put( STATUS, StringUtils.join( status, ',' ) );
         return this;
     }
 
