@@ -271,11 +271,18 @@ public class MailEnvironmentDTO extends DTO
         private MailConfiguration vendorRegistrationNotification;
 
         /**
-         * Email sent on customer registration
+         * Email sent to a configurable address on customer registration
          */
         @NotNull
         @Valid
         private MailConfiguration customerRegistration;
+
+        /**
+         * Email sent to a configurable address on customer update
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration customerUpdate;
 
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
@@ -680,6 +687,16 @@ public class MailEnvironmentDTO extends DTO
         public void setCustomerRegistration( MailConfiguration customerRegistration )
         {
             this.customerRegistration = customerRegistration;
+        }
+
+        public MailConfiguration getCustomerUpdate()
+        {
+            return customerUpdate;
+        }
+
+        public void setCustomerUpdate( MailConfiguration customerUpdate )
+        {
+            this.customerUpdate = customerUpdate;
         }
         //endregion
     }
