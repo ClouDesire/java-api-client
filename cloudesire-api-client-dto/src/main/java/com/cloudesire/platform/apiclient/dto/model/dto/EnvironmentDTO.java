@@ -1262,6 +1262,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enabled geocall data fields for the customer profile" )
         private boolean geocallProfile;
 
+        @ApiModelProperty( "A customer can create an account without buying anything" )
+        private boolean userSelfRegistration = true;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1625,6 +1628,16 @@ public class EnvironmentDTO extends DTO
 
             @ApiModelProperty( "Invoices are emitted self billed according to vendor's plan or reseller's pricing" )
             PER_PLAN
+        }
+
+        public boolean isUserSelfRegistration()
+        {
+            return userSelfRegistration;
+        }
+
+        public void setUserSelfRegistration( boolean userSelfRegistration )
+        {
+            this.userSelfRegistration = userSelfRegistration;
         }
         //endregion
     }
