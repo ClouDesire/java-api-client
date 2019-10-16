@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 
@@ -269,6 +269,13 @@ public class MailEnvironmentDTO extends DTO
         @NotNull
         @Valid
         private MailConfiguration vendorRegistrationNotification;
+
+        /**
+         * Email sent on customer registration
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration customerRegistration;
 
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
@@ -663,6 +670,16 @@ public class MailEnvironmentDTO extends DTO
         public void setVendorRegistrationNotification( MailConfiguration vendorRegistrationNotification )
         {
             this.vendorRegistrationNotification = vendorRegistrationNotification;
+        }
+
+        public MailConfiguration getCustomerRegistration()
+        {
+            return customerRegistration;
+        }
+
+        public void setCustomerRegistration( MailConfiguration customerRegistration )
+        {
+            this.customerRegistration = customerRegistration;
         }
         //endregion
     }
