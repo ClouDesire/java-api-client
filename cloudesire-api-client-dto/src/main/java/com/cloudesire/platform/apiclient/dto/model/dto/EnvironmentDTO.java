@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -48,6 +48,9 @@ public class EnvironmentDTO extends DTO
     @Size( max = 255 )
     private String mailEnvironmentName = "defaultMailEnvironment";
 
+    @ApiModelProperty( "The directory name with overrides for mail templates" )
+    private String mailTemplateSubdirectory;
+
     @ApiModelProperty( "The name of the store as it will appear in transactional emails" )
     @NotEmpty
     @Size( max = 255 )
@@ -62,7 +65,7 @@ public class EnvironmentDTO extends DTO
     private boolean defaultEnvironment = false;
 
     @ApiModelProperty( "The base URL of the frontend" )
-    @NotEmpty
+    @NotNull
     @URL
     @Size( max = 2048 )
     private String frontendUrl;
@@ -614,6 +617,16 @@ public class EnvironmentDTO extends DTO
     public void setMailEnvironmentName( String mailEnvironmentName )
     {
         this.mailEnvironmentName = mailEnvironmentName;
+    }
+
+    public String getMailTemplateSubdirectory()
+    {
+        return mailTemplateSubdirectory;
+    }
+
+    public void setMailTemplateSubdirectory( String mailTemplateSubdirectory )
+    {
+        this.mailTemplateSubdirectory = mailTemplateSubdirectory;
     }
 
     public String getEnvironmentName()
