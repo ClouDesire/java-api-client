@@ -48,8 +48,8 @@ public class EnvironmentDTO extends DTO
     @Size( max = 255 )
     private String mailEnvironmentName = "defaultMailEnvironment";
 
-    @ApiModelProperty( "The directory name with overrides for mail templates" )
-    private String mailTemplateSubdirectory;
+    @ApiModelProperty( "The identifier for the overrides of mail templates" )
+    private String mailTemplateOverride;
 
     @ApiModelProperty( "The name of the store as it will appear in transactional emails" )
     @NotEmpty
@@ -619,14 +619,14 @@ public class EnvironmentDTO extends DTO
         this.mailEnvironmentName = mailEnvironmentName;
     }
 
-    public String getMailTemplateSubdirectory()
+    public String getMailTemplateOverride()
     {
-        return mailTemplateSubdirectory;
+        return mailTemplateOverride;
     }
 
-    public void setMailTemplateSubdirectory( String mailTemplateSubdirectory )
+    public void setMailTemplateOverride( String mailTemplateOverride )
     {
-        this.mailTemplateSubdirectory = mailTemplateSubdirectory;
+        this.mailTemplateOverride = mailTemplateOverride;
     }
 
     public String getEnvironmentName()
