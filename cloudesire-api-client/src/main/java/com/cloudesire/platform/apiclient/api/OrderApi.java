@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderInputDTO;
+import com.cloudesire.platform.apiclient.query.OrderQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,8 +30,19 @@ public interface OrderApi
     Call<List<OrderDTO>> getAll();
 
     @GET( "order" )
+    Call<List<OrderDTO>> getAll( @QueryMap OrderQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(OrderQuery)}
+     */
+    @Deprecated
+    @GET( "order" )
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
+    /**
+     * @deprecated by {@link #getAll(OrderQuery)}
+     */
+    @Deprecated
     @GET( "order" )
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
             @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
