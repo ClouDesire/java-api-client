@@ -1805,6 +1805,9 @@ public class EnvironmentDTO extends DTO
         @Valid
         private PasswordPolicy passwordPolicy = new PasswordPolicy();
 
+        @ApiModelProperty( "Whether to generate invoices internally" )
+        private boolean generateInvoices = true;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2264,6 +2267,16 @@ public class EnvironmentDTO extends DTO
         public void setPasswordPolicy( PasswordPolicy passwordPolicy )
         {
             this.passwordPolicy = passwordPolicy;
+        }
+
+        public boolean getGenerateInvoices()
+        {
+            return generateInvoices;
+        }
+
+        public void setGenerateInvoices( boolean generateInvoices )
+        {
+            this.generateInvoices = generateInvoices;
         }
         //endregion
 
