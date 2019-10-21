@@ -279,6 +279,11 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private MailCustomization vendorRegistrationNotification = new MailCustomization();
 
+    @ApiModelProperty( "Email sent on customer registration/update" )
+    @Valid
+    @NotNull
+    private MailCustomization customerNotification = new MailCustomization();
+
     @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
     @Valid
     @NotNull
@@ -797,6 +802,16 @@ public class EnvironmentDTO extends DTO
     public void setVendorRegistrationNotification( MailCustomization vendorRegistrationNotification )
     {
         this.vendorRegistrationNotification = vendorRegistrationNotification;
+    }
+
+    public MailCustomization getCustomerNotification()
+    {
+        return customerNotification;
+    }
+
+    public void setCustomerNotification( MailCustomization customerNotification )
+    {
+        this.customerNotification = customerNotification;
     }
 
     public NotificationMailCustomization getInvoiceReminder()
