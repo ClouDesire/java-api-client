@@ -1293,6 +1293,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "A customer can create an account without buying anything" )
         private boolean userSelfRegistration = true;
 
+        @ApiModelProperty( "Whether to generate invoices internally" )
+        private Boolean generateInvoices;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1667,6 +1670,16 @@ public class EnvironmentDTO extends DTO
         {
             this.userSelfRegistration = userSelfRegistration;
         }
+
+        public Boolean getGenerateInvoices()
+        {
+            return generateInvoices;
+        }
+
+        public void setGenerateInvoices( Boolean generateInvoices )
+        {
+            this.generateInvoices = generateInvoices;
+        }
         //endregion
     }
 
@@ -1804,9 +1817,6 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Password policy" )
         @Valid
         private PasswordPolicy passwordPolicy = new PasswordPolicy();
-
-        @ApiModelProperty( "Whether to generate invoices internally" )
-        private boolean generateInvoices = true;
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
@@ -2267,16 +2277,6 @@ public class EnvironmentDTO extends DTO
         public void setPasswordPolicy( PasswordPolicy passwordPolicy )
         {
             this.passwordPolicy = passwordPolicy;
-        }
-
-        public boolean getGenerateInvoices()
-        {
-            return generateInvoices;
-        }
-
-        public void setGenerateInvoices( boolean generateInvoices )
-        {
-            this.generateInvoices = generateInvoices;
         }
         //endregion
 
