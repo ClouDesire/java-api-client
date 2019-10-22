@@ -146,7 +146,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( value = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
     private List<UrlEntityDTO> cloudProviders;
 
-    @ApiModelProperty( "Whether a subscription from the product version can be killed by its customer" )
+    @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
     private Boolean unkillable;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
