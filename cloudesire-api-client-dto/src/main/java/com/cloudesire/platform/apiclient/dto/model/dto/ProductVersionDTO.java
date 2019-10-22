@@ -146,6 +146,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( value = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
     private List<UrlEntityDTO> cloudProviders;
 
+    @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
+    private Boolean unkillable;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -588,6 +591,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setCloudProviders( List<UrlEntityDTO> cloudProviders )
     {
         this.cloudProviders = cloudProviders;
+    }
+
+    public Boolean isUnkillable()
+    {
+        return unkillable;
+    }
+
+    public void setUnkillable( Boolean unkillable )
+    {
+        this.unkillable = unkillable;
     }
 
     @Override
