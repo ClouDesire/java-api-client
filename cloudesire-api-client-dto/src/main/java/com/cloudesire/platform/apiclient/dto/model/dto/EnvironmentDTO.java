@@ -1077,7 +1077,7 @@ public class EnvironmentDTO extends DTO
 
         public String[] getToAsArray()
         {
-            return to != null ? to.toArray( new String[0] ) : null;
+            return to != null ? to.toArray( new String[0] ) : new String[0];
         }
 
         public void setTo( List<String> to )
