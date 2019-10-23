@@ -1293,6 +1293,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "A customer can create an account without buying anything" )
         private boolean userSelfRegistration = true;
 
+        @ApiModelProperty( "Whether to generate invoices internally" )
+        private Boolean generateInvoices;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1666,6 +1669,16 @@ public class EnvironmentDTO extends DTO
         public void setUserSelfRegistration( boolean userSelfRegistration )
         {
             this.userSelfRegistration = userSelfRegistration;
+        }
+
+        public Boolean getGenerateInvoices()
+        {
+            return generateInvoices;
+        }
+
+        public void setGenerateInvoices( Boolean generateInvoices )
+        {
+            this.generateInvoices = generateInvoices;
         }
         //endregion
     }
