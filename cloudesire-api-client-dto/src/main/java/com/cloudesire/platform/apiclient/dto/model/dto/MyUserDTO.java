@@ -182,6 +182,9 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "If the user has a configured valid address", readOnly = true )
     private boolean validAddress;
 
+    @ApiModelProperty( value = "If the user has configured valid billing data", readOnly = true )
+    private boolean validBillingData;
+
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
@@ -704,6 +707,16 @@ public class MyUserDTO extends BaseEntityDTO
     public void setValidAddress( boolean validAddress )
     {
         this.validAddress = validAddress;
+    }
+
+    public boolean isValidBillingData()
+    {
+        return validBillingData;
+    }
+
+    public void setValidBillingData( boolean validBillingData )
+    {
+        this.validBillingData = validBillingData;
     }
 
     public String getPublicKey()
