@@ -1296,6 +1296,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Whether to generate invoices internally" )
         private Boolean generateInvoices;
 
+        @ApiModelProperty( "Allows the customer to send messages to vendor" )
+        private Boolean messagesToVendor;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1680,6 +1683,17 @@ public class EnvironmentDTO extends DTO
         {
             this.generateInvoices = generateInvoices;
         }
+
+        public Boolean getMessagesToVendor()
+        {
+            return messagesToVendor;
+        }
+
+        public void setMessagesToVendor( Boolean messagesToVendor )
+        {
+            this.messagesToVendor = messagesToVendor;
+        }
+
         //endregion
     }
 
