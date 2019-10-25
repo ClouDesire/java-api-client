@@ -1684,14 +1684,14 @@ public class EnvironmentDTO extends DTO
             this.generateInvoices = generateInvoices;
         }
 
-        public boolean getMessagesToVendor()
+        public boolean isCustomerMessageToVendor()
         {
-            return messagesToVendor;
+            return customerMessageToVendor;
         }
 
-        public void setMessagesToVendor( boolean messagesToVendor )
+        public void setCustomerMessageToVendor( boolean customerMessageToVendor )
         {
-            this.messagesToVendor = messagesToVendor;
+            this.customerMessageToVendor = customerMessageToVendor;
         }
 
         //endregion
