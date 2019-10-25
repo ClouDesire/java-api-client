@@ -1297,7 +1297,7 @@ public class EnvironmentDTO extends DTO
         private Boolean generateInvoices;
 
         @ApiModelProperty( "Allows the customer to send messages to vendor" )
-        private boolean messagesToVendor;
+        private boolean customerMessageToVendor;
 
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
