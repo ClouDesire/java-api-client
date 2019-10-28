@@ -51,7 +51,7 @@
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<!-- don't upgrade - java 7 compat -->
-			<version>2.9.1</version>
+			<version>3.14.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
