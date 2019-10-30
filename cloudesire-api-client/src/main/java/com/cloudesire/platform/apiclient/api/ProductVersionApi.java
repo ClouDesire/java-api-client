@@ -90,6 +90,9 @@ public interface ProductVersionApi
     @PUT( "productVersion/{id}/metadata" )
     Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
 
+    @DELETE( "productVersion/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
+
     @GET( "productVersion/draft" )
     Call<List<ProductVersionDraftDTO>> getDrafts();
 

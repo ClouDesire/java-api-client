@@ -78,6 +78,9 @@ public interface SubscriptionApi
     @PUT( "subscription/{id}/metadata" )
     Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
 
+    @DELETE( "subscription/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
+
     @Streaming
     @GET( "subscription" )
     @Headers( { "Accept:text/csv" } )

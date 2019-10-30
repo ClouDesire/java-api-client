@@ -46,4 +46,7 @@ public interface UserCompanyApi
 
     @DELETE( "userCompany/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
+
+    @DELETE( "userCompany/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
