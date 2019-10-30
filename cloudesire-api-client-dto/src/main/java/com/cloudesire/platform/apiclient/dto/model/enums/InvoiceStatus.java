@@ -9,5 +9,6 @@ public enum InvoiceStatus
     @ApiModelProperty( "Payment required" ) UNPAID,
     @ApiModelProperty( "Payment processing" ) PENDING,
     @ApiModelProperty( "Payment will be executed later" ) DELAYED,
+    @ApiModelProperty( "Payment is authorized" ) REQUIRES_CAPTURE,
     @ApiModelProperty( "Payment received" ) PAID
 }
