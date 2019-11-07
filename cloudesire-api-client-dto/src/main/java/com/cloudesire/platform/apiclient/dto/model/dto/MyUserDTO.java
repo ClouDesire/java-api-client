@@ -53,7 +53,7 @@ public class MyUserDTO extends BaseEntityDTO
 
     @ApiModelProperty( "User email address to receive platform notifications" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
-    @NotEmpty
+    @NotNull
     @Size( max = 255 )
     private String email;
 
