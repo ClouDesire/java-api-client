@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
+import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -52,6 +53,8 @@ public class BillingItemDTO extends NamedEntityDTO
     private boolean required;
 
     private ApiEndpointDTO endpoint;
+
+    private GaugeMetricFunction gaugeMetricFunction;
 
     public BillingItemDTO( BillingItemType type, String name, String unit, String description )
     {
@@ -185,6 +188,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setEndpoint( ApiEndpointDTO endpoint )
     {
         this.endpoint = endpoint;
+        return this;
+    }
+
+    public GaugeMetricFunction getGaugeMetricFunction()
+    {
+        return gaugeMetricFunction;
+    }
+
+    public BillingItemDTO setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
+    {
+        this.gaugeMetricFunction = gaugeMetricFunction;
         return this;
     }
 
