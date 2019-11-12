@@ -9,29 +9,17 @@ public enum OSType
     @ApiModelProperty("Unsupported operating system")
     OTHER( "Other", "", OsFamily.UNRECOGNIZED ),
 
-    @ApiModelProperty("Ubuntu Precise Pangolin 12.04 LTS 64BIT" )
-    UBUNTU_12_04( Constants.UBUNTU, "12.04", OsFamily.LINUX ),
-
-    @ApiModelProperty( "Ubuntu Precise Pangolin 14.04 LTS 64BIT" )
-    UBUNTU_14_04( Constants.UBUNTU, "14.04", OsFamily.LINUX ),
-
-    @ApiModelProperty( "Debian 7" )
-    DEBIAN_7( "Debian", "7", OsFamily.LINUX ),
-
-    @ApiModelProperty( "Microsoft Windows Server 2008 R2" )
-    WINDOWS_SERVER_2008_R2( Constants.MICROSOFT_WINDOWS, "Server 2008 R2", OsFamily.WINDOWS ),
-
-    @ApiModelProperty( "Microsoft Windows Server 2008 R2 SP1 64-bit English with SQL 2008 R2 Standard" )
-    WINDOWS_SERVER_2008_R2_SQL_2008_R2( Constants.MICROSOFT_WINDOWS, "Server 2008 R2", OsFamily.WINDOWS ),
-
     @ApiModelProperty( "Microsoft Windows Server 2012 R2" )
     WINDOWS_SERVER_2012_R2( Constants.MICROSOFT_WINDOWS, "Server 2012 R2", OsFamily.WINDOWS ),
 
-    @ApiModelProperty( "Windows Server 2012 + SQL Server 2012 SP1 Standard" )
-    WINDOWS_SERVER_2012_SQL_2012_SP1( Constants.MICROSOFT_WINDOWS, "Server 2012", OsFamily.WINDOWS ),
-
     @ApiModelProperty( "Microsoft Windows Server 2016" )
     WINDOWS_SERVER_2016( Constants.MICROSOFT_WINDOWS, "Server 2016", OsFamily.WINDOWS ),
+
+    @ApiModelProperty( "Microsoft Windows Server 2019" )
+    WINDOWS_SERVER_2019( Constants.MICROSOFT_WINDOWS, "Server 2019", OsFamily.WINDOWS ),
+
+    @ApiModelProperty( "Ubuntu Precise Pangolin 14.04 LTS 64BIT" )
+    UBUNTU_14_04( Constants.UBUNTU, "14.04", OsFamily.LINUX ),
 
     @ApiModelProperty( "Ubuntu Xenial Xerus 16.04 LTS 64bit" )
     UBUNTU_16_04( Constants.UBUNTU, "16.04", OsFamily.LINUX ),
@@ -41,6 +29,9 @@ public enum OSType
 
     @ApiModelProperty( "Debian 9" )
     DEBIAN_9( "Debian", "9", OsFamily.LINUX ),
+
+    @ApiModelProperty( "Debian 10" )
+    DEBIAN_10( "Debian", "10", OsFamily.LINUX ),
 
     @ApiModelProperty( "Red Hat Enterprise Linux 6" )
     RED_HAT_6( "Red Hat Enterprise Linux", "6", OsFamily.LINUX ),
