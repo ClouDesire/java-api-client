@@ -271,6 +271,13 @@ public class MailEnvironmentDTO extends DTO
         private MailConfiguration vendorRegistrationNotification;
 
         /**
+         * Email sent to a configurable address on customer payment data save
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration customerPaymentMethod;
+
+        /**
          * Email sent to a configurable address on customer registration
          */
         @NotNull
@@ -677,6 +684,16 @@ public class MailEnvironmentDTO extends DTO
         public void setVendorRegistrationNotification( MailConfiguration vendorRegistrationNotification )
         {
             this.vendorRegistrationNotification = vendorRegistrationNotification;
+        }
+
+        public MailConfiguration getCustomerPaymentMethod()
+        {
+            return customerPaymentMethod;
+        }
+
+        public void setCustomerPaymentMethod( MailConfiguration customerPaymentMethod )
+        {
+            this.customerPaymentMethod = customerPaymentMethod;
         }
 
         public MailConfiguration getCustomerRegistration()
