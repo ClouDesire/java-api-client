@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
 import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
+import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -38,6 +39,8 @@ public class ApplicationMetricDTO extends BaseEntityDTO
 
     @FieldAPI( sinceVersion = ApiVersion.V20190819 )
     private Frequency frequency;
+
+    private GaugeMetricFunction gaugeMetricFunction;
 
     public UrlEntityDTO getBillingItem()
     {
@@ -126,6 +129,16 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     public void setProduct( UrlEntityDTO product )
     {
         this.product = product;
+    }
+
+    public GaugeMetricFunction getGaugeMetricFunction()
+    {
+        return gaugeMetricFunction;
+    }
+
+    public void setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
+    {
+        this.gaugeMetricFunction = gaugeMetricFunction;
     }
 
     @JsonIgnore
