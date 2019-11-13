@@ -19,8 +19,10 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "If the value of the metric always increment or not" )
-    private boolean counter = false;
+    @ApiModelProperty( "Whether the metric is a counter (value always increments) or a gauge (value can arbitrarily go up and down)" )
+    private boolean counter;
+
+    private GaugeMetricFunction gaugeMetricFunction;
 
     @Valid
     private UrlEntityDTO applicationFile;
@@ -40,8 +42,6 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @FieldAPI( sinceVersion = ApiVersion.V20190819 )
     private Frequency frequency;
 
-    private GaugeMetricFunction gaugeMetricFunction;
-
     public UrlEntityDTO getBillingItem()
     {
         return billingItem;
@@ -60,6 +60,16 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     public void setCounter( boolean counter )
     {
         this.counter = counter;
+    }
+
+    public GaugeMetricFunction getGaugeMetricFunction()
+    {
+        return gaugeMetricFunction;
+    }
+
+    public void setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
+    {
+        this.gaugeMetricFunction = gaugeMetricFunction;
     }
 
     @NotNull
@@ -129,16 +139,6 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     public void setProduct( UrlEntityDTO product )
     {
         this.product = product;
-    }
-
-    public GaugeMetricFunction getGaugeMetricFunction()
-    {
-        return gaugeMetricFunction;
-    }
-
-    public void setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
-    {
-        this.gaugeMetricFunction = gaugeMetricFunction;
     }
 
     @JsonIgnore
