@@ -284,6 +284,11 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private MailCustomization customerNotification = new MailCustomization();
 
+    @ApiModelProperty( "Email sent on customer payment method save" )
+    @Valid
+    @NotNull
+    private MailCustomization customerPaymentMethodSave = new MailCustomization();
+
     @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
     @Valid
     @NotNull
@@ -812,6 +817,16 @@ public class EnvironmentDTO extends DTO
     public void setCustomerNotification( MailCustomization customerNotification )
     {
         this.customerNotification = customerNotification;
+    }
+
+    public MailCustomization getCustomerPaymentMethodSave()
+    {
+        return customerPaymentMethodSave;
+    }
+
+    public void setCustomerPaymentMethodSave( MailCustomization customerPaymentMethodSave )
+    {
+        this.customerPaymentMethodSave = customerPaymentMethodSave;
     }
 
     public NotificationMailCustomization getInvoiceReminder()
