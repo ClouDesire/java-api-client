@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
 import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
+import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -18,8 +19,10 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "If the value of the metric always increment or not" )
-    private boolean counter = false;
+    @ApiModelProperty( "Whether the metric is a counter (value always increments) or a gauge (value can arbitrarily go up and down)" )
+    private boolean counter;
+
+    private GaugeMetricFunction gaugeMetricFunction;
 
     @Valid
     private UrlEntityDTO applicationFile;
@@ -57,6 +60,16 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     public void setCounter( boolean counter )
     {
         this.counter = counter;
+    }
+
+    public GaugeMetricFunction getGaugeMetricFunction()
+    {
+        return gaugeMetricFunction;
+    }
+
+    public void setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
+    {
+        this.gaugeMetricFunction = gaugeMetricFunction;
     }
 
     @NotNull
