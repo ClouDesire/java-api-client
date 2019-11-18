@@ -74,6 +74,9 @@ public class BudgetDTO extends BaseEntityDTO
 
     private BudgetVMConfigurationDTO vmConfiguration;
 
+    @ApiModelProperty( value = "Whether the budget is for a delayed subscription downgrade", readOnly = true )
+    private Boolean downgrade;
+
     @JsonProperty
     public BigDecimal getTotalPrice()
     {
@@ -283,6 +286,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setVmConfiguration( BudgetVMConfigurationDTO vmConfiguration )
     {
         this.vmConfiguration = vmConfiguration;
+    }
+
+    public Boolean getDowngrade()
+    {
+        return downgrade;
+    }
+
+    public void setDowngrade( Boolean downgrade )
+    {
+        this.downgrade = downgrade;
     }
 
     @Override
