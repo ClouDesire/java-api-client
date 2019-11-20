@@ -8,7 +8,7 @@ import java.util.Date;
 public class OrderQuery extends PageRequestQuery
 {
     private static final String TYPE = "type";
-    private static final String BUYER_EMAIL = "buyerEmail";
+    private static final String TEXT_FIELD = "textField";
     private static final String COUPON = "coupon";
     private static final String FROM = "from";
     private static final String TO = "to";
@@ -25,9 +25,9 @@ public class OrderQuery extends PageRequestQuery
         return this;
     }
 
-    public OrderQuery setBuyerEmail( String buyerEmail )
+    public OrderQuery setTextField( String textField )
     {
-        put( BUYER_EMAIL, buyerEmail );
+        put( TEXT_FIELD, textField );
         return this;
     }
 
