@@ -44,7 +44,7 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( "Plain-text password, used only when setting a new password" )
     private String password;
 
-    @ApiModelProperty( value = "The hashed password, visible only to privileged accounts", readOnly = true )
+    @ApiModelProperty( value = "The hashed password, visible to platform administrator only", readOnly = true )
     private String passwordHash;
 
     @ApiModelProperty( "Preferred user language" )
