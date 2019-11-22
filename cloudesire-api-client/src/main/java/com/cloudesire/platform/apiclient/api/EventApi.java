@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -31,6 +32,9 @@ public interface EventApi
 
     @DELETE( "event" )
     Call<Void> delete( @Query("eventType") DeleteEventType type );
+
+    @DELETE( "event/{id}" )
+    Call<Void> delete( @Path( "id" ) int id );
 
     enum EventType
     {
