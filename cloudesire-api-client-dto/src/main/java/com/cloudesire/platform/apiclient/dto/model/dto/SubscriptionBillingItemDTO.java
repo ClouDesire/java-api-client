@@ -11,6 +11,9 @@ public class SubscriptionBillingItemDTO extends DTO
     @ApiModelProperty( "The chosen value for this billing item" )
     private Integer value;
 
+    @ApiModelProperty( "Whether the billing item has been already bought for the Subscription" )
+    private Boolean bought;
+
     @ApiModelProperty( "An alternative description to identify a quantity range" )
     private String tag;
 
@@ -23,6 +26,7 @@ public class SubscriptionBillingItemDTO extends DTO
     {
         this.billingItem = billingItem;
         this.value = value;
+        this.bought = true;
     }
 
     public SubscriptionBillingItemDTO()
@@ -47,6 +51,16 @@ public class SubscriptionBillingItemDTO extends DTO
     public void setValue( Integer value )
     {
         this.value = value;
+    }
+
+    public Boolean getBought()
+    {
+        return bought;
+    }
+
+    public void setBought( Boolean bought )
+    {
+        this.bought = bought;
     }
 
     public String getTag()
@@ -85,19 +99,20 @@ public class SubscriptionBillingItemDTO extends DTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         SubscriptionBillingItemDTO that = (SubscriptionBillingItemDTO) o;
-        return Objects.equals( billingItem, that.billingItem ) && Objects.equals( value, that.value );
+        return Objects.equals( billingItem, that.billingItem ) && Objects.equals( value, that.value ) && Objects
+                .equals( bought, that.bought );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( billingItem, value );
+        return Objects.hash( billingItem, value, bought );
     }
 
     @Override
     public String toString()
     {
-        return "SubscriptionBillingItemDTO{" + "billingItem=" + billingItem + ", value=" + value + ", unlimited="
-                + unlimited + ", endpoint=" + endpoint + '}';
+        return "SubscriptionBillingItemDTO{" + "billingItem=" + billingItem + ", value=" + value + ", bought=" + bought
+                + '}';
     }
 }
