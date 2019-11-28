@@ -56,6 +56,8 @@ public class InvoiceDTO extends BaseInvoiceDTO
 
     private UrlEntityDTO subscription;
 
+    private UrlEntityDTO order;
+
     @ApiModelProperty( value = "The operations that can be executed by the current user on the invoice" )
     private Set<InvoiceOperationType> availableOperations = EnumSet.noneOf( InvoiceOperationType.class );
 
@@ -187,6 +189,16 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setSubscription( UrlEntityDTO subscription )
     {
         this.subscription = subscription;
+    }
+
+    public UrlEntityDTO getOrder()
+    {
+        return order;
+    }
+
+    public void setOrder( UrlEntityDTO order )
+    {
+        this.order = order;
     }
 
     public Set<InvoiceOperationType> getAvailableOperations()
