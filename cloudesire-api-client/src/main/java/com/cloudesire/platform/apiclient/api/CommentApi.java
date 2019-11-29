@@ -29,8 +29,8 @@ public interface CommentApi
     Call<List<CommentDTO>> getListByProduct( @Query( "productId" ) int productId, @QueryMap PageRequestQuery pager );
 
     @PUT( "comment/{id}" )
-    Call<CommentDTO> update( @Path( "id" ) int productId, @Body CommentDTO comment );
+    Call<CommentDTO> update( @Path( "id" ) int id, @Body CommentDTO comment );
 
     @DELETE( "comment/{id}" )
-    Call<Void> delete( @Path( "id" ) int productId );
+    Call<Void> delete( @Path( "id" ) int id );
 }

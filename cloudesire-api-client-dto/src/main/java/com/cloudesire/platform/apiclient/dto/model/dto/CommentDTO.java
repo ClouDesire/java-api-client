@@ -17,6 +17,7 @@ public class CommentDTO extends BaseEntityDTO
     @ApiModelProperty( "The real name of the commenting User" )
     private String realName;
 
+    @NotNull
     @Valid
     private UrlEntityDTO product;
 
