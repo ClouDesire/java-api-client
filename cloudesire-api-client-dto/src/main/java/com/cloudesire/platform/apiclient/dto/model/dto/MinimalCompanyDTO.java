@@ -37,6 +37,7 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     private String slug;
 
     @ApiModelProperty( "Phone number" )
+    @Size( max = 20 )
     private String phoneNumber;
 
     @ApiModelProperty( "Email address" )
