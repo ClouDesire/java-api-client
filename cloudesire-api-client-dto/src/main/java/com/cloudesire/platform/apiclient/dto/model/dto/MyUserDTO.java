@@ -62,6 +62,7 @@ public class MyUserDTO extends BaseEntityDTO
     @Size( min = 7, max = 256 )
     private String pec;
 
+    @Size( max = 20 )
     private String phoneNumber;
 
     @Valid
