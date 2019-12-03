@@ -26,7 +26,6 @@ import retrofit2.http.Streaming;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public interface SubscriptionApi
 {
@@ -69,7 +68,7 @@ public interface SubscriptionApi
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/credentials" )
-    Call<SubscriptionDetailDTO> setApplicationCredentials( @Path( "id" ) int id, @Body Set<ApplicationCredentialDTO> credentials );
+    Call<SubscriptionDetailDTO> setApplicationCredentials( @Path( "id" ) int id, @Body List<ApplicationCredentialDTO> credentials );
 
     @POST( "subscription/{id}/instructions" )
     Call<SubscriptionDetailDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Map<String, String> instructions );

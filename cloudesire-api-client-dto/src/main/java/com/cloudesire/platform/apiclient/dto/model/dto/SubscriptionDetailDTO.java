@@ -1,20 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.util.List;
-import java.util.Map;
 
 public class SubscriptionDetailDTO extends SubscriptionDTO
 {
-    private Map<String, String> credentials;
+    private List<ApplicationCredentialDTO> credentials;
 
     private List<UrlEntityDTO> possibleUpgrades;
 
-    public Map<String, String> getCredentials()
+    public List<ApplicationCredentialDTO> getCredentials()
     {
         return credentials;
     }
 
-    public void setCredentials( Map<String, String> credentials )
+    public void setCredentials( List<ApplicationCredentialDTO> credentials )
     {
         this.credentials = credentials;
     }
