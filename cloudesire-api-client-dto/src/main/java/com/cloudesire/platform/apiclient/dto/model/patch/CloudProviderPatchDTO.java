@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
-@SuppressWarnings( "squid:S2637" )
 public class CloudProviderPatchDTO extends DTO
 {
     @NotNull

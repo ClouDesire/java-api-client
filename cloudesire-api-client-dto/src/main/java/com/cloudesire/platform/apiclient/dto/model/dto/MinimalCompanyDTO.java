@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:S2637" )
 public abstract class MinimalCompanyDTO extends TaxCodeDTO
 {
     @ApiModelProperty( "Description of the company, displayed on the marketplace" )

@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @ApiModel( description = "A billed HTTP endpoint" )
-@SuppressWarnings( "squid:S2637" )
 public class ApiEndpointDTO
 {
     @ApiModelProperty( "The HTTP method" )

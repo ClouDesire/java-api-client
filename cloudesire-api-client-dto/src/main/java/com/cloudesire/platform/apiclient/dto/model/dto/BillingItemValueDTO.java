@@ -14,7 +14,6 @@ import java.util.Objects;
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
 @ApiModel( description = "Billing configuration of the ranges for an extra resource" )
-@SuppressWarnings( "squid:S2637" )
 public class BillingItemValueDTO extends BaseEntityDTO
 {
     @NotNull

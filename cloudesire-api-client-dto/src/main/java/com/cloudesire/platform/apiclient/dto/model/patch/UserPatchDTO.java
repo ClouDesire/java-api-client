@@ -4,7 +4,6 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import javax.validation.constraints.NotNull;
 
-@SuppressWarnings( "squid:S2637" )
 public class UserPatchDTO extends DTO
 {
     @NotNull

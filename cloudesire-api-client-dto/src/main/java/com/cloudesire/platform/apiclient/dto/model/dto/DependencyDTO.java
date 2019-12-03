@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @ApiModel( description = "Define stack requirements for a vendor ApplicationFile" )
-@SuppressWarnings( "squid:S2637" )
 public class DependencyDTO extends BaseEntityDTO
 {
     @NotNull
