@@ -41,8 +41,15 @@ public class CloudesireClientCallExecutor
         try
         {
             retrofit2.Response<T> response = call.execute();
-            if ( response.isSuccessful() ) return new CallResponse<>( response.body(), response.headers().toMultimap() );
-            else throw exceptionHandling( response );
+
+            if ( response.isSuccessful() )
+            {
+                return new CallResponse<>( response.code(), response.body(), response.headers().toMultimap() );
+            }
+            else
+            {
+                throw exceptionHandling( response );
+            }
         }
         catch ( IOException e )
         {

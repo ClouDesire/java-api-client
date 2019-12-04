@@ -1,28 +1,10 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationCredentialDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.EndpointDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDetailDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchResponseDTO;
-import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.*;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.HEAD;
-import retrofit2.http.Headers;
-import retrofit2.http.PATCH;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
-import retrofit2.http.Streaming;
+import retrofit2.http.*;
 
 import java.util.List;
 import java.util.Map;
@@ -68,13 +50,13 @@ public interface SubscriptionApi
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/credentials" )
-    Call<SubscriptionDetailDTO> setApplicationCredentials( @Path( "id" ) int id, @Body List<ApplicationCredentialDTO> credentials );
+    Call<Void> setApplicationCredentials( @Path( "id" ) int id, @Body List<ApplicationCredentialDTO> credentials );
 
     @POST( "subscription/{id}/instructions" )
-    Call<SubscriptionDetailDTO> setEndUserInstructions( @Path( "id" ) Integer id, @Body Map<String, String> instructions );
+    Call<Void> setEndUserInstructions( @Path( "id" ) int id, @Body Map<String, String> instructions );
 
     @POST( "subscription/{id}/endpoints" )
-    Call<SubscriptionDetailDTO> setSyndicatedEndpoints( @Path( "id" ) Integer id, @Body List<EndpointDTO> endpointsDTO );
+    Call<Void> setSyndicatedEndpoints( @Path( "id" ) int id, @Body List<EndpointDTO> endpointsDTO );
 
     @GET( "subscription/{id}/metadata" )
     Call<Map<String, Object>> getMetadata( @Path( "id" ) Integer id );
