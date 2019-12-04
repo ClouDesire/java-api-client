@@ -3,9 +3,9 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Email;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
