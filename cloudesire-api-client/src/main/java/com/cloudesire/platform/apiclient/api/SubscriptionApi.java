@@ -50,7 +50,7 @@ public interface SubscriptionApi
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/credentials" )
-    Call<Void> setApplicationCredentials( @Path( "id" ) int id, @Body List<ApplicationCredentialDTO> credentials );
+    Call<Void> setApplicationCredentials( @Path( "id" ) int id, @Body List<ApplicationCredentialInputDTO> credentials );
 
     @POST( "subscription/{id}/instructions" )
     Call<Void> setEndUserInstructions( @Path( "id" ) int id, @Body Map<String, String> instructions );

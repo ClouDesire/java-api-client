@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-public class ApplicationCredentialDTO
+abstract class ApplicationCredentialDTO
 {
     @NotNull
     @Size( min = 1, max = 125 )
@@ -12,20 +12,17 @@ public class ApplicationCredentialDTO
 
     private String value;
 
-    private String description;
-
     @NotNull
     private Integer weight;
 
-    public ApplicationCredentialDTO( @NotNull String key, String value, String description, Integer weight )
+    ApplicationCredentialDTO( @NotNull String key, String value, Integer weight )
     {
         this.key = key;
         this.value = value;
-        this.description = description;
         this.weight = weight;
     }
 
-    public ApplicationCredentialDTO()
+    ApplicationCredentialDTO()
     {
     }
 
@@ -49,16 +46,6 @@ public class ApplicationCredentialDTO
         this.value = value;
     }
 
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public void setDescription( String description )
-    {
-        this.description = description;
-    }
-
     public Integer getWeight()
     {
         return weight;
@@ -73,15 +60,14 @@ public class ApplicationCredentialDTO
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! ( o instanceof ApplicationCredentialDTO ) ) return false;
         ApplicationCredentialDTO that = (ApplicationCredentialDTO) o;
-        return Objects.equals( key, that.key ) && Objects.equals( value, that.value ) && Objects
-                .equals( description, that.description );
+        return Objects.equals( key, that.key ) && Objects.equals( value, that.value );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( key, value, description );
+        return Objects.hash( key, value );
     }
 }
