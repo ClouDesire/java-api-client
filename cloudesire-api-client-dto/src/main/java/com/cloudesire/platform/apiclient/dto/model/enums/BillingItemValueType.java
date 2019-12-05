@@ -10,5 +10,8 @@ public enum BillingItemValueType
     PAY_AS_YOU_GO,
 
     @ApiModelProperty( "Consumption of the extra resource gets billed in its entirety in advance" )
-    PRE_PAID
+    PRE_PAID,
+
+    @ApiModelProperty( "Consumption of the extra resource gets billed at the end of the billing period" )
+    POST_PAID
 }
