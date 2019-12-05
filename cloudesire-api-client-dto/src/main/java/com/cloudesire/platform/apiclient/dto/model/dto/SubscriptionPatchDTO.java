@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -61,7 +60,6 @@ public class SubscriptionPatchDTO extends DTO
     private Boolean paid;
 
     @ApiModelProperty( "A descriptive name for the subscription" )
-    @NotEmpty
     @Size( max = 255 )
     private String name;
 
