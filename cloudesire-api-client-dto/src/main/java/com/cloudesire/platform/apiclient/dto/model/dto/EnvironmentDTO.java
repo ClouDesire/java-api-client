@@ -1314,6 +1314,12 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Allows the customer to send messages to vendor" )
         private boolean customerMessageToVendor;
 
+        @ApiModelProperty( "Enable customer comments on products" )
+        private boolean customerProductComments;
+
+        @ApiModelProperty( "Enable customer ratings on products" )
+        private boolean customerProductRatings;
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
@@ -1709,6 +1715,25 @@ public class EnvironmentDTO extends DTO
             this.customerMessageToVendor = customerMessageToVendor;
         }
 
+        public boolean isCustomerProductComments()
+        {
+            return customerProductComments;
+        }
+
+        public void setCustomerProductComments( boolean customerProductComments )
+        {
+            this.customerProductComments = customerProductComments;
+        }
+
+        public boolean isCustomerProductRatings()
+        {
+            return customerProductRatings;
+        }
+
+        public void setCustomerProductRatings( boolean customerProductRatings )
+        {
+            this.customerProductRatings = customerProductRatings;
+        }
         //endregion
     }
 
