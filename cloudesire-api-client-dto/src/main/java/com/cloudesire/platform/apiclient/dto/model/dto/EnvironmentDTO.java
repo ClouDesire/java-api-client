@@ -1315,10 +1315,10 @@ public class EnvironmentDTO extends DTO
         private boolean customerMessageToVendor;
 
         @ApiModelProperty( "Enable customer comments on products" )
-        private boolean customerProductComments;
+        private boolean customerProductComments = true;
 
         @ApiModelProperty( "Enable customer ratings on products" )
-        private boolean customerProductRatings;
+        private boolean customerProductRatings = true;
 
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
