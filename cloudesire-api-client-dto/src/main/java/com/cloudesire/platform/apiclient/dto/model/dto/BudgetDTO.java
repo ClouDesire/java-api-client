@@ -38,6 +38,8 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( value = "Billable entries for the estimate", readOnly = true )
     private List<OrderLineDTO> lines = new LinkedList<>();
 
+    private List<OrderLineDTO> postLines;
+
     @ApiModelProperty( value = "If this invoice is subject to the Italian electronic document tax", readOnly = true )
     private boolean stampDuty = false;
 
@@ -170,6 +172,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setLines( List<OrderLineDTO> lines )
     {
         this.lines = lines;
+    }
+
+    public List<OrderLineDTO> getPostLines()
+    {
+        return postLines;
+    }
+
+    public void setPostLines( List<OrderLineDTO> postLines )
+    {
+        this.postLines = postLines;
     }
 
     public String getNation()
