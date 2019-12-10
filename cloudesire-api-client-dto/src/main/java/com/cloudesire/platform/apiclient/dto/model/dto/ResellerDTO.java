@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
