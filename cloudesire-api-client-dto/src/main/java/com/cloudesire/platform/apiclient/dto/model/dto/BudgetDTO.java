@@ -76,10 +76,7 @@ public class BudgetDTO extends BaseEntityDTO
 
     private BudgetVMConfigurationDTO vmConfiguration;
 
-    @ApiModelProperty( "Whether the budget is for a deferred order" )
-    private Boolean deferred;
-
-    @ApiModelProperty( value = "Whether the budget is for a delayed subscription downgrade", hidden = true )
+    @ApiModelProperty( value = "Whether the budget is for a delayed subscription downgrade", readOnly = true )
     private Boolean downgrade;
 
     @JsonProperty
@@ -303,29 +300,11 @@ public class BudgetDTO extends BaseEntityDTO
         this.vmConfiguration = vmConfiguration;
     }
 
-    public Boolean getDeferred()
-    {
-        return deferred;
-    }
-
-    public void setDeferred( Boolean deferred )
-    {
-        this.deferred = deferred;
-    }
-
-    /**
-     * @deprecated by {@link #getDeferred()}
-     */
-    @Deprecated
     public Boolean getDowngrade()
     {
         return downgrade;
     }
 
-    /**
-     * @deprecated by {@link #setDeferred(Boolean)}
-     */
-    @Deprecated
     public void setDowngrade( Boolean downgrade )
     {
         this.downgrade = downgrade;
