@@ -1320,6 +1320,11 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enable customer ratings on products" )
         private boolean customerProductRatings = true;
 
+        public boolean commentsEnabled()
+        {
+            return customerProductComments || customerProductRatings;
+        }
+
         //region Auto-generated getters and setters
         public boolean isExternalSubscriptionHandling()
         {
