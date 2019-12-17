@@ -11,7 +11,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @ApiModel( description = "Defines a pricing for a product version" )
-@SuppressWarnings( "squid:S2637" )
 public class DistributorPricingDTO extends BaseEntityDTO
 {
     @NotNull

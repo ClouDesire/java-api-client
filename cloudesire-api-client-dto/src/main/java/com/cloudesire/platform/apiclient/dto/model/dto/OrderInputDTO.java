@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:S2637" )
 public class OrderInputDTO extends BaseEntityDTO
 {
     @ApiModelProperty( "Which type of order" )

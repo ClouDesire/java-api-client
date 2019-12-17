@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:S2637" )
 public class CspArmProductDTO extends CspProductDTO
 {
     @ApiModelProperty( "The ARM template URL" )

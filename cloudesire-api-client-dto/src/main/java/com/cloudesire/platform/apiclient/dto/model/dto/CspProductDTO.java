@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:S2637" )
 public abstract class CspProductDTO extends ProductDTO
 {
     @ApiModelProperty( "The plan or license price when importing a new CSP product" )

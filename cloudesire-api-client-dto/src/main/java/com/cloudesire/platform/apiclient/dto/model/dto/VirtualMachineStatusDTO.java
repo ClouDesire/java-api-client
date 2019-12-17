@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
-@SuppressWarnings( "squid:S2637" )
 public class VirtualMachineStatusDTO extends BaseEntityDTO
 {
     @Valid

@@ -24,7 +24,6 @@ public class PriceDTO extends DTO
         this.currency = currency;
     }
 
-    @SuppressWarnings( "squid:S2637" )
     public PriceDTO()
     {
     }

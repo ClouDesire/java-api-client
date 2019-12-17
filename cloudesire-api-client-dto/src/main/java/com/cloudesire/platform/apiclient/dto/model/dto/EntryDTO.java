@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotNull;
 
 @ApiModel( description = "A key/value pair" )
-@SuppressWarnings( "squid:S2637" )
 public class EntryDTO
 {
     @NotNull

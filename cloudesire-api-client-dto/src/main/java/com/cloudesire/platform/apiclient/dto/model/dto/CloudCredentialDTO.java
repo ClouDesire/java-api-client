@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @ApiModel( description = "Custom cloud credentials" )
-@SuppressWarnings( "squid:S2637" )
 public class CloudCredentialDTO extends NamedEntityDTO
 {
     @NotNull
