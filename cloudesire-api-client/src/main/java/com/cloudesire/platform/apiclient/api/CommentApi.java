@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CommentDTO;
+import com.cloudesire.platform.apiclient.query.CommentQuery;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -23,8 +24,19 @@ public interface CommentApi
     Call<CommentDTO> get( @Path( "id" ) int id );
 
     @GET( "comment" )
+    Call<List<CommentDTO>> getAll( @QueryMap CommentQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(CommentQuery)}
+     */
+    @Deprecated
+    @GET( "comment" )
     Call<List<CommentDTO>> getListByProduct( @Query( "productId" ) int productId );
 
+    /**
+     * @deprecated by {@link #getAll(CommentQuery)}
+     */
+    @Deprecated
     @GET( "comment" )
     Call<List<CommentDTO>> getListByProduct( @Query( "productId" ) int productId, @QueryMap PageRequestQuery pager );
 
