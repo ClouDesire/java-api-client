@@ -12,6 +12,10 @@ public class BudgetVMConfigurationDTO extends DTO
 
     private Integer dataDiskSpace;
 
+    private Integer cpu;
+
+    private Integer ram;
+
     public OSType getOperatingSystem()
     {
         return operatingSystem;
@@ -40,5 +44,25 @@ public class BudgetVMConfigurationDTO extends DTO
     public void setDataDiskSpace( Integer dataDiskSpace )
     {
         this.dataDiskSpace = dataDiskSpace;
+    }
+
+    public Integer getCpu()
+    {
+        return cpu;
+    }
+
+    public void setCpu( Integer cpu )
+    {
+        this.cpu = cpu;
+    }
+
+    public Integer getRam()
+    {
+        return ram;
+    }
+
+    public void setRam( Integer ram )
+    {
+        this.ram = ram;
     }
 }
