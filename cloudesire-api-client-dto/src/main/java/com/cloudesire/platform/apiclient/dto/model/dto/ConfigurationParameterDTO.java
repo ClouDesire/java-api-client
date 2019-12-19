@@ -4,8 +4,8 @@ import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -37,6 +37,9 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
 
     @ApiModelProperty( "Weight order for displaying on the marketplace" )
     private Integer weight;
+
+    @ApiModelProperty( "Whether to hide the parameter values" )
+    private boolean sensitive;
 
     public ConfigurationParameterDTO( String name, String code, String description )
     {
@@ -109,9 +112,21 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
         return weight;
     }
 
-    public void setWeight( Integer weight )
+    public ConfigurationParameterDTO setWeight( Integer weight )
     {
         this.weight = weight;
+        return this;
+    }
+
+    public boolean isSensitive()
+    {
+        return sensitive;
+    }
+
+    public ConfigurationParameterDTO setSensitive( boolean sensitive )
+    {
+        this.sensitive = sensitive;
+        return this;
     }
 
     @Override
