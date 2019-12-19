@@ -22,11 +22,16 @@ public class SubscriptionBillingItemDTO extends DTO
 
     private ApiEndpointDTO endpoint;
 
-    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value )
+    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value, boolean bought )
     {
         this.billingItem = billingItem;
         this.value = value;
-        this.bought = true;
+        this.bought = bought;
+    }
+
+    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value )
+    {
+        this( billingItem, value, true );
     }
 
     public SubscriptionBillingItemDTO()
