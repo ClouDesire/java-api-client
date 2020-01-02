@@ -22,14 +22,13 @@ public class CommentDTO extends BaseEntityDTO
     private UrlEntityDTO product;
 
     @ApiModelProperty( "Product rating" )
-    private int rating = 3;
+    private Integer rating;
 
     @ApiModelProperty( "The actual comment" )
-    @NotNull
     private String comment;
 
     @ApiModelProperty( "Comment date" )
-    private Date date = new Date();
+    private Date date;
 
     private Set<HttpMethods> availableOperations = null;
 
@@ -63,12 +62,12 @@ public class CommentDTO extends BaseEntityDTO
         this.date = date;
     }
 
-    public int getRating()
+    public Integer getRating()
     {
         return rating;
     }
 
-    public void setRating( int rating )
+    public void setRating( Integer rating )
     {
         this.rating = rating;
     }
@@ -107,17 +106,17 @@ public class CommentDTO extends BaseEntityDTO
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( !( o instanceof CommentDTO ) ) return false;
-        if ( !super.equals( o ) ) return false;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
         CommentDTO that = (CommentDTO) o;
-        return getRating() == that.getRating() && Objects.equals( getUserName(), that.getUserName() ) && Objects
-                .equals( getProduct(), that.getProduct() ) && Objects.equals( getComment(), that.getComment() )
-                && Objects.equals( getDate(), that.getDate() );
+        return Objects.equals( userName, that.userName ) && Objects.equals( product, that.product ) && Objects
+                .equals( rating, that.rating ) && Objects.equals( comment, that.comment ) && Objects
+                .equals( date, that.date );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), getUserName(), getProduct(), getRating(), getComment(), getDate() );
+        return Objects.hash( super.hashCode(), userName, product, rating, comment, date );
     }
 }
