@@ -82,7 +82,6 @@ public class EnvironmentDTO extends DTO
     private UrlPatterns urlPatterns;
 
     @ApiModelProperty( "Email where to send platform operations notifications" )
-    @NotEmpty
     @Email
     private String operationGroup;
 
