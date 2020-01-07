@@ -13,6 +13,15 @@ public class ProductCategoryDTO extends NamedEntityDTO
     @ApiModelProperty( value = "How many products for the category are present", readOnly = true )
     private Long productCount = 0L;
 
+    public ProductCategoryDTO( String name )
+    {
+        super( name );
+    }
+
+    public ProductCategoryDTO()
+    {
+    }
+
     @Override
     public String getResourceName()
     {
