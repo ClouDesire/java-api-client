@@ -8,6 +8,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -20,6 +21,9 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.R
 
 public interface ProductCategoryApi
 {
+    @POST( "category" )
+    Call<ProductCategoryDTO> create( @Body ProductCategoryDTO category );
+
     @GET( "category" )
     Call<List<ProductCategoryDTO>> getAll();
 
@@ -54,8 +58,8 @@ public interface ProductCategoryApi
     @GET( "category/{id}" )
     Call<ProductCategoryDTO> get( @Path( "id" ) int id );
 
-    @POST( "category" )
-    Call<ProductCategoryDTO> create( @Body ProductCategoryDTO category );
+    @PUT( "category/{id}" )
+    Call<ProductCategoryDTO> update( @Path( "id" ) int id, @Body ProductCategoryDTO category );
 
     @DELETE( "category/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
