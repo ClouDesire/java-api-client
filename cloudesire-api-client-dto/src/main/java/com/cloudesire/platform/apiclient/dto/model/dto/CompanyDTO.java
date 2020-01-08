@@ -59,7 +59,10 @@ public class CompanyDTO extends MinimalCompanyDTO
     @Valid
     private BankAccountDataDTO bankAccountData;
 
-    @ApiModelProperty( "Vendors of the company" )
+    @ApiModelProperty( "Users of the company" )
+    private List<UrlEntityDTO> users;
+
+    @ApiModelProperty( value = "Vendors of the company", hidden = true )
     private List<UrlEntityDTO> vendors;
 
     @ApiModelProperty( hidden = true )
@@ -206,11 +209,29 @@ public class CompanyDTO extends MinimalCompanyDTO
         this.notificationSecretToken = notificationSecretToken;
     }
 
+    public List<UrlEntityDTO> getUsers()
+    {
+        return users;
+    }
+
+    public void setUsers( List<UrlEntityDTO> users )
+    {
+        this.users = users;
+    }
+
+    /**
+     * @deprecated by {@link #getUsers()}
+     */
+    @Deprecated
     public List<UrlEntityDTO> getVendors()
     {
         return vendors;
     }
 
+    /**
+     * @deprecated by {@link #setUsers(List)}
+     */
+    @Deprecated
     public void setVendors( List<UrlEntityDTO> vendors )
     {
         this.vendors = vendors;
