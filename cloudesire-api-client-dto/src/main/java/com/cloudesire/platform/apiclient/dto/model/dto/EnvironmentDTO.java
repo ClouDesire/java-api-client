@@ -82,14 +82,8 @@ public class EnvironmentDTO extends DTO
     private UrlPatterns urlPatterns;
 
     @ApiModelProperty( "Email where to send platform operations notifications" )
-    @NotEmpty
     @Email
     private String operationGroup;
-
-    @ApiModelProperty( "Email of the team" )
-    @NotEmpty
-    @Email
-    private String notificationGroup;
 
     @ApiModelProperty( "Sender name of all the emails generated" )
     @NotEmpty
@@ -717,16 +711,6 @@ public class EnvironmentDTO extends DTO
     public void setUrlPatterns( UrlPatterns urlPatterns )
     {
         this.urlPatterns = urlPatterns;
-    }
-
-    public String getNotificationGroup()
-    {
-        return notificationGroup;
-    }
-
-    public void setNotificationGroup( String notificationGroup )
-    {
-        this.notificationGroup = notificationGroup;
     }
 
     public String getOperationGroup()
