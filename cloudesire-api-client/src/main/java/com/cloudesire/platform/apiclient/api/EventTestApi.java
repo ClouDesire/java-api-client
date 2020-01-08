@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -22,4 +23,10 @@ public interface EventTestApi
     @PATCH( "test/subscription/{id}" )
     Call<Void> patch( @Path( "id" ) int subscriptionId, @Body Map<String, Object> emptyMap,
             @Query( "language" ) String language );
+
+    @GET( "test/user/{id}/metadata" )
+    Call<Map<String, Object>> getSandboxMetadata( @Path( "id" ) int id );
+
+    @PUT( "test/user/{id}/metadata" )
+    Call<Void> updateSandboxMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
 }
