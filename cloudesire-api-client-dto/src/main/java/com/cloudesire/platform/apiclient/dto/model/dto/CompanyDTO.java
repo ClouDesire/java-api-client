@@ -1,5 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -60,9 +63,11 @@ public class CompanyDTO extends MinimalCompanyDTO
     private BankAccountDataDTO bankAccountData;
 
     @ApiModelProperty( "Users of the company" )
+    @FieldAPI( sinceVersion = ApiVersion.V20200108 )
     private List<UrlEntityDTO> users;
 
     @ApiModelProperty( value = "Vendors of the company", hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20200108 )
     private List<UrlEntityDTO> vendors;
 
     @ApiModelProperty( hidden = true )
