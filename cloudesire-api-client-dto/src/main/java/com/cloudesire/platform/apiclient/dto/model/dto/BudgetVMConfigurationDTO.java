@@ -16,6 +16,8 @@ public class BudgetVMConfigurationDTO extends DTO
 
     private Integer ram;
 
+    private String instanceType;
+
     public OSType getOperatingSystem()
     {
         return operatingSystem;
@@ -64,5 +66,15 @@ public class BudgetVMConfigurationDTO extends DTO
     public void setRam( Integer ram )
     {
         this.ram = ram;
+    }
+
+    public String getInstanceType()
+    {
+        return instanceType;
+    }
+
+    public void setInstanceType( String instanceType )
+    {
+        this.instanceType = instanceType;
     }
 }
