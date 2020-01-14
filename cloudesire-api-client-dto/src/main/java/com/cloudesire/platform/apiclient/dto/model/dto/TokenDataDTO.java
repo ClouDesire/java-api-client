@@ -12,6 +12,7 @@ public class TokenDataDTO extends PaymentDataDTO
 
     public TokenDataDTO( String token )
     {
+        super( "Default" );
         this.token = token;
     }
 

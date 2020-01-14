@@ -1,11 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.constraints.NotEmpty;
-
 public abstract class PaymentDataDTO extends DTO
 {
-    @NotEmpty
-    private String label = "Default";
+    private String label;
+
+    public PaymentDataDTO( String label )
+    {
+        this.label = label;
+    }
+
+    public PaymentDataDTO()
+    {
+    }
 
     public String getLabel()
     {
