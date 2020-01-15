@@ -47,6 +47,16 @@ public interface OrderApi
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
             @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
 
+    @GET( "order" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getCsv();
+
+    @GET( "order" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getCsv( @QueryMap OrderQuery query );
+
     @GET( "order/externalReference={externalReference}" )
     Call<OrderDTO> getByExternalReference( @Path( "externalReference" ) String externalReference );
 
@@ -56,12 +66,20 @@ public interface OrderApi
     @POST( "order/{id}/notify" )
     Call<Void> notify( @Path( "id" ) Integer id );
 
+    /**
+     * @deprecated by {@link #getCsv(OrderQuery)}
+     */
+    @Deprecated
     @Streaming
     @GET( "order" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
             @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
 
+    /**
+     * @deprecated by {@link #getCsv(OrderQuery)}
+     */
+    @Deprecated
     @Streaming
     @GET( "order" )
     @Headers( { "Accept:text/csv" } )
