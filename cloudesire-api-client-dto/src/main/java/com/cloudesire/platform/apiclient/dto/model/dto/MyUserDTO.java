@@ -136,11 +136,8 @@ public class MyUserDTO extends BaseEntityDTO
     @ApiModelProperty( value = "If the user has a valid payment method available", readOnly = true )
     private boolean paymentDataSaved;
 
-    @ApiModelProperty( "The saved payment method labels" )
-    private Set<String> paymentMethods;
-
-    @ApiModelProperty( "The default payment method" )
-    private String defaultPaymentMethod;
+    @ApiModelProperty( "The saved payment methods" )
+    private Set<UrlEntityDTO> paymentMethods;
 
     @ApiModelProperty( value = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
     private String culture;
@@ -566,24 +563,14 @@ public class MyUserDTO extends BaseEntityDTO
         this.paymentDataSaved = paymentDataSaved;
     }
 
-    public Set<String> getPaymentMethods()
+    public Set<UrlEntityDTO> getPaymentMethods()
     {
         return paymentMethods;
     }
 
-    public void setPaymentMethods( Set<String> paymentMethods )
+    public void setPaymentMethods( Set<UrlEntityDTO> paymentMethods )
     {
         this.paymentMethods = paymentMethods;
-    }
-
-    public String getDefaultPaymentMethod()
-    {
-        return defaultPaymentMethod;
-    }
-
-    public void setDefaultPaymentMethod( String defaultPaymentMethod )
-    {
-        this.defaultPaymentMethod = defaultPaymentMethod;
     }
 
     public String getCulture()

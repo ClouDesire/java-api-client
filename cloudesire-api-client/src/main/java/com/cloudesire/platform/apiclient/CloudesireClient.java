@@ -465,6 +465,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     {
         return getApi( DiskSpacePricingApi.class );
     }
+
+    public PaymentMethodApi getPaymentMethodApi()
+    {
+        return getApi( PaymentMethodApi.class );
+    }
     // endregion
 
     @Override
