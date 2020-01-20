@@ -7,6 +7,8 @@ public class UserPaymentMethodDTO extends BaseEntityDTO
     @NotEmpty
     private String label;
 
+    private Boolean defaultMethod;
+
     private String paymentMethodId;
 
     private String stripeToken;
@@ -19,6 +21,16 @@ public class UserPaymentMethodDTO extends BaseEntityDTO
     public void setLabel( String label )
     {
         this.label = label;
+    }
+
+    public Boolean getDefaultMethod()
+    {
+        return defaultMethod;
+    }
+
+    public void setDefaultMethod( Boolean defaultMethod )
+    {
+        this.defaultMethod = defaultMethod;
     }
 
     public String getPaymentMethodId()
