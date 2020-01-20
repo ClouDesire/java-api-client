@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.InvoiceDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.MyUserDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.UserCompanyDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -29,4 +30,7 @@ public interface EventTestApi
 
     @PUT( "test/user/{id}/metadata" )
     Call<Void> updateSandboxMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+
+    @GET( "test/userCompany/{id}" )
+    Call<UserCompanyDTO> getUserCompany( @Path( "id" ) int id );
 }
