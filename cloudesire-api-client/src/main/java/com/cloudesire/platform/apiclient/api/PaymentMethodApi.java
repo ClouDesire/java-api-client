@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface PaymentMethodApi
@@ -14,4 +15,7 @@ public interface PaymentMethodApi
 
     @GET( "paymentMethod/{id}" )
     Call<UserPaymentMethodDTO> get( @Path( "id" ) int id );
+
+    @PUT( "paymentMethod/{id}" )
+    Call<UserPaymentMethodDTO> update( @Path( "id" ) int id, @Body UserPaymentMethodDTO paymentMethod );
 }

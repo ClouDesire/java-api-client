@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 public class UserPaymentMethodDTO extends BaseEntityDTO
 {
@@ -51,5 +52,21 @@ public class UserPaymentMethodDTO extends BaseEntityDTO
     public void setStripeToken( String stripeToken )
     {
         this.stripeToken = stripeToken;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! super.equals( o ) ) return false;
+        UserPaymentMethodDTO that = (UserPaymentMethodDTO) o;
+        return Objects.equals( label, that.label ) && Objects.equals( defaultMethod, that.defaultMethod );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), label, defaultMethod );
     }
 }
