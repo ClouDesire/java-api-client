@@ -29,5 +29,7 @@ public enum OrderType
     @ApiModelProperty( "Upgrade disk space, only for managed products" )
     DISK_UPGRADE,
     @ApiModelProperty( "Plan upgrade, only for syndicated products" )
-    SYNDICATED_UPGRADE
+    SYNDICATED_UPGRADE,
+    @ApiModelProperty( "Estimate the total costs of a subscription" )
+    ESTIMATE
 }
