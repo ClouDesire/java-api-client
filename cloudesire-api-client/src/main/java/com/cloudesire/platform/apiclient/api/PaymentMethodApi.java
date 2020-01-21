@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.UserPaymentMethodDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -18,4 +19,7 @@ public interface PaymentMethodApi
 
     @PUT( "paymentMethod/{id}" )
     Call<UserPaymentMethodDTO> update( @Path( "id" ) int id, @Body UserPaymentMethodDTO paymentMethod );
+
+    @DELETE( "paymentMethod/{id}" )
+    Call<UserPaymentMethodDTO> delete( @Path( "id" ) int id );
 }
