@@ -12,7 +12,6 @@ public class PaymentMethodDTO extends PaymentDataDTO
 
     public PaymentMethodDTO( String paymentMethodId )
     {
-        super( "Default" );
         this.paymentMethodId = paymentMethodId;
     }
 
