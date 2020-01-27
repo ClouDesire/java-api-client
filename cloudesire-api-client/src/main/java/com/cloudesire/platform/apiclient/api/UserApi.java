@@ -7,9 +7,10 @@ import com.cloudesire.platform.apiclient.dto.model.dto.PasswordResetDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PaymentMethodDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SepaDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.TokenDataDTO;
-import com.cloudesire.platform.apiclient.dto.model.patch.UserPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.UserPaymentMethodDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.request.UserActivationDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
+import com.cloudesire.platform.apiclient.dto.model.patch.UserPatchDTO;
 import com.cloudesire.platform.apiclient.query.UserQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -145,9 +146,17 @@ public interface UserApi
     @POST( "user/payment/sepa" )
     Call<Void> saveSepaData( @Body SepaDataDTO data );
 
+    /**
+     * @deprecated look for {@link PaymentMethodApi#create(UserPaymentMethodDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/token" )
     Call<Void> saveTokenData( @Body TokenDataDTO data );
 
+    /**
+     * @deprecated look for {@link PaymentMethodApi#create(UserPaymentMethodDTO)}
+     */
+    @Deprecated
     @POST( "user/payment/method" )
     Call<Void> savePaymentMethod( @Body PaymentMethodDTO data );
 
@@ -175,9 +184,17 @@ public interface UserApi
     @DELETE( "user/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 
+    /**
+     * @deprecated look for {@link PaymentMethodApi#delete(int)}
+     */
+    @Deprecated
     @DELETE( "user/{id}/payment" )
     Call<Void> deletePaymentDataForAdmin( @Path( "id" ) int id );
 
+    /**
+     * @deprecated look for {@link PaymentMethodApi#delete(int)}
+     */
+    @Deprecated
     @DELETE( "user/payment" )
     Call<Void> deletePaymentData();
 
