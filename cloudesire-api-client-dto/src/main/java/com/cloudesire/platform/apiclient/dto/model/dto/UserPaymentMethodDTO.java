@@ -1,18 +1,29 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.util.Map;
 import java.util.Objects;
 
+@ApiModel( "Payment method for a customer" )
 public class UserPaymentMethodDTO extends BaseEntityDTO
 {
+    public static final String PAYMENT_METHOD_ID = "paymentMethodId";
+    public static final String STRIPE_TOKEN = "stripeToken";
+
+    @ApiModelProperty( "Descriptive label for the payment method" )
     @NotEmpty
     private String label;
 
+    @ApiModelProperty( "Whether the payment method is the default one" )
     private Boolean defaultMethod;
 
-    private String paymentMethodId;
-
-    private String stripeToken;
+    @ApiModelProperty( "Payment method creation payload" )
+    @Size( max = 1, message = "size must be at most 1" )
+    private Map<String, String> payload;
 
     public String getLabel()
     {
@@ -34,24 +45,14 @@ public class UserPaymentMethodDTO extends BaseEntityDTO
         this.defaultMethod = defaultMethod;
     }
 
-    public String getPaymentMethodId()
+    public Map<String, String> getPayload()
     {
-        return paymentMethodId;
+        return payload;
     }
 
-    public void setPaymentMethodId( String paymentMethodId )
+    public void setPayload( Map<String, String> payload )
     {
-        this.paymentMethodId = paymentMethodId;
-    }
-
-    public String getStripeToken()
-    {
-        return stripeToken;
-    }
-
-    public void setStripeToken( String stripeToken )
-    {
-        this.stripeToken = stripeToken;
+        this.payload = payload;
     }
 
     @Override
