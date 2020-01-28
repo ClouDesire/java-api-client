@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -13,19 +13,18 @@ public class RecurringCostLineDTO extends OrderLineDTO
     @Valid
     private UrlEntityDTO subscription;
 
-    public RecurringCostLineDTO( double price, double vat )
+    public RecurringCostLineDTO( BigDecimal price )
     {
-        this( BigDecimal.valueOf( price ), vat );
+        this( price, null );
     }
 
-    public RecurringCostLineDTO( BigDecimal price, double vat )
+    public RecurringCostLineDTO( BigDecimal price, BigDecimal vat )
     {
-        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( BigDecimal.valueOf( vat ) ) );
+        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( vat ) );
     }
 
     public RecurringCostLineDTO()
     {
-        super();
     }
 
     @Override
@@ -56,7 +55,7 @@ public class RecurringCostLineDTO extends OrderLineDTO
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        if ( !super.equals( o ) ) return false;
+        if ( ! super.equals( o ) ) return false;
         RecurringCostLineDTO that = (RecurringCostLineDTO) o;
         return Objects.equals( subscription, that.subscription );
     }
