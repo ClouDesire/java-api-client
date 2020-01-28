@@ -6,15 +6,18 @@ import java.math.BigDecimal;
 
 public class VendorOrderLineDTO extends OrderLineDTO
 {
+    public VendorOrderLineDTO( BigDecimal value )
+    {
+        this( value, null );
+    }
+
     public VendorOrderLineDTO( BigDecimal value, BigDecimal vat )
     {
-        this();
         this.setPrice( new VATPriceDTO().withValue( value ).withVAT( vat ) );
     }
 
     public VendorOrderLineDTO()
     {
-        super();
     }
 
     @Override
