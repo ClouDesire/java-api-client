@@ -46,7 +46,7 @@ public interface SubscriptionApi
     Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @POST( "subscription/{id}/invoice" )
-    Call<Void> postOrderLines( @Path( "id" ) Integer id, @Body List<VendorOrderLineDTO> lines,
+    Call<Void> postOrderLines( @Path( "id" ) int id, @Body List<VendorOrderLineDTO> lines,
             @Query( "cashed" ) Boolean cashed );
 
     @POST( "subscription/{id}/credentials" )
