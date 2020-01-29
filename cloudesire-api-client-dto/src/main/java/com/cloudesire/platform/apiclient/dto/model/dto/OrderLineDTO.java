@@ -51,6 +51,8 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15", readOnly = true )
     private Integer maximum;
 
+    private String identifier;
+
     /**
      * @deprecated by {@link #getSubtotal()}
      */
@@ -199,6 +201,16 @@ public class OrderLineDTO implements Line
     public void setMaximum( Integer maximum )
     {
         this.maximum = maximum;
+    }
+
+    public String getIdentifier()
+    {
+        return identifier;
+    }
+
+    public void setIdentifier( String identifier )
+    {
+        this.identifier = identifier;
     }
 
     @Override

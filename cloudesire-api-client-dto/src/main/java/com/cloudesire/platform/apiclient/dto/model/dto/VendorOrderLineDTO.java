@@ -4,20 +4,21 @@ import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 
 import java.math.BigDecimal;
 
-public class VendorOrderLineDTO extends OrderLineDTO
+public class VendorOrderLineDTO extends CustomOrderLineDTO
 {
     public VendorOrderLineDTO( BigDecimal value )
     {
-        this( value, null );
+        super( value );
     }
 
     public VendorOrderLineDTO( BigDecimal value, BigDecimal vat )
     {
-        this.setPrice( new VATPriceDTO().withValue( value ).withVAT( vat ) );
+        super( value, vat );
     }
 
     public VendorOrderLineDTO()
     {
+        super();
     }
 
     @Override
