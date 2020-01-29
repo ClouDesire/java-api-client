@@ -51,6 +51,7 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15", readOnly = true )
     private Integer maximum;
 
+    @ApiModelProperty( "Custom billing identifier" )
     private String identifier;
 
     /**
