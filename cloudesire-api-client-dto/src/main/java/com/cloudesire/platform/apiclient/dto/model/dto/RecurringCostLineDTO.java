@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class RecurringCostLineDTO extends OrderLineDTO
+public class RecurringCostLineDTO extends CustomOrderLineDTO
 {
     @JsonInclude( JsonInclude.Include.NON_NULL )
     @Valid
@@ -15,16 +15,17 @@ public class RecurringCostLineDTO extends OrderLineDTO
 
     public RecurringCostLineDTO( BigDecimal price )
     {
-        this( price, null );
+        super( price );
     }
 
     public RecurringCostLineDTO( BigDecimal price, BigDecimal vat )
     {
-        this.setPrice( new VATPriceDTO().withValue( price ).withVAT( vat ) );
+        super( price, vat );
     }
 
     public RecurringCostLineDTO()
     {
+        super();
     }
 
     @Override
