@@ -4,18 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotEmpty;
 
-public class TokenDataDTO extends PaymentDataDTO
+public class StripeTokenDTO extends PaymentDataDTO
 {
     @JsonProperty( "stripeToken" )
     @NotEmpty
     private String token;
 
-    public TokenDataDTO( String token )
+    public StripeTokenDTO( String token )
     {
         this.token = token;
     }
 
-    public TokenDataDTO()
+    public StripeTokenDTO()
     {
     }
 

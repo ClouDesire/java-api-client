@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @deprecated by {@link TokenDataDTO}
+ * @deprecated by {@link StripeTokenDTO}
  */
 @ApiModel( description = "Credit card data" )
 @Deprecated
