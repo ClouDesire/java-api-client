@@ -21,6 +21,15 @@ public class PaymentMethodDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the payment method is the default one" )
     private Boolean defaultMethod;
 
+    @ApiModelProperty( value = "Last 4 digits of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private String last4;
+
+    @ApiModelProperty( value = "Expiration month of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private Long expMonth;
+
+    @ApiModelProperty( value = "Expiration year of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private Long expYear;
+
     @ApiModelProperty( "Payment method creation payload" )
     @Size( max = 1, message = "size must be at most 1" )
     private Map<String, String> payload;
@@ -43,6 +52,36 @@ public class PaymentMethodDTO extends BaseEntityDTO
     public void setDefaultMethod( Boolean defaultMethod )
     {
         this.defaultMethod = defaultMethod;
+    }
+
+    public String getLast4()
+    {
+        return last4;
+    }
+
+    public void setLast4( String last4 )
+    {
+        this.last4 = last4;
+    }
+
+    public Long getExpMonth()
+    {
+        return expMonth;
+    }
+
+    public void setExpMonth( Long expMonth )
+    {
+        this.expMonth = expMonth;
+    }
+
+    public Long getExpYear()
+    {
+        return expYear;
+    }
+
+    public void setExpYear( Long expYear )
+    {
+        this.expYear = expYear;
     }
 
     public Map<String, String> getPayload()
