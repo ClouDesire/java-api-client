@@ -25,10 +25,10 @@ public class PaymentMethodDTO extends BaseEntityDTO
     private String last4;
 
     @ApiModelProperty( value = "Expiration month of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
-    private Long expMonth;
+    private Integer expMonth;
 
     @ApiModelProperty( value = "Expiration year of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
-    private Long expYear;
+    private Integer expYear;
 
     @ApiModelProperty( "Payment method creation payload" )
     @Size( max = 1, message = "size must be at most 1" )
@@ -64,22 +64,22 @@ public class PaymentMethodDTO extends BaseEntityDTO
         this.last4 = last4;
     }
 
-    public Long getExpMonth()
+    public Integer getExpMonth()
     {
         return expMonth;
     }
 
-    public void setExpMonth( Long expMonth )
+    public void setExpMonth( Integer expMonth )
     {
         this.expMonth = expMonth;
     }
 
-    public Long getExpYear()
+    public Integer getExpYear()
     {
         return expYear;
     }
 
-    public void setExpYear( Long expYear )
+    public void setExpYear( Integer expYear )
     {
         this.expYear = expYear;
     }
