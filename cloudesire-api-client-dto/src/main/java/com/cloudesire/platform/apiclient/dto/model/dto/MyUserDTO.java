@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -137,7 +138,7 @@ public class MyUserDTO extends BaseEntityDTO
     private boolean paymentDataSaved;
 
     @ApiModelProperty( "The saved payment methods" )
-    private Set<UrlEntityDTO> paymentMethods;
+    private List<UrlEntityDTO> paymentMethods;
 
     @ApiModelProperty( value = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
     private String culture;
@@ -563,12 +564,12 @@ public class MyUserDTO extends BaseEntityDTO
         this.paymentDataSaved = paymentDataSaved;
     }
 
-    public Set<UrlEntityDTO> getPaymentMethods()
+    public List<UrlEntityDTO> getPaymentMethods()
     {
         return paymentMethods;
     }
 
-    public void setPaymentMethods( Set<UrlEntityDTO> paymentMethods )
+    public void setPaymentMethods( List<UrlEntityDTO> paymentMethods )
     {
         this.paymentMethods = paymentMethods;
     }
