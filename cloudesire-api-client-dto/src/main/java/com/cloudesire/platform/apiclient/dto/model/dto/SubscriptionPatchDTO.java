@@ -1,12 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Size;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,12 +30,7 @@ public class SubscriptionPatchDTO extends DTO
     @ApiModelProperty( "Update operation" )
     private SubscriptionPatchAction action;
 
-    @ApiModelProperty( hidden = true )
-    @Deprecated
-    private Integer months;
-
-    @ApiModelProperty( hidden = true )
-    @Deprecated
+    @ApiModelProperty( "For how many hours to renew a sandbox subscription" )
     private Integer hours;
 
     @ApiModelProperty( "Whether the subscription automatically renews at the end of the last billing period" )
@@ -70,21 +63,6 @@ public class SubscriptionPatchDTO extends DTO
 
     public SubscriptionPatchDTO()
     {
-    }
-
-    @JsonIgnore
-    public Integer getTime()
-    {
-        Integer time = null;
-        if ( months != null ) time = months;
-        else if ( hours != null ) time = hours;
-        return time;
-    }
-
-    @JsonIgnore
-    public int getUnit()
-    {
-        return months != null ? Calendar.MONTH : Calendar.HOUR;
     }
 
     @Deprecated
@@ -151,17 +129,6 @@ public class SubscriptionPatchDTO extends DTO
     public SubscriptionPatchDTO setAction( String action )
     {
         this.action = SubscriptionPatchAction.valueOf( action.toUpperCase() );
-        return this;
-    }
-
-    public Integer getMonths()
-    {
-        return months;
-    }
-
-    public SubscriptionPatchDTO setMonths( Integer months )
-    {
-        this.months = months;
         return this;
     }
 
