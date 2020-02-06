@@ -1,4 +1,10 @@
-version: 2
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: common-backend
+
 jobs:
   build:
     docker:
@@ -14,16 +20,18 @@ jobs:
             - m2-{{ checksum "pom.xml" }}-v1
             - java-api-client-root
       - run:
+          name: Get common configs
+          command: git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/ClouDesire/ci-conf.git $GIT_ROOT/ci-conf
+      - run:
           name: Configure Maven repository
-          command: mkdir -p ~/.m2 && cp ~/java-api-client/.circleci/settings.xml ~/.m2
+          command: mkdir -p ~/.m2 && cp $GIT_ROOT/ci-conf/mvn/settings.xml ~/.m2
       - run:
           name: Build
           command: ./mvnw -B install -Dmaven.test.skip=true
-      - run: git clone -b $CI_SCRIPTS_BRANCH git@github.com:ClouDesire/ci-scripts.git
       - run:
           name: Run Sonar
           command: |
-            source ci-scripts/sonar.sh
+            source $GIT_ROOT/ci-conf/mvn/sonar.sh
             run_sonar
       - save_cache:
           key: m2-{{ checksum "pom.xml" }}-v2
