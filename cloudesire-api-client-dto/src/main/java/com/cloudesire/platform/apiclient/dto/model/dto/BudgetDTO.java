@@ -15,73 +15,74 @@ import java.util.Objects;
 @ApiModel( description = "Budget estimate" )
 public class BudgetDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "Country code", readOnly = true )
+    @ApiModelProperty( "Country code" )
     @NotNull
     private String nation = "IT";
 
-    @ApiModelProperty( value = "URL of the chosen cloud provider", readOnly = true )
+    @ApiModelProperty( "URL of the chosen cloud provider" )
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( value = "URL of the chosen product version", readOnly = true )
+    @ApiModelProperty( "URL of the chosen product version" )
     @NotNull
     @Valid
     private UrlEntityDTO configuration;
 
-    @ApiModelProperty( value = "Trial duration in days", readOnly = true )
+    @ApiModelProperty( "Trial duration in days" )
     private Integer trialLength;
 
-    @ApiModelProperty( value = "Billable entries for the estimate", readOnly = true )
+    @ApiModelProperty( "Billable entries for the estimate" )
     private List<OrderLineDTO> lines = new LinkedList<>();
 
-    @ApiModelProperty( value = "Lines billed at the end of the billing period", readOnly = true )
+    @ApiModelProperty( "Lines billed at the end of the billing period" )
     private List<OrderLineDTO> postLines;
 
-    @ApiModelProperty( value = "Lines directly billed to the customer", readOnly = true )
+    @ApiModelProperty( "Lines directly billed to the customer" )
     private List<OrderLineDTO> upsoldLines;
 
-    @ApiModelProperty( value = "If this invoice is subject to the Italian electronic document tax", readOnly = true )
+    @ApiModelProperty( "If this invoice is subject to the Italian electronic document tax" )
     private boolean stampDuty = false;
 
-    @ApiModelProperty( value = "Currency of the prices for the estimate", readOnly = true )
+    @ApiModelProperty( "Currency of the prices for the estimate" )
     private String currency;
 
-    @ApiModelProperty( value = "Value added tax, in percentage", readOnly = true )
+    @ApiModelProperty( "Value added tax, in percentage" )
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private BigDecimal VAT;
 
-    @ApiModelProperty( value = "Discount coupon applied on the estimate", readOnly = true )
-    @JsonInclude( JsonInclude.Include.NON_NULL )
+    @ApiModelProperty( "Discount coupon applied on the estimate" )
     private String couponStatus;
 
-    @ApiModelProperty( value = "Recurring monthly price", readOnly = true )
+    @ApiModelProperty( "Recurring monthly price" )
     private BigDecimal priceExcludingVAT;
 
-    @ApiModelProperty( value = "Price for the first month, including potential setup fee", readOnly = true )
+    @ApiModelProperty( "Price for the first month, including potential setup fee" )
     private BigDecimal firstPriceExcludingVAT;
 
-    @ApiModelProperty( value = "True if this will generate a self-billed invoice", readOnly = true )
+    @ApiModelProperty( "True if this will generate a self-billed invoice" )
     private Boolean selfBilled;
 
-    @ApiModelProperty( value = "Number of months of a billing cycle for this order", readOnly = true )
+    @ApiModelProperty( "Number of months of a billing cycle for this order" )
     private Integer billingPeriod;
 
-    @ApiModelProperty( value = "Minimum duration of this order in months", readOnly = true )
+    @ApiModelProperty( "Minimum duration of this order in months" )
     private Integer minimumDuration;
 
-    @ApiModelProperty( value = "Duration of this order in hours", readOnly = true )
+    @ApiModelProperty( "Duration of this order in hours" )
     private Integer lifespan;
 
     private IaasBilling iaasBilling;
 
     private BudgetVMConfigurationDTO vmConfiguration;
 
-    @ApiModelProperty( value = "Whether the budget is for a delayed subscription downgrade", readOnly = true )
+    @ApiModelProperty( "Whether the budget is for a delayed subscription downgrade" )
     private Boolean downgrade;
 
+    @ApiModelProperty( "Total price for the budget" )
     private BigDecimal totalPrice;
 
+    @ApiModelProperty( "VAT component of the price" )
     private BigDecimal vatSpunOff;
 
     public BigDecimal getTotalPrice()
@@ -192,12 +193,6 @@ public class BudgetDTO extends BaseEntityDTO
     public void setNation( String nation )
     {
         this.nation = nation;
-    }
-
-    public void addLine( OrderLineDTO line )
-    {
-        if ( this.lines == null ) this.lines = new LinkedList<>();
-        this.lines.add( line );
     }
 
     public String getCurrency()
