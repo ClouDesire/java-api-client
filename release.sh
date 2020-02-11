@@ -7,4 +7,4 @@ echo Finished!
 
 echo Waiting to notify dependabot of the new release
 sleep 120
-echo curl -H "Authorization: Personal $GH_TOKEN" -d '{"name": "com.cloudesire.platform:cloudesire-api-client", "package-manager": "maven", "version": "'$VERSION'"}' -H "Content-Type:application/json" -X POST https://api.dependabot.com/release_notifications/private
+curl -H "Authorization: Personal $GH_TOKEN" -d '{"name": "com.cloudesire.platform:cloudesire-api-client", "package-manager": "maven", "version": "'$VERSION'"}' -H "Content-Type:application/json" -X POST https://api.dependabot.com/release_notifications/private
