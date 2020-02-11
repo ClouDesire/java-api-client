@@ -1,20 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
-public class TokenDataDTO extends PaymentDataDTO
+import javax.validation.constraints.NotEmpty;
+
+public class StripeTokenDTO extends PaymentDataDTO
 {
     @JsonProperty( "stripeToken" )
     @NotEmpty
     private String token;
 
-    public TokenDataDTO( String token )
+    public StripeTokenDTO( String token )
     {
         this.token = token;
     }
 
-    public TokenDataDTO()
+    public StripeTokenDTO()
     {
     }
 
