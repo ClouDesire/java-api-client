@@ -2,9 +2,6 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.liberologico.cloudesire.common.MathConfiguration;
-import com.liberologico.cloudesire.common.MathUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -83,39 +80,28 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( value = "Whether the budget is for a delayed subscription downgrade", readOnly = true )
     private Boolean downgrade;
 
-    @JsonProperty
+    private BigDecimal totalPrice;
+
+    private BigDecimal vatSpunOff;
+
     public BigDecimal getTotalPrice()
     {
-        return calculateTotal().setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
+        return totalPrice;
     }
 
-    @JsonProperty( value = "vatSpunOff" )
     public BigDecimal getVATSpunOff()
     {
-        return getVATSpunOff( priceExcludingVAT );
+        return vatSpunOff;
     }
 
-    private BigDecimal getVATSpunOff( BigDecimal price )
+    public void setVatSpunOff( BigDecimal vatSpunOff )
     {
-        return MathUtils.percentage( price, VAT, MathConfiguration.DEFAULT_PRECISION );
+        this.vatSpunOff = vatSpunOff;
     }
 
     public void setTotalPrice( BigDecimal price )
     {
-        // this is intentionally left blank
-    }
-
-    private BigDecimal calculateTotal()
-    {
-        if ( firstPriceExcludingVAT != null )
-        {
-            BigDecimal spunOff = getVATSpunOff( firstPriceExcludingVAT );
-            if ( spunOff != null ) return firstPriceExcludingVAT.add( spunOff );
-
-            return firstPriceExcludingVAT;
-        }
-
-        return BigDecimal.ZERO;
+        this.totalPrice = price;
     }
 
     public BigDecimal getPriceExcludingVAT()
