@@ -90,7 +90,7 @@ public class BudgetDTO extends BaseEntityDTO
         return totalPrice;
     }
 
-    public BigDecimal getVATSpunOff()
+    public BigDecimal getVatSpunOff()
     {
         return vatSpunOff;
     }
