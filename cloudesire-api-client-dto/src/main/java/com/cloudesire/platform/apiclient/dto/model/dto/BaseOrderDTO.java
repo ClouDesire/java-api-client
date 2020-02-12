@@ -1,11 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
-import com.cloudesire.platform.apiclient.dto.model.serializer.PriceSerializer;
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.dto.ActionUrlDTO;
 
@@ -47,6 +44,8 @@ public abstract class BaseOrderDTO extends BaseEntityDTO
     private UrlEntityDTO productVersion;
 
     private OSType operatingSystem;
+
+    private BigDecimal totalPrice;
 
     public ActionUrlDTO getApprove()
     {
@@ -108,16 +107,14 @@ public abstract class BaseOrderDTO extends BaseEntityDTO
         this.subscription = subscription;
     }
 
-    @JsonSerialize ( using = PriceSerializer.class )
-    @JsonProperty
     public BigDecimal getTotalPrice()
     {
-        if ( budget == null ) return BigDecimal.ZERO;
-        return budget.getTotalPrice();
+        return totalPrice;
     }
 
     public void setTotalPrice( BigDecimal price )
     {
+        this.totalPrice = price;
     }
 
     public OrderType getType()
