@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @ApiModel( description = "A user that can login on the platform" )
-public class MyUserDTO extends BaseEntityDTO
+public class MyUserDTO extends NamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
 
@@ -188,6 +188,12 @@ public class MyUserDTO extends BaseEntityDTO
 
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
+
+    @Override
+    public String getDisplayName()
+    {
+        return getFullName();
+    }
 
     @Override
     public String getResourceName()
