@@ -28,11 +28,6 @@ public class MyUserDTO extends NamedEntityDTO
     @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
-    @ApiModelProperty( "Given Name" )
-    @NotEmpty
-    @Size( max = 255 )
-    private String name;
-
     @ApiModelProperty( "Family Name" )
     @NotEmpty
     @Size( max = 255 )
@@ -434,16 +429,6 @@ public class MyUserDTO extends NamedEntityDTO
     public void setCompanyName( String companyName )
     {
         this.companyName = companyName;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName( String name )
-    {
-        this.name = name;
     }
 
     public String getSurname()
