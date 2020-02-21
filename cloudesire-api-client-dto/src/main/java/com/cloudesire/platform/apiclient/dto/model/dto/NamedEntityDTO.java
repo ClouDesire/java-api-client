@@ -28,6 +28,7 @@ public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
     }
 
     @JsonIgnore
+    @Override
     public String getDisplayName()
     {
         return getName();

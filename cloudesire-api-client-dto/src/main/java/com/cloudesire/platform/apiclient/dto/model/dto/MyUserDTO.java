@@ -21,12 +21,17 @@ import java.util.Objects;
 import java.util.Set;
 
 @ApiModel( description = "A user that can login on the platform" )
-public class MyUserDTO extends NamedEntityDTO
+public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
 
     @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
+
+    @ApiModelProperty( "Given Name" )
+    @NotEmpty
+    @Size( max = 255 )
+    private String name;
 
     @ApiModelProperty( "Family Name" )
     @NotEmpty
@@ -184,6 +189,7 @@ public class MyUserDTO extends NamedEntityDTO
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
+    @JsonIgnore
     @Override
     public String getDisplayName()
     {
@@ -429,6 +435,17 @@ public class MyUserDTO extends NamedEntityDTO
     public void setCompanyName( String companyName )
     {
         this.companyName = companyName;
+    }
+
+    @Override
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
     }
 
     public String getSurname()

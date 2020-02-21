@@ -51,6 +51,13 @@ public class ApplicationFileDTO extends FileDTO implements INamedEntityDTO
     private Set<ApplicationFileEnvironmentDTO> environment = new HashSet<>();
 
     @JsonIgnore
+    @Override
+    public String getDisplayName()
+    {
+        return getName();
+    }
+
+    @JsonIgnore
     public Map<String, String> getEnvironmentMap()
     {
         Map<String, String> output = new HashMap<>();
