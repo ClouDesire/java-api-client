@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,6 +43,13 @@ public class CloudProviderDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
     private List<OSType> supportedOperatingSystems;
+
+    @JsonIgnore
+    @Override
+    public String getDisplayName()
+    {
+        return getAlias();
+    }
 
     public String getAlias()
     {
