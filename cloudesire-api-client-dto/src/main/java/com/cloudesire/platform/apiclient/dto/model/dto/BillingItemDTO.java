@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -58,6 +59,13 @@ public class BillingItemDTO extends NamedEntityDTO
         this.type = type;
         this.unit = unit;
         this.description = description;
+    }
+
+    @JsonIgnore
+    @Override
+    public String getDisplayName()
+    {
+        return getIdentifier();
     }
 
     // region Auto-generated code
