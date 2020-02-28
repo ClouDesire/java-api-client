@@ -1,11 +1,18 @@
 package com.cloudesire.platform.apiclient.dto.model.filters;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Map;
 
 public class ProceedsReportFilter extends ReportFilter
 {
+    @ApiModelProperty( "Filter by report line ID" )
+    private Integer id;
+
+    @ApiModelProperty( "Impersonate another role (admin only)" )
+    private UserRole role;
+
     @ApiModelProperty( "Filter by Distributor ID" )
     private Integer distributorId;
 
@@ -56,6 +63,26 @@ public class ProceedsReportFilter extends ReportFilter
     }
 
     // region Getters & Setters
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId( Integer id )
+    {
+        this.id = id;
+    }
+
+    public UserRole getRole()
+    {
+        return role;
+    }
+
+    public void setRole( UserRole role )
+    {
+        this.role = role;
+    }
+
     public Integer getDistributorId()
     {
         return distributorId;

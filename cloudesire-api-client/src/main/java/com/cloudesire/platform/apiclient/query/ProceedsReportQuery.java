@@ -1,11 +1,14 @@
 package com.cloudesire.platform.apiclient.query;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
 
 public class ProceedsReportQuery extends PageRequestQuery
 {
+    private static final String ID = "id";
+    private static final String ROLE = "role";
     private static final String DISTRIBUTOR_ID = "distributorId";
     private static final String RESELLER_ID = "resellerId";
     private static final String COMPANY_ID = "companyId";
@@ -13,6 +16,18 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String PRODUCT_VERSION_ID = "productVersionId";
     private static final String FROM = "from";
     private static final String TO = "to";
+
+    public ProceedsReportQuery id( int id )
+    {
+        put( ID, id );
+        return this;
+    }
+
+    public ProceedsReportQuery role( UserRole role )
+    {
+        put( ROLE, role );
+        return this;
+    }
 
     public ProceedsReportQuery distributor( int distributorId )
     {
