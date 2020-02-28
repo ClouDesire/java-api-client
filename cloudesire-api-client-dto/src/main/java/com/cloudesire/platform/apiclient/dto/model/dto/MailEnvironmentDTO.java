@@ -291,6 +291,13 @@ public class MailEnvironmentDTO extends DTO
         @Valid
         private MailConfiguration customerUpdate;
 
+        /**
+         * Email sent to a configurable address on customer order creation without approval
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration customerPendingOrder;
+
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
             return getCouponConfiguration( couponType ).getSubject( language );
@@ -714,6 +721,16 @@ public class MailEnvironmentDTO extends DTO
         public void setCustomerUpdate( MailConfiguration customerUpdate )
         {
             this.customerUpdate = customerUpdate;
+        }
+
+        public MailConfiguration getCustomerPendingOrder()
+        {
+            return customerPendingOrder;
+        }
+
+        public void setCustomerPendingOrder( MailConfiguration customerPendingOrder )
+        {
+            this.customerPendingOrder = customerPendingOrder;
         }
         //endregion
     }

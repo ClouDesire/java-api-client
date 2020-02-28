@@ -283,6 +283,11 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private MailCustomization customerPaymentMethodSave = new MailCustomization();
 
+    @ApiModelProperty( "Email sent to a configurable address on customer order creation without approval" )
+    @Valid
+    @NotNull
+    private MailCustomization customerPendingOrder = new MailCustomization();
+
     @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
     @Valid
     @NotNull
@@ -811,6 +816,16 @@ public class EnvironmentDTO extends DTO
     public void setCustomerPaymentMethodSave( MailCustomization customerPaymentMethodSave )
     {
         this.customerPaymentMethodSave = customerPaymentMethodSave;
+    }
+
+    public MailCustomization getCustomerPendingOrder()
+    {
+        return customerPendingOrder;
+    }
+
+    public void setCustomerPendingOrder( MailCustomization customerPendingOrder )
+    {
+        this.customerPendingOrder = customerPendingOrder;
     }
 
     public NotificationMailCustomization getInvoiceReminder()
