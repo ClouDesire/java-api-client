@@ -14,31 +14,36 @@ public class ProceedsReportLineDTO extends ReportLineDTO
 
     private LineType type;
 
-    @ApiModelProperty( value = "The description of the invoice line", readOnly = true )
+    @ApiModelProperty( "The description of the invoice line" )
     private String description;
 
-    @ApiModelProperty( value = "The quantity sold", readOnly = true )
+    @ApiModelProperty( "The quantity sold" )
     private BigDecimal quantity;
 
     private UrlEntityDTO vendor;
 
-    @ApiModelProperty( value = "The proceeds for the parent", readOnly = true )
+    @ApiModelProperty( "The proceeds for the parent" )
     private BigDecimal wholesale;
 
-    @ApiModelProperty( value = "The proceeds for the distributor", readOnly = true )
+    @ApiModelProperty( "The proceeds for the distributor" )
     private BigDecimal sellin;
 
-    @ApiModelProperty( value = "The proceeds for the reseller", readOnly = true )
+    @ApiModelProperty( "The proceeds for the reseller" )
     private BigDecimal sellout;
 
-    @ApiModelProperty( value = "The proceeds for the vendor", readOnly = true )
+    @ApiModelProperty( "The proceeds for the vendor" )
     private BigDecimal vendorIncome;
 
-    @ApiModelProperty( value = "The costs for the distributor", readOnly = true )
+    @ApiModelProperty( "The costs for the distributor" )
     private CostsDTO costs;
 
-    @ApiModelProperty( value = "Total earnings minus total costs", readOnly = true )
+    @ApiModelProperty( "Total earnings minus total costs" )
     private BigDecimal margin;
+
+    private UrlEntityDTO billingItem;
+
+    @ApiModelProperty( "Custom billing identifier" )
+    private String identifier;
 
     // region Auto-generated code
     public UrlEntityDTO getDistributor()
@@ -161,6 +166,26 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         this.margin = margin;
     }
 
+    public UrlEntityDTO getBillingItem()
+    {
+        return billingItem;
+    }
+
+    public void setBillingItem( UrlEntityDTO billingItem )
+    {
+        this.billingItem = billingItem;
+    }
+
+    public String getIdentifier()
+    {
+        return identifier;
+    }
+
+    public void setIdentifier( String identifier )
+    {
+        this.identifier = identifier;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -193,10 +218,10 @@ public class ProceedsReportLineDTO extends ReportLineDTO
 
     public static class CostsDTO
     {
-        @ApiModelProperty( value = "The chargeback for the vendor", readOnly = true )
+        @ApiModelProperty( "The chargeback for the vendor" )
         private BigDecimal license;
 
-        @ApiModelProperty( value = "The cloud costs to refund to the platform", readOnly = true )
+        @ApiModelProperty( "The cloud costs to refund to the platform" )
         private BigDecimal iaas;
 
         public CostsDTO( BigDecimal license, BigDecimal iaas )
