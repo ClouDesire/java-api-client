@@ -3,8 +3,19 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.SortDirection;
 
+import java.util.Map;
+
 public class PageRequestQuery extends BaseQuery
 {
+    public PageRequestQuery( Map<? extends String, ?> m )
+    {
+        super( m );
+    }
+
+    public PageRequestQuery()
+    {
+    }
+
     public PageRequestQuery setPageNumber( Integer pageNumber )
     {
         put( PageRequestDTO.Fields.PAGE_NUMBER, pageNumber );

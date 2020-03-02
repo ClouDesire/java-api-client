@@ -3,8 +3,6 @@ package com.cloudesire.platform.apiclient.dto.model.filters;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Map;
-
 public class ProceedsReportFilter extends ReportFilter
 {
     @ApiModelProperty( "Filter by report line ID" )
@@ -21,46 +19,6 @@ public class ProceedsReportFilter extends ReportFilter
 
     @ApiModelProperty( "Filter by vendor ID" )
     private Integer companyId;
-
-    public static ProceedsReportFilter by()
-    {
-        return new ProceedsReportFilter();
-    }
-
-    private ProceedsReportFilter()
-    {
-        super();
-    }
-
-    // region Builder
-    public ProceedsReportFilter distributor( int distributorId )
-    {
-        this.distributorId = distributorId;
-        return this;
-    }
-
-    public ProceedsReportFilter reseller( int resellerId )
-    {
-        this.resellerId = resellerId;
-        return this;
-    }
-
-    public ProceedsReportFilter company( Integer comanyId )
-    {
-        this.companyId = comanyId;
-        return this;
-    }
-    // endregion
-
-    @Override
-    public Map<String, String> toMap()
-    {
-        Map<String, String> map = super.toMap();
-        if ( distributorId != null ) map.put( "distributorId", distributorId.toString() );
-        if ( resellerId != null ) map.put( "resellerId", resellerId.toString() );
-        if ( companyId != null ) map.put( "companyId", companyId.toString() );
-        return map;
-    }
 
     // region Getters & Setters
     public Integer getId()

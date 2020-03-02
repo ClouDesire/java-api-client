@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
+import java.util.Map;
 
 public class ProceedsReportQuery extends PageRequestQuery
 {
@@ -16,6 +17,15 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String PRODUCT_VERSION_ID = "productVersionId";
     private static final String FROM = "from";
     private static final String TO = "to";
+
+    public ProceedsReportQuery( Map<? extends String, ?> m )
+    {
+        super( m );
+    }
+
+    public ProceedsReportQuery()
+    {
+    }
 
     public ProceedsReportQuery id( int id )
     {
