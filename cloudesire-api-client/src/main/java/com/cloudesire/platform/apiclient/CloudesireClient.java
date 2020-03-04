@@ -6,6 +6,7 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.interceptors.HeaderInterceptor;
 import com.cloudesire.platform.apiclient.interceptors.ParameterInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     private final String impersonate;
     private final String environment;
     private final Interceptor interceptor;
+    private final Cache cache;
     private final long version;
 
     private CloudesireClient( Builder builder )
@@ -36,6 +38,7 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         this.environment = builder.environment;
         this.interceptor = builder.interceptor;
         this.version = builder.version;
+        this.cache = builder.cache;
 
         if ( token != null )
         {
@@ -56,6 +59,8 @@ public class CloudesireClient extends BasicAuthCloudesireClient
 
         addInterceptor( new ParameterInterceptor( VERSION, String.valueOf( version ) ) );
 
+        if ( cache != null ) addCache( cache );
+
         initialize();
     }
 
@@ -75,6 +80,7 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         private String baseUrl;
         private String environment;
         private Long version;
+        private Cache cache;
 
         public Builder()
         {
@@ -150,6 +156,12 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         public Builder setApiVersion( long version )
         {
             this.version = version;
+            return this;
+        }
+
+        public Builder setCache( Cache cache )
+        {
+            this.cache = cache;
             return this;
         }
 
