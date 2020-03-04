@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.baseclient;
 
 import com.cloudesire.platform.apiclient.interceptors.UserAgentHeaderInterceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -85,6 +86,11 @@ public abstract class AbstractCloudesireClient
     protected void addInterceptor( Interceptor interceptor )
     {
         okhttpClientBuilder.addInterceptor( interceptor );
+    }
+
+    protected void addCache( Cache cache )
+    {
+        okhttpClientBuilder.cache( cache );
     }
 
     /**
