@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import java.util.Objects;
-import java.util.Set;
 
 @ApiModel( description = "Company data of a business customer" )
 public class UserCompanyDTO extends CompanyDTO
@@ -17,8 +16,6 @@ public class UserCompanyDTO extends CompanyDTO
 
     @ApiModelProperty( "If this customer can pay later, only for admin" )
     private Boolean delayedPayment;
-
-    private Set<UserCompanyGroupDTO> groups;
 
     public UserCompanyDTO( String name, String email )
     {
@@ -64,16 +61,6 @@ public class UserCompanyDTO extends CompanyDTO
     public void setDelayedPayment( Boolean delayedPayment )
     {
         this.delayedPayment = delayedPayment;
-    }
-
-    public Set<UserCompanyGroupDTO> getGroups()
-    {
-        return groups;
-    }
-
-    public void setGroups( Set<UserCompanyGroupDTO> groups )
-    {
-        this.groups = groups;
     }
 
     @Override

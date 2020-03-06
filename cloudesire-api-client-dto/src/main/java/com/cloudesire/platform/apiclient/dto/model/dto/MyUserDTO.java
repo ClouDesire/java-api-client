@@ -73,7 +73,6 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @Valid
     private UrlEntityDTO userCompany;
 
-    @ApiModelProperty( "" )
     @Valid
     private UrlEntityDTO userCompanyGroup;
 
