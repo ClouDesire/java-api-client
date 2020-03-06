@@ -1,7 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.filters;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Set;
 
 public class ProceedsReportFilter extends ReportFilter
 {
@@ -19,6 +22,9 @@ public class ProceedsReportFilter extends ReportFilter
 
     @ApiModelProperty( "Filter by vendor ID" )
     private Integer companyId;
+
+    @ApiModelProperty( "Filter by Order type" )
+    private Set<OrderType> orderTypes;
 
     // region Getters & Setters
     public Integer getId()
@@ -69,6 +75,16 @@ public class ProceedsReportFilter extends ReportFilter
     public void setCompanyId( Integer companyId )
     {
         this.companyId = companyId;
+    }
+
+    public Set<OrderType> getOrderTypes()
+    {
+        return orderTypes;
+    }
+
+    public void setOrderTypes( Set<OrderType> orderTypes )
+    {
+        this.orderTypes = orderTypes;
     }
     // endregion
 }
