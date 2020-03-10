@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
@@ -17,6 +18,8 @@ public abstract class ReportLineDTO extends BaseEntityDTO
     protected UrlEntityDTO invoice;
 
     private UrlEntityDTO order;
+
+    private OrderType orderType;
 
     public UrlEntityDTO getProductVersion()
     {
@@ -68,6 +71,16 @@ public abstract class ReportLineDTO extends BaseEntityDTO
         this.order = order;
     }
 
+    public OrderType getOrderType()
+    {
+        return orderType;
+    }
+
+    public void setOrderType( OrderType orderType )
+    {
+        this.orderType = orderType;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -75,12 +88,12 @@ public abstract class ReportLineDTO extends BaseEntityDTO
         if ( ! ( o instanceof ReportLineDTO ) ) return false;
         ReportLineDTO that = (ReportLineDTO) o;
         return Objects.equals( productVersion, that.productVersion ) && Objects.equals( purchased, that.purchased )
-                && Objects.equals( order, that.order );
+                && Objects.equals( order, that.order ) && Objects.equals( orderType, that.orderType );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( productVersion, purchased, order );
+        return Objects.hash( productVersion, purchased, order, orderType );
     }
 }
