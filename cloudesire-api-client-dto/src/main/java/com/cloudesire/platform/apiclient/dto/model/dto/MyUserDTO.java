@@ -73,6 +73,9 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @Valid
     private UrlEntityDTO userCompany;
 
+    @Valid
+    private UrlEntityDTO companyGroup;
+
     @ApiModelProperty( "Billing address of the user" )
     private AddressDTO address;
 
@@ -310,6 +313,16 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     public void setUserCompany( UrlEntityDTO userCompany )
     {
         this.userCompany = userCompany;
+    }
+
+    public UrlEntityDTO getCompanyGroup()
+    {
+        return companyGroup;
+    }
+
+    public void setCompanyGroup( UrlEntityDTO companyGroup )
+    {
+        this.companyGroup = companyGroup;
     }
 
     public String getEmail()
