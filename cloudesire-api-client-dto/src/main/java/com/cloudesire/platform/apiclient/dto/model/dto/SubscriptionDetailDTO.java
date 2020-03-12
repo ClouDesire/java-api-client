@@ -8,6 +8,8 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<UrlEntityDTO> possibleUpgrades;
 
+    private List<BillingItemValueDTO> billingItemValues;
+
     public List<ApplicationCredentialOutputDTO> getCredentials()
     {
         return credentials;
@@ -26,5 +28,15 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setPossibleUpgrades( List<UrlEntityDTO> possibleUpgrades )
     {
         this.possibleUpgrades = possibleUpgrades;
+    }
+
+    public List<BillingItemValueDTO> getBillingItemValues()
+    {
+        return billingItemValues;
+    }
+
+    public void setBillingItemValues( List<BillingItemValueDTO> billingItemValues )
+    {
+        this.billingItemValues = billingItemValues;
     }
 }
