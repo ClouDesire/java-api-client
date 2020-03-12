@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -16,11 +17,14 @@ public interface NotifyApi
     @POST( "notification" )
     Call<Void> create( @Body NotifyDTO notification );
 
-    @GET( "notification/{id}" )
-    Call<NotifyDTO> get( @Path( "id" ) int notificationId );
-
     @GET( "notification" )
     Call<List<NotifyDTO>> getAll();
+
+    @GET( "notification" )
+    Call<List<NotifyDTO>> getAll( @Query( "expired" ) boolean expired );
+
+    @GET( "notification/{id}" )
+    Call<NotifyDTO> get( @Path( "id" ) int notificationId );
 
     @PUT( "notification/{id}" )
     Call<NotifyDTO> update( @Path( "id" ) int notificationId, @Body NotifyDTO notification );
