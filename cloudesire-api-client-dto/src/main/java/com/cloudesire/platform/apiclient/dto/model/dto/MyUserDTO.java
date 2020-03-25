@@ -25,6 +25,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
 
+    @NotNull
     @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
