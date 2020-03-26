@@ -2,16 +2,19 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDraftDTO;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 import java.util.List;
 import java.util.Map;
@@ -76,6 +79,11 @@ public interface ProductVersionApi
     @GET( "productVersion/{id}" )
     Call<ProductVersionDTO> getByReseller( @Path( "id" ) int id, @Query( "reseller" ) String reseller,
             @Query( "language" ) String language );
+
+    @GET( "productVersion" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getCsvCatalog( @QueryMap Map<String, String> pageRequest );
 
     @PUT( "productVersion/{id}" )
     Call<ProductVersionDTO> update( @Path( "id" ) int id, @Body ProductVersionDTO input );
