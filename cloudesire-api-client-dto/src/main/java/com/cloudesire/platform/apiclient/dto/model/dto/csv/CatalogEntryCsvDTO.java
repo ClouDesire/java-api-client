@@ -5,60 +5,60 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "resource", "identifier", "start", "end", "price", "vendorPrice" } )
+@JsonPropertyOrder( { "planIdentifier", "extraIdentifier", "extraStart", "extraEnd", "price", "vendorPrice" } )
 public class CatalogEntryCsvDTO extends DTO
 {
-    private String resource;
+    private String planIdentifier;
 
-    private String identifier;
+    private String extraIdentifier;
 
-    private Integer start;
+    private Integer extraStart;
 
-    private Integer end;
+    private Integer extraEnd;
 
     private BigDecimal price;
 
     private BigDecimal vendorPrice;
 
     // region Getters & Setters
-    public String getResource()
+    public String getPlanIdentifier()
     {
-        return resource;
+        return planIdentifier;
     }
 
-    public void setResource( String resource )
+    public void setPlanIdentifier( String planIdentifier )
     {
-        this.resource = resource;
+        this.planIdentifier = planIdentifier;
     }
 
-    public String getIdentifier()
+    public String getExtraIdentifier()
     {
-        return identifier;
+        return extraIdentifier;
     }
 
-    public void setIdentifier( String identifier )
+    public void setExtraIdentifier( String extraIdentifier )
     {
-        this.identifier = identifier;
+        this.extraIdentifier = extraIdentifier;
     }
 
-    public Integer getStart()
+    public Integer getExtraStart()
     {
-        return start;
+        return extraStart;
     }
 
-    public void setStart( Integer start )
+    public void setExtraStart( Integer extraStart )
     {
-        this.start = start;
+        this.extraStart = extraStart;
     }
 
-    public Integer getEnd()
+    public Integer getExtraEnd()
     {
-        return end;
+        return extraEnd;
     }
 
-    public void setEnd( Integer end )
+    public void setExtraEnd( Integer extraEnd )
     {
-        this.end = end;
+        this.extraEnd = extraEnd;
     }
 
     public BigDecimal getPrice()
