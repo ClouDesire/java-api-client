@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "planIdentifier", "extraIdentifier", "extraStart", "extraEnd", "price", "vendorPrice" } )
+@JsonPropertyOrder( {
+        "planIdentifier", "extraIdentifier", "extraStart", "extraEnd", "price", "vendorPrice", "setup", "vendorSetup"
+} )
 public class CatalogEntryCsvDTO extends DTO
 {
     private String planIdentifier;
@@ -19,6 +21,10 @@ public class CatalogEntryCsvDTO extends DTO
     private BigDecimal price;
 
     private BigDecimal vendorPrice;
+
+    private BigDecimal setup;
+
+    private BigDecimal vendorSetup;
 
     // region Getters & Setters
     public String getPlanIdentifier()
@@ -79,6 +85,26 @@ public class CatalogEntryCsvDTO extends DTO
     public void setVendorPrice( BigDecimal vendorPrice )
     {
         this.vendorPrice = vendorPrice;
+    }
+
+    public BigDecimal getSetup()
+    {
+        return setup;
+    }
+
+    public void setSetup( BigDecimal setup )
+    {
+        this.setup = setup;
+    }
+
+    public BigDecimal getVendorSetup()
+    {
+        return vendorSetup;
+    }
+
+    public void setVendorSetup( BigDecimal vendorSetup )
+    {
+        this.vendorSetup = vendorSetup;
     }
     // endregion
 }
