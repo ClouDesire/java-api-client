@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @JsonPropertyOrder( {
         "planIdentifier", "extraIdentifier", "extraStart", "extraEnd", "price", "vendorPrice", "setup", "vendorSetup"
 } )
-public class CatalogEntryCsvDTO extends DTO
+public class CatalogPlanCsvDTO extends DTO
 {
     private String planIdentifier;
 
