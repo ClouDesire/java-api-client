@@ -15,6 +15,11 @@ import java.util.Map;
 
 public interface BulkApi
 {
+    @GET( "bulk/cloudPricings" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getCloudPricings();
+
     @GET( "bulk/plans" )
     @Headers( { "Accept:text/csv" } )
     @Streaming
