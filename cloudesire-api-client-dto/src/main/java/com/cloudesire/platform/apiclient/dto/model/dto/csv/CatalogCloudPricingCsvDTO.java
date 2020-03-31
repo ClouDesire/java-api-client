@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "resource", "cloudProvider", "price", "cost" } )
+@JsonPropertyOrder( { "resource", "cloudProvider", "specs", "price", "cost" } )
 public class CatalogCloudPricingCsvDTO extends DTO
 {
     private String resource;
 
     private String cloudProvider;
+
+    private String specs;
 
     private BigDecimal price;
 
@@ -35,6 +37,16 @@ public class CatalogCloudPricingCsvDTO extends DTO
     public void setCloudProvider( String cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public String getSpecs()
+    {
+        return specs;
+    }
+
+    public void setSpecs( String specs )
+    {
+        this.specs = specs;
     }
 
     public BigDecimal getPrice()
