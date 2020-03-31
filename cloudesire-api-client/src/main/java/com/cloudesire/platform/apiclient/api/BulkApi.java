@@ -26,6 +26,10 @@ public interface BulkApi
     Call<ResponseBody> getPlans( @QueryMap Map<String, String> pageRequest );
 
     @Multipart
+    @PUT( "bulk/cloudPricings" )
+    Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
+
+    @Multipart
     @PUT( "bulk/plans" )
     Call<Void> savePlans( @Part MultipartBody.Part file );
 }
