@@ -15,10 +15,19 @@ import java.util.Map;
 
 public interface BulkApi
 {
+    @GET( "bulk/cloudPricings" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getCloudPricings();
+
     @GET( "bulk/plans" )
     @Headers( { "Accept:text/csv" } )
     @Streaming
     Call<ResponseBody> getPlans( @QueryMap Map<String, String> pageRequest );
+
+    @Multipart
+    @PUT( "bulk/cloudPricings" )
+    Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
 
     @Multipart
     @PUT( "bulk/plans" )
