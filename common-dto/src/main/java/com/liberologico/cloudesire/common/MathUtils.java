@@ -22,6 +22,13 @@ public final class MathUtils
         return base.subtract( percentage( base, pct, MathConfiguration.DEFAULT_PRECISION ) );
     }
 
+    public static BigDecimal revertPercentage( BigDecimal number, BigDecimal pct )
+    {
+        if ( number == null ) return BigDecimal.ZERO;
+
+        return number.multiply( ONE_HUNDRED ).divide( ONE_HUNDRED.add( pct ), computationMathContext() );
+    }
+
     public static BigDecimal percentage( BigDecimal base, BigDecimal pct )
     {
         return percentage( base, pct, MathConfiguration.COMPUTATION_PRECISION );
