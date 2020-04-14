@@ -37,6 +37,10 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @Valid
     private Set<CloudPricingSellinPriceDTO> cloudPricingSellinPrices;
 
+    @ApiModelProperty( "Sell-in prices for custom costs" )
+    @Valid
+    private Set<CustomSellinPriceDTO> customSellinPrices;
+
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
 
@@ -121,6 +125,16 @@ public class DistributorPricingDTO extends BaseEntityDTO
     public void setCloudPricingSellinPrices( Set<CloudPricingSellinPriceDTO> cloudPricingSellinPrices )
     {
         this.cloudPricingSellinPrices = cloudPricingSellinPrices;
+    }
+
+    public Set<CustomSellinPriceDTO> getCustomSellinPrices()
+    {
+        return customSellinPrices;
+    }
+
+    public void setCustomSellinPrices( Set<CustomSellinPriceDTO> customSellinPrices )
+    {
+        this.customSellinPrices = customSellinPrices;
     }
 
     public Boolean getLocked()
