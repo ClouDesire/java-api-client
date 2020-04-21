@@ -146,5 +146,22 @@ public class CatalogPlanCsvDTO extends DTO
     {
         this.vendorSetup = vendorSetup;
     }
+
+    @Override
+    public String toString()
+    {
+        return '"'
+                + plan + "\",\""
+                + extra + "\",\""
+                + planIdentifier + "\",\""
+                + extraIdentifier + "\",\""
+                + extraStart + "\",\""
+                + extraEnd + "\",\""
+                + price + "\",\""
+                + vendorPrice + "\",\""
+                + setup + "\",\""
+                + vendorSetup
+                + '"';
+    }
     // endregion
 }
