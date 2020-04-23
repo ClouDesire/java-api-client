@@ -68,5 +68,17 @@ public class CatalogCloudPricingCsvDTO extends DTO
     {
         this.cost = cost;
     }
+
+    @Override
+    public String toString()
+    {
+        return '"'
+                + resource + "\",\""
+                + cloudProvider + "\",\""
+                + specs + "\",\""
+                + price + "\",\""
+                + cost
+                + '"';
+    }
     // endregion
 }
