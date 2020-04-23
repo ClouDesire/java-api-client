@@ -1783,6 +1783,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "The default maximum number of published products for a newly created company" )
         private int companyMaxPublishedProducts = -1;
 
+        @ApiModelProperty( "The maximum number of featured products" )
+        private int maximumFeaturedProducts = -1;
+
         @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
         @Valid
@@ -1991,6 +1994,16 @@ public class EnvironmentDTO extends DTO
         public void setCompanyMaxPublishedProducts( int companyMaxPublishedProducts )
         {
             this.companyMaxPublishedProducts = companyMaxPublishedProducts;
+        }
+
+        public int getMaximumFeaturedProducts()
+        {
+            return maximumFeaturedProducts;
+        }
+
+        public void setMaximumFeaturedProducts( int maximumFeaturedProducts )
+        {
+            this.maximumFeaturedProducts = maximumFeaturedProducts;
         }
 
         public List<EntryDTO> getMetricFrequencyValues()
