@@ -1,15 +1,21 @@
 package com.cloudesire.platform.apiclient.query;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderingType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 
 public class ProductQuery extends ResellerCatalogQuery
 {
     private static final String NAME = "name";
+    private static final String NAMEFILTER = "nameFilter";
     private static final String DISTRIBUTOR = "distributor";
     private static final String PRODUCT_TYPE = "productType";
     private static final String OWN_COMPANY = "ownCompany";
     private static final String COMPANY = "company";
     private static final String FEATURED = "featured";
+    private static final String ONLY_ACTIVE_CONFIGURATIONS = "onlyActiveConfigurations";
+    private static final String ORDERING_TYPE = "orderingType";
+    private static final String CATEGORY = "category";
+    private static final String TAG = "tag";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -26,6 +32,16 @@ public class ProductQuery extends ResellerCatalogQuery
     public ProductQuery setName( String name )
     {
         put( NAME, name );
+        return this;
+    }
+
+    /**
+     * @deprecated use {@link #setName(String)}
+     */
+    @Deprecated
+    public ProductQuery setNameFilter( String name )
+    {
+        put( NAMEFILTER, name );
         return this;
     }
 
@@ -59,4 +75,27 @@ public class ProductQuery extends ResellerCatalogQuery
         return this;
     }
 
+    public ProductQuery setOrderingType( OrderingType type )
+    {
+        put( ORDERING_TYPE, type );
+        return this;
+    }
+
+    public ProductQuery setCategory( int categoryId )
+    {
+        put( CATEGORY, categoryId );
+        return this;
+    }
+
+    public ProductQuery setTag( String tag )
+    {
+        put( TAG, tag );
+        return this;
+    }
+
+    public ProductQuery setOnlyActiveConfigurations( boolean flag )
+    {
+        put( ONLY_ACTIVE_CONFIGURATIONS, flag );
+        return this;
+    }
 }
