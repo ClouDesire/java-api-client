@@ -1,7 +1,5 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.query.PageRequestQuery;
-import com.cloudesire.platform.apiclient.query.ProductQuery;
 import com.cloudesire.platform.apiclient.dto.model.dto.CspArmProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.CspAzureProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.CspLicenseProductDTO;
@@ -10,6 +8,8 @@ import com.cloudesire.platform.apiclient.dto.model.dto.ProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductDraftDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductRegisterEntryDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
+import com.cloudesire.platform.apiclient.query.ProductQuery;
 import com.cloudesire.platform.apiclient.query.ResellerCatalogQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -27,7 +27,6 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
 import java.util.List;
-import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 
@@ -61,9 +60,6 @@ public interface ProductApi
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
 
     @GET( "product" )
-    Call<List<ProductDTO>> getAllWithFunnyFilters( @QueryMap Map<String, String> filters );
-
-    @GET( "product" )
     Call<List<ProductDTO>> getAll();
 
     @GET( "product" )
@@ -76,7 +72,7 @@ public interface ProductApi
     Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query );
 
     @GET( "product/approvalRequests" )
-    Call<List<ProductDTO>> getApprovalRequests( @QueryMap Map<String, String> pageRequest );
+    Call<List<ProductDTO>> getApprovalRequests( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "product/sku/{sku}" )
     Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku );
@@ -109,10 +105,10 @@ public interface ProductApi
     Call<ProductDraftDTO> getDraft( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
     @GET( "product/draft" )
-    Call<List<ProductDraftDTO>> getDrafts( @QueryMap Map<String, String> pageRequest );
+    Call<List<ProductDraftDTO>> getDrafts( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "product/draft" )
-    Call<List<ProductDraftDTO>> getDrafts( @QueryMap Map<String, String> pageRequest, @Query( "language" ) String language );
+    Call<List<ProductDraftDTO>> getDrafts( @QueryMap PageRequestQuery pageRequest, @Query( "language" ) String language );
 
     @GET( "product/{id}/register" )
     Call<List<ProductRegisterEntryDTO>> getRegister( @Path( "id" ) Integer id );
@@ -120,10 +116,10 @@ public interface ProductApi
     @Streaming
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest );
+    Call<ResponseBody> getCsv( @QueryMap PageRequestQuery pageRequest );
 
     @Streaming
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "productType" ) ProductType productType );
+    Call<ResponseBody> getCsv( @QueryMap PageRequestQuery pageRequest, @Query( "productType" ) ProductType productType );
 }

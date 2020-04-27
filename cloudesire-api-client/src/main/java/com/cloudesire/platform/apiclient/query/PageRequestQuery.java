@@ -16,6 +16,13 @@ public class PageRequestQuery extends BaseQuery
     {
     }
 
+    public PageRequestQuery( int pageNumber, int pageSize, String sortField )
+    {
+        setPageNumber( pageNumber );
+        setPageSize( pageSize );
+        setSortField( sortField );
+    }
+
     public PageRequestQuery setPageNumber( Integer pageNumber )
     {
         put( PageRequestDTO.Fields.PAGE_NUMBER, pageNumber );
