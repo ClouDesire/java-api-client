@@ -16,6 +16,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
@@ -58,6 +59,9 @@ public interface ProductApi
 
     @PATCH( "product/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions, @Query( "language" ) String language );
+
+    @HEAD( "product" )
+    Call<Void> headAll();
 
     @GET( "product" )
     Call<List<ProductDTO>> getAll();
