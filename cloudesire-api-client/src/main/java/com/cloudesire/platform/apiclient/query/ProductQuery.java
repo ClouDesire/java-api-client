@@ -14,7 +14,7 @@ public class ProductQuery extends ResellerCatalogQuery
     private static final String FEATURED = "featured";
     private static final String ONLY_ACTIVE_CONFIGURATIONS = "onlyActiveConfigurations";
     private static final String ORDERING_TYPE = "orderingType";
-    private static final String CATEGORY = "category";
+    private static final String CATEGORY_ID = "categoryId";
     private static final String TAG = "tag";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
@@ -81,9 +81,9 @@ public class ProductQuery extends ResellerCatalogQuery
         return this;
     }
 
-    public ProductQuery setCategory( int categoryId )
+    public ProductQuery setCategoryId( int categoryId )
     {
-        put( CATEGORY, categoryId );
+        put( CATEGORY_ID, categoryId );
         return this;
     }
 
