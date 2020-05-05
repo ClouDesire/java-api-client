@@ -124,7 +124,7 @@ public class OrderLineDTO implements Line
 
     public void setQuantity( BigDecimal quantity )
     {
-        this.quantity = quantity.setScale( MathConfiguration.COMPUTATION_PRECISION, MathConfiguration.ROUNDING_MODE );
+        this.quantity = quantity;
     }
 
     /**

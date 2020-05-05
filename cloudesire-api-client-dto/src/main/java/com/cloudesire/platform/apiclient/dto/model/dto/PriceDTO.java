@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.liberologico.cloudesire.common.MathConfiguration;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -40,9 +39,7 @@ public class PriceDTO extends DTO
 
     public BigDecimal getPrice()
     {
-        return price != null ?
-                price.setScale( MathConfiguration.COMPUTATION_PRECISION, MathConfiguration.ROUNDING_MODE ) :
-                null;
+        return price;
     }
 
     public void setPrice( @NotNull BigDecimal price )
