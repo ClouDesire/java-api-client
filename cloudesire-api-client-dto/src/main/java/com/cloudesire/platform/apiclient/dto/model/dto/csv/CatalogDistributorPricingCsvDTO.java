@@ -6,12 +6,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "plan", "planIdentifier", "markup", "markupType", "setup", "setupType" } )
+@JsonPropertyOrder( {
+        "plan", "extra", "planIdentifier", "extraIdentifier", "extraStart", "extraEnd",
+        "markup", "markupType", "setup", "setupType"
+} )
 public class CatalogDistributorPricingCsvDTO extends DTO
 {
     private String plan;
 
+    private String extra;
+
     private String planIdentifier;
+
+    private String extraIdentifier;
+
+    private Integer extraStart;
+
+    private Integer extraEnd;
 
     private BigDecimal markup;
 
@@ -21,7 +32,22 @@ public class CatalogDistributorPricingCsvDTO extends DTO
 
     private ResellingConfigurationType setupType;
 
+    public CatalogDistributorPricingCsvDTO copyVersion()
+    {
+        return new CatalogDistributorPricingCsvDTO( plan, planIdentifier );
+    }
+
     // region Getters & Setters
+    private CatalogDistributorPricingCsvDTO( String plan, String planIdentifier )
+    {
+        this.plan = plan;
+        this.planIdentifier = planIdentifier;
+    }
+
+    public CatalogDistributorPricingCsvDTO()
+    {
+    }
+
     public String getPlan()
     {
         return plan;
@@ -32,9 +58,49 @@ public class CatalogDistributorPricingCsvDTO extends DTO
         this.plan = plan;
     }
 
+    public String getExtra()
+    {
+        return extra;
+    }
+
+    public void setExtra( String extra )
+    {
+        this.extra = extra;
+    }
+
     public String getPlanIdentifier()
     {
         return planIdentifier;
+    }
+
+    public String getExtraIdentifier()
+    {
+        return extraIdentifier;
+    }
+
+    public void setExtraIdentifier( String extraIdentifier )
+    {
+        this.extraIdentifier = extraIdentifier;
+    }
+
+    public Integer getExtraStart()
+    {
+        return extraStart;
+    }
+
+    public void setExtraStart( Integer extraStart )
+    {
+        this.extraStart = extraStart;
+    }
+
+    public Integer getExtraEnd()
+    {
+        return extraEnd;
+    }
+
+    public void setExtraEnd( Integer extraEnd )
+    {
+        this.extraEnd = extraEnd;
     }
 
     public void setPlanIdentifier( String planIdentifier )
@@ -87,7 +153,11 @@ public class CatalogDistributorPricingCsvDTO extends DTO
     {
         return '"'
                 + plan + "\",\""
+                + extra + "\",\""
                 + planIdentifier + "\",\""
+                + extraIdentifier + "\",\""
+                + extraStart + "\",\""
+                + extraEnd + "\",\""
                 + markup + "\",\""
                 + markupType + "\",\""
                 + setup + "\",\""
