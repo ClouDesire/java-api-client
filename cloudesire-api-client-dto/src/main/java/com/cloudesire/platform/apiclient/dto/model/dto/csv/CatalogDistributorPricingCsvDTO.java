@@ -6,11 +6,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigDecimal;
 
 @JsonPropertyOrder( {
-        "plan", "extra", "planIdentifier", "extraIdentifier", "extraStart", "extraEnd",
+        "plan", "extra", "cloudProvider",
+        "planIdentifier", "extraIdentifier", "cloudResource",
+        "extraStart", "extraEnd", "cloudSpecs",
         "markup", "markupType", "setup", "setupType"
 } )
 public class CatalogDistributorPricingCsvDTO extends CatalogCsvDTO
 {
+    private String cloudProvider;
+
+    private String cloudResource;
+
+    private String cloudSpecs;
+
     private BigDecimal markup;
 
     private ResellingConfigurationType markupType;
@@ -33,6 +41,36 @@ public class CatalogDistributorPricingCsvDTO extends CatalogCsvDTO
 
     public CatalogDistributorPricingCsvDTO()
     {
+    }
+
+    public String getCloudProvider()
+    {
+        return cloudProvider;
+    }
+
+    public void setCloudProvider( String cloudProvider )
+    {
+        this.cloudProvider = cloudProvider;
+    }
+
+    public String getCloudResource()
+    {
+        return cloudResource;
+    }
+
+    public void setCloudResource( String cloudResource )
+    {
+        this.cloudResource = cloudResource;
+    }
+
+    public String getCloudSpecs()
+    {
+        return cloudSpecs;
+    }
+
+    public void setCloudSpecs( String cloudSpecs )
+    {
+        this.cloudSpecs = cloudSpecs;
     }
 
     public BigDecimal getMarkup()
@@ -78,7 +116,16 @@ public class CatalogDistributorPricingCsvDTO extends CatalogCsvDTO
     @Override
     public String toString()
     {
-        return super.toString() + ",\""
+        return '"'
+                + plan + "\",\""
+                + extra + "\",\""
+                + cloudProvider + "\",\""
+                + planIdentifier + "\",\""
+                + extraIdentifier + "\",\""
+                + cloudResource + "\",\""
+                + extraStart + "\",\""
+                + extraEnd + "\",\""
+                + cloudSpecs + "\",\""
                 + markup + "\",\""
                 + markupType + "\",\""
                 + setup + "\",\""
