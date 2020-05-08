@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellingConfigurationType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -10,20 +9,8 @@ import java.math.BigDecimal;
         "plan", "extra", "planIdentifier", "extraIdentifier", "extraStart", "extraEnd",
         "markup", "markupType", "setup", "setupType"
 } )
-public class CatalogDistributorPricingCsvDTO extends DTO
+public class CatalogDistributorPricingCsvDTO extends CatalogCsvDTO
 {
-    private String plan;
-
-    private String extra;
-
-    private String planIdentifier;
-
-    private String extraIdentifier;
-
-    private Integer extraStart;
-
-    private Integer extraEnd;
-
     private BigDecimal markup;
 
     private ResellingConfigurationType markupType;
@@ -32,6 +19,7 @@ public class CatalogDistributorPricingCsvDTO extends DTO
 
     private ResellingConfigurationType setupType;
 
+    @Override
     public CatalogDistributorPricingCsvDTO copyVersion()
     {
         return new CatalogDistributorPricingCsvDTO( plan, planIdentifier );
@@ -40,72 +28,11 @@ public class CatalogDistributorPricingCsvDTO extends DTO
     // region Getters & Setters
     private CatalogDistributorPricingCsvDTO( String plan, String planIdentifier )
     {
-        this.plan = plan;
-        this.planIdentifier = planIdentifier;
+        super( plan, planIdentifier );
     }
 
     public CatalogDistributorPricingCsvDTO()
     {
-    }
-
-    public String getPlan()
-    {
-        return plan;
-    }
-
-    public void setPlan( String plan )
-    {
-        this.plan = plan;
-    }
-
-    public String getExtra()
-    {
-        return extra;
-    }
-
-    public void setExtra( String extra )
-    {
-        this.extra = extra;
-    }
-
-    public String getPlanIdentifier()
-    {
-        return planIdentifier;
-    }
-
-    public String getExtraIdentifier()
-    {
-        return extraIdentifier;
-    }
-
-    public void setExtraIdentifier( String extraIdentifier )
-    {
-        this.extraIdentifier = extraIdentifier;
-    }
-
-    public Integer getExtraStart()
-    {
-        return extraStart;
-    }
-
-    public void setExtraStart( Integer extraStart )
-    {
-        this.extraStart = extraStart;
-    }
-
-    public Integer getExtraEnd()
-    {
-        return extraEnd;
-    }
-
-    public void setExtraEnd( Integer extraEnd )
-    {
-        this.extraEnd = extraEnd;
-    }
-
-    public void setPlanIdentifier( String planIdentifier )
-    {
-        this.planIdentifier = planIdentifier;
     }
 
     public BigDecimal getMarkup()
@@ -151,13 +78,7 @@ public class CatalogDistributorPricingCsvDTO extends DTO
     @Override
     public String toString()
     {
-        return '"'
-                + plan + "\",\""
-                + extra + "\",\""
-                + planIdentifier + "\",\""
-                + extraIdentifier + "\",\""
-                + extraStart + "\",\""
-                + extraEnd + "\",\""
+        return super.toString() + ",\""
                 + markup + "\",\""
                 + markupType + "\",\""
                 + setup + "\",\""
