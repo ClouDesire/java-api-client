@@ -8,6 +8,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
@@ -20,6 +21,11 @@ public interface BulkApi
     @Streaming
     Call<ResponseBody> getCloudPricings();
 
+    @GET( "bulk/distributorCatalog/{id}" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getDistributorCatalog( @Path( "id" ) int id );
+
     @GET( "bulk/plans" )
     @Headers( { "Accept:text/csv" } )
     @Streaming
@@ -28,6 +34,10 @@ public interface BulkApi
     @Multipart
     @PUT( "bulk/cloudPricings" )
     Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
+
+    @Multipart
+    @PUT( "bulk/distributorCatalog/{id}" )
+    Call<Void> saveDistributorCatalog( @Path( "id" ) int id, @Part MultipartBody.Part payload );
 
     @Multipart
     @PUT( "bulk/plans" )
