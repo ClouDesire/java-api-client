@@ -1,17 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class CustomResellingPriceDTO extends BaseResellingPriceDTO
 {
-    @Size( min = 1, max = 125 )
-    private String identifier;
+    @NotNull
+    private CustomCostRuleDTO rule;
 
     public CustomResellingPriceDTO( String identifier, BigDecimal sellout )
     {
-        this.identifier = identifier;
+        this.rule = new CustomCostRuleDTO( identifier );
         this.price = new ResellingPriceDTO( null, sellout );
     }
 
@@ -19,14 +19,14 @@ public class CustomResellingPriceDTO extends BaseResellingPriceDTO
     {
     }
 
-    public String getIdentifier()
+    public CustomCostRuleDTO getRule()
     {
-        return identifier;
+        return rule;
     }
 
-    public void setIdentifier( String identifier )
+    public void setRule( CustomCostRuleDTO rule )
     {
-        this.identifier = identifier;
+        this.rule = rule;
     }
 
     @Override
@@ -36,12 +36,12 @@ public class CustomResellingPriceDTO extends BaseResellingPriceDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CustomResellingPriceDTO that = (CustomResellingPriceDTO) o;
-        return Objects.equals( identifier, that.identifier );
+        return Objects.equals( rule, that.rule );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), identifier );
+        return Objects.hash( super.hashCode(), rule );
     }
 }

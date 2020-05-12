@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -10,15 +10,15 @@ public class CustomSellinPriceDTO extends BaseEntityDTO
     @Valid
     protected UrlEntityDTO distributorPricing;
 
-    @Size( min = 1, max = 125 )
-    private String identifier;
+    @NotNull
+    private CustomCostRuleDTO rule;
 
     @Valid
     private ResellingPriceDTO price;
 
     public CustomSellinPriceDTO( String identifier, BigDecimal markup )
     {
-        this.identifier = identifier;
+        this.rule = new CustomCostRuleDTO( identifier );
         this.price = new ResellingPriceDTO( markup );
     }
 
@@ -37,14 +37,14 @@ public class CustomSellinPriceDTO extends BaseEntityDTO
         this.distributorPricing = distributorPricing;
     }
 
-    public String getIdentifier()
+    public CustomCostRuleDTO getRule()
     {
-        return identifier;
+        return rule;
     }
 
-    public void setIdentifier( String identifier )
+    public void setRule( CustomCostRuleDTO rule )
     {
-        this.identifier = identifier;
+        this.rule = rule;
     }
 
     public ResellingPriceDTO getPrice()
@@ -64,13 +64,13 @@ public class CustomSellinPriceDTO extends BaseEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         CustomSellinPriceDTO that = (CustomSellinPriceDTO) o;
         return Objects.equals( distributorPricing, that.distributorPricing ) && Objects
-                .equals( identifier, that.identifier );
+                .equals( rule, that.rule );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( distributorPricing, identifier );
+        return Objects.hash( distributorPricing, rule );
     }
     // endregion
 }
