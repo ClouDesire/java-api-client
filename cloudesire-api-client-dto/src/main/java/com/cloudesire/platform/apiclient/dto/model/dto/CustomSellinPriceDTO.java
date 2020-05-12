@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.CustomCostRuleType;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -15,6 +17,12 @@ public class CustomSellinPriceDTO extends BaseEntityDTO
 
     @Valid
     private ResellingPriceDTO price;
+
+    public CustomSellinPriceDTO( CustomCostRuleType ruleType, String identifier, Integer weight, BigDecimal markup )
+    {
+        this.rule = new CustomCostRuleDTO( ruleType, identifier, weight );
+        this.price = new ResellingPriceDTO( markup );
+    }
 
     public CustomSellinPriceDTO( String identifier, BigDecimal markup )
     {

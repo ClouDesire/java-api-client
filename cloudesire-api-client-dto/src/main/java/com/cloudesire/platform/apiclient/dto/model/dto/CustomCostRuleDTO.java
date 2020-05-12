@@ -18,11 +18,16 @@ public class CustomCostRuleDTO extends DTO
     @NotNull
     private Integer weight;
 
+    public CustomCostRuleDTO( CustomCostRuleType ruleType, String identifier, Integer weight )
+    {
+        this.ruleType = ruleType;
+        this.identifier = identifier;
+        this.weight = weight;
+    }
+
     public CustomCostRuleDTO( String identifier )
     {
-        this.ruleType = CustomCostRuleType.EXACT;
-        this.identifier = identifier;
-        this.weight = 0;
+        this( CustomCostRuleType.EXACT, identifier, 0 );
     }
 
     public CustomCostRuleDTO()

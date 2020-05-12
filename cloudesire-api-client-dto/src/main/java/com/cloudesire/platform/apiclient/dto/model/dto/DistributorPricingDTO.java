@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -39,7 +40,7 @@ public class DistributorPricingDTO extends BaseEntityDTO
 
     @ApiModelProperty( "Sell-in prices for custom costs" )
     @Valid
-    private Set<CustomSellinPriceDTO> customSellinPrices;
+    private List<CustomSellinPriceDTO> customSellinPrices;
 
     @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
     private Boolean locked;
@@ -127,12 +128,12 @@ public class DistributorPricingDTO extends BaseEntityDTO
         this.cloudPricingSellinPrices = cloudPricingSellinPrices;
     }
 
-    public Set<CustomSellinPriceDTO> getCustomSellinPrices()
+    public List<CustomSellinPriceDTO> getCustomSellinPrices()
     {
         return customSellinPrices;
     }
 
-    public void setCustomSellinPrices( Set<CustomSellinPriceDTO> customSellinPrices )
+    public void setCustomSellinPrices( List<CustomSellinPriceDTO> customSellinPrices )
     {
         this.customSellinPrices = customSellinPrices;
     }
