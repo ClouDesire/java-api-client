@@ -3,7 +3,6 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.CustomCostRuleType;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class CustomCostRuleDTO extends DTO
@@ -12,22 +11,12 @@ public class CustomCostRuleDTO extends DTO
     private CustomCostRuleType ruleType;
 
     @NotNull
-    @Size( min = 1, max = 125 )
-    private String identifier;
-
-    @NotNull
     private Integer weight;
 
-    public CustomCostRuleDTO( CustomCostRuleType ruleType, String identifier, Integer weight )
+    public CustomCostRuleDTO( CustomCostRuleType ruleType, Integer weight )
     {
         this.ruleType = ruleType;
-        this.identifier = identifier;
         this.weight = weight;
-    }
-
-    public CustomCostRuleDTO( String identifier )
-    {
-        this( CustomCostRuleType.EXACT, identifier, 0 );
     }
 
     public CustomCostRuleDTO()
@@ -42,16 +31,6 @@ public class CustomCostRuleDTO extends DTO
     public void setRuleType( CustomCostRuleType ruleType )
     {
         this.ruleType = ruleType;
-    }
-
-    public String getIdentifier()
-    {
-        return identifier;
-    }
-
-    public void setIdentifier( String identifier )
-    {
-        this.identifier = identifier;
     }
 
     public Integer getWeight()
@@ -70,13 +49,12 @@ public class CustomCostRuleDTO extends DTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         CustomCostRuleDTO that = (CustomCostRuleDTO) o;
-        return ruleType == that.ruleType && Objects.equals( identifier, that.identifier ) && Objects.equals( weight,
-                that.weight );
+        return ruleType == that.ruleType && Objects.equals( weight, that.weight );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( ruleType, identifier, weight );
+        return Objects.hash( ruleType, weight );
     }
 }
