@@ -31,6 +31,11 @@ public interface BulkApi
     @Streaming
     Call<ResponseBody> getPlans( @QueryMap Map<String, String> pageRequest );
 
+    @GET( "bulk/resellerCatalog/{id}" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getResellerCatalog( @Path( "id" ) int id );
+
     @Multipart
     @PUT( "bulk/cloudPricings" )
     Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
@@ -42,4 +47,8 @@ public interface BulkApi
     @Multipart
     @PUT( "bulk/plans" )
     Call<Void> savePlans( @Part MultipartBody.Part file );
+
+    @Multipart
+    @PUT( "bulk/resellerCatalog/{id}" )
+    Call<Void> saveResellerCatalog( @Path( "id" ) int id, @Part MultipartBody.Part payload );
 }
