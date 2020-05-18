@@ -63,7 +63,7 @@ public class ResellerPricingDTO extends BaseEntityDTO
 
     @ApiModelProperty( "Reselling prices for custom costs" )
     @Valid
-    private Set<CustomResellingPriceDTO> customResellingPrices;
+    private List<CustomResellingPriceDTO> customResellingPrices;
 
     public ResellerPricingDTO( UrlEntityDTO resellerCatalog, UrlEntityDTO distributorPricing )
     {
@@ -212,12 +212,12 @@ public class ResellerPricingDTO extends BaseEntityDTO
         this.billingItemValues = billingItemValues;
     }
 
-    public Set<CustomResellingPriceDTO> getCustomResellingPrices()
+    public List<CustomResellingPriceDTO> getCustomResellingPrices()
     {
         return customResellingPrices;
     }
 
-    public void setCustomResellingPrices( Set<CustomResellingPriceDTO> customResellingPrices )
+    public void setCustomResellingPrices( List<CustomResellingPriceDTO> customResellingPrices )
     {
         this.customResellingPrices = customResellingPrices;
     }
