@@ -1,5 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -8,6 +11,11 @@ import java.util.Objects;
 abstract class CustomOrderLineDTO extends OrderLineDTO
 {
     @ApiModelProperty( "Cost for the platform owner" )
+    @FieldAPI( sinceVersion = ApiVersion.V20200518 )
+    private PriceDTO platformCost;
+
+    @ApiModelProperty( hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20200518 )
     private BigDecimal cost;
 
     public CustomOrderLineDTO( BigDecimal price )
@@ -24,11 +32,29 @@ abstract class CustomOrderLineDTO extends OrderLineDTO
     {
     }
 
+    public PriceDTO getPlatformCost()
+    {
+        return platformCost;
+    }
+
+    public void setPlatformCost( PriceDTO platformCost )
+    {
+        this.platformCost = platformCost;
+    }
+
+    /**
+     * @deprecated by {@link #getPlatformCost()}
+     */
+    @Deprecated
     public BigDecimal getCost()
     {
         return cost;
     }
 
+    /**
+     * @deprecated by {@link #setPlatformCost(PriceDTO)}
+     */
+    @Deprecated
     public void setCost( BigDecimal cost )
     {
         this.cost = cost;
@@ -41,12 +67,12 @@ abstract class CustomOrderLineDTO extends OrderLineDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CustomOrderLineDTO that = (CustomOrderLineDTO) o;
-        return Objects.equals( cost, that.cost );
+        return Objects.equals( platformCost, that.platformCost );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), cost );
+        return Objects.hash( super.hashCode(), platformCost );
     }
 }

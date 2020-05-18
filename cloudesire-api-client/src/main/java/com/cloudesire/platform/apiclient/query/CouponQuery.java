@@ -13,6 +13,7 @@ public class CouponQuery extends BaseQuery
     private static final String PRODUCT = "product";
     private static final String EXPIRATION_DATE = "expirationDate";
     private static final String DESTINATION = "destination";
+    private static final String VALUE = "value";
     private static final String NUMBER = "number";
     private static final String HOW_MANY = "howMany";
 
@@ -46,6 +47,16 @@ public class CouponQuery extends BaseQuery
         return this;
     }
 
+    public CouponQuery setValue( BigDecimal value )
+    {
+        put( VALUE, value );
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #setValue(BigDecimal)}
+     */
+    @Deprecated
     public CouponQuery setNumber( BigDecimal number )
     {
         put( NUMBER, number );
