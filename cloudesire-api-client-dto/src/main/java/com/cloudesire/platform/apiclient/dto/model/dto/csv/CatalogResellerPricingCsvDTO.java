@@ -9,48 +9,48 @@ import java.math.BigDecimal;
         "plan", "extra", "cloudProvider",
         "planIdentifier", "extraIdentifier", "cloudResource",
         "extraStart", "extraEnd", "cloudSpecs",
-        "markup", "markupType", "setup", "setupType"
+        "sellout", "selloutType", "setup", "setupType"
 } )
-public class CatalogDistributorPricingCsvDTO extends CatalogPricingCsvDTO
+public class CatalogResellerPricingCsvDTO extends CatalogPricingCsvDTO
 {
-    private BigDecimal markup;
+    private BigDecimal sellout;
 
-    private ResellingConfigurationType markupType;
+    private ResellingConfigurationType selloutType;
 
     @Override
-    public CatalogDistributorPricingCsvDTO copyVersion()
+    public CatalogResellerPricingCsvDTO copyVersion()
     {
-        return new CatalogDistributorPricingCsvDTO( plan, planIdentifier );
+        return new CatalogResellerPricingCsvDTO( plan, planIdentifier );
     }
 
     // region Getters & Setters
-    private CatalogDistributorPricingCsvDTO( String plan, String planIdentifier )
+    private CatalogResellerPricingCsvDTO( String plan, String planIdentifier )
     {
         super( plan, planIdentifier );
     }
 
-    public CatalogDistributorPricingCsvDTO()
+    public CatalogResellerPricingCsvDTO()
     {
     }
 
-    public BigDecimal getMarkup()
+    public BigDecimal getSellout()
     {
-        return markup;
+        return sellout;
     }
 
-    public void setMarkup( BigDecimal markup )
+    public void setSellout( BigDecimal sellout )
     {
-        this.markup = markup;
+        this.sellout = sellout;
     }
 
-    public ResellingConfigurationType getMarkupType()
+    public ResellingConfigurationType getSelloutType()
     {
-        return markupType;
+        return selloutType;
     }
 
-    public void setMarkupType( ResellingConfigurationType markupType )
+    public void setSelloutType( ResellingConfigurationType selloutType )
     {
-        this.markupType = markupType;
+        this.selloutType = selloutType;
     }
 
     @Override
@@ -66,8 +66,8 @@ public class CatalogDistributorPricingCsvDTO extends CatalogPricingCsvDTO
                 + extraStart + "\",\""
                 + extraEnd + "\",\""
                 + cloudSpecs + "\",\""
-                + markup + "\",\""
-                + markupType + "\",\""
+                + sellout + "\",\""
+                + selloutType + "\",\""
                 + setup + "\",\""
                 + setupType
                 + '"';
