@@ -41,4 +41,4 @@ jobs:
           command: ./mvnw -B verify
       - run:
           name: Deploy artifacts
-          command: if [ "$CIRCLE_BRANCH" == "master" ]; then ./mvnw -B deploy -Dmaven.test.skip=true; fi
+          command: if [ "$CIRCLE_BRANCH" == "master" ]; then ./mvnw -B --fail-never deploy -Dmaven.test.skip=true; fi
