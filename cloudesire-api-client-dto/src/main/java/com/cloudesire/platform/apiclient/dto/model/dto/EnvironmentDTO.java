@@ -1880,7 +1880,7 @@ public class EnvironmentDTO extends DTO
         private PasswordPolicy passwordPolicy = new PasswordPolicy();
 
         @ApiModelProperty( "Conversion factors from foreign currencies" )
-        private Map<String, BigDecimal> currencyConversion;
+        private Map<String, BigDecimal> currencyConversion = new HashMap<>();
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
