@@ -1289,6 +1289,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enable Keycloak SSO" )
         private boolean keycloak;
 
+        @ApiModelProperty( "Enable LDAP SSO" )
+        private boolean ldap;
+
         @ApiModelProperty( "Remove customer data from notifications" )
         private boolean gdpr;
 
@@ -1620,6 +1623,16 @@ public class EnvironmentDTO extends DTO
         public void setKeycloak( boolean keycloak )
         {
             this.keycloak = keycloak;
+        }
+
+        public boolean isLdap()
+        {
+            return ldap;
+        }
+
+        public void setLdap( boolean ldap )
+        {
+            this.ldap = ldap;
         }
 
         public boolean isGdpr()
