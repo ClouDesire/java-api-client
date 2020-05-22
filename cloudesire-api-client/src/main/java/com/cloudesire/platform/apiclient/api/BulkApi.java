@@ -51,4 +51,8 @@ public interface BulkApi
     @Multipart
     @PUT( "bulk/resellerCatalog/{id}" )
     Call<Void> saveResellerCatalog( @Path( "id" ) int id, @Part MultipartBody.Part payload );
+
+    @Multipart
+    @PUT( "bulk/user" )
+    Call<Void> saveUsers( @Part MultipartBody.Part file );
 }
