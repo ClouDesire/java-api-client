@@ -3,10 +3,23 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
-@JsonPropertyOrder( { "userName", "name", "surname", "email", "pec", "phone" } )
+@JsonPropertyOrder( {
+        "userName", "name", "surname", "email", "pec", "phone", "password", "language", "enabled", "acceptedTerms",
+        "fiscalCode"
+} )
 public class CatalogUserCsvDTO extends BaseUserCsvDTO
 {
     private String userName;
+
+    private String password;
+
+    private String language;
+
+    private Boolean enabled;
+
+    private Boolean acceptedTerms;
+
+    private String fiscalCode;
 
     @JsonUnwrapped( prefix = "address." )
     private Address address;
@@ -19,6 +32,56 @@ public class CatalogUserCsvDTO extends BaseUserCsvDTO
     public void setUserName( String userName )
     {
         this.userName = userName;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword( String password )
+    {
+        this.password = password;
+    }
+
+    public String getLanguage()
+    {
+        return language;
+    }
+
+    public void setLanguage( String language )
+    {
+        this.language = language;
+    }
+
+    public Boolean getEnabled()
+    {
+        return enabled;
+    }
+
+    public void setEnabled( Boolean enabled )
+    {
+        this.enabled = enabled;
+    }
+
+    public Boolean getAcceptedTerms()
+    {
+        return acceptedTerms;
+    }
+
+    public void setAcceptedTerms( Boolean acceptedTerms )
+    {
+        this.acceptedTerms = acceptedTerms;
+    }
+
+    public String getFiscalCode()
+    {
+        return fiscalCode;
+    }
+
+    public void setFiscalCode( String fiscalCode )
+    {
+        this.fiscalCode = fiscalCode;
     }
 
     public Address getAddress()
