@@ -36,6 +36,11 @@ public interface BulkApi
     @Streaming
     Call<ResponseBody> getResellerCatalog( @Path( "id" ) int id );
 
+    @GET( "bulk/users" )
+    @Headers( { "Accept:text/csv" } )
+    @Streaming
+    Call<ResponseBody> getUsers( @QueryMap Map<String, String> pageRequest );
+
     @Multipart
     @PUT( "bulk/cloudPricings" )
     Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
