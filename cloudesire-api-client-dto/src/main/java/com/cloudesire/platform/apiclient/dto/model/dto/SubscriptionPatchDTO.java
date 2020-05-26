@@ -249,7 +249,11 @@ public class SubscriptionPatchDTO extends DTO
         @ApiModelProperty( "Request a product plan update for a syndicated subscription" )
         SYNDICATED_UPGRADE,
 
-        @ApiModelProperty( "Update extra resources ranges with current plan values" )
+        @ApiModelProperty( "Update reselling prices and extra resources ranges with current plan values" )
+        REFRESH_BILLING_CONFIGURATION,
+
+        @ApiModelProperty( hidden = true )
+        @Deprecated
         REFRESH_BILLING_ITEM_VALUES,
 
         @ApiModelProperty( "Approve a subscription" )
