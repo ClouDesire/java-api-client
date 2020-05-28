@@ -51,6 +51,9 @@ public class BillingItemDTO extends NamedEntityDTO
     @ApiModelProperty( "Whether the billing item will be included in every subscription" )
     private boolean required;
 
+    @ApiModelProperty( "Whether the billing item can be downgraded" )
+    private boolean downgradable = true;
+
     private ApiEndpointDTO endpoint;
 
     public BillingItemDTO( BillingItemType type, String name, String unit, String description )
@@ -170,6 +173,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setRequired( boolean required )
     {
         this.required = required;
+        return this;
+    }
+
+    public boolean isDowngradable()
+    {
+        return downgradable;
+    }
+
+    public BillingItemDTO setDowngradable( boolean downgradable )
+    {
+        this.downgradable = downgradable;
         return this;
     }
 
