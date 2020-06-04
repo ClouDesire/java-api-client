@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
         "companyName", "userName", "name", "surname", "email", "pec", "phone", "password", "language", "enabled",
         "acceptedTerms", "fiscalCode"
 } )
-public class CatalogUserCsvDTO extends BaseUserCsvDTO
+public class CustomerCsvDTO extends BaseUserCsvDTO
 {
     private String companyName;
 

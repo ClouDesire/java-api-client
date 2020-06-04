@@ -43,11 +43,11 @@ public interface BulkApi
 
     @Multipart
     @PUT( "bulk/cloudPricings" )
-    Call<Void> saveCloudPricings( @Part MultipartBody.Part payload );
+    Call<Void> saveCloudPricings( @Part MultipartBody.Part file );
 
     @Multipart
     @PUT( "bulk/distributorCatalog/{id}" )
-    Call<Void> saveDistributorCatalog( @Path( "id" ) int id, @Part MultipartBody.Part payload );
+    Call<Void> saveDistributorCatalog( @Path( "id" ) int id, @Part MultipartBody.Part file );
 
     @Multipart
     @PUT( "bulk/plans" )
@@ -55,7 +55,7 @@ public interface BulkApi
 
     @Multipart
     @PUT( "bulk/resellerCatalog/{id}" )
-    Call<Void> saveResellerCatalog( @Path( "id" ) int id, @Part MultipartBody.Part payload );
+    Call<Void> saveResellerCatalog( @Path( "id" ) int id, @Part MultipartBody.Part file );
 
     @Multipart
     @PUT( "bulk/user" )
