@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
@@ -41,10 +42,23 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @ApiModelProperty( "Whether to hide the parameter values" )
     private boolean sensitive;
 
+    private Map<String, String> labeledValues;
+
     public ConfigurationParameterDTO( String name, String code, String description )
     {
-        super( name );
+        this( name, description );
         this.code = code;
+    }
+
+    public ConfigurationParameterDTO( String name, Map<String, String> labeledValues, String description )
+    {
+        this( name, description );
+        this.labeledValues = labeledValues;
+    }
+
+    private ConfigurationParameterDTO( String name, String description )
+    {
+        super( name );
         this.description = description;
     }
 
@@ -126,6 +140,17 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     public ConfigurationParameterDTO setSensitive( boolean sensitive )
     {
         this.sensitive = sensitive;
+        return this;
+    }
+
+    public Map<String, String> getLabeledValues()
+    {
+        return labeledValues;
+    }
+
+    public ConfigurationParameterDTO setLabeledValues( Map<String, String> labeledValues )
+    {
+        this.labeledValues = labeledValues;
         return this;
     }
 
