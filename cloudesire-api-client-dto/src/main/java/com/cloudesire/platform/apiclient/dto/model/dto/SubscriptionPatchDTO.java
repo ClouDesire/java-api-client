@@ -56,6 +56,9 @@ public class SubscriptionPatchDTO extends DTO
     @Size( max = 255 )
     private String name;
 
+    @ApiModelProperty( "Refresh billing configuration for a particular invoice" )
+    private Integer invoiceId;
+
     public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
         this.action = action;
@@ -217,6 +220,17 @@ public class SubscriptionPatchDTO extends DTO
     public SubscriptionPatchDTO setName( String name )
     {
         this.name = name;
+        return this;
+    }
+
+    public Integer getInvoiceId()
+    {
+        return invoiceId;
+    }
+
+    public SubscriptionPatchDTO setInvoiceId( Integer invoiceId )
+    {
+        this.invoiceId = invoiceId;
         return this;
     }
 
