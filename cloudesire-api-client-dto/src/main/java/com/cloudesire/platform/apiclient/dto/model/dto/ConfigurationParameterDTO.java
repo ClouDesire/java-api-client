@@ -30,6 +30,9 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @RegExp
     private String validation;
 
+    @ApiModelProperty( "Possible labeled values for the parameter" )
+    private Map<String, String> acceptedValues;
+
     @ApiModelProperty( "Short description to help user compiling the correct value" )
     private String hint;
 
@@ -42,18 +45,16 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @ApiModelProperty( "Whether to hide the parameter values" )
     private boolean sensitive;
 
-    private Map<String, String> labeledValues;
-
     public ConfigurationParameterDTO( String name, String code, String description )
     {
         this( name, description );
         this.code = code;
     }
 
-    public ConfigurationParameterDTO( String name, Map<String, String> labeledValues, String description )
+    public ConfigurationParameterDTO( String name, Map<String, String> acceptedValues, String description )
     {
         this( name, description );
-        this.labeledValues = labeledValues;
+        this.acceptedValues = acceptedValues;
     }
 
     private ConfigurationParameterDTO( String name, String description )
@@ -99,6 +100,17 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
         return this;
     }
 
+    public Map<String, String> getAcceptedValues()
+    {
+        return acceptedValues;
+    }
+
+    public ConfigurationParameterDTO setAcceptedValues( Map<String, String> acceptedValues )
+    {
+        this.acceptedValues = acceptedValues;
+        return this;
+    }
+
     public String getHint()
     {
         return hint;
@@ -140,17 +152,6 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     public ConfigurationParameterDTO setSensitive( boolean sensitive )
     {
         this.sensitive = sensitive;
-        return this;
-    }
-
-    public Map<String, String> getLabeledValues()
-    {
-        return labeledValues;
-    }
-
-    public ConfigurationParameterDTO setLabeledValues( Map<String, String> labeledValues )
-    {
-        this.labeledValues = labeledValues;
         return this;
     }
 
