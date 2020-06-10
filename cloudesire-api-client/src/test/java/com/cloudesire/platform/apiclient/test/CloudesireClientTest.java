@@ -6,7 +6,6 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.assertj.core.api.ThrowableAssert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -68,24 +67,10 @@ public class CloudesireClientTest
     public void builderMandatoryParameters()
     {
         final CloudesireClient.Builder builder = new CloudesireClient.Builder();
-        assertThatThrownBy( new ThrowableAssert.ThrowingCallable()
-        {
-            @Override
-            public void call()
-            {
-                builder.build();
-            }
-        } ).isInstanceOf( NullPointerException.class );
+        assertThatThrownBy( builder::build ).isInstanceOf( NullPointerException.class );
 
         builder.setBaseUrl( "http://www.google.it" );
-        assertThatThrownBy( new ThrowableAssert.ThrowingCallable()
-        {
-            @Override
-            public void call()
-            {
-                builder.build();
-            }
-        } ).isInstanceOf( NullPointerException.class );
+        assertThatThrownBy( builder::build ).isInstanceOf( NullPointerException.class );
 
         builder.setMapper( new ObjectMapper() );
         assertThat( builder.build() ).isNotNull();
