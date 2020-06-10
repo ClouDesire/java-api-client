@@ -58,6 +58,6 @@ public interface BulkApi
     Call<Void> saveResellerCatalog( @Path( "id" ) int id, @Part MultipartBody.Part file );
 
     @Multipart
-    @PUT( "bulk/user" )
+    @PUT( "bulk/users" )
     Call<Void> saveUsers( @Part MultipartBody.Part file );
 }
