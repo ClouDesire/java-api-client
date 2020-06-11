@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 @JsonPropertyOrder( {
         "userName", "name", "surname", "email", "pec", "phone", "password", "language", "enabled", "acceptedTerms",
-        "fiscalCode", "companyName", "taxCode"
+        "activated", "fiscalCode", "companyName", "taxCode"
 } )
 public class CustomerCsvDTO extends BaseUserCsvDTO
 {
@@ -18,6 +18,8 @@ public class CustomerCsvDTO extends BaseUserCsvDTO
     private Boolean enabled;
 
     private Boolean acceptedTerms;
+
+    private Boolean activated;
 
     private String fiscalCode;
 
@@ -76,6 +78,16 @@ public class CustomerCsvDTO extends BaseUserCsvDTO
     public void setAcceptedTerms( Boolean acceptedTerms )
     {
         this.acceptedTerms = acceptedTerms;
+    }
+
+    public Boolean getActivated()
+    {
+        return activated;
+    }
+
+    public void setActivated( Boolean activated )
+    {
+        this.activated = activated;
     }
 
     public String getFiscalCode()
