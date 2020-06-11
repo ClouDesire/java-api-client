@@ -25,6 +25,8 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( value = "The quantity", example = "1.0" )
     private BigDecimal quantity = BigDecimal.ONE;
 
+    private BigDecimal computationalQuantity = BigDecimal.ONE;
+
     @ApiModelProperty( "A unit of measurement for the quantity" )
     private String unit;
 
@@ -82,7 +84,7 @@ public class OrderLineDTO implements Line
         if ( price == null || price.getPrice() == null ) return BigDecimal.ZERO;
 
         return price.getPrice()
-                .multiply( quantity )
+                .multiply( computationalQuantity )
                 .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
     }
 
@@ -93,7 +95,7 @@ public class OrderLineDTO implements Line
         if ( price == null || price.getVatSpunOff() == null ) return null;
 
         return price.getVatSpunOff()
-                .multiply( quantity )
+                .multiply( computationalQuantity )
                 .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
     }
 
@@ -125,6 +127,16 @@ public class OrderLineDTO implements Line
     public void setQuantity( BigDecimal quantity )
     {
         this.quantity = quantity;
+    }
+
+    public BigDecimal getComputationalQuantity()
+    {
+        return computationalQuantity;
+    }
+
+    public void setComputationalQuantity( BigDecimal computationalQuantity )
+    {
+        this.computationalQuantity = computationalQuantity;
     }
 
     /**
