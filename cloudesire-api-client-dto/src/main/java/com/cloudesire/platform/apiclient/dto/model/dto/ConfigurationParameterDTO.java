@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
@@ -29,6 +30,9 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @RegExp
     private String validation;
 
+    @ApiModelProperty( "Possible labeled values for the parameter" )
+    private Map<String, String> acceptedValues;
+
     @ApiModelProperty( "Short description to help user compiling the correct value" )
     private String hint;
 
@@ -43,8 +47,19 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
 
     public ConfigurationParameterDTO( String name, String code, String description )
     {
-        super( name );
+        this( name, description );
         this.code = code;
+    }
+
+    public ConfigurationParameterDTO( String name, Map<String, String> acceptedValues, String description )
+    {
+        this( name, description );
+        this.acceptedValues = acceptedValues;
+    }
+
+    private ConfigurationParameterDTO( String name, String description )
+    {
+        super( name );
         this.description = description;
     }
 
@@ -82,6 +97,17 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     public ConfigurationParameterDTO setValidation( String validation )
     {
         this.validation = validation;
+        return this;
+    }
+
+    public Map<String, String> getAcceptedValues()
+    {
+        return acceptedValues;
+    }
+
+    public ConfigurationParameterDTO setAcceptedValues( Map<String, String> acceptedValues )
+    {
+        this.acceptedValues = acceptedValues;
         return this;
     }
 
