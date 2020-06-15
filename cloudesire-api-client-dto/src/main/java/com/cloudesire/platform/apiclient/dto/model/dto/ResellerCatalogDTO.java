@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ public class ResellerCatalogDTO extends NamedEntityDTO
 
     @Valid
     private List<UrlEntityDTO> featured;
+
+    @Valid
+    private Map<UrlEntityDTO, UrlEntityDTO> categories;
 
     @ApiModelProperty( value = "When the catalog has been created", readOnly = true )
     private Date createdAt;
@@ -73,6 +77,16 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setFeatured( List<UrlEntityDTO> featured )
     {
         this.featured = featured;
+    }
+
+    public Map<UrlEntityDTO, UrlEntityDTO> getCategories()
+    {
+        return categories;
+    }
+
+    public void setCategories( Map<UrlEntityDTO, UrlEntityDTO> categories )
+    {
+        this.categories = categories;
     }
 
     public Date getCreatedAt()
