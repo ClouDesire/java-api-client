@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel("Which kind of order")
+@ApiModel( "Which kind of order" )
 public enum OrderType
 {
     @ApiModelProperty( "Buy a product" )
@@ -16,6 +16,8 @@ public enum OrderType
     UPGRADE,
     @ApiModelProperty( "Change values for the available Billing Item" )
     BILLING_ITEM_UPGRADE,
+    @ApiModelProperty( value = "Internal", hidden = true )
+    MONTHLY,
     @ApiModelProperty( "Renew an active subscription" )
     RENEWAL,
     @ApiModelProperty( "An order without expiration" )
