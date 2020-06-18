@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 @JsonPropertyOrder( {
         "userName", "name", "surname", "email", "pec", "phone", "password", "language", "enabled", "acceptedTerms",
-        "activated", "fiscalCode", "companyName", "taxCode"
+        "activated", "fiscalCode", "companyName", "companySlug"
 } )
 public class CustomerCsvDTO extends BaseUserCsvDTO
 {
@@ -25,7 +25,7 @@ public class CustomerCsvDTO extends BaseUserCsvDTO
 
     private String companyName;
 
-    private String taxCode;
+    private String companySlug;
 
     @JsonUnwrapped( prefix = "address." )
     private Address address;
@@ -120,14 +120,14 @@ public class CustomerCsvDTO extends BaseUserCsvDTO
         this.companyName = companyName;
     }
 
-    public String getTaxCode()
+    public String getCompanySlug()
     {
-        return taxCode;
+        return companySlug;
     }
 
-    public void setTaxCode( String taxCode )
+    public void setCompanySlug( String companySlug )
     {
-        this.taxCode = taxCode;
+        this.companySlug = companySlug;
     }
 
     @JsonPropertyOrder( {
