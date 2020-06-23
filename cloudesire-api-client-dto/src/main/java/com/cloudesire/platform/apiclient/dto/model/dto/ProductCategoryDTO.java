@@ -8,6 +8,8 @@ import java.util.Objects;
 @ApiModel( description = "A category of products" )
 public class ProductCategoryDTO extends NamedEntityDTO
 {
+    private UrlEntityDTO reseller;
+
     private Integer weight;
 
     @ApiModelProperty( value = "How many products for the category are present", readOnly = true )
@@ -27,6 +29,16 @@ public class ProductCategoryDTO extends NamedEntityDTO
     {
         if ( this.entityToken == null ) return "category";
         return this.entityToken;
+    }
+
+    public UrlEntityDTO getReseller()
+    {
+        return reseller;
+    }
+
+    public void setReseller( UrlEntityDTO reseller )
+    {
+        this.reseller = reseller;
     }
 
     public Integer getWeight()
