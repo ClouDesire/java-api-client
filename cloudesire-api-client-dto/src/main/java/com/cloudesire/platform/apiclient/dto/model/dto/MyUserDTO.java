@@ -193,6 +193,8 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
+    private String slug;
+
     @JsonIgnore
     @Override
     public String getDisplayName()
@@ -750,6 +752,16 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     public void setPublicKey( String publicKey )
     {
         this.publicKey = publicKey;
+    }
+
+    public String getSlug()
+    {
+        return slug;
+    }
+
+    public void setSlug( String slug )
+    {
+        this.slug = slug;
     }
 
     @Override
