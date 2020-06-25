@@ -193,6 +193,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( "The user's SSH public key" )
     private String publicKey;
 
+    @ApiModelProperty( "Auto-generated string uniquely identifying the user" )
     private String slug;
 
     @JsonIgnore

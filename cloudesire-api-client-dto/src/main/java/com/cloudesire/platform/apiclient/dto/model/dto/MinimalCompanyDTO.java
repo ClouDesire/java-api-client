@@ -31,7 +31,7 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Size( max = 255 )
     private String taxCode;
 
-    @ApiModelProperty( hidden = true )
+    @ApiModelProperty( "Auto-generated string uniquely identifying the company" )
     @Size( max = 255 )
     private String slug;
 
