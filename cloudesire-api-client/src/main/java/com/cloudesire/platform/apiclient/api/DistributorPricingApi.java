@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DistributorPricingDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO;
+import com.cloudesire.platform.apiclient.query.DistributorPricingQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -25,8 +26,18 @@ public interface DistributorPricingApi
     Call<List<DistributorPricingDTO>> getAll();
 
     @GET( "distributorPricing" )
+    Call<List<DistributorPricingDTO>> getAll( @QueryMap DistributorPricingQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(DistributorPricingQuery)}
+     */
+    @GET( "distributorPricing" )
     Call<List<DistributorPricingDTO>> getAll( @QueryMap Map<String, String> pageRequest );
 
+    /**
+     * @deprecated by {@link #getAll(DistributorPricingQuery)}
+     */
+    @Deprecated
     @GET( "distributorPricing" )
     Call<List<DistributorPricingDTO>> getAll(
             @Query( "productId" ) Integer productId,
