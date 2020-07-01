@@ -131,6 +131,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "The number of markups set for the product version" )
     private long markedUp;
 
+    @ApiModelProperty( "The number of sell-outs set for the product version" )
+    private long soldOut;
+
     @ApiModelProperty( value = "Descriptive label of the product version", readOnly = true )
     private String label;
 
@@ -531,6 +534,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setMarkedUp( long markedUp )
     {
         this.markedUp = markedUp;
+    }
+
+    public long getSoldOut()
+    {
+        return soldOut;
+    }
+
+    public void setSoldOut( long soldOut )
+    {
+        this.soldOut = soldOut;
     }
 
     public String getLabel()
