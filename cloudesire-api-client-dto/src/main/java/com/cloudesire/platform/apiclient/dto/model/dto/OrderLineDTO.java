@@ -54,6 +54,9 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( "Custom billing identifier" )
     private String identifier;
 
+    @ApiModelProperty( "Original line currency" )
+    private String originalCurrency;
+
     /**
      * @deprecated by {@link #getSubtotal()}
      */
@@ -212,6 +215,16 @@ public class OrderLineDTO implements Line
     public void setIdentifier( String identifier )
     {
         this.identifier = identifier;
+    }
+
+    public String getOriginalCurrency()
+    {
+        return originalCurrency;
+    }
+
+    public void setOriginalCurrency( String originalCurrency )
+    {
+        this.originalCurrency = originalCurrency;
     }
 
     @Override
