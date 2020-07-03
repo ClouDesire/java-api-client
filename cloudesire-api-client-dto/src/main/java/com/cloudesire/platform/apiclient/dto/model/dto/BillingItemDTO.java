@@ -56,6 +56,9 @@ public class BillingItemDTO extends NamedEntityDTO
 
     private ApiEndpointDTO endpoint;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    private Integer weight;
+
     public BillingItemDTO( BillingItemType type, String name, String unit, String description )
     {
         super( name );
@@ -206,6 +209,17 @@ public class BillingItemDTO extends NamedEntityDTO
     public BillingItemDTO setEndpoint( ApiEndpointDTO endpoint )
     {
         this.endpoint = endpoint;
+        return this;
+    }
+
+    public Integer getWeight()
+    {
+        return weight;
+    }
+
+    public BillingItemDTO setWeight( Integer weight )
+    {
+        this.weight = weight;
         return this;
     }
 
