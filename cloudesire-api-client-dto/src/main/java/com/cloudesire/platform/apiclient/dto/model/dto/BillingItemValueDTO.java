@@ -50,6 +50,9 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @Min( 1 )
     private Integer step;
 
+    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    private Integer weight;
+
     @ApiModelProperty( "The tag for the range, for tagged stairstep values" )
     @Size( max = 125, message = INVALID_SIZE )
     private String tag;
@@ -181,6 +184,17 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public BillingItemValueDTO setStep( Integer step )
     {
         this.step = step;
+        return this;
+    }
+
+    public Integer getWeight()
+    {
+        return weight;
+    }
+
+    public BillingItemValueDTO setWeight( Integer weight )
+    {
+        this.weight = weight;
         return this;
     }
 
