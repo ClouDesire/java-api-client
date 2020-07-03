@@ -18,12 +18,18 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.V
 import static com.cloudesire.platform.apiclient.response.Headers.AUTH_TOKEN;
 import static com.cloudesire.platform.apiclient.response.Headers.MISTICA;
 import static com.cloudesire.platform.apiclient.response.Headers.MODE;
+import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_PROVIDER;
+import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_TOKEN;
+import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_USER;
 
 public class CloudesireClient extends BasicAuthCloudesireClient
 {
     private static final Logger log = LoggerFactory.getLogger( CloudesireClient.class );
 
     private final String token;
+    private final String ssoToken;
+    private final String ssoUser;
+    private final String ssoProvider;
     private final String impersonate;
     private final String environment;
     private final Interceptor interceptor;
@@ -34,6 +40,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     {
         super( builder.mapper, builder.baseUrl, "Cloudesire API Client " + builder.version, builder.username, builder.password );
         this.token = builder.token;
+        this.ssoToken = builder.ssoToken;
+        this.ssoUser = builder.ssoUser;
+        this.ssoProvider = builder.ssoProvider;
         this.impersonate = builder.impersonate;
         this.environment = builder.environment;
         this.interceptor = builder.interceptor;
@@ -43,6 +52,13 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         if ( token != null )
         {
             addInterceptor( new HeaderInterceptor( AUTH_TOKEN, token ) );
+        }
+
+        if ( ssoToken != null && ssoUser != null && ssoProvider != null )
+        {
+            addInterceptor( new HeaderInterceptor( SSO_AUTH_TOKEN, ssoToken ) );
+            addInterceptor( new HeaderInterceptor( SSO_AUTH_USER, ssoUser ) );
+            addInterceptor( new HeaderInterceptor( SSO_AUTH_PROVIDER, ssoProvider ) );
         }
 
         if ( impersonate != null )
@@ -76,6 +92,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         private String username;
         private String password;
         private String token;
+        private String ssoToken;
+        private String ssoUser;
+        private String ssoProvider;
         private String impersonate;
         private String baseUrl;
         private String environment;
@@ -97,6 +116,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
             this.username = cloudesireClient.username;
             this.password = cloudesireClient.password;
             this.token = cloudesireClient.token;
+            this.ssoToken = cloudesireClient.ssoToken;
+            this.ssoUser = cloudesireClient.ssoUser;
+            this.ssoProvider = cloudesireClient.ssoProvider;
             this.impersonate = cloudesireClient.impersonate;
             this.baseUrl = cloudesireClient.baseUrl;
             this.environment = cloudesireClient.environment;
@@ -120,6 +142,13 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         public Builder setToken( String token )
         {
             this.token = token;
+            return this;
+        }
+
+        public Builder withSsoAuthentication( String ssoToken, String ssoUser, String ssoProvider ) {
+            this.ssoToken = ssoToken;
+            this.ssoUser = ssoUser;
+            this.ssoProvider = ssoProvider;
             return this;
         }
 
@@ -183,15 +212,17 @@ public class CloudesireClient extends BasicAuthCloudesireClient
             if ( !( o instanceof Builder ) ) return false;
             Builder builder = (Builder) o;
             return Objects.equals( username, builder.username ) && Objects.equals( password, builder.password )
-                    && Objects.equals( token, builder.token ) && Objects.equals( impersonate, builder.impersonate )
-                    && Objects.equals( baseUrl, builder.baseUrl ) && Objects.equals( mapper, builder.mapper ) && Objects
-                    .equals( interceptor, builder.interceptor ) && Objects.equals( version, builder.version );
+                    && Objects.equals( token, builder.token ) && Objects.equals( ssoToken, builder.ssoToken )
+                    && Objects.equals( ssoProvider, builder.ssoProvider ) && Objects.equals( ssoUser, builder.ssoUser )
+                    && Objects.equals( impersonate, builder.impersonate ) && Objects.equals( baseUrl, builder.baseUrl )
+                    && Objects.equals( mapper, builder.mapper ) && Objects.equals( interceptor, builder.interceptor )
+                    && Objects.equals( version, builder.version );
         }
 
         @Override
         public int hashCode()
         {
-            return Objects.hash( username, password, token, impersonate, baseUrl, mapper, interceptor, version );
+            return Objects.hash( username, password, token, ssoToken, ssoUser, ssoProvider, impersonate, baseUrl, mapper, interceptor, version );
         }
     }
 
@@ -509,12 +540,14 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         CloudesireClient that = (CloudesireClient) o;
         return version == that.version && Objects.equals( username, that.username ) && Objects
                 .equals( password, that.password ) && Objects.equals( token, that.token ) && Objects
-                .equals( impersonate, that.impersonate ) && Objects.equals( environment, that.environment );
+                .equals( ssoToken, that.ssoToken ) && Objects.equals( ssoProvider, that.ssoProvider ) && Objects
+                .equals( ssoUser, that.ssoUser ) && Objects.equals( impersonate, that.impersonate ) && Objects
+                .equals( environment, that.environment );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), username, password, token, impersonate, environment, version );
+        return Objects.hash( super.hashCode(), username, password, token, ssoToken, ssoProvider, ssoUser, impersonate, environment, version );
     }
 }
