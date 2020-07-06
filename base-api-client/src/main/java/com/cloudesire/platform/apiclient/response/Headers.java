@@ -4,6 +4,9 @@ public final class Headers
 {
     public static final String ACCESS_CONTROL_EXPOSE_HEADERS = "Access-Control-Expose-Headers";
     public static final String AUTH_TOKEN = "CMW-Auth-Token";
+    public static final String SSO_AUTH_TOKEN = "Social-Auth-Token";
+    public static final String SSO_AUTH_USER = "Social-Auth-User";
+    public static final String SSO_AUTH_PROVIDER = "Social-Auth-Provider";
     public static final String MISTICA = "CMW-As-User";
     public static final String MODE = "Mode";
     public static final String PAGE_SIZE = "CMW-PageSize";
