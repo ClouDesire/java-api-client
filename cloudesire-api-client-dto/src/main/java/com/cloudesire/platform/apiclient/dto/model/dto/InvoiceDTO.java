@@ -82,6 +82,9 @@ public class InvoiceDTO extends BaseInvoiceDTO
     @ApiModelProperty( "Currency conversion factors at the invoice's issue" )
     private Map<String, BigDecimal> currencyConversion;
 
+    @ApiModelProperty( "Whether the subscription of the invoice is expired" )
+    private Boolean paymentExpired;
+
     /**
      * @deprecated use {@link #getTotal()}
      */
@@ -386,6 +389,16 @@ public class InvoiceDTO extends BaseInvoiceDTO
     public void setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
     {
         this.currencyConversion = currencyConversion;
+    }
+
+    public Boolean isPaymentExpired()
+    {
+        return paymentExpired;
+    }
+
+    public void setPaymentExpired( Boolean paymentExpired )
+    {
+        this.paymentExpired = paymentExpired;
     }
 
     /**
