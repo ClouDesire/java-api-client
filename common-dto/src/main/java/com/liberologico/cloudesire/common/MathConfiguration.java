@@ -13,12 +13,12 @@ public class MathConfiguration
     /**
      * BigDecimal calculation precision
      */
-    public static final int COMPUTATION_PRECISION = 4;
+    public static final int COMPUTATION_PRECISION = 6;
 
     /**
      * BigDecimal day scale precision
      */
-    private static final int DAY_SCALE_PRECISION = 10;
+    public static final int DAY_SCALE_PRECISION = 10;
 
     /**
      * BigDecimal rounding mode

@@ -12,14 +12,14 @@ public final class MathUtils
     {
         if ( base == null ) return BigDecimal.ZERO;
 
-        return base.add( percentage( base, pct, MathConfiguration.DEFAULT_PRECISION ) );
+        return base.add( percentage( base, pct, MathConfiguration.COMPUTATION_PRECISION ) );
     }
 
     public static BigDecimal subtractPercentage( BigDecimal base, BigDecimal pct )
     {
         if ( base == null ) return BigDecimal.ZERO;
 
-        return base.subtract( percentage( base, pct, MathConfiguration.DEFAULT_PRECISION ) );
+        return base.subtract( percentage( base, pct, MathConfiguration.COMPUTATION_PRECISION ) );
     }
 
     public static BigDecimal revertPercentage( BigDecimal number, BigDecimal pct )
