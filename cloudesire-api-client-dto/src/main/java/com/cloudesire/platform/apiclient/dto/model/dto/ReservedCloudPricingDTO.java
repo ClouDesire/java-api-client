@@ -24,7 +24,7 @@ public class ReservedCloudPricingDTO extends DTO
 
     public ReservedCloudPricingDTO( @NotNull BigDecimal price )
     {
-        this( new BigDecimal( "0.00" ), price );
+        this( new BigDecimal( "0.000000" ), price );
     }
 
     public ReservedCloudPricingDTO()
