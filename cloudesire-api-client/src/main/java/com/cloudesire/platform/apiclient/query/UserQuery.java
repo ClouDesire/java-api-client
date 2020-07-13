@@ -8,6 +8,7 @@ public class UserQuery extends BaseQuery
     private static final String COMPANY_ID = "companyId";
     private static final String ROLE = "role";
     private static final String DISABLED = "disabled";
+    private static final String EXTERNAL_AUTHENTICATION = "externalAuthentication";
 
     public UserQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -36,6 +37,12 @@ public class UserQuery extends BaseQuery
     public UserQuery setDisabled( Boolean disabled )
     {
         put( DISABLED, disabled );
+        return this;
+    }
+
+    public UserQuery setExternalAuthentication( Boolean externalAuthentication )
+    {
+        put( EXTERNAL_AUTHENTICATION, externalAuthentication );
         return this;
     }
 }
