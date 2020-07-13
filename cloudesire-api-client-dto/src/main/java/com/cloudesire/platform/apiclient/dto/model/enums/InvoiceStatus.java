@@ -14,6 +14,11 @@ public enum InvoiceStatus
     @ApiModelProperty( "Payment expired" ) EXPIRED,
     @ApiModelProperty( "Payment received" ) PAID;
 
+    public static InvoiceStatus[] paid()
+    {
+        return new InvoiceStatus[] { DELAYED, PAID };
+    }
+
     public static InvoiceStatus[] unpaid()
     {
         return new InvoiceStatus[] { PENDING, REQUIRES_ACTION, REQUIRES_CAPTURE, UNPAID, EXPIRED };
