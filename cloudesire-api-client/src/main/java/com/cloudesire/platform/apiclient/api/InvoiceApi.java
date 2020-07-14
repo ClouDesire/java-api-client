@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CardDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.InvoiceDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.InvoicePatchDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.InvoicePaymentReferenceDTO;
 import com.cloudesire.platform.apiclient.query.InvoiceQuery;
 import okhttp3.ResponseBody;
@@ -50,6 +51,9 @@ public interface InvoiceApi
 
     @GET( "invoice/{id}/refresh" )
     Call<String> refreshPayment( @Path( "id" ) int id );
+
+    @PATCH( "invoice/{id}" )
+    Call<Void> patch( @Path( "id" ) int id, @Body InvoicePatchDTO patch );
 
     @PATCH( "invoice/{id}/pay" )
     Call<Void> setPaid( @Path( "id" ) int id, @Body InvoicePaymentReferenceDTO input );

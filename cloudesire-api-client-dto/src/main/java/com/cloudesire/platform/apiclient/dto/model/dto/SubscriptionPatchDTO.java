@@ -270,9 +270,6 @@ public class SubscriptionPatchDTO extends DTO
         @Deprecated
         REFRESH_BILLING_ITEM_VALUES,
 
-        @ApiModelProperty( "Reissue the first invoice of a subscription" )
-        REISSUE_FIRST_INVOICE,
-
         @ApiModelProperty( "Approve a subscription" )
         APPROVE,
 
