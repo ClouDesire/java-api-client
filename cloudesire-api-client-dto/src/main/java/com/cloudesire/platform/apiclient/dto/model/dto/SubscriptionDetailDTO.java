@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class SubscriptionDetailDTO extends SubscriptionDTO
 {
@@ -9,6 +10,8 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     private List<UrlEntityDTO> possibleUpgrades;
 
     private List<BillingItemValueDTO> billingItemValues;
+
+    private Map<String, String> customerMetadata;
 
     public List<ApplicationCredentialOutputDTO> getCredentials()
     {
@@ -38,5 +41,15 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setBillingItemValues( List<BillingItemValueDTO> billingItemValues )
     {
         this.billingItemValues = billingItemValues;
+    }
+
+    public Map<String, String> getCustomerMetadata()
+    {
+        return customerMetadata;
+    }
+
+    public void setCustomerMetadata( Map<String, String> customerMetadata )
+    {
+        this.customerMetadata = customerMetadata;
     }
 }
