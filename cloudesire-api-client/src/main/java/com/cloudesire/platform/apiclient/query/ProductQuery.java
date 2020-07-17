@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderingType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 
-public class ProductQuery extends ResellerCatalogQuery
+public class ProductQuery extends PageRequestQuery
 {
     private static final String NAME = "name";
     private static final String NAMEFILTER = "nameFilter";
