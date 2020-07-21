@@ -1,15 +1,20 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.response.error.ErrorResponseEntry;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
+@ApiModel( "Bulk import execution result" )
 public class BulkImportResultDTO extends DTO
 {
+    @ApiModelProperty( "Bulk import request ID" )
     private String requestId;
 
     private UrlEntityDTO executor;
 
+    @ApiModelProperty( value = "What kind of import it has been requested", example = "CatalogCloudPricingCsvDTO,CatalogDistributorPricingCsvDTO" )
     private String type;
 
     private List<ErrorResponseEntry> errors;
