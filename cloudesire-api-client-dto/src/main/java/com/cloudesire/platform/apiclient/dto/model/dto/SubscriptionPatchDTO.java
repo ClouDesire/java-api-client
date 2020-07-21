@@ -59,9 +59,6 @@ public class SubscriptionPatchDTO extends DTO
     @ApiModelProperty( "Refresh billing configuration for a particular invoice" )
     private Integer invoiceId;
 
-    @ApiModelProperty( "Customer metadata for the subscription" )
-    private Map<String, String> metadata;
-
     public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
         this.action = action;
@@ -237,17 +234,6 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
-    public Map<String, String> getMetadata()
-    {
-        return metadata;
-    }
-
-    public SubscriptionPatchDTO setMetadata( Map<String, String> metadata )
-    {
-        this.metadata = metadata;
-        return this;
-    }
-
     public enum SubscriptionPatchAction
     {
         @ApiModelProperty( "Renew a subscription" )
@@ -291,9 +277,6 @@ public class SubscriptionPatchDTO extends DTO
         DEPLOY,
 
         @ApiModelProperty( "Set a descriptive name for a subscription" )
-        SET_NAME,
-
-        @ApiModelProperty( "Set customer metadata for a subscription" )
-        SET_METADATA
+        SET_NAME
     }
 }

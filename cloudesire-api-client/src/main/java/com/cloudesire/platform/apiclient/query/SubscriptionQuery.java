@@ -29,7 +29,7 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setMetadata( Map<String, String> metadata )
+    public SubscriptionQuery setMetadata( Map<String, Object> metadata )
     {
         metadata.forEach( ( key, value ) -> put( String.format( "%s[%s]", METADATA, key ), value ) );
         return this;
