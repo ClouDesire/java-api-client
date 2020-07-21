@@ -13,6 +13,7 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
+import java.util.List;
 import java.util.Map;
 
 public interface BulkApi
@@ -61,6 +62,9 @@ public interface BulkApi
     @Multipart
     @PUT( "bulk/users" )
     Call<Void> saveUsers( @Part MultipartBody.Part file );
+
+    @GET( "bulk/result" )
+    Call<List<BulkImportResultDTO>> getResults();
 
     @GET( "bulk/result/{requestId}" )
     Call<BulkImportResultDTO> getResult( @Path( "requestId" ) String requestId );

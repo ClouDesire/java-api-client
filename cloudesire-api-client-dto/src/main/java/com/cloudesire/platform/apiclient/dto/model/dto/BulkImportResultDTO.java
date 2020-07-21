@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
+import java.util.Objects;
 
 @ApiModel( "Bulk import execution result" )
 public class BulkImportResultDTO extends DTO
@@ -57,5 +58,21 @@ public class BulkImportResultDTO extends DTO
     public void setErrors( List<ErrorResponseEntry> errors )
     {
         this.errors = errors;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        BulkImportResultDTO that = (BulkImportResultDTO) o;
+        return Objects.equals( requestId, that.requestId ) && Objects.equals( executor, that.executor )
+                && Objects.equals( type, that.type );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( requestId, executor, type );
     }
 }
