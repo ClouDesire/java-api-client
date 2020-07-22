@@ -5,9 +5,12 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Map;
+
 public class SubscriptionQuery extends PageRequestQuery
 {
     private static final String FILTER = "filter";
+    private static final String METADATA = "metadata";
     private static final String STATUS = "status";
     private static final String TYPE = "type";
     private static final String PRODUCT = "product";
@@ -23,6 +26,15 @@ public class SubscriptionQuery extends PageRequestQuery
     public SubscriptionQuery setFilter( String value )
     {
         put( FILTER, value );
+        return this;
+    }
+
+    public SubscriptionQuery setMetadata( Map<String, Object> metadata )
+    {
+        metadata.forEach( ( key, value ) -> {
+            if ( value == null ) value = "";
+            put( String.format( "%s[%s]", METADATA, key ), value );
+        } );
         return this;
     }
 
