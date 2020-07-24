@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
+import java.util.Map;
 
 public class OrderQuery extends PageRequestQuery
 {
@@ -12,6 +13,7 @@ public class OrderQuery extends PageRequestQuery
     private static final String COUPON = "coupon";
     private static final String FROM = "from";
     private static final String TO = "to";
+    private static final String METADATA = "metadata";
 
     public OrderQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -48,4 +50,14 @@ public class OrderQuery extends PageRequestQuery
         put( TO, SimpleDateFormatFactory.dateFormat().format( to ) );
         return this;
     }
+
+    public OrderQuery setMetadata( Map<String, Object> metadata )
+    {
+        metadata.forEach( ( key, value ) -> {
+            if ( value == null ) value = "";
+            put( String.format( "%s[%s]", METADATA, key ), value );
+        } );
+        return this;
+    }
+
 }
