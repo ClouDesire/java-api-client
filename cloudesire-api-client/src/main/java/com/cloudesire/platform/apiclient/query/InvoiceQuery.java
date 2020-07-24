@@ -6,7 +6,6 @@ import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
-import java.util.Map;
 
 public class InvoiceQuery extends PageRequestQuery
 {
@@ -19,7 +18,6 @@ public class InvoiceQuery extends PageRequestQuery
     private static final String TO = "to";
     private static final String TYPE = "type";
     private static final String COMPANY = "company";
-    private static final String METADATA = "metadata";
 
     public InvoiceQuery setExpired( boolean expired )
     {
@@ -81,12 +79,9 @@ public class InvoiceQuery extends PageRequestQuery
         return this;
     }
 
-    public InvoiceQuery setMetadata( Map<String, Object> metadata )
+    public InvoiceQuery setMetadata( MetadataQuery metadata )
     {
-        metadata.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", METADATA, key ), value );
-        } );
+        putAll( metadata );
         return this;
     }
 

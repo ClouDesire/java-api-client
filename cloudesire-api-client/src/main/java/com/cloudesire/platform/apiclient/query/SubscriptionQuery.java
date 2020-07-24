@@ -5,17 +5,13 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Map;
-
 public class SubscriptionQuery extends PageRequestQuery
 {
     private static final String FILTER = "filter";
-    private static final String METADATA = "metadata";
     private static final String STATUS = "status";
     private static final String TYPE = "type";
     private static final String PRODUCT = "product";
     private static final String PRODUCT_TYPE = "productType";
-
 
     public SubscriptionQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -23,18 +19,15 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setFilter( String value )
+    public SubscriptionQuery setMetadata( MetadataQuery metadata )
     {
-        put( FILTER, value );
+        putAll( metadata );
         return this;
     }
 
-    public SubscriptionQuery setMetadata( Map<String, Object> metadata )
+    public SubscriptionQuery setFilter( String value )
     {
-        metadata.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", METADATA, key ), value );
-        } );
+        put( FILTER, value );
         return this;
     }
 
