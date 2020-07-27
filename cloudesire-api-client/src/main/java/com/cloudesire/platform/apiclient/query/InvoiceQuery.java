@@ -78,4 +78,11 @@ public class InvoiceQuery extends PageRequestQuery
         put( COMPANY, company );
         return this;
     }
+
+    public InvoiceQuery setMetadata( MetadataQuery metadata )
+    {
+        putAll( metadata );
+        return this;
+    }
+
 }

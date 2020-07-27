@@ -48,4 +48,11 @@ public class OrderQuery extends PageRequestQuery
         put( TO, SimpleDateFormatFactory.dateFormat().format( to ) );
         return this;
     }
+
+    public OrderQuery setMetadata( MetadataQuery metadata )
+    {
+        putAll( metadata );
+        return this;
+    }
+
 }
