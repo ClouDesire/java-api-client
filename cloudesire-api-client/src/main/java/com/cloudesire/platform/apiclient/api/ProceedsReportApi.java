@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.query.ProceedsReportQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.HEAD;
 import retrofit2.http.Headers;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
@@ -13,6 +14,9 @@ import java.util.List;
 
 public interface ProceedsReportApi
 {
+    @HEAD( "proceedsReport" )
+    Call<Void> headAll( @QueryMap ProceedsReportQuery query );
+
     @GET( "proceedsReport" )
     Call<List<ProceedsReportLineDTO>> getAll();
 
