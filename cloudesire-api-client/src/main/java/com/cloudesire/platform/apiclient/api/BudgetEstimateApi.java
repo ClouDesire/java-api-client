@@ -16,4 +16,7 @@ public interface BudgetEstimateApi
 
     @POST( "budgetEstimate" )
     Call<BudgetDTO> request( @Body BudgetInputDTO input, @Header( MODE ) String environment );
+
+    @POST( "budgetEstimate/validate" )
+    Call<Void> validate( @Body BudgetInputDTO input );
 }
