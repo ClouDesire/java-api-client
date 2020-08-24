@@ -207,6 +207,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "Require approvation for customer subscriptions" )
     private Boolean subscriptionApproval;
 
+    @ApiModelProperty( "Message to display to the user on subscription termination" )
+    @Size( max = 4096 )
+    private String terminationMessage;
+
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
         this( name, identifier, type );
@@ -768,6 +772,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setSubscriptionApproval( Boolean subscriptionApproval )
     {
         this.subscriptionApproval = subscriptionApproval;
+    }
+
+    public String getTerminationMessage()
+    {
+        return terminationMessage;
+    }
+
+    public void setTerminationMessage( String terminationMessage )
+    {
+        this.terminationMessage = terminationMessage;
     }
 
     @Override
