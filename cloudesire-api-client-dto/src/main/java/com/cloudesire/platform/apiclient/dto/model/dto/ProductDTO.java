@@ -204,6 +204,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     private SubscriptionsPerProduct subscriptionsPerProduct;
 
+    @ApiModelProperty( "Require approvation for customer subscriptions" )
+    private Boolean subscriptionApproval;
+
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
         this( name, identifier, type );
@@ -755,6 +758,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setSubscriptionsPerProduct( SubscriptionsPerProduct subscriptionsPerProduct )
     {
         this.subscriptionsPerProduct = subscriptionsPerProduct;
+    }
+
+    public Boolean getSubscriptionApproval()
+    {
+        return subscriptionApproval;
+    }
+
+    public void setSubscriptionApproval( Boolean subscriptionApproval )
+    {
+        this.subscriptionApproval = subscriptionApproval;
     }
 
     @Override

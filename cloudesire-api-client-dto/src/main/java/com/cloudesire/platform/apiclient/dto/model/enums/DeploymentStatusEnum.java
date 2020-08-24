@@ -12,7 +12,7 @@ public enum DeploymentStatusEnum
     STOPPED,
     FAILED,
     /** requires approval by admin */
-    PRE_APPROVAL,
+    REQUIRES_APPROVAL,
     UNDEPLOY_SENT,
     /** app that requires post-configuration */
     POST_CONFIGURATION,
