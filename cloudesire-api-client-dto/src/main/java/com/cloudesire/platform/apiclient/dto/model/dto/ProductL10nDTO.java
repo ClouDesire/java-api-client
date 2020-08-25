@@ -35,4 +35,8 @@ public interface ProductL10nDTO
     Map<String, String> getFaq();
 
     void setFaq( Map<String, String> faq );
+
+    String getTerminationMessage();
+
+    void setTerminationMessage( String terminationMessage );
 }
