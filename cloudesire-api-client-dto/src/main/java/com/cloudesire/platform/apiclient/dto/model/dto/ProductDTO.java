@@ -3,13 +3,14 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
-import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -206,6 +207,11 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     @ApiModelProperty( "Require approvation for customer subscriptions" )
     private Boolean subscriptionApproval;
+
+    @ApiModelProperty( "URL to call for order validation" )
+    @Size( max = 2000 )
+    @URL
+    private String orderValidationUrl;
 
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
@@ -768,6 +774,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setSubscriptionApproval( Boolean subscriptionApproval )
     {
         this.subscriptionApproval = subscriptionApproval;
+    }
+
+    public String getOrderValidationUrl()
+    {
+        return orderValidationUrl;
+    }
+
+    public void setOrderValidationUrl( String orderValidationUrl )
+    {
+        this.orderValidationUrl = orderValidationUrl;
     }
 
     @Override
