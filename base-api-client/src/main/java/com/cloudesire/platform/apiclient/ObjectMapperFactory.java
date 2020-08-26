@@ -6,15 +6,16 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
+
+import static java.util.Collections.emptyMap;
 
 public class ObjectMapperFactory
 {
     public static ObjectMapper build( ObjectMapper mapper )
     {
-        return build( mapper, new HashMap<DeserializationFeature, Boolean>() );
+        return build( mapper, emptyMap() );
     }
 
     public static ObjectMapper build( ObjectMapper mapper, Map<DeserializationFeature, Boolean> configuration )
