@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.response.error.ErrorResponseEntry;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +13,8 @@ public class BulkImportResultDTO extends DTO
 {
     @ApiModelProperty( "Bulk import request ID" )
     private String requestId;
+
+    private LocalDateTime execution;
 
     private UrlEntityDTO executor;
 
@@ -28,6 +31,16 @@ public class BulkImportResultDTO extends DTO
     public void setRequestId( String requestId )
     {
         this.requestId = requestId;
+    }
+
+    public LocalDateTime getExecution()
+    {
+        return execution;
+    }
+
+    public void setExecution( LocalDateTime execution )
+    {
+        this.execution = execution;
     }
 
     public UrlEntityDTO getExecutor()
