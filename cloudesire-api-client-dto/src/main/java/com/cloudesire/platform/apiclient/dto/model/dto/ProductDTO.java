@@ -208,6 +208,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "Require approvation for customer subscriptions" )
     private Boolean subscriptionApproval;
 
+    @ApiModelProperty( "Message to display to the user on subscription termination" )
+    @Size( max = 65536, message = INVALID_SIZE )
+    private String terminationMessage;
+
     @ApiModelProperty( "URL to call for order validation" )
     @Size( max = 2000 )
     @URL
@@ -784,6 +788,18 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setOrderValidationUrl( String orderValidationUrl )
     {
         this.orderValidationUrl = orderValidationUrl;
+    }
+
+    @Override
+    public String getTerminationMessage()
+    {
+        return terminationMessage;
+    }
+
+    @Override
+    public void setTerminationMessage( String terminationMessage )
+    {
+        this.terminationMessage = terminationMessage;
     }
 
     @Override

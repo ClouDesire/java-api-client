@@ -44,6 +44,9 @@ public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 
+    @ApiModelProperty( "Message to display to the user on subscription termination" )
+    private String terminationMessage;
+
     //region Auto-generated code
     public UrlEntityDTO getOriginal()
     {
@@ -136,6 +139,18 @@ public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
     public void setFaq( Map<String, String> faq )
     {
         this.faq = faq;
+    }
+
+    @Override
+    public String getTerminationMessage()
+    {
+        return terminationMessage;
+    }
+
+    @Override
+    public void setTerminationMessage( String terminationMessage )
+    {
+        this.terminationMessage = terminationMessage;
     }
     //endregion
 }
