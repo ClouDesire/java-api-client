@@ -17,6 +17,10 @@ public class UserCompanyDTO extends CompanyDTO
     @ApiModelProperty( "If this customer can pay later, only for admin" )
     private Boolean delayedPayment;
 
+    @ApiModelProperty( "The reseller catalog associated to the company" )
+    @Valid
+    private UrlEntityDTO resellerCatalog;
+
     public UserCompanyDTO( String name, String email )
     {
         super( name );
@@ -61,6 +65,16 @@ public class UserCompanyDTO extends CompanyDTO
     public void setDelayedPayment( Boolean delayedPayment )
     {
         this.delayedPayment = delayedPayment;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 
     @Override
