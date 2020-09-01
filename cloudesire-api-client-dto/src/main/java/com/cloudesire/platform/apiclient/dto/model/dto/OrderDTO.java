@@ -16,6 +16,8 @@ public class OrderDTO extends BaseOrderDTO
 
     private List<SubscriptionBillingItemDTO> billingItems;
 
+    private List<BillingItemValueDTO> billingItemValues;
+
     private Boolean customerCloudCredential;
 
     private Boolean deferred;
@@ -48,6 +50,16 @@ public class OrderDTO extends BaseOrderDTO
     public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    public List<BillingItemValueDTO> getBillingItemValues()
+    {
+        return billingItemValues;
+    }
+
+    public void setBillingItemValues( List<BillingItemValueDTO> billingItemValues )
+    {
+        this.billingItemValues = billingItemValues;
     }
 
     public Boolean getCustomerCloudCredential()
