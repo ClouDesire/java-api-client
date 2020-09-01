@@ -16,6 +16,8 @@ public class ResellerCatalogDTO extends NamedEntityDTO
 
     private Set<UrlEntityDTO> customers;
 
+    private Set<UrlEntityDTO> companies;
+
     private List<UrlEntityDTO> pricings;
 
     @Valid
@@ -57,6 +59,16 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setCustomers( Set<UrlEntityDTO> customers )
     {
         this.customers = customers;
+    }
+
+    public Set<UrlEntityDTO> getCompanies()
+    {
+        return companies;
+    }
+
+    public void setCompanies( Set<UrlEntityDTO> companies )
+    {
+        this.companies = companies;
     }
 
     public List<UrlEntityDTO> getPricings()
