@@ -8,7 +8,6 @@ import retrofit2.http.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public interface SubscriptionApi
 {
@@ -69,7 +68,7 @@ public interface SubscriptionApi
     Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 
     @GET( "subscription/metadata/keys" )
-    Call<Set<String>> getMetadataKeys();
+    Call<List<String>> getMetadataKeys();
 
     @Streaming
     @GET( "subscription" )
