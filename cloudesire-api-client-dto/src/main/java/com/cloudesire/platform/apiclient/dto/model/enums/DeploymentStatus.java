@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel( "Deployment status of a subscription" )
-public enum DeploymentStatusEnum
+public enum DeploymentStatus
 {
     @ApiModelProperty( "Waiting for deploy" )
     PENDING,

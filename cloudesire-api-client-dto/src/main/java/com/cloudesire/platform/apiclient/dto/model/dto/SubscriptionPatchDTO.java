@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -21,7 +21,7 @@ public class SubscriptionPatchDTO extends DTO
     private Map<UrlEntityDTO, String> configurationParameters;
 
     @ApiModelProperty( "Deployment status of the subscription" )
-    private DeploymentStatusEnum deploymentStatus;
+    private DeploymentStatus deploymentStatus;
 
     @ApiModelProperty( hidden = true )
     @Deprecated
@@ -101,12 +101,12 @@ public class SubscriptionPatchDTO extends DTO
         return this;
     }
 
-    public DeploymentStatusEnum getDeploymentStatus()
+    public DeploymentStatus getDeploymentStatus()
     {
         return deploymentStatus;
     }
 
-    public SubscriptionPatchDTO setDeploymentStatus( DeploymentStatusEnum deploymentStatus )
+    public SubscriptionPatchDTO setDeploymentStatus( DeploymentStatus deploymentStatus )
     {
         this.deploymentStatus = deploymentStatus;
         return this;

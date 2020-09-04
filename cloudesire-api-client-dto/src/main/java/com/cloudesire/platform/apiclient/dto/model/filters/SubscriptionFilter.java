@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.filters;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
-import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import io.swagger.annotations.ApiModelProperty;
@@ -18,7 +18,7 @@ public final class SubscriptionFilter extends PageRequestDTO
     private Map<String, String> metadata;
 
     @ApiModelProperty( "Filter by deployment status" )
-    private Set<DeploymentStatusEnum> status;
+    private Set<DeploymentStatus> status;
 
     @ApiModelProperty( "Filter by Order type" )
     private OrderType type;
@@ -48,12 +48,12 @@ public final class SubscriptionFilter extends PageRequestDTO
         this.metadata = metadata;
     }
 
-    public Set<DeploymentStatusEnum> getStatus()
+    public Set<DeploymentStatus> getStatus()
     {
         return status;
     }
 
-    public void setStatus( Set<DeploymentStatusEnum> status )
+    public void setStatus( Set<DeploymentStatus> status )
     {
         this.status = status;
     }
