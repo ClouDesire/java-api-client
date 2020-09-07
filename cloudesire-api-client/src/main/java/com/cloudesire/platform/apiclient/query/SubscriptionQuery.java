@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +31,7 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setStatus( DeploymentStatusEnum... values )
+    public SubscriptionQuery setStatus( DeploymentStatus... values )
     {
         String value = StringUtils.join( values, ',' );
         put( STATUS, value );

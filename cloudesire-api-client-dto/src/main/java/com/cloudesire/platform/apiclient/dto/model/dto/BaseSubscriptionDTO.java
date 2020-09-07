@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatusEnum;
+import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -26,7 +26,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     private Date endDate;
 
     @ApiModelProperty( value = "Current status of the subscription", readOnly = true )
-    private DeploymentStatusEnum deploymentStatus;
+    private DeploymentStatus deploymentStatus;
 
     @Valid
     private Set<UrlEntityDTO> virtualMachineInstance = new HashSet<>();
@@ -147,12 +147,12 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         this.endDate = endDate;
     }
 
-    public DeploymentStatusEnum getDeploymentStatus()
+    public DeploymentStatus getDeploymentStatus()
     {
         return deploymentStatus;
     }
 
-    public void setDeploymentStatus( DeploymentStatusEnum deploymentStatus )
+    public void setDeploymentStatus( DeploymentStatus deploymentStatus )
     {
         this.deploymentStatus = deploymentStatus;
     }

@@ -62,6 +62,8 @@ public class ObjectMapperFactory
     {
         Map<DeserializationFeature, Boolean> map = new EnumMap<>( DeserializationFeature.class );
         map.put( DeserializationFeature.READ_ENUMS_USING_TO_STRING, true );
+        map.put( DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true );
+        map.put( DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE, true );
         map.put( DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true );
         map.put( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
         return map;
