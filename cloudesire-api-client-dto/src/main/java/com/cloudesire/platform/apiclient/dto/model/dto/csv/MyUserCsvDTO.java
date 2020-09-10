@@ -72,7 +72,8 @@ public class MyUserCsvDTO extends BaseUserCsvDTO
     // endregion
 
     @JsonPropertyOrder( {
-            "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sdiCode", "pec", "type"
+            "name", "vat", "country", "address", "city", "state", "zip", "geocallId", "sdiCode", "pec",
+            "delayedPayment", "type"
     } )
     public static class Company extends BaseCompany
     {

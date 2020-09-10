@@ -88,6 +88,8 @@ abstract class BaseUserCsvDTO extends DTO
 
         private String pec;
 
+        private Boolean delayedPayment;
+
         private String type;
 
         public String getName()
@@ -188,6 +190,16 @@ abstract class BaseUserCsvDTO extends DTO
         public void setPec( String pec )
         {
             this.pec = pec;
+        }
+
+        public Boolean getDelayedPayment()
+        {
+            return delayedPayment;
+        }
+
+        public void setDelayedPayment( Boolean delayedPayment )
+        {
+            this.delayedPayment = delayedPayment;
         }
 
         public String getType()
