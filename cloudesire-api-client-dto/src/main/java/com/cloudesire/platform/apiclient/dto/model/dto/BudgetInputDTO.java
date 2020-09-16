@@ -46,6 +46,9 @@ public class BudgetInputDTO
     @ApiModelProperty( value = "The chosen values for the billing items", example = "{\"billingItem/123\":10}")
     private Map<UrlEntityDTO, Integer> billingItems;
 
+    @ApiModelProperty( "Subscription configuration parameters - used in external validation only" )
+    private Map<UrlEntityDTO, String> configurationParameters;
+
     @ApiModelProperty( "The slug of a reseller company" )
     private String reseller;
 
@@ -162,6 +165,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setBillingItems( Map<UrlEntityDTO, Integer> billingItems )
     {
         this.billingItems = billingItems;
+        return this;
+    }
+
+    public Map<UrlEntityDTO, String> getConfigurationParameters()
+    {
+        return configurationParameters;
+    }
+
+    public BudgetInputDTO setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
+    {
+        this.configurationParameters = configurationParameters;
         return this;
     }
 
