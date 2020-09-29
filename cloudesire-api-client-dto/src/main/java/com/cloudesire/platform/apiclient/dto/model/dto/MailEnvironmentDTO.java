@@ -152,18 +152,18 @@ public class MailEnvironmentDTO extends DTO
         private MailConfiguration orderNotifier;
 
         /**
-         * Email sent for orders direct to deployer
+         * Email sent on order creation to customer
          */
         @NotNull
         @Valid
-        private MailConfiguration orderCreation;
+        private MailConfiguration orderCreationCustomer;
 
         /**
-         * Email sent on every new order creation to vendor
+         * Email sent on order creation to platform actors
          */
         @NotNull
         @Valid
-        private MailConfiguration orderCreationVendor;
+        private MailConfiguration orderCreationPlatform;
 
         /**
          * Email sent to the customer when application has been undeployed
@@ -522,24 +522,36 @@ public class MailEnvironmentDTO extends DTO
             this.orderNotifier = orderNotifier;
         }
 
-        public MailConfiguration getOrderCreation()
+        public MailConfiguration getOrderCreationCustomer()
         {
-            return orderCreation;
+            return orderCreationCustomer;
         }
 
+        public void setOrderCreationCustomer( MailConfiguration orderCreationCustomer )
+        {
+            this.orderCreationCustomer = orderCreationCustomer;
+        }
+
+        @Deprecated
         public void setOrderCreation( MailConfiguration orderCreation )
         {
-            this.orderCreation = orderCreation;
+            this.orderCreationCustomer = orderCreation;
         }
 
-        public MailConfiguration getOrderCreationVendor()
+        public MailConfiguration getOrderCreationPlatform()
         {
-            return orderCreationVendor;
+            return orderCreationPlatform;
         }
 
+        public void setOrderCreationPlatform( MailConfiguration orderCreationPlatform )
+        {
+            this.orderCreationPlatform = orderCreationPlatform;
+        }
+
+        @Deprecated
         public void setOrderCreationVendor( MailConfiguration orderCreationVendor )
         {
-            this.orderCreationVendor = orderCreationVendor;
+            this.orderCreationPlatform = orderCreationVendor;
         }
 
         public MailConfiguration getOrderUndeployCustomer()

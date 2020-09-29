@@ -81,7 +81,8 @@ public class EnvironmentDTO extends DTO
     @Valid
     private UrlPatterns urlPatterns;
 
-    @ApiModelProperty( "Email where to send platform operations notifications" )
+    @ApiModelProperty( hidden = true )
+    @Deprecated
     @Email
     private String operationGroup;
 
@@ -188,15 +189,15 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private NotificationMailCustomization orderNotifier = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent for orders direct to deployer" )
+    @ApiModelProperty( "Email sent on order creation to customer" )
     @Valid
     @NotNull
-    private NotificationMailCustomization orderCreation = new NotificationMailCustomization();
+    private NotificationMailCustomization orderCreationCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on every new order creation to vendor" )
+    @ApiModelProperty( "Email sent on order creation to platform actors" )
     @Valid
     @NotNull
-    private MailCustomization orderCreationVendor = new MailCustomization();
+    private MailCustomization orderCreationPlatform = new MailCustomization();
 
     @ApiModelProperty( "Email sent to the customer when application has been undeployed" )
     @Valid
@@ -568,24 +569,36 @@ public class EnvironmentDTO extends DTO
         this.orderNotifier = orderNotifier;
     }
 
-    public NotificationMailCustomization getOrderCreation()
+    public NotificationMailCustomization getOrderCreationCustomer()
     {
-        return orderCreation;
+        return orderCreationCustomer;
     }
 
+    public void setOrderCreationCustomer( NotificationMailCustomization orderCreationCustomer )
+    {
+        this.orderCreationCustomer = orderCreationCustomer;
+    }
+
+    @Deprecated
     public void setOrderCreation( NotificationMailCustomization orderCreation )
     {
-        this.orderCreation = orderCreation;
+        this.orderCreationCustomer = orderCreation;
     }
 
-    public MailCustomization getOrderCreationVendor()
+    public MailCustomization getOrderCreationPlatform()
     {
-        return orderCreationVendor;
+        return orderCreationPlatform;
     }
 
+    public void setOrderCreationPlatform( MailCustomization orderCreationPlatform )
+    {
+        this.orderCreationPlatform = orderCreationPlatform;
+    }
+
+    @Deprecated
     public void setOrderCreationVendor( MailCustomization orderCreationVendor )
     {
-        this.orderCreationVendor = orderCreationVendor;
+        this.orderCreationPlatform = orderCreationVendor;
     }
 
     public NotificationMailCustomization getOrderUndeployCustomer()
