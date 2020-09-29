@@ -189,12 +189,12 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private NotificationMailCustomization orderNotifier = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent for orders direct to deployer" )
+    @ApiModelProperty( "Email sent on order creation to customer" )
     @Valid
     @NotNull
     private NotificationMailCustomization orderCreationCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on every new order creation to vendor" )
+    @ApiModelProperty( "Email sent on order creation to platform actors" )
     @Valid
     @NotNull
     private MailCustomization orderCreationPlatform = new MailCustomization();

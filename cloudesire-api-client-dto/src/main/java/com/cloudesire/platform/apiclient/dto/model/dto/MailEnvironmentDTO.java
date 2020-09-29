@@ -152,14 +152,14 @@ public class MailEnvironmentDTO extends DTO
         private MailConfiguration orderNotifier;
 
         /**
-         * Email sent for orders direct to deployer
+         * Email sent on order creation to customer
          */
         @NotNull
         @Valid
         private MailConfiguration orderCreationCustomer;
 
         /**
-         * Email sent on every new order creation to vendor
+         * Email sent on order creation to platform actors
          */
         @NotNull
         @Valid
