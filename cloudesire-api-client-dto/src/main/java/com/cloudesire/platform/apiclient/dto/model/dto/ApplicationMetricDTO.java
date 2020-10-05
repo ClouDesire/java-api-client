@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
 import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
-import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
+import com.cloudesire.platform.apiclient.dto.model.enums.MetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -22,7 +22,11 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @ApiModelProperty( "Whether the metric is a counter (value always increments) or a gauge (value can arbitrarily go up and down)" )
     private boolean counter;
 
-    private GaugeMetricFunction gaugeMetricFunction;
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20201005 )
+    private MetricFunction gaugeMetricFunction;
+
+    @FieldAPI( sinceVersion = ApiVersion.V20201005 )
+    private MetricFunction metricFunction;
 
     @Valid
     private UrlEntityDTO applicationFile;
@@ -62,14 +66,32 @@ public class ApplicationMetricDTO extends BaseEntityDTO
         this.counter = counter;
     }
 
-    public GaugeMetricFunction getGaugeMetricFunction()
+    /**
+     * @deprecated by {@link #getMetricFunction()}
+     */
+    @Deprecated
+    public MetricFunction getGaugeMetricFunction()
     {
         return gaugeMetricFunction;
     }
 
-    public void setGaugeMetricFunction( GaugeMetricFunction gaugeMetricFunction )
+    /**
+     * @deprecated by {@link #setMetricFunction(MetricFunction)}
+     */
+    @Deprecated
+    public void setGaugeMetricFunction( MetricFunction gaugeMetricFunction )
     {
         this.gaugeMetricFunction = gaugeMetricFunction;
+    }
+
+    public MetricFunction getMetricFunction()
+    {
+        return metricFunction;
+    }
+
+    public void setMetricFunction( MetricFunction metricFunction )
+    {
+        this.metricFunction = metricFunction;
     }
 
     @NotNull
