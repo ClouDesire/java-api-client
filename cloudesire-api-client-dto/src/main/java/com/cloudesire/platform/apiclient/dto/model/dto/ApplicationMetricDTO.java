@@ -4,13 +4,10 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ApplicationMetricType;
-import com.cloudesire.platform.apiclient.dto.model.enums.CounterMetricFunction;
 import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
 import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
 import com.cloudesire.platform.apiclient.dto.model.enums.MetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -30,11 +27,6 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     private GaugeMetricFunction gaugeMetricFunction;
 
     @FieldAPI( sinceVersion = ApiVersion.V20201005 )
-    @JsonTypeInfo( use = JsonTypeInfo.Id.NAME, property = "type" )
-    @JsonSubTypes( {
-            @JsonSubTypes.Type( value = CounterMetricFunction.class, name = "counter" ),
-            @JsonSubTypes.Type( value = GaugeMetricFunction.class, name = "gauge" )
-    } )
     private MetricFunction metricFunction;
 
     @Valid
