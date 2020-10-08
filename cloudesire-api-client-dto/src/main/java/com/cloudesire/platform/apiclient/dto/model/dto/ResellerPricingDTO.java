@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -64,6 +65,8 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @ApiModelProperty( "Reselling prices for custom costs" )
     @Valid
     private List<CustomResellingPriceDTO> customResellingPrices;
+
+    private ResellerPricingVisibility visibility;
 
     public ResellerPricingDTO( UrlEntityDTO resellerCatalog, UrlEntityDTO distributorPricing )
     {
@@ -220,6 +223,16 @@ public class ResellerPricingDTO extends BaseEntityDTO
     public void setCustomResellingPrices( List<CustomResellingPriceDTO> customResellingPrices )
     {
         this.customResellingPrices = customResellingPrices;
+    }
+
+    public ResellerPricingVisibility getVisibility()
+    {
+        return visibility;
+    }
+
+    public void setVisibility( ResellerPricingVisibility visibility )
+    {
+        this.visibility = visibility;
     }
 
     @Override
