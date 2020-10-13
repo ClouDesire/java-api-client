@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDraftDTO;
+import com.cloudesire.platform.apiclient.query.ProductVersionQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -37,12 +38,27 @@ public interface ProductVersionApi
             @Query( "language" ) String language );
 
     @GET( "productVersion" )
+    Call<List<ProductVersionDTO>> getAll( @QueryMap ProductVersionQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(ProductVersionQuery)}
+     */
+    @Deprecated
+    @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product );
 
+    /**
+     * @deprecated by {@link #getAll(ProductVersionQuery)}
+     */
+    @Deprecated
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product,
             @QueryMap Map<String, String> pageRequest );
 
+    /**
+     * @deprecated by {@link #getAll(ProductVersionQuery)}
+     */
+    @Deprecated
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll(
             @Query( "product" ) Integer product,
@@ -50,10 +66,18 @@ public interface ProductVersionApi
             @QueryMap Map<String, String> pageRequest
     );
 
+    /**
+     * @deprecated by {@link #getAll(ProductVersionQuery)}
+     */
+    @Deprecated
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @Query( "product" ) Integer product, @Query( "reseller" ) String reseller,
             @QueryMap Map<String, String> pageRequest );
 
+    /**
+     * @deprecated by {@link #getAll(ProductVersionQuery)}
+     */
+    @Deprecated
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll(
             @Query( "product" ) int product,
