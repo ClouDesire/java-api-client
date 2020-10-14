@@ -113,6 +113,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( value = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
     private Map<UrlEntityDTO, BigDecimal> bundle;
 
+    /**
+     * @deprecated by {@link com.cloudesire.platform.apiclient.api.ProductVersionApi#getMetadata(int)}
+     */
     @ApiModelProperty( value = "Metadata for the product version", example = "{\"key\":\"value\"}" )
     private Map<String, Object> metadata;
 
