@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
+import org.apache.commons.lang3.StringUtils;
 
 public class ProductVersionQuery extends BaseQuery
 {
@@ -32,9 +33,9 @@ public class ProductVersionQuery extends BaseQuery
         return this;
     }
 
-    public ProductVersionQuery setVisibility( ResellerPricingVisibility visibility )
+    public ProductVersionQuery setVisibility( ResellerPricingVisibility... visibility )
     {
-        put( VISIBILITY, visibility );
+        put( VISIBILITY, StringUtils.join( visibility, ',' ) );
         return this;
     }
 }

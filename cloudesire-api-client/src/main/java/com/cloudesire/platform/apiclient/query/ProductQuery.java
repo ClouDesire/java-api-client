@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderingType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
+import org.apache.commons.lang3.StringUtils;
 
 public class ProductQuery extends PageRequestQuery
 {
@@ -101,9 +102,9 @@ public class ProductQuery extends PageRequestQuery
         return this;
     }
 
-    public ProductQuery setVisibility( ResellerPricingVisibility visibility )
+    public ProductQuery setVisibility( ResellerPricingVisibility... visibility )
     {
-        put( VISIBILITY, visibility );
+        put( VISIBILITY, StringUtils.join( visibility, ',' ) );
         return this;
     }
 }
