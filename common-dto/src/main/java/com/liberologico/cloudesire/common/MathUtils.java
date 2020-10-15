@@ -15,6 +15,16 @@ public final class MathUtils
         return base.add( percentage( base, pct, MathConfiguration.COMPUTATION_PRECISION ) );
     }
 
+    public static boolean isBetween( BigDecimal number, int min, int max )
+    {
+        return isBetween( number, new BigDecimal( min ), new BigDecimal( max ) );
+    }
+
+    public static boolean isBetween( BigDecimal number, BigDecimal min, BigDecimal max )
+    {
+        return min.compareTo( number ) <= 0 && number.compareTo( max ) <= 0;
+    }
+
     public static BigDecimal subtractPercentage( BigDecimal base, BigDecimal pct )
     {
         if ( base == null ) return BigDecimal.ZERO;
