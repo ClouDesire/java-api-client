@@ -155,7 +155,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
     private Boolean unkillable;
 
-    @ApiModelProperty( "Call to action custom label" )
+    @ApiModelProperty( value = "Marketplace button label customization for the Product Version", example = "\"Buy now!\", \"Request a quote\"" )
     private String ctaLabel;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
