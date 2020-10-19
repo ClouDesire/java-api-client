@@ -2,6 +2,8 @@ package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderingType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
+import org.apache.commons.lang3.StringUtils;
 
 public class ProductQuery extends PageRequestQuery
 {
@@ -16,6 +18,7 @@ public class ProductQuery extends PageRequestQuery
     private static final String ORDERING_TYPE = "orderingType";
     private static final String CATEGORY_ID = "categoryId";
     private static final String TAG = "tag";
+    private static final String VISIBILITY = "visibility";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -96,6 +99,12 @@ public class ProductQuery extends PageRequestQuery
     public ProductQuery setOnlyActiveConfigurations( boolean flag )
     {
         put( ONLY_ACTIVE_CONFIGURATIONS, flag );
+        return this;
+    }
+
+    public ProductQuery setVisibility( ResellerPricingVisibility... visibility )
+    {
+        put( VISIBILITY, StringUtils.join( visibility, ',' ) );
         return this;
     }
 }
