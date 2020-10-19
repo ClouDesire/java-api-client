@@ -2,14 +2,18 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
 import java.util.Objects;
+
+import static com.liberologico.cloudesire.common.MathConfiguration.COMPUTATION_PRECISION;
+import static com.liberologico.cloudesire.common.MathConfiguration.ROUNDING_MODE;
 
 public class SubscriptionBillingItemDTO extends DTO
 {
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "The chosen value for this billing item" )
-    private Integer value;
+    @ApiModelProperty( "The current value for this billing item" )
+    private BigDecimal value;
 
     @ApiModelProperty( "Whether the billing item has been already bought for the Subscription" )
     private Boolean bought;
@@ -25,7 +29,7 @@ public class SubscriptionBillingItemDTO extends DTO
     public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value, boolean bought )
     {
         this.billingItem = billingItem;
-        this.value = value;
+        this.value = new BigDecimal( value ).setScale( COMPUTATION_PRECISION, ROUNDING_MODE );
         this.bought = bought;
     }
 
@@ -48,12 +52,12 @@ public class SubscriptionBillingItemDTO extends DTO
         this.billingItem = billingItem;
     }
 
-    public Integer getValue()
+    public BigDecimal getValue()
     {
         return value;
     }
 
-    public void setValue( Integer value )
+    public void setValue( BigDecimal value )
     {
         this.value = value;
     }
