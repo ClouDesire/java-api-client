@@ -153,9 +153,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
-    @ApiModelProperty( hidden = true )
-    private MinimumCostDTO minimumCost;
-
     @JsonInclude( JsonInclude.Include.NON_NULL )
     @ApiModelProperty( "Localized product metadata" )
     private Map<String, Object> extraData;
@@ -622,17 +619,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         return this;
     }
 
-    public MinimumCostDTO getMinimumCost()
-    {
-        return minimumCost;
-    }
-
-    public ProductDTO setMinimumCost( MinimumCostDTO minimumCost )
-    {
-        this.minimumCost = minimumCost;
-        return this;
-    }
-
     @Override
     public Map<String, String> getFaq()
     {
@@ -806,7 +792,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! ( o instanceof ProductDTO ) ) return false;
         if ( ! super.equals( o ) ) return false;
         ProductDTO that = (ProductDTO) o;
         return Objects.equals( SKU, that.SKU );

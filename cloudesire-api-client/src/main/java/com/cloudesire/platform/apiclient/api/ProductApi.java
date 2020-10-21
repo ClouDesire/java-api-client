@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.CspAzureProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.CspLicenseProductDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductBundleDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.ProductDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductDraftDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductRegisterEntryDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
@@ -79,19 +80,19 @@ public interface ProductApi
     Call<List<ProductDTO>> getApprovalRequests( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "product/sku/{sku}" )
-    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku );
+    Call<ProductDetailDTO> getProductBySKU( @Path( "sku" ) String sku );
 
     @GET( "product/sku/{sku}" )
-    Call<ProductDTO> getProductBySKU( @Path( "sku" ) String sku, @Query( "language" ) String language );
+    Call<ProductDetailDTO> getProductBySKU( @Path( "sku" ) String sku, @Query( "language" ) String language );
 
     @GET( "product/{id}" )
-    Call<ProductDTO> get( @Path( "id" ) int id );
+    Call<ProductDetailDTO> get( @Path( "id" ) int id );
 
     @GET( "product/{id}" )
-    Call<ProductDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
+    Call<ProductDetailDTO> get( @Path( "id" ) int id, @Query( "language" ) String language );
 
     @GET( "product/{id}" )
-    Call<ProductDTO> get( @Path( "id" ) int id, @QueryMap ResellerCatalogQuery parameters );
+    Call<ProductDetailDTO> get( @Path( "id" ) int id, @QueryMap ResellerCatalogQuery parameters );
 
     @PUT( "product/{id}" )
     Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
