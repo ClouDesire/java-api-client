@@ -155,6 +155,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
     private Boolean unkillable;
 
+    @ApiModelProperty( value = "Marketplace button label customization for the Product Version", example = "\"Buy now!\", \"Request a quote\"" )
+    private String ctaLabel;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -617,6 +620,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setUnkillable( Boolean unkillable )
     {
         this.unkillable = unkillable;
+    }
+
+    public String getCtaLabel()
+    {
+        return ctaLabel;
+    }
+
+    public void setCtaLabel( String ctaLabel )
+    {
+        this.ctaLabel = ctaLabel;
     }
 
     @Override
