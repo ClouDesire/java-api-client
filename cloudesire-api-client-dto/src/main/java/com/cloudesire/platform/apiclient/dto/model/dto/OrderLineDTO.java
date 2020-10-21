@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+
 @ApiModel( description = "A billed unit" )
 public class OrderLineDTO implements Line
 {
@@ -45,11 +47,11 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( "If this is a one-off cost" )
     private boolean setup;
 
-    @ApiModelProperty( value = "Discount percentage if this line is relative to a coupon", example = "20", readOnly = true )
+    @ApiModelProperty( value = "Discount percentage if this line is relative to a coupon", example = "20", accessMode = READ_ONLY )
     private BigDecimal discount;
 
-    @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15", readOnly = true )
-    private Integer maximum;
+    @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15.00", accessMode = READ_ONLY )
+    private BigDecimal maximum;
 
     @ApiModelProperty( "Custom billing identifier" )
     private String identifier;
@@ -79,7 +81,7 @@ public class OrderLineDTO implements Line
         return getSubtotal();
     }
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( accessMode = READ_ONLY )
     public BigDecimal getSubtotal()
     {
         if ( price == null || price.getPrice() == null ) return BigDecimal.ZERO;
@@ -89,7 +91,7 @@ public class OrderLineDTO implements Line
                 .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
     }
 
-    @ApiModelProperty( value = "VAT total amount", readOnly = true )
+    @ApiModelProperty( value = "VAT total amount", accessMode = READ_ONLY )
     @JsonProperty( value = "vatSpunOff" )
     public BigDecimal getVATSpunOff()
     {
@@ -197,12 +199,12 @@ public class OrderLineDTO implements Line
         this.discount = discount;
     }
 
-    public Integer getMaximum()
+    public BigDecimal getMaximum()
     {
         return maximum;
     }
 
-    public void setMaximum( Integer maximum )
+    public void setMaximum( BigDecimal maximum )
     {
         this.maximum = maximum;
     }
