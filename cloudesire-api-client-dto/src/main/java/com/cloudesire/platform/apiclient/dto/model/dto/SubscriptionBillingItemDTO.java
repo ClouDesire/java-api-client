@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static com.liberologico.cloudesire.common.MathConfiguration.COMPUTATION_PRECISION;
+import static com.liberologico.cloudesire.common.MathConfiguration.DAY_SCALE_PRECISION;
 import static com.liberologico.cloudesire.common.MathConfiguration.ROUNDING_MODE;
 
 public class SubscriptionBillingItemDTO extends DTO
@@ -29,7 +29,7 @@ public class SubscriptionBillingItemDTO extends DTO
     public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value, boolean bought )
     {
         this.billingItem = billingItem;
-        this.value = new BigDecimal( value ).setScale( COMPUTATION_PRECISION, ROUNDING_MODE );
+        this.value = new BigDecimal( value ).setScale( DAY_SCALE_PRECISION, ROUNDING_MODE );
         this.bought = bought;
     }
 
