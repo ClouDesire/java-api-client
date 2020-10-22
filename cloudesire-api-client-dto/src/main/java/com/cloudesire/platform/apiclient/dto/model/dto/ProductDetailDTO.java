@@ -12,7 +12,6 @@ public class ProductDetailDTO extends ProductDTO
     @Valid
     private List<UrlEntityDTO> metrics;
 
-    @ApiModelProperty( hidden = true )
     private MinimumCostDTO minimumCost;
 
     public List<UrlEntityDTO> getMetrics()
