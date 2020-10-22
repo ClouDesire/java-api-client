@@ -97,10 +97,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "Tags associated to the product" )
     private Set<ProductTagDTO> tags;
 
-    @ApiModelProperty( "Application metrics associated to the product" )
-    @Valid
-    private List<UrlEntityDTO> metrics;
-
     @ApiModelProperty( "Cloud providers associated to the product" )
     @Valid
     private List<UrlEntityDTO> cloudProviders;
@@ -465,16 +461,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setApiUrl( String apiUrl )
     {
         this.apiUrl = apiUrl;
-    }
-
-    public List<UrlEntityDTO> getMetrics()
-    {
-        return metrics;
-    }
-
-    public void setMetrics( List<UrlEntityDTO> metrics )
-    {
-        this.metrics = metrics;
     }
 
     public Boolean isApi()

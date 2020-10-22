@@ -2,12 +2,28 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 
 public class ProductDetailDTO extends ProductDTO
 {
+    @ApiModelProperty( "Application metrics associated to the product" )
+    @Valid
+    private List<UrlEntityDTO> metrics;
+
     @ApiModelProperty( hidden = true )
     private MinimumCostDTO minimumCost;
+
+    public List<UrlEntityDTO> getMetrics()
+    {
+        return metrics;
+    }
+
+    public void setMetrics( List<UrlEntityDTO> metrics )
+    {
+        this.metrics = metrics;
+    }
 
     public MinimumCostDTO getMinimumCost()
     {
