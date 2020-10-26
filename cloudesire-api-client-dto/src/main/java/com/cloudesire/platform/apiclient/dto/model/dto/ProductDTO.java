@@ -97,10 +97,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "Tags associated to the product" )
     private Set<ProductTagDTO> tags;
 
-    @ApiModelProperty( "Application metrics associated to the product" )
-    @Valid
-    private List<UrlEntityDTO> metrics;
-
     @ApiModelProperty( "Cloud providers associated to the product" )
     @Valid
     private List<UrlEntityDTO> cloudProviders;
@@ -152,9 +148,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @ApiModelProperty( "If the product is in a draft state" )
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
-
-    @ApiModelProperty( hidden = true )
-    private MinimumCostDTO minimumCost;
 
     @JsonInclude( JsonInclude.Include.NON_NULL )
     @ApiModelProperty( "Localized product metadata" )
@@ -470,16 +463,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.apiUrl = apiUrl;
     }
 
-    public List<UrlEntityDTO> getMetrics()
-    {
-        return metrics;
-    }
-
-    public void setMetrics( List<UrlEntityDTO> metrics )
-    {
-        this.metrics = metrics;
-    }
-
     public Boolean isApi()
     {
         return api;
@@ -619,17 +602,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public ProductDTO setDrafted( boolean drafted )
     {
         this.drafted = drafted;
-        return this;
-    }
-
-    public MinimumCostDTO getMinimumCost()
-    {
-        return minimumCost;
-    }
-
-    public ProductDTO setMinimumCost( MinimumCostDTO minimumCost )
-    {
-        this.minimumCost = minimumCost;
         return this;
     }
 
@@ -806,7 +778,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
+        if ( ! ( o instanceof ProductDTO ) ) return false;
         if ( ! super.equals( o ) ) return false;
         ProductDTO that = (ProductDTO) o;
         return Objects.equals( SKU, that.SKU );

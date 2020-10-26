@@ -1,8 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.validation.Valid;
 import java.util.Objects;
 
+@ApiModel( "Billing details for the cheapest Product Version for a Product" )
 public class MinimumCostDTO extends DTO
 {
     private VATPriceDTO cost;

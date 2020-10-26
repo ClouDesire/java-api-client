@@ -18,6 +18,7 @@ public final class Headers
     public static final String PROCEEDS_EARNINGS = "CMW-Proceeds-Earnings";
     public static final String PROCEEDS_COSTS = "CMW-Proceeds-Costs";
     public static final String REQUEST_ID = "CMW-Request-Id";
+    public static final String RESPONSE_TIME = "CMW-Response-Time-MS";
 
     private Headers()
     {
