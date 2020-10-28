@@ -26,6 +26,9 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     @Valid
     private Map<UrlEntityDTO, UrlEntityDTO> categories;
 
+    @Valid
+    private UrlEntityDTO parent;
+
     @ApiModelProperty( value = "When the catalog has been created", readOnly = true )
     private Date createdAt;
 
@@ -99,6 +102,16 @@ public class ResellerCatalogDTO extends NamedEntityDTO
     public void setCategories( Map<UrlEntityDTO, UrlEntityDTO> categories )
     {
         this.categories = categories;
+    }
+
+    public UrlEntityDTO getParent()
+    {
+        return parent;
+    }
+
+    public void setParent( UrlEntityDTO parent )
+    {
+        this.parent = parent;
     }
 
     public Date getCreatedAt()
