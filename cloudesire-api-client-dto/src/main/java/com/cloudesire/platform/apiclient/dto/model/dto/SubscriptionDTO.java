@@ -13,6 +13,9 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
 
     private Set<ActionDTO> availableOperations = null;
 
+    @ApiModelProperty( "Slug of the reseller company for the subscription" )
+    private String resellerSlug;
+
     public List<SubscriptionBillingItemDTO> getBillingItems()
     {
         return billingItems;
@@ -31,5 +34,15 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
     public void setAvailableOperations( Set<ActionDTO> availableOperations )
     {
         this.availableOperations = availableOperations;
+    }
+
+    public String getResellerSlug()
+    {
+        return resellerSlug;
+    }
+
+    public void setResellerSlug( String resellerSlug )
+    {
+        this.resellerSlug = resellerSlug;
     }
 }
