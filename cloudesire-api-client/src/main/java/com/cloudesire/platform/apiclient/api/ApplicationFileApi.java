@@ -30,6 +30,10 @@ public interface ApplicationFileApi
     @POST( "applicationFile" )
     Call<ApplicationFileDTO> create( @Body ApplicationFileDTO file );
 
+    /**
+     * @deprecated by {@link #create(ApplicationFileDTO)}
+     */
+    @Deprecated
     @Multipart
     @POST( "applicationFile" )
     Call<ApplicationFileDTO> create( @Part MultipartBody.Part file, @Query( "stack" ) String[] stacks,
