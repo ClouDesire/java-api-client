@@ -46,6 +46,12 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @DecimalMin( "0" )
     private BigDecimal vendorSetup;
 
+    @DecimalMin( "0" )
+    private BigDecimal proportionalSetup;
+
+    @DecimalMin( "0" )
+    private BigDecimal vendorProportionalSetup;
+
     @ApiModelProperty( "Increment amount" )
     @Min( 1 )
     private Integer step;
@@ -170,6 +176,28 @@ public class BillingItemValueDTO extends BaseEntityDTO
     public BillingItemValueDTO setVendorSetup( BigDecimal vendorSetup )
     {
         this.vendorSetup = vendorSetup;
+        return this;
+    }
+
+    public BigDecimal getProportionalSetup()
+    {
+        return proportionalSetup;
+    }
+
+    public BillingItemValueDTO setProportionalSetup( BigDecimal proportionalSetup )
+    {
+        this.proportionalSetup = proportionalSetup;
+        return this;
+    }
+
+    public BigDecimal getVendorProportionalSetup()
+    {
+        return vendorProportionalSetup;
+    }
+
+    public BillingItemValueDTO setVendorProportionalSetup( BigDecimal vendorProportionalSetup )
+    {
+        this.vendorProportionalSetup = vendorProportionalSetup;
         return this;
     }
 

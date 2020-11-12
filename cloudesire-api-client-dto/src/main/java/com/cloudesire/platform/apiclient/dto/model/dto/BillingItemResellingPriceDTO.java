@@ -14,6 +14,9 @@ public class BillingItemResellingPriceDTO extends BaseResellingPriceDTO
     @Valid
     private ResellingPriceDTO setup;
 
+    @Valid
+    private ResellingPriceDTO proportionalSetup;
+
     public BillingItemResellingPriceDTO( int billingItemValueId, BigDecimal sellout )
     {
         this( billingItemValueId );
@@ -48,6 +51,16 @@ public class BillingItemResellingPriceDTO extends BaseResellingPriceDTO
     public void setSetup( ResellingPriceDTO setup )
     {
         this.setup = setup;
+    }
+
+    public ResellingPriceDTO getProportionalSetup()
+    {
+        return proportionalSetup;
+    }
+
+    public void setProportionalSetup( ResellingPriceDTO proportionalSetup )
+    {
+        this.proportionalSetup = proportionalSetup;
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @JsonPropertyOrder( {
         "plan", "extra", "planIdentifier", "extraIdentifier", "extraStart", "extraEnd",
-        "price", "vendorPrice", "setup", "vendorSetup"
+        "price", "vendorPrice", "setup", "vendorSetup", "proportionalSetup", "vendorProportionalSetup"
 } )
 public class CatalogPlanCsvDTO extends CatalogCsvDTO
 {
@@ -17,6 +17,10 @@ public class CatalogPlanCsvDTO extends CatalogCsvDTO
     private BigDecimal setup;
 
     private BigDecimal vendorSetup;
+
+    private BigDecimal proportionalSetup;
+
+    private BigDecimal vendorProportionalSetup;
 
     @Override
     public CatalogPlanCsvDTO copyVersion()
@@ -72,6 +76,26 @@ public class CatalogPlanCsvDTO extends CatalogCsvDTO
     public void setVendorSetup( BigDecimal vendorSetup )
     {
         this.vendorSetup = vendorSetup;
+    }
+
+    public BigDecimal getProportionalSetup()
+    {
+        return proportionalSetup;
+    }
+
+    public void setProportionalSetup( BigDecimal proportionalSetup )
+    {
+        this.proportionalSetup = proportionalSetup;
+    }
+
+    public BigDecimal getVendorProportionalSetup()
+    {
+        return vendorProportionalSetup;
+    }
+
+    public void setVendorProportionalSetup( BigDecimal vendorProportionalSetup )
+    {
+        this.vendorProportionalSetup = vendorProportionalSetup;
     }
 
     @Override
