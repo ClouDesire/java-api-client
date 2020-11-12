@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -26,11 +27,20 @@ public class ObjectMapperFactory
     public static ObjectMapper build( ObjectMapper mapper, Map<DeserializationFeature, Boolean> configuration,
             SimpleModule module )
     {
-        configure( mapper, configuration, module );
+        return build( mapper, configuration, emptyMap(), module );
+    }
+
+    public static ObjectMapper build( ObjectMapper mapper,
+            Map<DeserializationFeature, Boolean> deserializationConfiguration,
+            Map<JsonGenerator.Feature, Boolean> jsonGeneratorConfiguration, SimpleModule module )
+    {
+        configure( mapper, deserializationConfiguration, jsonGeneratorConfiguration, module );
         return mapper;
     }
 
-    private static void configure( ObjectMapper mapper, Map<DeserializationFeature, Boolean> configuration, SimpleModule module )
+    private static void configure( ObjectMapper mapper,
+            Map<DeserializationFeature, Boolean> deserializationConfiguration,
+            Map<JsonGenerator.Feature, Boolean> jsonGeneratorConfiguration, SimpleModule module )
     {
         for ( Map.Entry<SerializationFeature, Boolean> entry : defaultSerialization().entrySet() )
         {
@@ -40,14 +50,18 @@ public class ObjectMapperFactory
         {
             mapper.configure( entry.getKey(), entry.getValue() );
         }
-        for ( Map.Entry<DeserializationFeature, Boolean> entry : configuration.entrySet() )
+        for ( Map.Entry<DeserializationFeature, Boolean> entry : deserializationConfiguration.entrySet() )
+        {
+            mapper.configure( entry.getKey(), entry.getValue() );
+        }
+        for ( Map.Entry<JsonGenerator.Feature, Boolean> entry : jsonGeneratorConfiguration.entrySet() )
         {
             mapper.configure( entry.getKey(), entry.getValue() );
         }
 
         mapper.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
 
-        if ( module != null) mapper.registerModule( module );
+        if ( module != null ) mapper.registerModule( module );
     }
 
     private static Map<SerializationFeature, Boolean> defaultSerialization()
