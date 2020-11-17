@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -30,7 +31,8 @@ public class ObjectMapperFactory
         return mapper;
     }
 
-    private static void configure( ObjectMapper mapper, Map<DeserializationFeature, Boolean> configuration, SimpleModule module )
+    private static void configure( ObjectMapper mapper,
+            Map<DeserializationFeature, Boolean> deserializationConfiguration, SimpleModule module )
     {
         for ( Map.Entry<SerializationFeature, Boolean> entry : defaultSerialization().entrySet() )
         {
@@ -40,14 +42,18 @@ public class ObjectMapperFactory
         {
             mapper.configure( entry.getKey(), entry.getValue() );
         }
-        for ( Map.Entry<DeserializationFeature, Boolean> entry : configuration.entrySet() )
+        for ( Map.Entry<JsonGenerator.Feature, Boolean> entry : defaultJsonGenerator().entrySet() )
+        {
+            mapper.configure( entry.getKey(), entry.getValue() );
+        }
+        for ( Map.Entry<DeserializationFeature, Boolean> entry : deserializationConfiguration.entrySet() )
         {
             mapper.configure( entry.getKey(), entry.getValue() );
         }
 
         mapper.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
 
-        if ( module != null) mapper.registerModule( module );
+        if ( module != null ) mapper.registerModule( module );
     }
 
     private static Map<SerializationFeature, Boolean> defaultSerialization()
@@ -66,6 +72,13 @@ public class ObjectMapperFactory
         map.put( DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE, true );
         map.put( DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true );
         map.put( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false );
+        return map;
+    }
+
+    private static Map<JsonGenerator.Feature, Boolean> defaultJsonGenerator()
+    {
+        Map<JsonGenerator.Feature, Boolean> map = new EnumMap<>( JsonGenerator.Feature.class );
+        map.put( JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true );
         return map;
     }
 
