@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderUpgradeStatus;
+
 import java.util.List;
 
 /**
@@ -21,6 +23,8 @@ public class OrderDTO extends BaseOrderDTO
     private Boolean customerCloudCredential;
 
     private Boolean deferred;
+
+    private OrderUpgradeStatus upgradeStatus;
 
     public UrlEntityDTO getDistributor()
     {
@@ -80,5 +84,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setDeferred( Boolean deferred )
     {
         this.deferred = deferred;
+    }
+
+    public OrderUpgradeStatus getUpgradeStatus()
+    {
+        return upgradeStatus;
+    }
+
+    public void setUpgradeStatus( OrderUpgradeStatus upgradeStatus )
+    {
+        this.upgradeStatus = upgradeStatus;
     }
 }
