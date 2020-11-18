@@ -16,6 +16,8 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
     @ApiModelProperty( "Slug of the reseller company for the subscription" )
     private String resellerSlug;
 
+    private UrlEntityDTO resellerCatalog;
+
     public List<SubscriptionBillingItemDTO> getBillingItems()
     {
         return billingItems;
@@ -44,5 +46,15 @@ public class SubscriptionDTO extends BaseSubscriptionDTO
     public void setResellerSlug( String resellerSlug )
     {
         this.resellerSlug = resellerSlug;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 }
