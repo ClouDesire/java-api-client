@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderUpgradeStatus;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 public class OrderQuery extends PageRequestQuery
 {
     private static final String TYPE = "type";
+    private static final String UPGRADE_STATUS = "upgradeStatus";
     private static final String TEXT_FIELD = "textField";
     private static final String COUPON = "coupon";
     private static final String FROM = "from";
@@ -22,6 +24,12 @@ public class OrderQuery extends PageRequestQuery
     public OrderQuery setType( OrderType type )
     {
         put( TYPE, type.toString() );
+        return this;
+    }
+
+    public OrderQuery setUpgradeStatus( OrderUpgradeStatus upgradeStatus )
+    {
+        put( UPGRADE_STATUS, upgradeStatus.toString() );
         return this;
     }
 
