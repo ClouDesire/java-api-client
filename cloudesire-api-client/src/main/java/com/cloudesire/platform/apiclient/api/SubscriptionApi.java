@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.*;
+import com.cloudesire.platform.apiclient.dto.model.enums.CustomInvoiceType;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -45,6 +46,15 @@ public interface SubscriptionApi
     @GET( "subscription/{id}" )
     Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
+    @POST( "subscription/{id}/invoice" )
+    Call<Void> customInvoice( @Path( "id" ) int id,
+            @Body List<VendorOrderLineDTO> lines,
+            @Query( "type" ) CustomInvoiceType type );
+
+    /**
+     * @deprecated by {@link #customInvoice(int, List, CustomInvoiceType)}
+     */
+    @Deprecated
     @POST( "subscription/{id}/invoice" )
     Call<Void> postOrderLines( @Path( "id" ) int id, @Body List<VendorOrderLineDTO> lines,
             @Query( "cashed" ) Boolean cashed );
