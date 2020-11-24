@@ -1,8 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderUpgradeStatus;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * This is the output DTO for order
@@ -25,6 +27,8 @@ public class OrderDTO extends BaseOrderDTO
     private Boolean deferred;
 
     private OrderUpgradeStatus upgradeStatus;
+
+    private Set<OrderOperationType> availableOperations;
 
     public UrlEntityDTO getDistributor()
     {
@@ -94,5 +98,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setUpgradeStatus( OrderUpgradeStatus upgradeStatus )
     {
         this.upgradeStatus = upgradeStatus;
+    }
+
+    public Set<OrderOperationType> getAvailableOperations()
+    {
+        return availableOperations;
+    }
+
+    public void setAvailableOperations( Set<OrderOperationType> availableOperations )
+    {
+        this.availableOperations = availableOperations;
     }
 }
