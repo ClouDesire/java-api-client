@@ -2,8 +2,9 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public enum OrderUpgradeStatus
+public enum OrderStatus
 {
+    @ApiModelProperty( "An order is waiting for approval" )
     REQUIRES_APPROVAL,
 
     @ApiModelProperty( "An upgrade order has been deferred for the next billing period" )

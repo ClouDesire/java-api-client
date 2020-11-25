@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.OrderUpgradeStatus;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,18 +8,18 @@ import io.swagger.annotations.ApiModelProperty;
 public class SubscriptionPatchResponseDTO extends DTO
 {
     @ApiModelProperty( "Outcome of a Subscription upgrade" )
-    private OrderUpgradeStatus upgrade;
+    private OrderStatus upgrade;
 
     private UrlEntityDTO invoice;
 
     private UrlEntityDTO order;
 
-    public OrderUpgradeStatus getUpgrade()
+    public OrderStatus getUpgrade()
     {
         return upgrade;
     }
 
-    public void setUpgrade( OrderUpgradeStatus upgrade )
+    public void setUpgrade( OrderStatus upgrade )
     {
         this.upgrade = upgrade;
     }
