@@ -1,10 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
 
 import java.util.List;
 import java.util.Set;
+
+import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201126;
 
 /**
  * This is the output DTO for order
@@ -24,10 +28,13 @@ public class OrderDTO extends BaseOrderDTO
 
     private Boolean customerCloudCredential;
 
+    @UnsupportedAPI( sinceVersion = V20201126 )
     private Boolean deferred;
 
+    @FieldAPI( sinceVersion = V20201126 )
     private OrderStatus status;
 
+    @FieldAPI( sinceVersion = V20201126 )
     private Set<OrderOperationType> availableOperations;
 
     public UrlEntityDTO getDistributor()
@@ -80,11 +87,19 @@ public class OrderDTO extends BaseOrderDTO
         this.customerCloudCredential = customerCloudCredential;
     }
 
+    /**
+     * @deprecated by {@link #getStatus()}
+     */
+    @Deprecated
     public Boolean getDeferred()
     {
         return deferred;
     }
 
+    /**
+     * @deprecated by {@link #setStatus(OrderStatus)}
+     */
+    @Deprecated
     public void setDeferred( Boolean deferred )
     {
         this.deferred = deferred;
