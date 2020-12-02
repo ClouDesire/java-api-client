@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
@@ -16,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201202;
 
 public abstract class BaseSubscriptionDTO extends NamedEntityDTO
 {
@@ -53,7 +57,12 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "When the next invoice will be emitted", readOnly = true )
     private Date nextInvoice;
 
-    @ApiModelProperty( value = "When the last invoice has been emitted", readOnly = true )
+    @ApiModelProperty( "When the current billing period has started" )
+    @FieldAPI( sinceVersion = V20201202 )
+    private Date billingPeriodStart;
+
+    @ApiModelProperty( hidden = true )
+    @UnsupportedAPI( sinceVersion = V20201202 )
     private Date lastInvoice;
 
     @ApiModelProperty( value = "The type of this subscription", readOnly = true, allowableValues = "NORMAL, TRIAL, SANDBOX" )
@@ -187,11 +196,29 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         this.nextInvoice = nextInvoice;
     }
 
+    public Date getBillingPeriodStart()
+    {
+        return billingPeriodStart;
+    }
+
+    public void setBillingPeriodStart( Date billingPeriodStart )
+    {
+        this.billingPeriodStart = billingPeriodStart;
+    }
+
+    /**
+     * @deprecated by {@link #getBillingPeriodStart()}
+     */
+    @Deprecated
     public Date getLastInvoice()
     {
         return lastInvoice;
     }
 
+    /**
+     * @deprecated by {@link #setBillingPeriodStart(Date)}
+     */
+    @Deprecated
     public void setLastInvoice( Date lastInvoice )
     {
         this.lastInvoice = lastInvoice;
