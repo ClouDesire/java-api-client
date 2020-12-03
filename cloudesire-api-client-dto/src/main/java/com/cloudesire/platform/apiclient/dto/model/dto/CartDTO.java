@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
@@ -10,6 +11,7 @@ public class CartDTO extends BaseEntityDTO
 
     private UrlEntityDTO customer;
 
+    @Valid
     private List<CartItemDTO> items;
 
     private BigDecimal total;
