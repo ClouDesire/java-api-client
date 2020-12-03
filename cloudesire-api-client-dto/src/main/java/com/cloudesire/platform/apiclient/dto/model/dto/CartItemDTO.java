@@ -10,6 +10,11 @@ public class CartItemDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO productVersion;
 
+    @Valid
+    private UrlEntityDTO cloudProvider;
+
+    private BudgetDTO budget;
+
     public CartItemDTO( @NotNull @Valid UrlEntityDTO productVersion )
     {
         this.productVersion = productVersion;
@@ -27,6 +32,26 @@ public class CartItemDTO extends BaseEntityDTO
     public void setProductVersion( UrlEntityDTO productVersion )
     {
         this.productVersion = productVersion;
+    }
+
+    public UrlEntityDTO getCloudProvider()
+    {
+        return cloudProvider;
+    }
+
+    public void setCloudProvider( UrlEntityDTO cloudProvider )
+    {
+        this.cloudProvider = cloudProvider;
+    }
+
+    public BudgetDTO getBudget()
+    {
+        return budget;
+    }
+
+    public void setBudget( BudgetDTO budget )
+    {
+        this.budget = budget;
     }
 
     @Override
