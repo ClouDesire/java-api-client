@@ -2,6 +2,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Objects;
 
 public class CartItemDTO extends BaseEntityDTO
@@ -12,6 +14,9 @@ public class CartItemDTO extends BaseEntityDTO
 
     @Valid
     private UrlEntityDTO cloudProvider;
+
+    @Valid
+    private Map<UrlEntityDTO, BigDecimal> billingItems;
 
     private BudgetDTO budget;
 
@@ -42,6 +47,16 @@ public class CartItemDTO extends BaseEntityDTO
     public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public Map<UrlEntityDTO, BigDecimal> getBillingItems()
+    {
+        return billingItems;
+    }
+
+    public void setBillingItems( Map<UrlEntityDTO, BigDecimal> billingItems )
+    {
+        this.billingItems = billingItems;
     }
 
     public BudgetDTO getBudget()
