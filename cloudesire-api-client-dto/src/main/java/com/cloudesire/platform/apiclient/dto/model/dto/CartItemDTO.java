@@ -24,6 +24,9 @@ public class CartItemDTO extends BaseEntityDTO
     @Valid
     private Map<UrlEntityDTO, BigDecimal> billingItems;
 
+    @Valid
+    private Map<UrlEntityDTO, String> configurationParameters;
+
     private BudgetDTO budget;
 
     public CartItemDTO( @NotNull @Valid UrlEntityDTO productVersion )
@@ -83,6 +86,16 @@ public class CartItemDTO extends BaseEntityDTO
     public void setBillingItems( Map<UrlEntityDTO, BigDecimal> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    public Map<UrlEntityDTO, String> getConfigurationParameters()
+    {
+        return configurationParameters;
+    }
+
+    public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
+    {
+        this.configurationParameters = configurationParameters;
     }
 
     public BudgetDTO getBudget()
