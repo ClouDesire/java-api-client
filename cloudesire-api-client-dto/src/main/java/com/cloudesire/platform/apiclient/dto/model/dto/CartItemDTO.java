@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.liberologico.cloudesire.common.enums.OSType;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -14,6 +16,10 @@ public class CartItemDTO extends BaseEntityDTO
 
     @Valid
     private UrlEntityDTO cloudProvider;
+
+    private UrlEntityDTO bandwidthPricing;
+
+    private OSType operatingSystem;
 
     @Valid
     private Map<UrlEntityDTO, BigDecimal> billingItems;
@@ -47,6 +53,26 @@ public class CartItemDTO extends BaseEntityDTO
     public void setCloudProvider( UrlEntityDTO cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public UrlEntityDTO getBandwidthPricing()
+    {
+        return bandwidthPricing;
+    }
+
+    public void setBandwidthPricing( UrlEntityDTO bandwidthPricing )
+    {
+        this.bandwidthPricing = bandwidthPricing;
+    }
+
+    public OSType getOperatingSystem()
+    {
+        return operatingSystem;
+    }
+
+    public void setOperatingSystem( OSType operatingSystem )
+    {
+        this.operatingSystem = operatingSystem;
     }
 
     public Map<UrlEntityDTO, BigDecimal> getBillingItems()
