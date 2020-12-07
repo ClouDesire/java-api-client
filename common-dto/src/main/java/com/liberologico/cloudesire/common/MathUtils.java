@@ -105,6 +105,11 @@ public final class MathUtils
         return true;
     }
 
+    public static boolean isPositive( BigDecimal number )
+    {
+        return number != null && number.signum() > 0;
+    }
+
     public static BigDecimal parseFloat( Float amount )
     {
         return BigDecimal.valueOf( amount )

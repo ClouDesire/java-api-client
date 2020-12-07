@@ -20,6 +20,9 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
     @Valid
     private ResellingPriceDTO setup;
 
+    @Valid
+    private ResellingPriceDTO proportionalSetup;
+
     public BillingItemSellinPriceDTO( int billingItemValueId, String markup )
     {
         this( billingItemValueId );
@@ -74,6 +77,16 @@ public class BillingItemSellinPriceDTO extends BaseEntityDTO
     public void setSetup( ResellingPriceDTO setup )
     {
         this.setup = setup;
+    }
+
+    public ResellingPriceDTO getProportionalSetup()
+    {
+        return proportionalSetup;
+    }
+
+    public void setProportionalSetup( ResellingPriceDTO proportionalSetup )
+    {
+        this.proportionalSetup = proportionalSetup;
     }
 
     @Override
