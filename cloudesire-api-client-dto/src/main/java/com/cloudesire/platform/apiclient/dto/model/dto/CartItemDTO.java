@@ -27,8 +27,6 @@ public class CartItemDTO extends BaseEntityDTO
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
 
-    private BudgetDTO budget;
-
     public CartItemDTO( @NotNull @Valid UrlEntityDTO productVersion )
     {
         this.productVersion = productVersion;
@@ -96,16 +94,6 @@ public class CartItemDTO extends BaseEntityDTO
     public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
-    }
-
-    public BudgetDTO getBudget()
-    {
-        return budget;
-    }
-
-    public void setBudget( BudgetDTO budget )
-    {
-        this.budget = budget;
     }
 
     @Override

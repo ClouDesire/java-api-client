@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,8 +12,6 @@ public class CartDTO extends BaseEntityDTO
 
     @Valid
     private List<CartItemDTO> items;
-
-    private BigDecimal total;
 
     public UrlEntityDTO getReseller()
     {
@@ -44,16 +41,6 @@ public class CartDTO extends BaseEntityDTO
     public void setItems( List<CartItemDTO> items )
     {
         this.items = items;
-    }
-
-    public BigDecimal getTotal()
-    {
-        return total;
-    }
-
-    public void setTotal( BigDecimal total )
-    {
-        this.total = total;
     }
 
     @Override
