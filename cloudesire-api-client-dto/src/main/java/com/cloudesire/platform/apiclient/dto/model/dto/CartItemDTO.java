@@ -4,7 +4,6 @@ import com.liberologico.cloudesire.common.enums.OSType;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ public class CartItemDTO extends BaseEntityDTO
     private OSType operatingSystem;
 
     @Valid
-    private Map<UrlEntityDTO, BigDecimal> billingItems;
+    private Map<UrlEntityDTO, Integer> billingItems;
 
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
@@ -76,12 +75,12 @@ public class CartItemDTO extends BaseEntityDTO
         this.operatingSystem = operatingSystem;
     }
 
-    public Map<UrlEntityDTO, BigDecimal> getBillingItems()
+    public Map<UrlEntityDTO, Integer> getBillingItems()
     {
         return billingItems;
     }
 
-    public void setBillingItems( Map<UrlEntityDTO, BigDecimal> billingItems )
+    public void setBillingItems( Map<UrlEntityDTO, Integer> billingItems )
     {
         this.billingItems = billingItems;
     }
