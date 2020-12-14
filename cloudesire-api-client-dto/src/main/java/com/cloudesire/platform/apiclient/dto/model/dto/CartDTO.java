@@ -6,21 +6,21 @@ import java.util.Objects;
 
 public class CartDTO extends BaseEntityDTO
 {
-    private UrlEntityDTO reseller;
+    private UrlEntityDTO resellerCatalog;
 
     private UrlEntityDTO customer;
 
     @Valid
     private List<CartItemDTO> items;
 
-    public UrlEntityDTO getReseller()
+    public UrlEntityDTO getResellerCatalog()
     {
-        return reseller;
+        return resellerCatalog;
     }
 
-    public void setReseller( UrlEntityDTO reseller )
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
     {
-        this.reseller = reseller;
+        this.resellerCatalog = resellerCatalog;
     }
 
     public UrlEntityDTO getCustomer()
@@ -50,12 +50,12 @@ public class CartDTO extends BaseEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CartDTO cartDTO = (CartDTO) o;
-        return Objects.equals( reseller, cartDTO.reseller ) && Objects.equals( customer, cartDTO.customer );
+        return Objects.equals( resellerCatalog, cartDTO.resellerCatalog ) && Objects.equals( customer, cartDTO.customer );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), reseller, customer );
+        return Objects.hash( super.hashCode(), resellerCatalog, customer );
     }
 }
