@@ -6,22 +6,14 @@ import java.util.Objects;
 
 public class CartDTO extends BaseEntityDTO
 {
-    private UrlEntityDTO resellerCatalog;
-
     private UrlEntityDTO customer;
+
+    private UrlEntityDTO reseller;
+
+    private UrlEntityDTO resellerCatalog;
 
     @Valid
     private List<CartItemDTO> items;
-
-    public UrlEntityDTO getResellerCatalog()
-    {
-        return resellerCatalog;
-    }
-
-    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
-    {
-        this.resellerCatalog = resellerCatalog;
-    }
 
     public UrlEntityDTO getCustomer()
     {
@@ -31,6 +23,26 @@ public class CartDTO extends BaseEntityDTO
     public void setCustomer( UrlEntityDTO customer )
     {
         this.customer = customer;
+    }
+
+    public UrlEntityDTO getReseller()
+    {
+        return reseller;
+    }
+
+    public void setReseller( UrlEntityDTO reseller )
+    {
+        this.reseller = reseller;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 
     public List<CartItemDTO> getItems()
@@ -50,12 +62,13 @@ public class CartDTO extends BaseEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CartDTO cartDTO = (CartDTO) o;
-        return Objects.equals( resellerCatalog, cartDTO.resellerCatalog ) && Objects.equals( customer, cartDTO.customer );
+        return Objects.equals( customer, cartDTO.customer ) && Objects.equals( reseller, cartDTO.reseller )
+                && Objects.equals( resellerCatalog, cartDTO.resellerCatalog );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), resellerCatalog, customer );
+        return Objects.hash( super.hashCode(), customer, reseller, resellerCatalog );
     }
 }
