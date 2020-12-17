@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import java.util.Map;
 import java.util.Objects;
 
-@ApiModel( "Payment method for a customer" )
+@ApiModel( description = "Payment method for a customer" )
 public class PaymentMethodDTO extends BaseEntityDTO
 {
     public static final String STRIPE_PAYMENT_METHOD = "paymentMethodId";
