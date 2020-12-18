@@ -67,6 +67,10 @@ public interface ResellerPricingApi
     @PUT( "resellerPricing/{id}" )
     Call<ResellerPricingDTO> update( @Path( "id" ) int id, @Body ResellerPricingDTO input );
 
+    /**
+     * @deprecated returns 404
+     */
+    @Deprecated
     @PATCH( "resellerPricing" )
     Call<Void> patch( @Body PercentagePricingPatchDTO input );
 
