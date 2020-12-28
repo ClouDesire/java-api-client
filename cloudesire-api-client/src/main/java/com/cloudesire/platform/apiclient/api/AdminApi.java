@@ -35,9 +35,6 @@ public interface AdminApi
     @DELETE( "admin/report" )
     Call<Void> deleteReports( @Query( "invoiceId" ) int invoiceId );
 
-    @DELETE( "admin/zip" )
-    Call<Void> reloadZipFileConfiguration();
-
     @GET( "cache" )
     Call<CacheDTO> getCache();
 

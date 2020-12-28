@@ -1262,9 +1262,6 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Add a legal notice into invoice footer required in Italy" )
         private boolean cashAccounting = true;
 
-        @ApiModelProperty( "Validation for uploaded zip application files" )
-        private boolean zipApplicationFileValidation = true;
-
         @ApiModelProperty( "Enables upload of file to the blob storage service" )
         private boolean blobStorageUpload;
 
@@ -1468,16 +1465,6 @@ public class EnvironmentDTO extends DTO
         public void setCashAccounting( boolean cashAccounting )
         {
             this.cashAccounting = cashAccounting;
-        }
-
-        public boolean isZipApplicationFileValidation()
-        {
-            return zipApplicationFileValidation;
-        }
-
-        public void setZipApplicationFileValidation( boolean zipApplicationFileValidation )
-        {
-            this.zipApplicationFileValidation = zipApplicationFileValidation;
         }
 
         public boolean isBlobStorageUpload()
