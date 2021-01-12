@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient;
 
 import com.cloudesire.platform.apiclient.exceptions.AccessDeniedException;
+import com.cloudesire.platform.apiclient.exceptions.AuthenticationFailedException;
 import com.cloudesire.platform.apiclient.exceptions.BackendException;
 import com.cloudesire.platform.apiclient.exceptions.BadRequestException;
 import com.cloudesire.platform.apiclient.exceptions.ConflictException;
@@ -76,9 +77,8 @@ public class CloudesireClientCallExecutor
         switch ( response.code() )
         {
             case 400: return new BadRequestException( errorMessage, error );
-            case 401:
-            case 403:
-                return new AccessDeniedException( errorMessage, error );
+            case 401: return new AuthenticationFailedException( errorMessage, error );
+            case 403: return new AccessDeniedException( errorMessage, error );
             case 404: return new ResourceNotFoundException( errorMessage, error );
             case 405: return new MethodNotAllowedException( errorMessage, error );
             case 409: return new ConflictException( errorMessage, error );
