@@ -158,18 +158,6 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( hidden = true )
     private String vendorNotes;
 
-    @ApiModelProperty( "Birthday date of the user" )
-    @JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" )
-    private Date birthday;
-
-    @ApiModelProperty( "Where the user is born" )
-    private String birthPlace;
-
-    @ApiModelProperty( value = "Gender of the user", example = "Female" )
-    private String gender;
-
-    private IdentificationDocumentDTO document;
-
     @Valid
     @ApiModelProperty( "The risk profile of the user" )
     private UrlEntityDTO riskProfile;
@@ -634,46 +622,6 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     public void setVendorNotes( String vendorNotes )
     {
         this.vendorNotes = vendorNotes;
-    }
-
-    public Date getBirthday()
-    {
-        return birthday;
-    }
-
-    public void setBirthday( Date birthday )
-    {
-        this.birthday = birthday;
-    }
-
-    public String getBirthPlace()
-    {
-        return birthPlace;
-    }
-
-    public void setBirthPlace( String birthPlace )
-    {
-        this.birthPlace = birthPlace;
-    }
-
-    public String getGender()
-    {
-        return gender;
-    }
-
-    public void setGender( String gender )
-    {
-        this.gender = gender;
-    }
-
-    public IdentificationDocumentDTO getDocument()
-    {
-        return document;
-    }
-
-    public void setDocument( IdentificationDocumentDTO document )
-    {
-        this.document = document;
     }
 
     public UrlEntityDTO getRiskProfile()
