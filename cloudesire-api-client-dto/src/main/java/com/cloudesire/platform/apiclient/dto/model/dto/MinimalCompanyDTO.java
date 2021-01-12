@@ -23,10 +23,6 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Valid
     private AddressDTO address;
 
-    @ApiModelProperty( "Address to be used for billing purposes")
-    @Valid
-    private AddressDTO billingAddress;
-
     @ApiModelProperty( "Tax code" )
     @Size( max = 255 )
     private String taxCode;
@@ -129,16 +125,6 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     public void setSlug( String slug )
     {
         this.slug = slug;
-    }
-
-    public AddressDTO getBillingAddress()
-    {
-        return billingAddress;
-    }
-
-    public void setBillingAddress( AddressDTO billingAddress )
-    {
-        this.billingAddress = billingAddress;
     }
 
     public String getPhoneNumber()
