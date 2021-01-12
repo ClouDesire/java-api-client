@@ -13,6 +13,7 @@ public enum DeploymentStatus
     UNDEPLOYED,
     STOPPED,
     FAILED,
+    POSTPONED,
     @ApiModelProperty( "Requires approval by admin" )
     REQUIRES_APPROVAL,
     @ApiModelProperty( "Undeploy request has been sent" )
