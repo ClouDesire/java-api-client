@@ -16,10 +16,20 @@ public class ReservedCloudPricingDTO extends DTO
     @NotNull
     private BigDecimal price;
 
-    public ReservedCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price )
+    @ApiModelProperty( "Monthly cost" )
+    @NotNull
+    private BigDecimal cost;
+
+    public ReservedCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price, @NotNull BigDecimal cost )
     {
         this.upfront = upfront;
         this.price = price;
+        this.cost = cost;
+    }
+
+    public ReservedCloudPricingDTO( @NotNull BigDecimal upfront, @NotNull BigDecimal price )
+    {
+        this( upfront, price, price );
     }
 
     public ReservedCloudPricingDTO( @NotNull BigDecimal price )
@@ -49,6 +59,16 @@ public class ReservedCloudPricingDTO extends DTO
     public void setPrice( BigDecimal price )
     {
         this.price = price;
+    }
+
+    public BigDecimal getCost()
+    {
+        return cost;
+    }
+
+    public void setCost( BigDecimal cost )
+    {
+        this.cost = cost;
     }
 
     @Override
