@@ -222,15 +222,6 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
         return userRole;
     }
 
-    /**
-     * @deprecated use {@link #setUserRole(UserRole)}
-     */
-    @Deprecated
-    public void setUserRole( @NotNull String userRole )
-    {
-        this.userRole = UserRole.valueOf( userRole );
-    }
-
     public void setUserRole( UserRole userRole )
     {
         this.userRole = userRole;
