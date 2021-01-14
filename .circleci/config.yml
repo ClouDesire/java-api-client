@@ -8,7 +8,7 @@ workflows:
           context: common-backend
 
 orbs:
-  cloudesire: cloudesire/common@dev:67a8e57
+  cloudesire: cloudesire/common@0
 
 jobs:
   build:
