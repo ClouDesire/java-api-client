@@ -7,9 +7,11 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +71,9 @@ public class OrderInputDTO extends BaseEntityDTO
     private Integer catalogId;
 
     private OSType operatingSystem;
+
+    @Future
+    private Date start;
 
     public OrderInputDTO( UrlEntityDTO productVersion )
     {
@@ -256,6 +261,16 @@ public class OrderInputDTO extends BaseEntityDTO
     public void setOperatingSystem( OSType operatingSystem )
     {
         this.operatingSystem = operatingSystem;
+    }
+
+    public Date getStart()
+    {
+        return start;
+    }
+
+    public void setStart( Date start )
+    {
+        this.start = start;
     }
 
     @Override
