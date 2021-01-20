@@ -9,6 +9,8 @@ import java.util.Objects;
 
 public class CartItemDTO extends BaseEntityDTO
 {
+    private Integer quantity = 1;
+
     @NotNull
     @Valid
     private UrlEntityDTO productVersion;
@@ -33,6 +35,16 @@ public class CartItemDTO extends BaseEntityDTO
 
     public CartItemDTO()
     {
+    }
+
+    public Integer getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity( Integer quantity )
+    {
+        this.quantity = quantity;
     }
 
     public UrlEntityDTO getProductVersion()
@@ -102,12 +114,12 @@ public class CartItemDTO extends BaseEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CartItemDTO that = (CartItemDTO) o;
-        return Objects.equals( productVersion, that.productVersion );
+        return Objects.equals( quantity, that.quantity ) && Objects.equals( productVersion, that.productVersion );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), productVersion );
+        return Objects.hash( super.hashCode(), quantity, productVersion );
     }
 }

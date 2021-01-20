@@ -34,8 +34,8 @@ public interface CartApi
     @PUT( "cart/{id}" )
     Call<CartDTO> update( @Path( "id" ) int id, @Body CartDTO cart );
 
-    @POST( "cart/{id}/purchase" )
-    Call<Void> purchase( @Path( "id" ) int id );
+    @POST( "cart/{id}/checkout" )
+    Call<Void> checkout( @Path( "id" ) int id );
 
     @DELETE( "cart/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
