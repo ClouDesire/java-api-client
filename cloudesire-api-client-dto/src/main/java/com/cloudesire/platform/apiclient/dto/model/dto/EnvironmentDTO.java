@@ -1277,9 +1277,6 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Require approvation for vendor creation" )
         private boolean vendorApproval;
 
-        @ApiModelProperty( "Enables a bunch of additional fields in the user profile, often not required" )
-        private boolean userProfileExtended;
-
         @ApiModelProperty( "VM backup available on the platform" )
         private boolean backup = true;
 
@@ -1553,16 +1550,6 @@ public class EnvironmentDTO extends DTO
         public void setVendorApproval( boolean vendorApproval )
         {
             this.vendorApproval = vendorApproval;
-        }
-
-        public boolean isUserProfileExtended()
-        {
-            return userProfileExtended;
-        }
-
-        public void setUserProfileExtended( boolean userProfileExtended )
-        {
-            this.userProfileExtended = userProfileExtended;
         }
 
         public boolean isBackup()

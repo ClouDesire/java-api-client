@@ -7,7 +7,6 @@ import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -25,10 +24,6 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     @ApiModelProperty( "Registro imprese - corporate data for Italian companies" )
     private String ri;
-
-    @ApiModelProperty( "Type of corporate form" )
-    @Size( max = 255 )
-    private String form;
 
     @ApiModelProperty( "Email address that will receive technical notifications" )
     @Email( regexp = Regexp.INTERNET_EMAIL )
@@ -58,9 +53,6 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     @ApiModelProperty( "Shared secret used to sign events" )
     private String notificationSecretToken;
-
-    @Valid
-    private BankAccountDataDTO bankAccountData;
 
     @ApiModelProperty( "Users of the company" )
     @FieldAPI( sinceVersion = ApiVersion.V20200108 )
@@ -240,26 +232,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setVendors( List<UrlEntityDTO> vendors )
     {
         this.vendors = vendors;
-    }
-
-    public String getForm()
-    {
-        return form;
-    }
-
-    public void setForm( String form )
-    {
-        this.form = form;
-    }
-
-    public BankAccountDataDTO getBankAccountData()
-    {
-        return bankAccountData;
-    }
-
-    public void setBankAccountData( BankAccountDataDTO bankAccountData )
-    {
-        this.bankAccountData = bankAccountData;
     }
 
     public CompanyFeatureTogglesDTO getFeatureToggles()
