@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.ResellingConfigurationT
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Objects;
 
 public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
@@ -12,6 +13,9 @@ public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
     @NotNull
     @Valid
     private UrlEntityDTO cloudPricing;
+
+    @Valid
+    private Map<Integer, ReservedCloudResellingDTO> reservedPricing;
 
     public CloudPricingResellingPriceDTO( UrlEntityDTO cloudPricing, BigDecimal sellout, ResellingConfigurationType selloutType )
     {
@@ -42,6 +46,16 @@ public class CloudPricingResellingPriceDTO extends BaseResellingPriceDTO
     public void setCloudPricing( UrlEntityDTO cloudPricing )
     {
         this.cloudPricing = cloudPricing;
+    }
+
+    public Map<Integer, ReservedCloudResellingDTO> getReservedPricing()
+    {
+        return reservedPricing;
+    }
+
+    public void setReservedPricing( Map<Integer, ReservedCloudResellingDTO> reservedPricing )
+    {
+        this.reservedPricing = reservedPricing;
     }
 
     @Override
