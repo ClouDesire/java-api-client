@@ -1329,6 +1329,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Enable customer ratings on products" )
         private boolean customerProductRatings = true;
 
+        @ApiModelProperty( "Require the marketplace to be a reseller one" )
+        private boolean resellerOnlyMarketplace;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1737,6 +1740,16 @@ public class EnvironmentDTO extends DTO
         public void setCustomerProductRatings( boolean customerProductRatings )
         {
             this.customerProductRatings = customerProductRatings;
+        }
+
+        public boolean isResellerOnlyMarketplace()
+        {
+            return resellerOnlyMarketplace;
+        }
+
+        public void setResellerOnlyMarketplace( boolean resellerOnlyMarketplace )
+        {
+            this.resellerOnlyMarketplace = resellerOnlyMarketplace;
         }
         //endregion
     }
