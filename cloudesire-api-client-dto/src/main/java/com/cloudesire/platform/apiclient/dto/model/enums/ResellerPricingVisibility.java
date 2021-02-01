@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public enum ResellerPricingVisibility
 {
-    @ApiModelProperty( "Product Version is not visible to customer" )
+    @ApiModelProperty( "Product Version is not visible to customer, but is buyable through a reseller" )
     EXCLUDED,
 
     @ApiModelProperty( "Product Version is visible to customer, but not available for buy" )
