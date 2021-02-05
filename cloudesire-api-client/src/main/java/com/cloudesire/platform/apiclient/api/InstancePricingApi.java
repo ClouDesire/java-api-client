@@ -24,7 +24,12 @@ public interface InstancePricingApi
     Call<InstancePricingDTO> get( @Path( "id" ) int id );
 
     @GET( "instancePricing" )
-    Call<List<InstancePricingDTO>> getAll( @Query( "cloudProvider" ) Integer cloudProvider );
+    Call<List<InstancePricingDTO>> getAll( @Query( "cloudProvider" ) int cloudProvider );
+
+    @GET( "instancePricing" )
+    Call<List<InstancePricingDTO>> getAll(
+            @Query( "cloudProvider" ) int cloudProvider, @Query( "productVersion" ) Integer productVersionId
+    );
 
     @GET( "instancePricing" )
     Call<List<InstancePricingDTO>> getAll(
