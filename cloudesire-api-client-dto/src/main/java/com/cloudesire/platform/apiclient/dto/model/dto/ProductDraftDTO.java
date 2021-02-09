@@ -47,6 +47,9 @@ public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
     @ApiModelProperty( "Message to display to the user on subscription termination" )
     private String terminationMessage;
 
+    @ApiModelProperty( "Message to display to the user for Terms of Service acceptance" )
+    private String tosAcceptance;
+
     //region Auto-generated code
     public UrlEntityDTO getOriginal()
     {
@@ -151,6 +154,18 @@ public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
     public void setTerminationMessage( String terminationMessage )
     {
         this.terminationMessage = terminationMessage;
+    }
+
+    @Override
+    public String getTosAcceptance()
+    {
+        return tosAcceptance;
+    }
+
+    @Override
+    public void setTosAcceptance( String tosAcceptance )
+    {
+        this.tosAcceptance = tosAcceptance;
     }
     //endregion
 }

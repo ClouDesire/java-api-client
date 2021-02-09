@@ -205,6 +205,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @Size( max = 65536, message = INVALID_SIZE )
     private String terminationMessage;
 
+    @ApiModelProperty( "Message to display to the user for Terms of Service acceptance" )
+    @Size( max = 65536, message = INVALID_SIZE )
+    private String tosAcceptance;
+
     @ApiModelProperty( "URL to call for order validation" )
     @Size( max = 2000 )
     @URL
@@ -772,6 +776,18 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setTerminationMessage( String terminationMessage )
     {
         this.terminationMessage = terminationMessage;
+    }
+
+    @Override
+    public String getTosAcceptance()
+    {
+        return tosAcceptance;
+    }
+
+    @Override
+    public void setTosAcceptance( String tosAcceptance )
+    {
+        this.tosAcceptance = tosAcceptance;
     }
 
     @Override
