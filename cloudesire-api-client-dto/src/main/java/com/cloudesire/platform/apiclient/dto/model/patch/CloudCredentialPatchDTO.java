@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.patch;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.CloudCredentialPayloadDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import javax.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ public class CloudCredentialPatchDTO extends DTO
     private Action action;
 
     @NotNull
-    private Object payload;
+    private CloudCredentialPayloadDTO payload;
 
     public CloudCredentialPatchDTO( Action action )
     {
@@ -31,12 +32,12 @@ public class CloudCredentialPatchDTO extends DTO
         this.action = action;
     }
 
-    public Object getPayload()
+    public CloudCredentialPayloadDTO getPayload()
     {
         return payload;
     }
 
-    public void setPayload( Object payload )
+    public void setPayload( CloudCredentialPayloadDTO payload )
     {
         this.payload = payload;
     }
