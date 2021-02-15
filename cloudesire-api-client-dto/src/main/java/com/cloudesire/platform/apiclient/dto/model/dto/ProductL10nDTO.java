@@ -39,4 +39,8 @@ public interface ProductL10nDTO
     String getTerminationMessage();
 
     void setTerminationMessage( String terminationMessage );
+
+    String getTosAcceptance();
+
+    void setTosAcceptance( String tosAcceptance );
 }
