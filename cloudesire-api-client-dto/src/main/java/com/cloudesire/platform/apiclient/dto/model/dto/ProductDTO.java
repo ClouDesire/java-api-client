@@ -210,12 +210,12 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     private String tosAcceptance;
 
     @ApiModelProperty( "URLs to call for order validation" )
-    @FieldAPI( sinceVersion = ApiVersion.V20210212 )
+    @FieldAPI( sinceVersion = ApiVersion.V20210215 )
     private Set<@Size( max = 2000 ) @URL String> orderValidationUrls;
 
     @ApiModelProperty( hidden = true )
     @Size( max = 2000 )
-    @UnsupportedAPI( sinceVersion = ApiVersion.V20210212 )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20210215 )
     @URL
     private String orderValidationUrl;
 
