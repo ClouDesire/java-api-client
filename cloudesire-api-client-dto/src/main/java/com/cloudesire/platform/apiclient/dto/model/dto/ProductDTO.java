@@ -209,8 +209,13 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @Size( max = 65536, message = INVALID_SIZE )
     private String tosAcceptance;
 
-    @ApiModelProperty( "URL to call for order validation" )
+    @ApiModelProperty( "URLs to call for order validation" )
+    @FieldAPI( sinceVersion = ApiVersion.V20210215 )
+    private Set<@Size( max = 2000 ) @URL String> orderValidationUrls;
+
+    @ApiModelProperty( hidden = true )
     @Size( max = 2000 )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20210215 )
     @URL
     private String orderValidationUrl;
 
@@ -756,11 +761,23 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.subscriptionApproval = subscriptionApproval;
     }
 
+    public Set<String> getOrderValidationUrls()
+    {
+        return orderValidationUrls;
+    }
+
+    public void setOrderValidationUrls( Set<String> orderValidationUrls )
+    {
+        this.orderValidationUrls = orderValidationUrls;
+    }
+
+    @Deprecated
     public String getOrderValidationUrl()
     {
         return orderValidationUrl;
     }
 
+    @Deprecated
     public void setOrderValidationUrl( String orderValidationUrl )
     {
         this.orderValidationUrl = orderValidationUrl;
