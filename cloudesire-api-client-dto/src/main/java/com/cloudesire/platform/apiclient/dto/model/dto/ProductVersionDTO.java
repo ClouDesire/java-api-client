@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponConfiguration;
 import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
+import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
 import com.cloudesire.platform.apiclient.dto.model.enums.Trial;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
@@ -154,6 +155,8 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
     private Boolean unkillable;
+
+    private ResellerPricingVisibility visibility;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
@@ -617,6 +620,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setUnkillable( Boolean unkillable )
     {
         this.unkillable = unkillable;
+    }
+
+    public ResellerPricingVisibility getVisibility()
+    {
+        return visibility;
+    }
+
+    public void setVisibility( ResellerPricingVisibility visibility )
+    {
+        this.visibility = visibility;
     }
 
     @Override
