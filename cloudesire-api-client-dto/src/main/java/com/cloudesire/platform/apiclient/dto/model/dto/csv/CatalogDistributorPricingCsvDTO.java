@@ -9,13 +9,16 @@ import java.math.BigDecimal;
         "plan", "extra", "cloudProvider",
         "planIdentifier", "extraIdentifier", "cloudResource",
         "extraStart", "extraEnd", "cloudSpecs",
-        "markup", "markupType", "setup", "setupType"
+        "markup", "markupType", "setup", "setupType",
+        "recommendedSelloutPercentage"
 } )
 public class CatalogDistributorPricingCsvDTO extends CatalogPricingCsvDTO
 {
     private BigDecimal markup;
 
     private ResellingConfigurationType markupType;
+
+    private BigDecimal recommendedSelloutPercentage;
 
     @Override
     public CatalogDistributorPricingCsvDTO copyVersion()
@@ -53,23 +56,35 @@ public class CatalogDistributorPricingCsvDTO extends CatalogPricingCsvDTO
         this.markupType = markupType;
     }
 
+    public BigDecimal getRecommendedSelloutPercentage()
+    {
+        return recommendedSelloutPercentage;
+    }
+
+    public void setRecommendedSelloutPercentage( BigDecimal recommendedSelloutPercentage )
+    {
+        this.recommendedSelloutPercentage = recommendedSelloutPercentage;
+    }
+
     @Override
     public String toString()
     {
+        String separator = "\",\"";
         return '"'
-                + plan + "\",\""
-                + extra + "\",\""
-                + cloudProvider + "\",\""
-                + planIdentifier + "\",\""
-                + extraIdentifier + "\",\""
-                + cloudResource + "\",\""
-                + extraStart + "\",\""
-                + extraEnd + "\",\""
-                + cloudSpecs + "\",\""
-                + markup + "\",\""
-                + markupType + "\",\""
-                + setup + "\",\""
-                + setupType
+                + plan + separator
+                + extra + separator
+                + cloudProvider + separator
+                + planIdentifier + separator
+                + extraIdentifier + separator
+                + cloudResource + separator
+                + extraStart + separator
+                + extraEnd + separator
+                + cloudSpecs + separator
+                + markup + separator
+                + markupType + separator
+                + setup + separator
+                + setupType + separator
+                + recommendedSelloutPercentage
                 + '"';
     }
     // endregion
