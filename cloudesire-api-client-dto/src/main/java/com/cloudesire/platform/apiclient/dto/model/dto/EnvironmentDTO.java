@@ -1771,8 +1771,8 @@ public class EnvironmentDTO extends DTO
         private int sandboxLengthInHour = 1;
 
         @NotNull
-        @ApiModelProperty( "Percentage kept by platform owner set by default on new products" )
-        private BigDecimal cloudesirePercentage = new BigDecimal( 15 );
+        @ApiModelProperty( "Percentage (fee) kept by platform owner set by default on new products and for custom invoices" )
+        private BigDecimal cloudesirePercentage = new BigDecimal( 0 );
 
         @ApiModelProperty( "The billingPeriods (how often customers receive invoices) a vendor can chose for its products" )
         @NotNull
