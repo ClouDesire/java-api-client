@@ -15,6 +15,9 @@ public enum ProductType
     @ApiModelProperty( "This product is a bundle of other products" )
     BUNDLE,
 
+    @ApiModelProperty( "Like syndicated, but requires cloud credentials" )
+    CLOUD_SERVICE,
+
     @ApiModelProperty( "This product is imported from the Azure catalog" )
     CSP,
 
@@ -32,6 +35,6 @@ public enum ProductType
 
     public static List<ProductType> syndicated()
     {
-        return Arrays.asList( API, CSP, SERVICE, SYNDICATED );
+        return Arrays.asList( API, CLOUD_SERVICE, CSP, SERVICE, SYNDICATED );
     }
 }
