@@ -10,6 +10,8 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<BillingItemValueDTO> billingItemValues;
 
+    private String customerCredentialsPath;
+
     public List<ApplicationCredentialOutputDTO> getCredentials()
     {
         return credentials;
@@ -38,5 +40,15 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setBillingItemValues( List<BillingItemValueDTO> billingItemValues )
     {
         this.billingItemValues = billingItemValues;
+    }
+
+    public String getCustomerCredentialsPath()
+    {
+        return customerCredentialsPath;
+    }
+
+    public void setCustomerCredentialsPath( String customerCredentialsPath )
+    {
+        this.customerCredentialsPath = customerCredentialsPath;
     }
 }
