@@ -113,6 +113,10 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @JsonProperty( "isManaged" )
     private Boolean managed;
 
+    @ApiModelProperty( value = "If the product is a cloud service", readOnly = true )
+    @JsonProperty( "isCloudService" )
+    private Boolean cloudService;
+
     @ApiModelProperty( value = "If the product is imported from CSP", readOnly = true )
     @JsonProperty( "isCsp" )
     private Boolean csp;
@@ -500,6 +504,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setManaged( Boolean managed )
     {
         this.managed = managed;
+    }
+
+    public Boolean isCloudService()
+    {
+        return cloudService;
+    }
+
+    public void setCloudService( Boolean cloudService )
+    {
+        this.cloudService = cloudService;
     }
 
     public Boolean isCsp()
