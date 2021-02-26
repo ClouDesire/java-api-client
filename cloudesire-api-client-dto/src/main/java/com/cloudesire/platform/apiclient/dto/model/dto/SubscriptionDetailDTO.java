@@ -1,5 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.List;
 
 public class SubscriptionDetailDTO extends SubscriptionDTO
@@ -10,6 +12,7 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<BillingItemValueDTO> billingItemValues;
 
+    @ApiModelProperty( "Vault path for the customer cloud credentials for the subscription" )
     private String customerCredentialsPath;
 
     public List<ApplicationCredentialOutputDTO> getCredentials()
