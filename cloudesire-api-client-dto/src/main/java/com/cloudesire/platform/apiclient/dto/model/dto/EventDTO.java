@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+
 /**
  * This is the object exposed by the API, not the notification sent via HTTP
  *
@@ -29,11 +31,11 @@ public class EventDTO extends BaseEntityDTO
     @NotNull
     private Integer entityId;
 
-    @ApiModelProperty( value = "If the platform has successfully dispatched this event", readOnly = true )
+    @ApiModelProperty( value = "If the platform has successfully dispatched this event", accessMode = READ_ONLY )
     @NotNull
     private Boolean notified = false;
 
-    @ApiModelProperty( value = "When the event has been generated", readOnly = true )
+    @ApiModelProperty( value = "When the event has been generated", accessMode = READ_ONLY )
     private Date date = new Date();
 
     @NotNull
@@ -41,7 +43,7 @@ public class EventDTO extends BaseEntityDTO
 
     private EventRecipientType recipient = EventRecipientType.COMPANY;
 
-    @ApiModelProperty( readOnly = true )
+    @ApiModelProperty( accessMode = READ_ONLY )
     private EventNotificationDTO payload;
 
     @JsonInclude ( JsonInclude.Include.NON_NULL )
@@ -64,6 +66,9 @@ public class EventDTO extends BaseEntityDTO
     @NotNull
     @URL
     private String endpoint;
+
+    @ApiModelProperty( value = "When the event notification will be retried", accessMode = READ_ONLY )
+    private Date nextRetry = new Date();
 
     public String getEntityName()
     {
@@ -193,6 +198,16 @@ public class EventDTO extends BaseEntityDTO
     public void setEndpoint( String endpoint )
     {
         this.endpoint = endpoint;
+    }
+
+    public Date getNextRetry()
+    {
+        return nextRetry;
+    }
+
+    public void setNextRetry( Date nextRetry )
+    {
+        this.nextRetry = nextRetry;
     }
 
     @Override
