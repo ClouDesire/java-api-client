@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.Map;
 import java.util.Objects;
 
 @ApiModel( description = "Custom cloud credentials" )
@@ -20,8 +19,6 @@ public class CloudCredentialDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Whether the actual credentials have been uploaded", readOnly = true )
     private Boolean uploaded;
-
-    private Map<String, String> attributes;
 
     public CloudCredentialDTO( String name, UrlEntityDTO cloudProvider )
     {
@@ -61,16 +58,6 @@ public class CloudCredentialDTO extends NamedEntityDTO
     public void setUploaded( Boolean uploaded )
     {
         this.uploaded = uploaded;
-    }
-
-    public Map<String, String> getAttributes()
-    {
-        return attributes;
-    }
-
-    public void setAttributes( Map<String, String> attributes )
-    {
-        this.attributes = attributes;
     }
 
     @Override
