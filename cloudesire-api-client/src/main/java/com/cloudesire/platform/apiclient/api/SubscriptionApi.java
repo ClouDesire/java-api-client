@@ -25,7 +25,7 @@ public interface SubscriptionApi
     Call<List<SubscriptionDTO>> getAll( @QueryMap SubscriptionQuery query );
 
     @POST( "subscription/{id}/invoice/oneshot" )
-    Call<SubscriptionDetailDTO> addOneshotCosts( @Path( "id" ) int id, @Body List<RecurringCostLineDTO> lines );
+    Call<SubscriptionDetailDTO> addOneshotCosts( @Path( "id" ) int id, @Body List<OneshotCostLineDTO> lines );
 
     @POST( "subscription/{id}/invoice/recurring" )
     Call<SubscriptionDetailDTO> addRecurringCosts( @Path( "id" ) int id, @Body List<RecurringCostLineDTO> lines );

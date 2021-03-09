@@ -3,8 +3,11 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -18,6 +21,10 @@ abstract class CustomOrderLineDTO extends OrderLineDTO
     @UnsupportedAPI( sinceVersion = ApiVersion.V20200518 )
     private BigDecimal cost;
 
+    @JsonInclude( JsonInclude.Include.NON_NULL )
+    @Valid
+    private UrlEntityDTO subscription;
+
     public CustomOrderLineDTO( BigDecimal price )
     {
         this( price, null );
@@ -30,6 +37,12 @@ abstract class CustomOrderLineDTO extends OrderLineDTO
 
     public CustomOrderLineDTO()
     {
+    }
+
+    @Override
+    public void setType( LineType type )
+    {
+        // not required
     }
 
     public PriceDTO getPlatformCost()
@@ -58,6 +71,16 @@ abstract class CustomOrderLineDTO extends OrderLineDTO
     public void setCost( BigDecimal cost )
     {
         this.cost = cost;
+    }
+
+    public UrlEntityDTO getSubscription()
+    {
+        return subscription;
+    }
+
+    public void setSubscription( UrlEntityDTO subscription )
+    {
+        this.subscription = subscription;
     }
 
     @Override

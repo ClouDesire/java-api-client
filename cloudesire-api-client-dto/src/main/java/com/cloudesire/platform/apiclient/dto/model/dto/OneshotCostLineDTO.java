@@ -4,19 +4,19 @@ import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 
 import java.math.BigDecimal;
 
-public class RecurringCostLineDTO extends CustomOrderLineDTO
+public class OneshotCostLineDTO extends CustomOrderLineDTO
 {
-    public RecurringCostLineDTO( BigDecimal price )
+    public OneshotCostLineDTO( BigDecimal price )
     {
         super( price );
     }
 
-    public RecurringCostLineDTO( BigDecimal price, BigDecimal vat )
+    public OneshotCostLineDTO( BigDecimal price, BigDecimal vat )
     {
         super( price, vat );
     }
 
-    public RecurringCostLineDTO()
+    public OneshotCostLineDTO()
     {
         super();
     }
@@ -24,6 +24,6 @@ public class RecurringCostLineDTO extends CustomOrderLineDTO
     @Override
     public LineType getType()
     {
-        return LineType.RECURRINGCOST;
+        return LineType.ONESHOTCOST;
     }
 }
