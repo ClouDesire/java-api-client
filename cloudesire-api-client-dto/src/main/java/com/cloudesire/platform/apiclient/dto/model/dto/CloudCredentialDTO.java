@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+
 @ApiModel( description = "Custom cloud credentials" )
 public class CloudCredentialDTO extends NamedEntityDTO
 {
@@ -17,7 +19,10 @@ public class CloudCredentialDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO owner;
 
-    @ApiModelProperty( value = "Whether the actual credentials have been uploaded", readOnly = true )
+    @ApiModelProperty(
+            value = "Whether the actual credentials have been uploaded to vault or metadata is present",
+            accessMode = READ_ONLY
+    )
     private Boolean uploaded;
 
     public CloudCredentialDTO( String name, UrlEntityDTO cloudProvider )

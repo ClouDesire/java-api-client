@@ -8,10 +8,12 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CloudCredentialApi
 {
@@ -36,4 +38,13 @@ public interface CloudCredentialApi
 
     @DELETE( "cloudCredential/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
+
+    @GET( "cloudCredential/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "cloudCredential/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @DELETE( "cloudCredential/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
