@@ -37,6 +37,7 @@ public enum LineType
     @Deprecated
     @ApiModelProperty( hidden = true )
     METRIC( IS_INCOME, MUST_BE_PAID ),
+    ONESHOTCOST( IS_CUSTOM, IS_INCOME ),
     @Deprecated
     @ApiModelProperty( hidden = true )
     PRODUCT,
