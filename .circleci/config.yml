@@ -6,41 +6,64 @@ workflows:
     jobs:
       - build:
           context: common-backend
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - cloudesire/maven_release:
+          mvn_path: ./mvnw
+          workspace: /home/circleci
+          context: common-backend
+          requires:
+            - build
+          filters:
+            branches:
+              only: /release.*/
 
 orbs:
   cloudesire: cloudesire/common@0
 
 jobs:
   build:
-    docker:
-      - image: openjdk:8-jdk
-        environment:
-          CI_SCRIPTS_BRANCH: master
-    working_directory: ~/java-api-client
+    executor:
+      name: cloudesire/docker_java
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - m2-{{ .Branch }}-{{ checksum "pom.xml" }}
-            - m2-{{ .Branch }}-
-            - m2-master-
-      - run:
-          name: Get common configs
-          command: git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/ClouDesire/ci-conf.git $GIT_ROOT/ci-conf
-      - run:
-          name: Configure Maven repository
-          command: mkdir -p ~/.m2 && cp $GIT_ROOT/ci-conf/mvn/settings.xml ~/.m2
-      - run:
-          name: Build
-          command: ./mvnw -B install -Dmaven.test.skip=true
-      - cloudesire/test_sonar
-      - save_cache:
-          key: m2-{{ .Branch }}-{{ checksum "pom.xml" }}
-          paths:
-            - "~/.m2"
+      
+      - cloudesire/git_checkout:
+          url: git@github.com:ClouDesire/ci-conf.git
+      
+      - cloudesire/maven_with_cache:
+          mvn_path: ./mvnw
+          force_download: false
+          cache_key: "1"
+          steps:
+            - run:
+                name: Build
+                command: ./mvnw -B install -Dmaven.test.skip=true
+            - cloudesire/test_sonar
+     
       - run:
           name: Run Tests
           command: ./mvnw -B verify
+       
+      - cloudesire/maven_aggregate_tests_results
+      
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - .
+      
+  deploy:
+    executor:
+      name: cloudesire/docker_java
+    steps:
+
+      - attach_workspace:
+          at: /home/circleci
+
       - run:
-          name: Deploy artifacts
-          command: if [ "$CIRCLE_BRANCH" == "master" ]; then ./mvnw -B --fail-never deploy -Dmaven.test.skip=true; fi
+          name: Deploy to artifactory
+          command: ./mvnw -B --fail-never deploy -Dmaven.test.skip=true
