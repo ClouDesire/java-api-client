@@ -6,6 +6,15 @@ workflows:
     jobs:
       - build:
           context: common-backend
+      - cloudesire/maven_release:
+          mvn_path: ./mvnw
+          workspace: /home/circleci
+          context: common-backend
+          requires:
+            - build
+          filters:
+            branches:
+              only: /release.*/
 
 orbs:
   cloudesire: cloudesire/common@0
