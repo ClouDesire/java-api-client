@@ -38,7 +38,7 @@ jobs:
       - cloudesire/maven_with_cache:
           mvn_path: ./mvnw
           force_download: false
-          cache_key: 1
+          cache_key: "1"
           steps:
             - run:
                 name: Build
