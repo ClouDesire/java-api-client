@@ -26,10 +26,14 @@ public enum OrderType
     TERMINATION,
     @ApiModelProperty( "Stop auto-renewing a subscription" )
     UNSUBSCRIBE,
+    @ApiModelProperty( "Add one-off costs to an active subscription" )
+    ONESHOT_COSTS,
     @ApiModelProperty( "Add recurring costs to an active subscription" )
     RECURRING_COSTS,
     @ApiModelProperty( "Add unmanaged costs to an active subscription" )
     UPSELL,
+    @ApiModelProperty( "Refund costs for an active subscription" )
+    REFUND,
     @ApiModelProperty( "Upgrade disk space, only for managed products" )
     DISK_UPGRADE,
     @ApiModelProperty( "Plan upgrade, only for syndicated products" )
