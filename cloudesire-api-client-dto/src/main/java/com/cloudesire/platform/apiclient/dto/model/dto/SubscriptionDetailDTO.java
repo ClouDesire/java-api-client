@@ -12,6 +12,10 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<BillingItemValueDTO> billingItemValues;
 
+    private List<OneshotCostLineDTO> oneshotCosts;
+
+    private List<RecurringCostLineDTO> recurringCosts;
+
     @ApiModelProperty( "Vault path for the customer cloud credentials for the subscription" )
     private String customerCredentialsPath;
 
@@ -53,5 +57,25 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setCustomerCredentialsPath( String customerCredentialsPath )
     {
         this.customerCredentialsPath = customerCredentialsPath;
+    }
+
+    public List<OneshotCostLineDTO> getOneshotCosts()
+    {
+        return oneshotCosts;
+    }
+
+    public void setOneshotCosts( List<OneshotCostLineDTO> oneshotCosts )
+    {
+        this.oneshotCosts = oneshotCosts;
+    }
+
+    public List<RecurringCostLineDTO> getRecurringCosts()
+    {
+        return recurringCosts;
+    }
+
+    public void setRecurringCosts( List<RecurringCostLineDTO> recurringCosts )
+    {
+        this.recurringCosts = recurringCosts;
     }
 }

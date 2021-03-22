@@ -110,8 +110,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "Historical serialized data of the subscription", readOnly = true )
     private String productBillingInfo;
 
-    private List<RecurringCostLineDTO> recurringCosts = new ArrayList<>();
-
     private Set<EndpointDTO> endpoints = new HashSet<>();
 
     @Valid
@@ -417,17 +415,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     public void setProductVersion( UrlEntityDTO productVersion )
     {
         this.productVersion = productVersion;
-    }
-
-    public List<RecurringCostLineDTO> getRecurringCosts()
-    {
-        return recurringCosts;
-    }
-
-    public BaseSubscriptionDTO setRecurringCosts( List<RecurringCostLineDTO> recurringCosts )
-    {
-        this.recurringCosts = recurringCosts;
-        return this;
     }
 
     public String getProductBillingInfo()
