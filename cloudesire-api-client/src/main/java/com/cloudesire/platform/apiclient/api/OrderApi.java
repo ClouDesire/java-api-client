@@ -69,6 +69,9 @@ public interface OrderApi
     @POST( "order/{id}/approve" )
     Call<Void> approve( @Path( "id" ) Integer id );
 
+    @POST( "order/{id}/reject" )
+    Call<Void> reject( @Path( "id" ) Integer id );
+
     /**
      * @deprecated by {@link #getCsv(OrderQuery)}
      */
