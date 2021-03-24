@@ -4,9 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 public enum OrderStatus
 {
-    @ApiModelProperty( "An order is waiting for approval" )
-    REQUIRES_APPROVAL,
-
     @ApiModelProperty( "An upgrade order has been deferred for the next billing period" )
     DEFERRED,
 
@@ -14,5 +11,11 @@ public enum OrderStatus
     FREE,
 
     @ApiModelProperty( "The upgrade has been applied and an Invoice has been emitted" )
-    PAID
+    PAID,
+
+    @ApiModelProperty( "The approval has been rejected" )
+    REJECTED,
+
+    @ApiModelProperty( "An order is waiting for approval" )
+    REQUIRES_APPROVAL
 }
