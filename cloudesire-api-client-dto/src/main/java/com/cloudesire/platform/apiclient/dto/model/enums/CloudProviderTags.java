@@ -12,6 +12,7 @@ public enum CloudProviderTags
     CUSTOM_CREDENTIALS_ONLY,
     DISK_SPACE_UPGRADE,
     GPU,
+    KUBERNETES,
     LINUX( OsFamily.LINUX ),
     /**
      * Minimum size for data volumes in GB
