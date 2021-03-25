@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.cloudesire.platform.apiclient.dto.model.enums.SortDirection;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Max;
@@ -13,8 +13,10 @@ import java.util.Map;
 
 public class PageRequestDTO
 {
+    public static final int DEFAULT_PAGE_NUMBER = 1;
+    public static final int DEFAULT_PAGE_SIZE = 20;
 
-    public class Fields
+    public static class Fields
     {
         public static final String PAGE_NUMBER = "pageNumber";
         public static final String PAGE_SIZE = "pageSize";
@@ -29,12 +31,12 @@ public class PageRequestDTO
     @ApiModelProperty( "Page number to retrieve" )
     @Min( value = 1, message = ErrorKeys.INVALID_MIN )
     @NotNull
-    private Integer pageNumber = 1;
+    private Integer pageNumber = DEFAULT_PAGE_NUMBER;
 
     @ApiModelProperty( "Number of elements for the requested page" )
     @Max( value = 50, message = ErrorKeys.INVALID_MAX )
     @NotNull
-    private Integer pageSize = 20;
+    private Integer pageSize = DEFAULT_PAGE_SIZE;
 
     @ApiModelProperty( "Elements sort direction" )
     private SortDirection sortDirection;
