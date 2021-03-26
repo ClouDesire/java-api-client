@@ -23,6 +23,11 @@ public class PriceDTO extends DTO
         this.currency = currency;
     }
 
+    public PriceDTO( String price )
+    {
+        this.price = new BigDecimal( price );
+    }
+
     public PriceDTO()
     {
     }
