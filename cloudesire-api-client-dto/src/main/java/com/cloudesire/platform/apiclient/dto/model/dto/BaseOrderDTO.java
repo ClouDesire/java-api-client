@@ -34,6 +34,8 @@ public abstract class BaseOrderDTO extends BaseEntityDTO
 
     private Date date;
 
+    private Date startDate;
+
     private Date endOfPeriod;
 
     private String currency;
@@ -135,6 +137,16 @@ public abstract class BaseOrderDTO extends BaseEntityDTO
     public void setDate( Date startDate )
     {
         this.date = startDate;
+    }
+
+    public Date getStartDate()
+    {
+        return startDate;
+    }
+
+    public void setStartDate( Date startDate )
+    {
+        this.startDate = startDate;
     }
 
     public String getExternalReference()
