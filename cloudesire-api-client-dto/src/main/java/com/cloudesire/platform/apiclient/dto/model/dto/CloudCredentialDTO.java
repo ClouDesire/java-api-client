@@ -19,6 +19,9 @@ public class CloudCredentialDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO owner;
 
+    @Valid
+    private UrlEntityDTO subscription;
+
     @ApiModelProperty(
             value = "Whether the actual credentials have been uploaded to vault or metadata is present",
             accessMode = READ_ONLY
@@ -53,6 +56,16 @@ public class CloudCredentialDTO extends NamedEntityDTO
     public void setOwner( UrlEntityDTO owner )
     {
         this.owner = owner;
+    }
+
+    public UrlEntityDTO getSubscription()
+    {
+        return subscription;
+    }
+
+    public void setSubscription( UrlEntityDTO subscription )
+    {
+        this.subscription = subscription;
     }
 
     public Boolean getUploaded()
