@@ -1332,6 +1332,9 @@ public class EnvironmentDTO extends DTO
         @ApiModelProperty( "Require the marketplace to be a reseller one" )
         private boolean resellerOnlyMarketplace;
 
+        @ApiModelProperty( "Enable the cart functionality for CUSTOMER and/or RESELLER" )
+        private Set<Cart> cart = EnumSet.noneOf( Cart.class );
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1655,6 +1658,11 @@ public class EnvironmentDTO extends DTO
             this.geocallProfile = geocallProfile;
         }
 
+        public enum Cart
+        {
+            CUSTOMER, RESELLER
+        }
+
         public enum CustomerCloudCredentials
         {
             ENABLED, ENFORCED, DISABLED;
@@ -1750,6 +1758,16 @@ public class EnvironmentDTO extends DTO
         public void setResellerOnlyMarketplace( boolean resellerOnlyMarketplace )
         {
             this.resellerOnlyMarketplace = resellerOnlyMarketplace;
+        }
+
+        public Set<Cart> getCart()
+        {
+            return cart;
+        }
+
+        public void setCart( Set<Cart> cart )
+        {
+            this.cart = cart;
         }
         //endregion
     }
