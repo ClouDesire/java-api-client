@@ -482,18 +482,12 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.bundle = bundle;
     }
 
-    /**
-     * @deprecated by {@link com.cloudesire.platform.apiclient.api.ProductVersionApi#getMetadata(int)}
-     */
     @Deprecated
     public Map<String, Object> getMetadata()
     {
         return metadata;
     }
 
-    /**
-     * @deprecated by {@link com.cloudesire.platform.apiclient.api.ProductVersionApi#updateMetadata(Integer, Map)}
-     */
     @Deprecated
     public void setMetadata( Map<String, Object> metadata )
     {
