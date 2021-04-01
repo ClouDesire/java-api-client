@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CloudCredentialDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.CloudCredentialPatchDTO;
+import com.cloudesire.platform.apiclient.query.CloudCredentialQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -11,6 +12,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,13 @@ public interface CloudCredentialApi
     @GET( "cloudCredential" )
     Call<List<CloudCredentialDTO>> getAll();
 
+    @GET( "cloudCredential" )
+    Call<List<CloudCredentialDTO>> getAll( @QueryMap CloudCredentialQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(CloudCredentialQuery)}
+     */
+    @Deprecated
     @GET( "cloudCredential" )
     Call<List<CloudCredentialDTO>> getAll(
             @Query( "providerId" ) Integer providerId,
