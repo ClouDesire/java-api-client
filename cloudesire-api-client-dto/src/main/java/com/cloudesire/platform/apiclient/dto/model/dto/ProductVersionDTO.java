@@ -116,6 +116,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * @deprecated by {@link com.cloudesire.platform.apiclient.api.ProductVersionApi#getMetadata(int)}
      */
+    @Deprecated
     @ApiModelProperty( value = "Metadata for the product version", example = "{\"key\":\"value\"}" )
     private Map<String, Object> metadata;
 
@@ -481,11 +482,13 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
         this.bundle = bundle;
     }
 
+    @Deprecated
     public Map<String, Object> getMetadata()
     {
         return metadata;
     }
 
+    @Deprecated
     public void setMetadata( Map<String, Object> metadata )
     {
         this.metadata = metadata;
