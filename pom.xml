@@ -8,7 +8,7 @@
 
 	<groupId>com.cloudesire.platform</groupId>
 	<artifactId>cloudesire-api-client-root</artifactId>
-	<version>2.9.3</version>
+	<version>2.9.4-SNAPSHOT</version>
 
 	<name>cloudesire-api-client-root</name>
 	<description>Java API client for Cloudesire platform</description>
