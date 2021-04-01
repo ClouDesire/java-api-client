@@ -41,8 +41,9 @@
 			<url>https://archiva.cloudesire.com/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>bintray</id>
-			<url>https://api.bintray.com/maven/cloudesire/maven-releases/cloudesire-api-client-root/;publish=1</url>
+			<id>archiva</id>
+			<name>internal</name>
+			<url>https://archiva.cloudesire.com/repository/internal</url>
 		</repository>
 	</distributionManagement>
 
