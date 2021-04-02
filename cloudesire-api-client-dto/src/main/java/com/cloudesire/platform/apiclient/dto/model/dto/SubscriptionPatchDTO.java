@@ -271,6 +271,7 @@ public class SubscriptionPatchDTO extends DTO
         REFRESH_BILLING_ITEM_VALUES,
 
         @ApiModelProperty( "Approve a subscription" )
+        @Deprecated
         APPROVE,
 
         @ApiModelProperty( "Provision a subscription" )
