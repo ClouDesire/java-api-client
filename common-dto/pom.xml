@@ -30,11 +30,4 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>bintray</id>
-			<url>https://api.bintray.com/maven/cloudesire/maven-releases/common-dto/;publish=1</url>
-		</repository>
-	</distributionManagement>
-
 </project>
