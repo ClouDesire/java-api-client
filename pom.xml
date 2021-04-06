@@ -127,7 +127,7 @@
 			<id>release</id>
 			<activation>
 				<property>
-					<name>env.CIRCLECI_BRANCH</name>
+					<name>env.CIRCLE_BRANCH</name>
 					<value>release</value>
 				</property>
 			</activation>
