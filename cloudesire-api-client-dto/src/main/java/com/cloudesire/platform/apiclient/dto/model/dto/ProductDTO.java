@@ -223,6 +223,9 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @URL
     private String orderValidationUrl;
 
+    @Valid
+    private ProductRibbonDTO ribbon;
+
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
         this( name, identifier, type );
@@ -783,6 +786,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setOrderValidationUrls( Set<String> orderValidationUrls )
     {
         this.orderValidationUrls = orderValidationUrls;
+    }
+
+    public ProductRibbonDTO getRibbon()
+    {
+        return ribbon;
+    }
+
+    public void setRibbon( ProductRibbonDTO ribbon )
+    {
+        this.ribbon = ribbon;
     }
 
     @Deprecated
