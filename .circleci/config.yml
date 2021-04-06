@@ -21,7 +21,7 @@ workflows:
             - build
           filters:
             branches:
-              only: /release.*/
+              only: release
 
 orbs:
   cloudesire: cloudesire/common@0
@@ -35,12 +35,15 @@ jobs:
       
       - cloudesire/git_checkout:
           url: git@github.com:ClouDesire/ci-conf.git
-      
+          
       - cloudesire/maven_with_cache:
           mvn_path: ./mvnw
           force_download: false
           cache_key: "1"
           steps:
+            - run:
+                name: Import GPG key
+                command: echo $BASE64_SIGNING_KEY | base64 -d | gpg --import
             - run:
                 name: Build
                 command: ./mvnw -B install -Dmaven.test.skip=true
@@ -64,12 +67,15 @@ jobs:
 
       - attach_workspace:
           at: /home/circleci
-
+      
       - cloudesire/maven_with_cache:
           mvn_path: ./mvnw
           force_download: false
           cache_key: "1"
           steps:
+            - run:
+                name: Import GPG key
+                command: echo $BASE64_SIGNING_KEY | base64 -d | gpg --import
             - run:
                 name: Deploy to archiva
                 command: ./mvnw -B deploy -Dmaven.test.skip=true
