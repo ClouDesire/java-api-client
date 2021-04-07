@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.MinimalCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.UserCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.BaseCompanyPatchDTO;
+import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -11,7 +12,9 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserCompanyApi
@@ -26,8 +29,11 @@ public interface UserCompanyApi
     @POST( "userCompany" )
     Call<UserCompanyDTO> create( @Body MinimalCompanyDTO company );
 
-    @GET( "userCompany/externalId={extId}" )
-    Call<UserCompanyDTO> getByExternalId( @Path( "extId" ) String extId );
+    @GET( "userCompany" )
+    Call<List<UserCompanyDTO>> getAll();
+
+    @GET( "userCompany" )
+    Call<List<UserCompanyDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
 
     @GET( "userCompany/{id}" )
     Call<UserCompanyDTO> get( @Path( "id" ) int id );
