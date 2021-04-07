@@ -29,6 +29,7 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 
@@ -127,4 +128,13 @@ public interface ProductApi
     @GET( "product" )
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap PageRequestQuery pageRequest, @Query( "productType" ) ProductType productType );
+
+    @GET( "product/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "product/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @DELETE( "product/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
