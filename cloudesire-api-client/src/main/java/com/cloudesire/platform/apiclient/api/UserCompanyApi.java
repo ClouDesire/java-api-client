@@ -12,6 +12,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface UserCompanyApi
     Call<List<UserCompanyDTO>> getAll();
 
     @GET( "userCompany" )
-    Call<List<UserCompanyDTO>> getAll( @QueryMap PageRequestQuery pageRequest );
+    Call<List<UserCompanyDTO>> getAll( @Query( "textField" ) String textField, @QueryMap PageRequestQuery pageRequest );
 
     @GET( "userCompany/{id}" )
     Call<UserCompanyDTO> get( @Path( "id" ) int id );
