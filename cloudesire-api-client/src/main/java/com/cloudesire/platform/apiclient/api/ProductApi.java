@@ -130,10 +130,10 @@ public interface ProductApi
     Call<ResponseBody> getCsv( @QueryMap PageRequestQuery pageRequest, @Query( "productType" ) ProductType productType );
 
     @GET( "product/{id}/metadata" )
-    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
 
     @PUT( "product/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
 
     @DELETE( "product/{id}/metadata/{key}" )
     Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
