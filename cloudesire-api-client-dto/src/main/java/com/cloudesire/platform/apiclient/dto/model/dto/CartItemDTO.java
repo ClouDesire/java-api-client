@@ -3,12 +3,14 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.liberologico.cloudesire.common.enums.OSType;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
 import java.util.Objects;
 
 public class CartItemDTO extends BaseEntityDTO
 {
+    @Min( 1 )
     private Integer quantity = 1;
 
     @NotNull
