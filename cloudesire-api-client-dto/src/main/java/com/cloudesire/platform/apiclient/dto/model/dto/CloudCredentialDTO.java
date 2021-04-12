@@ -5,13 +5,17 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
 @ApiModel( description = "Custom cloud credentials" )
-public class CloudCredentialDTO extends NamedEntityDTO
+public class CloudCredentialDTO extends BaseEntityDTO
 {
+    @Size( max = 255 )
+    private String name;
+
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
@@ -30,12 +34,27 @@ public class CloudCredentialDTO extends NamedEntityDTO
 
     public CloudCredentialDTO( String name, UrlEntityDTO cloudProvider )
     {
-        super( name );
+        this( cloudProvider );
+        this.name = name;
+    }
+
+    public CloudCredentialDTO( UrlEntityDTO cloudProvider )
+    {
         this.cloudProvider = cloudProvider;
     }
 
     public CloudCredentialDTO()
     {
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
     }
 
     public UrlEntityDTO getCloudProvider()
@@ -85,12 +104,12 @@ public class CloudCredentialDTO extends NamedEntityDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         CloudCredentialDTO that = (CloudCredentialDTO) o;
-        return Objects.equals( cloudProvider, that.cloudProvider );
+        return Objects.equals( name, that.name ) && Objects.equals( cloudProvider, that.cloudProvider );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), cloudProvider );
+        return Objects.hash( super.hashCode(), name, cloudProvider );
     }
 }
