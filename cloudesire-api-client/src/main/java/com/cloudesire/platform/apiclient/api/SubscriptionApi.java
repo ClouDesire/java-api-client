@@ -72,10 +72,10 @@ public interface SubscriptionApi
     Call<Void> setSyndicatedEndpoints( @Path( "id" ) int id, @Body List<EndpointDTO> endpointsDTO );
 
     @GET( "subscription/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) Integer id );
+    Call<Map<String, String>> getMetadata( @Path( "id" ) Integer id );
 
     @PUT( "subscription/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, String> payload );
 
     @DELETE( "subscription/{id}/metadata/{key}" )
     Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
