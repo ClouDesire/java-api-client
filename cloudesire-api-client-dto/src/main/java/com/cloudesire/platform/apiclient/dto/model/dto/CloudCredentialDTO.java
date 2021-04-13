@@ -22,6 +22,9 @@ public class CloudCredentialDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO subscription;
 
+    @ApiModelProperty( value = "The name of the linked subscription", accessMode = READ_ONLY )
+    private String subscriptionName;
+
     @ApiModelProperty(
             value = "Whether the actual credentials have been uploaded to vault or metadata is present",
             accessMode = READ_ONLY
@@ -66,6 +69,16 @@ public class CloudCredentialDTO extends NamedEntityDTO
     public void setSubscription( UrlEntityDTO subscription )
     {
         this.subscription = subscription;
+    }
+
+    public String getSubscriptionName()
+    {
+        return subscriptionName;
+    }
+
+    public void setSubscriptionName( String subscriptionName )
+    {
+        this.subscriptionName = subscriptionName;
     }
 
     public Boolean getUploaded()
