@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.CartDTO;
+import com.cloudesire.platform.apiclient.query.CartQuery;
 import com.cloudesire.platform.apiclient.query.ResellerCatalogQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,6 +26,13 @@ public interface CartApi
     @GET( "cart" )
     Call<List<CartDTO>> getAll();
 
+    @GET( "cart" )
+    Call<List<CartDTO>> getAll( @QueryMap CartQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(CartQuery)}
+     */
+    @Deprecated
     @GET( "cart" )
     Call<List<CartDTO>> getAll( @Query( "customerId" ) int customerId );
 
