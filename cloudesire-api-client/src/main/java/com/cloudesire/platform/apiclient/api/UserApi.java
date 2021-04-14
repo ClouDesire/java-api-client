@@ -93,7 +93,7 @@ public interface UserApi
     Call<Boolean> isMyAddressValid();
 
     @GET( "user/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
 
     @Streaming
     @GET( "user" )
@@ -112,7 +112,7 @@ public interface UserApi
     Call<MyUserDTO> update( @Path( "id" ) int id, @Body MyUserDTO userDTO );
 
     @PUT( "user/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
 
     @POST( "user/activate" )
     Call<Void> activateAccount( @Body UserActivationDTO payload );

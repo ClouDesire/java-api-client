@@ -40,13 +40,13 @@ public interface UserCompanyApi
     Call<UserCompanyDTO> get( @Path( "id" ) int id );
 
     @GET( "userCompany/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
 
     @PUT( "userCompany/{id}" )
     Call<UserCompanyDTO> update( @Path( "id" ) int id, @Body UserCompanyDTO company );
 
     @PUT( "userCompany/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
 
     @PATCH( "userCompany/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body BaseCompanyPatchDTO patch );

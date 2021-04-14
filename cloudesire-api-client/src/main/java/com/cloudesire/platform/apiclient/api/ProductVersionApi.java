@@ -109,10 +109,10 @@ public interface ProductVersionApi
             @Query( "language" ) String language );
 
     @GET( "productVersion/{id}/metadata" )
-    Call<Map<String, Object>> getMetadata( @Path( "id" ) int id );
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
 
     @PUT( "productVersion/{id}/metadata" )
-    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, Object> payload );
+    Call<Void> updateMetadata( @Path( "id" ) Integer id, @Body Map<String, String> payload );
 
     @DELETE( "productVersion/{id}/metadata/{key}" )
     Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );

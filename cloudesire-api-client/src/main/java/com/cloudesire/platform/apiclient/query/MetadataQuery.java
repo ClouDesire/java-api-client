@@ -6,7 +6,7 @@ public class MetadataQuery extends BaseQuery
 {
     private static final String METADATA = "metadata";
 
-    public MetadataQuery setMetadata( Map<String, Object> metadata )
+    public MetadataQuery setMetadata( Map<String, String> metadata )
     {
         metadata.forEach( ( key, value ) -> {
             if ( value == null ) value = "";
