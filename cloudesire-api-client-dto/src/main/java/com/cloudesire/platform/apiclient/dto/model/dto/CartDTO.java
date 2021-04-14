@@ -20,7 +20,7 @@ public class CartDTO extends BaseEntityDTO
 
     private Date updatedAt;
 
-    private Date checkedOutAt;
+    private Date checkoutAt;
 
     public UrlEntityDTO getCustomer()
     {
@@ -82,14 +82,14 @@ public class CartDTO extends BaseEntityDTO
         this.updatedAt = updatedAt;
     }
 
-    public Date getCheckedOutAt()
+    public Date getCheckoutAt()
     {
-        return checkedOutAt;
+        return checkoutAt;
     }
 
-    public void setCheckedOutAt( Date checkedOutAt )
+    public void setCheckoutAt( Date checkoutAt )
     {
-        this.checkedOutAt = checkedOutAt;
+        this.checkoutAt = checkoutAt;
     }
 
     @Override
@@ -100,13 +100,13 @@ public class CartDTO extends BaseEntityDTO
         if ( ! super.equals( o ) ) return false;
         CartDTO cartDTO = (CartDTO) o;
         return Objects.equals( customer, cartDTO.customer ) && Objects.equals( reseller, cartDTO.reseller )
-                && Objects.equals( resellerCatalog, cartDTO.resellerCatalog ) && Objects.equals( checkedOutAt,
-                cartDTO.checkedOutAt );
+                && Objects.equals( resellerCatalog, cartDTO.resellerCatalog ) && Objects.equals( checkoutAt,
+                cartDTO.checkoutAt );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), customer, reseller, resellerCatalog, checkedOutAt );
+        return Objects.hash( super.hashCode(), customer, reseller, resellerCatalog, checkoutAt );
     }
 }
