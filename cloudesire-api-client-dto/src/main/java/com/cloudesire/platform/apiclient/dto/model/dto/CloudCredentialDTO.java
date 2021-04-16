@@ -31,6 +31,9 @@ public class CloudCredentialDTO extends NamedEntityDTO
     )
     private Boolean uploaded;
 
+    @ApiModelProperty( value = "The vault path of the uploaded credentials, if present", accessMode = READ_ONLY )
+    private String secretsPath;
+
     public CloudCredentialDTO( String name, UrlEntityDTO cloudProvider )
     {
         super( name );
@@ -89,6 +92,16 @@ public class CloudCredentialDTO extends NamedEntityDTO
     public void setUploaded( Boolean uploaded )
     {
         this.uploaded = uploaded;
+    }
+
+    public String getSecretsPath()
+    {
+        return secretsPath;
+    }
+
+    public void setSecretsPath( String secretsPath )
+    {
+        this.secretsPath = secretsPath;
     }
 
     @Override

@@ -16,6 +16,8 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<RecurringCostLineDTO> recurringCosts;
 
+    private UrlEntityDTO cloudCredential;
+
     @ApiModelProperty( "Vault path for the customer cloud credentials for the subscription" )
     private String customerCredentialsPath;
 
@@ -49,16 +51,6 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
         this.billingItemValues = billingItemValues;
     }
 
-    public String getCustomerCredentialsPath()
-    {
-        return customerCredentialsPath;
-    }
-
-    public void setCustomerCredentialsPath( String customerCredentialsPath )
-    {
-        this.customerCredentialsPath = customerCredentialsPath;
-    }
-
     public List<OneshotCostLineDTO> getOneshotCosts()
     {
         return oneshotCosts;
@@ -77,5 +69,33 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setRecurringCosts( List<RecurringCostLineDTO> recurringCosts )
     {
         this.recurringCosts = recurringCosts;
+    }
+
+    public UrlEntityDTO getCloudCredential()
+    {
+        return cloudCredential;
+    }
+
+    public void setCloudCredential( UrlEntityDTO cloudCredential )
+    {
+        this.cloudCredential = cloudCredential;
+    }
+
+    /**
+     * @deprecated find the path by retrieving {@link #getCloudCredential()}
+     */
+    @Deprecated
+    public String getCustomerCredentialsPath()
+    {
+        return customerCredentialsPath;
+    }
+
+    /**
+     * @deprecated for removal
+     */
+    @Deprecated
+    public void setCustomerCredentialsPath( String customerCredentialsPath )
+    {
+        this.customerCredentialsPath = customerCredentialsPath;
     }
 }
