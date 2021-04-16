@@ -17,6 +17,9 @@ public class CartItemBudgetDTO extends DTO
     @ApiModelProperty( "Budget price multiplied quantity for the item" )
     private BigDecimal subTotal;
 
+    @ApiModelProperty( "Budget price multiplied quantity for the item, excluding VAT" )
+    private BigDecimal subTotalExcludingVAT;
+
     public BudgetDTO getBudget()
     {
         return budget;
@@ -45,6 +48,16 @@ public class CartItemBudgetDTO extends DTO
     public void setSubTotal( BigDecimal subTotal )
     {
         this.subTotal = subTotal;
+    }
+
+    public BigDecimal getSubTotalExcludingVAT()
+    {
+        return subTotalExcludingVAT;
+    }
+
+    public void setSubTotalExcludingVAT( BigDecimal subTotalExcludingVAT )
+    {
+        this.subTotalExcludingVAT = subTotalExcludingVAT;
     }
 
     @Override

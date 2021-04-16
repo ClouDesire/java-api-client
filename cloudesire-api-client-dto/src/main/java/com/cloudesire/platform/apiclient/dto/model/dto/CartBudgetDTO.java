@@ -14,6 +14,9 @@ public class CartBudgetDTO extends DTO
     @ApiModelProperty( "Total price of all the items in cart" )
     private BigDecimal total;
 
+    @ApiModelProperty( "Total price of all the items in cart, excluding VAT" )
+    private BigDecimal totalExcludingVAT;
+
     public List<CartItemBudgetDTO> getItems()
     {
         return items;
@@ -32,5 +35,15 @@ public class CartBudgetDTO extends DTO
     public void setTotal( BigDecimal total )
     {
         this.total = total;
+    }
+
+    public BigDecimal getTotalExcludingVAT()
+    {
+        return totalExcludingVAT;
+    }
+
+    public void setTotalExcludingVAT( BigDecimal totalExcludingVAT )
+    {
+        this.totalExcludingVAT = totalExcludingVAT;
     }
 }
