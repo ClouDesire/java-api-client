@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,12 @@ public class CartDTO extends BaseEntityDTO
 
     @Valid
     private List<CartItemDTO> items;
+
+    private Date createdAt;
+
+    private Date updatedAt;
+
+    private Date checkoutAt;
 
     public UrlEntityDTO getCustomer()
     {
@@ -55,6 +62,36 @@ public class CartDTO extends BaseEntityDTO
         this.items = items;
     }
 
+    public Date getCreatedAt()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt( Date createdAt )
+    {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt()
+    {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt( Date updatedAt )
+    {
+        this.updatedAt = updatedAt;
+    }
+
+    public Date getCheckoutAt()
+    {
+        return checkoutAt;
+    }
+
+    public void setCheckoutAt( Date checkoutAt )
+    {
+        this.checkoutAt = checkoutAt;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -63,12 +100,13 @@ public class CartDTO extends BaseEntityDTO
         if ( ! super.equals( o ) ) return false;
         CartDTO cartDTO = (CartDTO) o;
         return Objects.equals( customer, cartDTO.customer ) && Objects.equals( reseller, cartDTO.reseller )
-                && Objects.equals( resellerCatalog, cartDTO.resellerCatalog );
+                && Objects.equals( resellerCatalog, cartDTO.resellerCatalog ) && Objects.equals( checkoutAt,
+                cartDTO.checkoutAt );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), customer, reseller, resellerCatalog );
+        return Objects.hash( super.hashCode(), customer, reseller, resellerCatalog, checkoutAt );
     }
 }
