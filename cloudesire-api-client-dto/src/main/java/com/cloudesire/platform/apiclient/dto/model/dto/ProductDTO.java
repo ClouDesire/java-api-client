@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -34,6 +35,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @Valid
     private UrlEntityDTO resellerCatalog;
 
+    @NotNull
     @Valid
     private UrlEntityDTO category;
 
@@ -857,4 +859,13 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.requestedForApproval = requestedForApproval;
     }
     //endregion
+
+    public static class Fields
+    {
+        public static final String CATEGORY = "category";
+
+        private Fields()
+        {
+        }
+    }
 }
