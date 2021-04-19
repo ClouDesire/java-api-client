@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class CartDTO extends BaseEntityDTO
+public class CartDTO extends NamedEntityDTO
 {
+    private String notes;
+
     private UrlEntityDTO customer;
 
     private UrlEntityDTO reseller;
@@ -21,6 +23,25 @@ public class CartDTO extends BaseEntityDTO
     private Date updatedAt;
 
     private Date checkoutAt;
+
+    public CartDTO( String name )
+    {
+        super( name );
+    }
+
+    public CartDTO()
+    {
+    }
+
+    public String getNotes()
+    {
+        return notes;
+    }
+
+    public void setNotes( String notes )
+    {
+        this.notes = notes;
+    }
 
     public UrlEntityDTO getCustomer()
     {
