@@ -26,10 +26,10 @@ public interface EventTestApi
             @Query( "language" ) String language );
 
     @GET( "test/user/{id}/metadata" )
-    Call<Map<String, Object>> getSandboxMetadata( @Path( "id" ) int id );
+    Call<Map<String, String>> getSandboxMetadata( @Path( "id" ) int id );
 
     @PUT( "test/user/{id}/metadata" )
-    Call<Void> updateSandboxMetadata( @Path( "id" ) int id, @Body Map<String, Object> payload );
+    Call<Void> updateSandboxMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
 
     @GET( "test/userCompany/{id}" )
     Call<UserCompanyDTO> getUserCompany( @Path( "id" ) int id );
