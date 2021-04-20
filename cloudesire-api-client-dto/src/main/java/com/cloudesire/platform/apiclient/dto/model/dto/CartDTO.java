@@ -1,12 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class CartDTO extends NamedEntityDTO
+public class CartDTO extends BaseEntityDTO
 {
+    @Size( max = 125 )
+    private String name;
+
     private String notes;
 
     private UrlEntityDTO customer;
@@ -26,11 +30,21 @@ public class CartDTO extends NamedEntityDTO
 
     public CartDTO( String name )
     {
-        super( name );
+        this.name = name;
     }
 
     public CartDTO()
     {
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
     }
 
     public String getNotes()
