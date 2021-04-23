@@ -26,14 +26,24 @@ public class SubscriptionBillingItemDTO extends DTO
 
     private ApiEndpointDTO endpoint;
 
-    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value, boolean bought )
+    private SubscriptionBillingItemDTO( UrlEntityDTO billingItem, BigDecimal value, boolean bought )
     {
         this.billingItem = billingItem;
-        this.value = new BigDecimal( value ).setScale( DAY_SCALE_PRECISION, ROUNDING_MODE );
+        this.value = value;
         this.bought = bought;
     }
 
+    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value, boolean bought )
+    {
+        this( billingItem, new BigDecimal( value ).setScale( DAY_SCALE_PRECISION, ROUNDING_MODE ), bought );
+    }
+
     public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, Integer value )
+    {
+        this( billingItem, value, true );
+    }
+
+    public SubscriptionBillingItemDTO( UrlEntityDTO billingItem, BigDecimal value )
     {
         this( billingItem, value, true );
     }
