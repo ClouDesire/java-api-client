@@ -5,9 +5,16 @@ workflows:
   build:
     jobs:
       - build:
-          context: common-backend
+          context:
+            - common-not-really-secrets
+            - common-archiva
+            - common-github
+            - common-sonar
       - deploy:
-          context: common-backend
+          context:
+            - common-not-really-secrets
+            - common-archiva
+            - common-github
           requires:
             - build
           filters:
@@ -16,7 +23,10 @@ workflows:
       - cloudesire/maven_release:
           mvn_path: ./mvnw
           workspace: /home/circleci
-          context: common-backend
+          context:
+            - common-not-really-secrets
+            - common-archiva
+            - common-github
           requires:
             - build
           filters:
