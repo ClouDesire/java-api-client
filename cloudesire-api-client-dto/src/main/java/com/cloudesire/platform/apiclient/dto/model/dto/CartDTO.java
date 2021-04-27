@@ -22,6 +22,8 @@ public class CartDTO extends BaseEntityDTO
 
     private BigDecimal total;
 
+    private BigDecimal totalExcludingVAT;
+
     @Valid
     private List<CartItemDTO> items;
 
@@ -138,6 +140,16 @@ public class CartDTO extends BaseEntityDTO
     public void setTotal( BigDecimal total )
     {
         this.total = total;
+    }
+
+    public BigDecimal getTotalExcludingVAT()
+    {
+        return totalExcludingVAT;
+    }
+
+    public void setTotalExcludingVAT( BigDecimal totalExcludingVAT )
+    {
+        this.totalExcludingVAT = totalExcludingVAT;
     }
 
     @Override
