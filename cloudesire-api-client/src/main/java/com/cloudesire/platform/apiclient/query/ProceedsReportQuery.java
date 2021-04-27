@@ -73,13 +73,13 @@ public class ProceedsReportQuery extends PageRequestQuery
 
     public ProceedsReportQuery from( Date from )
     {
-        put( FROM, SimpleDateFormatFactory.dateFormat().format( from ) );
+        put( FROM, SimpleDateFormatFactory.iso8601Format().format( from ) );
         return this;
     }
 
     public ProceedsReportQuery to( Date to )
     {
-        put( TO, SimpleDateFormatFactory.dateFormat().format( to ) );
+        put( TO, SimpleDateFormatFactory.iso8601Format().format( to ) );
         return this;
     }
 
