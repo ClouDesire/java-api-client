@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,10 @@ public class CartDTO extends BaseEntityDTO
     private UrlEntityDTO reseller;
 
     private UrlEntityDTO resellerCatalog;
+
+    private BigDecimal total;
+
+    private BigDecimal totalExcludingVAT;
 
     @Valid
     private List<CartItemDTO> items;
@@ -125,6 +130,26 @@ public class CartDTO extends BaseEntityDTO
     public void setCheckoutAt( Date checkoutAt )
     {
         this.checkoutAt = checkoutAt;
+    }
+
+    public BigDecimal getTotal()
+    {
+        return total;
+    }
+
+    public void setTotal( BigDecimal total )
+    {
+        this.total = total;
+    }
+
+    public BigDecimal getTotalExcludingVAT()
+    {
+        return totalExcludingVAT;
+    }
+
+    public void setTotalExcludingVAT( BigDecimal totalExcludingVAT )
+    {
+        this.totalExcludingVAT = totalExcludingVAT;
     }
 
     @Override
