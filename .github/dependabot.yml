@@ -1,0 +1,42 @@
+version: 2
+registries:
+  maven-repository-archiva-cloudesire-com-repository-internal:
+    type: maven-repository
+    url: https://archiva.cloudesire.com/repository/internal
+    username: dependabot
+    password: "${{secrets.MAVEN_REPOSITORY_ARCHIVA_CLOUDESIRE_COM_REPOSITORY_INTERNAL_PASSWORD}}"
+  maven-repository-archiva-cloudesire-com-repository-snapshots:
+    type: maven-repository
+    url: https://archiva.cloudesire.com/repository/snapshots
+    username: dependabot
+    password: "${{secrets.MAVEN_REPOSITORY_ARCHIVA_CLOUDESIRE_COM_REPOSITORY_SNAPSHOTS_PASSWORD}}"
+
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: saturday
+    time: "01:00"
+    timezone: Europe/Rome
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.assertj:assertj-core
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: org.hibernate.validator:hibernate-validator
+    versions:
+    - 7.0.0.Final
+  - dependency-name: org.apache.commons:commons-lang3
+    versions:
+    - "3.11"
+  - dependency-name: com.squareup.okhttp3:logging-interceptor
+    versions:
+    - 4.9.0
+  - dependency-name: com.squareup.okhttp3:okhttp
+    versions:
+    - 4.9.0
+  rebase-strategy: disabled
+  registries:
+  - maven-repository-archiva-cloudesire-com-repository-internal
+  - maven-repository-archiva-cloudesire-com-repository-snapshots
