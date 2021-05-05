@@ -10,22 +10,14 @@ registries:
     url: https://archiva.cloudesire.com/repository/snapshots
     username: ${{secrets.MAVEN_USER}}
     password: ${{secrets.MAVEN_PASS}}
-updates: 
+updates:
   - package-ecosystem: maven
     directory: "/"
     schedule:
       interval: weekly
-    registries: 
+    registries:
       - maven-internal-releases
       - maven-internal-snapshots
-    reviewers: 
+    reviewers:
       - gionn
       - malteo
-  - package-ecosystem: docker
-    directory: "/"
-    schedule:
-      interval: weekly 
-    reviewers: 
-      - gionn
-      - malteo
-
