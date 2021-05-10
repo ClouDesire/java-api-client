@@ -18,6 +18,6 @@ updates:
     registries:
       - maven-internal-releases
       - maven-internal-snapshots
-    reviewers:
+    assignees:
       - gionn
       - malteo
