@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.enums.CloudCredentialsSupport;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
@@ -224,6 +225,8 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     @UnsupportedAPI( sinceVersion = ApiVersion.V20210215 )
     @URL
     private String orderValidationUrl;
+
+    private CloudCredentialsSupport cloudCredentialsSupport;
 
     public ProductDTO( String name, String identifier, ProductType type, UrlEntityDTO company )
     {
@@ -823,22 +826,6 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
         this.tosAcceptance = tosAcceptance;
     }
 
-    @Override
-    public boolean equals( Object o )
-    {
-        if ( this == o ) return true;
-        if ( ! ( o instanceof ProductDTO ) ) return false;
-        if ( ! super.equals( o ) ) return false;
-        ProductDTO that = (ProductDTO) o;
-        return Objects.equals( SKU, that.SKU );
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash( super.hashCode(), SKU );
-    }
-
     public BigDecimal getListingPrice()
     {
         return listingPrice;
@@ -857,6 +844,32 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     public void setRequestedForApproval( boolean requestedForApproval )
     {
         this.requestedForApproval = requestedForApproval;
+    }
+
+    public CloudCredentialsSupport getCloudCredentialsSupport()
+    {
+        return cloudCredentialsSupport;
+    }
+
+    public void setCloudCredentialsSupport( CloudCredentialsSupport cloudCredentialsSupport )
+    {
+        this.cloudCredentialsSupport = cloudCredentialsSupport;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( ! ( o instanceof ProductDTO ) ) return false;
+        if ( ! super.equals( o ) ) return false;
+        ProductDTO that = (ProductDTO) o;
+        return Objects.equals( SKU, that.SKU );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( super.hashCode(), SKU );
     }
     //endregion
 
