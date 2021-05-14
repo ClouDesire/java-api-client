@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.CloudCredentialsSupport;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
@@ -1303,7 +1304,7 @@ public class EnvironmentDTO extends DTO
         private boolean gdpr;
 
         @ApiModelProperty( "Enables custom cloud credentials" )
-        private CustomerCloudCredentials customerCloudCredentials = CustomerCloudCredentials.DISABLED;
+        private CloudCredentialsSupport customerCloudCredentials = CloudCredentialsSupport.DISABLED;
 
         @ApiModelProperty( hidden = true )
         public boolean isZuoraEnabled()
@@ -1638,12 +1639,12 @@ public class EnvironmentDTO extends DTO
             this.gdpr = gdpr;
         }
 
-        public CustomerCloudCredentials getCustomerCloudCredentials()
+        public CloudCredentialsSupport getCustomerCloudCredentials()
         {
             return customerCloudCredentials;
         }
 
-        public void setCustomerCloudCredentials( CustomerCloudCredentials customerCloudCredentials )
+        public void setCustomerCloudCredentials( CloudCredentialsSupport customerCloudCredentials )
         {
             this.customerCloudCredentials = customerCloudCredentials;
         }
@@ -1661,16 +1662,6 @@ public class EnvironmentDTO extends DTO
         public enum Cart
         {
             CUSTOMER, RESELLER
-        }
-
-        public enum CustomerCloudCredentials
-        {
-            ENABLED, ENFORCED, DISABLED;
-
-            public boolean isEnabled()
-            {
-                return this != DISABLED;
-            }
         }
 
         public enum ExternalSubscriptionHandling
