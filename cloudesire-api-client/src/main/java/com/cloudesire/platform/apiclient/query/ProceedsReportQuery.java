@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.cloudesire.platform.apiclient.dto.model.enums.ReportQuery;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 import org.apache.commons.lang3.StringUtils;
@@ -20,6 +21,7 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String FROM = "from";
     private static final String TO = "to";
     private static final String ORDER_TYPES = "orderTypes";
+    private static final String QUERY = "query";
 
     public ProceedsReportQuery( Map<? extends String, ?> m )
     {
@@ -86,6 +88,12 @@ public class ProceedsReportQuery extends PageRequestQuery
     public ProceedsReportQuery orderTypes( OrderType... types )
     {
         put( ORDER_TYPES, StringUtils.join( types, ',' ) );
+        return this;
+    }
+
+    public ProceedsReportQuery query( ReportQuery query )
+    {
+        put( QUERY, query );
         return this;
     }
 
