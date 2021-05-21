@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;

@@ -16,8 +16,6 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<RecurringCostLineDTO> recurringCosts;
 
-    private UrlEntityDTO cloudCredential;
-
     @ApiModelProperty( "Vault path for the customer cloud credentials for the subscription" )
     private String customerCredentialsPath;
 
@@ -69,16 +67,6 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setRecurringCosts( List<RecurringCostLineDTO> recurringCosts )
     {
         this.recurringCosts = recurringCosts;
-    }
-
-    public UrlEntityDTO getCloudCredential()
-    {
-        return cloudCredential;
-    }
-
-    public void setCloudCredential( UrlEntityDTO cloudCredential )
-    {
-        this.cloudCredential = cloudCredential;
     }
 
     /**
