@@ -40,6 +40,8 @@ public class ProceedsReportLineDTO extends ReportLineDTO
     @ApiModelProperty( "Total earnings minus total costs" )
     private BigDecimal margin;
 
+    private UrlEntityDTO subscription;
+
     private UrlEntityDTO billingItem;
 
     @ApiModelProperty( "Custom billing identifier" )
@@ -164,6 +166,16 @@ public class ProceedsReportLineDTO extends ReportLineDTO
     public void setMargin( BigDecimal margin )
     {
         this.margin = margin;
+    }
+
+    public UrlEntityDTO getSubscription()
+    {
+        return subscription;
+    }
+
+    public void setSubscription( UrlEntityDTO subscription )
+    {
+        this.subscription = subscription;
     }
 
     public UrlEntityDTO getBillingItem()
