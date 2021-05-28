@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.liberologico.cloudesire.common.MathConfiguration;
 
 import java.math.BigDecimal;
 
@@ -29,9 +30,9 @@ public class DistributorProceedsCsvDTO extends ProceedsCsvDTO
         return wholesale;
     }
 
-    public void setWholesale( BigDecimal wholesale )
+    public void setWholesale( BigDecimal wholesale, int scale )
     {
-        this.wholesale = wholesale;
+        this.wholesale = wholesale.setScale( scale, MathConfiguration.ROUNDING_MODE );
     }
 
     public BigDecimal getSellin()
@@ -39,9 +40,9 @@ public class DistributorProceedsCsvDTO extends ProceedsCsvDTO
         return sellin;
     }
 
-    public void setSellin( BigDecimal sellin )
+    public void setSellin( BigDecimal sellin, int scale )
     {
-        this.sellin = sellin;
+        this.sellin = sellin.setScale( scale, MathConfiguration.ROUNDING_MODE );
     }
     // endregion
 }
