@@ -18,6 +18,7 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String COMPANY_ID = "companyId";
     private static final String PRODUCT_ID = "productId";
     private static final String PRODUCT_VERSION_ID = "productVersionId";
+    private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String FROM = "from";
     private static final String TO = "to";
     private static final String ORDER_TYPES = "orderTypes";
@@ -70,6 +71,12 @@ public class ProceedsReportQuery extends PageRequestQuery
     public ProceedsReportQuery productVersion( int productVersionId )
     {
         put( PRODUCT_VERSION_ID, productVersionId );
+        return this;
+    }
+
+    public ProceedsReportQuery subscription( int subscriptionId )
+    {
+        put( SUBSCRIPTION_ID, subscriptionId );
         return this;
     }
 
