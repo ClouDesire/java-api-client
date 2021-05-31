@@ -112,8 +112,7 @@ public final class MathUtils
 
     public static BigDecimal parseFloat( Float amount )
     {
-        return BigDecimal.valueOf( amount )
-                .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
+        return setScale( BigDecimal.valueOf( amount ), MathConfiguration.DEFAULT_PRECISION );
     }
 
     public static String parseLongToString( Long amount )
@@ -121,6 +120,11 @@ public final class MathUtils
         return BigDecimal.valueOf( amount )
                 .divide( ONE_HUNDRED, MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE )
                 .toPlainString();
+    }
+
+    public static BigDecimal setScale( BigDecimal number, int scale )
+    {
+        return number.setScale( scale, MathConfiguration.ROUNDING_MODE );
     }
 
     public static BigDecimal bytesToGigabytes( BigDecimal bytes )

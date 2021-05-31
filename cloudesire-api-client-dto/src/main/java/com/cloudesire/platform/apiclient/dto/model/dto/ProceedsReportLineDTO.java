@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
-import com.liberologico.cloudesire.common.MathConfiguration;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -114,9 +113,9 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         return wholesale;
     }
 
-    public void setWholesale( BigDecimal wholesale, int scale )
+    public void setWholesale( BigDecimal wholesale )
     {
-        this.wholesale = wholesale.setScale( scale, MathConfiguration.ROUNDING_MODE );
+        this.wholesale = wholesale;
     }
 
     public BigDecimal getSellin()
@@ -124,9 +123,9 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         return sellin;
     }
 
-    public void setSellin( BigDecimal sellin, int scale )
+    public void setSellin( BigDecimal sellin )
     {
-        this.sellin = sellin.setScale( scale, MathConfiguration.ROUNDING_MODE );
+        this.sellin = sellin;
     }
 
     public BigDecimal getSellout()
@@ -134,9 +133,9 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         return sellout;
     }
 
-    public void setSellout( BigDecimal sellout, int scale )
+    public void setSellout( BigDecimal sellout )
     {
-        this.sellout = sellout.setScale( scale, MathConfiguration.ROUNDING_MODE );
+        this.sellout = sellout;
     }
 
     public BigDecimal getVendorIncome()
@@ -144,9 +143,9 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         return vendorIncome;
     }
 
-    public void setVendorIncome( BigDecimal vendorIncome, int scale )
+    public void setVendorIncome( BigDecimal vendorIncome )
     {
-        this.vendorIncome = vendorIncome.setScale( scale, MathConfiguration.ROUNDING_MODE );
+        this.vendorIncome = vendorIncome;
     }
 
     public CostsDTO getCosts()
@@ -164,9 +163,9 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         return margin;
     }
 
-    public void setMargin( BigDecimal margin, int scale )
+    public void setMargin( BigDecimal margin )
     {
-        this.margin = margin.setScale( scale, MathConfiguration.ROUNDING_MODE );
+        this.margin = margin;
     }
 
     public UrlEntityDTO getSubscription()
@@ -237,10 +236,10 @@ public class ProceedsReportLineDTO extends ReportLineDTO
         @ApiModelProperty( "The cloud costs to refund to the platform" )
         private BigDecimal iaas;
 
-        public CostsDTO( BigDecimal license, BigDecimal iaas, int scale )
+        public CostsDTO( BigDecimal license, BigDecimal iaas )
         {
-            this.license = license.setScale( scale, MathConfiguration.ROUNDING_MODE );
-            this.iaas = iaas.setScale( scale, MathConfiguration.ROUNDING_MODE );
+            this.license = license;
+            this.iaas = iaas;
         }
 
         public CostsDTO()

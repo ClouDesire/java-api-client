@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.liberologico.cloudesire.common.MathConfiguration;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
@@ -95,7 +94,7 @@ public class StatisticsDTO extends DTO
 
     public void setMargin( BigDecimal margin )
     {
-        this.margin = margin.setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
+        this.margin = margin;
     }
 
     public BigDecimal getEarnings()
@@ -105,7 +104,7 @@ public class StatisticsDTO extends DTO
 
     public void setEarnings( BigDecimal earnings )
     {
-        this.earnings = earnings.setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
+        this.earnings = earnings;
     }
 
     public BigDecimal getCosts()
@@ -115,7 +114,7 @@ public class StatisticsDTO extends DTO
 
     public void setCosts( BigDecimal costs )
     {
-        this.costs = costs.setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
+        this.costs = costs;
     }
 
     public BigDecimal getNormalExpenses()
