@@ -15,6 +15,7 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+      day: sunday
     registries:
       - maven-internal-releases
       - maven-internal-snapshots
