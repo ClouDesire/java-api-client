@@ -96,10 +96,10 @@ public interface ProductApi
     Call<ProductDetailDTO> get( @Path( "id" ) int id, @QueryMap ResellerCatalogQuery parameters );
 
     @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input );
+    Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDTO input );
 
     @PUT( "product/{id}" )
-    Call<ProductDTO> update( @Path( "id" ) Integer id, @Body ProductDTO input, @Query( "language" ) String language );
+    Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDTO input, @Query( "language" ) String language );
 
     @GET( "product/{id}/bundled" )
     Call<List<ProductBundleDTO>> getBundled( @Path( "id" ) Integer id );
