@@ -166,6 +166,13 @@ public class MailEnvironmentDTO extends DTO
         private MailConfiguration orderCreationPlatform;
 
         /**
+         * Email sent on order request for approval to customer
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration orderRequestCustomer;
+
+        /**
          * Email sent to the customer when application has been undeployed
          */
         @NotNull
@@ -546,6 +553,16 @@ public class MailEnvironmentDTO extends DTO
         public void setOrderCreationPlatform( MailConfiguration orderCreationPlatform )
         {
             this.orderCreationPlatform = orderCreationPlatform;
+        }
+
+        public MailConfiguration getOrderRequestCustomer()
+        {
+            return orderRequestCustomer;
+        }
+
+        public void setOrderRequestCustomer( MailConfiguration orderRequestCustomer )
+        {
+            this.orderRequestCustomer = orderRequestCustomer;
         }
 
         @Deprecated
