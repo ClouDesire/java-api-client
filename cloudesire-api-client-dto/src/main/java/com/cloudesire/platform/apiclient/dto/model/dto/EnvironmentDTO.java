@@ -200,6 +200,11 @@ public class EnvironmentDTO extends DTO
     @NotNull
     private MailCustomization orderCreationPlatform = new MailCustomization();
 
+    @ApiModelProperty( "Email sent on order reject to customer" )
+    @Valid
+    @NotNull
+    private NotificationMailCustomization orderReject = new NotificationMailCustomization();
+
     @ApiModelProperty( "Email sent on order request to customer" )
     @Valid
     @NotNull
@@ -599,6 +604,16 @@ public class EnvironmentDTO extends DTO
     public void setOrderCreationPlatform( MailCustomization orderCreationPlatform )
     {
         this.orderCreationPlatform = orderCreationPlatform;
+    }
+
+    public NotificationMailCustomization getOrderReject()
+    {
+        return orderReject;
+    }
+
+    public void setOrderReject( NotificationMailCustomization orderReject )
+    {
+        this.orderReject = orderReject;
     }
 
     public NotificationMailCustomization getOrderRequestCustomer()
