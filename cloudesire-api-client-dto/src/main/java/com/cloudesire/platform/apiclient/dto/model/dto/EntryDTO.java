@@ -3,9 +3,10 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModel;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @ApiModel( description = "A key/value pair" )
-public class EntryDTO
+public class EntryDTO implements Serializable
 {
     @NotNull
     private String key;
