@@ -8,7 +8,7 @@ import java.beans.Introspector;
 import java.util.Objects;
 
 @JsonPropertyOrder ( { "id" } )
-public class BaseEntityDTO implements IBaseEntityDTO, DTO
+public class BaseEntityDTO implements DTO
 {
     @ApiModelProperty( readOnly = true )
     private Integer id;
@@ -54,7 +54,6 @@ public class BaseEntityDTO implements IBaseEntityDTO, DTO
         return new UrlEntityDTO( getSelf() );
     }
 
-    @Override
     public Integer getId()
     {
         return id;
