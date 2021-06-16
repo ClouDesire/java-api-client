@@ -4,7 +4,7 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 
 @ApiModel( description = "Which cloud resources the customer will get for this order" )
-public class BudgetVMConfigurationDTO extends DTO
+public class BudgetVMConfigurationDTO implements DTO
 {
     private OSType operatingSystem;
 

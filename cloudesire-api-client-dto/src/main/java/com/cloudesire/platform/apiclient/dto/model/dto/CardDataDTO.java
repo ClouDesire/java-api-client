@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @ApiModel( description = "Credit card data" )
 @Deprecated
-public class CardDataDTO extends PaymentDataDTO
+public class CardDataDTO implements PaymentDataDTO
 {
     @ApiModelProperty( value = "Month of expiration", example = "09" )
     @NotEmpty

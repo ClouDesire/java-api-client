@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 
 import java.util.Map;
 
-public class ExternalOrderValidationDTO extends DTO
+public class ExternalOrderValidationDTO implements DTO
 {
     private Integer productId;
 

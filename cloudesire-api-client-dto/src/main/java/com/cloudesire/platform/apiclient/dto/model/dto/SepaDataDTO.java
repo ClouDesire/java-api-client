@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @deprecated by {@link StripeTokenDTO}
  */
 @Deprecated
-public class SepaDataDTO extends PaymentDataDTO
+public class SepaDataDTO implements PaymentDataDTO
 {
     @IBAN
     @NotEmpty

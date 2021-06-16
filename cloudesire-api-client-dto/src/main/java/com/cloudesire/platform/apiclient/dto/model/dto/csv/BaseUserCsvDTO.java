@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
-abstract class BaseUserCsvDTO extends DTO
+abstract class BaseUserCsvDTO implements DTO
 {
     private String name;
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigDecimal;
 
 @JsonPropertyOrder( { "resource", "cloudProvider", "specs", "price", "cost" } )
-public class CatalogCloudPricingCsvDTO extends DTO
+public class CatalogCloudPricingCsvDTO implements DTO
 {
     private String resource;
 

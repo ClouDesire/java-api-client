@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CouponPatchDTO extends DTO
+public class CouponPatchDTO implements DTO
 {
     @ApiModelProperty( "Coupon recipient email address" )
     private String email;

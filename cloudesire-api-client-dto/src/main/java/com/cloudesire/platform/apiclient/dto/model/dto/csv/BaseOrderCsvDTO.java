@@ -6,7 +6,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public abstract class BaseOrderCsvDTO extends DTO
+public abstract class BaseOrderCsvDTO implements DTO
 {
     private Integer id;
 

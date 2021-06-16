@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
-abstract class CatalogCsvDTO extends DTO
+abstract class CatalogCsvDTO implements DTO
 {
     protected String plan;
 

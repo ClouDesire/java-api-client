@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class StatisticsDTO extends DTO
+public class StatisticsDTO implements DTO
 {
     @ApiModelProperty( value = "IAAS expenses for customer", readOnly = true )
     private BigDecimal iaasExpenses;

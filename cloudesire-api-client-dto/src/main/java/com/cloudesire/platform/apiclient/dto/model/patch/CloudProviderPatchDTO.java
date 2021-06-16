@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
-public class CloudProviderPatchDTO extends DTO
+public class CloudProviderPatchDTO implements DTO
 {
     @NotNull
     private Action action;

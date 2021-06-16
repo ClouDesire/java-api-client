@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import javax.validation.constraints.NotNull;
 
-public class CloudCredentialPatchDTO extends DTO
+public class CloudCredentialPatchDTO implements DTO
 {
     @NotNull
     private Action action;

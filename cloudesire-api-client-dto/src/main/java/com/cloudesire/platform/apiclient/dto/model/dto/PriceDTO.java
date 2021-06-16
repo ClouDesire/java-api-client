@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "A price" )
-public class PriceDTO extends DTO
+public class PriceDTO implements DTO
 {
     @NotNull
     @ApiModelProperty( "The price for the current resource" )

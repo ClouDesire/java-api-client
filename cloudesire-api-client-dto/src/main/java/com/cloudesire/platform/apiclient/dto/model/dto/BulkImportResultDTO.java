@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @ApiModel( "Bulk import execution result" )
-public class BulkImportResultDTO extends DTO
+public class BulkImportResultDTO implements DTO
 {
     @ApiModelProperty( "Bulk import request ID" )
     private String requestId;

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @ApiModel( description = "Request a price change for a cloud price" )
-public class PricingPatchDTO extends DTO
+public class PricingPatchDTO implements DTO
 {
     @ApiModelProperty( "The new price" )
     private BigDecimal price;

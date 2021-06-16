@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.CustomCostRuleType;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-public class CustomCostRuleDTO extends DTO
+public class CustomCostRuleDTO implements DTO
 {
     @NotNull
     private CustomCostRuleType ruleType;

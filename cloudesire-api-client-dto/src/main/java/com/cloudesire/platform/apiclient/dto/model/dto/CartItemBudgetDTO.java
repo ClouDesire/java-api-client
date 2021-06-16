@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @ApiModel( description = "A budget estimate for an item in a cart" )
-public class CartItemBudgetDTO extends DTO
+public class CartItemBudgetDTO implements DTO
 {
     private BudgetDTO budget;
 
