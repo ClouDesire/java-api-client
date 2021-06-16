@@ -1,5 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-public abstract class PaymentDataDTO implements DTO
+public interface PaymentDataDTO extends DTO
 {
 }

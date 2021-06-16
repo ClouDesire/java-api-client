@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotEmpty;
 
-public class StripeTokenDTO extends PaymentDataDTO
+public class StripeTokenDTO implements PaymentDataDTO
 {
     @JsonProperty( "stripeToken" )
     @NotEmpty
