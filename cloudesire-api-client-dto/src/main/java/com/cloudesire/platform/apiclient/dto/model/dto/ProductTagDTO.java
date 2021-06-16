@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 @ApiModel( description = "A label to tag a product" )
-public class ProductTagDTO extends DTO
+public class ProductTagDTO implements DTO
 {
     @ApiModelProperty( "Tag description" )
     private String tag;

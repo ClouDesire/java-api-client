@@ -8,7 +8,7 @@ import java.util.Objects;
 import static com.liberologico.cloudesire.common.MathConfiguration.DAY_SCALE_PRECISION;
 import static com.liberologico.cloudesire.common.MathConfiguration.ROUNDING_MODE;
 
-public class SubscriptionBillingItemDTO extends DTO
+public class SubscriptionBillingItemDTO implements DTO
 {
     private UrlEntityDTO billingItem;
 

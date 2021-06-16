@@ -11,7 +11,7 @@ import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingP
 import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
 
 @ApiModel( description = "Mass actions for resold pricings" )
-public class PercentagePricingPatchDTO extends DTO
+public class PercentagePricingPatchDTO implements DTO
 {
     @NotNull
     private Action action;

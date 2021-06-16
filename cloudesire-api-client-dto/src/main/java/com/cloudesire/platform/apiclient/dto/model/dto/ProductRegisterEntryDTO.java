@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Map;
 
 @ApiModel( description = "Logs an edit of a product" )
-public class ProductRegisterEntryDTO extends DTO
+public class ProductRegisterEntryDTO implements DTO
 {
     @ApiModelProperty( "When the edit occurred" )
     private Date date;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 @JsonPropertyOrder( { "name", "address", "phoneNumber", "emailAddress", "technicalEmailAddress" } )
-public class CompanyCsvDTO extends DTO
+public class CompanyCsvDTO implements DTO
 {
     private String name;
 

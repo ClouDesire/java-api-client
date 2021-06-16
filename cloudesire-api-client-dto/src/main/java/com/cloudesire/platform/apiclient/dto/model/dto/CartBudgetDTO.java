@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @ApiModel( description = "A budget estimate for a cart" )
-public class CartBudgetDTO extends DTO
+public class CartBudgetDTO implements DTO
 {
     private List<CartItemBudgetDTO> items;
 

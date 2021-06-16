@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel( description = "Response of a PATCH action on a Subscription" )
-public class SubscriptionPatchResponseDTO extends DTO
+public class SubscriptionPatchResponseDTO implements DTO
 {
     @ApiModelProperty( "Outcome of a Subscription upgrade" )
     private OrderStatus upgrade;

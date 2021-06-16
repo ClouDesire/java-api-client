@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel( description = "Perform an operation on an invoice" )
-public class InvoicePatchDTO extends DTO
+public class InvoicePatchDTO implements DTO
 {
     @ApiModelProperty( "Update operation" )
     private InvoicePatchAction action;

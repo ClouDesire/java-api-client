@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * @deprecated by headers in GET /proceedsReport
  */
 @Deprecated
-public class ResellingTotalsDTO extends DTO
+public class ResellingTotalsDTO implements DTO
 {
     @ApiModelProperty( value = "The total earnings", readOnly = true )
     private BigDecimal earnings;

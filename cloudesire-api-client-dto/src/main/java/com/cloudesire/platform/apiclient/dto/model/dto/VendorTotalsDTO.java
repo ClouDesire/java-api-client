@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class VendorTotalsDTO extends DTO
+public class VendorTotalsDTO implements DTO
 {
     @ApiModelProperty( value = "Total income for the vendor", readOnly = true )
     private BigDecimal income;

@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ResellingPriceDTO extends DTO
+public class ResellingPriceDTO implements DTO
 {
     @ApiModelProperty( "The markup on the price, editable by a distributor" )
     private BigDecimal markup;

@@ -6,7 +6,7 @@ import javax.validation.Valid;
 import java.util.Objects;
 
 @ApiModel( description = "Billing details for the cheapest Product Version for a Product" )
-public class MinimumCostDTO extends DTO
+public class MinimumCostDTO implements DTO
 {
     private VATPriceDTO cost;
 

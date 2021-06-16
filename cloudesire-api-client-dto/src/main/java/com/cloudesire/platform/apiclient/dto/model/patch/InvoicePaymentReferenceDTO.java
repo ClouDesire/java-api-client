@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class InvoicePaymentReferenceDTO extends DTO
+public class InvoicePaymentReferenceDTO implements DTO
 {
     @ApiModelProperty( "Invoice payment reference" )
     @NotNull

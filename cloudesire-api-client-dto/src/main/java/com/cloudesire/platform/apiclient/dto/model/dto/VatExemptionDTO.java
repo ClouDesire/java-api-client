@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
 @ApiModel( description = "Details of a VAT Exemption document valid under Italian laws" )
-public class VatExemptionDTO extends DTO
+public class VatExemptionDTO implements DTO
 {
     @ApiModelProperty( "The reference number of the document" )
     private String declarationNumber;

@@ -32,7 +32,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @ApiModel( description = "Platform configuration" )
-public class EnvironmentDTO extends DTO
+public class EnvironmentDTO implements DTO
 {
     @ApiModelProperty( "The name of this environment" )
     @NotEmpty
@@ -924,7 +924,7 @@ public class EnvironmentDTO extends DTO
     //endregion
 
     @ApiModel( description = "Default attributes for new users" )
-    public static class DefaultUserValues extends DTO
+    public static class DefaultUserValues implements DTO
     {
         @ApiModelProperty( "Enabled flag default value" )
         private boolean isEnabled;
@@ -982,7 +982,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "Email palette attributes" )
-    public static class EmailPalette extends DTO
+    public static class EmailPalette implements DTO
     {
         @NotEmpty
         @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
@@ -1058,7 +1058,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "An instance of email template to be sent at certain events" )
-    public static class MailCustomization extends DTO
+    public static class MailCustomization implements DTO
     {
         public static final String DEFAULT_MAIL_LANGUAGE = "it";
 
@@ -1155,7 +1155,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "The emails to send when there are invoice with pending payment for customers" )
-    public static class InvoiceSleepTerm extends DTO
+    public static class InvoiceSleepTerm implements DTO
     {
         @ApiModelProperty( "Days after deadline, subscription will be set to sleeping" )
         @NotNull
@@ -1189,7 +1189,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "Fine tuning of subscription expiration behaviour")
-    public static class SubscriptionTerm extends DTO
+    public static class SubscriptionTerm implements DTO
     {
         /**
          * If 0 means that it's always possible to Renew subscriptions
@@ -1228,7 +1228,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "Features that can be toggled at runtime" )
-    public static class FeaturesEnvironment extends DTO
+    public static class FeaturesEnvironment implements DTO
     {
         @ApiModelProperty( "Enables the creation of syndicated products" )
         private boolean syndicated = false;
@@ -1764,7 +1764,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "General configuration of the platform" )
-    public static class ConfigurationEnvironment extends DTO
+    public static class ConfigurationEnvironment implements DTO
     {
         // -1 means unlimited
         @ApiModelProperty( "Limit concurrent customer trial requests" )
@@ -2393,7 +2393,7 @@ public class EnvironmentDTO extends DTO
     }
 
     @ApiModel( description = "URL patterns used to build links to the GUI inside notification (e.g. email, slack, ...)" )
-    public static class UrlPatterns extends DTO
+    public static class UrlPatterns implements DTO
     {
         @NotEmpty
         private String accountActivation;
@@ -2580,7 +2580,7 @@ public class EnvironmentDTO extends DTO
         // endregion
     }
 
-    public static class ServiceDirectory extends DTO
+    public static class ServiceDirectory implements DTO
     {
         @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
         @URL
@@ -2639,7 +2639,7 @@ public class EnvironmentDTO extends DTO
         }
     }
 
-    public static class PasswordPolicy extends DTO
+    public static class PasswordPolicy implements DTO
     {
         @ApiModelProperty( "Minimum length of a password" )
         private int min;

@@ -6,7 +6,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import java.util.Date;
 
 @JsonPropertyOrder( { "name", "type", "category", "company", "email", "published" } )
-public class ProductCsvDTO extends DTO
+public class ProductCsvDTO implements DTO
 {
     private String name;
 

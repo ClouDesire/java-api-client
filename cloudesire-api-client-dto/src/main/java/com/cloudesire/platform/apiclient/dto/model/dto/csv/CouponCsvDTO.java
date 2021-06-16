@@ -9,7 +9,7 @@ import java.util.Date;
 
 @JsonPropertyOrder( { "applicationName", "type", "reusable", "licenseOnly", "percentage", "newPrice", "days",
         "creationDate", "expirationDate", "plafond", "state", "hash", "code" } )
-public class CouponCsvDTO extends DTO
+public class CouponCsvDTO implements DTO
 {
     private String applicationName;
 

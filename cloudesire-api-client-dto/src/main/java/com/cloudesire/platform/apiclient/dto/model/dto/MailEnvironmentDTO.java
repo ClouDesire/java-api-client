@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO.MailCustomization.DEFAULT_MAIL_LANGUAGE;
 
-public class MailEnvironmentDTO extends DTO
+public class MailEnvironmentDTO implements DTO
 {
     @Valid
     private Configurations configurations;

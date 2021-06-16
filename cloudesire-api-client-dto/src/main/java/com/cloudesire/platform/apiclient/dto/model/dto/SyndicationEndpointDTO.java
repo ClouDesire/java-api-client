@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @ApiModel( description = "An Endpoint where to dispatch web hooks notifications" )
-public class SyndicationEndpointDTO extends DTO
+public class SyndicationEndpointDTO implements DTO
 {
     @NotEmpty
     @URL

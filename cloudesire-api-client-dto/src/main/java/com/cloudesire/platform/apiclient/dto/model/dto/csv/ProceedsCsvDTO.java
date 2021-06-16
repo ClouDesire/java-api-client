@@ -6,7 +6,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public abstract class ProceedsCsvDTO extends DTO
+public abstract class ProceedsCsvDTO implements DTO
 {
     private Integer invoiceId;
 

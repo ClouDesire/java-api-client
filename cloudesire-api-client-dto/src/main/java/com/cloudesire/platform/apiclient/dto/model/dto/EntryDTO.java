@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotNull;
 
 @ApiModel( description = "A key/value pair" )
-public class EntryDTO extends DTO
+public class EntryDTO implements DTO
 {
     @NotNull
     private String key;

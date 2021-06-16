@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import javax.validation.constraints.NotNull;
 
-public class ReservedCloudResellingDTO extends DTO
+public class ReservedCloudResellingDTO implements DTO
 {
     @NotNull
     private ResellingPriceDTO price;

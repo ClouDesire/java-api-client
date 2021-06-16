@@ -8,7 +8,7 @@ import java.beans.Introspector;
 import java.util.Objects;
 
 @JsonPropertyOrder ( { "id" } )
-public class BaseEntityDTO extends DTO implements IBaseEntityDTO
+public class BaseEntityDTO implements IBaseEntityDTO, DTO
 {
     @ApiModelProperty( readOnly = true )
     private Integer id;
