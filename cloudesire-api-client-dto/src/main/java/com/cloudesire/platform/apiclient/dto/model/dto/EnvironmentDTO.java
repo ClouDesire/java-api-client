@@ -8,7 +8,6 @@ import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +20,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,8 +32,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @ApiModel( description = "Platform configuration" )
-@JsonInclude( JsonInclude.Include.NON_NULL )
-public class EnvironmentDTO implements Serializable
+public class EnvironmentDTO extends DTO
 {
     @ApiModelProperty( "The name of this environment" )
     @NotEmpty
@@ -927,7 +924,7 @@ public class EnvironmentDTO implements Serializable
     //endregion
 
     @ApiModel( description = "Default attributes for new users" )
-    public static class DefaultUserValues implements Serializable
+    public static class DefaultUserValues extends DTO
     {
         @ApiModelProperty( "Enabled flag default value" )
         private boolean isEnabled;
@@ -985,7 +982,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "Email palette attributes" )
-    public static class EmailPalette implements Serializable
+    public static class EmailPalette extends DTO
     {
         @NotEmpty
         @Pattern( regexp = Regexp.HEX_COLOR_LOWERCASE )
@@ -1061,7 +1058,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "An instance of email template to be sent at certain events" )
-    public static class MailCustomization implements Serializable
+    public static class MailCustomization extends DTO
     {
         public static final String DEFAULT_MAIL_LANGUAGE = "it";
 
@@ -1158,7 +1155,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "The emails to send when there are invoice with pending payment for customers" )
-    public static class InvoiceSleepTerm implements Serializable
+    public static class InvoiceSleepTerm extends DTO
     {
         @ApiModelProperty( "Days after deadline, subscription will be set to sleeping" )
         @NotNull
@@ -1192,7 +1189,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "Fine tuning of subscription expiration behaviour")
-    public static class SubscriptionTerm implements Serializable
+    public static class SubscriptionTerm extends DTO
     {
         /**
          * If 0 means that it's always possible to Renew subscriptions
@@ -1231,7 +1228,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "Features that can be toggled at runtime" )
-    public static class FeaturesEnvironment implements Serializable
+    public static class FeaturesEnvironment extends DTO
     {
         @ApiModelProperty( "Enables the creation of syndicated products" )
         private boolean syndicated = false;
@@ -1767,7 +1764,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "General configuration of the platform" )
-    public static class ConfigurationEnvironment implements Serializable
+    public static class ConfigurationEnvironment extends DTO
     {
         // -1 means unlimited
         @ApiModelProperty( "Limit concurrent customer trial requests" )
@@ -2396,7 +2393,7 @@ public class EnvironmentDTO implements Serializable
     }
 
     @ApiModel( description = "URL patterns used to build links to the GUI inside notification (e.g. email, slack, ...)" )
-    public static class UrlPatterns implements Serializable
+    public static class UrlPatterns extends DTO
     {
         @NotEmpty
         private String accountActivation;
@@ -2583,7 +2580,7 @@ public class EnvironmentDTO implements Serializable
         // endregion
     }
 
-    public static class ServiceDirectory implements Serializable
+    public static class ServiceDirectory extends DTO
     {
         @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
         @URL
@@ -2642,7 +2639,7 @@ public class EnvironmentDTO implements Serializable
         }
     }
 
-    public static class PasswordPolicy implements Serializable
+    public static class PasswordPolicy extends DTO
     {
         @ApiModelProperty( "Minimum length of a password" )
         private int min;

@@ -6,10 +6,9 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @ApiModel( description = "An Endpoint where to dispatch web hooks notifications" )
-public class SyndicationEndpointDTO implements Serializable
+public class SyndicationEndpointDTO extends DTO
 {
     @NotEmpty
     @URL
