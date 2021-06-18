@@ -166,6 +166,20 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration orderCreationPlatform;
 
         /**
+         * Email sent on order reject to customer
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration orderReject;
+
+        /**
+         * Email sent on order request for approval to customer
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration orderRequestCustomer;
+
+        /**
          * Email sent to the customer when application has been undeployed
          */
         @NotNull
@@ -546,6 +560,26 @@ public class MailEnvironmentDTO implements DTO
         public void setOrderCreationPlatform( MailConfiguration orderCreationPlatform )
         {
             this.orderCreationPlatform = orderCreationPlatform;
+        }
+
+        public MailConfiguration getOrderReject()
+        {
+            return orderReject;
+        }
+
+        public void setOrderReject( MailConfiguration orderReject )
+        {
+            this.orderReject = orderReject;
+        }
+
+        public MailConfiguration getOrderRequestCustomer()
+        {
+            return orderRequestCustomer;
+        }
+
+        public void setOrderRequestCustomer( MailConfiguration orderRequestCustomer )
+        {
+            this.orderRequestCustomer = orderRequestCustomer;
         }
 
         @Deprecated
