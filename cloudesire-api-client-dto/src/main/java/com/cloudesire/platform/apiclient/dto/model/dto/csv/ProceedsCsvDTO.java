@@ -10,6 +10,8 @@ public abstract class ProceedsCsvDTO implements DTO
 {
     private Integer invoiceId;
 
+    private Integer subscriptionId;
+
     private String product;
 
     private Date purchased;
@@ -32,6 +34,16 @@ public abstract class ProceedsCsvDTO implements DTO
     public void setInvoiceId( Integer invoiceId )
     {
         this.invoiceId = invoiceId;
+    }
+
+    public Integer getSubscriptionId()
+    {
+        return subscriptionId;
+    }
+
+    public void setSubscriptionId( Integer subscriptionId )
+    {
+        this.subscriptionId = subscriptionId;
     }
 
     public String getProduct()

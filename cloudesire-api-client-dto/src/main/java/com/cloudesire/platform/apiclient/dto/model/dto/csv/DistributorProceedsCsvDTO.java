@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.math.BigDecimal;
 
-@JsonPropertyOrder( { "invoiceId", "product", "reseller", "vendor", "purchased", "lineId", "type", "description", "quantity", "wholesale", "sellin" } )
+@JsonPropertyOrder( {
+        "invoiceId", "subscriptionId", "product", "reseller", "vendor", "purchased", "lineId", "type", "description",
+        "quantity", "wholesale", "sellin"
+} )
 public class DistributorProceedsCsvDTO extends ProceedsCsvDTO
 {
     private String reseller;
