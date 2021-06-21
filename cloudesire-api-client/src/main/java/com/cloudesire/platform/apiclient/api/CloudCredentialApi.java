@@ -42,9 +42,6 @@ public interface CloudCredentialApi
             @Query( "userId" ) Integer userId
     );
 
-    @PUT( "cloudCredential/{id}" )
-    Call<CloudCredentialDTO> update( @Path( "id" ) int id, @Body CloudCredentialDTO input );
-
     @PATCH( "cloudCredential/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body CloudCredentialPatchDTO input );
 
