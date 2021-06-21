@@ -194,6 +194,13 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration orderUndeployVendor;
 
         /**
+         * Email sent to the vendor/reseller when customer requests changes to an application
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration subscriptionAmendment;
+
+        /**
          * Email sent when deploy go wrong
          */
         @NotNull
@@ -606,6 +613,16 @@ public class MailEnvironmentDTO implements DTO
         public void setOrderUndeployVendor( MailConfiguration orderUndeployVendor )
         {
             this.orderUndeployVendor = orderUndeployVendor;
+        }
+
+        public MailConfiguration getSubscriptionAmendment()
+        {
+            return subscriptionAmendment;
+        }
+
+        public void setSubscriptionAmendment( MailConfiguration subscriptionAmendment )
+        {
+            this.subscriptionAmendment = subscriptionAmendment;
         }
 
         public MailConfiguration getDeployFailed()
