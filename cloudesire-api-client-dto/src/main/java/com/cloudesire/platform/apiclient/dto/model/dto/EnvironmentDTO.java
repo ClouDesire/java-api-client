@@ -2465,6 +2465,9 @@ public class EnvironmentDTO implements DTO
         private String order;
 
         @NotEmpty
+        private String orderList;
+
+        @NotEmpty
         private String proceeds;
 
         @NotEmpty
@@ -2561,6 +2564,16 @@ public class EnvironmentDTO implements DTO
         public void setOrder( String order )
         {
             this.order = order;
+        }
+
+        public String getOrderList()
+        {
+            return orderList;
+        }
+
+        public void setOrderList( String orderList )
+        {
+            this.orderList = orderList;
         }
 
         public String getProceeds()
