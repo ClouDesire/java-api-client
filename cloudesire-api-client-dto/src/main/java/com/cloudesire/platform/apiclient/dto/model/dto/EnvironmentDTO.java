@@ -210,6 +210,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     private NotificationMailCustomization orderRequestCustomer = new NotificationMailCustomization();
 
+    @ApiModelProperty( "Email sent to the vendor/reseller when customer requests changes to an application" )
+    @Valid
+    @NotNull
+    private MailCustomization subscriptionAmendment = new MailCustomization();
+
     @ApiModelProperty( "Email sent to the customer when application has been undeployed" )
     @Valid
     @NotNull
@@ -630,6 +635,16 @@ public class EnvironmentDTO implements DTO
     public void setOrderCreationVendor( MailCustomization orderCreationVendor )
     {
         this.orderCreationPlatform = orderCreationVendor;
+    }
+
+    public MailCustomization getSubscriptionAmendment()
+    {
+        return subscriptionAmendment;
+    }
+
+    public void setSubscriptionAmendment( MailCustomization subscriptionAmendment )
+    {
+        this.subscriptionAmendment = subscriptionAmendment;
     }
 
     public NotificationMailCustomization getOrderUndeployCustomer()
@@ -2450,6 +2465,9 @@ public class EnvironmentDTO implements DTO
         private String order;
 
         @NotEmpty
+        private String orderList;
+
+        @NotEmpty
         private String proceeds;
 
         @NotEmpty
@@ -2546,6 +2564,16 @@ public class EnvironmentDTO implements DTO
         public void setOrder( String order )
         {
             this.order = order;
+        }
+
+        public String getOrderList()
+        {
+            return orderList;
+        }
+
+        public void setOrderList( String orderList )
+        {
+            this.orderList = orderList;
         }
 
         public String getProceeds()
