@@ -1330,7 +1330,6 @@ public class EnvironmentDTO implements DTO
         private boolean billingItems = true;
 
         @ApiModelProperty( "Enabled payment gateways" )
-        @Valid
         private Set<PaymentGateway> enabledPaymentGateways = Collections.singleton( PaymentGateway.STRIPE );
 
         @ApiModelProperty( "Customize reseller emails" )
