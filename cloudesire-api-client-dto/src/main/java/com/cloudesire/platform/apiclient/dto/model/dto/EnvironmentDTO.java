@@ -2432,7 +2432,7 @@ public class EnvironmentDTO implements DTO
 
         public enum VatService
         {
-            INTERNAL, TAXJAR
+            INTERNAL, @Deprecated TAXJAR
         }
     }
 
