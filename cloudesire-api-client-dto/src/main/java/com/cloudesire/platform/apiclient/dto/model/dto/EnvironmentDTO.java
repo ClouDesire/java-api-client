@@ -1314,9 +1314,6 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "The product types enabled for this environment" )
         private Set<ProductType> enabledProductTypes = EnumSet.allOf( ProductType.class );
 
-        @ApiModelProperty( "Handle subscriptions via external service" )
-        private ExternalSubscriptionHandling externalSubscriptionHandling;
-
         @ApiModelProperty( "Require approvation for customer subscriptions" )
         private boolean subscriptionApproval;
 
@@ -1350,12 +1347,6 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Enables custom cloud credentials" )
         private CloudCredentialsSupport customerCloudCredentials = CloudCredentialsSupport.DISABLED;
 
-        @ApiModelProperty( hidden = true )
-        public boolean isZuoraEnabled()
-        {
-            return ExternalSubscriptionHandling.ZUORA.equals( externalSubscriptionHandling );
-        }
-
         @ApiModelProperty( "Enabled geocall data fields for the customer profile" )
         private boolean geocallProfile;
 
@@ -1383,12 +1374,6 @@ public class EnvironmentDTO implements DTO
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
-        }
-
-        //region Auto-generated getters and setters
-        public boolean isExternalSubscriptionHandling()
-        {
-            return externalSubscriptionHandling != null;
         }
 
         public boolean getSyndicated()
@@ -1558,31 +1543,6 @@ public class EnvironmentDTO implements DTO
             else enabledProductTypes.remove( ProductType.BUNDLE );
         }
 
-        public ExternalSubscriptionHandling getExternalSubscriptionHandling()
-        {
-            return externalSubscriptionHandling;
-        }
-
-        public void setExternalSubscriptionHandling( Object externalSubscriptionHandling )
-        {
-            /* @deprecated */
-            if ( externalSubscriptionHandling instanceof Boolean && (Boolean) externalSubscriptionHandling )
-            {
-                this.externalSubscriptionHandling = ExternalSubscriptionHandling.ZUORA;
-            }
-
-            if ( externalSubscriptionHandling instanceof String )
-            {
-                this.externalSubscriptionHandling = ExternalSubscriptionHandling
-                        .valueOf( (String) externalSubscriptionHandling );
-            }
-
-            if ( externalSubscriptionHandling instanceof ExternalSubscriptionHandling )
-            {
-                this.externalSubscriptionHandling = (ExternalSubscriptionHandling) externalSubscriptionHandling;
-            }
-        }
-
         public boolean isSubscriptionApproval()
         {
             return subscriptionApproval;
@@ -1706,11 +1666,6 @@ public class EnvironmentDTO implements DTO
         public enum Cart
         {
             CUSTOMER, RESELLER
-        }
-
-        public enum ExternalSubscriptionHandling
-        {
-            FASTWEB, ZUORA
         }
 
         public enum LinksInEndUserInstructions
