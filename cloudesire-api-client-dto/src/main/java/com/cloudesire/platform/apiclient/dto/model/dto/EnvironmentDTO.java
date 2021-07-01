@@ -1766,12 +1766,14 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Frontend features that can be toggled at runtime" )
+    @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-user basis" )
     public static class FrontendFeaturesEnvironment
     {
-        private InvoiceSectionEnum invoiceSection;
+        @ApiModelProperty( "Access to invoice section in navbar" )
+        private InvoiceSectionEnum invoiceSection = InvoiceSectionEnum.INVOICE;
 
-        private Boolean costsSection;
+        @ApiModelProperty( "Access to costs section in navbar" )
+        private boolean costsSection;
 
         public static enum InvoiceSectionEnum
         {
