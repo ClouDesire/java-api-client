@@ -348,6 +348,16 @@ public class EnvironmentDTO implements DTO
         this.features = features;
     }
 
+    public FrontendFeaturesEnvironment getFrontendFeatures()
+    {
+        return frontendFeatures;
+    }
+
+    public void setFrontendFeatures( FrontendFeaturesEnvironment frontendFeatures )
+    {
+        this.frontendFeatures = frontendFeatures;
+    }
+
     public ConfigurationEnvironment getConfiguration()
     {
         return configuration;
