@@ -329,6 +329,10 @@ public class EnvironmentDTO implements DTO
     @Valid
     private FeaturesEnvironment features;
 
+    @ApiModelProperty( "Frontend Features section" )
+    @Valid
+    private FrontendFeaturesEnvironment frontendFeatures;
+
     @ApiModelProperty( "Configuration section" )
     @Valid
     private ConfigurationEnvironment configuration;
@@ -1760,6 +1764,41 @@ public class EnvironmentDTO implements DTO
             this.cart = cart;
         }
         //endregion
+    }
+
+    @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-user basis" )
+    public static class FrontendFeaturesEnvironment
+    {
+        @ApiModelProperty( "Access to invoice section in navbar" )
+        private InvoiceSectionEnum invoiceSection = InvoiceSectionEnum.INVOICE;
+
+        @ApiModelProperty( "Access to costs section in navbar" )
+        private boolean costsSection;
+
+        public static enum InvoiceSectionEnum
+        {
+            INVOICE, CONSUMPTION_SUMMARY, DISABLED
+        }
+
+        public InvoiceSectionEnum getInvoiceSection()
+        {
+            return invoiceSection;
+        }
+
+        public void setInvoiceSection( InvoiceSectionEnum invoiceSection )
+        {
+            this.invoiceSection = invoiceSection;
+        }
+
+        public Boolean getCostsSection()
+        {
+            return costsSection;
+        }
+
+        public void setCostsSection( Boolean costsSection )
+        {
+            this.costsSection = costsSection;
+        }
     }
 
     @ApiModel( description = "General configuration of the platform" )
