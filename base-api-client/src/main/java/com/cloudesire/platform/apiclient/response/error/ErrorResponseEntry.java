@@ -47,12 +47,16 @@ public class ErrorResponseEntry implements Serializable
             String replacedError = message;
             for ( Map.Entry<String, String> entry : extraFields.entrySet() )
             {
-                replacedError = replacedError.replace( String.format( "{%s}", entry.getKey() ), entry.getValue() );
+                replacedError = replacedError.replace( String.format( "${%s}", entry.getKey() ), entry.getValue() );
             }
             this.error = replacedError;
             this.extraFields.putAll( extraFields );
         }
-        else this.error = message;
+        else
+        {
+            this.error = message;
+        }
+
         this.requestId = requestId;
         this.key = generateKey( key );
     }
