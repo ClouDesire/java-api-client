@@ -348,6 +348,16 @@ public class EnvironmentDTO implements DTO
         this.features = features;
     }
 
+    public FrontendFeaturesEnvironment getFrontendFeatures()
+    {
+        return frontendFeatures;
+    }
+
+    public void setFrontendFeatures( FrontendFeaturesEnvironment frontendFeatures )
+    {
+        this.frontendFeatures = frontendFeatures;
+    }
+
     public ConfigurationEnvironment getConfiguration()
     {
         return configuration;
@@ -1767,7 +1777,7 @@ public class EnvironmentDTO implements DTO
     }
 
     @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-user basis" )
-    public static class FrontendFeaturesEnvironment
+    public static class FrontendFeaturesEnvironment implements DTO
     {
         @ApiModelProperty( "Access to invoice section in navbar" )
         private InvoiceSectionEnum invoiceSection = InvoiceSectionEnum.INVOICE;
