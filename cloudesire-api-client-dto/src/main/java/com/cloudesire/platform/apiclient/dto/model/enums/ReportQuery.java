@@ -10,6 +10,6 @@ public enum ReportQuery
     @ApiModelProperty( "Query for live pay-per-use report lines only" )
     LIVE,
 
-    @ApiModelProperty( "Query for finalized report lines and aggregate pay-per-use costs in selected timespan" )
-    AGGREGATE
+    @ApiModelProperty( "Query for finalized report lines and live pay-per-use costs in selected timespan" )
+    MERGED
 }
