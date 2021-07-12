@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 @ApiModel( description = "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
@@ -43,6 +44,10 @@ public class CloudProviderDTO extends NamedEntityDTO
 
     @ApiModelProperty( value = "Supported operating systems", readOnly = true )
     private List<OSType> supportedOperatingSystems;
+
+    private UrlEntityDTO parent;
+
+    private Set<UrlEntityDTO> children;
 
     @JsonIgnore
     @Override
@@ -147,6 +152,26 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setSupportedOperatingSystems( List<OSType> supportedOperatingSystems )
     {
         this.supportedOperatingSystems = supportedOperatingSystems;
+    }
+
+    public UrlEntityDTO getParent()
+    {
+        return parent;
+    }
+
+    public void setParent( UrlEntityDTO parent )
+    {
+        this.parent = parent;
+    }
+
+    public Set<UrlEntityDTO> getChildren()
+    {
+        return children;
+    }
+
+    public void setChildren( Set<UrlEntityDTO> children )
+    {
+        this.children = children;
     }
 
     @Override
