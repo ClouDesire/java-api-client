@@ -45,7 +45,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     @ApiModelProperty( value = "Supported operating systems", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
     private List<OSType> supportedOperatingSystems;
 
-    private UrlEntityDTO global;
+    private UrlEntityDTO principal;
 
     @ApiModelProperty( accessMode = ApiModelProperty.AccessMode.READ_ONLY )
     private Set<UrlEntityDTO> regions;
@@ -155,14 +155,14 @@ public class CloudProviderDTO extends NamedEntityDTO
         this.supportedOperatingSystems = supportedOperatingSystems;
     }
 
-    public UrlEntityDTO getGlobal()
+    public UrlEntityDTO getPrincipal()
     {
-        return global;
+        return principal;
     }
 
-    public void setGlobal( UrlEntityDTO global )
+    public void setPrincipal( UrlEntityDTO principal )
     {
-        this.global = global;
+        this.principal = principal;
     }
 
     public Set<UrlEntityDTO> getRegions()
