@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @ApiModel( description = "Reference to a related resource" )
-public class UrlEntityDTO
+public class UrlEntityDTO implements DTO
 {
     @ApiModelProperty( value = "Reference to another resource", required = true, example = "resourceName/ID" )
     @NotEmpty

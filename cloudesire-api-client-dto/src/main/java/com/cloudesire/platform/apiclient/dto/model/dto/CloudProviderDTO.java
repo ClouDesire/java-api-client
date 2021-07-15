@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 @ApiModel( description = "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
@@ -31,18 +32,23 @@ public class CloudProviderDTO extends NamedEntityDTO
     @ApiModelProperty( "Enabled features of the cloud provider" )
     private List<CloudProviderFeatureDTO> features = new ArrayList<>();
 
-    @ApiModelProperty( value = "Default SSH username per OS type", readOnly = true )
+    @ApiModelProperty( value = "Default SSH username per OS type", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
     private Map<OSType, String> usernames;
 
     /**
      * @deprecated by {@link #usernames}
      */
-    @ApiModelProperty( hidden = true, value = "Default SSH username", readOnly = true )
+    @ApiModelProperty( hidden = true )
     @Deprecated
     private String username;
 
-    @ApiModelProperty( value = "Supported operating systems", readOnly = true )
+    @ApiModelProperty( value = "Supported operating systems", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
     private List<OSType> supportedOperatingSystems;
+
+    private UrlEntityDTO principal;
+
+    @ApiModelProperty( accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private Set<UrlEntityDTO> regions;
 
     @JsonIgnore
     @Override
@@ -147,6 +153,26 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setSupportedOperatingSystems( List<OSType> supportedOperatingSystems )
     {
         this.supportedOperatingSystems = supportedOperatingSystems;
+    }
+
+    public UrlEntityDTO getPrincipal()
+    {
+        return principal;
+    }
+
+    public void setPrincipal( UrlEntityDTO principal )
+    {
+        this.principal = principal;
+    }
+
+    public Set<UrlEntityDTO> getRegions()
+    {
+        return regions;
+    }
+
+    public void setRegions( Set<UrlEntityDTO> regions )
+    {
+        this.regions = regions;
     }
 
     @Override
