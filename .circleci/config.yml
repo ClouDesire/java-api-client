@@ -27,7 +27,7 @@ workflows:
             - common-not-really-secrets
             - common-archiva
             - common-github
-            - common-osshr
+            - common-ossrh
             - common-slack
           requires:
             - build
