@@ -27,6 +27,8 @@ workflows:
             - common-not-really-secrets
             - common-archiva
             - common-github
+            - common-osshr
+            - common-slack
           requires:
             - build
           filters:
@@ -42,10 +44,10 @@ jobs:
       name: cloudesire/docker_java
     steps:
       - checkout
-      
+
       - cloudesire/git_checkout:
           url: git@github.com:ClouDesire/ci-conf.git
-          
+
       - cloudesire/maven_with_cache:
           mvn_path: ./mvnw
           force_download: false
@@ -58,18 +60,18 @@ jobs:
                 name: Build
                 command: ./mvnw -B install -Dmaven.test.skip=true
             - cloudesire/test_sonar
-     
+
       - run:
           name: Run Tests
           command: ./mvnw -B verify
-       
+
       - cloudesire/maven_aggregate_tests_results
-      
+
       - persist_to_workspace:
           root: /home/circleci
           paths:
             - .
-      
+
   deploy:
     executor:
       name: cloudesire/docker_java
@@ -77,7 +79,7 @@ jobs:
 
       - attach_workspace:
           at: /home/circleci
-      
+
       - cloudesire/maven_with_cache:
           mvn_path: ./mvnw
           force_download: false
