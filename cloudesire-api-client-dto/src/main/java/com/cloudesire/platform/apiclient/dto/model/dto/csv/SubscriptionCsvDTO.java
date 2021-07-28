@@ -5,9 +5,11 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
 import java.util.Date;
 
-@JsonPropertyOrder( { "name", "deploymentStatus", "type", "cloudProvider", "buyer", "startDate", "endDate" } )
+@JsonPropertyOrder( { "id", "name", "deploymentStatus", "type", "cloudProvider", "buyer", "startDate", "endDate" } )
 public class SubscriptionCsvDTO implements DTO
 {
+    private Integer id;
+
     private String name;
 
     private String deploymentStatus;
@@ -23,6 +25,15 @@ public class SubscriptionCsvDTO implements DTO
     private Date endDate;
 
     // region Auto-generated code
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId( Integer id )
+    {
+        this.id = id;
+    }
 
     public String getName()
     {
@@ -93,6 +104,5 @@ public class SubscriptionCsvDTO implements DTO
     {
         this.endDate = endDate;
     }
-
     // endregion
 }
