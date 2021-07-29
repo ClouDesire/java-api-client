@@ -21,6 +21,8 @@ public class VendorOrderLineDTO extends CustomOrderLineDTO
         super();
     }
 
+    private String tag;
+
     @Override
     public LineType getType()
     {
@@ -31,5 +33,15 @@ public class VendorOrderLineDTO extends CustomOrderLineDTO
     public void setType( LineType type )
     {
         // type is fixed to CUSTOM
+    }
+
+    public String getTag()
+    {
+        return tag;
+    }
+
+    public void setTag( String tag )
+    {
+        this.tag = tag;
     }
 }
