@@ -27,6 +27,9 @@ public enum OSType
     @ApiModelProperty( "Ubuntu Bionic Beaver 18.04 LTS 64bit" )
     UBUNTU_18_04( Constants.UBUNTU, "18.04", OsFamily.LINUX ),
 
+    @ApiModelProperty( "Ubuntu Focal Fossa 20.04 LTS 64bit" )
+    UBUNTU_20_04( Constants.UBUNTU, "20.04", OsFamily.LINUX ),
+
     @ApiModelProperty( "Debian 9" )
     DEBIAN_9( "Debian", "9", OsFamily.LINUX ),
 
@@ -40,10 +43,13 @@ public enum OSType
     RED_HAT_7( "Red Hat Enterprise Linux", "7", OsFamily.LINUX ),
 
     @ApiModelProperty( "CentOS 6" )
-    CENTOS_6( "CentOS", "6", OsFamily.LINUX ),
+    CENTOS_6( Constants.CENTOS, "6", OsFamily.LINUX ),
 
     @ApiModelProperty( "CentOS 7" )
-    CENTOS_7( "CentOS", "7", OsFamily.LINUX );
+    CENTOS_7( Constants.CENTOS, "7", OsFamily.LINUX ),
+
+    @ApiModelProperty( "CentOS 8" )
+    CENTOS_8( Constants.CENTOS, "8", OsFamily.LINUX );
 
     public String getValue()
     {
@@ -112,5 +118,6 @@ public enum OSType
     {
         private static final String UBUNTU = "Ubuntu";
         private static final String MICROSOFT_WINDOWS = "Microsoft Windows";
+        private static final String CENTOS = "CentOS";
     }
 }
