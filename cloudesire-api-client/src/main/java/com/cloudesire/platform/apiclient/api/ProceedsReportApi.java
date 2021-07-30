@@ -41,6 +41,6 @@ public interface ProceedsReportApi
     @POST( "proceedsReport" )
     Call<Void> post( @Body List<VendorOrderLineDTO> lines );
 
-    @DELETE( "proceedsReport/{tag}" )
-    Call<Void> delete( @Path( "tag" ) String tag );
+    @DELETE( "proceedsReport/{subscriptionId}/{tag}" )
+    Call<Void> delete( @Path( "subscriptionId" ) int subscriptionId, @Path( "tag" ) String tag );
 }
