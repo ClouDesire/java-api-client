@@ -1,6 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
 
@@ -21,6 +23,8 @@ public class VendorOrderLineDTO extends CustomOrderLineDTO
         super();
     }
 
+    @ApiModelProperty( "Identifies the custom line for possible further deletion" )
+    @Length( max = 125 )
     private String tag;
 
     @Override
