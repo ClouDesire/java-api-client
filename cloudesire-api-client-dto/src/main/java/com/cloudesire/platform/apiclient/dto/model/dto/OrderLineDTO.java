@@ -53,6 +53,9 @@ public class OrderLineDTO implements Line
     @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15.00", accessMode = READ_ONLY )
     private BigDecimal maximum;
 
+    @ApiModelProperty( value = "Requested billing item tag", example = "BASIC", accessMode = READ_ONLY )
+    private String tag;
+
     @ApiModelProperty( "Custom billing identifier" )
     private String identifier;
 
@@ -207,6 +210,16 @@ public class OrderLineDTO implements Line
     public void setMaximum( BigDecimal maximum )
     {
         this.maximum = maximum;
+    }
+
+    public String getTag()
+    {
+        return tag;
+    }
+
+    public void setTag( String tag )
+    {
+        this.tag = tag;
     }
 
     public String getIdentifier()
