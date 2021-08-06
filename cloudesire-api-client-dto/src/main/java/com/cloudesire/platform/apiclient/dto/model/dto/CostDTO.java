@@ -12,6 +12,8 @@ public class CostDTO implements DTO
 
     private UrlEntityDTO billingItem;
 
+    private String identifier;
+
     private BigDecimal cost;
 
     public UrlEntityDTO getSubscription()
@@ -42,6 +44,16 @@ public class CostDTO implements DTO
     public void setBillingItem( UrlEntityDTO billingItem )
     {
         this.billingItem = billingItem;
+    }
+
+    public String getIdentifier()
+    {
+        return identifier;
+    }
+
+    public void setIdentifier( String identifier )
+    {
+        this.identifier = identifier;
     }
 
     public BigDecimal getCost()
