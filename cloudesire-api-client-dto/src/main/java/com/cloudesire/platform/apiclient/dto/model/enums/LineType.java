@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_CUSTOM;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_EXTRA;
@@ -72,6 +73,11 @@ public enum LineType
         this.mustBePaid = false;
     }
 
+    public static Set<LineType> iaasCosts()
+    {
+        return EnumSet.of( VIRTUALMACHINE, BANDWIDTH, DISKSPACE );
+    }
+
     public boolean isCustom()
     {
         return isCustom;
@@ -84,7 +90,7 @@ public enum LineType
 
     public boolean isIaasCost()
     {
-        return EnumSet.of( VIRTUALMACHINE, BANDWIDTH, DISKSPACE ).contains( this );
+        return iaasCosts().contains( this );
     }
 
     public boolean isIncome()
