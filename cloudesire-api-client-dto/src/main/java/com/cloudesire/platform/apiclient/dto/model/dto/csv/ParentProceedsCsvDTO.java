@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @JsonPropertyOrder( {
         "invoiceId", "subscriptionId", "product", "distributor", "reseller", "vendor", "customer", "email", "address",
         "fiscalCode", "taxCode", "purchased", "lineId", "type", "description", "quantity", "vendorIncome", "cloudCosts",
-        "wholesale"
+        "wholesale", "sellin", "sellout"
 } )
 public class ParentProceedsCsvDTO extends CustomerDetailsProceedsCsvDTO
 {
@@ -20,6 +20,10 @@ public class ParentProceedsCsvDTO extends CustomerDetailsProceedsCsvDTO
     private BigDecimal cloudCosts;
 
     private BigDecimal wholesale;
+
+    private BigDecimal sellin;
+
+    private BigDecimal sellout;
 
     // region Auto-generated codess
     public String getDistributor()
@@ -70,6 +74,26 @@ public class ParentProceedsCsvDTO extends CustomerDetailsProceedsCsvDTO
     public void setWholesale( BigDecimal wholesale )
     {
         this.wholesale = wholesale;
+    }
+
+    public BigDecimal getSellin()
+    {
+        return sellin;
+    }
+
+    public void setSellin( BigDecimal sellin )
+    {
+        this.sellin = sellin;
+    }
+
+    public BigDecimal getSellout()
+    {
+        return sellout;
+    }
+
+    public void setSellout( BigDecimal sellout )
+    {
+        this.sellout = sellout;
     }
     // endregion
 }
