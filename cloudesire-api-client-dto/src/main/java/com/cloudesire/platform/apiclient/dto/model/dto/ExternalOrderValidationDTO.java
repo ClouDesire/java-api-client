@@ -4,16 +4,8 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 
 import java.util.Map;
 
-public class ExternalOrderValidationDTO implements DTO
+public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
 {
-    private Integer productId;
-
-    private String productIdentifier;
-
-    private Integer productVersionId;
-
-    private String productVersionIdentifier;
-
     private Map<String, Integer> billingItems;
 
     private Map<String, String> configurationParameters;
@@ -23,48 +15,6 @@ public class ExternalOrderValidationDTO implements DTO
     private Integer buyerId;
 
     private OrderType orderType;
-
-    private String language;
-
-    public Integer getProductId()
-    {
-        return productId;
-    }
-
-    public void setProductId( Integer productId )
-    {
-        this.productId = productId;
-    }
-
-    public String getProductIdentifier()
-    {
-        return productIdentifier;
-    }
-
-    public void setProductIdentifier( String productIdentifier )
-    {
-        this.productIdentifier = productIdentifier;
-    }
-
-    public Integer getProductVersionId()
-    {
-        return productVersionId;
-    }
-
-    public void setProductVersionId( Integer productVersionId )
-    {
-        this.productVersionId = productVersionId;
-    }
-
-    public String getProductVersionIdentifier()
-    {
-        return productVersionIdentifier;
-    }
-
-    public void setProductVersionIdentifier( String productVersionIdentifier )
-    {
-        this.productVersionIdentifier = productVersionIdentifier;
-    }
 
     public Map<String, Integer> getBillingItems()
     {
@@ -114,15 +64,5 @@ public class ExternalOrderValidationDTO implements DTO
     public void setOrderType( OrderType orderType )
     {
         this.orderType = orderType;
-    }
-
-    public String getLanguage()
-    {
-        return language;
-    }
-
-    public void setLanguage( String language )
-    {
-        this.language = language;
     }
 }
