@@ -85,6 +85,9 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( "VAT component of the price" )
     private BigDecimal vatSpunOff;
 
+    @ApiModelProperty( "Reseller Catalog used to calculate prices for the Budget" )
+    private UrlEntityDTO resellerCatalog;
+
     public BigDecimal getTotalPrice()
     {
         return totalPrice;
@@ -303,6 +306,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setDowngrade( Boolean downgrade )
     {
         this.downgrade = downgrade;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 
     @Override
