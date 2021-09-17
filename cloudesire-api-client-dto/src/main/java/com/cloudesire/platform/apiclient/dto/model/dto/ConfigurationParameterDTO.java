@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -33,6 +34,10 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @ApiModelProperty( "Possible labeled values for the parameter" )
     private Map<String, String> acceptedValues;
 
+    @ApiModelProperty( "External endpoint to obtain possible values for the parameter" )
+    @URL
+    private String externalValuesUrl;
+
     @ApiModelProperty( "Short description to help user compiling the correct value" )
     private String hint;
 
@@ -57,7 +62,7 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
         this.acceptedValues = acceptedValues;
     }
 
-    private ConfigurationParameterDTO( String name, String description )
+    public ConfigurationParameterDTO( String name, String description )
     {
         super( name );
         this.description = description;
@@ -108,6 +113,17 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     public ConfigurationParameterDTO setAcceptedValues( Map<String, String> acceptedValues )
     {
         this.acceptedValues = acceptedValues;
+        return this;
+    }
+
+    public String getExternalValuesUrl()
+    {
+        return externalValuesUrl;
+    }
+
+    public ConfigurationParameterDTO setExternalValuesUrl( String externalValuesUrl )
+    {
+        this.externalValuesUrl = externalValuesUrl;
         return this;
     }
 
