@@ -159,6 +159,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
     private Boolean unkillable;
 
+    @ApiModelProperty( value = "Reseller Catalog used to obtain prices for the Product Version", accessMode = READ_ONLY )
+    private UrlEntityDTO resellerCatalog;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -633,6 +636,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setUnkillable( Boolean unkillable )
     {
         this.unkillable = unkillable;
+    }
+
+    public UrlEntityDTO getResellerCatalog()
+    {
+        return resellerCatalog;
+    }
+
+    public void setResellerCatalog( UrlEntityDTO resellerCatalog )
+    {
+        this.resellerCatalog = resellerCatalog;
     }
 
     @Override
