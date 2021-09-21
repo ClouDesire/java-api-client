@@ -1331,6 +1331,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Require approvation for customer subscriptions" )
         private boolean subscriptionApproval;
 
+        @ApiModelProperty( "Require approvation for subscription creation by reseller" )
+        private boolean resellerSubscriptionApproval;
+
         @ApiModelProperty( "Require approvation for vendor creation" )
         private boolean vendorApproval;
 
@@ -1565,6 +1568,16 @@ public class EnvironmentDTO implements DTO
         public void setSubscriptionApproval( boolean subscriptionApproval )
         {
             this.subscriptionApproval = subscriptionApproval;
+        }
+
+        public boolean isResellerSubscriptionApproval()
+        {
+            return resellerSubscriptionApproval;
+        }
+
+        public void setResellerSubscriptionApproval( boolean resellerSubscriptionApproval )
+        {
+            this.resellerSubscriptionApproval = resellerSubscriptionApproval;
         }
 
         public boolean isVendorApproval()
