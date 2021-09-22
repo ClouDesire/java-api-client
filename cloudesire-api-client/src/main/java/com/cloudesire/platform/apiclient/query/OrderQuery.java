@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.query;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
@@ -47,13 +47,13 @@ public class OrderQuery extends PageRequestQuery
 
     public OrderQuery setFrom( Date from )
     {
-        put( FROM, SimpleDateFormatFactory.dateFormat().format( from ) );
+        put( FROM, SimpleDateFormatFactory.iso8601Format().format( from ) );
         return this;
     }
 
     public OrderQuery setTo( Date to )
     {
-        put( TO, SimpleDateFormatFactory.dateFormat().format( to ) );
+        put( TO, SimpleDateFormatFactory.iso8601Format().format( to ) );
         return this;
     }
 
