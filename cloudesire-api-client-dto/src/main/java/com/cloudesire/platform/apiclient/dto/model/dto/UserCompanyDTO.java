@@ -14,7 +14,7 @@ public class UserCompanyDTO extends CompanyDTO
     @Valid
     private ItalianElectronicInvoicingDTO italianElectronicInvoicing;
 
-    @ApiModelProperty( "If this customer can pay later, only for admin" )
+    @ApiModelProperty( "If this customer can pay later, only for admin/reseller" )
     private Boolean delayedPayment;
 
     @ApiModelProperty( "The reseller catalog associated to the company" )
