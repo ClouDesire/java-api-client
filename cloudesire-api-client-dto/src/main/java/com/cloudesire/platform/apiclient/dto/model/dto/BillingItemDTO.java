@@ -1,6 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
+import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
+import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemPresence;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -48,8 +52,12 @@ public class BillingItemDTO extends NamedEntityDTO
     @ApiModelProperty( "Percentage of revenues for the platform owner" )
     private BigDecimal cloudesireQuota;
 
-    @ApiModelProperty( "Whether the billing item will be included in every subscription" )
-    private boolean required;
+    @FieldAPI( sinceVersion = ApiVersion.V20211004 )
+    private BillingItemPresence presence = BillingItemPresence.OPTIONAL;
+
+    @ApiModelProperty( value = "Whether the billing item will be included in every subscription", hidden = true )
+    @UnsupportedAPI( sinceVersion = ApiVersion.V20211004 )
+    private Boolean required;
 
     @ApiModelProperty( "Whether the billing item can be downgraded" )
     private boolean downgradable = true;
@@ -168,12 +176,31 @@ public class BillingItemDTO extends NamedEntityDTO
         return this;
     }
 
-    public boolean isRequired()
+    public BillingItemPresence getPresence()
+    {
+        return presence;
+    }
+
+    public BillingItemDTO setPresence( BillingItemPresence presence )
+    {
+        this.presence = presence;
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #getPresence()}
+     */
+    @Deprecated
+    public Boolean isRequired()
     {
         return required;
     }
 
-    public BillingItemDTO setRequired( boolean required )
+    /**
+     * @deprecated by {@link #setPresence(BillingItemPresence)}
+     */
+    @Deprecated
+    public BillingItemDTO setRequired( Boolean required )
     {
         this.required = required;
         return this;
