@@ -1,16 +1,35 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-public class ExternalConfigurationParameterValuesRequestDTO extends BaseExternalOrderValidationDTO
-{
-    private String configurationParameter;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.Map;
 
-    public String getConfigurationParameter()
+public class ExternalConfigurationParameterValuesRequestDTO implements DTO
+{
+    @NotNull
+    @Valid
+    private UrlEntityDTO productVersion;
+
+    @Valid
+    private Map<UrlEntityDTO, String> configurationParameters;
+
+    public UrlEntityDTO getProductVersion()
     {
-        return configurationParameter;
+        return productVersion;
     }
 
-    public void setConfigurationParameter( String configurationParameter )
+    public void setProductVersion( UrlEntityDTO productVersion )
     {
-        this.configurationParameter = configurationParameter;
+        this.productVersion = productVersion;
+    }
+
+    public Map<UrlEntityDTO, String> getConfigurationParameters()
+    {
+        return configurationParameters;
+    }
+
+    public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
+    {
+        this.configurationParameters = configurationParameters;
     }
 }
