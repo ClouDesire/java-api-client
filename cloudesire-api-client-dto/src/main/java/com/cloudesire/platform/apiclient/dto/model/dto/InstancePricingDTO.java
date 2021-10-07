@@ -182,7 +182,7 @@ public class InstancePricingDTO extends CloudPricingDTO
         if ( o == null || getClass() != o.getClass() ) return false;
         if ( ! super.equals( o ) ) return false;
         InstancePricingDTO that = (InstancePricingDTO) o;
-        return ram.equals( that.ram ) && cpu.equals( that.cpu ) && Objects.equals( diskSpace, that.diskSpace )
+        return Objects.equals( instanceType, that.instanceType )
                 && osFamily == that.osFamily && operatingSystem == that.operatingSystem && Objects
                 .equals( deprecated, that.deprecated );
     }
@@ -190,6 +190,6 @@ public class InstancePricingDTO extends CloudPricingDTO
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), ram, cpu, diskSpace, osFamily, operatingSystem, deprecated );
+        return Objects.hash( super.hashCode(), instanceType, osFamily, operatingSystem, deprecated );
     }
 }
