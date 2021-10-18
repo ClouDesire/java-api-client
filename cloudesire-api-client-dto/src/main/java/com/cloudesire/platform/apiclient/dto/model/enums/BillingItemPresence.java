@@ -9,9 +9,9 @@ public enum BillingItemPresence
     @ApiModelProperty( "The Billing Item is optional" )
     OPTIONAL,
 
-    @ApiModelProperty( "The Billing Item will be included in every Subscription" )
-    REQUIRED,
-
     @ApiModelProperty( "The Billing Item will be suggested for inclusion on purchase" )
-    RECOMMENDED
+    RECOMMENDED,
+
+    @ApiModelProperty( "The Billing Item will be included in every Subscription" )
+    REQUIRED
 }
