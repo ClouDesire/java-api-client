@@ -11,6 +11,8 @@ public class BudgetPricingDTO implements DTO
 
     private Set<BudgetBillingItemPricingDTO> billingItems;
 
+    private Set<BudgetCloudPricingDTO> cloudPricings;
+
     public BigDecimal getLicense()
     {
         return license;
@@ -39,5 +41,15 @@ public class BudgetPricingDTO implements DTO
     public void setBillingItems( Set<BudgetBillingItemPricingDTO> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    public Set<BudgetCloudPricingDTO> getCloudPricings()
+    {
+        return cloudPricings;
+    }
+
+    public void setCloudPricings( Set<BudgetCloudPricingDTO> cloudPricings )
+    {
+        this.cloudPricings = cloudPricings;
     }
 }
