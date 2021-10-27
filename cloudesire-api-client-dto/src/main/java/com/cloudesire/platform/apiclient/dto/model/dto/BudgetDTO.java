@@ -91,6 +91,8 @@ public class BudgetDTO extends BaseEntityDTO
     @ApiModelProperty( "Reseller Pricing used to calculate prices for the Budget" )
     private UrlEntityDTO resellerPricing;
 
+    private String resellerCatalogName;
+
     private BudgetPricingDTO pricing;
 
     public BigDecimal getTotalPrice()
@@ -331,6 +333,16 @@ public class BudgetDTO extends BaseEntityDTO
     public void setResellerPricing( UrlEntityDTO resellerPricing )
     {
         this.resellerPricing = resellerPricing;
+    }
+
+    public String getResellerCatalogName()
+    {
+        return resellerCatalogName;
+    }
+
+    public void setResellerCatalogName( String resellerCatalogName )
+    {
+        this.resellerCatalogName = resellerCatalogName;
     }
 
     public BudgetPricingDTO getPricing()
