@@ -138,6 +138,11 @@ public final class MathUtils
         return equalsByComparing( a, new BigDecimal( b ) );
     }
 
+    public static boolean equalsByComparing( int a, BigDecimal b )
+    {
+        return equalsByComparing( new BigDecimal( a ), b );
+    }
+
     public static boolean equalsByComparing( BigDecimal a, BigDecimal b )
     {
         if ( a == null ) return b == null;
