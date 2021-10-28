@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class BudgetBillingItemPricingDTO implements DTO
 {
-    private UrlEntityDTO item;
+    private UrlEntityDTO billingItem;
 
     private Integer start;
 
@@ -16,14 +16,14 @@ public class BudgetBillingItemPricingDTO implements DTO
 
     private BigDecimal proportionalSetup;
 
-    public UrlEntityDTO getItem()
+    public UrlEntityDTO getBillingItem()
     {
-        return item;
+        return billingItem;
     }
 
-    public void setItem( UrlEntityDTO item )
+    public void setBillingItem( UrlEntityDTO billingItem )
     {
-        this.item = item;
+        this.billingItem = billingItem;
     }
 
     public Integer getStart()
