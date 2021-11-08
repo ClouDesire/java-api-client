@@ -44,4 +44,13 @@ public interface ResellerApi
 
     @DELETE( "reseller/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
+
+    @GET( "reseller/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "reseller/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @DELETE( "reseller/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
