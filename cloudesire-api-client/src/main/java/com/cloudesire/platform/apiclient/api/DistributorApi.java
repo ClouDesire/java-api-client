@@ -43,4 +43,13 @@ public interface DistributorApi
 
     @DELETE( "distributor/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
+
+    @GET( "distributor/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "distributor/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @DELETE( "distributor/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
