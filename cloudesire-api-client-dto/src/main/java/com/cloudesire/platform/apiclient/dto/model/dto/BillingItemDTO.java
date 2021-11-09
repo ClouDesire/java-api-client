@@ -8,6 +8,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemPresence;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,7 +25,7 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 public class BillingItemDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Unique identifier of the billing item" )
-    @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ErrorKeys.ALPHANUMERIC )
+    @Pattern( regexp = Regexp.ALPHANUMERIC, message = ErrorKeys.ALPHANUMERIC )
     private String identifier;
 
     @ApiModelProperty( value = "Descriptive name of a single item", example = "user, license" )

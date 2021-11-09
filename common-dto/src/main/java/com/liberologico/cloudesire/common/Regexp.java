@@ -11,6 +11,8 @@ public class Regexp
 
     public static final String HEX_COLOR_LOWERCASE = "(^#[0-9a-f]{6}$)|(^#[0-9a-f]{3}$)";
 
+    public static final String ALPHANUMERIC = "^[a-zA-Z0-9-]*$";
+
     private Regexp()
     {
     }
