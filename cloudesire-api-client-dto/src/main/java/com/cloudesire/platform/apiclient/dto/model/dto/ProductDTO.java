@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.CloudCredentialsSupport;
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
@@ -10,11 +11,13 @@ import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -28,6 +31,7 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Comparable<ProductDTO>
 {
     @ApiModelProperty( "Identifier of the product, cannot be changed after creation" )
+    @Pattern( regexp = Regexp.ALPHANUMERIC, message = ErrorKeys.ALPHANUMERIC )
     private String SKU;
 
     @Valid

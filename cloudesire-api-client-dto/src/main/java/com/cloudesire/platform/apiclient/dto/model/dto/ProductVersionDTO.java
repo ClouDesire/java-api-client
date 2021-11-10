@@ -1,14 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponConfiguration;
 import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.Trial;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,6 +39,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     private UrlEntityDTO product;
 
     @ApiModelProperty( "Unique identifier" )
+    @Pattern( regexp = Regexp.ALPHANUMERIC, message = ErrorKeys.ALPHANUMERIC )
     private String identifier;
 
     @ApiModelProperty( "Suggested bandwidth to be payed in advance, decided by vendor" )
