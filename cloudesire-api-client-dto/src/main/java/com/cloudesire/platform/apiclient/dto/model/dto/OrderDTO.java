@@ -5,6 +5,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +37,10 @@ public class OrderDTO extends BaseOrderDTO
 
     @FieldAPI( sinceVersion = V20201126 )
     private Set<OrderOperationType> availableOperations;
+
+    private UrlEntityDTO approvedBy;
+
+    private Date approvedAt;
 
     public UrlEntityDTO getDistributor()
     {
@@ -123,5 +128,25 @@ public class OrderDTO extends BaseOrderDTO
     public void setAvailableOperations( Set<OrderOperationType> availableOperations )
     {
         this.availableOperations = availableOperations;
+    }
+
+    public UrlEntityDTO getApprovedBy()
+    {
+        return approvedBy;
+    }
+
+    public void setApprovedBy( UrlEntityDTO approvedBy )
+    {
+        this.approvedBy = approvedBy;
+    }
+
+    public Date getApprovedAt()
+    {
+        return approvedAt;
+    }
+
+    public void setApprovedAt( Date approvedAt )
+    {
+        this.approvedAt = approvedAt;
     }
 }
