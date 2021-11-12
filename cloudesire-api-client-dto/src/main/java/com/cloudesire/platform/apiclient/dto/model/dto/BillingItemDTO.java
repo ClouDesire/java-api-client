@@ -3,17 +3,15 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
-import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemPresence;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -24,7 +22,6 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 public class BillingItemDTO extends NamedEntityDTO
 {
     @ApiModelProperty( "Unique identifier of the billing item" )
-    @Pattern( regexp = "^[a-zA-Z0-9]*$", message = ErrorKeys.ALPHANUMERIC )
     private String identifier;
 
     @ApiModelProperty( value = "Descriptive name of a single item", example = "user, license" )

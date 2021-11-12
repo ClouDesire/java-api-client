@@ -5,7 +5,7 @@ public final class ErrorKeys
     public static final String INVALID_SIZE = "wrong.size.%max%.%min%";
     public static final String INVALID_MIN = "must.be.greater.than.or.equal.to.%min%";
     public static final String INVALID_MAX = "must.be.lower.than.or.equal.to.%max%";
-    public static final String ALPHANUMERIC = "must.be.alphanumeric";
+    public static final String ALPHANUMERIC = "{value.alphanumeric}";
     public static final String ALPHANUMERIC_START_WITH_LETTER = "must.be.alphanumeric.and.start.with.letter";
     public static final String TWO_DIGITS = "must.contain.two.digits";
     public static final String TWO_OR_FOUR_DIGITS = "must.contain.two.or.four.digits";
