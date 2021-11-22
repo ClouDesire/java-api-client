@@ -1,4 +1,7 @@
-package com.cloudesire.platform.apiclient.dto.model.dto;
+package com.cloudesire.platform.apiclient.dto.model.dto.request;
+
+import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
