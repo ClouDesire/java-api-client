@@ -28,4 +28,10 @@ public class CostsQuery extends BaseQuery
         return this;
     }
 
+    public CostsQuery setMetadata( MetadataQuery metadata )
+    {
+        putAll( metadata );
+        return this;
+    }
+
 }
