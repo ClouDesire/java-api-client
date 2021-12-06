@@ -34,6 +34,10 @@ public interface DistributorCatalogApi
     @PUT( "distributorCatalog/{id}" )
     Call<DistributorCatalogDTO> update( @Path( "id" ) int id, @Body DistributorCatalogDTO input );
 
+    @PUT( "distributorCatalog/{id}" )
+    Call<DistributorCatalogDTO> update( @Path( "id" ) int id, @Body DistributorCatalogDTO input,
+            @Query( "generateResellerCatalogs" ) boolean generateResellerCatalogs );
+
     @DELETE( "distributorCatalog/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 }
