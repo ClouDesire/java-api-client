@@ -16,7 +16,10 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
 
     private List<RecurringCostLineDTO> recurringCosts;
 
-    @ApiModelProperty( "Vault path for the customer cloud credentials for the subscription" )
+    @ApiModelProperty( "Uptime in minutes of the subscription" )
+    private Integer uptime;
+
+    @ApiModelProperty( value = "Vault path for the customer cloud credentials for the subscription", hidden = true )
     private String customerCredentialsPath;
 
     public List<ApplicationCredentialOutputDTO> getCredentials()
@@ -67,6 +70,16 @@ public class SubscriptionDetailDTO extends SubscriptionDTO
     public void setRecurringCosts( List<RecurringCostLineDTO> recurringCosts )
     {
         this.recurringCosts = recurringCosts;
+    }
+
+    public Integer getUptime()
+    {
+        return uptime;
+    }
+
+    public void setUptime( Integer uptime )
+    {
+        this.uptime = uptime;
     }
 
     /**
