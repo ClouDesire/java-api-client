@@ -19,6 +19,8 @@ abstract class BaseExternalOrderValidationDTO
 
     private String language;
 
+    private Integer buyerId;
+
     public Integer getProductId()
     {
         return productId;
@@ -77,5 +79,15 @@ abstract class BaseExternalOrderValidationDTO
     public void setLanguage( String language )
     {
         this.language = language;
+    }
+
+    public Integer getBuyerId()
+    {
+        return buyerId;
+    }
+
+    public void setBuyerId( Integer buyerId )
+    {
+        this.buyerId = buyerId;
     }
 }

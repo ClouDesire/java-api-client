@@ -10,8 +10,6 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
 
     private Integer subscriptionId;
 
-    private Integer buyerId;
-
     private OrderType orderType;
 
     public Map<String, Integer> getBillingItems()
@@ -32,16 +30,6 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
     public void setSubscriptionId( Integer subscriptionId )
     {
         this.subscriptionId = subscriptionId;
-    }
-
-    public Integer getBuyerId()
-    {
-        return buyerId;
-    }
-
-    public void setBuyerId( Integer buyerId )
-    {
-        this.buyerId = buyerId;
     }
 
     public OrderType getOrderType()
