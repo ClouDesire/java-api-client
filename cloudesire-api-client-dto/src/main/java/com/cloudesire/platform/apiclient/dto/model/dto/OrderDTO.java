@@ -42,6 +42,8 @@ public class OrderDTO extends BaseOrderDTO
 
     private Date approvedAt;
 
+    private Integer previousUptime;
+
     public UrlEntityDTO getDistributor()
     {
         return distributor;
@@ -148,5 +150,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setApprovedAt( Date approvedAt )
     {
         this.approvedAt = approvedAt;
+    }
+
+    public Integer getPreviousUptime()
+    {
+        return previousUptime;
+    }
+
+    public void setPreviousUptime( Integer previousUptime )
+    {
+        this.previousUptime = previousUptime;
     }
 }
