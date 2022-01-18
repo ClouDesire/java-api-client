@@ -190,6 +190,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     private NotificationMailCustomization orderNotifier = new NotificationMailCustomization();
 
+    @ApiModelProperty( "Email sent on order approval to customer" )
+    @Valid
+    @NotNull
+    private NotificationMailCustomization orderApprovalCustomer = new NotificationMailCustomization();
+
     @ApiModelProperty( "Email sent on order creation to customer" )
     @Valid
     @NotNull
@@ -597,6 +602,16 @@ public class EnvironmentDTO implements DTO
     public void setOrderNotifier( NotificationMailCustomization orderNotifier )
     {
         this.orderNotifier = orderNotifier;
+    }
+
+    public NotificationMailCustomization getOrderApprovalCustomer()
+    {
+        return orderApprovalCustomer;
+    }
+
+    public void setOrderApprovalCustomer( NotificationMailCustomization orderApprovalCustomer )
+    {
+        this.orderApprovalCustomer = orderApprovalCustomer;
     }
 
     public NotificationMailCustomization getOrderCreationCustomer()
