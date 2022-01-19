@@ -152,6 +152,13 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration orderNotifier;
 
         /**
+         * Email sent on order approval to customer
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration orderApprovalCustomer;
+
+        /**
          * Email sent on order creation to customer
          */
         @NotNull
@@ -541,6 +548,16 @@ public class MailEnvironmentDTO implements DTO
         public void setOrderNotifier( MailConfiguration orderNotifier )
         {
             this.orderNotifier = orderNotifier;
+        }
+
+        public MailConfiguration getOrderApprovalCustomer()
+        {
+            return orderApprovalCustomer;
+        }
+
+        public void setOrderApprovalCustomer( MailConfiguration orderApprovalCustomer )
+        {
+            this.orderApprovalCustomer = orderApprovalCustomer;
         }
 
         public MailConfiguration getOrderCreationCustomer()
