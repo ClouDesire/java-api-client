@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.List;
 
 public class BudgetPricingDTO implements DTO
 {
@@ -9,9 +9,9 @@ public class BudgetPricingDTO implements DTO
 
     private BigDecimal setup;
 
-    private Set<BudgetBillingItemPricingDTO> billingItems;
+    private List<BudgetBillingItemPricingDTO> billingItems;
 
-    private Set<BudgetCloudPricingDTO> cloudPricings;
+    private List<BudgetCloudPricingDTO> cloudPricings;
 
     public BigDecimal getLicense()
     {
@@ -33,22 +33,22 @@ public class BudgetPricingDTO implements DTO
         this.setup = setup;
     }
 
-    public Set<BudgetBillingItemPricingDTO> getBillingItems()
+    public List<BudgetBillingItemPricingDTO> getBillingItems()
     {
         return billingItems;
     }
 
-    public void setBillingItems( Set<BudgetBillingItemPricingDTO> billingItems )
+    public void setBillingItems( List<BudgetBillingItemPricingDTO> billingItems )
     {
         this.billingItems = billingItems;
     }
 
-    public Set<BudgetCloudPricingDTO> getCloudPricings()
+    public List<BudgetCloudPricingDTO> getCloudPricings()
     {
         return cloudPricings;
     }
 
-    public void setCloudPricings( Set<BudgetCloudPricingDTO> cloudPricings )
+    public void setCloudPricings( List<BudgetCloudPricingDTO> cloudPricings )
     {
         this.cloudPricings = cloudPricings;
     }
