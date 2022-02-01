@@ -1,6 +1,8 @@
 package com.cloudesire.platform.apiclient.query;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingHierarchy;
+import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingListing;
+import org.apache.commons.lang3.StringUtils;
 
 public class ResellerPricingQuery extends BaseQuery
 {
@@ -10,6 +12,7 @@ public class ResellerPricingQuery extends BaseQuery
     private static final String PRODUCT_VERSION_ID = "productVersionId";
     private static final String UNPRICED = "unpriced";
     private static final String HIERARCHY = "hierarchy";
+    private static final String LISTING = "listing";
 
     public ResellerPricingQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -50,6 +53,12 @@ public class ResellerPricingQuery extends BaseQuery
     public ResellerPricingQuery setHierarchy( ResellerPricingHierarchy hierarchy )
     {
         put( HIERARCHY, hierarchy );
+        return this;
+    }
+
+    public ResellerPricingQuery setListing( ResellerPricingListing... listing )
+    {
+        put( LISTING, StringUtils.join( listing, ',' ) );
         return this;
     }
 }
