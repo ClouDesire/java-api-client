@@ -3,7 +3,6 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Regexp;
@@ -183,6 +182,9 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
 
     @ApiModelProperty( "Auto-generated string uniquely identifying the user" )
     private String slug;
+
+    @ApiModelProperty( "Whether the user can be impersonated by the requesting client" )
+    private Boolean canBeImpersonated;
 
     @JsonIgnore
     @Override
@@ -710,6 +712,16 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     public void setSlug( String slug )
     {
         this.slug = slug;
+    }
+
+    public Boolean getCanBeImpersonated()
+    {
+        return canBeImpersonated;
+    }
+
+    public void setCanBeImpersonated( Boolean canBeImpersonated )
+    {
+        this.canBeImpersonated = canBeImpersonated;
     }
 
     @Override
