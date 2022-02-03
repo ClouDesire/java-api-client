@@ -1,21 +1,23 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.CloudPricingType;
+
 import java.math.BigDecimal;
 
 public class BudgetCloudPricingDTO implements DTO
 {
-    private String type;
+    private CloudPricingType type;
 
     private String specs;
 
     private BigDecimal price;
 
-    public String getType()
+    public CloudPricingType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( CloudPricingType type )
     {
         this.type = type;
     }
