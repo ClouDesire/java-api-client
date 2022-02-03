@@ -6,9 +6,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
 
@@ -37,6 +40,10 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     @ApiModelProperty( "External endpoint to obtain possible values for the parameter" )
     @URL
     private String externalValuesUrl;
+
+    @ApiModelProperty( "Accepted number range for the values of the parameter" )
+    @Valid
+    private Range range;
 
     @ApiModelProperty( "Short description to help user compiling the correct value" )
     private String hint;
@@ -127,6 +134,17 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
         return this;
     }
 
+    public Range getRange()
+    {
+        return range;
+    }
+
+    public ConfigurationParameterDTO setRange( Range range )
+    {
+        this.range = range;
+        return this;
+    }
+
     public String getHint()
     {
         return hint;
@@ -186,5 +204,59 @@ public class ConfigurationParameterDTO extends NamedEntityDTO
     public int hashCode()
     {
         return Objects.hash( code, description, validation, hint, required );
+    }
+
+    public static class Range implements Serializable
+    {
+        @NotNull
+        Integer min;
+
+        @NotNull
+        Integer max;
+
+        public Range( Integer min, Integer max )
+        {
+            this.min = min;
+            this.max = max;
+        }
+
+        public Range()
+        {
+        }
+
+        public Integer getMin()
+        {
+            return min;
+        }
+
+        public void setMin( Integer min )
+        {
+            this.min = min;
+        }
+
+        public Integer getMax()
+        {
+            return max;
+        }
+
+        public void setMax( Integer max )
+        {
+            this.max = max;
+        }
+
+        @Override
+        public boolean equals( Object o )
+        {
+            if ( this == o ) return true;
+            if ( o == null || getClass() != o.getClass() ) return false;
+            Range range = (Range) o;
+            return Objects.equals( min, range.min ) && Objects.equals( max, range.max );
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash( min, max );
+        }
     }
 }
