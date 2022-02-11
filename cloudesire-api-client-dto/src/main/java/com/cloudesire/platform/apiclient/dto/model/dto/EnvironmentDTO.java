@@ -7,6 +7,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductDestination;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
+import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
@@ -1148,6 +1149,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Template parameter overrides" )
         private Map<String, String> parameters = new HashMap<>();
 
+        @ApiModelProperty( "Any additional user role to send the email to" )
+        private Set<UserRole> roles = EnumSet.noneOf( UserRole.class );
+
         @JsonIgnore
         public boolean getServiceEnable( boolean userSubscribed )
         {
@@ -1206,6 +1210,16 @@ public class EnvironmentDTO implements DTO
         public void setParameters( Map<String, String> parameters )
         {
             this.parameters = parameters;
+        }
+
+        public Set<UserRole> getRoles()
+        {
+            return roles;
+        }
+
+        public void setRoles( Set<UserRole> roles )
+        {
+            this.roles = roles;
         }
         //endregion
     }
