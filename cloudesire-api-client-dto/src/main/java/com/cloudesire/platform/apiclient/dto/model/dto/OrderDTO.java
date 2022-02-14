@@ -44,6 +44,8 @@ public class OrderDTO extends BaseOrderDTO
 
     private Integer billedUptime;
 
+    private Date previousBillingPeriodEnd;
+
     public UrlEntityDTO getDistributor()
     {
         return distributor;
@@ -160,5 +162,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setBilledUptime( Integer billedUptime )
     {
         this.billedUptime = billedUptime;
+    }
+
+    public Date getPreviousBillingPeriodEnd()
+    {
+        return previousBillingPeriodEnd;
+    }
+
+    public void setPreviousBillingPeriodEnd( Date previousBillingPeriodEnd )
+    {
+        this.previousBillingPeriodEnd = previousBillingPeriodEnd;
     }
 }
