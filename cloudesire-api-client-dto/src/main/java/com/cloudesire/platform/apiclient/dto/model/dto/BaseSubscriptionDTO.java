@@ -230,6 +230,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     /**
      * @deprecated by {@link #getBillingPeriodEnd()}
      */
+    @Deprecated
     public Date getNextInvoice()
     {
         return nextInvoice;
@@ -238,6 +239,7 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     /**
      * @deprecated by {@link #setBillingPeriodEnd(Date)}
      */
+    @Deprecated
     public void setNextInvoice( Date nextInvoice )
     {
         this.nextInvoice = nextInvoice;
