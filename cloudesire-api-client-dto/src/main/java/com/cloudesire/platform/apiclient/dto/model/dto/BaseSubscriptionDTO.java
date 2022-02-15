@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201202;
+import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20220211;
 
 public abstract class BaseSubscriptionDTO extends NamedEntityDTO
 {
@@ -53,9 +54,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( value = "The duration in months of the billing period", readOnly = true )
     private Integer billingPeriod;
 
-    @ApiModelProperty( value = "When the next invoice will be emitted", readOnly = true )
-    private Date nextInvoice;
-
     @ApiModelProperty( "When the current billing period has started" )
     @FieldAPI( sinceVersion = V20201202 )
     private Date billingPeriodStart;
@@ -63,6 +61,14 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     @ApiModelProperty( hidden = true )
     @UnsupportedAPI( sinceVersion = V20201202 )
     private Date lastInvoice;
+
+    @ApiModelProperty( "When the current billing period will end" )
+    @FieldAPI( sinceVersion = V20220211 )
+    private Date billingPeriodEnd;
+
+    @ApiModelProperty( hidden = true )
+    @UnsupportedAPI( sinceVersion = V20220211 )
+    private Date nextInvoice;
 
     @ApiModelProperty( value = "The type of this subscription", readOnly = true, allowableValues = "NORMAL, TRIAL, SANDBOX" )
     private String type;
@@ -183,16 +189,6 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
         this.billingPeriod = billingPeriod;
     }
 
-    public Date getNextInvoice()
-    {
-        return nextInvoice;
-    }
-
-    public void setNextInvoice( Date nextInvoice )
-    {
-        this.nextInvoice = nextInvoice;
-    }
-
     public Date getBillingPeriodStart()
     {
         return billingPeriodStart;
@@ -201,6 +197,16 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     public void setBillingPeriodStart( Date billingPeriodStart )
     {
         this.billingPeriodStart = billingPeriodStart;
+    }
+
+    public Date getBillingPeriodEnd()
+    {
+        return billingPeriodEnd;
+    }
+
+    public void setBillingPeriodEnd( Date billingPeriodEnd )
+    {
+        this.billingPeriodEnd = billingPeriodEnd;
     }
 
     /**
@@ -219,6 +225,24 @@ public abstract class BaseSubscriptionDTO extends NamedEntityDTO
     public void setLastInvoice( Date lastInvoice )
     {
         this.lastInvoice = lastInvoice;
+    }
+
+    /**
+     * @deprecated by {@link #getBillingPeriodEnd()}
+     */
+    @Deprecated
+    public Date getNextInvoice()
+    {
+        return nextInvoice;
+    }
+
+    /**
+     * @deprecated by {@link #setBillingPeriodEnd(Date)}
+     */
+    @Deprecated
+    public void setNextInvoice( Date nextInvoice )
+    {
+        this.nextInvoice = nextInvoice;
     }
 
     public List<UrlEntityDTO> getInvoices()
