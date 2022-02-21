@@ -20,5 +20,4 @@ updates:
       - maven-internal-releases
       - maven-internal-snapshots
     assignees:
-      - pimuzzo
       - malteo
