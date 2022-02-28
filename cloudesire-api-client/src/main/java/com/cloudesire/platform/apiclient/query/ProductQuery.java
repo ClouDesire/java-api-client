@@ -19,6 +19,7 @@ public class ProductQuery extends PageRequestQuery
     private static final String CATEGORY_ID = "categoryId";
     private static final String TAG = "tag";
     private static final String VISIBILITY = "visibility";
+    private static final String RATING = "rating";
 
     public ProductQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
@@ -105,6 +106,12 @@ public class ProductQuery extends PageRequestQuery
     public ProductQuery setVisibility( ResellerPricingVisibility... visibility )
     {
         put( VISIBILITY, StringUtils.join( visibility, ',' ) );
+        return this;
+    }
+
+    public ProductQuery setRating( int rating )
+    {
+        put( RATING, rating );
         return this;
     }
 }
