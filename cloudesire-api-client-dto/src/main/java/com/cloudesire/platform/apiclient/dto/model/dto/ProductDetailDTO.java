@@ -14,6 +14,9 @@ public class ProductDetailDTO extends ProductDTO
 
     private MinimumCostDTO minimumCost;
 
+    @Valid
+    private List<ProductChangelogEntryDTO> changelog;
+
     public List<UrlEntityDTO> getMetrics()
     {
         return metrics;
@@ -32,6 +35,16 @@ public class ProductDetailDTO extends ProductDTO
     public void setMinimumCost( MinimumCostDTO minimumCost )
     {
         this.minimumCost = minimumCost;
+    }
+
+    public List<ProductChangelogEntryDTO> getChangelog()
+    {
+        return changelog;
+    }
+
+    public void setChangelog( List<ProductChangelogEntryDTO> changelog )
+    {
+        this.changelog = changelog;
     }
 
     @Override
