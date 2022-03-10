@@ -96,8 +96,22 @@ public interface ProductApi
     Call<ProductDetailDTO> get( @Path( "id" ) int id, @QueryMap ResellerCatalogQuery parameters );
 
     @PUT( "product/{id}" )
+    Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDetailDTO input );
+
+    @PUT( "product/{id}" )
+    Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDetailDTO input, @Query( "language" ) String language );
+
+    /**
+     * @deprecated by {@link #update(int, ProductDetailDTO)}
+     */
+    @Deprecated
+    @PUT( "product/{id}" )
     Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDTO input );
 
+    /**
+     * @deprecated by {@link #update(int, ProductDetailDTO, String)}
+     */
+    @Deprecated
     @PUT( "product/{id}" )
     Call<ProductDetailDTO> update( @Path( "id" ) int id, @Body ProductDTO input, @Query( "language" ) String language );
 
