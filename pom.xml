@@ -36,14 +36,14 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>snapshots</id>
-			<name>snapshots</name>
-			<url>https://archiva.cloudesire.com/repository/snapshots/</url>
+			<id>nexus-snapshots</id>
+			<name>cloudesire-snapshots</name>
+			<url>https://nexus.cloudesire.com/repository/cloudesire-maven-snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>archiva</id>
-			<name>internal</name>
-			<url>https://archiva.cloudesire.com/repository/internal</url>
+			<id>nexus-releases</id>
+			<name>cloudesire-releases</name>
+			<url>https://nexus.cloudesire.com/repository/cloudesire-maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
