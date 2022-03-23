@@ -1417,6 +1417,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Enable the cart functionality for CUSTOMER and/or RESELLER" )
         private Set<Cart> cart = EnumSet.noneOf( Cart.class );
 
+        @ApiModelProperty( "Enable changelog section for product descriptions" )
+        private boolean productChangelog;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1814,6 +1817,16 @@ public class EnvironmentDTO implements DTO
         public void setCart( Set<Cart> cart )
         {
             this.cart = cart;
+        }
+
+        public boolean isProductChangelog()
+        {
+            return productChangelog;
+        }
+
+        public void setProductChangelog( boolean productChangelog )
+        {
+            this.productChangelog = productChangelog;
         }
         //endregion
     }
