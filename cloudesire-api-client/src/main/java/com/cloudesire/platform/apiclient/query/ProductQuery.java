@@ -91,9 +91,9 @@ public class ProductQuery extends PageRequestQuery
         return this;
     }
 
-    public ProductQuery setTag( String tag )
+    public ProductQuery setTag( String... tag )
     {
-        put( TAG, tag );
+        put( TAG, StringUtils.join( tag, ',' ) );
         return this;
     }
 
