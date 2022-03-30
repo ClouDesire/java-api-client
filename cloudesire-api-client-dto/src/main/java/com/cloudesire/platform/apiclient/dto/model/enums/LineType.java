@@ -16,7 +16,7 @@ import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.
 public enum LineType
 {
     BACKUP,
-    BANDWIDTH( MUST_BE_PAID ),
+    BANDWIDTH( 40, MUST_BE_PAID ),
     BILLINGITEMCOST( IS_EXTRA, IS_INCOME ),
     BILLINGITEMSETUP( IS_EXTRA, IS_INCOME ),
     BILLINGITEMPROPORTIONALSETUP( IS_EXTRA, IS_INCOME ),
@@ -28,12 +28,12 @@ public enum LineType
     CLOUDESIREFEE,
     /** Monthly fee */
     @ApiModelProperty( "License costs" )
-    CONFIGURATION( IS_INCOME, MUST_BE_PAID ),
-    COUPONDISCOUNT( IS_INCOME ),
+    CONFIGURATION( 10, IS_INCOME, MUST_BE_PAID ),
+    COUPONDISCOUNT( 15, IS_INCOME ),
     @ApiModelProperty( "Custom vendor invoice" )
     CUSTOM( IS_CUSTOM, IS_INCOME ),
     DISK_UPGRADE( MUST_BE_PAID ),
-    DISKSPACE( MUST_BE_PAID ),
+    DISKSPACE( 50, MUST_BE_PAID ),
     IAASEXPENSE,
     @Deprecated
     @ApiModelProperty( hidden = true )
@@ -44,29 +44,37 @@ public enum LineType
     PRODUCT,
     RECURRINGCOST( IS_CUSTOM, IS_INCOME ),
     REFUND,
-    SETUPFEE( IS_INCOME ),
+    SETUPFEE( 20, IS_INCOME ),
     /** Bollo */
     STAMPDUTY,
     @ApiModelProperty( "Cloud provider upfront costs" )
-    UPFRONT,
+    UPFRONT( 29 ),
     @ApiModelProperty( "Cloud costs" )
-    VIRTUALMACHINE( MUST_BE_PAID );
+    VIRTUALMACHINE( 30, MUST_BE_PAID );
 
+    private final int weight;
     private final boolean isCustom;
     private final boolean isExtra;
     private final boolean isIncome;
     private final boolean mustBePaid;
 
-    LineType( Option... options )
+    LineType( int weight, Option... options )
     {
+        this.weight = weight;
         this.isCustom = ArrayUtils.contains( options, IS_CUSTOM );
         this.isExtra = ArrayUtils.contains( options, IS_EXTRA );
         this.isIncome = ArrayUtils.contains( options, IS_INCOME );
         this.mustBePaid = ArrayUtils.contains( options, MUST_BE_PAID );
     }
 
+    LineType( Option... options )
+    {
+        this( HEAVY_WEIGHT, options );
+    }
+
     LineType()
     {
+        this.weight = HEAVY_WEIGHT;
         this.isCustom = false;
         this.isExtra = false;
         this.isIncome = false;
@@ -102,6 +110,13 @@ public enum LineType
     {
         return mustBePaid;
     }
+
+    public int getWeight()
+    {
+        return weight;
+    }
+
+    static final int HEAVY_WEIGHT = 10000;
 
     enum Option
     {
