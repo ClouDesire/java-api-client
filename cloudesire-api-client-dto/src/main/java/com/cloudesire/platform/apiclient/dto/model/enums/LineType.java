@@ -10,13 +10,12 @@ import java.util.Set;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_CUSTOM;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_EXTRA;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_INCOME;
-import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.MUST_BE_PAID;
 
 @ApiModel( description = "Which kind of cost" )
 public enum LineType
 {
     BACKUP,
-    BANDWIDTH( 40, MUST_BE_PAID ),
+    BANDWIDTH( 40 ),
     BILLINGITEMCOST( IS_EXTRA, IS_INCOME ),
     BILLINGITEMSETUP( IS_EXTRA, IS_INCOME ),
     BILLINGITEMPROPORTIONALSETUP( IS_EXTRA, IS_INCOME ),
@@ -28,16 +27,16 @@ public enum LineType
     CLOUDESIREFEE,
     /** Monthly fee */
     @ApiModelProperty( "License costs" )
-    CONFIGURATION( 10, IS_INCOME, MUST_BE_PAID ),
+    CONFIGURATION( 10, IS_INCOME ),
     COUPONDISCOUNT( 15, IS_INCOME ),
     @ApiModelProperty( "Custom vendor invoice" )
     CUSTOM( IS_CUSTOM, IS_INCOME ),
-    DISK_UPGRADE( MUST_BE_PAID ),
-    DISKSPACE( 50, MUST_BE_PAID ),
+    DISK_UPGRADE,
+    DISKSPACE( 50 ),
     IAASEXPENSE,
     @Deprecated
     @ApiModelProperty( hidden = true )
-    METRIC( IS_INCOME, MUST_BE_PAID ),
+    METRIC( IS_INCOME ),
     ONESHOTCOST( IS_CUSTOM, IS_INCOME ),
     @Deprecated
     @ApiModelProperty( hidden = true )
@@ -50,13 +49,12 @@ public enum LineType
     @ApiModelProperty( "Cloud provider upfront costs" )
     UPFRONT( 29 ),
     @ApiModelProperty( "Cloud costs" )
-    VIRTUALMACHINE( 30, MUST_BE_PAID );
+    VIRTUALMACHINE( 30 );
 
     private final int weight;
     private final boolean isCustom;
     private final boolean isExtra;
     private final boolean isIncome;
-    private final boolean mustBePaid;
 
     LineType( int weight, Option... options )
     {
@@ -64,7 +62,6 @@ public enum LineType
         this.isCustom = ArrayUtils.contains( options, IS_CUSTOM );
         this.isExtra = ArrayUtils.contains( options, IS_EXTRA );
         this.isIncome = ArrayUtils.contains( options, IS_INCOME );
-        this.mustBePaid = ArrayUtils.contains( options, MUST_BE_PAID );
     }
 
     LineType( Option... options )
@@ -78,7 +75,6 @@ public enum LineType
         this.isCustom = false;
         this.isExtra = false;
         this.isIncome = false;
-        this.mustBePaid = false;
     }
 
     public static Set<LineType> iaasCosts()
@@ -106,11 +102,6 @@ public enum LineType
         return isIncome;
     }
 
-    public boolean mustBePaid()
-    {
-        return mustBePaid;
-    }
-
     public int getWeight()
     {
         return weight;
@@ -133,11 +124,6 @@ public enum LineType
         /**
          * This LineType will generate an income line with a cloudesire fee
          */
-        IS_INCOME,
-
-        /**
-         * This LineType will generate an income line for a self-billed invoice
-         */
-        MUST_BE_PAID
+        IS_INCOME
     }
 }
