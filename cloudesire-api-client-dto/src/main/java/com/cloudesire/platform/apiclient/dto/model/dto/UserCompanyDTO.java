@@ -14,6 +14,9 @@ public class UserCompanyDTO extends CompanyDTO
     @Valid
     private ItalianElectronicInvoicingDTO italianElectronicInvoicing;
 
+    @ApiModelProperty( "Mark this Company as public administration" )
+    private Boolean publicAdministration;
+
     @ApiModelProperty( "If this customer can pay later, only for admin/reseller" )
     private Boolean delayedPayment;
 
@@ -55,6 +58,16 @@ public class UserCompanyDTO extends CompanyDTO
     public void setItalianElectronicInvoicing( ItalianElectronicInvoicingDTO italianElectronicInvoicing )
     {
         this.italianElectronicInvoicing = italianElectronicInvoicing;
+    }
+
+    public Boolean getPublicAdministration()
+    {
+        return publicAdministration;
+    }
+
+    public void setPublicAdministration( Boolean publicAdministration )
+    {
+        this.publicAdministration = publicAdministration;
     }
 
     public Boolean isDelayedPayment()
