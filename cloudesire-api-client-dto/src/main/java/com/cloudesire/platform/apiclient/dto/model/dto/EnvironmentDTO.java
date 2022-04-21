@@ -221,6 +221,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     private MailCustomization subscriptionAmendment = new MailCustomization();
 
+    @ApiModelProperty( "Email sent to the customer on request for changes to an application" )
+    @Valid
+    @NotNull
+    private NotificationMailCustomization subscriptionAmendmentCustomer = new NotificationMailCustomization();
+
     @ApiModelProperty( "Email sent to the customer when application has been undeployed" )
     @Valid
     @NotNull
@@ -675,6 +680,16 @@ public class EnvironmentDTO implements DTO
     public void setSubscriptionAmendment( MailCustomization subscriptionAmendment )
     {
         this.subscriptionAmendment = subscriptionAmendment;
+    }
+
+    public NotificationMailCustomization getSubscriptionAmendmentCustomer()
+    {
+        return subscriptionAmendmentCustomer;
+    }
+
+    public void setSubscriptionAmendmentCustomer( NotificationMailCustomization subscriptionAmendmentCustomer )
+    {
+        this.subscriptionAmendmentCustomer = subscriptionAmendmentCustomer;
     }
 
     public NotificationMailCustomization getOrderUndeployCustomer()
