@@ -208,6 +208,13 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration subscriptionAmendment;
 
         /**
+         * Email sent to the customer on request for changes to an application
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration subscriptionAmendmentCustomer;
+
+        /**
          * Email sent when deploy go wrong
          */
         @NotNull
@@ -640,6 +647,16 @@ public class MailEnvironmentDTO implements DTO
         public void setSubscriptionAmendment( MailConfiguration subscriptionAmendment )
         {
             this.subscriptionAmendment = subscriptionAmendment;
+        }
+
+        public MailConfiguration getSubscriptionAmendmentCustomer()
+        {
+            return subscriptionAmendmentCustomer;
+        }
+
+        public void setSubscriptionAmendmentCustomer( MailConfiguration subscriptionAmendmentCustomer )
+        {
+            this.subscriptionAmendmentCustomer = subscriptionAmendmentCustomer;
         }
 
         public MailConfiguration getDeployFailed()
