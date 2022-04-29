@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 import java.util.Set;
 
-public abstract class BaseSubscriptionDTO extends BaseBaseSubscriptionDTO
+public abstract class BaseSubscriptionDTO extends BaseSubscriptionV1DTO
 {
     @ApiModelProperty( value = "Extra resources for this subscription", readOnly = true )
     private List<SubscriptionBillingItemDTO> billingItems;

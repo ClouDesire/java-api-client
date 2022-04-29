@@ -19,7 +19,7 @@ import java.util.Set;
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201202;
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20220211;
 
-public abstract class BaseBaseSubscriptionDTO extends NamedEntityDTO
+public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
 {
     @ApiModelProperty( value = "When the first billing period is started, after the successful provisioning", readOnly = true )
     private Date startDate;
@@ -264,7 +264,7 @@ public abstract class BaseBaseSubscriptionDTO extends NamedEntityDTO
         return endpoints;
     }
 
-    public BaseBaseSubscriptionDTO setEndpoints( Set<EndpointDTO> endpoints )
+    public BaseSubscriptionV1DTO setEndpoints( Set<EndpointDTO> endpoints )
     {
         this.endpoints = endpoints;
         return this;
@@ -478,9 +478,9 @@ public abstract class BaseBaseSubscriptionDTO extends NamedEntityDTO
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
-        if ( !( o instanceof BaseBaseSubscriptionDTO ) ) return false;
-        if ( !super.equals( o ) ) return false;
-        BaseBaseSubscriptionDTO that = (BaseBaseSubscriptionDTO) o;
+        if ( ! ( o instanceof BaseSubscriptionV1DTO ) ) return false;
+        if ( ! super.equals( o ) ) return false;
+        BaseSubscriptionV1DTO that = (BaseSubscriptionV1DTO) o;
         return Objects.equals( startDate, that.startDate ) && Objects.equals( endDate, that.endDate )
                 && deploymentStatus == that.deploymentStatus && Objects.equals( type, that.type ) && Objects
                 .equals( createdAt, that.createdAt ) && Objects.equals( updatedAt, that.updatedAt );

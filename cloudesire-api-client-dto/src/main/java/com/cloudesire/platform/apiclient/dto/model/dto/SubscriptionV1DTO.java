@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class SubscriptionV1DTO extends BaseBaseSubscriptionDTO
+public class SubscriptionV1DTO extends BaseSubscriptionV1DTO
 {
     @ApiModelProperty( value = "The value chosen by the customer for a list of ConfigurationParameters", example = "{ \"configurationParameter/123\": \"custom_value\"}" )
     @Valid
