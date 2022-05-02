@@ -1,13 +1,30 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class SubscriptionV1DTO extends BaseSubscriptionDTO
+public class SubscriptionV1DTO extends BaseSubscriptionV1DTO
 {
+    @ApiModelProperty( value = "The value chosen by the customer for a list of ConfigurationParameters", example = "{ \"configurationParameter/123\": \"custom_value\"}" )
+    @Valid
+    private Map<UrlEntityDTO, String> configurationParameters = new HashMap<>();
+
     private Map<UrlEntityDTO, BigDecimal> billingItems = new HashMap<>();
+
+    public Map<UrlEntityDTO, String> getConfigurationParameters()
+    {
+        return configurationParameters;
+    }
+
+    public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
+    {
+        this.configurationParameters = configurationParameters;
+    }
 
     public Map<UrlEntityDTO, BigDecimal> getBillingItems()
     {
