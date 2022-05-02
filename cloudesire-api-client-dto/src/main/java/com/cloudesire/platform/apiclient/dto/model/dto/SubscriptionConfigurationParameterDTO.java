@@ -6,10 +6,10 @@ public class SubscriptionConfigurationParameterDTO implements DTO
 {
     private UrlEntityDTO configurationParameter;
 
-    @ApiModelProperty( "The current value for this billing item" )
+    @ApiModelProperty( "The chosen value for this Configuration Parameter" )
     private String value;
 
-    @ApiModelProperty( "Whether the billing item has been already bought for the Subscription" )
+    @ApiModelProperty( "The (optional) description for the Configuration Parameter chosen value" )
     private String description;
 
     public UrlEntityDTO getConfigurationParameter()
