@@ -1360,6 +1360,12 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Send product instructions to the customer on buy" )
         private boolean instructionsInEmail = false;
 
+        @ApiModelProperty( "Email billing item summary to customer on buy/upgrade" )
+        private boolean billingItemSummaryInEmail;
+
+        @ApiModelProperty( "Email invoice entries to customer on buy/upgrade" )
+        private boolean invoiceEntriesInEmail;
+
         @ApiModelProperty( "Permit links in end user instructions" )
         private LinksInEndUserInstructions linksInEndUserInstructions;
 
@@ -1542,6 +1548,26 @@ public class EnvironmentDTO implements DTO
         public void setInstructionsInEmail( boolean instructionsInEmail )
         {
             this.instructionsInEmail = instructionsInEmail;
+        }
+
+        public boolean isBillingItemSummaryInEmail()
+        {
+            return billingItemSummaryInEmail;
+        }
+
+        public void setBillingItemSummaryInEmail( boolean billingItemSummaryInEmail )
+        {
+            this.billingItemSummaryInEmail = billingItemSummaryInEmail;
+        }
+
+        public boolean isInvoiceEntriesInEmail()
+        {
+            return invoiceEntriesInEmail;
+        }
+
+        public void setInvoiceEntriesInEmail( boolean invoiceEntriesInEmail )
+        {
+            this.invoiceEntriesInEmail = invoiceEntriesInEmail;
         }
 
         public LinksInEndUserInstructions getLinksInEndUserInstructions()
