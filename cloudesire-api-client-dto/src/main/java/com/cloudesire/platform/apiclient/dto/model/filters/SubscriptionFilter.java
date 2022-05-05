@@ -28,6 +28,9 @@ public final class SubscriptionFilter extends PageRequestDTO
 
     private ProductType productType;
 
+    @ApiModelProperty( "Filter by configuration parameters" )
+    private Map<String, String> configuration;
+
     public String getFilter()
     {
         return filter;
@@ -86,5 +89,15 @@ public final class SubscriptionFilter extends PageRequestDTO
     public void setProductType( ProductType productType )
     {
         this.productType = productType;
+    }
+
+    public Map<String, String> getConfiguration()
+    {
+        return configuration;
+    }
+
+    public void setConfiguration( Map<String, String> configuration )
+    {
+        this.configuration = configuration;
     }
 }
