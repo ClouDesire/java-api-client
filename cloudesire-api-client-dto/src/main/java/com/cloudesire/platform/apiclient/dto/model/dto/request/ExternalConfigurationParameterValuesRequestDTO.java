@@ -16,6 +16,8 @@ public class ExternalConfigurationParameterValuesRequestDTO implements DTO
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
 
+    private Integer buyerId;
+
     public UrlEntityDTO getProductVersion()
     {
         return productVersion;
@@ -34,5 +36,15 @@ public class ExternalConfigurationParameterValuesRequestDTO implements DTO
     public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
+    }
+
+    public Integer getBuyerId()
+    {
+        return buyerId;
+    }
+
+    public void setBuyerId( Integer buyerId )
+    {
+        this.buyerId = buyerId;
     }
 }
