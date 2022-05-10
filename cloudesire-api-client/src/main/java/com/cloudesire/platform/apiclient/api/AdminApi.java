@@ -30,9 +30,6 @@ public interface AdminApi
     Call<Void> generateMissingReports( @QueryMap PageRequestQuery page );
 
     @DELETE( "admin/report" )
-    Call<Void> purgeReports();
-
-    @DELETE( "admin/report" )
     Call<Void> deleteReports( @Query( "invoiceId" ) int invoiceId );
 
     @GET( "cache" )
