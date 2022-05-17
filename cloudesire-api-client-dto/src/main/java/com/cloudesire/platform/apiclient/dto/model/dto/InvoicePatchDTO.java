@@ -26,6 +26,9 @@ public class InvoicePatchDTO implements DTO
     public enum InvoicePatchAction
     {
         @ApiModelProperty( "Reissue the first invoice of a subscription" )
-        REISSUE
+        REISSUE,
+
+        @ApiModelProperty( "Mark a CHUNKED custom invoice for completion" )
+        FINALIZE
     }
 }
