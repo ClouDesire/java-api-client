@@ -32,6 +32,8 @@ public enum OrderType
     RECURRING_COSTS,
     @ApiModelProperty( "Add unmanaged costs to an active subscription" )
     UPSELL,
+    @ApiModelProperty( "As UPSELL, but receives lines in chunks" )
+    CHUNKED,
     @ApiModelProperty( "Refund costs for an active subscription" )
     REFUND,
     @ApiModelProperty( "Upgrade disk space, only for managed products" )

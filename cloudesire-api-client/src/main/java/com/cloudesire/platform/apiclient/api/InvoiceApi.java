@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.CardDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.InvoiceDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.InvoicePatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.InvoicePaymentReferenceDTO;
 import com.cloudesire.platform.apiclient.query.InvoiceQuery;
 import okhttp3.ResponseBody;
@@ -13,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
@@ -66,6 +68,9 @@ public interface InvoiceApi
 
     @POST( "invoice/{id}/pay/stripe" )
     Call<Void> payWithStripe( @Path( "id" ) int id );
+
+    @PUT( "invoice/{id}" )
+    Call<InvoiceDTO> addLines( @Path( "id" ) int id, @Body List<VendorOrderLineDTO> lines );
 
     /**
      * @deprecated by {@link #payWithStripe(int)}
