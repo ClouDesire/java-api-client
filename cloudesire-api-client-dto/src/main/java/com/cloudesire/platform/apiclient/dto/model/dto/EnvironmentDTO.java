@@ -1441,6 +1441,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Enable changelog section for product descriptions" )
         private boolean productChangelog;
 
+        @ApiModelProperty( "Do not bill for extra resources downgrades" )
+        private boolean freeBillingItemDowngrades;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1868,6 +1871,16 @@ public class EnvironmentDTO implements DTO
         public void setProductChangelog( boolean productChangelog )
         {
             this.productChangelog = productChangelog;
+        }
+
+        public boolean isFreeBillingItemDowngrades()
+        {
+            return freeBillingItemDowngrades;
+        }
+
+        public void setFreeBillingItemDowngrades( boolean freeBillingItemDowngrades )
+        {
+            this.freeBillingItemDowngrades = freeBillingItemDowngrades;
         }
         //endregion
     }
