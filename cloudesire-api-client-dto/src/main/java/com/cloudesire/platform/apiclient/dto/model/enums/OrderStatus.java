@@ -13,6 +13,9 @@ public enum OrderStatus
     @ApiModelProperty( "The upgrade has been applied and an Invoice has been emitted" )
     PAID,
 
+    @ApiModelProperty( "The upgrade is postponed to a later date" )
+    POSTPONED,
+
     @ApiModelProperty( "The approval has been rejected" )
     REJECTED,
 

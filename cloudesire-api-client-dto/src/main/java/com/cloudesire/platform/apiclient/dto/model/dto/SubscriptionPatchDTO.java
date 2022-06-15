@@ -4,7 +4,9 @@ import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,6 +60,10 @@ public class SubscriptionPatchDTO implements DTO
 
     @ApiModelProperty( "Refresh billing configuration for a particular invoice" )
     private Integer invoiceId;
+
+    @ApiModelProperty( "Postpone upgrade to a later date" )
+    @Future
+    private Date from;
 
     public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
@@ -231,6 +237,17 @@ public class SubscriptionPatchDTO implements DTO
     public SubscriptionPatchDTO setInvoiceId( Integer invoiceId )
     {
         this.invoiceId = invoiceId;
+        return this;
+    }
+
+    public Date getFrom()
+    {
+        return from;
+    }
+
+    public SubscriptionPatchDTO setFrom( Date from )
+    {
+        this.from = from;
         return this;
     }
 
