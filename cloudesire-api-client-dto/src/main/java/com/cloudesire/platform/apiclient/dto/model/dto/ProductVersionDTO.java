@@ -148,7 +148,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
 
     private UrlEntityDTO comparableVersion;
 
-    private Set<PaymentGateway> paymentGateways = new HashSet<>();
+    private Set<PaymentGateway> paymentGateways;
 
     @Valid
     private UrlEntityDTO cloudProvider;
