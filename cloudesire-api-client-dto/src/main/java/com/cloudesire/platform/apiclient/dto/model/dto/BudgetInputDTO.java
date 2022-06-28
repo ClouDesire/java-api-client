@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.Map;
 
 @ApiModel( description = "Budget estimate request" )
@@ -57,6 +58,9 @@ public class BudgetInputDTO
     private OSType operatingSystem;
 
     private PropertyFilter iaas;
+
+    @ApiModelProperty( "Apply date for upgrades" )
+    private Date from;
 
     public OrderType getType()
     {
@@ -220,6 +224,17 @@ public class BudgetInputDTO
     public BudgetInputDTO setIaas( PropertyFilter iaas )
     {
         this.iaas = iaas;
+        return this;
+    }
+
+    public Date getFrom()
+    {
+        return from;
+    }
+
+    public BudgetInputDTO setFrom( Date from )
+    {
+        this.from = from;
         return this;
     }
 
