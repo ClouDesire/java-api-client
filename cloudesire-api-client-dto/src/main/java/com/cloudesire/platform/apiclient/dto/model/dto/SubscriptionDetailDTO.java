@@ -1,12 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangeLogDTO;
+
 import java.util.List;
 
 public class SubscriptionDetailDTO extends BaseSubscriptionDetailDTO
 {
     private List<SubscriptionConfigurationParameterDTO> configurationParameters;
 
-    private String changelog;
+    private ChangeLogDTO changelog;
 
     public List<SubscriptionConfigurationParameterDTO> getConfigurationParameters()
     {
@@ -18,12 +20,12 @@ public class SubscriptionDetailDTO extends BaseSubscriptionDetailDTO
         this.configurationParameters = configurationParameters;
     }
 
-    public String getChangelog()
+    public ChangeLogDTO getChangelog()
     {
         return changelog;
     }
 
-    public void setChangelog( String changelog )
+    public void setChangelog( ChangeLogDTO changelog )
     {
         this.changelog = changelog;
     }
