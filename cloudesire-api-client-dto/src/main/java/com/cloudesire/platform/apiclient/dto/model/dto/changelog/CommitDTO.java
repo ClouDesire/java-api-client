@@ -7,7 +7,9 @@ import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CommitDTO implements DTO
 {
@@ -21,11 +23,14 @@ public class CommitDTO implements DTO
 
     private final List<ValueChangeDTO> changes = new ArrayList<>();
 
-    public CommitDTO( BigDecimal id, String author, LocalDateTime date )
+    private final Map<String, String> properties = new HashMap<>();
+
+    public CommitDTO( BigDecimal id, String author, LocalDateTime date, Map<String, String> properties )
     {
         this.id = id;
         this.author = new UrlEntityDTO( author );
         this.date = date;
+        this.properties.putAll( properties );
     }
 
     public CommitDTO()
@@ -65,5 +70,10 @@ public class CommitDTO implements DTO
     public void addChange( ValueChangeDTO change )
     {
         changes.add( change );
+    }
+
+    public Map<String, String> getProperties()
+    {
+        return properties;
     }
 }

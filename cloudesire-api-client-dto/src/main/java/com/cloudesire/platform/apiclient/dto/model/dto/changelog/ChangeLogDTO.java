@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.changelog;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ChangeLogDTO implements DTO
         commits.add( commit );
     }
 
+    @JsonIgnore
     public Optional<CommitDTO> getLastCommit()
     {
         if ( commits.isEmpty() ) return Optional.empty();
