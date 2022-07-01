@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.changelog;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public class CommitDTO implements DTO
 {
     private BigDecimal id;
 
-    private String author;
+    private UrlEntityDTO author;
 
     private LocalDateTime date;
 
@@ -23,7 +24,7 @@ public class CommitDTO implements DTO
     public CommitDTO( BigDecimal id, String author, LocalDateTime date )
     {
         this.id = id;
-        this.author = author;
+        this.author = new UrlEntityDTO( author );
         this.date = date;
     }
 
@@ -36,7 +37,7 @@ public class CommitDTO implements DTO
         return id;
     }
 
-    public String getAuthor()
+    public UrlEntityDTO getAuthor()
     {
         return author;
     }
