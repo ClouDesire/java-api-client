@@ -1894,7 +1894,10 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Access to costs section in navbar" )
         private boolean costsSection;
 
-        public static enum InvoiceSectionEnum
+        @ApiModelProperty( "Enable postponed subscription upgrades" )
+        private boolean postponedUpgrades;
+
+        public enum InvoiceSectionEnum
         {
             INVOICE, CONSUMPTION_SUMMARY, DISABLED
         }
@@ -1917,6 +1920,16 @@ public class EnvironmentDTO implements DTO
         public void setCostsSection( Boolean costsSection )
         {
             this.costsSection = costsSection;
+        }
+
+        public boolean getPostponedUpgrades()
+        {
+            return postponedUpgrades;
+        }
+
+        public void setPostponedUpgrades( boolean postponedUpgrades )
+        {
+            this.postponedUpgrades = postponedUpgrades;
         }
     }
 
