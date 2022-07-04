@@ -4,8 +4,11 @@ import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +67,10 @@ public class SubscriptionPatchDTO implements DTO
     @ApiModelProperty( "Postpone upgrade to a later date" )
     @Future
     private Date from;
+
+    @ApiModelProperty( hidden = true )
+    @Valid
+    private BillingDatesDTO billingDates;
 
     public SubscriptionPatchDTO( SubscriptionPatchAction action )
     {
@@ -251,6 +258,17 @@ public class SubscriptionPatchDTO implements DTO
         return this;
     }
 
+    public BillingDatesDTO getBillingDates()
+    {
+        return billingDates;
+    }
+
+    public SubscriptionPatchDTO setBillingDates( BillingDatesDTO billingDates )
+    {
+        this.billingDates = billingDates;
+        return this;
+    }
+
     public enum SubscriptionPatchAction
     {
         @ApiModelProperty( "Renew a subscription" )
@@ -295,6 +313,64 @@ public class SubscriptionPatchDTO implements DTO
         DEPLOY,
 
         @ApiModelProperty( "Set a descriptive name for a subscription" )
-        SET_NAME
+        SET_NAME,
+
+        @ApiModelProperty( hidden = true )
+        ALTER_DATES
+    }
+
+    public static class BillingDatesDTO implements Serializable
+    {
+        @Past
+        private Date billingPeriodStart;
+
+        @Past
+        private Date startDate;
+
+        @Future
+        private Date billingPeriodEnd;
+
+        @Future
+        private Date endDate;
+
+        public Date getBillingPeriodStart()
+        {
+            return billingPeriodStart;
+        }
+
+        public void setBillingPeriodStart( Date billingPeriodStart )
+        {
+            this.billingPeriodStart = billingPeriodStart;
+        }
+
+        public Date getStartDate()
+        {
+            return startDate;
+        }
+
+        public void setStartDate( Date startDate )
+        {
+            this.startDate = startDate;
+        }
+
+        public Date getBillingPeriodEnd()
+        {
+            return billingPeriodEnd;
+        }
+
+        public void setBillingPeriodEnd( Date billingPeriodEnd )
+        {
+            this.billingPeriodEnd = billingPeriodEnd;
+        }
+
+        public Date getEndDate()
+        {
+            return endDate;
+        }
+
+        public void setEndDate( Date endDate )
+        {
+            this.endDate = endDate;
+        }
     }
 }
