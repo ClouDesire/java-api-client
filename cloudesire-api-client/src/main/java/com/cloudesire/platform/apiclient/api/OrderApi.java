@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderInputDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.OrderPatchDTO;
 import com.cloudesire.platform.apiclient.query.OrderQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -9,6 +10,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -71,6 +73,9 @@ public interface OrderApi
 
     @POST( "order/{id}/reject" )
     Call<Void> reject( @Path( "id" ) Integer id );
+
+    @PATCH( "order/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body OrderPatchDTO input );
 
     /**
      * @deprecated by {@link #getCsv(OrderQuery)}
