@@ -283,9 +283,6 @@ public class SubscriptionPatchDTO implements DTO
         @ApiModelProperty( "Kill a subscription" )
         KILL,
 
-        @ApiModelProperty( "Backup a managed subscription VM data" )
-        BACKUP,
-
         @ApiModelProperty( "Update subscription auto-renewal status" )
         AUTORENEW,
 

@@ -1387,9 +1387,6 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Require approvation for vendor creation" )
         private boolean vendorApproval;
 
-        @ApiModelProperty( "VM backup available on the platform" )
-        private boolean backup = true;
-
         @ApiModelProperty( "Enable selling extra resources" )
         private boolean billingItems = true;
 
@@ -1664,16 +1661,6 @@ public class EnvironmentDTO implements DTO
         public void setVendorApproval( boolean vendorApproval )
         {
             this.vendorApproval = vendorApproval;
-        }
-
-        public boolean isBackup()
-        {
-            return backup;
-        }
-
-        public void setBackup( boolean backup )
-        {
-            this.backup = backup;
         }
 
         public boolean isBillingItems()
