@@ -1444,6 +1444,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Do not bill for extra resources downgrades" )
         private boolean freeBillingItemDowngrades;
 
+        @ApiModelProperty( "Allow editing a postponed order's start date" )
+        private boolean editPostponedOrderDate;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1881,6 +1884,16 @@ public class EnvironmentDTO implements DTO
         public void setFreeBillingItemDowngrades( boolean freeBillingItemDowngrades )
         {
             this.freeBillingItemDowngrades = freeBillingItemDowngrades;
+        }
+
+        public boolean isEditPostponedOrderDate()
+        {
+            return editPostponedOrderDate;
+        }
+
+        public void setEditPostponedOrderDate( boolean editPostponedOrderDate )
+        {
+            this.editPostponedOrderDate = editPostponedOrderDate;
         }
         //endregion
     }

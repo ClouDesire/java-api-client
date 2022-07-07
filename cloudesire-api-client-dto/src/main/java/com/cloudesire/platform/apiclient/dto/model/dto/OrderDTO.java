@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
+import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangelogDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
 
@@ -45,6 +46,8 @@ public class OrderDTO extends BaseOrderDTO
     private Integer billedUptime;
 
     private Date previousBillingPeriodEnd;
+
+    private ChangelogDTO changelog;
 
     public UrlEntityDTO getDistributor()
     {
@@ -172,5 +175,15 @@ public class OrderDTO extends BaseOrderDTO
     public void setPreviousBillingPeriodEnd( Date previousBillingPeriodEnd )
     {
         this.previousBillingPeriodEnd = previousBillingPeriodEnd;
+    }
+
+    public ChangelogDTO getChangelog()
+    {
+        return changelog;
+    }
+
+    public void setChangelog( ChangelogDTO changelog )
+    {
+        this.changelog = changelog;
     }
 }
