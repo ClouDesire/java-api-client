@@ -5,7 +5,6 @@ import com.liberologico.cloudesire.common.enums.OsFamily;
 public enum CloudProviderTags
 {
     ADDITIONAL_DISKS,
-    BACKUP,
     BANDWIDTH_UPGRADE,
     CLOUD_SERVICES,
     CUSTOM_CREDENTIALS,

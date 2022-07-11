@@ -15,12 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.VERSION;
-import static com.cloudesire.platform.apiclient.response.Headers.AUTH_TOKEN;
-import static com.cloudesire.platform.apiclient.response.Headers.MISTICA;
-import static com.cloudesire.platform.apiclient.response.Headers.MODE;
-import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_PROVIDER;
-import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_TOKEN;
-import static com.cloudesire.platform.apiclient.response.Headers.SSO_AUTH_USER;
+import static com.cloudesire.platform.apiclient.response.Headers.*;
 
 public class CloudesireClient extends BasicAuthCloudesireClient
 {
@@ -454,11 +449,6 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         return getApi( MailEnvironmentApi.class );
     }
 
-    public BackupApi getBackupApi()
-    {
-        return getApi( BackupApi.class );
-    }
-
     public NodeRoleApi getNodeRoleApi()
     {
         return getApi( NodeRoleApi.class );
@@ -482,11 +472,6 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     public EnumApi getEnumApi()
     {
         return getApi( EnumApi.class );
-    }
-
-    public BackupPricingApi getBackupPricingApi()
-    {
-        return getApi( BackupPricingApi.class );
     }
 
     public BandwidthPricingApi getBandwidthPricingApi()

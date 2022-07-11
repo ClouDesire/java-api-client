@@ -1,6 +1,5 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import com.cloudesire.platform.apiclient.dto.model.enums.BackupFrequency;
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,9 +18,6 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
 
     @ApiModelProperty( "Actual ram configuration, in MB")
     private Integer ram;
-
-    @ApiModelProperty( "How often take automatic backups" )
-    private BackupFrequency backupFrequency;
 
     private String publicIP;
 
@@ -124,16 +120,6 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
         this.cloudCredential = cloudCredential;
     }
 
-    public BackupFrequency getBackupFrequency()
-    {
-        return backupFrequency;
-    }
-
-    public void setBackupFrequency( BackupFrequency backupFrequency )
-    {
-        this.backupFrequency = backupFrequency;
-    }
-
     public String getUser()
     {
         return user;
@@ -192,7 +178,7 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
         if ( !super.equals( o ) ) return false;
         VirtualMachineInstanceDTO that = (VirtualMachineInstanceDTO) o;
         return Objects.equals( subscription, that.subscription ) && Objects.equals( cpu, that.cpu ) && Objects
-                .equals( ram, that.ram ) && backupFrequency == that.backupFrequency && Objects
+                .equals( ram, that.ram ) && Objects
                 .equals( publicIP, that.publicIP ) && Objects.equals( diskSpace, that.diskSpace ) && Objects
                 .equals( cloudProvider, that.cloudProvider );
     }
@@ -201,6 +187,6 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     public int hashCode()
     {
         return Objects
-                .hash( super.hashCode(), subscription, cpu, ram, backupFrequency, publicIP, diskSpace, cloudProvider );
+                .hash( super.hashCode(), subscription, cpu, ram, publicIP, diskSpace, cloudProvider );
     }
 }
