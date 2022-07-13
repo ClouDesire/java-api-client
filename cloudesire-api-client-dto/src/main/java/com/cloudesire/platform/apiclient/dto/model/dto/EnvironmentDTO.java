@@ -1444,6 +1444,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Allow editing a postponed order's start date" )
         private boolean editPostponedOrderDate;
 
+        @ApiModelProperty( "Allow editing a subscription's billing dates" )
+        private boolean alterSubscriptionBillingDates;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1881,6 +1884,16 @@ public class EnvironmentDTO implements DTO
         public void setEditPostponedOrderDate( boolean editPostponedOrderDate )
         {
             this.editPostponedOrderDate = editPostponedOrderDate;
+        }
+
+        public boolean isAlterSubscriptionBillingDates()
+        {
+            return alterSubscriptionBillingDates;
+        }
+
+        public void setAlterSubscriptionBillingDates( boolean alterSubscriptionBillingDates )
+        {
+            this.alterSubscriptionBillingDates = alterSubscriptionBillingDates;
         }
         //endregion
     }
