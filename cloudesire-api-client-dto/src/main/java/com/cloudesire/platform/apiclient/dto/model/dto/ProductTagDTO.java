@@ -66,5 +66,11 @@ public class ProductTagDTO implements DTO
     {
         return Objects.hash( tag, type );
     }
+
+    @Override
+    public String toString()
+    {
+        return "ProductTagDTO{" + "tag='" + tag + '\'' + ", type='" + type + '\'' + '}';
+    }
     //endregion
 }
