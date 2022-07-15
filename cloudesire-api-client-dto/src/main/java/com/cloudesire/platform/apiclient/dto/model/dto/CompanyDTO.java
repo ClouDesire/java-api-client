@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,9 +42,6 @@ public class CompanyDTO extends MinimalCompanyDTO
 
     @ApiModelProperty( "An externalId if the company is synchronized from an external system" )
     private String externalId;
-
-    @ApiModelProperty( hidden = true )
-    private Date lastInboundInvoice;
 
     @ApiModelProperty( "Website of the company" )
     @Size( max = 1024 )
@@ -124,16 +120,6 @@ public class CompanyDTO extends MinimalCompanyDTO
     public void setPublicKey( String publicKey )
     {
         this.publicKey = publicKey;
-    }
-
-    public Date getLastInboundInvoice()
-    {
-        return lastInboundInvoice;
-    }
-
-    public void setLastInboundInvoice( Date lastInboundInvoice )
-    {
-        this.lastInboundInvoice = lastInboundInvoice;
     }
 
     public Integer getMaxPublishedProducts()
