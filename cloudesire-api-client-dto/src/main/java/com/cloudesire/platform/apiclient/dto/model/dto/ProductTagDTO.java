@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Objects;
 
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+
 @ApiModel( description = "A label to tag a product" )
 public class ProductTagDTO implements DTO
 {
@@ -13,6 +15,9 @@ public class ProductTagDTO implements DTO
 
     @ApiModelProperty( "Tag type" )
     private String type;
+
+    @ApiModelProperty( value = "How many products for the category are present", accessMode = READ_ONLY )
+    private Long productCount = 0L;
 
     //region Auto-generated code
     public ProductTagDTO( String tag, String type )
@@ -49,6 +54,17 @@ public class ProductTagDTO implements DTO
     public ProductTagDTO setType( String type )
     {
         this.type = type;
+        return this;
+    }
+
+    public Long getProductCount()
+    {
+        return productCount;
+    }
+
+    public ProductTagDTO setProductCount( Long productCount )
+    {
+        this.productCount = productCount;
         return this;
     }
 
