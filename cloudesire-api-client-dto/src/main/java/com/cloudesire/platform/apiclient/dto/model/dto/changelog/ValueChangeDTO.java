@@ -36,4 +36,11 @@ public class ValueChangeDTO implements DTO
     {
         return right;
     }
+
+    @Override
+    public String toString()
+    {
+        return "ValueChangeDTO{" + "property='" + property + '\'' + ", left='" + left + '\'' + ", right='" + right
+                + '\'' + '}';
+    }
 }
