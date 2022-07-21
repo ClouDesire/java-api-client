@@ -16,7 +16,7 @@ public class ProductTagDTO implements DTO
     @ApiModelProperty( "Tag type" )
     private String type;
 
-    @ApiModelProperty( value = "How many products for the category are present", accessMode = READ_ONLY )
+    @ApiModelProperty( value = "How many products for the tag are present", accessMode = READ_ONLY )
     private Long productCount = 0L;
 
     //region Auto-generated code
