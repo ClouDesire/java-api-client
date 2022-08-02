@@ -5,11 +5,8 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Map;
-
 public class SubscriptionQuery extends PageRequestQuery
 {
-    private static final String CONFIGURATION = "configuration";
     private static final String FILTER = "filter";
     private static final String STATUS = "status";
     private static final String TYPE = "type";
@@ -59,12 +56,9 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setConfiguration( Map<String, String> configuration )
+    public SubscriptionQuery setConfiguration( ConfigurationQuery configuration )
     {
-        configuration.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", CONFIGURATION, key ), value );
-        } );
+        putAll( configuration );
         return this;
     }
 }
