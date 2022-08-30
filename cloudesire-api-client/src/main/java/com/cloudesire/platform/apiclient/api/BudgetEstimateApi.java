@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.BudgetDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.BudgetDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.BudgetInputDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.CartBudgetDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.CartItemBudgetDTO;
@@ -15,10 +15,10 @@ import static com.cloudesire.platform.apiclient.response.Headers.MODE;
 public interface BudgetEstimateApi
 {
     @POST( "budgetEstimate" )
-    Call<BudgetDTO> request( @Body BudgetInputDTO input );
+    Call<BudgetDetailDTO> request( @Body BudgetInputDTO input );
 
     @POST( "budgetEstimate" )
-    Call<BudgetDTO> request( @Body BudgetInputDTO input, @Header( MODE ) String environment );
+    Call<BudgetDetailDTO> request( @Body BudgetInputDTO input, @Header( MODE ) String environment );
 
     @POST( "budgetEstimate/cart/{id}" )
     Call<CartBudgetDTO> requestForCart( @Path( "id" ) int cartId );

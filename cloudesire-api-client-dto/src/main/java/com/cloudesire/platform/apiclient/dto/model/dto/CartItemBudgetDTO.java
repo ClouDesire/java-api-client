@@ -9,7 +9,7 @@ import java.util.Objects;
 @ApiModel( description = "A budget estimate for an item in a cart" )
 public class CartItemBudgetDTO implements DTO
 {
-    private BudgetDTO budget;
+    private BudgetDetailDTO budget;
 
     @ApiModelProperty( "Requested quantity for the item" )
     private Integer quantity;
@@ -20,12 +20,12 @@ public class CartItemBudgetDTO implements DTO
     @ApiModelProperty( "Budget price multiplied quantity for the item, excluding VAT" )
     private BigDecimal subTotalExcludingVAT;
 
-    public BudgetDTO getBudget()
+    public BudgetDetailDTO getBudget()
     {
         return budget;
     }
 
-    public void setBudget( BudgetDTO budget )
+    public void setBudget( BudgetDetailDTO budget )
     {
         this.budget = budget;
     }
