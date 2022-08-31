@@ -18,7 +18,7 @@ import java.util.Objects;
 import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
 @ApiModel( description = "A billed unit" )
-public class OrderLineDTO implements Line
+public class OrderLineDTO implements Line, DTO
 {
     @NotNull
     @Valid

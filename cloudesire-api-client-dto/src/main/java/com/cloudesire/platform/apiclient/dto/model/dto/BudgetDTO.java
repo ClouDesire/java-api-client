@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,12 +30,6 @@ public class BudgetDTO extends BaseEntityDTO
 
     @ApiModelProperty( "Trial duration in days" )
     private Integer trialLength;
-
-    @ApiModelProperty( "Billable entries for the estimate" )
-    private List<OrderLineDTO> lines = new LinkedList<>();
-
-    @ApiModelProperty( "Lines billed at the end of the billing period" )
-    private List<OrderLineDTO> postLines;
 
     @ApiModelProperty( "Lines directly billed to the customer" )
     private List<OrderLineDTO> upsoldLines;
@@ -163,26 +156,6 @@ public class BudgetDTO extends BaseEntityDTO
     public void setTrialLength( Integer trialLength )
     {
         this.trialLength = trialLength;
-    }
-
-    public List<OrderLineDTO> getLines()
-    {
-        return lines;
-    }
-
-    public void setLines( List<OrderLineDTO> lines )
-    {
-        this.lines = lines;
-    }
-
-    public List<OrderLineDTO> getPostLines()
-    {
-        return postLines;
-    }
-
-    public void setPostLines( List<OrderLineDTO> postLines )
-    {
-        this.postLines = postLines;
     }
 
     public List<OrderLineDTO> getUpsoldLines()
