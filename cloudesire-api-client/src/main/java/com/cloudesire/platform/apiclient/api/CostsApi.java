@@ -5,7 +5,11 @@ import com.cloudesire.platform.apiclient.dto.model.dto.CostDescriptionDTO;
 import com.cloudesire.platform.apiclient.query.CostsQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 import java.util.List;
 

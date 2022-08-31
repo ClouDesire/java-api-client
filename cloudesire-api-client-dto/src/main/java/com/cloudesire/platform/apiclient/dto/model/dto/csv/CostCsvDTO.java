@@ -15,7 +15,7 @@ public class CostCsvDTO implements DTO
 
     private LineType type;
 
-    private Integer billingItem;
+    private String billingItem;
 
     private String identifier;
 
@@ -41,12 +41,12 @@ public class CostCsvDTO implements DTO
         this.type = type;
     }
 
-    public Integer getBillingItem()
+    public String getBillingItem()
     {
         return billingItem;
     }
 
-    public void setBillingItem( Integer billingItem )
+    public void setBillingItem( String billingItem )
     {
         this.billingItem = billingItem;
     }
