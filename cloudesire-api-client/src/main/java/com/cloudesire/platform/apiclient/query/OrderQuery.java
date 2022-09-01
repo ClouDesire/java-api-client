@@ -63,9 +63,9 @@ public class OrderQuery extends PageRequestQuery
         return this;
     }
 
-    public OrderQuery setConfigurations( ConfigurationsQuery configurations )
+    public OrderQuery setConfiguration( ConfigurationQuery configuration )
     {
-        putAll( configurations );
+        putAll( configuration );
         return this;
     }
 
