@@ -56,9 +56,9 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
-    public SubscriptionQuery setConfiguration( ConfigurationQuery configuration )
+    public SubscriptionQuery setConfigurations( ConfigurationsQuery configurations )
     {
-        putAll( configuration );
+        putAll( configurations );
         return this;
     }
 }
