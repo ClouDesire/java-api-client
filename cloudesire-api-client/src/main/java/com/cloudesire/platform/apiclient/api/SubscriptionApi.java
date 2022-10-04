@@ -10,6 +10,8 @@ import retrofit2.http.*;
 import java.util.List;
 import java.util.Map;
 
+import static com.cloudesire.platform.apiclient.response.Headers.PREFER;
+
 public interface SubscriptionApi
 {
     @HEAD( "subscription" )
@@ -20,6 +22,9 @@ public interface SubscriptionApi
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAll();
+
+    @GET( "subscription" )
+    Call<List<NamedEntityDTO>> getAllPreferring( @Header( PREFER ) String preferredHeader );
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAll( @QueryMap SubscriptionQuery query );
