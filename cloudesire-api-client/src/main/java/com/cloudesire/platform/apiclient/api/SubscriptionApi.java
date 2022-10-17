@@ -88,6 +88,9 @@ public interface SubscriptionApi
     @GET( "subscription/metadata/keys" )
     Call<List<String>> getMetadataKeys();
 
+    @GET( "subscription/metadata/{key}/values" )
+    Call<List<String>> getMetadataValues( @Path( "key" ) String key );
+
     @Streaming
     @GET( "subscription" )
     @Headers( { "Accept:text/csv" } )
