@@ -21,6 +21,7 @@ workflows:
             branches:
               only: master
       - cloudesire/maven_release:
+          executor_java_version: "11.0"
           mvn_path: ./mvnw
           workspace: /home/circleci
           context:
