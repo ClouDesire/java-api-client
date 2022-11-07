@@ -36,12 +36,13 @@ workflows:
               only: release
 
 orbs:
-  cloudesire: cloudesire/common@0
+  cloudesire: cloudesire/common@2
 
 jobs:
   build:
     executor:
       name: cloudesire/docker_java
+      java_version: "11.0"
     steps:
       - checkout
 
@@ -75,6 +76,7 @@ jobs:
   deploy:
     executor:
       name: cloudesire/docker_java
+      java_version: "11.0"
     steps:
 
       - attach_workspace:
