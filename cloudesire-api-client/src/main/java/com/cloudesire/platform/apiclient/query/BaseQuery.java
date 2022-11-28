@@ -5,12 +5,12 @@ import java.util.Map;
 
 abstract class BaseQuery extends HashMap<String, Object>
 {
-    public BaseQuery( Map<? extends String, ?> m )
+    protected BaseQuery( Map<String, ?> m )
     {
         super( m );
     }
 
-    public BaseQuery()
+    protected BaseQuery()
     {
     }
 
@@ -19,5 +19,13 @@ abstract class BaseQuery extends HashMap<String, Object>
     {
         if ( value == null ) return super.remove( key );
         return super.put( key, value );
+    }
+
+    void putMap( String parameter, Map<String, String> map )
+    {
+        map.forEach( ( key, value ) -> {
+            if ( value == null ) value = "";
+            put( String.format( "%s[%s]", parameter, key ), value );
+        } );
     }
 }

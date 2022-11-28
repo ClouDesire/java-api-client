@@ -8,10 +8,7 @@ public class TagsQuery extends BaseQuery
 
     public TagsQuery setTags( Map<String, String> tags )
     {
-        tags.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", TAGS, key ), value );
-        } );
+        putMap( TAGS, tags );
         return this;
     }
 }

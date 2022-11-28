@@ -24,7 +24,7 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String ORDER_TYPES = "orderTypes";
     private static final String QUERY = "query";
 
-    public ProceedsReportQuery( Map<? extends String, ?> m )
+    public ProceedsReportQuery( Map<String, ?> m )
     {
         super( m );
     }

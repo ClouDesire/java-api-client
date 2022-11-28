@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class PageRequestQuery extends BaseQuery
 {
-    public PageRequestQuery( Map<? extends String, ?> m )
+    public PageRequestQuery( Map<String, ?> m )
     {
         super( m );
     }

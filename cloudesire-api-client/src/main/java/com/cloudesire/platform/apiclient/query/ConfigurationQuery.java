@@ -14,10 +14,7 @@ public class ConfigurationQuery extends BaseQuery
 
     public ConfigurationQuery setConfiguration( Map<String, String> configuration )
     {
-        configuration.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", CONFIGURATION, key ), value );
-        } );
+        putMap( CONFIGURATION, configuration );
         return this;
     }
 }
