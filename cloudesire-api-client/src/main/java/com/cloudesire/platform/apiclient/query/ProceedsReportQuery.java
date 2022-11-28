@@ -104,6 +104,12 @@ public class ProceedsReportQuery extends PageRequestQuery
         return this;
     }
 
+    public ProceedsReportQuery tags( TagsQuery tags )
+    {
+        putAll( tags );
+        return this;
+    }
+
     public ProceedsReportQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
