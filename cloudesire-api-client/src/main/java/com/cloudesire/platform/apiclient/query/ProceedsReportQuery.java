@@ -24,7 +24,7 @@ public class ProceedsReportQuery extends PageRequestQuery
     private static final String ORDER_TYPES = "orderTypes";
     private static final String QUERY = "query";
 
-    public ProceedsReportQuery( Map<? extends String, ?> m )
+    public ProceedsReportQuery( Map<String, ?> m )
     {
         super( m );
     }
@@ -101,6 +101,12 @@ public class ProceedsReportQuery extends PageRequestQuery
     public ProceedsReportQuery query( ReportQuery query )
     {
         put( QUERY, query );
+        return this;
+    }
+
+    public ProceedsReportQuery tags( TagsQuery tags )
+    {
+        putAll( tags );
         return this;
     }
 

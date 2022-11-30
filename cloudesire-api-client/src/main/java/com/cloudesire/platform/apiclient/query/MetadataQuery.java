@@ -8,10 +8,7 @@ public class MetadataQuery extends BaseQuery
 
     public MetadataQuery setMetadata( Map<String, String> metadata )
     {
-        metadata.forEach( ( key, value ) -> {
-            if ( value == null ) value = "";
-            put( String.format( "%s[%s]", METADATA, key ), value );
-        } );
+        putMap( METADATA, metadata );
         return this;
     }
 }
