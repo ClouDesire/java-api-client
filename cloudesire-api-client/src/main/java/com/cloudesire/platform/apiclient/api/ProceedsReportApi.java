@@ -41,6 +41,17 @@ public interface ProceedsReportApi
     @POST( "proceedsReport" )
     Call<Void> post( @Body List<VendorOrderLineDTO> lines );
 
+    @DELETE( "proceedsReport/{subscriptionId}/{tag}/{value}" )
+    Call<Void> delete(
+            @Path( "subscriptionId" ) int subscriptionId,
+            @Path( "tag" ) String tag,
+            @Path( "value" ) String value
+    );
+
+    /**
+     * @deprecated by {@link #delete(int, String, String)}
+     */
     @DELETE( "proceedsReport/{subscriptionId}/{tag}" )
+    @Deprecated( since = "3.1.0", forRemoval = true )
     Call<Void> delete( @Path( "subscriptionId" ) int subscriptionId, @Path( "tag" ) String tag );
 }
