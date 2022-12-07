@@ -523,6 +523,11 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     {
         return getApi( ProductTagApi.class );
     }
+
+    public BillingBudgetApi getBillingBudgetApi()
+    {
+        return getApi( BillingBudgetApi.class );
+    }
     // endregion
 
     @Override
