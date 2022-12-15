@@ -1,20 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-import java.math.BigDecimal;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
-
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
 @ApiModel( description = "A budget describes what you expect to spend on your subscriptions in a certain timeframe." )
 public class BillingBudgetDTO extends NamedEntityDTO
 {
+    @NotNull
+    @Valid
     private BillingBudgetFilterDTO filter = new BillingBudgetFilterDTO();
 
-    @ApiModelProperty( value = "The current spending for the budget", accessMode = READ_ONLY )
-    private BigDecimal currentSpending;
+    @NotNull
+    @Valid
+    private BillingBudgetAmountDTO amount;
 
     public BillingBudgetDTO( String name )
     {
@@ -35,14 +36,14 @@ public class BillingBudgetDTO extends NamedEntityDTO
         this.filter = filter;
     }
 
-    public BigDecimal getCurrentSpending()
+    public BillingBudgetAmountDTO getAmount()
     {
-        return currentSpending;
+        return amount;
     }
 
-    public void setCurrentSpending( BigDecimal currentSpending )
+    public void setAmount( BillingBudgetAmountDTO amount )
     {
-        this.currentSpending = currentSpending;
+        this.amount = amount;
     }
 
     @Override
