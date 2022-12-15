@@ -28,9 +28,15 @@ public class CostsQuery extends BaseQuery
         return this;
     }
 
-    public CostsQuery setMetadata( MetadataQuery metadata )
+    public CostsQuery subscriptionMetadata( MetadataQuery metadata )
     {
         putAll( metadata );
+        return this;
+    }
+
+    public CostsQuery tags( TagsQuery tags )
+    {
+        putAll( tags );
         return this;
     }
 
