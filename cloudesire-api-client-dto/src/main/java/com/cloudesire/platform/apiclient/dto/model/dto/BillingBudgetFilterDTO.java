@@ -4,14 +4,17 @@ import com.cloudesire.platform.apiclient.dto.model.enums.CalendarPeriod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
+import java.util.Objects;
 
 @ApiModel( description = "A timeframe and filters for calculating a budget." )
 public class BillingBudgetFilterDTO implements DTO
 {
     @NotNull
-    private CalendarPeriod calendarPeriod = CalendarPeriod.MONTH;
+    @Valid
+    private BillingBudgetPeriodDTO period = new BillingBudgetPeriodDTO( CalendarPeriod.MONTH );
 
     @ApiModelProperty( "Filter by subscription metadata" )
     private Map<String, String> metadata;
@@ -21,21 +24,26 @@ public class BillingBudgetFilterDTO implements DTO
 
     public BillingBudgetFilterDTO( CalendarPeriod calendarPeriod )
     {
-        this.calendarPeriod = calendarPeriod;
+        this.period = new BillingBudgetPeriodDTO( calendarPeriod );
+    }
+
+    public BillingBudgetFilterDTO( CustomPeriodDTO customPeriod )
+    {
+        this.period = new BillingBudgetPeriodDTO( customPeriod );
     }
 
     public BillingBudgetFilterDTO()
     {
     }
 
-    public CalendarPeriod getCalendarPeriod()
+    public BillingBudgetPeriodDTO getPeriod()
     {
-        return calendarPeriod;
+        return period;
     }
 
-    public void setCalendarPeriod( CalendarPeriod calendarPeriod )
+    public void setPeriod( BillingBudgetPeriodDTO period )
     {
-        this.calendarPeriod = calendarPeriod;
+        this.period = period;
     }
 
     public Map<String, String> getMetadata()
@@ -56,5 +64,21 @@ public class BillingBudgetFilterDTO implements DTO
     public void setTags( Map<String, String> tags )
     {
         this.tags = tags;
+    }
+
+    @Override
+    public boolean equals( Object o )
+    {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        BillingBudgetFilterDTO that = (BillingBudgetFilterDTO) o;
+        return Objects.equals( period, that.period ) && Objects.equals( metadata, that.metadata ) && Objects.equals(
+                tags, that.tags );
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash( period, metadata, tags );
     }
 }
