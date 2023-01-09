@@ -331,6 +331,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     private NotificationMailCustomization invoiceDeath = new NotificationMailCustomization();
 
+    @ApiModelProperty( "Sent to the customer on the crossing of a billing budget threshold" )
+    @NotNull
+    @Valid
+    private MailCustomization billingBudgetThresholdCrossed = new MailCustomization();
+
     @ApiModelProperty("Email report sent to notify of new users")
     @NotNull
     @Valid
@@ -970,6 +975,16 @@ public class EnvironmentDTO implements DTO
     public void setSubscriptionTermAlarm( MailCustomization subscriptionTermAlarm )
     {
         this.subscriptionTermAlarm = subscriptionTermAlarm;
+    }
+
+    public MailCustomization getBillingBudgetThresholdCrossed()
+    {
+        return billingBudgetThresholdCrossed;
+    }
+
+    public void setBillingBudgetThresholdCrossed( MailCustomization billingBudgetThresholdCrossed )
+    {
+        this.billingBudgetThresholdCrossed = billingBudgetThresholdCrossed;
     }
 
     public MailCustomization getDailyNewUsersReport()

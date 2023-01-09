@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @ApiModel( description = "A budget describes what you expect to spend on your subscriptions in a certain timeframe." )
@@ -16,6 +17,9 @@ public class BillingBudgetDTO extends NamedEntityDTO
     @NotNull
     @Valid
     private BillingBudgetAmountDTO amount;
+
+    @Valid
+    private List<BillingBudgetThresholdDTO> thresholds;
 
     public BillingBudgetDTO( String name )
     {
@@ -44,6 +48,16 @@ public class BillingBudgetDTO extends NamedEntityDTO
     public void setAmount( BillingBudgetAmountDTO amount )
     {
         this.amount = amount;
+    }
+
+    public List<BillingBudgetThresholdDTO> getThresholds()
+    {
+        return thresholds;
+    }
+
+    public void setThresholds( List<BillingBudgetThresholdDTO> thresholds )
+    {
+        this.thresholds = thresholds;
     }
 
     @Override

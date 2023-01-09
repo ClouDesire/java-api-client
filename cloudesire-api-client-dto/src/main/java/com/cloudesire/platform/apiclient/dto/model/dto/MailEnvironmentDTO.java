@@ -333,6 +333,13 @@ public class MailEnvironmentDTO implements DTO
         @Valid
         private MailConfiguration customerPendingOrder;
 
+        /**
+         * Sent to the customer on the crossing of a billing budget threshold
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration billingBudgetThresholdCrossed;
+
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
             return getCouponConfiguration( couponType ).getSubject( language );
@@ -828,6 +835,16 @@ public class MailEnvironmentDTO implements DTO
         public void setCustomerPendingOrder( MailConfiguration customerPendingOrder )
         {
             this.customerPendingOrder = customerPendingOrder;
+        }
+
+        public MailConfiguration getBillingBudgetThresholdCrossed()
+        {
+            return billingBudgetThresholdCrossed;
+        }
+
+        public void setBillingBudgetThresholdCrossed( MailConfiguration billingBudgetThresholdCrossed )
+        {
+            this.billingBudgetThresholdCrossed = billingBudgetThresholdCrossed;
         }
         //endregion
     }
