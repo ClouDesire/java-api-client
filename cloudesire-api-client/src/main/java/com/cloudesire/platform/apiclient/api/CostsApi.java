@@ -28,4 +28,7 @@ public interface CostsApi
 
     @GET( "costs/description/custom" )
     Call<CostDescriptionDTO> getCustomCostDescription( @Query( "identifier" ) String identifier );
+
+    @GET( "costs/tags/keys" )
+    Call<List<String>> getCustomerTagsKeys();
 }
