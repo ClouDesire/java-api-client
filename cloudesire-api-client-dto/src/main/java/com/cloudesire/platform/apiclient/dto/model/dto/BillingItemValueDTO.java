@@ -20,12 +20,12 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO item;
 
-    @ApiModelProperty( "Range start" )
+    @ApiModelProperty( "Range start (inclusive)" )
     @Min( 0 )
     @NotNull
     private Integer start;
 
-    @ApiModelProperty( "Range end, null is indefinte" )
+    @ApiModelProperty( "Range end (exclusive), null is indefinite" )
     @Min( 0 )
     private Integer end;
 
