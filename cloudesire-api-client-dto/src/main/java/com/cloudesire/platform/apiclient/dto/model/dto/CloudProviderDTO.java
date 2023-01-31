@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty.AccessMode;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +34,7 @@ public class CloudProviderDTO extends NamedEntityDTO
     @ApiModelProperty( "Enabled features of the cloud provider" )
     private List<CloudProviderFeatureDTO> features = new ArrayList<>();
 
-    @ApiModelProperty( value = "Default SSH username per OS type", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @ApiModelProperty( value = "Default SSH username per OS type", accessMode = AccessMode.READ_ONLY )
     private Map<OSType, String> usernames;
 
     /**
@@ -42,13 +44,16 @@ public class CloudProviderDTO extends NamedEntityDTO
     @Deprecated
     private String username;
 
-    @ApiModelProperty( value = "Supported operating systems", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @ApiModelProperty( value = "Supported operating systems", accessMode = AccessMode.READ_ONLY )
     private List<OSType> supportedOperatingSystems;
 
     private UrlEntityDTO principal;
 
-    @ApiModelProperty( accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @ApiModelProperty( accessMode = AccessMode.READ_ONLY )
     private Set<UrlEntityDTO> regions;
+
+    @ApiModelProperty( value = "Conversion factors from foreign currencies", accessMode = AccessMode.READ_ONLY )
+    private Map<String, BigDecimal> currencyConversion;
 
     @JsonIgnore
     @Override
@@ -173,6 +178,16 @@ public class CloudProviderDTO extends NamedEntityDTO
     public void setRegions( Set<UrlEntityDTO> regions )
     {
         this.regions = regions;
+    }
+
+    public Map<String, BigDecimal> getCurrencyConversion()
+    {
+        return currencyConversion;
+    }
+
+    public void setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
+    {
+        this.currencyConversion = currencyConversion;
     }
 
     @Override
