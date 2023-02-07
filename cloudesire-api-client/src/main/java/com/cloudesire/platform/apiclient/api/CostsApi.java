@@ -7,6 +7,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
@@ -31,4 +32,7 @@ public interface CostsApi
 
     @GET( "costs/tags/keys" )
     Call<List<String>> getCustomerTagsKeys();
+
+    @GET( "costs/tags/{key}/values" )
+    Call<List<String>> getCustomerTagsValues( @Path( "key" ) String key );
 }
