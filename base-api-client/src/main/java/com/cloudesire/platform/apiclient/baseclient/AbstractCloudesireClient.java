@@ -93,6 +93,13 @@ public abstract class AbstractCloudesireClient
         okhttpClientBuilder.cache( cache );
     }
 
+    protected void configureTimeouts( Long connectTimeout, Long readTimeout, Long writeTimeout )
+    {
+        if ( connectTimeout != null ) okhttpClientBuilder.connectTimeout( connectTimeout, TimeUnit.SECONDS );
+        if ( readTimeout != null ) okhttpClientBuilder.readTimeout( readTimeout, TimeUnit.SECONDS );
+        if ( writeTimeout != null ) okhttpClientBuilder.writeTimeout( writeTimeout, TimeUnit.SECONDS );
+    }
+
     /**
      * When implementing a new class, invoke this method at the end of the constructor
      * to correctly initialize the client

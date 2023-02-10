@@ -30,6 +30,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
     private final Interceptor interceptor;
     private final Cache cache;
     private final long version;
+    private final Long connectTimeout;
+    private final Long readTimeout;
+    private final Long writeTimeout;
 
     private CloudesireClient( Builder builder )
     {
@@ -43,6 +46,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         this.interceptor = builder.interceptor;
         this.version = builder.version;
         this.cache = builder.cache;
+        this.connectTimeout = builder.connectTimeout;
+        this.readTimeout = builder.readTimeout;
+        this.writeTimeout = builder.writeTimeout;
 
         if ( token != null )
         {
@@ -72,6 +78,8 @@ public class CloudesireClient extends BasicAuthCloudesireClient
 
         if ( cache != null ) addCache( cache );
 
+        configureTimeouts( connectTimeout, readTimeout, writeTimeout );
+
         initialize();
     }
 
@@ -95,6 +103,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
         private String environment;
         private Long version;
         private Cache cache;
+        private Long connectTimeout;
+        private Long readTimeout;
+        private Long writeTimeout;
 
         public Builder()
         {
@@ -120,6 +131,9 @@ public class CloudesireClient extends BasicAuthCloudesireClient
             this.mapper = cloudesireClient.mapper;
             this.interceptor = cloudesireClient.interceptor;
             this.version = cloudesireClient.version;
+            this.connectTimeout = cloudesireClient.connectTimeout;
+            this.readTimeout = cloudesireClient.readTimeout;
+            this.writeTimeout = cloudesireClient.writeTimeout;
         }
 
         public Builder setUsername( String username )
@@ -189,6 +203,21 @@ public class CloudesireClient extends BasicAuthCloudesireClient
             return this;
         }
 
+        public void setConnectTimeout( Long connectTimeout )
+        {
+            this.connectTimeout = connectTimeout;
+        }
+
+        public void setReadTimeout( Long readTimeout )
+        {
+            this.readTimeout = readTimeout;
+        }
+
+        public void setWriteTimeout( Long writeTimeout )
+        {
+            this.writeTimeout = writeTimeout;
+        }
+
         public CloudesireClient build()
         {
             Validate.notBlank( baseUrl, "A baseUrl must be set" );
@@ -211,13 +240,16 @@ public class CloudesireClient extends BasicAuthCloudesireClient
                     && Objects.equals( ssoProvider, builder.ssoProvider ) && Objects.equals( ssoUser, builder.ssoUser )
                     && Objects.equals( impersonate, builder.impersonate ) && Objects.equals( baseUrl, builder.baseUrl )
                     && Objects.equals( mapper, builder.mapper ) && Objects.equals( interceptor, builder.interceptor )
-                    && Objects.equals( version, builder.version );
+                    && Objects.equals( version, builder.version ) && Objects.equals( cache, builder.cache )
+                    && Objects.equals( connectTimeout, builder.connectTimeout ) && Objects.equals( readTimeout, builder.readTimeout )
+                    && Objects.equals( writeTimeout, builder.writeTimeout );
         }
 
         @Override
         public int hashCode()
         {
-            return Objects.hash( username, password, token, ssoToken, ssoUser, ssoProvider, impersonate, baseUrl, mapper, interceptor, version );
+            return Objects.hash( username, password, token, ssoToken, ssoUser, ssoProvider, impersonate, baseUrl,
+                    mapper, interceptor, version, cache, connectTimeout, readTimeout, writeTimeout );
         }
     }
 
@@ -542,12 +574,15 @@ public class CloudesireClient extends BasicAuthCloudesireClient
                 .equals( password, that.password ) && Objects.equals( token, that.token ) && Objects
                 .equals( ssoToken, that.ssoToken ) && Objects.equals( ssoProvider, that.ssoProvider ) && Objects
                 .equals( ssoUser, that.ssoUser ) && Objects.equals( impersonate, that.impersonate ) && Objects
-                .equals( environment, that.environment );
+                .equals( environment, that.environment ) && Objects.equals( cache, that.cache ) && Objects
+                .equals( connectTimeout, that.connectTimeout ) && Objects.equals( readTimeout, that.readTimeout ) && Objects
+                .equals( writeTimeout, that.writeTimeout );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( super.hashCode(), username, password, token, ssoToken, ssoProvider, ssoUser, impersonate, environment, version );
+        return Objects.hash( super.hashCode(), username, password, token, ssoToken, ssoProvider, ssoUser, impersonate,
+                environment, version, cache, connectTimeout, readTimeout, writeTimeout );
     }
 }
