@@ -203,19 +203,22 @@ public class CloudesireClient extends BasicAuthCloudesireClient
             return this;
         }
 
-        public void setConnectTimeout( Long connectTimeout )
+        public Builder setConnectTimeout( Long connectTimeout )
         {
             this.connectTimeout = connectTimeout;
+            return this;
         }
 
-        public void setReadTimeout( Long readTimeout )
+        public Builder setReadTimeout( Long readTimeout )
         {
             this.readTimeout = readTimeout;
+            return this;
         }
 
-        public void setWriteTimeout( Long writeTimeout )
+        public Builder setWriteTimeout( Long writeTimeout )
         {
             this.writeTimeout = writeTimeout;
+            return this;
         }
 
         public CloudesireClient build()
