@@ -10,6 +10,7 @@ public class OrderQuery extends PageRequestQuery
 {
     private static final String TYPE = "type";
     private static final String STATUS = "status";
+    private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String TEXT_FIELD = "textField";
     private static final String COUPON = "coupon";
     private static final String FROM = "from";
@@ -30,6 +31,12 @@ public class OrderQuery extends PageRequestQuery
     public OrderQuery setStatus( OrderStatus status )
     {
         put( STATUS, status.toString() );
+        return this;
+    }
+
+    public OrderQuery setSubscriptionId( int subscriptionId )
+    {
+        put( SUBSCRIPTION_ID, subscriptionId );
         return this;
     }
 
