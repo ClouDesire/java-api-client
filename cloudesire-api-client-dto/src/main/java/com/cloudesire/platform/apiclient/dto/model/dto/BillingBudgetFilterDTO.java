@@ -16,6 +16,9 @@ public class BillingBudgetFilterDTO implements DTO
     @Valid
     private BillingBudgetPeriodDTO period = new BillingBudgetPeriodDTO( CalendarPeriod.MONTH );
 
+    @ApiModelProperty( "Filter by single subscription" )
+    private UrlEntityDTO subscription;
+
     @ApiModelProperty( "Filter by subscription metadata" )
     private Map<String, String> metadata;
 
@@ -46,6 +49,16 @@ public class BillingBudgetFilterDTO implements DTO
         this.period = period;
     }
 
+    public UrlEntityDTO getSubscription()
+    {
+        return subscription;
+    }
+
+    public void setSubscription( UrlEntityDTO subscription )
+    {
+        this.subscription = subscription;
+    }
+
     public Map<String, String> getMetadata()
     {
         return metadata;
@@ -72,13 +85,13 @@ public class BillingBudgetFilterDTO implements DTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         BillingBudgetFilterDTO that = (BillingBudgetFilterDTO) o;
-        return Objects.equals( period, that.period ) && Objects.equals( metadata, that.metadata ) && Objects.equals(
-                tags, that.tags );
+        return Objects.equals( period, that.period ) && Objects.equals( subscription, that.subscription )
+                && Objects.equals( metadata, that.metadata ) && Objects.equals( tags, that.tags );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( period, metadata, tags );
+        return Objects.hash( period, subscription, metadata, tags );
     }
 }
