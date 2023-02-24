@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
@@ -21,7 +21,7 @@ public class BillingBudgetThresholdDTO implements DTO
     private BigDecimal percent;
 
     @ApiModelProperty( value = "When this threshold has been notified", accessMode = READ_ONLY )
-    private LocalDateTime notifiedAt;
+    private ZonedDateTime notifiedAt;
 
     public BillingBudgetThresholdDTO( String percent )
     {
@@ -42,12 +42,12 @@ public class BillingBudgetThresholdDTO implements DTO
         this.percent = percent;
     }
 
-    public LocalDateTime getNotifiedAt()
+    public ZonedDateTime getNotifiedAt()
     {
         return notifiedAt;
     }
 
-    public void setNotifiedAt( LocalDateTime notifiedAt )
+    public void setNotifiedAt( ZonedDateTime notifiedAt )
     {
         this.notifiedAt = notifiedAt;
     }
