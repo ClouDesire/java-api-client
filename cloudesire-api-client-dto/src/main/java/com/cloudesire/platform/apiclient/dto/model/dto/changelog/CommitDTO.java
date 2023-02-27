@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +17,7 @@ public class CommitDTO implements DTO
 
     private UrlEntityDTO author;
 
-    private LocalDateTime date;
+    private ZonedDateTime date;
 
     private CmwEventType change = CmwEventType.MODIFIED;
 
@@ -25,7 +25,7 @@ public class CommitDTO implements DTO
 
     private final Map<String, String> properties = new HashMap<>();
 
-    public CommitDTO( BigDecimal id, String author, LocalDateTime date, Map<String, String> properties )
+    public CommitDTO( BigDecimal id, String author, ZonedDateTime date, Map<String, String> properties )
     {
         this.id = id;
         this.author = new UrlEntityDTO( author );
@@ -47,7 +47,7 @@ public class CommitDTO implements DTO
         return author;
     }
 
-    public LocalDateTime getDate()
+    public ZonedDateTime getDate()
     {
         return date;
     }
