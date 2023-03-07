@@ -15,6 +15,7 @@ public class InvoiceQuery extends PageRequestQuery
     private static final String PAID = "paid";
     private static final String SELF_BILLED = "selfBilled";
     private static final String STATUS = "status";
+    private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String TO = "to";
     private static final String TYPE = "type";
     private static final String COMPANY = "company";
@@ -82,6 +83,12 @@ public class InvoiceQuery extends PageRequestQuery
     public InvoiceQuery setMetadata( MetadataQuery metadata )
     {
         putAll( metadata );
+        return this;
+    }
+
+    public InvoiceQuery setSubscriptionId( int subscriptionId )
+    {
+        put( SUBSCRIPTION_ID, subscriptionId );
         return this;
     }
 
