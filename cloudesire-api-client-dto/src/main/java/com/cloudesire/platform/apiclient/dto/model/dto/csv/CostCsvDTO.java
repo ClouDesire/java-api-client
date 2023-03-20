@@ -9,7 +9,7 @@ import java.util.Date;
 
 @JsonPropertyOrder( {
         "subscription", "subscriptionName", "type", "billingItem", "identifier", "description", "start", "end",
-        "purchased", "nominee", "operator", "reseller", "currency", "cost"
+        "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost"
 } )
 public class CostCsvDTO implements DTO
 {
@@ -36,6 +36,8 @@ public class CostCsvDTO implements DTO
     private String reseller;
 
     private Date purchased;
+
+    private BigDecimal quantity;
 
     private String currency;
 
@@ -159,6 +161,16 @@ public class CostCsvDTO implements DTO
     public void setPurchased( Date purchased )
     {
         this.purchased = purchased;
+    }
+
+    public BigDecimal getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity( BigDecimal quantity )
+    {
+        this.quantity = quantity;
     }
 
     public String getCurrency()
