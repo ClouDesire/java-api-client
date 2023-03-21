@@ -2019,6 +2019,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "The maximum number of featured products" )
         private int maximumFeaturedProducts = -1;
 
+        @ApiModelProperty( "The number of most sold products to show in statistics" )
+        private int mostSoldProducts = 3;
+
         @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
         @Valid
@@ -2240,6 +2243,16 @@ public class EnvironmentDTO implements DTO
         public void setMaximumFeaturedProducts( int maximumFeaturedProducts )
         {
             this.maximumFeaturedProducts = maximumFeaturedProducts;
+        }
+
+        public int getMostSoldProducts()
+        {
+            return mostSoldProducts;
+        }
+
+        public void setMostSoldProducts( int mostSoldProducts )
+        {
+            this.mostSoldProducts = mostSoldProducts;
         }
 
         public List<EntryDTO> getMetricFrequencyValues()
