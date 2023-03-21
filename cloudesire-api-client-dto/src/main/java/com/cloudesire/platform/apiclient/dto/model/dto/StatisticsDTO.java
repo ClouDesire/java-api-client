@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 public class StatisticsDTO implements DTO
@@ -66,6 +67,9 @@ public class StatisticsDTO implements DTO
 
     @ApiModelProperty( value = "Upsell orders", readOnly = true )
     private Long upsellOrdersCount;
+
+    @ApiModelProperty( value = "Most sold products", readOnly = true )
+    private List<ProductStatisticsDTO> mostSoldProducts;
 
     public BigDecimal getIaasExpenses()
     {
@@ -267,6 +271,16 @@ public class StatisticsDTO implements DTO
         this.upsellOrdersCount = upsellOrdersCount;
     }
 
+    public List<ProductStatisticsDTO> getMostSoldProducts()
+    {
+        return mostSoldProducts;
+    }
+
+    public void setMostSoldProducts( List<ProductStatisticsDTO> mostSoldProducts )
+    {
+        this.mostSoldProducts = mostSoldProducts;
+    }
+
     @Override
     public boolean equals( Object o )
     {
@@ -291,7 +305,8 @@ public class StatisticsDTO implements DTO
                 && Objects.equals( normalOrdersCount, that.normalOrdersCount )
                 && Objects.equals( trialOrdersCount, that.trialOrdersCount )
                 && Objects.equals( renewalOrdersCount, that.renewalOrdersCount )
-                && Objects.equals( upsellOrdersCount, that.upsellOrdersCount );
+                && Objects.equals( upsellOrdersCount, that.upsellOrdersCount )
+                && Objects.equals( mostSoldProducts, that.mostSoldProducts );
     }
 
     @Override
@@ -301,7 +316,7 @@ public class StatisticsDTO implements DTO
                 iaasExpenses, licenseExpenses, earnings, costs, margin, normalExpenses, trialExpenses, sandboxExpenses,
                 customersCount, companiesCount, subscriptionsCount, deployedSubscriptionsCount,
                 pendingSubscriptionsCount, failedSubscriptionsCount, productsCount, publishedProductsCount,
-                normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount
+                normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount, mostSoldProducts
         );
     }
 }
