@@ -69,7 +69,10 @@ public class StatisticsDTO implements DTO
     private Long upsellOrdersCount;
 
     @ApiModelProperty( value = "Most sold products", readOnly = true )
-    private List<ProductStatisticsDTO> mostSoldProducts;
+    private List<SellingStatisticDTO> mostSoldProducts;
+
+    @ApiModelProperty( value = "Most profitable customers", readOnly = true )
+    private List<SellingStatisticDTO> mostProfitableCustomers;
 
     public BigDecimal getIaasExpenses()
     {
@@ -271,14 +274,24 @@ public class StatisticsDTO implements DTO
         this.upsellOrdersCount = upsellOrdersCount;
     }
 
-    public List<ProductStatisticsDTO> getMostSoldProducts()
+    public List<SellingStatisticDTO> getMostSoldProducts()
     {
         return mostSoldProducts;
     }
 
-    public void setMostSoldProducts( List<ProductStatisticsDTO> mostSoldProducts )
+    public void setMostSoldProducts( List<SellingStatisticDTO> mostSoldProducts )
     {
         this.mostSoldProducts = mostSoldProducts;
+    }
+
+    public List<SellingStatisticDTO> getMostProfitableCustomers()
+    {
+        return mostProfitableCustomers;
+    }
+
+    public void setMostProfitableCustomers( List<SellingStatisticDTO> mostProfitableCustomers )
+    {
+        this.mostProfitableCustomers = mostProfitableCustomers;
     }
 
     @Override
@@ -306,7 +319,8 @@ public class StatisticsDTO implements DTO
                 && Objects.equals( trialOrdersCount, that.trialOrdersCount )
                 && Objects.equals( renewalOrdersCount, that.renewalOrdersCount )
                 && Objects.equals( upsellOrdersCount, that.upsellOrdersCount )
-                && Objects.equals( mostSoldProducts, that.mostSoldProducts );
+                && Objects.equals( mostSoldProducts, that.mostSoldProducts )
+                && Objects.equals( mostProfitableCustomers, that.mostProfitableCustomers );
     }
 
     @Override
@@ -316,7 +330,8 @@ public class StatisticsDTO implements DTO
                 iaasExpenses, licenseExpenses, earnings, costs, margin, normalExpenses, trialExpenses, sandboxExpenses,
                 customersCount, companiesCount, subscriptionsCount, deployedSubscriptionsCount,
                 pendingSubscriptionsCount, failedSubscriptionsCount, productsCount, publishedProductsCount,
-                normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount, mostSoldProducts
+                normalOrdersCount, trialOrdersCount, renewalOrdersCount, upsellOrdersCount, mostSoldProducts,
+                mostProfitableCustomers
         );
     }
 }

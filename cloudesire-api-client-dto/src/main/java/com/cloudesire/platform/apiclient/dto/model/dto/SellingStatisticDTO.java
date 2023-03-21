@@ -3,20 +3,20 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class ProductStatisticsDTO implements Comparable<ProductStatisticsDTO>, DTO
+public class SellingStatisticDTO implements Comparable<SellingStatisticDTO>, DTO
 {
-    private UrlEntityDTO product;
+    private UrlEntityDTO entity;
 
     private BigDecimal sold;
 
-    public UrlEntityDTO getProduct()
+    public UrlEntityDTO getEntity()
     {
-        return product;
+        return entity;
     }
 
-    public void setProduct( UrlEntityDTO product )
+    public void setEntity( UrlEntityDTO entity )
     {
-        this.product = product;
+        this.entity = entity;
     }
 
     public BigDecimal getSold()
@@ -30,7 +30,7 @@ public class ProductStatisticsDTO implements Comparable<ProductStatisticsDTO>, D
     }
 
     @Override
-    public int compareTo( ProductStatisticsDTO that )
+    public int compareTo( SellingStatisticDTO that )
     {
         return this.sold.compareTo( that.sold );
     }
@@ -40,13 +40,13 @@ public class ProductStatisticsDTO implements Comparable<ProductStatisticsDTO>, D
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
-        ProductStatisticsDTO that = (ProductStatisticsDTO) o;
-        return Objects.equals( product, that.product ) && Objects.equals( sold, that.sold );
+        SellingStatisticDTO that = (SellingStatisticDTO) o;
+        return Objects.equals( entity, that.entity ) && Objects.equals( sold, that.sold );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( product, sold );
+        return Objects.hash( entity, sold );
     }
 }

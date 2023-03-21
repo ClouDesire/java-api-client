@@ -2022,6 +2022,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "The number of most sold products to show in statistics" )
         private int mostSoldProducts = 3;
 
+        @ApiModelProperty( "The number of most profitables customers to show in statistics" )
+        private int mostProfitableCustomers = 3;
+
         @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
         @Valid
@@ -2253,6 +2256,16 @@ public class EnvironmentDTO implements DTO
         public void setMostSoldProducts( int mostSoldProducts )
         {
             this.mostSoldProducts = mostSoldProducts;
+        }
+
+        public int getMostProfitableCustomers()
+        {
+            return mostProfitableCustomers;
+        }
+
+        public void setMostProfitableCustomers( int mostProfitableCustomers )
+        {
+            this.mostProfitableCustomers = mostProfitableCustomers;
         }
 
         public List<EntryDTO> getMetricFrequencyValues()
