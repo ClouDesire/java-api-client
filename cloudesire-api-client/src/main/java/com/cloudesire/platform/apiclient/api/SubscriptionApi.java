@@ -10,8 +10,6 @@ import retrofit2.http.*;
 import java.util.List;
 import java.util.Map;
 
-import static com.cloudesire.platform.apiclient.response.Headers.PREFER;
-
 public interface SubscriptionApi
 {
     @HEAD( "subscription" )
@@ -24,7 +22,12 @@ public interface SubscriptionApi
     Call<List<SubscriptionDTO>> getAll();
 
     @GET( "subscription" )
-    Call<List<NamedEntityDTO>> getAllPreferring( @Header( PREFER ) String preferredHeader );
+    @Headers( "Prefer: response=minimal" )
+    Call<List<NamedEntityDTO>> getAllMinimal( @QueryMap SubscriptionQuery query );
+
+    @GET( "subscription" )
+    @Headers( "Prefer: response=deployment" )
+    Call<List<SubscriptionDeploymentDTO>> getAllDeployment( @QueryMap SubscriptionQuery query );
 
     @GET( "subscription" )
     Call<List<SubscriptionDTO>> getAll( @QueryMap SubscriptionQuery query );
