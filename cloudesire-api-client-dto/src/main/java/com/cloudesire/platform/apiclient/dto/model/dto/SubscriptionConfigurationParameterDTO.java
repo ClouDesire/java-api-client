@@ -6,6 +6,9 @@ public class SubscriptionConfigurationParameterDTO implements DTO
 {
     private UrlEntityDTO configurationParameter;
 
+    @ApiModelProperty( "The identifier for this Configuration Parameter" )
+    private String code;
+
     @ApiModelProperty( "The chosen value for this Configuration Parameter" )
     private String value;
 
@@ -20,6 +23,16 @@ public class SubscriptionConfigurationParameterDTO implements DTO
     public void setConfigurationParameter( UrlEntityDTO configurationParameter )
     {
         this.configurationParameter = configurationParameter;
+    }
+
+    public String getCode()
+    {
+        return code;
+    }
+
+    public void setCode( String code )
+    {
+        this.code = code;
     }
 
     public String getValue()
