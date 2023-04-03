@@ -12,6 +12,12 @@ public class SubscriptionBillingItemDTO implements DTO
 {
     private UrlEntityDTO billingItem;
 
+    @ApiModelProperty( "Unique identifier of the billing item" )
+    private String identifier;
+
+    @ApiModelProperty( "Descriptive name of the billing item" )
+    private String unit;
+
     @ApiModelProperty( "The current value for this billing item" )
     private BigDecimal value;
 
@@ -60,6 +66,26 @@ public class SubscriptionBillingItemDTO implements DTO
     public void setBillingItem( UrlEntityDTO billingItem )
     {
         this.billingItem = billingItem;
+    }
+
+    public String getIdentifier()
+    {
+        return identifier;
+    }
+
+    public void setIdentifier( String identifier )
+    {
+        this.identifier = identifier;
+    }
+
+    public String getUnit()
+    {
+        return unit;
+    }
+
+    public void setUnit( String unit )
+    {
+        this.unit = unit;
     }
 
     public BigDecimal getValue()
