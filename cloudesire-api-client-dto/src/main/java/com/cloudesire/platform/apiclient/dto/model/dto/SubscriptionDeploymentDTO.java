@@ -14,6 +14,8 @@ public class SubscriptionDeploymentDTO extends BaseEntityDTO
 
     private List<SubscriptionBillingItemDTO> billingItems;
 
+    private List<SubscriptionConfigurationParameterDTO> configurationParameters;
+
     public void setNominee( UrlEntityDTO nominee )
     {
         this.nominee = nominee;
@@ -42,6 +44,16 @@ public class SubscriptionDeploymentDTO extends BaseEntityDTO
     public void setBillingItems( List<SubscriptionBillingItemDTO> billingItems )
     {
         this.billingItems = billingItems;
+    }
+
+    public List<SubscriptionConfigurationParameterDTO> getConfigurationParameters()
+    {
+        return configurationParameters;
+    }
+
+    public void setConfigurationParameters( List<SubscriptionConfigurationParameterDTO> configurationParameters )
+    {
+        this.configurationParameters = configurationParameters;
     }
 
     @Override

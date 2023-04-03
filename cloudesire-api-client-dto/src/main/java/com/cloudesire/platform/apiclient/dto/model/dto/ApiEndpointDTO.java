@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @ApiModel( description = "A billed HTTP endpoint" )
-public class ApiEndpointDTO
+public class ApiEndpointDTO implements DTO
 {
     @ApiModelProperty( "The HTTP method" )
     @NotNull
