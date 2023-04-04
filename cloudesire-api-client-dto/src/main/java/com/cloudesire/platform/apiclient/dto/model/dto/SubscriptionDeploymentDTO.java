@@ -12,6 +12,8 @@ public class SubscriptionDeploymentDTO extends BaseEntityDTO
 
     private String type;
 
+    private UrlEntityDTO productVersion;
+
     private List<SubscriptionBillingItemDTO> billingItems;
 
     private List<SubscriptionConfigurationParameterDTO> configurationParameters;
@@ -34,6 +36,16 @@ public class SubscriptionDeploymentDTO extends BaseEntityDTO
     public void setType( String type )
     {
         this.type = type;
+    }
+
+    public UrlEntityDTO getProductVersion()
+    {
+        return productVersion;
+    }
+
+    public void setProductVersion( UrlEntityDTO productVersion )
+    {
+        this.productVersion = productVersion;
     }
 
     public List<SubscriptionBillingItemDTO> getBillingItems()
