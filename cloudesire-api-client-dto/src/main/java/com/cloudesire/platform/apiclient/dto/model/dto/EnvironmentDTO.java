@@ -22,11 +22,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -2121,6 +2123,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Conversion factors from foreign currencies" )
         private Map<String, BigDecimal> currencyConversion = new HashMap<>();
 
+        @ApiModelProperty( "Salient metadata for the environment" )
+        private SalientMetadata salientMetadata = new SalientMetadata();
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2621,6 +2626,16 @@ public class EnvironmentDTO implements DTO
         {
             this.currencyConversion = currencyConversion;
         }
+
+        public SalientMetadata getSalientMetadata()
+        {
+            return salientMetadata;
+        }
+
+        public void setSalientMetadata( SalientMetadata salientMetadata )
+        {
+            this.salientMetadata = salientMetadata;
+        }
         //endregion
 
         public enum VatService
@@ -2967,6 +2982,44 @@ public class EnvironmentDTO implements DTO
         public void setSpecial( int special )
         {
             this.special = special;
+        }
+    }
+
+    public static class SalientMetadata implements DTO, Iterable<String>
+    {
+        @ApiModelProperty( "Subscription metadata" )
+        private List<String> subscriptionMetadata = new ArrayList<>();
+
+        @ApiModelProperty( "Cloud tags" )
+        private List<String> cloudTags = new ArrayList<>();
+
+        @Override
+        public Iterator<String> iterator()
+        {
+            var list = new ArrayList<String>();
+            list.addAll( subscriptionMetadata );
+            list.addAll( cloudTags );
+            return list.iterator();
+        }
+
+        public List<String> getSubscriptionMetadata()
+        {
+            return subscriptionMetadata;
+        }
+
+        public void setSubscriptionMetadata( List<String> subscriptionMetadata )
+        {
+            this.subscriptionMetadata = subscriptionMetadata;
+        }
+
+        public List<String> getCloudTags()
+        {
+            return cloudTags;
+        }
+
+        public void setCloudTags( List<String> cloudTags )
+        {
+            this.cloudTags = cloudTags;
         }
     }
 
