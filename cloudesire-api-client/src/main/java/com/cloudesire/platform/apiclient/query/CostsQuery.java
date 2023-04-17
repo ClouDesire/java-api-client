@@ -9,6 +9,7 @@ public class CostsQuery extends BaseQuery
     private static final String FROM = "from";
     private static final String TO = "to";
     private static final String SUBSCRIPTION_ID = "subscriptionId";
+    private static final String LANGUAGE = "language";
 
     public CostsQuery from( Date from )
     {
@@ -25,6 +26,12 @@ public class CostsQuery extends BaseQuery
     public CostsQuery subscriptionId( int subscriptionId )
     {
         put( SUBSCRIPTION_ID, subscriptionId );
+        return this;
+    }
+
+    public CostsQuery language( String language )
+    {
+        put( LANGUAGE, language );
         return this;
     }
 
