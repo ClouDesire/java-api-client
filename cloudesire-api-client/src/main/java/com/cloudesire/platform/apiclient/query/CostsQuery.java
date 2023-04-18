@@ -4,6 +4,8 @@ import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
 
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.LANGUAGE;
+
 public class CostsQuery extends BaseQuery
 {
     private static final String FROM = "from";
@@ -25,6 +27,12 @@ public class CostsQuery extends BaseQuery
     public CostsQuery subscriptionId( int subscriptionId )
     {
         put( SUBSCRIPTION_ID, subscriptionId );
+        return this;
+    }
+
+    public CostsQuery language( String language )
+    {
+        put( LANGUAGE, language );
         return this;
     }
 
