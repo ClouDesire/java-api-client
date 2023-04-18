@@ -5,6 +5,7 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -29,6 +30,8 @@ public class CartItemDTO extends BaseEntityDTO
 
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
+
+    private List<UrlEntityDTO> orders;
 
     public CartItemDTO( @NotNull @Valid UrlEntityDTO productVersion )
     {
@@ -107,6 +110,16 @@ public class CartItemDTO extends BaseEntityDTO
     public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
+    }
+
+    public List<UrlEntityDTO> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders( List<UrlEntityDTO> orders )
+    {
+        this.orders = orders;
     }
 
     @Override
