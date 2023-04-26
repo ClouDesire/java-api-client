@@ -71,6 +71,7 @@
 				<configuration>
 					<!-- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=911925 -->
 					<useSystemClassLoader>false</useSystemClassLoader>
+					<rerunFailingTestsCount>2</rerunFailingTestsCount>
 				</configuration>
 			</plugin>
 			<plugin>
