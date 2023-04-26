@@ -13,7 +13,7 @@
 
 	<properties>
 		<retrofit.version>2.9.0</retrofit.version>
-		<okhttp.version>4.10.0</okhttp.version>
+		<okhttp.version>4.11.0</okhttp.version>
 	</properties>
 
 	<dependencies>
