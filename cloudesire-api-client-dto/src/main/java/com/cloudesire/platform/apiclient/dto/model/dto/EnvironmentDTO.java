@@ -2022,10 +2022,10 @@ public class EnvironmentDTO implements DTO
         private int maximumFeaturedProducts = -1;
 
         @ApiModelProperty( "The number of most sold products to show in statistics" )
-        private int mostSoldProducts = 3;
+        private int mostSoldProductVersions = 10;
 
         @ApiModelProperty( "The number of most profitables customers to show in statistics" )
-        private int mostProfitableCustomers = 3;
+        private int mostProfitableCustomers = 10;
 
         @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
@@ -2253,14 +2253,14 @@ public class EnvironmentDTO implements DTO
             this.maximumFeaturedProducts = maximumFeaturedProducts;
         }
 
-        public int getMostSoldProducts()
+        public int getMostSoldProductVersions()
         {
-            return mostSoldProducts;
+            return mostSoldProductVersions;
         }
 
-        public void setMostSoldProducts( int mostSoldProducts )
+        public void setMostSoldProductVersions( int mostSoldProductVersions )
         {
-            this.mostSoldProducts = mostSoldProducts;
+            this.mostSoldProductVersions = mostSoldProductVersions;
         }
 
         public int getMostProfitableCustomers()
