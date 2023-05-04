@@ -45,6 +45,9 @@ public interface CartApi
     @POST( "cart/{id}/checkout" )
     Call<Void> checkout( @Path( "id" ) int id );
 
+    @POST( "cart/{id}/copy" )
+    Call<Void> copy( @Path( "id" ) int id );
+
     @DELETE( "cart/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
 }
