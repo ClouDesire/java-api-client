@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceOperationType;
 import com.cloudesire.platform.apiclient.dto.model.enums.InvoiceStatus;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
@@ -32,8 +33,8 @@ public class InvoiceDTO extends BaseInvoiceDTO
     private boolean stampDuty = false;
 
     @NotNull
-    @ApiModelProperty( value = "The order type this invoice refers to", allowableValues = "NORMAL, TRIAL, SANDBOX" )
-    private String type = "NORMAL";
+    @ApiModelProperty( "The order type this invoice refers to" )
+    private OrderType type;
 
     @NotNull
     @ApiModelProperty( "The product name this invoice refers to" )
@@ -155,12 +156,12 @@ public class InvoiceDTO extends BaseInvoiceDTO
         this.nominee = nominee;
     }
 
-    public String getType()
+    public OrderType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( OrderType type )
     {
         this.type = type;
     }
