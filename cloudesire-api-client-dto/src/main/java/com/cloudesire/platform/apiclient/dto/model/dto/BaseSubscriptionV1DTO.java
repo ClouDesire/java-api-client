@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
@@ -18,6 +19,7 @@ import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201202;
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20220211;
+import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
 public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
 {
@@ -68,8 +70,8 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
     @UnsupportedAPI( sinceVersion = V20220211 )
     private Date nextInvoice;
 
-    @ApiModelProperty( value = "The type of this subscription", readOnly = true, allowableValues = "NORMAL, TRIAL, SANDBOX" )
-    private String type;
+    @ApiModelProperty( value = "The type of this subscription", allowableValues = "NORMAL, TRIAL, SANDBOX", accessMode = READ_ONLY )
+    private OrderType type;
 
     /**
      * @deprecated use {@link #endpoints}
@@ -249,12 +251,12 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
         this.invoices = invoices;
     }
 
-    public String getType()
+    public OrderType getType()
     {
         return type;
     }
 
-    public void setType( String type )
+    public void setType( OrderType type )
     {
         this.type = type;
     }
