@@ -14,6 +14,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CartApi
 {
@@ -50,4 +51,13 @@ public interface CartApi
 
     @DELETE( "cart/{id}" )
     Call<Void> delete( @Path( "id" ) int id );
+
+    @GET( "cart/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
+
+    @PUT( "cart/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @DELETE( "cart/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
 }
