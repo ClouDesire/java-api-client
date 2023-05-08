@@ -8,6 +8,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
 
@@ -19,6 +20,9 @@ public class BillingBudgetThresholdDTO implements DTO
     @Max( 100 )
     @NotNull
     private BigDecimal percent;
+
+    @ApiModelProperty( "Send an alert for this threshold to these extra addresses" )
+    private List<String> cc;
 
     @ApiModelProperty( value = "When this threshold has been notified", accessMode = READ_ONLY )
     private ZonedDateTime notifiedAt;
@@ -40,6 +44,16 @@ public class BillingBudgetThresholdDTO implements DTO
     public void setPercent( BigDecimal percent )
     {
         this.percent = percent;
+    }
+
+    public List<String> getCc()
+    {
+        return cc;
+    }
+
+    public void setCc( List<String> cc )
+    {
+        this.cc = cc;
     }
 
     public ZonedDateTime getNotifiedAt()
