@@ -258,6 +258,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     private NotificationMailCustomization deployCompleteCustomer = new NotificationMailCustomization();
 
+    @ApiModelProperty( "Email sent to the configured address when deployment is completed" )
+    @Valid
+    @NotNull
+    private MailCustomization deployCompleteExternal = new MailCustomization();
+
     @ApiModelProperty( "Email sent to the configured addresses when a vendor request an approval for changes of a product" )
     @Valid
     @NotNull
@@ -464,6 +469,16 @@ public class EnvironmentDTO implements DTO
     public void setDeployCompleteCustomer( NotificationMailCustomization deployCompleteCustomer )
     {
         this.deployCompleteCustomer = deployCompleteCustomer;
+    }
+
+    public MailCustomization getDeployCompleteExternal()
+    {
+        return deployCompleteExternal;
+    }
+
+    public void setDeployCompleteExternal( MailCustomization deployCompleteExternal )
+    {
+        this.deployCompleteExternal = deployCompleteExternal;
     }
 
     public MailCustomization getApprovalRequest()
