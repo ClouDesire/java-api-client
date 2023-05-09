@@ -22,7 +22,7 @@ public class BillingBudgetThresholdDTO implements DTO
     private BigDecimal percent;
 
     @ApiModelProperty( "Send an alert for this threshold to these extra addresses" )
-    private List<String> cc;
+    private List<String> additionalRecipients;
 
     @ApiModelProperty( value = "When this threshold has been notified", accessMode = READ_ONLY )
     private ZonedDateTime notifiedAt;
@@ -46,14 +46,14 @@ public class BillingBudgetThresholdDTO implements DTO
         this.percent = percent;
     }
 
-    public List<String> getCc()
+    public List<String> getAdditionalRecipients()
     {
-        return cc;
+        return additionalRecipients;
     }
 
-    public void setCc( List<String> cc )
+    public void setAdditionalRecipients( List<String> additionalRecipients )
     {
-        this.cc = cc;
+        this.additionalRecipients = additionalRecipients;
     }
 
     public ZonedDateTime getNotifiedAt()
