@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
+import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -10,8 +11,9 @@ import java.util.Date;
 import java.util.Map;
 
 @JsonPropertyOrder( {
-        "subscription", "productVersion", "subscriptionName", "type", "billingItem", "identifier", "description",
-        "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost", "platformCost"
+        "subscription", "productVersion", "subscriptionName", "orderType", "type", "billingItem", "identifier",
+        "description", "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost",
+        "platformCost"
 } )
 public class CostCsvDTO implements DTO
 {
@@ -20,6 +22,8 @@ public class CostCsvDTO implements DTO
     private String productVersion;
 
     private String subscriptionName;
+
+    private OrderType orderType;
 
     private LineType type;
 
@@ -79,6 +83,16 @@ public class CostCsvDTO implements DTO
     public void setSubscriptionName( String subscriptionName )
     {
         this.subscriptionName = subscriptionName;
+    }
+
+    public OrderType getOrderType()
+    {
+        return orderType;
+    }
+
+    public void setOrderType( OrderType orderType )
+    {
+        this.orderType = orderType;
     }
 
     public LineType getType()
