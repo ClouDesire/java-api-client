@@ -27,9 +27,7 @@ public class CostCsvDTO implements DTO
 
     private LineType type;
 
-    private String billingItem;
-
-    private String identifier;
+    private String typeCode;
 
     private String description;
 
@@ -105,24 +103,14 @@ public class CostCsvDTO implements DTO
         this.type = type;
     }
 
-    public String getBillingItem()
+    public String getTypeCode()
     {
-        return billingItem;
+        return typeCode;
     }
 
-    public void setBillingItem( String billingItem )
+    public void setTypeCode( String typeCode )
     {
-        this.billingItem = billingItem;
-    }
-
-    public String getIdentifier()
-    {
-        return identifier;
-    }
-
-    public void setIdentifier( String identifier )
-    {
-        this.identifier = identifier;
+        this.typeCode = typeCode;
     }
 
     public String getDescription()
