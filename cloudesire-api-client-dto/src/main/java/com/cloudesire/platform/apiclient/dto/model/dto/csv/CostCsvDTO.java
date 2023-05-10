@@ -10,12 +10,14 @@ import java.util.Date;
 import java.util.Map;
 
 @JsonPropertyOrder( {
-        "subscription", "subscriptionName", "type", "billingItem", "identifier", "description", "start", "end",
-        "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost", "platformCost"
+        "subscription", "productVersion", "subscriptionName", "type", "billingItem", "identifier", "description",
+        "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost", "platformCost"
 } )
 public class CostCsvDTO implements DTO
 {
     private Integer subscription;
+
+    private String productVersion;
 
     private String subscriptionName;
 
@@ -57,6 +59,16 @@ public class CostCsvDTO implements DTO
     public void setSubscription( Integer subscription )
     {
         this.subscription = subscription;
+    }
+
+    public String getProductVersion()
+    {
+        return productVersion;
+    }
+
+    public void setProductVersion( String productVersion )
+    {
+        this.productVersion = productVersion;
     }
 
     public String getSubscriptionName()
