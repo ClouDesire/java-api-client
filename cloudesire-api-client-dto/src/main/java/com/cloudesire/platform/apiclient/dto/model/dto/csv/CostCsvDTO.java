@@ -9,11 +9,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 
 @JsonPropertyOrder( {
-        "subscription", "productVersion", "subscriptionName", "orderType", "type", "billingItem", "identifier",
-        "description", "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost",
-        "platformCost"
+        "subscription", "productVersion", "subscriptionName", "orderType", "orders", "type", "billingItem",
+        "identifier", "description", "start", "end", "purchased", "nominee", "operator", "reseller", "quantity",
+        "currency", "cost", "platformCost"
 } )
 public class CostCsvDTO implements DTO
 {
@@ -24,6 +25,8 @@ public class CostCsvDTO implements DTO
     private String subscriptionName;
 
     private OrderType orderType;
+
+    private Set<Integer> orders;
 
     private LineType type;
 
@@ -91,6 +94,16 @@ public class CostCsvDTO implements DTO
     public void setOrderType( OrderType orderType )
     {
         this.orderType = orderType;
+    }
+
+    public Set<Integer> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders( Set<Integer> orders )
+    {
+        this.orders = orders;
     }
 
     public LineType getType()
