@@ -31,7 +31,7 @@ public class CostCsvDTO implements DTO
     @JsonProperty( "Order type" )
     private OrderType orderType;
 
-    @JsonProperty( "Orders" )
+    @JsonProperty( "Order ID" )
     private Set<Integer> orders;
 
     @JsonProperty( "Line type" )
