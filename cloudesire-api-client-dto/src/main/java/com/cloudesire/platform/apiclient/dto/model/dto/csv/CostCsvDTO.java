@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
-import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,9 +12,8 @@ import java.util.Map;
 import java.util.Set;
 
 @JsonPropertyOrder( {
-        "subscription", "productVersion", "subscriptionName", "orderType", "orders", "type", "billingItem",
-        "identifier", "description", "start", "end", "purchased", "nominee", "operator", "reseller", "quantity",
-        "currency", "cost", "platformCost"
+        "subscription", "productVersion", "subscriptionName", "orderType", "orders", "typeCode", "description",
+        "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "cost", "platformCost"
 } )
 public class CostCsvDTO implements DTO
 {
@@ -34,13 +32,10 @@ public class CostCsvDTO implements DTO
     @JsonProperty( "Order ID" )
     private Set<Integer> orders;
 
-    @JsonProperty( "Line type" )
-    private LineType type;
-
-    @JsonProperty( "Service ID" )
+    @JsonProperty( "Cost ID" )
     private String typeCode;
 
-    @JsonProperty( "Service description" )
+    @JsonProperty( "Cost description" )
     private String description;
 
     @JsonProperty( "Start date" )
@@ -123,16 +118,6 @@ public class CostCsvDTO implements DTO
     public void setOrders( Set<Integer> orders )
     {
         this.orders = orders;
-    }
-
-    public LineType getType()
-    {
-        return type;
-    }
-
-    public void setType( LineType type )
-    {
-        this.type = type;
     }
 
     public String getTypeCode()
