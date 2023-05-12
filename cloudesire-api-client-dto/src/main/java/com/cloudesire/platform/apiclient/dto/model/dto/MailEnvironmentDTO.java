@@ -243,6 +243,13 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration deployCompleteCustomer;
 
         /**
+         * Email sent to the configured address when deployment is completed
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration deployCompleteExternal;
+
+        /**
          * Email sent to the configured addresses when a vendor request an approval for changes of a product
          */
         @NotNull
@@ -705,6 +712,16 @@ public class MailEnvironmentDTO implements DTO
         public void setDeployCompleteCustomer( MailConfiguration deployCompleteCustomer )
         {
             this.deployCompleteCustomer = deployCompleteCustomer;
+        }
+
+        public MailConfiguration getDeployCompleteExternal()
+        {
+            return deployCompleteExternal;
+        }
+
+        public void setDeployCompleteExternal( MailConfiguration deployCompleteExternal )
+        {
+            this.deployCompleteExternal = deployCompleteExternal;
         }
 
         public MailConfiguration getApprovalRequest()
