@@ -2675,6 +2675,9 @@ public class EnvironmentDTO implements DTO
         private String company;
 
         @NotEmpty
+        private String costs;
+
+        @NotEmpty
         private String dashboard;
 
         @NotEmpty
@@ -2746,6 +2749,16 @@ public class EnvironmentDTO implements DTO
         public void setCompany( String company )
         {
             this.company = company;
+        }
+
+        public String getCosts()
+        {
+            return costs;
+        }
+
+        public void setCosts( String costs )
+        {
+            this.costs = costs;
         }
 
         public String getDashboard()
