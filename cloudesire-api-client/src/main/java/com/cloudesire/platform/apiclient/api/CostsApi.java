@@ -27,6 +27,7 @@ public interface CostsApi
     @Streaming
     Call<ResponseBody> getCsv( @QueryMap CostsQuery query );
 
+    @Deprecated
     @GET( "costs/description/custom" )
     Call<CostDescriptionDTO> getCustomCostDescription( @Query( "identifier" ) String identifier );
 
