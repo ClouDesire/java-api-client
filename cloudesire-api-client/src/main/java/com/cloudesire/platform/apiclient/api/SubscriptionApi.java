@@ -57,6 +57,10 @@ public interface SubscriptionApi
     @GET( "subscription/{id}" )
     Call<SubscriptionDetailDTO> get( @Path( "id" ) Integer id, @Query( "language" ) String language );
 
+    @GET( "subscription/{id}" )
+    @Headers( "Prefer: response=minimal" )
+    Call<NamedEntityDTO> getMinimal( @Path( "id" ) int id );
+
     @POST( "subscription/{id}/invoice" )
     Call<Void> customInvoice( @Path( "id" ) int id,
             @Body List<VendorOrderLineDTO> lines,
