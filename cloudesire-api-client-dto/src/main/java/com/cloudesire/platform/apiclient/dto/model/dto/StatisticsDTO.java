@@ -71,7 +71,10 @@ public class StatisticsDTO implements DTO
     @ApiModelProperty( value = "Most sold product versions", readOnly = true )
     private List<SellingStatisticDTO> mostSoldProductVersions;
 
-    @ApiModelProperty( value = "Most profitable customers", readOnly = true )
+    @ApiModelProperty( value = "Most profitable product versions", readOnly = true )
+    private List<SellingStatisticDTO> mostProfitableProductVersions;
+
+    @ApiModelProperty( value = "Top spending customers", readOnly = true )
     private List<SellingStatisticDTO> mostProfitableCustomers;
 
     public BigDecimal getIaasExpenses()
@@ -282,6 +285,16 @@ public class StatisticsDTO implements DTO
     public void setMostSoldProductVersions( List<SellingStatisticDTO> mostSoldProductVersions )
     {
         this.mostSoldProductVersions = mostSoldProductVersions;
+    }
+
+    public List<SellingStatisticDTO> getMostProfitableProductVersions()
+    {
+        return mostProfitableProductVersions;
+    }
+
+    public void setMostProfitableProductVersions( List<SellingStatisticDTO> mostProfitableProductVersions )
+    {
+        this.mostProfitableProductVersions = mostProfitableProductVersions;
     }
 
     public List<SellingStatisticDTO> getMostProfitableCustomers()
