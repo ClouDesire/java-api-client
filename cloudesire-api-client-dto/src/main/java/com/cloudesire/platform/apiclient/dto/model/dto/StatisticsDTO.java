@@ -8,73 +8,73 @@ import java.util.Objects;
 
 public class StatisticsDTO implements DTO
 {
-    @ApiModelProperty( value = "IAAS expenses for customer", readOnly = true )
+    @ApiModelProperty( "IAAS expenses for customer" )
     private BigDecimal iaasExpenses;
 
-    @ApiModelProperty( value = "License expenses for customer", readOnly = true )
+    @ApiModelProperty( "License expenses for customer" )
     private BigDecimal licenseExpenses;
 
-    @ApiModelProperty( value = "Difference between earnings and costs", readOnly = true )
+    @ApiModelProperty( "Difference between earnings and costs" )
     private BigDecimal margin;
 
-    @ApiModelProperty( value = "Total earnings", readOnly = true )
+    @ApiModelProperty( "Total earnings" )
     private BigDecimal earnings;
 
-    @ApiModelProperty( value = "Total costs", readOnly = true )
+    @ApiModelProperty( "Total costs" )
     private BigDecimal costs;
 
-    @ApiModelProperty( value = "Expenses for NORMAL orders", readOnly = true )
+    @ApiModelProperty( "Expenses for NORMAL orders" )
     private BigDecimal normalExpenses;
 
-    @ApiModelProperty( value = "Expenses for TRIAL orders", readOnly = true )
+    @ApiModelProperty( "Expenses for TRIAL orders" )
     private BigDecimal trialExpenses;
 
-    @ApiModelProperty( value = "Expenses for SANDBOX orders", readOnly = true )
+    @ApiModelProperty( "Expenses for SANDBOX orders" )
     private BigDecimal sandboxExpenses;
 
-    @ApiModelProperty( value = "Active customers", readOnly = true )
+    @ApiModelProperty( "Active customers" )
     private Long customersCount;
 
-    @ApiModelProperty( value = "Registered companies", readOnly = true )
+    @ApiModelProperty( "Registered companies" )
     private Long companiesCount;
 
-    @ApiModelProperty( value = "Active subscriptions", readOnly = true )
+    @ApiModelProperty( "Active subscriptions" )
     private Long subscriptionsCount;
 
-    @ApiModelProperty( value = "Subscriptions in DEPLOYED status", readOnly = true )
+    @ApiModelProperty( "Subscriptions in DEPLOYED status" )
     private Long deployedSubscriptionsCount;
 
-    @ApiModelProperty( value = "Subscriptions in PENDING status", readOnly = true )
+    @ApiModelProperty( "Subscriptions in PENDING status" )
     private Long pendingSubscriptionsCount;
 
-    @ApiModelProperty( value = "Subscriptions in FAILED status", readOnly = true )
+    @ApiModelProperty( "Subscriptions in FAILED status" )
     private Long failedSubscriptionsCount;
 
-    @ApiModelProperty( value = "Products count", readOnly = true )
+    @ApiModelProperty( "Products count" )
     private Long productsCount;
 
-    @ApiModelProperty( value = "Published products count", readOnly = true )
+    @ApiModelProperty( "Published products count" )
     private Long publishedProductsCount;
 
-    @ApiModelProperty( value = "Paid NORMAL orders", readOnly = true )
+    @ApiModelProperty( "Paid NORMAL orders" )
     private Long normalOrdersCount;
 
-    @ApiModelProperty( value = "Trial orders", readOnly = true )
+    @ApiModelProperty( "Trial orders" )
     private Long trialOrdersCount;
 
-    @ApiModelProperty( value = "Renewal orders", readOnly = true )
+    @ApiModelProperty( "Renewal orders" )
     private Long renewalOrdersCount;
 
-    @ApiModelProperty( value = "Upsell orders", readOnly = true )
+    @ApiModelProperty( "Upsell orders" )
     private Long upsellOrdersCount;
 
-    @ApiModelProperty( value = "Most sold product versions", readOnly = true )
+    @ApiModelProperty( "Most sold product versions" )
     private List<SellingStatisticDTO> mostSoldProductVersions;
 
-    @ApiModelProperty( value = "Most profitable product versions", readOnly = true )
+    @ApiModelProperty( "Most profitable product versions" )
     private List<SellingStatisticDTO> mostProfitableProductVersions;
 
-    @ApiModelProperty( value = "Top spending customers", readOnly = true )
+    @ApiModelProperty( "Top spending customers" )
     private List<SellingStatisticDTO> mostProfitableCustomers;
 
     public BigDecimal getIaasExpenses()
