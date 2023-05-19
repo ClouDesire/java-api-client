@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -2039,8 +2040,14 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "The number of most sold products to show in statistics" )
         private int mostSoldProductVersions = 10;
 
-        @ApiModelProperty( "The number of most profitables customers to show in statistics" )
+        @ApiModelProperty( "The number of most profitable products to show in statistics" )
+        private int mostProfitableProductVersion = 10;
+
+        @ApiModelProperty( "The number of top spending customers to show in statistics" )
         private int mostProfitableCustomers = 10;
+
+        @ApiModelProperty( "The minimum date for statistics calculation" )
+        private Date startStatisticsCalculationFrom = new Date( 0L );
 
         @ApiModelProperty( "The available polling frequencies for metrics" )
         @NotNull
@@ -2278,6 +2285,16 @@ public class EnvironmentDTO implements DTO
             this.mostSoldProductVersions = mostSoldProductVersions;
         }
 
+        public int getMostProfitableProductVersion()
+        {
+            return mostProfitableProductVersion;
+        }
+
+        public void setMostProfitableProductVersion( int mostProfitableProductVersion )
+        {
+            this.mostProfitableProductVersion = mostProfitableProductVersion;
+        }
+
         public int getMostProfitableCustomers()
         {
             return mostProfitableCustomers;
@@ -2286,6 +2303,16 @@ public class EnvironmentDTO implements DTO
         public void setMostProfitableCustomers( int mostProfitableCustomers )
         {
             this.mostProfitableCustomers = mostProfitableCustomers;
+        }
+
+        public Date getStartStatisticsCalculationFrom()
+        {
+            return startStatisticsCalculationFrom;
+        }
+
+        public void setStartStatisticsCalculationFrom( Date startStatisticsCalculationFrom )
+        {
+            this.startStatisticsCalculationFrom = startStatisticsCalculationFrom;
         }
 
         public List<EntryDTO> getMetricFrequencyValues()
