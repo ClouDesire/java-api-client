@@ -11,6 +11,8 @@ public class CartItemBudgetDTO implements DTO
 {
     private BudgetDetailDTO budget;
 
+    private Integer id;
+
     @ApiModelProperty( "Requested quantity for the item" )
     private Integer quantity;
 
@@ -28,6 +30,16 @@ public class CartItemBudgetDTO implements DTO
     public void setBudget( BudgetDetailDTO budget )
     {
         this.budget = budget;
+    }
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId( Integer id )
+    {
+        this.id = id;
     }
 
     public Integer getQuantity()
@@ -66,13 +78,12 @@ public class CartItemBudgetDTO implements DTO
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         CartItemBudgetDTO that = (CartItemBudgetDTO) o;
-        return Objects.equals( budget, that.budget ) && Objects.equals( quantity, that.quantity ) && Objects.equals(
-                subTotal, that.subTotal );
+        return Objects.equals( id, that.id );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( budget, quantity, subTotal );
+        return Objects.hash( id );
     }
 }
