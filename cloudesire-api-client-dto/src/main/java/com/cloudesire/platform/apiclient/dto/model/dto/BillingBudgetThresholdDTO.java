@@ -1,8 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -22,7 +24,7 @@ public class BillingBudgetThresholdDTO implements DTO
     private BigDecimal percent;
 
     @ApiModelProperty( "Send an alert for this threshold to these extra addresses" )
-    private List<String> additionalRecipients;
+    private List<@Email( regexp = Regexp.INTERNET_EMAIL ) @NotNull String> additionalRecipients;
 
     @ApiModelProperty( value = "When this threshold has been notified", accessMode = READ_ONLY )
     private ZonedDateTime notifiedAt;
