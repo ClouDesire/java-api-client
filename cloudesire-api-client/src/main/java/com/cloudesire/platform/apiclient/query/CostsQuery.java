@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.query;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.Grouping;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ public class CostsQuery extends BaseQuery
     private static final String FROM = "from";
     private static final String TO = "to";
     private static final String SUBSCRIPTION_ID = "subscriptionId";
+    private static final String GROUPING = "grouping";
 
     public CostsQuery from( Date from )
     {
@@ -27,6 +29,12 @@ public class CostsQuery extends BaseQuery
     public CostsQuery subscriptionId( int subscriptionId )
     {
         put( SUBSCRIPTION_ID, subscriptionId );
+        return this;
+    }
+
+    public CostsQuery grouping( Grouping grouping )
+    {
+        put( GROUPING, grouping );
         return this;
     }
 
