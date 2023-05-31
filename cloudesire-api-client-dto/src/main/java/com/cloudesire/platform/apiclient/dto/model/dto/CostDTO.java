@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
 public class CostDTO implements DTO
 {
@@ -20,6 +21,8 @@ public class CostDTO implements DTO
     private String description;
 
     private BigDecimal cost;
+
+    private ZonedDateTime purchased;
 
     public UrlEntityDTO getSubscription()
     {
@@ -89,5 +92,15 @@ public class CostDTO implements DTO
     public void setCost( BigDecimal cost )
     {
         this.cost = cost;
+    }
+
+    public ZonedDateTime getPurchased()
+    {
+        return purchased;
+    }
+
+    public void setPurchased( ZonedDateTime purchased )
+    {
+        this.purchased = purchased;
     }
 }
