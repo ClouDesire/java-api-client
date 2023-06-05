@@ -2041,7 +2041,10 @@ public class EnvironmentDTO implements DTO
         private int mostSoldProductVersions = 10;
 
         @ApiModelProperty( "The number of most profitable products to show in statistics" )
-        private int mostProfitableProductVersion = 10;
+        private int mostProfitableProductVersions = 10;
+
+        @ApiModelProperty( "The number of most activated products to show in statistics" )
+        private int mostActivatedProductVersions = 10;
 
         @ApiModelProperty( "The number of top spending customers to show in statistics" )
         private int mostProfitableCustomers = 10;
@@ -2285,14 +2288,24 @@ public class EnvironmentDTO implements DTO
             this.mostSoldProductVersions = mostSoldProductVersions;
         }
 
-        public int getMostProfitableProductVersion()
+        public int getMostProfitableProductVersions()
         {
-            return mostProfitableProductVersion;
+            return mostProfitableProductVersions;
         }
 
-        public void setMostProfitableProductVersion( int mostProfitableProductVersion )
+        public void setMostProfitableProductVersions( int mostProfitableProductVersions )
         {
-            this.mostProfitableProductVersion = mostProfitableProductVersion;
+            this.mostProfitableProductVersions = mostProfitableProductVersions;
+        }
+
+        public int getMostActivatedProductVersions()
+        {
+            return mostActivatedProductVersions;
+        }
+
+        public void setMostActivatedProductVersions( int mostActivatedProductVersions )
+        {
+            this.mostActivatedProductVersions = mostActivatedProductVersions;
         }
 
         public int getMostProfitableCustomers()

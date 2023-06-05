@@ -74,6 +74,9 @@ public class StatisticsDTO implements DTO
     @ApiModelProperty( "Most profitable product versions" )
     private List<SellingStatisticDTO> mostProfitableProductVersions;
 
+    @ApiModelProperty( "Most activated product versions" )
+    private List<SellingStatisticDTO> mostActivatedProductVersions;
+
     @ApiModelProperty( "Top spending customers" )
     private List<SellingStatisticDTO> mostProfitableCustomers;
 
@@ -295,6 +298,16 @@ public class StatisticsDTO implements DTO
     public void setMostProfitableProductVersions( List<SellingStatisticDTO> mostProfitableProductVersions )
     {
         this.mostProfitableProductVersions = mostProfitableProductVersions;
+    }
+
+    public List<SellingStatisticDTO> getMostActivatedProductVersions()
+    {
+        return mostActivatedProductVersions;
+    }
+
+    public void setMostActivatedProductVersions( List<SellingStatisticDTO> mostActivatedProductVersions )
+    {
+        this.mostActivatedProductVersions = mostActivatedProductVersions;
     }
 
     public List<SellingStatisticDTO> getMostProfitableCustomers()
