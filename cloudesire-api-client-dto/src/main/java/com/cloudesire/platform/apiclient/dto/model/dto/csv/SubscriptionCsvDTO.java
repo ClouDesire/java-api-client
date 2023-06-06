@@ -1,9 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Date;
+import java.util.Map;
 
 @JsonPropertyOrder(
         { "id", "name", "deploymentStatus", "type", "cloudProvider", "buyer", "startDate", "endDate", "metadata" }
@@ -27,6 +29,8 @@ public class SubscriptionCsvDTO implements DTO
     private Date endDate;
 
     private String metadata;
+
+    private Map<String, String> customerMetadata;
 
     // region Auto-generated code
     public Integer getId()
@@ -117,6 +121,17 @@ public class SubscriptionCsvDTO implements DTO
     public void setMetadata( String metadata )
     {
         this.metadata = metadata;
+    }
+
+    @JsonAnyGetter
+    public Map<String, String> getCustomerMetadata()
+    {
+        return customerMetadata;
+    }
+
+    public void setCustomerMetadata( Map<String, String> customerMetadata )
+    {
+        this.customerMetadata = customerMetadata;
     }
     // endregion
 }
