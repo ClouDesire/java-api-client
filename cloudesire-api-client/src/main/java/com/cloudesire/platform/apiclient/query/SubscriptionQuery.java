@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 public class SubscriptionQuery extends PageRequestQuery
 {
     private static final String FILTER = "filter";
+    private static final String ID = "id";
     private static final String STATUS = "status";
     private static final String TYPE = "type";
     private static final String PRODUCT = "product";
@@ -28,6 +29,13 @@ public class SubscriptionQuery extends PageRequestQuery
     public SubscriptionQuery setFilter( String value )
     {
         put( FILTER, value );
+        return this;
+    }
+
+    public SubscriptionQuery setId( Integer... id )
+    {
+        String value = StringUtils.join( id, ',' );
+        put( ID, value );
         return this;
     }
 
