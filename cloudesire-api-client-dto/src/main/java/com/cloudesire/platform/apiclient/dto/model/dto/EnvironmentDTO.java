@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @ApiModel( description = "Platform configuration" )
 public class EnvironmentDTO implements DTO
@@ -2094,6 +2095,15 @@ public class EnvironmentDTO implements DTO
         @NotNull
         private Long maxFileSize = 0L;
 
+        @ApiModelProperty( "Maximum number of days for a password to be stale, a null or <1 value disables expiral" )
+        private Long maximumPasswordStaleDays;
+
+        @ApiModelProperty(
+                value = "How many days to notify before password staleness, null or empty disables notification",
+                example = "[7, 6, 5, 4, 3, 2, 1]"
+        )
+        private List<Integer> stalePasswordNotificationPlan;
+
         @ApiModelProperty( "Content types of supported application files, null or empty disables feature" )
         private List<String> supportedApplicationFileTypes;
 
@@ -2485,6 +2495,30 @@ public class EnvironmentDTO implements DTO
         public Long getMaxFileSize()
         {
             return maxFileSize;
+        }
+
+        public Long getMaximumPasswordStaleDays()
+        {
+            return maximumPasswordStaleDays;
+        }
+
+        public void setMaximumPasswordStaleDays( Long maximumPasswordStaleDays )
+        {
+            this.maximumPasswordStaleDays = maximumPasswordStaleDays;
+        }
+
+        public List<Integer> getStalePasswordNotificationPlan()
+        {
+            if ( stalePasswordNotificationPlan == null ) return Collections.emptyList();
+
+            return stalePasswordNotificationPlan.stream()
+                    .sorted()
+                    .collect( Collectors.toList() );
+        }
+
+        public void setStalePasswordNotificationPlan( List<Integer> stalePasswordNotificationPlan )
+        {
+            this.stalePasswordNotificationPlan = stalePasswordNotificationPlan;
         }
 
         public void setMaxFileSize( Long maxFileSize )
