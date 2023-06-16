@@ -345,6 +345,11 @@ public class EnvironmentDTO implements DTO
     @Valid
     private MailCustomization billingBudgetThresholdCrossed = new MailCustomization();
 
+    @ApiModelProperty( "Sent to the customer before password expiral" )
+    @NotNull
+    @Valid
+    private NotificationMailCustomization stalePasswordReminder = new NotificationMailCustomization();
+
     @ApiModelProperty("Email report sent to notify of new users")
     @NotNull
     @Valid
@@ -1004,6 +1009,16 @@ public class EnvironmentDTO implements DTO
     public void setBillingBudgetThresholdCrossed( MailCustomization billingBudgetThresholdCrossed )
     {
         this.billingBudgetThresholdCrossed = billingBudgetThresholdCrossed;
+    }
+
+    public NotificationMailCustomization getStalePasswordReminder()
+    {
+        return stalePasswordReminder;
+    }
+
+    public void setStalePasswordReminder( NotificationMailCustomization stalePasswordReminder )
+    {
+        this.stalePasswordReminder = stalePasswordReminder;
     }
 
     public MailCustomization getDailyNewUsersReport()
@@ -2776,6 +2791,9 @@ public class EnvironmentDTO implements DTO
         private String productDraft;
 
         @NotEmpty
+        private String resetPassword;
+
+        @NotEmpty
         private String subscription;
 
         @NotEmpty
@@ -2913,6 +2931,16 @@ public class EnvironmentDTO implements DTO
         public void setProductDraft( String productDraft )
         {
             this.productDraft = productDraft;
+        }
+
+        public String getResetPassword()
+        {
+            return resetPassword;
+        }
+
+        public void setResetPassword( String resetPassword )
+        {
+            this.resetPassword = resetPassword;
         }
 
         public String getSubscription()
