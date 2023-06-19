@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @ApiModel( description = "Platform configuration" )
 public class EnvironmentDTO implements DTO
@@ -343,6 +344,11 @@ public class EnvironmentDTO implements DTO
     @NotNull
     @Valid
     private MailCustomization billingBudgetThresholdCrossed = new MailCustomization();
+
+    @ApiModelProperty( "Sent to the customer before password expiry" )
+    @NotNull
+    @Valid
+    private NotificationMailCustomization stalePasswordReminder = new NotificationMailCustomization();
 
     @ApiModelProperty("Email report sent to notify of new users")
     @NotNull
@@ -1003,6 +1009,16 @@ public class EnvironmentDTO implements DTO
     public void setBillingBudgetThresholdCrossed( MailCustomization billingBudgetThresholdCrossed )
     {
         this.billingBudgetThresholdCrossed = billingBudgetThresholdCrossed;
+    }
+
+    public NotificationMailCustomization getStalePasswordReminder()
+    {
+        return stalePasswordReminder;
+    }
+
+    public void setStalePasswordReminder( NotificationMailCustomization stalePasswordReminder )
+    {
+        this.stalePasswordReminder = stalePasswordReminder;
     }
 
     public MailCustomization getDailyNewUsersReport()
@@ -2094,6 +2110,15 @@ public class EnvironmentDTO implements DTO
         @NotNull
         private Long maxFileSize = 0L;
 
+        @ApiModelProperty( "Maximum number of days for a password to be stale, a null or <1 value disables expiry" )
+        private Long maximumPasswordStaleDays;
+
+        @ApiModelProperty(
+                value = "How many days to notify before password staleness, null or empty disables notification",
+                example = "[7, 6, 5, 4, 3, 2, 1]"
+        )
+        private List<Integer> stalePasswordNotificationPlan;
+
         @ApiModelProperty( "Content types of supported application files, null or empty disables feature" )
         private List<String> supportedApplicationFileTypes;
 
@@ -2487,6 +2512,30 @@ public class EnvironmentDTO implements DTO
             return maxFileSize;
         }
 
+        public Long getMaximumPasswordStaleDays()
+        {
+            return maximumPasswordStaleDays;
+        }
+
+        public void setMaximumPasswordStaleDays( Long maximumPasswordStaleDays )
+        {
+            this.maximumPasswordStaleDays = maximumPasswordStaleDays;
+        }
+
+        public List<Integer> getStalePasswordNotificationPlan()
+        {
+            if ( stalePasswordNotificationPlan == null ) return Collections.emptyList();
+
+            return stalePasswordNotificationPlan.stream()
+                    .sorted()
+                    .collect( Collectors.toList() );
+        }
+
+        public void setStalePasswordNotificationPlan( List<Integer> stalePasswordNotificationPlan )
+        {
+            this.stalePasswordNotificationPlan = stalePasswordNotificationPlan;
+        }
+
         public void setMaxFileSize( Long maxFileSize )
         {
             this.maxFileSize = maxFileSize;
@@ -2742,6 +2791,9 @@ public class EnvironmentDTO implements DTO
         private String productDraft;
 
         @NotEmpty
+        private String resetPassword;
+
+        @NotEmpty
         private String subscription;
 
         @NotEmpty
@@ -2879,6 +2931,16 @@ public class EnvironmentDTO implements DTO
         public void setProductDraft( String productDraft )
         {
             this.productDraft = productDraft;
+        }
+
+        public String getResetPassword()
+        {
+            return resetPassword;
+        }
+
+        public void setResetPassword( String resetPassword )
+        {
+            this.resetPassword = resetPassword;
         }
 
         public String getSubscription()

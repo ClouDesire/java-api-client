@@ -347,6 +347,13 @@ public class MailEnvironmentDTO implements DTO
         @Valid
         private MailConfiguration billingBudgetThresholdCrossed;
 
+        /**
+         * Sent to the customer before password expiry
+         */
+        @NotNull
+        @Valid
+        private MailConfiguration stalePasswordReminder;
+
         public String getCouponEmailSubject( CouponType couponType, String language )
         {
             return getCouponConfiguration( couponType ).getSubject( language );
@@ -862,6 +869,16 @@ public class MailEnvironmentDTO implements DTO
         public void setBillingBudgetThresholdCrossed( MailConfiguration billingBudgetThresholdCrossed )
         {
             this.billingBudgetThresholdCrossed = billingBudgetThresholdCrossed;
+        }
+
+        public MailConfiguration getStalePasswordReminder()
+        {
+            return stalePasswordReminder;
+        }
+
+        public void setStalePasswordReminder( MailConfiguration stalePasswordReminder )
+        {
+            this.stalePasswordReminder = stalePasswordReminder;
         }
         //endregion
     }
