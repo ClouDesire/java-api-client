@@ -345,7 +345,7 @@ public class EnvironmentDTO implements DTO
     @Valid
     private MailCustomization billingBudgetThresholdCrossed = new MailCustomization();
 
-    @ApiModelProperty( "Sent to the customer before password expiral" )
+    @ApiModelProperty( "Sent to the customer before password expiry" )
     @NotNull
     @Valid
     private NotificationMailCustomization stalePasswordReminder = new NotificationMailCustomization();
@@ -2110,7 +2110,7 @@ public class EnvironmentDTO implements DTO
         @NotNull
         private Long maxFileSize = 0L;
 
-        @ApiModelProperty( "Maximum number of days for a password to be stale, a null or <1 value disables expiral" )
+        @ApiModelProperty( "Maximum number of days for a password to be stale, a null or <1 value disables expiry" )
         private Long maximumPasswordStaleDays;
 
         @ApiModelProperty(

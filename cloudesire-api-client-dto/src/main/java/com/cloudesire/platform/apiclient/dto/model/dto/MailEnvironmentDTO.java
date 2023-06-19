@@ -348,7 +348,7 @@ public class MailEnvironmentDTO implements DTO
         private MailConfiguration billingBudgetThresholdCrossed;
 
         /**
-         * Sent to the customer before password expiral
+         * Sent to the customer before password expiry
          */
         @NotNull
         @Valid
