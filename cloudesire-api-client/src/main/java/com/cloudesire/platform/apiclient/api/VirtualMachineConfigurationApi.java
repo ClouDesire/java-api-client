@@ -2,17 +2,13 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.VirtualMachineConfigurationDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.AssociationType;
-import okhttp3.MultipartBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -40,21 +36,8 @@ public interface VirtualMachineConfigurationApi
             @QueryMap Map<String, String> pageRequest
     );
 
-    @GET( "virtualMachineConfiguration/{id}/compose" )
-    Call<ResponseBody> getDockerCompose( @Path( "id" ) int id );
-
     @GET( "virtualMachineConfiguration/{id}" )
     Call<VirtualMachineConfigurationDTO> get( @Path( "id" ) int id );
-
-    @Multipart
-    @POST( "virtualMachineConfiguration/{id}/compose" )
-    Call<VirtualMachineConfigurationDTO> parseDockerCompose( @Path( "id" ) int id,
-            @Part MultipartBody.Part file, @Query( "version" ) String version );
-
-    @Multipart
-    @PUT( "virtualMachineConfiguration/{id}/compose" )
-    Call<VirtualMachineConfigurationDTO> updateFromDockerCompose( @Path( "id" ) int id,
-            @Part MultipartBody.Part file, @Query( "version" ) String version );
 
     @PUT( "virtualMachineConfiguration/{id}" )
     Call<VirtualMachineConfigurationDTO> update( @Path( "id" ) int id, @Body VirtualMachineConfigurationDTO vmc );
