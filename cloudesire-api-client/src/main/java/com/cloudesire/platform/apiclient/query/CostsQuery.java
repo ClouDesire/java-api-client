@@ -3,6 +3,8 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.Grouping;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.LANGUAGE;
@@ -14,12 +16,32 @@ public class CostsQuery extends BaseQuery
     private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String GROUPING = "grouping";
 
+    public CostsQuery from( ZonedDateTime from )
+    {
+        put( FROM, from.format( DateTimeFormatter.ISO_OFFSET_DATE_TIME ) );
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #from(ZonedDateTime)}
+     */
+    @Deprecated( since = "3.6.1" )
     public CostsQuery from( Date from )
     {
         put( FROM, SimpleDateFormatFactory.iso8601Format().format( from ) );
         return this;
     }
 
+    public CostsQuery to( ZonedDateTime to )
+    {
+        put( TO, to.format( DateTimeFormatter.ISO_OFFSET_DATE_TIME ) );
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #to(ZonedDateTime)}
+     */
+    @Deprecated( since = "3.6.1" )
     public CostsQuery to( Date to )
     {
         put( TO, SimpleDateFormatFactory.iso8601Format().format( to ) );
