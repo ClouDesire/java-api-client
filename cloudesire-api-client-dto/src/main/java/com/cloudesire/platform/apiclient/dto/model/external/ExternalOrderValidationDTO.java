@@ -1,9 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.external;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Map;
 
+@JsonPropertyOrder( {
+        "productId", "productIdentifier", "productVersionId", "productVersionIdentifier", "configurationParameters",
+        "cloudCredentialId", "language", "buyerId", "billingItems", "subscriptionId", "orderType"
+  } )
 public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
 {
     private Map<String, Integer> billingItems;
