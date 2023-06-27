@@ -17,6 +17,8 @@ abstract class BaseExternalOrderValidationDTO
 
     private Map<String, String> configurationParameters;
 
+    private Integer cloudCredentialId;
+
     private String language;
 
     private Integer buyerId;
@@ -69,6 +71,16 @@ abstract class BaseExternalOrderValidationDTO
     public void setConfigurationParameters( Map<String, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
+    }
+
+    public Integer getCloudCredentialId()
+    {
+        return cloudCredentialId;
+    }
+
+    public void setCloudCredentialId( Integer cloudCredentialId )
+    {
+        this.cloudCredentialId = cloudCredentialId;
     }
 
     public String getLanguage()

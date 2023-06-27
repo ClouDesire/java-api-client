@@ -12,8 +12,6 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
 
     private OrderType orderType;
 
-    private Integer cloudCredentialId;
-
     public Map<String, Integer> getBillingItems()
     {
         return billingItems;
@@ -42,15 +40,5 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
     public void setOrderType( OrderType orderType )
     {
         this.orderType = orderType;
-    }
-
-    public Integer getCloudCredentialId()
-    {
-        return cloudCredentialId;
-    }
-
-    public void setCloudCredentialId( Integer cloudCredentialId )
-    {
-        this.cloudCredentialId = cloudCredentialId;
     }
 }

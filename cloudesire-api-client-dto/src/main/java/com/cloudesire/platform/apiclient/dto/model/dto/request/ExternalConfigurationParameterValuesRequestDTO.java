@@ -16,6 +16,9 @@ public class ExternalConfigurationParameterValuesRequestDTO implements DTO
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
 
+    @Valid
+    private UrlEntityDTO cloudCredential;
+
     private Integer buyerId;
 
     public UrlEntityDTO getProductVersion()
@@ -36,6 +39,16 @@ public class ExternalConfigurationParameterValuesRequestDTO implements DTO
     public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
+    }
+
+    public UrlEntityDTO getCloudCredential()
+    {
+        return cloudCredential;
+    }
+
+    public void setCloudCredential( UrlEntityDTO cloudCredential )
+    {
+        this.cloudCredential = cloudCredential;
     }
 
     public Integer getBuyerId()
