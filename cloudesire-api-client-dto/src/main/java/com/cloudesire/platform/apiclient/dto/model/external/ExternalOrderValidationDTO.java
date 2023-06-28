@@ -1,9 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.external;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Map;
 
+@JsonPropertyOrder( {
+        "productId", "productIdentifier", "productVersionId", "productVersionIdentifier", "configurationParameters",
+        "cloudCredentialId", "language", "buyerId", "billingItems", "subscriptionId", "orderType"
+  } )
 public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
 {
     private Map<String, Integer> billingItems;
@@ -11,8 +16,6 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
     private Integer subscriptionId;
 
     private OrderType orderType;
-
-    private Integer cloudCredentialId;
 
     public Map<String, Integer> getBillingItems()
     {
@@ -42,15 +45,5 @@ public class ExternalOrderValidationDTO extends BaseExternalOrderValidationDTO
     public void setOrderType( OrderType orderType )
     {
         this.orderType = orderType;
-    }
-
-    public Integer getCloudCredentialId()
-    {
-        return cloudCredentialId;
-    }
-
-    public void setCloudCredentialId( Integer cloudCredentialId )
-    {
-        this.cloudCredentialId = cloudCredentialId;
     }
 }
