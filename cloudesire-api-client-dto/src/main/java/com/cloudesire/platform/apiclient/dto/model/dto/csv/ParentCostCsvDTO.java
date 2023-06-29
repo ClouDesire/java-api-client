@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 
 @JsonPropertyOrder( {
         "subscription", "productVersion", "subscriptionName", "orderType", "orders", "typeCode", "description",
-        "start", "end", "purchased", "nominee", "operator", "reseller", "quantity", "currency", "vendorIncome",
-        "cloudCosts", "wholesale", "sellin", "sellout"
+        "start", "end", "aggregationStart", "purchased", "nominee", "operator", "reseller", "quantity", "currency",
+        "vendorIncome", "cloudCosts", "wholesale", "sellin", "sellout"
 } )
 public class ParentCostCsvDTO extends CostCsvDTO
 {
