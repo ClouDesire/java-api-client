@@ -27,6 +27,8 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 
 public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Comparable<ProductDTO>
 {
+    private String slug;
+
     @ApiModelProperty( "Identifier of the product, cannot be changed after creation" )
     private String SKU;
 
@@ -250,6 +252,16 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
     //region Auto-generated code
     public ProductDTO()
     {
+    }
+
+    public String getSlug()
+    {
+        return slug;
+    }
+
+    public void setSlug( String slug )
+    {
+        this.slug = slug;
     }
 
     public String getSKU()
