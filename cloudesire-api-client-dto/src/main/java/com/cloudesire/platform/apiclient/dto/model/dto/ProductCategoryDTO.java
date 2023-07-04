@@ -8,6 +8,8 @@ import java.util.Objects;
 @ApiModel( description = "A category of products" )
 public class ProductCategoryDTO extends NamedEntityDTO
 {
+    private String slug;
+
     private UrlEntityDTO reseller;
 
     private Integer weight;
@@ -29,6 +31,16 @@ public class ProductCategoryDTO extends NamedEntityDTO
     {
         if ( this.entityToken == null ) return "category";
         return this.entityToken;
+    }
+
+    public String getSlug()
+    {
+        return slug;
+    }
+
+    public void setSlug( String slug )
+    {
+        this.slug = slug;
     }
 
     public UrlEntityDTO getReseller()
