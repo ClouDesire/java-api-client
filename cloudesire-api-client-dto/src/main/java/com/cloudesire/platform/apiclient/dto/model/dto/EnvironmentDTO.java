@@ -1966,6 +1966,11 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Access to invoice section in navbar" )
         private InvoiceSectionEnum invoiceSection = InvoiceSectionEnum.INVOICE;
 
+        @ApiModelProperty( "Enabled frontend applications" )
+        private Set<EnabledApplications> enabledApplications = EnumSet.of(
+                EnabledApplications.MARKETPLACE, EnabledApplications.CLASSIC_CP
+        );
+
         @ApiModelProperty( "Access to costs section in navbar" )
         private boolean costsSection;
 
@@ -1977,6 +1982,11 @@ public class EnvironmentDTO implements DTO
             INVOICE, CONSUMPTION_SUMMARY, DISABLED
         }
 
+        public enum EnabledApplications
+        {
+            MARKETPLACE, CLASSIC_CP, VUE_CP
+        }
+
         public InvoiceSectionEnum getInvoiceSection()
         {
             return invoiceSection;
@@ -1985,6 +1995,16 @@ public class EnvironmentDTO implements DTO
         public void setInvoiceSection( InvoiceSectionEnum invoiceSection )
         {
             this.invoiceSection = invoiceSection;
+        }
+
+        public Set<EnabledApplications> getEnabledApplications()
+        {
+            return enabledApplications;
+        }
+
+        public void setEnabledApplications( Set<EnabledApplications> enabledApplications )
+        {
+            this.enabledApplications = enabledApplications;
         }
 
         public Boolean getCostsSection()
