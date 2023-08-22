@@ -43,7 +43,7 @@ jobs:
   build:
     executor:
       name: cloudesire/docker_java
-      java_version: "11.0"
+      java_version: "17.0"
     steps:
       - checkout
 
