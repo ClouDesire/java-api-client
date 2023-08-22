@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Date;
@@ -22,7 +23,8 @@ public class SubscriptionCsvDTO implements DTO
 
     private String cloudProvider;
 
-    private String buyer;
+    @JsonProperty( "buyer" )
+    private String nominee;
 
     private Date startDate;
 
@@ -83,14 +85,14 @@ public class SubscriptionCsvDTO implements DTO
         this.cloudProvider = cloudProvider;
     }
 
-    public String getBuyer()
+    public String getNominee()
     {
-        return buyer;
+        return nominee;
     }
 
-    public void setBuyer( String buyer )
+    public void setNominee( String nominee )
     {
-        this.buyer = buyer;
+        this.nominee = nominee;
     }
 
     public Date getStartDate()
