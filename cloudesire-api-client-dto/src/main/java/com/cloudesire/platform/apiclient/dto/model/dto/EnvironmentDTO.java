@@ -3137,29 +3137,23 @@ public class EnvironmentDTO implements DTO
 
     public static class SalientMetadata implements DTO, Iterable<String>
     {
-        @ApiModelProperty( "Subscription metadata" )
-        private List<String> subscriptionMetadata = new ArrayList<>();
-
         @ApiModelProperty( "Cloud tags" )
         private List<String> cloudTags = new ArrayList<>();
+
+        @ApiModelProperty( "Product Version metadata" )
+        private List<String> productVersionMetadata = new ArrayList<>();
+
+        @ApiModelProperty( "Subscription metadata" )
+        private List<String> subscriptionMetadata = new ArrayList<>();
 
         @Override
         public Iterator<String> iterator()
         {
             var list = new ArrayList<String>();
+            list.addAll( productVersionMetadata );
             list.addAll( subscriptionMetadata );
             list.addAll( cloudTags );
             return list.iterator();
-        }
-
-        public List<String> getSubscriptionMetadata()
-        {
-            return subscriptionMetadata;
-        }
-
-        public void setSubscriptionMetadata( List<String> subscriptionMetadata )
-        {
-            this.subscriptionMetadata = subscriptionMetadata;
         }
 
         public List<String> getCloudTags()
@@ -3170,6 +3164,26 @@ public class EnvironmentDTO implements DTO
         public void setCloudTags( List<String> cloudTags )
         {
             this.cloudTags = cloudTags;
+        }
+
+        public List<String> getProductVersionMetadata()
+        {
+            return productVersionMetadata;
+        }
+
+        public void setProductVersionMetadata( List<String> productVersionMetadata )
+        {
+            this.productVersionMetadata = productVersionMetadata;
+        }
+
+        public List<String> getSubscriptionMetadata()
+        {
+            return subscriptionMetadata;
+        }
+
+        public void setSubscriptionMetadata( List<String> subscriptionMetadata )
+        {
+            this.subscriptionMetadata = subscriptionMetadata;
         }
     }
 
