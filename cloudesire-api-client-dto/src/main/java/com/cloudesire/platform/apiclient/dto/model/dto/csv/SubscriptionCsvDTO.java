@@ -8,12 +8,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.Date;
 import java.util.Map;
 
-@JsonPropertyOrder(
-        { "id", "name", "deploymentStatus", "type", "cloudProvider", "buyer", "startDate", "endDate", "metadata" }
-)
+@JsonPropertyOrder( {
+        "id", "productVersion", "name", "deploymentStatus", "type", "cloudProvider", "userCompany", "buyer", "startDate",
+        "endDate", "metadata"
+} )
 public class SubscriptionCsvDTO implements DTO
 {
     private Integer id;
+
+    private String productVersion;
 
     private String name;
 
@@ -22,6 +25,9 @@ public class SubscriptionCsvDTO implements DTO
     private String type;
 
     private String cloudProvider;
+
+    @JsonProperty( "company" )
+    private String userCompany;
 
     @JsonProperty( "buyer" )
     private String nominee;
@@ -43,6 +49,16 @@ public class SubscriptionCsvDTO implements DTO
     public void setId( Integer id )
     {
         this.id = id;
+    }
+
+    public String getProductVersion()
+    {
+        return productVersion;
+    }
+
+    public void setProductVersion( String productVersion )
+    {
+        this.productVersion = productVersion;
     }
 
     public String getName()
@@ -83,6 +99,16 @@ public class SubscriptionCsvDTO implements DTO
     public void setCloudProvider( String cloudProvider )
     {
         this.cloudProvider = cloudProvider;
+    }
+
+    public String getUserCompany()
+    {
+        return userCompany;
+    }
+
+    public void setUserCompany( String userCompany )
+    {
+        this.userCompany = userCompany;
     }
 
     public String getNominee()
