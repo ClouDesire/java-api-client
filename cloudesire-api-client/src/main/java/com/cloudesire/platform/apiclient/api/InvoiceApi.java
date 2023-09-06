@@ -51,9 +51,6 @@ public interface InvoiceApi
     @Headers( { "Accept:text/csv" } )
     Call<ResponseBody> getCsv( @QueryMap InvoiceQuery query );
 
-    @GET( "invoice/{id}/refresh" )
-    Call<String> refreshPayment( @Path( "id" ) int id );
-
     @PATCH( "invoice/{id}" )
     Call<Void> patch( @Path( "id" ) int id, @Body InvoicePatchDTO patch );
 
@@ -62,9 +59,6 @@ public interface InvoiceApi
 
     @POST( "invoice/{id}/pdf/regenerate" )
     Call<Void> regeneratePdf( @Path( "id" ) int id );
-
-    @PATCH( "invoice/{id}/confirmPaypalPayment" )
-    Call<Void> payWithPaypal( @Path( "id" ) int id, @Body Map<String, String> input );
 
     @POST( "invoice/{id}/pay/stripe" )
     Call<Void> payWithStripe( @Path( "id" ) int id );

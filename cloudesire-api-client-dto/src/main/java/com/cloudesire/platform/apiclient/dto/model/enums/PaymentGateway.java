@@ -6,7 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel( "How the customer can pay" )
 public enum PaymentGateway
 {
-    @ApiModelProperty( "PayPal payment gateway" )
+    @ApiModelProperty( value = "PayPal payment gateway", hidden = true )
+    @Deprecated
     PAYPAL,
 
     @ApiModelProperty( "Stripe credit card" )
