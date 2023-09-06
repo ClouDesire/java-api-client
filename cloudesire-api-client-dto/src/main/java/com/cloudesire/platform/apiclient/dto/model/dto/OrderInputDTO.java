@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
@@ -41,14 +40,6 @@ public class OrderInputDTO extends BaseEntityDTO
 
     @ApiModelProperty( "Optional discount coupon" )
     private String hashCoupon;
-
-    /**
-     * @deprecated removed support for buying for multiple billing periods
-     */
-    @Deprecated
-    @Min ( 1 )
-    @ApiModelProperty( value = "How many periods to buy", hidden = true )
-    private Integer billingPeriods;
 
     @Valid
     @ApiModelProperty( "Quantities for eventual billingItems available" )
@@ -83,15 +74,6 @@ public class OrderInputDTO extends BaseEntityDTO
 
     public OrderInputDTO()
     {
-    }
-
-    /**
-     * @deprecated removed support for buying for multiple billing periods
-     */
-    @Deprecated
-    public void setBillingPeriods( Integer billingPeriods )
-    {
-        this.billingPeriods = billingPeriods;
     }
 
     public OrderType getType()
@@ -163,15 +145,6 @@ public class OrderInputDTO extends BaseEntityDTO
     public void setBandwidthPricing( UrlEntityDTO bandwidthPricing )
     {
         this.bandwidthPricing = bandwidthPricing;
-    }
-
-    /**
-     * @deprecated removed support for buying for multiple billing periods
-     */
-    @Deprecated
-    public Integer getBillingPeriods()
-    {
-        return billingPeriods;
     }
 
     public UrlEntityDTO getBuyer()
