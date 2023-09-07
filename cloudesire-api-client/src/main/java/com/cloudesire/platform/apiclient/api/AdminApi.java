@@ -9,6 +9,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -22,6 +23,9 @@ public interface AdminApi
 
     @PATCH( "task/{className}" )
     Call<Void> executeTask( @Path ( "className" ) String className );
+
+    @PUT( "admin/bucket/{key}" )
+    Call<Void> setUserTokens( @Path( "key" ) String key, @Query( "tokens" ) long tokens, @Query( "minutes" ) long minutes );
 
     @GET( "admin/report" )
     Call<List<UrlEntityDTO>> retrieveInvoicesWithoutReport( @QueryMap PageRequestQuery page );
