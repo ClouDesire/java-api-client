@@ -21,6 +21,8 @@ public final class Headers
     public static final String REQUEST_ID = "CMW-Request-Id";
     public static final String RESPONSE_TIME = "CMW-Response-Time-MS";
     public static final String PREFER = "Prefer";
+    public static final String RATE_LIMIT_REMAINING = "X-Rate-Limit-Remaining";
+    public static final String RATE_LIMIT_RETRY_AFTER_MILLISECONDS = "X-Rate-Limit-Retry-After-Milliseconds";
 
     private Headers()
     {
