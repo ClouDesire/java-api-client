@@ -2196,6 +2196,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Salient metadata for the environment" )
         private SalientMetadata salientMetadata = new SalientMetadata();
 
+        @ApiModelProperty( "API rate limiter configuration" )
+        private RateLimiter rateLimiter = new RateLimiter();
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2760,6 +2763,16 @@ public class EnvironmentDTO implements DTO
         {
             this.salientMetadata = salientMetadata;
         }
+
+        public RateLimiter getRateLimiter()
+        {
+            return rateLimiter;
+        }
+
+        public void setRateLimiter( RateLimiter rateLimiter )
+        {
+            this.rateLimiter = rateLimiter;
+        }
         //endregion
 
         public enum VatService
@@ -3184,6 +3197,48 @@ public class EnvironmentDTO implements DTO
         public void setSubscriptionMetadata( List<String> subscriptionMetadata )
         {
             this.subscriptionMetadata = subscriptionMetadata;
+        }
+    }
+
+    public static class RateLimiter implements DTO
+    {
+        @ApiModelProperty( "Number of tokens (requests) in the bucket" )
+        private long capacity;
+
+        @ApiModelProperty( "Period in minutes for the bucket to refill" )
+        private long refill;
+
+        @ApiModelProperty( "Actually limit requests or just log a warning" )
+        private boolean enforced;
+
+        public long getCapacity()
+        {
+            return capacity;
+        }
+
+        public void setCapacity( long capacity )
+        {
+            this.capacity = capacity;
+        }
+
+        public long getRefill()
+        {
+            return refill;
+        }
+
+        public void setRefill( long refill )
+        {
+            this.refill = refill;
+        }
+
+        public boolean isEnforced()
+        {
+            return enforced;
+        }
+
+        public void setEnforced( boolean enforced )
+        {
+            this.enforced = enforced;
         }
     }
 
