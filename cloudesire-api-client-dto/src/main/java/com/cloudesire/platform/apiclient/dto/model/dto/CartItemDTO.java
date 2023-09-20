@@ -31,6 +31,8 @@ public class CartItemDTO extends BaseEntityDTO
     @Valid
     private Map<UrlEntityDTO, String> configurationParameters;
 
+    private Map<String, String> metadata;
+
     private List<UrlEntityDTO> orders;
 
     public CartItemDTO( @NotNull @Valid UrlEntityDTO productVersion )
@@ -110,6 +112,16 @@ public class CartItemDTO extends BaseEntityDTO
     public void setConfigurationParameters( Map<UrlEntityDTO, String> configurationParameters )
     {
         this.configurationParameters = configurationParameters;
+    }
+
+    public Map<String, String> getMetadata()
+    {
+        return metadata;
+    }
+
+    public void setMetadata( Map<String, String> metadata )
+    {
+        this.metadata = metadata;
     }
 
     public List<UrlEntityDTO> getOrders()
