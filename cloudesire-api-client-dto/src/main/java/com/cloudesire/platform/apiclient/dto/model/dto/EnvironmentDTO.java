@@ -20,6 +20,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -2197,6 +2198,7 @@ public class EnvironmentDTO implements DTO
         private SalientMetadata salientMetadata = new SalientMetadata();
 
         @ApiModelProperty( "API rate limiter configuration" )
+        @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
         //region Auto-generated getters and setters
@@ -3203,10 +3205,12 @@ public class EnvironmentDTO implements DTO
     public static class RateLimiter implements DTO
     {
         @ApiModelProperty( "Number of tokens (requests) in the bucket" )
-        private long capacity;
+        @Positive
+        private long capacity = 5000;
 
         @ApiModelProperty( "Period in minutes for the bucket to refill" )
-        private long refill;
+        @Positive
+        private long refill = 1;
 
         @ApiModelProperty( "Actually limit requests or just log a warning" )
         private boolean enforced;
