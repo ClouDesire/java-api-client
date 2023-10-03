@@ -2201,6 +2201,8 @@ public class EnvironmentDTO implements DTO
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
+        private Superset superset = new Superset();
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2775,6 +2777,16 @@ public class EnvironmentDTO implements DTO
         {
             this.rateLimiter = rateLimiter;
         }
+
+        public Superset getSuperset()
+        {
+            return superset;
+        }
+
+        public void setSuperset( Superset superset )
+        {
+            this.superset = superset;
+        }
         //endregion
 
         public enum VatService
@@ -3243,6 +3255,112 @@ public class EnvironmentDTO implements DTO
         public void setEnforced( boolean enforced )
         {
             this.enforced = enforced;
+        }
+    }
+
+    public static class Superset implements DTO
+    {
+        @URL
+        private String url;
+
+        private LoginTokenAuth loginToken;
+
+        private GuestTokenUser guestToken;
+
+        public String getUrl()
+        {
+            return url;
+        }
+
+        public void setUrl( String url )
+        {
+            this.url = url;
+        }
+
+        public LoginTokenAuth getLoginToken()
+        {
+            return loginToken;
+        }
+
+        public void setLoginToken( LoginTokenAuth loginToken )
+        {
+            this.loginToken = loginToken;
+        }
+
+        public GuestTokenUser getGuestToken()
+        {
+            return guestToken;
+        }
+
+        public void setGuestToken( GuestTokenUser guestToken )
+        {
+            this.guestToken = guestToken;
+        }
+
+        public static class LoginTokenAuth implements DTO
+        {
+            private String username;
+
+            private String password;
+
+            public String getUsername()
+            {
+                return username;
+            }
+
+            public void setUsername( String username )
+            {
+                this.username = username;
+            }
+
+            public String getPassword()
+            {
+                return password;
+            }
+
+            public void setPassword( String password )
+            {
+                this.password = password;
+            }
+        }
+
+        public static class GuestTokenUser implements DTO
+        {
+            private String firstName;
+
+            private String lastName;
+
+            private String username;
+
+            public String getFirstName()
+            {
+                return firstName;
+            }
+
+            public void setFirstName( String firstName )
+            {
+                this.firstName = firstName;
+            }
+
+            public String getLastName()
+            {
+                return lastName;
+            }
+
+            public void setLastName( String lastName )
+            {
+                this.lastName = lastName;
+            }
+
+            public String getUsername()
+            {
+                return username;
+            }
+
+            public void setUsername( String username )
+            {
+                this.username = username;
+            }
         }
     }
 
