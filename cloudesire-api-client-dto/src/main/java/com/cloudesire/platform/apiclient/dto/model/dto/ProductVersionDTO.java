@@ -162,6 +162,9 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @ApiModelProperty( value = "Reseller Catalog used to obtain prices for the Product Version", accessMode = READ_ONLY )
     private UrlEntityDTO resellerCatalog;
 
+    @ApiModelProperty( value = "Conversion factors from foreign currencies", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private Map<String, BigDecimal> currencyConversion;
+
     public ProductVersionDTO( String name, UrlEntityDTO product )
     {
         super( name );
@@ -646,6 +649,16 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public void setResellerCatalog( UrlEntityDTO resellerCatalog )
     {
         this.resellerCatalog = resellerCatalog;
+    }
+
+    public Map<String, BigDecimal> getCurrencyConversion()
+    {
+        return currencyConversion;
+    }
+
+    public void setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
+    {
+        this.currencyConversion = currencyConversion;
     }
 
     @Override
