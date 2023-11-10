@@ -44,11 +44,21 @@ public class CloudesireClientTest
         assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
     }
 
-    private Httpbin getHttpbinApi()
+    private CloudesireClient.Builder getHttpbinApiBuilder()
     {
         CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "https://httpbin.org" );
         builder.setMapper( objectMapper() );
+        return builder;
+    }
+
+    private Httpbin getHttpbinApi()
+    {
+        return getHttpbinApi( getHttpbinApiBuilder() );
+    }
+
+    private Httpbin getHttpbinApi( CloudesireClient.Builder builder )
+    {
         return builder.build().getApi( Httpbin.class );
     }
 
@@ -104,4 +114,23 @@ public class CloudesireClientTest
         assertThat( response.getHeader( "server" ) ).isNotEmpty();
         assertThat( response.paginator().getPageNumber() ).isNull();
     }
+
+    @Test
+    public void authorizationHeader()
+    {
+        var builder = getHttpbinApiBuilder();
+
+        var tokenApi = getHttpbinApi( builder.setToken( "asdf" ) );
+        var response = this.executor.execute( tokenApi.get() );
+
+        assertThat( response.getHeaders() ).doesNotContainKey( "Authorization" );
+        assertThat( response.getHeaders() ).containsKey( "Cmw-Auth-Token" );
+
+        var bearerApi = getHttpbinApi( builder.setToken( "Bearer fdsa" ) );
+        response = this.executor.execute( bearerApi.get() );
+
+        assertThat( response.getHeaders() ).containsKey( "Authorization" );
+        assertThat( response.getHeaders() ).doesNotContainKey( "Cmw-Auth-Token" );
+    }
+
 }
