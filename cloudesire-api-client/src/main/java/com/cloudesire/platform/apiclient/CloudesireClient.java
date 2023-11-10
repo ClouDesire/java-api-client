@@ -52,7 +52,8 @@ public class CloudesireClient extends BasicAuthCloudesireClient
 
         if ( token != null )
         {
-            addInterceptor( new HeaderInterceptor( AUTH_TOKEN, token ) );
+            String headerName = token.startsWith( "Bearer" ) ? "Authorization" : AUTH_TOKEN;
+            addInterceptor( new HeaderInterceptor( headerName, token ) );
         }
 
         if ( ssoToken != null && ssoUser != null && ssoProvider != null )
