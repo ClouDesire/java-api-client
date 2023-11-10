@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.cloudesire.platform</groupId>
 		<artifactId>cloudesire-api-client-root</artifactId>
-		<version>3.6.3-SNAPSHOT</version>
+		<version>3.6.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>cloudesire-api-client</artifactId>
@@ -15,12 +15,12 @@
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>base-api-client</artifactId>
-			<version>3.6.3-SNAPSHOT</version>
+			<version>3.6.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.cloudesire.platform</groupId>
 			<artifactId>cloudesire-api-client-dto</artifactId>
-			<version>3.6.3-SNAPSHOT</version>
+			<version>3.6.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
