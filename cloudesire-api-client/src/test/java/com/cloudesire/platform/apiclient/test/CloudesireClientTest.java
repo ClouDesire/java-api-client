@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.test;
 import com.cloudesire.platform.apiclient.CloudesireClient;
 import com.cloudesire.platform.apiclient.CloudesireClientCallExecutor;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.exceptions.AuthenticationFailedException;
 import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,11 +45,21 @@ public class CloudesireClientTest
         assertThat( response.getHeaders().get( "User-Agent" ) ).isEqualTo( USER_AGENT );
     }
 
-    private Httpbin getHttpbinApi()
+    private CloudesireClient.Builder getHttpbinApiBuilder()
     {
         CloudesireClient.Builder builder = new CloudesireClient.Builder();
         builder.setBaseUrl( "https://httpbin.org" );
         builder.setMapper( objectMapper() );
+        return builder;
+    }
+
+    private Httpbin getHttpbinApi()
+    {
+        return getHttpbinApi( getHttpbinApiBuilder() );
+    }
+
+    private Httpbin getHttpbinApi( CloudesireClient.Builder builder )
+    {
         return builder.build().getApi( Httpbin.class );
     }
 
@@ -104,4 +115,31 @@ public class CloudesireClientTest
         assertThat( response.getHeader( "server" ) ).isNotEmpty();
         assertThat( response.paginator().getPageNumber() ).isNull();
     }
+
+    @Test
+    public void authorizationHeader()
+    {
+        var builder = getHttpbinApiBuilder();
+
+        var tokenApi = getHttpbinApi( builder.setToken( "asdf" ) );
+        var response = executor.execute( tokenApi.get() );
+
+        assertThat( response.getHeaders() ).doesNotContainKey( "Authorization" );
+        assertThat( response.getHeaders() ).containsKey( "Cmw-Auth-Token" );
+
+        var bearerCall = tokenApi.bearer();
+        assertThatThrownBy( () -> executor.executeFullResponse( bearerCall ) )
+                .isInstanceOf( AuthenticationFailedException.class );
+
+        var bearerApi = getHttpbinApi( builder.setToken( "Bearer fdsa" ) );
+        response = executor.execute( bearerApi.get() );
+
+        assertThat( response.getHeaders() ).containsKey( "Authorization" );
+        assertThat( response.getHeaders() ).doesNotContainKey( "Cmw-Auth-Token" );
+
+        var bearerSuccess = executor.execute( bearerApi.bearer() );
+        assertThat( bearerSuccess.isAuthenticated() ).isTrue();
+        assertThat( bearerSuccess.getToken() ).isEqualTo( "fdsa" );
+    }
+
 }
