@@ -6,6 +6,9 @@ import retrofit2.http.GET;
 
 public interface Httpbin
 {
+    @GET( "bearer" )
+    Call<HttpbinBearerResponse> bearer();
+
     @GET( "get" )
     Call<HttpbinResponse> get();
 

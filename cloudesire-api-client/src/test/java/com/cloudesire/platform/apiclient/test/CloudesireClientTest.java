@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.test;
 import com.cloudesire.platform.apiclient.CloudesireClient;
 import com.cloudesire.platform.apiclient.CloudesireClientCallExecutor;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
+import com.cloudesire.platform.apiclient.exceptions.AuthenticationFailedException;
 import com.cloudesire.platform.apiclient.response.CallResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -121,16 +122,24 @@ public class CloudesireClientTest
         var builder = getHttpbinApiBuilder();
 
         var tokenApi = getHttpbinApi( builder.setToken( "asdf" ) );
-        var response = this.executor.execute( tokenApi.get() );
+        var response = executor.execute( tokenApi.get() );
 
         assertThat( response.getHeaders() ).doesNotContainKey( "Authorization" );
         assertThat( response.getHeaders() ).containsKey( "Cmw-Auth-Token" );
 
+        var bearerCall = tokenApi.bearer();
+        assertThatThrownBy( () -> executor.executeFullResponse( bearerCall ) )
+                .isInstanceOf( AuthenticationFailedException.class );
+
         var bearerApi = getHttpbinApi( builder.setToken( "Bearer fdsa" ) );
-        response = this.executor.execute( bearerApi.get() );
+        response = executor.execute( bearerApi.get() );
 
         assertThat( response.getHeaders() ).containsKey( "Authorization" );
         assertThat( response.getHeaders() ).doesNotContainKey( "Cmw-Auth-Token" );
+
+        var bearerSuccess = executor.execute( bearerApi.bearer() );
+        assertThat( bearerSuccess.isAuthenticated() ).isTrue();
+        assertThat( bearerSuccess.getToken() ).isEqualTo( "fdsa" );
     }
 
 }
