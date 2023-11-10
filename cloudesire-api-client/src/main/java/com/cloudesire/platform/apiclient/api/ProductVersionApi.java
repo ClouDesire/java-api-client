@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductVersionDraftDTO;
+import com.cloudesire.platform.apiclient.dto.model.patch.ProductVersionPatchDTO;
 import com.cloudesire.platform.apiclient.query.ProductVersionQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -36,6 +37,9 @@ public interface ProductVersionApi
     @PATCH( "productVersion/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body Map<String, Object> input,
             @Query( "language" ) String language );
+
+    @PATCH( "productVersion/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body ProductVersionPatchDTO input );
 
     @GET( "productVersion" )
     Call<List<ProductVersionDTO>> getAll( @QueryMap ProductVersionQuery query );
