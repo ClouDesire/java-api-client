@@ -17,7 +17,27 @@ public class ProductPatchDTO implements DTO
     @ApiModelProperty( "Conversion factors from foreign currencies" )
     private Map<String, BigDecimal> currencyConversion;
 
-    public ProductPatchDTO( Action action )
+    public static ProductPatchDTO enable()
+    {
+        return new ProductPatchDTO( Action.ENABLED );
+    }
+
+    public static ProductPatchDTO disable()
+    {
+        return new ProductPatchDTO( Action.DISABLED );
+    }
+
+    public static ProductPatchDTO approve()
+    {
+        return new ProductPatchDTO( Action.APPROVE );
+    }
+
+    public static ProductPatchDTO saveCurrencyConversion( Map<String, BigDecimal> currencyConversion )
+    {
+        return new ProductPatchDTO( Action.SAVE_CURRENCY_CONVERSION ).setCurrencyConversion( currencyConversion );
+    }
+
+    private ProductPatchDTO( Action action )
     {
         this.action = action;
     }
