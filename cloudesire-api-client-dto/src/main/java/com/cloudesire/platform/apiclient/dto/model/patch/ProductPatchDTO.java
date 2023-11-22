@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class ProductVersionPatchDTO implements DTO
+public class ProductPatchDTO implements DTO
 {
     @NotNull
     private Action action;
@@ -15,12 +15,12 @@ public class ProductVersionPatchDTO implements DTO
     @ApiModelProperty( "Conversion factors from foreign currencies" )
     private Map<String, BigDecimal> currencyConversion;
 
-    public ProductVersionPatchDTO( Action action )
+    public ProductPatchDTO( Action action )
     {
         this.action = action;
     }
 
-    public ProductVersionPatchDTO()
+    public ProductPatchDTO()
     {
     }
 
@@ -29,7 +29,7 @@ public class ProductVersionPatchDTO implements DTO
         return action;
     }
 
-    public ProductVersionPatchDTO setAction( Action action )
+    public ProductPatchDTO setAction( Action action )
     {
         this.action = action;
         return this;
@@ -40,7 +40,7 @@ public class ProductVersionPatchDTO implements DTO
         return currencyConversion;
     }
 
-    public ProductVersionPatchDTO setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
+    public ProductPatchDTO setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
     {
         this.currencyConversion = currencyConversion;
         return this;
@@ -48,6 +48,9 @@ public class ProductVersionPatchDTO implements DTO
 
     public enum Action
     {
+        ENABLED,
+        DISABLED,
+        APPROVE,
         @ApiModelProperty( "Save currency conversion factors" )
         SAVE_CURRENCY_CONVERSION;
     }

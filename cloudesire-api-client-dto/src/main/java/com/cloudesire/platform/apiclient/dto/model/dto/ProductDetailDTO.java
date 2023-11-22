@@ -3,7 +3,9 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class ProductDetailDTO extends ProductDTO
@@ -13,6 +15,9 @@ public class ProductDetailDTO extends ProductDTO
     private List<UrlEntityDTO> metrics;
 
     private MinimumCostDTO minimumCost;
+
+    @ApiModelProperty( value = "Conversion factors from foreign currencies", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    private Map<String, BigDecimal> currencyConversion;
 
     @Valid
     private List<ProductChangelogEntryDTO> changelog;
@@ -35,6 +40,16 @@ public class ProductDetailDTO extends ProductDTO
     public void setMinimumCost( MinimumCostDTO minimumCost )
     {
         this.minimumCost = minimumCost;
+    }
+
+    public Map<String, BigDecimal> getCurrencyConversion()
+    {
+        return currencyConversion;
+    }
+
+    public void setCurrencyConversion( Map<String, BigDecimal> currencyConversion )
+    {
+        this.currencyConversion = currencyConversion;
     }
 
     public List<ProductChangelogEntryDTO> getChangelog()

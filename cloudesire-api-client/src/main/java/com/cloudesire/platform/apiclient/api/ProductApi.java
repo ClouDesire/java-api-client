@@ -9,6 +9,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.ProductDetailDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductDraftDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.ProductRegisterEntryDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
+import com.cloudesire.platform.apiclient.dto.model.patch.ProductPatchDTO;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
 import com.cloudesire.platform.apiclient.query.ProductQuery;
 import com.cloudesire.platform.apiclient.query.ResellerCatalogQuery;
@@ -55,6 +56,9 @@ public interface ProductApi
 
     @DELETE( "product/{id}" )
     Call<Void> delete( @Path( "id" ) Integer id );
+
+    @PATCH( "product/{id}" )
+    Call<Void> partialUpdate( @Path( "id" ) int id, @Body ProductPatchDTO input );
 
     @PATCH( "product/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) Integer id, @Body Object actions );
