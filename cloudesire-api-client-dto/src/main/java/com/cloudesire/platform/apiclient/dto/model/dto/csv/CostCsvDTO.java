@@ -39,7 +39,6 @@ public abstract class CostCsvDTO implements DTO
     @JsonProperty( "End date" )
     private Date end;
 
-    @JsonProperty( "Reseller" )
     private String reseller;
 
     @JsonProperty( "Aggregation start" )
@@ -146,6 +145,7 @@ public abstract class CostCsvDTO implements DTO
         this.end = end;
     }
 
+    @JsonProperty( "Reseller" )
     public String getReseller()
     {
         return reseller;
