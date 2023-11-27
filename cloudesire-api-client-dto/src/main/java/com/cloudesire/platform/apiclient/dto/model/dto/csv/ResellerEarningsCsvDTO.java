@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -7,10 +8,10 @@ import java.math.BigDecimal;
 
 @JsonPropertyOrder( {
         "subscription", "productVersion", "subscriptionName", "orderType", "orders", "typeCode", "description",
-        "start", "end", "aggregationStart", "purchased", "nominee", "operator", "reseller", "quantity", "currency",
-        "vendorIncome", "cloudCosts", "wholesale", "sellin", "sellout"
+        "start", "end", "aggregationStart", "purchased", "nominee", "operator", "quantity", "currency",
+        "sellin", "sellout"
 } )
-public class ParentCostCsvDTO extends CostCsvDTO
+public class ResellerEarningsCsvDTO extends CostCsvDTO
 {
     @JsonProperty( "Company" )
     private String nominee;
@@ -18,20 +19,18 @@ public class ParentCostCsvDTO extends CostCsvDTO
     @JsonProperty( "Buyer" )
     private String operator;
 
-    @JsonProperty( "Vendor income" )
-    private BigDecimal vendorIncome;
-
-    @JsonProperty( "Cloud costs" )
-    private BigDecimal cloudCosts;
-
-    @JsonProperty( "Wholesale" )
-    private BigDecimal wholesale;
-
     @JsonProperty( "Sellin" )
     private BigDecimal sellin;
 
     @JsonProperty( "Sellout" )
     private BigDecimal sellout;
+
+    @JsonIgnore
+    @Override
+    public String getReseller()
+    {
+        return null;
+    }
 
     public String getNominee()
     {
@@ -51,36 +50,6 @@ public class ParentCostCsvDTO extends CostCsvDTO
     public void setOperator( String operator )
     {
         this.operator = operator;
-    }
-
-    public BigDecimal getVendorIncome()
-    {
-        return vendorIncome;
-    }
-
-    public void setVendorIncome( BigDecimal vendorIncome )
-    {
-        this.vendorIncome = vendorIncome;
-    }
-
-    public BigDecimal getCloudCosts()
-    {
-        return cloudCosts;
-    }
-
-    public void setCloudCosts( BigDecimal cloudCosts )
-    {
-        this.cloudCosts = cloudCosts;
-    }
-
-    public BigDecimal getWholesale()
-    {
-        return wholesale;
-    }
-
-    public void setWholesale( BigDecimal wholesale )
-    {
-        this.wholesale = wholesale;
     }
 
     public BigDecimal getSellin()
