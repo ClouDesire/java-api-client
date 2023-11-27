@@ -10,7 +10,7 @@ import java.math.BigDecimal;
         "start", "end", "aggregationStart", "purchased", "nominee", "operator", "reseller", "quantity", "currency",
         "vendorIncome", "cloudCosts", "wholesale", "sellin", "sellout"
 } )
-public class ParentCostCsvDTO extends CostCsvDTO
+public class ParentEarningsCsvDTO extends CostCsvDTO
 {
     @JsonProperty( "Company" )
     private String nominee;
