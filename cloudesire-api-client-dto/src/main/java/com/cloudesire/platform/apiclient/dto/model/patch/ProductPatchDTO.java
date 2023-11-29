@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.patch;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.fasterxml.jackson.databind.EnumNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.EnumNaming;
+import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ public class ProductPatchDTO implements DTO
     private Action action;
 
     @ApiModelProperty( "Conversion factors from foreign currencies" )
+    @CurrencyMap
     private Map<String, BigDecimal> currencyConversion;
 
     public static ProductPatchDTO enable()

@@ -10,6 +10,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
+import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.URL;
@@ -2192,6 +2193,7 @@ public class EnvironmentDTO implements DTO
         private PasswordPolicy passwordPolicy = new PasswordPolicy();
 
         @ApiModelProperty( "Conversion factors from foreign currencies" )
+        @CurrencyMap
         private Map<String, BigDecimal> currencyConversion = new HashMap<>();
 
         @ApiModelProperty( "Salient metadata for the environment" )

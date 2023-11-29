@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.patch;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
+import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ public class CloudProviderPatchDTO implements DTO
     private Action action;
 
     @ApiModelProperty( "Conversion factors from foreign currencies" )
+    @CurrencyMap
     private Map<String, BigDecimal> currencyConversion;
 
     public CloudProviderPatchDTO( Action action )
