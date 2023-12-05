@@ -13,6 +13,7 @@ public class CostsQuery extends BaseQuery
 {
     private static final String FROM = "from";
     private static final String TO = "to";
+    private static final String FILTER = "filter";
     private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String GROUPING = "grouping";
 
@@ -48,6 +49,16 @@ public class CostsQuery extends BaseQuery
         return this;
     }
 
+    public CostsQuery filter( String filter )
+    {
+        put( FILTER, filter );
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #filter(String)}
+     */
+    @Deprecated( since = "3.6.5" )
     public CostsQuery subscriptionId( int subscriptionId )
     {
         put( SUBSCRIPTION_ID, subscriptionId );
