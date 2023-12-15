@@ -82,6 +82,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( "Secondary address of the user" )
     private AddressDTO homeAddress;
 
+    @ApiModelProperty( value = "The platform role of the user", required = true )
     private UserRole userRole;
 
     private Set<UserGroup> groups;
