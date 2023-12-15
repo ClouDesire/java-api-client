@@ -13,7 +13,7 @@ public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String NAME_FIELD = "name";
 
-    @ApiModelProperty( "A descriptive name of the resource" )
+    @ApiModelProperty( value = "A descriptive name of the resource", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String name;
