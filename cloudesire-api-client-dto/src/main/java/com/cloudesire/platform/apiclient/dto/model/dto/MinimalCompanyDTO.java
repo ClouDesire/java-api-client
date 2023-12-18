@@ -35,7 +35,7 @@ public abstract class MinimalCompanyDTO extends TaxCodeDTO
     @Size( max = 20 )
     private String phoneNumber;
 
-    @ApiModelProperty( "Email address" )
+    @ApiModelProperty( value = "Email address", required = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @NotNull
     private String emailAddress;

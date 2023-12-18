@@ -28,12 +28,12 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
-    @ApiModelProperty( "Given Name" )
+    @ApiModelProperty( value = "Given name", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String name;
 
-    @ApiModelProperty( "Family Name" )
+    @ApiModelProperty( value = "Family name", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String surname;
@@ -51,7 +51,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @Size( min = 2, max = 2 )
     private String language;
 
-    @ApiModelProperty( "User email address to receive platform notifications" )
+    @ApiModelProperty( value = "User email address to receive platform notifications", required = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @NotNull
     @Size( max = 255 )
@@ -82,6 +82,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( "Secondary address of the user" )
     private AddressDTO homeAddress;
 
+    @ApiModelProperty( value = "The platform role of the user", required = true )
     private UserRole userRole;
 
     private Set<UserGroup> groups;
