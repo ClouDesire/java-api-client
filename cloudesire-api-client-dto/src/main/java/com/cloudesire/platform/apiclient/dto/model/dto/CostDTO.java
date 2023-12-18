@@ -2,9 +2,13 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CostDTO implements DTO
 {
@@ -23,6 +27,10 @@ public class CostDTO implements DTO
     private BigDecimal cost;
 
     private ZonedDateTime purchased;
+
+    @JsonAnyGetter
+    @JsonAnySetter
+    private Map<String, String> tags;
 
     public UrlEntityDTO getSubscription()
     {
@@ -102,5 +110,15 @@ public class CostDTO implements DTO
     public void setPurchased( ZonedDateTime purchased )
     {
         this.purchased = purchased;
+    }
+
+    public Map<String, String> getTags()
+    {
+        return tags;
+    }
+
+    public void setTags( Map<String, String> tags )
+    {
+        this.tags = tags;
     }
 }
