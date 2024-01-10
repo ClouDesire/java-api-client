@@ -8,6 +8,8 @@ import java.time.ZonedDateTime;
 
 public class CostDTO implements DTO
 {
+    private String nominee;
+
     private UrlEntityDTO subscription;
 
     private OrderType orderType;
@@ -23,6 +25,16 @@ public class CostDTO implements DTO
     private BigDecimal cost;
 
     private ZonedDateTime purchased;
+
+    public String getNominee()
+    {
+        return nominee;
+    }
+
+    public void setNominee( String nominee )
+    {
+        this.nominee = nominee;
+    }
 
     public UrlEntityDTO getSubscription()
     {
