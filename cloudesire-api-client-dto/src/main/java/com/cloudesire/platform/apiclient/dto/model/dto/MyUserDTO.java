@@ -120,7 +120,7 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @ApiModelProperty( "When the user has created his account" )
     private Date creationDate;
 
-    @ApiModelProperty( value = "An externalId if the user is synchronized from an external system", readOnly = true )
+    @ApiModelProperty( "An externalId if the user is synchronized from an external system" )
     private String externalId;
 
     @ApiModelProperty( value = "The account id of the user when using the Keycloak SSO integration", readOnly = true )
