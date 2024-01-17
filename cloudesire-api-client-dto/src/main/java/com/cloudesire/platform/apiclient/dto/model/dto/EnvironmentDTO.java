@@ -1850,9 +1850,17 @@ public class EnvironmentDTO implements DTO
             PER_PLAN
         }
 
+        @ApiModel( description = "Automated distributors and resellers marketplace creation" )
         public enum ResellerMarketplace
         {
-            ENABLED, EXCLUSIVE, DISABLED
+            @ApiModelProperty( "The reseller marketplace is enabled, alongside the default one" )
+            ENABLED,
+
+            @ApiModelProperty( "Only the reseller marketplace is allowed" )
+            EXCLUSIVE,
+
+            @ApiModelProperty( "The reseller marketplace is disabled" )
+            DISABLED
         }
 
         public boolean isUserSelfRegistration()
