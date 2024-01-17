@@ -1483,8 +1483,8 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Enable customer ratings on products" )
         private boolean customerProductRatings = true;
 
-        @ApiModelProperty( "Require the marketplace to be a reseller one" )
-        private boolean resellerOnlyMarketplace;
+        @ApiModelProperty( "Enable or require the marketplace to be a reseller one" )
+        private ResellerMarketplace resellerMarketplace = ResellerMarketplace.ENABLED;
 
         @ApiModelProperty( "Enable the cart functionality for CUSTOMER and/or RESELLER" )
         private Set<Cart> cart = EnumSet.noneOf( Cart.class );
@@ -1850,6 +1850,11 @@ public class EnvironmentDTO implements DTO
             PER_PLAN
         }
 
+        public enum ResellerMarketplace
+        {
+            ENABLED, EXCLUSIVE, DISABLED
+        }
+
         public boolean isUserSelfRegistration()
         {
             return userSelfRegistration;
@@ -1900,14 +1905,23 @@ public class EnvironmentDTO implements DTO
             this.customerProductRatings = customerProductRatings;
         }
 
-        public boolean isResellerOnlyMarketplace()
+        public ResellerMarketplace getResellerMarketplace()
         {
-            return resellerOnlyMarketplace;
+            return resellerMarketplace;
         }
 
+        public void setResellerMarketplace( ResellerMarketplace resellerMarketplace )
+        {
+            this.resellerMarketplace = resellerMarketplace;
+        }
+
+        /**
+         * @deprecated by {@link #setResellerMarketplace(ResellerMarketplace)}
+         */
+        @Deprecated( since = "3.6.4" )
         public void setResellerOnlyMarketplace( boolean resellerOnlyMarketplace )
         {
-            this.resellerOnlyMarketplace = resellerOnlyMarketplace;
+            this.resellerMarketplace = resellerOnlyMarketplace ? ResellerMarketplace.EXCLUSIVE : ResellerMarketplace.ENABLED;
         }
 
         public Set<Cart> getCart()
