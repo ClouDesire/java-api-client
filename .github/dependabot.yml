@@ -8,6 +8,8 @@ registries:
 updates:
   - package-ecosystem: maven
     directory: "/"
+    commit-message:
+      prefix: "chore(maven)"
     schedule:
       interval: weekly
       day: sunday
