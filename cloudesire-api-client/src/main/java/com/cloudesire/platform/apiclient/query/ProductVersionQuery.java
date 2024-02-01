@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 public class ProductVersionQuery extends BaseQuery
 {
     private static final String PRODUCT = "product";
+    private static final String NAME = "name";
     private static final String VISIBILITY = "visibility";
     private static final String WITH_UNPUBLISHED = "withUnpublished";
 
@@ -24,6 +25,12 @@ public class ProductVersionQuery extends BaseQuery
     public ProductVersionQuery setProduct( int productId )
     {
         put( PRODUCT, productId );
+        return this;
+    }
+
+    public ProductVersionQuery setName( String name )
+    {
+        put( NAME, name );
         return this;
     }
 
