@@ -4,31 +4,32 @@ import io.swagger.annotations.ApiModel;
 
 import javax.validation.constraints.NotNull;
 
-@ApiModel( description = "A key/value pair" )
+@ApiModel( description = "A name/value pair" )
 public class EntryDTO implements DTO
 {
     @NotNull
-    private String key;
+    private String name;
+
     private String value;
 
     public EntryDTO()
     {
     }
 
-    public EntryDTO( String key, String value )
+    public EntryDTO( String name, String value )
     {
-        this.key = key;
+        this.name = name;
         this.value = value;
     }
 
-    public String getKey()
+    public String getName()
     {
-        return key;
+        return name;
     }
 
-    public void setKey( String key )
+    public void setName( String name )
     {
-        this.key = key;
+        this.name = name;
     }
 
     public String getValue()
