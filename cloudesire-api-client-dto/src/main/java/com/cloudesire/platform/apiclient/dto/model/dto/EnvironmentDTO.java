@@ -2090,10 +2090,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "The minimum date for statistics calculation" )
         private Date startStatisticsCalculationFrom = new Date( 0L );
 
-        @ApiModelProperty( "The available polling frequencies for metrics" )
-        @NotNull
+        @ApiModelProperty( "Send these extra headers to the HTTP request to obtain application metrics" )
         @Valid
-        private List<EntryDTO> metricFrequencyValues;
+        private List<EntryDTO> metricRequestExtraHeaders = new ArrayList<>();
 
         @ApiModelProperty( "The cloud provider names enabled for this environment" )
         private List<String> enabledCloudProviders;
@@ -2380,14 +2379,19 @@ public class EnvironmentDTO implements DTO
             this.startStatisticsCalculationFrom = startStatisticsCalculationFrom;
         }
 
-        public List<EntryDTO> getMetricFrequencyValues()
+        public List<EntryDTO> getMetricRequestExtraHeaders()
         {
-            return metricFrequencyValues;
+            return metricRequestExtraHeaders;
         }
 
-        public void setMetricFrequencyValues( List<EntryDTO> metricFrequencyValues )
+        public void setMetricRequestExtraHeaders( List<EntryDTO> metricRequestExtraHeaders )
         {
-            this.metricFrequencyValues = metricFrequencyValues;
+            this.metricRequestExtraHeaders = metricRequestExtraHeaders;
+        }
+
+        public void setMetricRequestExtraHeader( String name, String value )
+        {
+            this.metricRequestExtraHeaders = List.of( new EntryDTO( name, value ) );
         }
 
         public List<String> getEnabledCloudProviders()
