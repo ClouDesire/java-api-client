@@ -1,27 +1,38 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
+import com.cloudesire.platform.apiclient.dto.model.enums.Permission;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @ApiModel( description = "RBAC for frontend routes" )
 public class RouteAuthorizationDTO implements DTO
 {
+    @ApiModelProperty( required = true )
     @NotEmpty
     private String route;
 
-    private Set<UserRole> roles;
+    @NotEmpty
+    @Valid
+    private Set<AccessControlDTO> acl;
 
     private Set<UserGroup> userGroups;
 
-    private RouteAuthorizationDTO( String route, Set<UserRole> roles, Set<UserGroup> userGroups )
+    private RouteAuthorizationDTO( String route, Set<AccessControlDTO> acl, Set<UserGroup> userGroups )
     {
         this.route = route;
-        this.roles = roles;
+        this.acl = acl;
         this.userGroups = userGroups;
     }
 
@@ -44,14 +55,20 @@ public class RouteAuthorizationDTO implements DTO
         this.route = route;
     }
 
-    public Set<UserRole> getRoles()
+    public Set<AccessControlDTO> getAcl()
     {
-        return roles;
+        return acl;
     }
 
-    public void setRoles( Set<UserRole> roles )
+    public void setAcl( Set<AccessControlDTO> acl )
     {
-        this.roles = roles;
+        this.acl = acl;
+    }
+
+    @ApiModelProperty( readOnly = true )
+    public Set<UserRole> getRoles()
+    {
+        return acl.stream().map( AccessControlDTO::getRole ).collect( Collectors.toSet() );
     }
 
     public Set<UserGroup> getUserGroups()
@@ -64,32 +81,43 @@ public class RouteAuthorizationDTO implements DTO
         this.userGroups = userGroups;
     }
 
+    @ApiModelProperty( hidden = true )
+    @AssertTrue
+    @JsonIgnore
+    public boolean isAclUniquePerRole()
+    {
+        var uniqueRoles = acl.stream()
+                .map( AccessControlDTO::getRole )
+                .collect( Collectors.toSet() );
+        return acl.size() == uniqueRoles.size();
+    }
+
     @Override
     public boolean equals( Object o )
     {
         if ( this == o ) return true;
         if ( o == null || getClass() != o.getClass() ) return false;
         RouteAuthorizationDTO that = (RouteAuthorizationDTO) o;
-        return Objects.equals( route, that.route ) && Objects.equals( roles, that.roles )
+        return Objects.equals( route, that.route ) && Objects.equals( acl, that.acl )
                 && Objects.equals( userGroups, that.userGroups );
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash( route, roles, userGroups );
+        return Objects.hash( route, acl, userGroups );
     }
 
     @Override
     public String toString()
     {
-        return String.format( "RouteAuthorizationDTO{route='%s', roles=%s, userGroups=%s}", route, roles, userGroups );
+        return String.format( "RouteAuthorizationDTO{route='%s', acl=%s, userGroups=%s}", route, acl, userGroups );
     }
 
     public static final class Builder
     {
         private final String route;
-        private Set<UserRole> roles;
+        private Set<AccessControlDTO> acl;
         private Set<UserGroup> userGroups;
 
         private Builder( String route )
@@ -97,9 +125,12 @@ public class RouteAuthorizationDTO implements DTO
             this.route = route;
         }
 
-        public Builder withRoles( Set<UserRole> roles )
+        public Builder withRoles( Map<UserRole, List<Permission>> roles )
         {
-            this.roles = roles;
+            this.acl = roles.entrySet()
+                    .stream()
+                    .map( e -> new AccessControlDTO( e.getKey(), e.getValue() ) )
+                    .collect( Collectors.toSet() );
             return this;
         }
 
@@ -111,7 +142,7 @@ public class RouteAuthorizationDTO implements DTO
 
         public RouteAuthorizationDTO build()
         {
-            return new RouteAuthorizationDTO( route, roles, userGroups );
+            return new RouteAuthorizationDTO( route, acl, userGroups );
         }
     }
 }
