@@ -1962,7 +1962,7 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-user basis" )
+    @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-environment basis" )
     public static class FrontendFeaturesEnvironment implements DTO
     {
         @ApiModelProperty( "Access to invoice section in navbar" )
@@ -1979,6 +1979,10 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Enable postponed subscription upgrades" )
         private boolean postponedUpgrades;
 
+        @Valid
+        private List<RouteAuthorizationDTO> routeAuthorizations;
+
+        // region enums
         public enum InvoiceSectionEnum
         {
             INVOICE, CONSUMPTION_SUMMARY, DISABLED
@@ -1988,7 +1992,9 @@ public class EnvironmentDTO implements DTO
         {
             MARKETPLACE, CLASSIC_CP, VUE_CP
         }
+        // endregion
 
+        // region accessors
         public InvoiceSectionEnum getInvoiceSection()
         {
             return invoiceSection;
@@ -2028,6 +2034,17 @@ public class EnvironmentDTO implements DTO
         {
             this.postponedUpgrades = postponedUpgrades;
         }
+
+        public List<RouteAuthorizationDTO> getRouteAuthorizations()
+        {
+            return routeAuthorizations;
+        }
+
+        public void setRouteAuthorizations( List<RouteAuthorizationDTO> routeAuthorizations )
+        {
+            this.routeAuthorizations = routeAuthorizations;
+        }
+        // endregion
     }
 
     @ApiModel( description = "General configuration of the platform" )
