@@ -8,6 +8,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.PaymentMethodDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.SepaDataDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.StripePaymentMethodDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.StripeTokenDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangelogDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.request.UserActivationDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.cloudesire.platform.apiclient.dto.model.patch.UserPatchDTO;
@@ -84,6 +85,9 @@ public interface UserApi
 
     @GET( "user/{id}" )
     Call<MyUserDTO> get( @Path( "id" ) int id );
+
+    @GET( "user/{id}/changelog" )
+    Call<ChangelogDTO> getChangelog( @Path( "id" ) int id );
 
     /**
      * @deprecated look for {@link MyUserDTO#isValidAddress()}
