@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.api;
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderInputDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.OrderPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangelogDTO;
 import com.cloudesire.platform.apiclient.query.OrderQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -64,6 +65,9 @@ public interface OrderApi
 
     @GET( "order/{id}" )
     Call<OrderDTO> get( @Path( "id" ) Integer id );
+
+    @GET( "order/{id}/changelog" )
+    Call<ChangelogDTO> getChangelog( @Path( "id" ) int id );
 
     @POST( "order/{id}/notify" )
     Call<Void> notify( @Path( "id" ) Integer id );

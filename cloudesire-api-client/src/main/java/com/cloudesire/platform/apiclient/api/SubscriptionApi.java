@@ -1,6 +1,7 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.*;
+import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangelogDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.CustomInvoiceType;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
@@ -60,6 +61,9 @@ public interface SubscriptionApi
     @GET( "subscription/{id}" )
     @Headers( "Prefer: response=minimal" )
     Call<NamedEntityDTO> getMinimal( @Path( "id" ) int id );
+
+    @GET( "subscription/{id}/changelog" )
+    Call<ChangelogDTO> getChangelog( @Path( "id" ) int id );
 
     @POST( "subscription/{id}/invoice" )
     Call<Void> customInvoice( @Path( "id" ) int id,
