@@ -34,18 +34,12 @@ public class BaseEntityDTO implements DTO
     {
         if ( this.entityToken == null )
         {
-            return Introspector.decapitalize( getEntityClassName( this.getClass() ) );
+            return Introspector.decapitalize( this.getClass().getSimpleName().replace( "DTO", "" ) );
         }
         else
         {
             return this.entityToken;
         }
-    }
-
-    @JsonIgnore
-    public static String getEntityClassName( Class<?> clazz )
-    {
-        return clazz.getSimpleName().replace( "DTO", "" );
     }
 
     @JsonIgnore
