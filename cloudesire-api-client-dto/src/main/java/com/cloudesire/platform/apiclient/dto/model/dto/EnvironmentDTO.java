@@ -1501,6 +1501,9 @@ public class EnvironmentDTO implements DTO
         @ApiModelProperty( "Allow editing a subscription's billing dates" )
         private boolean alterSubscriptionBillingDates;
 
+        @ApiModelProperty( "Allow editing a user's own external ID (via PATCH)" )
+        private boolean patchOwnExternalId;
+
         public boolean commentsEnabled()
         {
             return customerProductComments || customerProductRatings;
@@ -1958,6 +1961,16 @@ public class EnvironmentDTO implements DTO
         public void setAlterSubscriptionBillingDates( boolean alterSubscriptionBillingDates )
         {
             this.alterSubscriptionBillingDates = alterSubscriptionBillingDates;
+        }
+
+        public boolean isPatchOwnExternalId()
+        {
+            return patchOwnExternalId;
+        }
+
+        public void setPatchOwnExternalId( boolean patchOwnExternalId )
+        {
+            this.patchOwnExternalId = patchOwnExternalId;
         }
         //endregion
     }
