@@ -14,7 +14,6 @@ import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
@@ -41,14 +40,6 @@ public interface OrderApi
     @Deprecated
     @GET( "order" )
     Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest );
-
-    /**
-     * @deprecated by {@link #getAll(OrderQuery)}
-     */
-    @Deprecated
-    @GET( "order" )
-    Call<List<OrderDTO>> getAll( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
 
     @GET( "order" )
     @Headers( { "Accept:text/csv" } )
@@ -80,16 +71,6 @@ public interface OrderApi
 
     @PATCH( "order/{id}" )
     Call<Void> partialUpdate( @Path( "id" ) int id, @Body OrderPatchDTO input );
-
-    /**
-     * @deprecated by {@link #getCsv(OrderQuery)}
-     */
-    @Deprecated
-    @Streaming
-    @GET( "order" )
-    @Headers( { "Accept:text/csv" } )
-    Call<ResponseBody> getCsv( @QueryMap Map<String, String> pageRequest, @Query( "type" ) String type,
-            @Query( "buyerEmail" ) String buyerEmail, @Query( "coupon" ) Boolean coupon );
 
     /**
      * @deprecated by {@link #getCsv(OrderQuery)}
