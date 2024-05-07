@@ -8,10 +8,9 @@ public class ResellerPricingQuery extends BaseQuery
 {
     private static final String RESELLER_ID = "resellerId";
     private static final String CATALOG_ID = "catalogId";
+    private static final String SEARCH = "search";
     private static final String PRODUCT_ID = "productId";
-    private static final String PRODUCT_NAME = "productName";
     private static final String PRODUCT_VERSION_ID = "productVersionId";
-    private static final String PRODUCT_VERSION_NAME = "productVersionName";
     private static final String UNPRICED = "unpriced";
     private static final String HIERARCHY = "hierarchy";
     private static final String LISTING = "listing";
@@ -34,27 +33,21 @@ public class ResellerPricingQuery extends BaseQuery
         return this;
     }
 
+    public ResellerPricingQuery setSearch( String search )
+    {
+        put( SEARCH, search );
+        return this;
+    }
+
     public ResellerPricingQuery setProductId( Integer id )
     {
         put( PRODUCT_ID, id );
         return this;
     }
 
-    public ResellerPricingQuery setProductName( String name )
-    {
-        put( PRODUCT_NAME, name );
-        return this;
-    }
-
     public ResellerPricingQuery setProductVersionId( Integer id )
     {
         put( PRODUCT_VERSION_ID, id );
-        return this;
-    }
-
-    public ResellerPricingQuery setProductVersionName( String name )
-    {
-        put( PRODUCT_VERSION_NAME, name );
         return this;
     }
 
