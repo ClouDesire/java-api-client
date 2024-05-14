@@ -10,7 +10,7 @@ import java.util.Objects;
 @JsonPropertyOrder ( { "id", "name", "cost" } )
 public class PricedEntityDTO extends NamedEntityDTO implements INamedEntityDTO
 {
-    @ApiModelProperty( value = "The sub-total price of the resource", required = true )
+    @ApiModelProperty( value = "The sub-total price of the resource" )
     @NotEmpty
     private BigDecimal cost;
 
