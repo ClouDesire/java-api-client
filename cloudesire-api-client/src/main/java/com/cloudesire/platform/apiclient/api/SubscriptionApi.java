@@ -1,12 +1,35 @@
 package com.cloudesire.platform.apiclient.api;
 
-import com.cloudesire.platform.apiclient.dto.model.dto.*;
+import com.cloudesire.platform.apiclient.dto.model.dto.ApplicationCredentialInputDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.EndpointDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.NamedEntityDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.OneshotCostLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.PricedEntityDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.RecurringCostLineDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDeploymentDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionDetailDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.SubscriptionPatchResponseDTO;
+import com.cloudesire.platform.apiclient.dto.model.dto.VendorOrderLineDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.changelog.ChangelogDTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.CustomInvoiceType;
+import com.cloudesire.platform.apiclient.query.CostsQuery;
 import com.cloudesire.platform.apiclient.query.SubscriptionQuery;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.HEAD;
+import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 
 import java.util.List;
 import java.util.Map;
@@ -25,6 +48,10 @@ public interface SubscriptionApi
     @GET( "subscription" )
     @Headers( "Prefer: response=minimal" )
     Call<List<NamedEntityDTO>> getAllMinimal( @QueryMap SubscriptionQuery query );
+
+    @GET( "subscription" )
+    @Headers( "Prefer: response=priced" )
+    Call<List<PricedEntityDTO>> getAllPriced( @QueryMap SubscriptionQuery subscriptionQuery, @QueryMap CostsQuery costsQuery );
 
     @GET( "subscription" )
     @Headers( "Prefer: response=deployment" )
