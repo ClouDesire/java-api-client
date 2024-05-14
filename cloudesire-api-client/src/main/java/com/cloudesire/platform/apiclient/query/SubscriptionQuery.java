@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import org.apache.commons.lang3.StringUtils;
 
-public class SubscriptionQuery extends PageRequestQuery
+public final class SubscriptionQuery extends PageRequestQuery
 {
     private static final String FILTER = "filter";
     private static final String ID = "id";
