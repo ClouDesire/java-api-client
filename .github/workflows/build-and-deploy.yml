@@ -8,12 +8,12 @@ on:
     - cron: 0 3 * * 1
 jobs:
   release:
-    uses: ClouDesire/github-workflows/.github/workflows/release.yml@f3f87d462c8f1781c2798a57f5db14cddd1d8a8a
+    uses: ClouDesire/github-workflows/.github/workflows/release-reusable.yml@07f23e03636adf443146c6131ab4c33af734686c
     if: github.ref_name == 'master' || github.ref_name == 'main'
     with:
       release-type: maven
   build:
-    uses: ClouDesire/github-workflows/.github/workflows/java-build-and-unit.yml@f3f87d462c8f1781c2798a57f5db14cddd1d8a8a
+    uses: ClouDesire/github-workflows/.github/workflows/java-build-and-unit.yml@07f23e03636adf443146c6131ab4c33af734686c
     with:
       deploy: github.ref_name == 'master' || github.ref_name == 'main'
     secrets:
