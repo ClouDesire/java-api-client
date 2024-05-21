@@ -1,0 +1,24 @@
+name: Build and Deploy
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    types: [opened, reopened, labeled]
+  schedule: 
+    - cron: 0 3 * * 1
+jobs:
+  release:
+    uses: ClouDesire/github-workflows/.github/workflows/release.yml@f3f87d462c8f1781c2798a57f5db14cddd1d8a8a
+    if: github.ref_name == 'master' || github.ref_name == 'main'
+    with:
+      release-type: maven
+  build:
+    uses: ClouDesire/github-workflows/.github/workflows/java-build-and-unit.yml@f3f87d462c8f1781c2798a57f5db14cddd1d8a8a
+    with:
+      deploy: github.ref_name == 'master' || github.ref_name == 'main'
+    secrets:
+      GH_PAT: ${{ secrets.BOT_GH_TOKEN }}
+      NEXUS_USER: ${{ secrets.NEXUS_USER }}
+      NEXUS_PWD: ${{ secrets.NEXUS_PWD }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    needs: release
