@@ -17,6 +17,12 @@ public class CostsQuery extends BaseQuery
     private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String GROUPING = "grouping";
 
+    public CostsQuery setPageRequest( PageRequestQuery pageRequestQuery )
+    {
+        putAll( pageRequestQuery );
+        return this;
+    }
+
     public CostsQuery from( ZonedDateTime from )
     {
         put( FROM, from.format( DateTimeFormatter.ISO_OFFSET_DATE_TIME ) );
