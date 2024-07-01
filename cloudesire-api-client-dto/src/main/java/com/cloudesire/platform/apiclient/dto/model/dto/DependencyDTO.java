@@ -3,8 +3,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 @ApiModel( description = "Define stack requirements for a vendor ApplicationFile" )

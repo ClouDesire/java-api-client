@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Map;
 

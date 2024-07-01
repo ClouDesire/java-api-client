@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;

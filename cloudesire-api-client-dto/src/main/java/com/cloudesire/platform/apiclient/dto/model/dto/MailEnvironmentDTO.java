@@ -2,9 +2,9 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO.MailCustomization.DEFAULT_MAIL_LANGUAGE;

@@ -7,8 +7,8 @@ import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
