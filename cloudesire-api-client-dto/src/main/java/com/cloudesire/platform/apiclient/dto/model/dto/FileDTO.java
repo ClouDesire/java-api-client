@@ -5,8 +5,8 @@ import com.liberologico.cloudesire.common.validators.ApplicationFileURL;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Size;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 

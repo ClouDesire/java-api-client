@@ -21,7 +21,7 @@ workflows:
             branches:
               only: master
       - cloudesire/maven_release:
-          executor_java_version: "11.0"
+          executor_java_version: "21.0"
           mvn_path: ./mvnw
           workspace: /home/circleci
           context:
@@ -43,7 +43,7 @@ jobs:
   build:
     executor:
       name: cloudesire/docker_java
-      java_version: "17.0"
+      java_version: "21.0"
     steps:
       - checkout
 
@@ -77,7 +77,7 @@ jobs:
   deploy:
     executor:
       name: cloudesire/docker_java
-      java_version: "11.0"
+      java_version: "21.0"
     steps:
 
       - attach_workspace:

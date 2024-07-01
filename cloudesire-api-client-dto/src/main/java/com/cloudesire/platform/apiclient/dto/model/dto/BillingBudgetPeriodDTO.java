@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.CalendarPeriod;
 import io.swagger.annotations.ApiModel;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.Objects;
 
 @ApiModel( description = "Timeframe definition for a billing budget. Either a calendar or a custom period can be defined." )
