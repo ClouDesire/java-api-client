@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.util.Objects;
 
