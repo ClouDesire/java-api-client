@@ -3,8 +3,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Schema( description = "An Endpoint where to dispatch web hooks notifications" )
 public class SyndicationEndpointDTO implements DTO

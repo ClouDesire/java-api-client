@@ -2,8 +2,8 @@ package com.liberologico.cloudesire.common.validators;
 
 import org.iban4j.IbanUtil;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class IBANValidatorForString implements ConstraintValidator<IBAN, String>
 {

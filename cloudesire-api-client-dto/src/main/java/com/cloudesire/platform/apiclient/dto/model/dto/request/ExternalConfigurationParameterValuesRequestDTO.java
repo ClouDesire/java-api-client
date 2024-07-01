@@ -3,8 +3,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto.request;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.UrlEntityDTO;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.Map;
 
 public class ExternalConfigurationParameterValuesRequestDTO implements DTO

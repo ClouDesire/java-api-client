@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.utils;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Slugger;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.constraints.Future;
+import jakarta.validation.constraints.Future;
 import java.util.Date;
 
 public class OrderPatchDTO implements DTO
