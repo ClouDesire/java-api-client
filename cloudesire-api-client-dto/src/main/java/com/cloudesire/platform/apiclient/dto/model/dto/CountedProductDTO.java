@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 public class CountedProductDTO
 {
