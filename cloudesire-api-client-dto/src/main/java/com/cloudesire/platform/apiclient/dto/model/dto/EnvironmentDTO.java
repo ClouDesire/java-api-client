@@ -1527,19 +1527,19 @@ public class EnvironmentDTO implements DTO
         public void setSelfBilling( Object selfBilling )
         {
             /* @deprecated */
-            if ( selfBilling instanceof Boolean && (Boolean) selfBilling )
+            if ( selfBilling instanceof Boolean bSelfBilling && bSelfBilling )
             {
                 this.selfBilling = SelfBilling.PER_PLAN;
             }
 
-            if ( selfBilling instanceof String )
+            if ( selfBilling instanceof String sSelfBilling )
             {
-                this.selfBilling = SelfBilling.valueOf( (String) selfBilling );
+                this.selfBilling = SelfBilling.valueOf( sSelfBilling );
             }
 
-            if ( selfBilling instanceof SelfBilling )
+            if ( selfBilling instanceof SelfBilling oSelfBilling )
             {
-                this.selfBilling = (SelfBilling) selfBilling;
+                this.selfBilling = oSelfBilling;
             }
         }
 

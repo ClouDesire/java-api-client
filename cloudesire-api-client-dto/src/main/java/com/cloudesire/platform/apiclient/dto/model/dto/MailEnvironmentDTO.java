@@ -367,8 +367,7 @@ public class MailEnvironmentDTO implements DTO
                     return getDiscountCoupon();
                 case FIXED_PRICE:
                     return getFixedPriceCoupon();
-                case TRIAL:
-                case EXTENDED_TRIAL:
+                case TRIAL, EXTENDED_TRIAL:
                     return getTrialCoupon();
                 default:
                     return null;
