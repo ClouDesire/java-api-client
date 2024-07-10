@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,14 +27,12 @@ public class PageRequestDTO
         }
     }
 
-    @Schema( description = "Page number to retrieve")
+    @Schema( description = "Page number to retrieve", defaultValue = "1" )
     @Min( value = 1, message = ErrorKeys.INVALID_MIN )
-    @NotNull
     private Integer pageNumber = DEFAULT_PAGE_NUMBER;
 
-    @Schema( description = "Number of elements for the requested page")
+    @Schema( description = "Number of elements for the requested page", defaultValue = "20" )
     @Max( value = 50, message = ErrorKeys.INVALID_MAX )
-    @NotNull
     private Integer pageSize = DEFAULT_PAGE_SIZE;
 
     @Schema( description = "Elements sort direction")

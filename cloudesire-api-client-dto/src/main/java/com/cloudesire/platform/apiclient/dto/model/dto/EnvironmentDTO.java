@@ -35,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Schema( description = "Platform configuration" )
 public class EnvironmentDTO implements DTO
@@ -2588,7 +2587,7 @@ public class EnvironmentDTO implements DTO
 
             return stalePasswordNotificationPlan.stream()
                     .sorted()
-                    .collect( Collectors.toList() );
+                    .toList();
         }
 
         public void setStalePasswordNotificationPlan( List<Integer> stalePasswordNotificationPlan )
