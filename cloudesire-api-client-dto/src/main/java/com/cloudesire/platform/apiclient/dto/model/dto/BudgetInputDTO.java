@@ -3,8 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,45 +11,45 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Map;
 
-@ApiModel( description = "Budget estimate request" )
+@Schema( description = "Budget estimate request" )
 public class BudgetInputDTO
 {
     @NotNull
     private OrderType type = OrderType.NORMAL;
 
-    @ApiModelProperty( "The ID of the chosen product version" )
+    @Schema( description = "The ID of the chosen product version")
     private Integer productVersionId;
 
-    @ApiModelProperty( "The ID of the chosen cloud provider" )
+    @Schema( description = "The ID of the chosen cloud provider")
     private Integer providerId;
 
-    @ApiModelProperty( "The ID of the custom cloud credentials" )
+    @Schema( description = "The ID of the custom cloud credentials")
     private Integer credentialId;
 
-    @ApiModelProperty( "The ID of the chosen bandwidth pricing" )
+    @Schema( description = "The ID of the chosen bandwidth pricing")
     private Integer bandwidthPricingId;
 
-    @ApiModelProperty( "For how many hours to request an estimate" )
+    @Schema( description = "For how many hours to request an estimate")
     @Min( 1 )
     @Max( 720 )
     private Integer hours;
 
-    @ApiModelProperty( "Show current or projected pay-per-use costs" )
+    @Schema( description = "Show current or projected pay-per-use costs")
     private PayPerUseCosts payPerUseCosts;
 
-    @ApiModelProperty( "The ID of an existing subscription" )
+    @Schema( description = "The ID of an existing subscription")
     private Integer subscriptionId;
 
-    @ApiModelProperty( "The coupon code" )
+    @Schema( description = "The coupon code")
     private String hashCoupon;
 
-    @ApiModelProperty( value = "The chosen values for the billing items", example = "{\"billingItem/123\":10}")
+    @Schema( description = "The chosen values for the billing items", example = "{\"billingItem/123\":10}")
     private Map<UrlEntityDTO, Integer> billingItems;
 
-    @ApiModelProperty( "Subscription configuration parameters - used in external validation only" )
+    @Schema( description = "Subscription configuration parameters - used in external validation only")
     private Map<UrlEntityDTO, String> configurationParameters;
 
-    @ApiModelProperty( "The slug of a reseller company" )
+    @Schema( description = "The slug of a reseller company")
     private String reseller;
 
     private Integer catalogId;
@@ -59,7 +58,7 @@ public class BudgetInputDTO
 
     private PropertyFilter iaas;
 
-    @ApiModelProperty( "Apply date for upgrades" )
+    @Schema( description = "Apply date for upgrades")
     private Date from;
 
     public OrderType getType()

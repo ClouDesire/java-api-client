@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.math.BigDecimal;
@@ -9,15 +9,15 @@ import java.util.Objects;
 
 public class CspAzureProductDTO extends CspProductDTO
 {
-    @ApiModelProperty( "The publisher id of an Azure marketplace image" )
+    @Schema( description = "The publisher id of an Azure marketplace image")
     @NotEmpty
     private String azurePublisher;
 
-    @ApiModelProperty( "The offer id of an Azure marketplace image" )
+    @Schema( description = "The offer id of an Azure marketplace image")
     @NotEmpty
     private String azureOffer;
 
-    @ApiModelProperty( "The sku of an Azure marketplace image" )
+    @Schema( description = "The sku of an Azure marketplace image")
     @NotEmpty
     private String azureSku;
 

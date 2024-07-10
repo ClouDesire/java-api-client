@@ -1,18 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.Objects;
 
-@ApiModel( description = "A draft of a product version description" )
+@Schema( description = "A draft of a product version description" )
 public class ProductVersionDraftDTO implements ProductVersionL10nDTO
 {
     @Valid
     private UrlEntityDTO original;
 
-    @ApiModelProperty( "Description of the product version" )
+    @Schema( description = "Description of the product version")
     private String description;
 
     @Override

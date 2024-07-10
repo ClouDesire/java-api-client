@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CalendarPeriod;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.Objects;
 
-@ApiModel( description = "Timeframe definition for a billing budget. Either a calendar or a custom period can be defined." )
+@Schema( description = "Timeframe definition for a billing budget. Either a calendar or a custom period can be defined." )
 public class BillingBudgetPeriodDTO implements DTO
 {
     private CalendarPeriod calendarPeriod;

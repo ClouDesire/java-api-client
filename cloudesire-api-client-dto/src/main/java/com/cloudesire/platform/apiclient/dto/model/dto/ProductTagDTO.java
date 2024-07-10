@@ -1,22 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
-@ApiModel( description = "A label to tag a product" )
+@Schema( description = "A label to tag a product" )
 public class ProductTagDTO implements DTO
 {
-    @ApiModelProperty( "Tag description" )
+    @Schema( description = "Tag description")
     private String tag;
 
-    @ApiModelProperty( "Tag type" )
+    @Schema( description = "Tag type")
     private String type;
 
-    @ApiModelProperty( value = "How many products for the tag are present", accessMode = READ_ONLY )
+    @Schema( description = "How many products for the tag are present", accessMode = READ_ONLY )
     private Long productCount = 0L;
 
     //region Auto-generated code

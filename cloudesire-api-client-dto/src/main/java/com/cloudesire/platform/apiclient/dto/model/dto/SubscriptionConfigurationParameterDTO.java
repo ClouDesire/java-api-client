@@ -1,18 +1,18 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class SubscriptionConfigurationParameterDTO implements DTO
 {
     private UrlEntityDTO configurationParameter;
 
-    @ApiModelProperty( "The identifier for this Configuration Parameter" )
+    @Schema( description = "The identifier for this Configuration Parameter")
     private String code;
 
-    @ApiModelProperty( "The chosen value for this Configuration Parameter" )
+    @Schema( description = "The chosen value for this Configuration Parameter")
     private String value;
 
-    @ApiModelProperty( "The (optional) description for the Configuration Parameter chosen value" )
+    @Schema( description = "The (optional) description for the Configuration Parameter chosen value")
     private String description;
 
     public UrlEntityDTO getConfigurationParameter()

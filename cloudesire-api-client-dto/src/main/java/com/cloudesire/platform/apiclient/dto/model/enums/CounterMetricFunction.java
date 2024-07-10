@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum CounterMetricFunction implements MetricFunction
 {
-    @ApiModelProperty( "Increase value over time" )
+    @Schema( description = "Increase value over time")
     INCREASE,
 
-    @ApiModelProperty( "Value over time minus previous" )
+    @Schema( description = "Value over time minus previous")
     VALUE
 }

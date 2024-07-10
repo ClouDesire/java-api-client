@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
@@ -10,13 +9,13 @@ import java.math.BigDecimal;
 import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE;
 import static com.cloudesire.platform.apiclient.dto.model.dto.PercentagePricingPatchDTO.Action.MASS_UPDATE_CLOUD_PRICINGS;
 
-@ApiModel( description = "Mass actions for resold pricings" )
+@Schema( description = "Mass actions for resold pricings" )
 public class PercentagePricingPatchDTO implements DTO
 {
     @NotNull
     private Action action;
 
-    @ApiModelProperty( "Price change in percentage" )
+    @Schema( description = "Price change in percentage")
     private BigDecimal percentage;
 
     public PercentagePricingPatchDTO( Action action )
@@ -24,7 +23,7 @@ public class PercentagePricingPatchDTO implements DTO
         this.action = action;
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @AssertTrue( message = "Missing percentage value" )
     public boolean isValidAction()
     {
@@ -57,13 +56,13 @@ public class PercentagePricingPatchDTO implements DTO
         this.percentage = percentage;
     }
 
-    @ApiModel( description = "The defined action" )
+    @Schema( description = "The defined action" )
     public enum Action
     {
-        @ApiModelProperty( "Update price and setup of every pricing" )
+        @Schema( description = "Update price and setup of every pricing")
         MASS_UPDATE,
 
-        @ApiModelProperty( "Update price of every cloud pricing defined in the pricings" )
+        @Schema( description = "Update price of every cloud pricing defined in the pricings")
         MASS_UPDATE_CLOUD_PRICINGS
     }
 }

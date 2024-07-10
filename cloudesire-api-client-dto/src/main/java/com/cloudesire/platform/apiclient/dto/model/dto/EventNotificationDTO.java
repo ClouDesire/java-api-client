@@ -1,8 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 import java.util.Map;
@@ -14,24 +13,24 @@ import java.util.Objects;
  *
  * @see EventDTO
  */
-@ApiModel( description = "Payload sent to the HTTP endpoint" )
+@Schema( description = "Payload sent to the HTTP endpoint" )
 public class EventNotificationDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "The ID of the Event", example = "123" )
+    @Schema( description = "The ID of the Event", example = "123" )
     private Integer eventId;
 
-    @ApiModelProperty( value = "The name of the Event", example = "Subscription" )
+    @Schema( description = "The name of the Event", example = "Subscription" )
     private String entity;
 
-    @ApiModelProperty( value = "The date of Event creation" )
+    @Schema( description = "The date of Event creation" )
     private Date date;
 
     private CmwEventType type;
 
-    @ApiModelProperty( value = "Concatenation of entity name and ID", example = "subscription/123" )
+    @Schema( description = "Concatenation of entity name and ID", example = "subscription/123" )
     private String entityUrl;
 
-    @ApiModelProperty( "Generic payload that can be sent along with the event" )
+    @Schema( description = "Generic payload that can be sent along with the event")
     private Map<String, Object> metadata;
 
     public Integer getEventId()

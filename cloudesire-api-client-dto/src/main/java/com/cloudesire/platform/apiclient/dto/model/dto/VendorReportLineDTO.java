@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -14,19 +14,19 @@ public class VendorReportLineDTO extends ReportLineDTO
 {
     private UrlEntityDTO company;
 
-    @ApiModelProperty( value = "Income for the vendor", readOnly = true )
+    @Schema( description = "Income for the vendor", readOnly = true )
     private BigDecimal income;
 
-    @ApiModelProperty( value = "License component of the total income", readOnly = true )
+    @Schema( description = "License component of the total income", readOnly = true )
     private BigDecimal license;
 
-    @ApiModelProperty( value = "Expenses for the vendor", readOnly = true )
+    @Schema( description = "Expenses for the vendor", readOnly = true )
     private BigDecimal expenses;
 
-    @ApiModelProperty( value = "Infrastructure cost component of the total expenses", readOnly = true )
+    @Schema( description = "Infrastructure cost component of the total expenses", readOnly = true )
     private BigDecimal iaas;
 
-    @ApiModelProperty( value = "Platform fees", readOnly = true )
+    @Schema( description = "Platform fees", readOnly = true )
     private BigDecimal fees;
 
     private OrderType type;

@@ -2,8 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -11,77 +10,77 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( description = "Budget estimate" )
+@Schema( description = "Budget estimate" )
 public class BudgetDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "Country code" )
+    @Schema( description = "Country code")
     @NotNull
     private String nation = "IT";
 
-    @ApiModelProperty( "URL of the chosen cloud provider" )
+    @Schema( description = "URL of the chosen cloud provider")
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( "URL of the chosen product version" )
+    @Schema( description = "URL of the chosen product version")
     @NotNull
     @Valid
     private UrlEntityDTO configuration;
 
-    @ApiModelProperty( "Trial duration in days" )
+    @Schema( description = "Trial duration in days")
     private Integer trialLength;
 
-    @ApiModelProperty( "Lines directly billed to the customer" )
+    @Schema( description = "Lines directly billed to the customer")
     private List<OrderLineDTO> upsoldLines;
 
-    @ApiModelProperty( "If this invoice is subject to the Italian electronic document tax" )
+    @Schema( description = "If this invoice is subject to the Italian electronic document tax")
     private boolean stampDuty = false;
 
-    @ApiModelProperty( "Currency of the prices for the estimate" )
+    @Schema( description = "Currency of the prices for the estimate")
     private String currency;
 
-    @ApiModelProperty( "Value added tax, in percentage" )
+    @Schema( description = "Value added tax, in percentage")
     @JsonInclude ( JsonInclude.Include.NON_EMPTY )
     private BigDecimal VAT;
 
-    @ApiModelProperty( "Discount coupon applied on the estimate" )
+    @Schema( description = "Discount coupon applied on the estimate")
     private String couponStatus;
 
-    @ApiModelProperty( "Recurring monthly price" )
+    @Schema( description = "Recurring monthly price")
     private BigDecimal priceExcludingVAT;
 
-    @ApiModelProperty( "Price for the first month, including potential setup fee" )
+    @Schema( description = "Price for the first month, including potential setup fee")
     private BigDecimal firstPriceExcludingVAT;
 
-    @ApiModelProperty( "True if this will generate a self-billed invoice" )
+    @Schema( description = "True if this will generate a self-billed invoice")
     private Boolean selfBilled;
 
-    @ApiModelProperty( "Number of months of a billing cycle for this order" )
+    @Schema( description = "Number of months of a billing cycle for this order")
     private Integer billingPeriod;
 
-    @ApiModelProperty( "Minimum duration of this order in months" )
+    @Schema( description = "Minimum duration of this order in months")
     private Integer minimumDuration;
 
-    @ApiModelProperty( "Duration of this order in hours" )
+    @Schema( description = "Duration of this order in hours")
     private Integer lifespan;
 
     private IaasBilling iaasBilling;
 
     private BudgetVMConfigurationDTO vmConfiguration;
 
-    @ApiModelProperty( "Whether the budget is for a delayed subscription downgrade" )
+    @Schema( description = "Whether the budget is for a delayed subscription downgrade")
     private Boolean downgrade;
 
-    @ApiModelProperty( "Total price for the budget" )
+    @Schema( description = "Total price for the budget")
     private BigDecimal totalPrice;
 
-    @ApiModelProperty( "VAT component of the price" )
+    @Schema( description = "VAT component of the price")
     private BigDecimal vatSpunOff;
 
-    @ApiModelProperty( "Reseller Catalog used to calculate prices for the Budget" )
+    @Schema( description = "Reseller Catalog used to calculate prices for the Budget")
     private UrlEntityDTO resellerCatalog;
 
-    @ApiModelProperty( "Reseller Pricing used to calculate prices for the Budget" )
+    @Schema( description = "Reseller Pricing used to calculate prices for the Budget")
     private UrlEntityDTO resellerPricing;
 
     private String resellerCatalogName;

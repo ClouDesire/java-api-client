@@ -1,8 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
@@ -13,62 +12,62 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@ApiModel( description = "Perform an operation on a subscription" )
+@Schema( description = "Perform an operation on a subscription" )
 public class SubscriptionPatchDTO implements DTO
 {
     public static final String FIELD_ENDPOINTS = "syndicatedEndpoints";
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private String endUserInstructions;
 
-    @ApiModelProperty( "Configuration parameter values for the subscription" )
+    @Schema( description = "Configuration parameter values for the subscription")
     private Map<UrlEntityDTO, String> configurationParameters;
 
-    @ApiModelProperty( "Deployment status of the subscription" )
+    @Schema( description = "Deployment status of the subscription")
     private DeploymentStatus deploymentStatus;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private String syndicatedEndpoints;
 
-    @ApiModelProperty( "Update operation" )
+    @Schema( description = "Update operation")
     private SubscriptionPatchAction action;
 
-    @ApiModelProperty( "For how many hours to renew a sandbox subscription" )
+    @Schema( description = "For how many hours to renew a sandbox subscription")
     private Integer hours;
 
-    @ApiModelProperty( "Whether the subscription automatically renews at the end of the last billing period" )
+    @Schema( description = "Whether the subscription automatically renews at the end of the last billing period")
     private Boolean autoRenew;
 
-    @ApiModelProperty( "Billing item values for the subscription" )
+    @Schema( description = "Billing item values for the subscription")
     private Map<UrlEntityDTO, Integer> billingItems;
 
     private UrlEntityDTO productVersion;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private Integer value;
 
-    @ApiModelProperty( "Update the subscription paid status" )
+    @Schema( description = "Update the subscription paid status")
     private Boolean paid;
 
-    @ApiModelProperty( "A descriptive name for the subscription" )
+    @Schema( description = "A descriptive name for the subscription")
     @Size( max = 255 )
     private String name;
 
-    @ApiModelProperty( "Refresh billing configuration for a particular invoice" )
+    @Schema( description = "Refresh billing configuration for a particular invoice")
     private Integer invoiceId;
 
-    @ApiModelProperty( "Postpone upgrade to a later date" )
+    @Schema( description = "Postpone upgrade to a later date")
     @Future
     private Date from;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Valid
     private BillingDatesDTO billingDates;
 
@@ -271,48 +270,48 @@ public class SubscriptionPatchDTO implements DTO
 
     public enum SubscriptionPatchAction
     {
-        @ApiModelProperty( "Renew a subscription" )
+        @Schema( description = "Renew a subscription")
         RENEW,
 
-        @ApiModelProperty( "Start a subscription's VM" )
+        @Schema( description = "Start a subscription's VM")
         START,
 
-        @ApiModelProperty( "Stop a subscription's VM" )
+        @Schema( description = "Stop a subscription's VM")
         STOP,
 
-        @ApiModelProperty( "Kill a subscription" )
+        @Schema( description = "Kill a subscription")
         KILL,
 
-        @ApiModelProperty( "Update subscription auto-renewal status" )
+        @Schema( description = "Update subscription auto-renewal status")
         AUTORENEW,
 
-        @ApiModelProperty( hidden = true )
+        @Schema( hidden = true )
         @Deprecated UPGRADE,
 
-        @ApiModelProperty( "Request an extra resource upgrade" )
+        @Schema( description = "Request an extra resource upgrade")
         BILLING_ITEM_UPGRADE,
 
-        @ApiModelProperty( "Request a product plan update for a syndicated subscription" )
+        @Schema( description = "Request a product plan update for a syndicated subscription")
         SYNDICATED_UPGRADE,
 
-        @ApiModelProperty( "Update reselling prices and extra resources ranges with current plan values" )
+        @Schema( description = "Update reselling prices and extra resources ranges with current plan values")
         REFRESH_BILLING_CONFIGURATION,
 
-        @ApiModelProperty( hidden = true )
+        @Schema( hidden = true )
         @Deprecated
         REFRESH_BILLING_ITEM_VALUES,
 
-        @ApiModelProperty( "Approve a subscription" )
+        @Schema( description = "Approve a subscription")
         @Deprecated
         APPROVE,
 
-        @ApiModelProperty( "Provision a subscription" )
+        @Schema( description = "Provision a subscription")
         DEPLOY,
 
-        @ApiModelProperty( "Set a descriptive name for a subscription" )
+        @Schema( description = "Set a descriptive name for a subscription")
         SET_NAME,
 
-        @ApiModelProperty( hidden = true )
+        @Schema( hidden = true )
         ALTER_DATES
     }
 

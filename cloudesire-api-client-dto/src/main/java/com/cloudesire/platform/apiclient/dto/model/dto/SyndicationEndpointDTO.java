@@ -1,22 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-@ApiModel( description = "An Endpoint where to dispatch web hooks notifications" )
+@Schema( description = "An Endpoint where to dispatch web hooks notifications" )
 public class SyndicationEndpointDTO implements DTO
 {
     @NotEmpty
     @URL
-    @ApiModelProperty( "URL where to dispatch web hooks" )
+    @Schema( description = "URL where to dispatch web hooks")
     @Size( max = 1024 )
     private String url;
 
-    @ApiModelProperty( "An optional secret to sign outgoing web hooks" )
+    @Schema( description = "An optional secret to sign outgoing web hooks")
     @Size( max = 64 )
     private String secret;
 

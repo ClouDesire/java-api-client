@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.util.Objects;
 @JsonPropertyOrder ( { "id", "name", "cost" } )
 public class PricedEntityDTO extends NamedEntityDTO implements INamedEntityDTO
 {
-    @ApiModelProperty( value = "The sub-total price of the resource" )
+    @Schema( description = "The sub-total price of the resource" )
     @NotEmpty
     private BigDecimal cost;
 

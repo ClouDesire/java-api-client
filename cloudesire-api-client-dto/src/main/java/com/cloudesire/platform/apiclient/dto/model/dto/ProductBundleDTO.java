@@ -1,16 +1,15 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Set;
 import java.util.TreeSet;
 
-@ApiModel( description = "A bundle of different products" )
+@Schema( description = "A bundle of different products" )
 public class ProductBundleDTO extends ProductDTO
 {
-    @ApiModelProperty( value = "Products included in this bundle with their discount", readOnly = true )
+    @Schema( description = "Products included in this bundle with their discount", readOnly = true )
     private final Set<ProductDiscountDTO> bundled = new TreeSet<>();
 
     public void addBundled( ProductDTO product, BigDecimal discount )

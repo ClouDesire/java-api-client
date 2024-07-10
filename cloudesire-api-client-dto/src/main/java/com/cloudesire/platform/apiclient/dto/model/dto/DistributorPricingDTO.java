@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( description = "Defines a pricing for a product version" )
+@Schema( description = "Defines a pricing for a product version" )
 public class DistributorPricingDTO extends BaseEntityDTO
 {
     @NotNull
@@ -22,34 +21,34 @@ public class DistributorPricingDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO productVersion;
 
-    @ApiModelProperty( "The price defined by the distributor" )
+    @Schema( description = "The price defined by the distributor")
     @Valid
     private ResellingPriceDTO price;
 
-    @ApiModelProperty( "The setup fee defined by the distributor" )
+    @Schema( description = "The setup fee defined by the distributor")
     @Valid
     private ResellingPriceDTO setup;
 
-    @ApiModelProperty( "Sell-in prices for the billing items" )
+    @Schema( description = "Sell-in prices for the billing items")
     @Valid
     private Set<BillingItemSellinPriceDTO> billingItemSellinPrices;
 
-    @ApiModelProperty( "Sell-in prices for the cloud pricings" )
+    @Schema( description = "Sell-in prices for the cloud pricings")
     @Valid
     private Set<CloudPricingSellinPriceDTO> cloudPricingSellinPrices;
 
-    @ApiModelProperty( "Sell-in prices for custom costs" )
+    @Schema( description = "Sell-in prices for custom costs")
     @Valid
     private List<CustomSellinPriceDTO> customSellinPrices;
 
-    @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
+    @Schema( description = "Whether the pricing will not be altered by a mass update")
     private Boolean locked;
 
-    @ApiModelProperty( "Default percentage sellout for new Reseller catalogs" )
+    @Schema( description = "Default percentage sellout for new Reseller catalogs")
     @Min( 0 )
     private BigDecimal recommendedSelloutPercentage;
 
-    @ApiModelProperty( value = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
+    @Schema( description = "Whether the pricing is not associated to the reseller anymore", readOnly = true )
     private Boolean deprecated;
 
     public DistributorPricingDTO( UrlEntityDTO distributorCatalog, UrlEntityDTO productVersion )

@@ -1,15 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
-@ApiModel( description = "Custom cloud credentials" )
+@Schema( description = "Custom cloud credentials" )
 public class CloudCredentialDTO extends NamedEntityDTO
 {
     @NotNull
@@ -22,16 +21,16 @@ public class CloudCredentialDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO subscription;
 
-    @ApiModelProperty( value = "The name of the linked subscription", accessMode = READ_ONLY )
+    @Schema( description = "The name of the linked subscription", accessMode = READ_ONLY )
     private String subscriptionName;
 
-    @ApiModelProperty(
-            value = "Whether the actual credentials have been uploaded to vault or metadata is present",
+    @Schema(
+            description = "Whether the actual credentials have been uploaded to vault or metadata is present",
             accessMode = READ_ONLY
     )
     private Boolean uploaded;
 
-    @ApiModelProperty( value = "The vault path of the uploaded credentials, if present", accessMode = READ_ONLY )
+    @Schema( description = "The vault path of the uploaded credentials, if present", accessMode = READ_ONLY )
     private String secretsPath;
 
     public CloudCredentialDTO( String name, UrlEntityDTO cloudProvider )

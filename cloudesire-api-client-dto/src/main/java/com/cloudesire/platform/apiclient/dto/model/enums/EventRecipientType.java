@@ -1,15 +1,14 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "The destination of the event" )
+@Schema( description = "The destination of the event" )
 public enum EventRecipientType
 {
-    @ApiModelProperty( "The event recipient is an endpoint defined by the vendor" )
+    @Schema( description = "The event recipient is an endpoint defined by the vendor")
     COMPANY,
-    @ApiModelProperty( "The event recipient is an endpoint relative to the product" )
+    @Schema( description = "The event recipient is an endpoint relative to the product")
     PRODUCT,
-    @ApiModelProperty( "The event recipient is a platform endpoint" )
+    @Schema( description = "The event recipient is a platform endpoint")
     PLATFORM
 }

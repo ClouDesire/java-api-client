@@ -1,21 +1,20 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.Regexp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@ApiModel( description = "Electronic invoicing data for Italian business companies" )
+@Schema( description = "Electronic invoicing data for Italian business companies" )
 public class ItalianElectronicInvoicingDTO
 {
-    @ApiModelProperty( "Codice univoco ufficio/Codice destinatario" )
+    @Schema( description = "Codice univoco ufficio/Codice destinatario")
     @Size( min = 6, max = 7 )
     private String sdiCode;
 
-    @ApiModelProperty( "Posta elettronica certificata" )
+    @Schema( description = "Posta elettronica certificata")
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @Size( min = 7, max = 256 )
     private String pec;

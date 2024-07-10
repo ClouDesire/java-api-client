@@ -1,11 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.Objects;
 
-@ApiModel( description = "Billing details for the cheapest Product Version for a Product" )
+@Schema( description = "Billing details for the cheapest Product Version for a Product" )
 public class MinimumCostDTO implements DTO
 {
     private VATPriceDTO cost;

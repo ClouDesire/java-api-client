@@ -1,11 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
-@ApiModel( description = "A category of products" )
+@Schema( description = "A category of products" )
 public class ProductCategoryDTO extends NamedEntityDTO
 {
     private String slug;
@@ -14,7 +13,7 @@ public class ProductCategoryDTO extends NamedEntityDTO
 
     private Integer weight;
 
-    @ApiModelProperty( value = "How many products for the category are present", readOnly = true )
+    @Schema( description = "How many products for the category are present", readOnly = true )
     private Long productCount = 0L;
 
     public ProductCategoryDTO( String name )

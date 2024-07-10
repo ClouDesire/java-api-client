@@ -1,38 +1,37 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
-@ApiModel( description = "A physical address" )
+@Schema( description = "A physical address" )
 public class AddressDTO extends BaseEntityDTO implements Serializable
 {
     @Size( max = 255 )
-    @ApiModelProperty( "Country name" )
+    @Schema( description = "Country name")
     private String country;
 
     @Size( max = 255 )
-    @ApiModelProperty( "City name" )
+    @Schema( description = "City name")
     private String city;
 
     @Size( max = 255 )
-    @ApiModelProperty( "Street name, with number" )
+    @Schema( description = "Street name, with number")
     private String address;
 
     @Size( max = 255 )
-    @ApiModelProperty( "Local postal code" )
+    @Schema( description = "Local postal code")
     private String zipCode;
 
     @Size( min = 2, max = 2 )
-    @ApiModelProperty( "Province/State code" )
+    @Schema( description = "Province/State code")
     private String state;
 
     @Size( max = 2 )
-    @ApiModelProperty( "Country code" )
+    @Schema( description = "Country code")
     private String countryCode;
 
     public AddressDTO()

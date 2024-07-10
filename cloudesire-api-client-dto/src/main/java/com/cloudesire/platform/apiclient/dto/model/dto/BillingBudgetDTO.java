@@ -1,13 +1,13 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( description = "A budget describes what you expect to spend on your subscriptions in a certain timeframe." )
+@Schema( description = "A budget describes what you expect to spend on your subscriptions in a certain timeframe." )
 public class BillingBudgetDTO extends NamedEntityDTO
 {
     @NotNull

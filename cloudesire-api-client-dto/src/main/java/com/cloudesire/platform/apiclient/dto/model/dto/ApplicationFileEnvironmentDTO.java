@@ -1,13 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@ApiModel( description = "Environment variables for an application" )
+@Schema( description = "Environment variables for an application" )
 public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
 {
     /**
@@ -16,15 +15,15 @@ public class ApplicationFileEnvironmentDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO applicationFile;
 
-    @ApiModelProperty( "Variable name" )
+    @Schema( description = "Variable name")
     @NotNull
     private String variable;
 
-    @ApiModelProperty( "Variable value" )
+    @Schema( description = "Variable value")
     @NotNull
     private String value;
 
-    @ApiModelProperty( "Whether the value is editable by a customer" )
+    @Schema( description = "Whether the value is editable by a customer")
     private boolean editableByCustomer = false;
 
     public ApplicationFileEnvironmentDTO( String applicationUrl, String variable, String value )

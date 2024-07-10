@@ -1,20 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( description = "A price" )
+@Schema( description = "A price" )
 public class PriceDTO implements DTO
 {
     @NotNull
-    @ApiModelProperty( "The price for the current resource" )
+    @Schema( description = "The price for the current resource")
     protected BigDecimal price;
 
-    @ApiModelProperty( value = "The currency of the price", example = "EUR" )
+    @Schema( description = "The currency of the price", example = "EUR" )
     protected String currency;
 
     public PriceDTO( BigDecimal price, String currency )

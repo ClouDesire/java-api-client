@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -10,19 +9,19 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "A changelog entry for a product" )
+@Schema( description = "A changelog entry for a product" )
 public class ProductChangelogEntryDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "Product version number" )
+    @Schema( description = "Product version number")
     @NotNull
     private String version;
 
-    @ApiModelProperty( "Descriptive text of the changelog entry" )
+    @Schema( description = "Descriptive text of the changelog entry")
     @NotNull
     @Size( max = 65536, message = INVALID_SIZE )
     private String text;
 
-    @ApiModelProperty( "Changelog entry date" )
+    @Schema( description = "Changelog entry date")
     private Date date = new Date();
 
     public String getVersion()

@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum ResellerPricingHierarchy
 {
-    @ApiModelProperty( "Hide inherited pricings (default)" )
+    @Schema( description = "Hide inherited pricings (default)")
     THIS,
 
-    @ApiModelProperty( "Show inherited pricings" )
+    @Schema( description = "Show inherited pricings")
     FULL
 }

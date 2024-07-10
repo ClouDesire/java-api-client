@@ -1,24 +1,23 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.StackParameterValueType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
-@ApiModel( description = "A software stack requirement" )
+@Schema( description = "A software stack requirement" )
 public abstract class BaseStackParameterDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "Identifier of the parameter", readOnly = true )
+    @Schema( description = "Identifier of the parameter", readOnly = true )
     private String parameterIdentifier;
 
-    @ApiModelProperty( value = "Regex to validate values of the parameter", readOnly = true )
+    @Schema( description = "Regex to validate values of the parameter", readOnly = true )
     private String regexRule;
 
-    @ApiModelProperty( value = "Descriptive label", readOnly = true )
+    @Schema( description = "Descriptive label", readOnly = true )
     private String label;
 
-    @ApiModelProperty( value = "The type of the parameter's values", readOnly = true )
+    @Schema( description = "The type of the parameter's values", readOnly = true )
     private StackParameterValueType type = StackParameterValueType.STRING;
 
     public String getParameterIdentifier()

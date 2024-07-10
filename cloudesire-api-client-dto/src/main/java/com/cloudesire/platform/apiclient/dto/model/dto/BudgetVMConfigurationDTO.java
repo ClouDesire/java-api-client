@@ -1,9 +1,9 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Which cloud resources the customer will get for this order" )
+@Schema( description = "Which cloud resources the customer will get for this order" )
 public class BudgetVMConfigurationDTO implements DTO
 {
     private OSType operatingSystem;

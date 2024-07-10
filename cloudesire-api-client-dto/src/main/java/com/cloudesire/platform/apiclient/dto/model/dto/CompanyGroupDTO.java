@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ public class CompanyGroupDTO extends NamedEntityDTO
     @NotNull
     private UrlEntityDTO userCompany;
 
-    @ApiModelProperty( "An identifier for the group" )
+    @Schema( description = "An identifier for the group")
     @NotEmpty
     @Size( max = 125 )
     private String identifier;

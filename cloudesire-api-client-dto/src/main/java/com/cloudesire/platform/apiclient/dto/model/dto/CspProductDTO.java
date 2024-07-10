@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public abstract class CspProductDTO extends ProductDTO
 {
-    @ApiModelProperty( "The plan or license price when importing a new CSP product" )
+    @Schema( description = "The plan or license price when importing a new CSP product")
     @NotNull
     private BigDecimal price;
 

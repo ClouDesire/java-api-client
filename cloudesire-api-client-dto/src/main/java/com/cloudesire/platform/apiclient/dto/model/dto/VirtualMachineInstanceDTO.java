@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -13,10 +13,10 @@ public class VirtualMachineInstanceDTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO subscription;
 
-    @ApiModelProperty("CPU cores current allocation (starting from 1.00)")
+    @Schema(description = "CPU cores current allocation (starting from 1.00)")
     private Double cpu;
 
-    @ApiModelProperty( "Actual ram configuration, in MB")
+    @Schema( description = "Actual ram configuration, in MB")
     private Integer ram;
 
     private String publicIP;

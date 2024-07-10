@@ -1,20 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 
-@ApiModel( description = "Details of a VAT Exemption document valid under Italian laws" )
+@Schema( description = "Details of a VAT Exemption document valid under Italian laws" )
 public class VatExemptionDTO implements DTO
 {
-    @ApiModelProperty( "The reference number of the document" )
+    @Schema( description = "The reference number of the document")
     private String declarationNumber;
 
-    @ApiModelProperty( "The declaration date of the document" )
+    @Schema( description = "The declaration date of the document")
     private Date declarationDate;
 
-    @ApiModelProperty( "The internal protocol number of the document" )
+    @Schema( description = "The internal protocol number of the document")
     private String internalProtocolNumber;
 
     public VatExemptionDTO( String declarationNumber, Date declarationDate, String internalProtocolNumber )

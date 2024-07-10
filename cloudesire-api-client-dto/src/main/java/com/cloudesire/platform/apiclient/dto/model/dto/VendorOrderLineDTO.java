@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.Length;
 
 import java.math.BigDecimal;
@@ -28,16 +28,16 @@ public class VendorOrderLineDTO extends CustomOrderLineDTO
         super();
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Length( max = 125 )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20221124 )
     private String tag;
 
-    @ApiModelProperty( "Tag custom costs" )
+    @Schema( description = "Tag custom costs")
     @FieldAPI( sinceVersion = ApiVersion.V20221124 )
     private Map<String, String> tags;
 
-    @ApiModelProperty( "Purchase date of the custom cost, defaults to now" )
+    @Schema( description = "Purchase date of the custom cost, defaults to now")
     private Date purchased;
 
     @Override

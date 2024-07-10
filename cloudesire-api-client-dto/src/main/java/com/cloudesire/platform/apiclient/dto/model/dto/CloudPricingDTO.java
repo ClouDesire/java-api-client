@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -13,11 +13,11 @@ abstract class CloudPricingDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( "Wholesale price" )
+    @Schema( description = "Wholesale price")
     @NotNull
     private BigDecimal price;
 
-    @ApiModelProperty( "Cost for the platform owner" )
+    @Schema( description = "Cost for the platform owner")
     @NotNull
     private BigDecimal cost;
 

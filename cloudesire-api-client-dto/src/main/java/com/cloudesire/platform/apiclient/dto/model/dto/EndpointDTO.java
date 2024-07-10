@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.EndpointType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.IN
 
 public class EndpointDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "Endpoint URL" )
+    @Schema( description = "Endpoint URL")
     @NotNull
     @Size( min = 1, max = 2000 )
     @URL
@@ -20,7 +20,7 @@ public class EndpointDTO extends BaseEntityDTO
 
     private EndpointType category;
 
-    @ApiModelProperty( "Endpoint description" )
+    @Schema( description = "Endpoint description")
     @Size( max = 1024, message = INVALID_SIZE )
     private String description;
 
@@ -42,7 +42,7 @@ public class EndpointDTO extends BaseEntityDTO
     /**
      * @deprecated use {@link #getEndpoint()}
      */
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     public String getName()
     {

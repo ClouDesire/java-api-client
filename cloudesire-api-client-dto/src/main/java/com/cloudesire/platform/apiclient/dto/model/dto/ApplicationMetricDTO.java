@@ -8,7 +8,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.Frequency;
 import com.cloudesire.platform.apiclient.dto.model.enums.GaugeMetricFunction;
 import com.cloudesire.platform.apiclient.dto.model.enums.MetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "Whether the metric is a counter (value always increments) or a gauge (value can arbitrarily go up and down)" )
+    @Schema( description = "Whether the metric is a counter (value always increments) or a gauge (value can arbitrarily go up and down)")
     private boolean counter;
 
     @UnsupportedAPI( sinceVersion = ApiVersion.V20201005 )
@@ -38,7 +38,7 @@ public class ApplicationMetricDTO extends BaseEntityDTO
     @NotNull
     private ApplicationMetricType type = ApplicationMetricType.EXTERNAL;
 
-    @ApiModelProperty( "URL to fetch a metric for syndicated products, a relative path for managed products or null if metric is harvested by platform prometheus" )
+    @Schema( description = "URL to fetch a metric for syndicated products, a relative path for managed products or null if metric is harvested by platform prometheus")
     private String endpoint;
 
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190819 )

@@ -2,9 +2,9 @@ package com.cloudesire.platform.apiclient.dto.model.enums;
 
 import com.cloudesire.platform.apiclient.dto.model.utils.MetricFunctionCreator;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Function to apply for metrics value retrieval" )
+@Schema( description = "Function to apply for metrics value retrieval" )
 public interface MetricFunction
 {
     @JsonCreator

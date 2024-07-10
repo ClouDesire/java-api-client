@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -14,37 +14,37 @@ public class ProceedsReportLineDTO extends ReportLineDTO
 
     private LineType type;
 
-    @ApiModelProperty( "The description of the invoice line" )
+    @Schema( description = "The description of the invoice line")
     private String description;
 
-    @ApiModelProperty( "The quantity sold" )
+    @Schema( description = "The quantity sold")
     private BigDecimal quantity;
 
     private UrlEntityDTO vendor;
 
-    @ApiModelProperty( "The proceeds for the parent" )
+    @Schema( description = "The proceeds for the parent")
     private BigDecimal wholesale;
 
-    @ApiModelProperty( "The proceeds for the distributor" )
+    @Schema( description = "The proceeds for the distributor")
     private BigDecimal sellin;
 
-    @ApiModelProperty( "The proceeds for the reseller" )
+    @Schema( description = "The proceeds for the reseller")
     private BigDecimal sellout;
 
-    @ApiModelProperty( "The proceeds for the vendor" )
+    @Schema( description = "The proceeds for the vendor")
     private BigDecimal vendorIncome;
 
-    @ApiModelProperty( "The costs for the distributor" )
+    @Schema( description = "The costs for the distributor")
     private CostsDTO costs;
 
-    @ApiModelProperty( "Total earnings minus total costs" )
+    @Schema( description = "Total earnings minus total costs")
     private BigDecimal margin;
 
     private UrlEntityDTO subscription;
 
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "Custom billing identifier" )
+    @Schema( description = "Custom billing identifier")
     private String identifier;
 
     // region Auto-generated code
@@ -230,10 +230,10 @@ public class ProceedsReportLineDTO extends ReportLineDTO
 
     public static class CostsDTO
     {
-        @ApiModelProperty( "The chargeback for the vendor" )
+        @Schema( description = "The chargeback for the vendor")
         private BigDecimal license;
 
-        @ApiModelProperty( "The cloud costs to refund to the platform" )
+        @Schema( description = "The cloud costs to refund to the platform")
         private BigDecimal iaas;
 
         public CostsDTO( BigDecimal license, BigDecimal iaas )

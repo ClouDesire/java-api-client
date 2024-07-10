@@ -1,17 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( "Configuration for the presence of the Billing Item when buying a Subscription" )
+@Schema( description = "Configuration for the presence of the Billing Item when buying a Subscription" )
 public enum BillingItemPresence
 {
-    @ApiModelProperty( "The Billing Item is optional" )
+    @Schema( description = "The Billing Item is optional")
     OPTIONAL,
 
-    @ApiModelProperty( "The Billing Item will be suggested for inclusion on purchase" )
+    @Schema( description = "The Billing Item will be suggested for inclusion on purchase")
     RECOMMENDED,
 
-    @ApiModelProperty( "The Billing Item will be included in every Subscription" )
+    @Schema( description = "The Billing Item will be included in every Subscription")
     REQUIRED
 }

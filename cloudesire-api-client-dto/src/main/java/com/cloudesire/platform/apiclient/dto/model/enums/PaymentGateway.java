@@ -1,24 +1,23 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( "How the customer can pay" )
+@Schema( description = "How the customer can pay" )
 public enum PaymentGateway
 {
-    @ApiModelProperty( value = "PayPal payment gateway", hidden = true )
+    @Schema( description = "PayPal payment gateway", hidden = true )
     @Deprecated
     PAYPAL,
 
-    @ApiModelProperty( "Stripe credit card" )
+    @Schema( description = "Stripe credit card")
     STRIPE,
 
-    @ApiModelProperty( "Stripe SEPA direct debit" )
+    @Schema( description = "Stripe SEPA direct debit")
     STRIPE_SEPA,
 
-    @ApiModelProperty( "Archive the customer's IBAN on his profile for offline usage" )
+    @Schema( description = "Archive the customer's IBAN on his profile for offline usage")
     IBAN,
 
-    @ApiModelProperty( "Pay offline" )
+    @Schema( description = "Pay offline")
     MANUAL
 }

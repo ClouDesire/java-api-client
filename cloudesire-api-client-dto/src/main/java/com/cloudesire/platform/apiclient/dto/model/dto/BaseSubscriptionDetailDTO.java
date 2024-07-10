@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ public abstract class BaseSubscriptionDetailDTO extends BaseSubscriptionDTO
 
     private List<RecurringCostLineDTO> recurringCosts;
 
-    @ApiModelProperty( "Uptime in minutes of the subscription" )
+    @Schema( description = "Uptime in minutes of the subscription")
     private Integer uptime;
 
-    @ApiModelProperty( value = "Vault path for the customer cloud credentials for the subscription", hidden = true )
+    @Schema( description = "Vault path for the customer cloud credentials for the subscription", hidden = true )
     private String customerCredentialsPath;
 
     public List<ApplicationCredentialOutputDTO> getCredentials()

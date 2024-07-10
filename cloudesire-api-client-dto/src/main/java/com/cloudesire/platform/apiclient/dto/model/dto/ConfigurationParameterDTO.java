@@ -2,8 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.liberologico.cloudesire.common.validators.RegExp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
@@ -17,44 +16,44 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "A parameter that the user can fill for each subscription" )
+@Schema( description = "A parameter that the user can fill for each subscription" )
 public class ConfigurationParameterDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "Identifier for the configuration parameter" )
+    @Schema( description = "Identifier for the configuration parameter")
     @Size( max = 250, message = INVALID_SIZE )
     @Pattern( regexp = "[A-Za-z][A-Za-z0-9_]*", message = ErrorKeys.ALPHANUMERIC_START_WITH_LETTER )
     private String code;
 
-    @ApiModelProperty( "Extended description" )
+    @Schema( description = "Extended description")
     @NotEmpty
     @Size( max = 4096, message = INVALID_SIZE )
     private String description;
 
-    @ApiModelProperty( "Regular expression to validate the parameter value" )
+    @Schema( description = "Regular expression to validate the parameter value")
     @RegExp
     private String validation;
 
-    @ApiModelProperty( "Possible labeled values for the parameter" )
+    @Schema( description = "Possible labeled values for the parameter")
     private Map<String, String> acceptedValues;
 
-    @ApiModelProperty( "External endpoint to obtain possible values for the parameter" )
+    @Schema( description = "External endpoint to obtain possible values for the parameter")
     @URL
     private String externalValuesUrl;
 
-    @ApiModelProperty( "Accepted number range for the values of the parameter" )
+    @Schema( description = "Accepted number range for the values of the parameter")
     @Valid
     private Range range;
 
-    @ApiModelProperty( "Short description to help user compiling the correct value" )
+    @Schema( description = "Short description to help user compiling the correct value")
     private String hint;
 
-    @ApiModelProperty( "Whether compiling the parameter is required" )
+    @Schema( description = "Whether compiling the parameter is required")
     private boolean required;
 
-    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    @Schema( description = "Weight order for displaying on the marketplace")
     private Integer weight;
 
-    @ApiModelProperty( "Whether to hide the parameter values" )
+    @Schema( description = "Whether to hide the parameter values")
     private boolean sensitive;
 
     public ConfigurationParameterDTO( String name, String code, String description )

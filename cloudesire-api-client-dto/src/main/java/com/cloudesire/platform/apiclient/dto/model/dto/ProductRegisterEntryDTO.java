@@ -1,21 +1,20 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 import java.util.Map;
 
-@ApiModel( description = "Logs an edit of a product" )
+@Schema( description = "Logs an edit of a product" )
 public class ProductRegisterEntryDTO implements DTO
 {
-    @ApiModelProperty( "When the edit occurred" )
+    @Schema( description = "When the edit occurred")
     private Date date;
 
-    @ApiModelProperty( "Username of the editor" )
+    @Schema( description = "Username of the editor")
     private String editor;
 
-    @ApiModelProperty( "Edited data" )
+    @Schema( description = "Edited data")
     private Map<String, Map<String, String>> entry;
 
     //region Auto-generated code

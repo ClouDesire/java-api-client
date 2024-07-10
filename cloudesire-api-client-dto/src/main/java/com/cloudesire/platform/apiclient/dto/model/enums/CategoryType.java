@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "The cookbook category of a NodeRole" )
+@Schema( description = "The cookbook category of a NodeRole" )
 public enum CategoryType
 {
     BASE,

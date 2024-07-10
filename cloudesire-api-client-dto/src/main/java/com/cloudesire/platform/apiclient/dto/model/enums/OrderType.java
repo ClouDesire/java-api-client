@@ -1,45 +1,44 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( "Which kind of order" )
+@Schema( description = "Which kind of order" )
 public enum OrderType
 {
-    @ApiModelProperty( "Buy a product" )
+    @Schema( description = "Buy a product")
     NORMAL,
-    @ApiModelProperty( "Trial for a product" )
+    @Schema( description = "Trial for a product")
     TRIAL,
-    @ApiModelProperty( "Test mode for vendors" )
+    @Schema( description = "Test mode for vendors")
     SANDBOX,
-    @ApiModelProperty( value = "Deprecated", hidden = true )
+    @Schema( description = "Deprecated", hidden = true )
     UPGRADE,
-    @ApiModelProperty( "Change values for the available Billing Item" )
+    @Schema( description = "Change values for the available Billing Item")
     BILLING_ITEM_UPGRADE,
-    @ApiModelProperty( value = "Internal", hidden = true )
+    @Schema( description = "Internal", hidden = true )
     MONTHLY,
-    @ApiModelProperty( "Renew an active subscription" )
+    @Schema( description = "Renew an active subscription")
     RENEWAL,
-    @ApiModelProperty( "An order without expiration" )
+    @Schema( description = "An order without expiration")
     UNMANAGED,
-    @ApiModelProperty( "Request termination of an active subscription" )
+    @Schema( description = "Request termination of an active subscription")
     TERMINATION,
-    @ApiModelProperty( "Stop auto-renewing a subscription" )
+    @Schema( description = "Stop auto-renewing a subscription")
     UNSUBSCRIBE,
-    @ApiModelProperty( "Add one-off costs to an active subscription" )
+    @Schema( description = "Add one-off costs to an active subscription")
     ONESHOT_COSTS,
-    @ApiModelProperty( "Add recurring costs to an active subscription" )
+    @Schema( description = "Add recurring costs to an active subscription")
     RECURRING_COSTS,
-    @ApiModelProperty( "Add unmanaged costs to an active subscription" )
+    @Schema( description = "Add unmanaged costs to an active subscription")
     UPSELL,
-    @ApiModelProperty( "As UPSELL, but receives lines in chunks" )
+    @Schema( description = "As UPSELL, but receives lines in chunks")
     CHUNKED,
-    @ApiModelProperty( "Refund costs for an active subscription" )
+    @Schema( description = "Refund costs for an active subscription")
     REFUND,
-    @ApiModelProperty( "Upgrade disk space, only for managed products" )
+    @Schema( description = "Upgrade disk space, only for managed products")
     DISK_UPGRADE,
-    @ApiModelProperty( "Plan upgrade, only for syndicated products" )
+    @Schema( description = "Plan upgrade, only for syndicated products")
     SYNDICATED_UPGRADE,
-    @ApiModelProperty( "Estimate the total costs of a subscription" )
+    @Schema( description = "Estimate the total costs of a subscription")
     ESTIMATE
 }

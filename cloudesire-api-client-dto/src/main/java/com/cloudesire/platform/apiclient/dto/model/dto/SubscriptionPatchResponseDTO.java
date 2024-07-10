@@ -1,13 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderStatus;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Response of a PATCH action on a Subscription" )
+@Schema( description = "Response of a PATCH action on a Subscription" )
 public class SubscriptionPatchResponseDTO implements DTO
 {
-    @ApiModelProperty( "Outcome of a Subscription upgrade" )
+    @Schema( description = "Outcome of a Subscription upgrade")
     private OrderStatus upgrade;
 
     private UrlEntityDTO invoice;

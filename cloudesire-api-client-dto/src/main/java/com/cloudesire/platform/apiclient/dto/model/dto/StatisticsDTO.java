@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -8,76 +8,76 @@ import java.util.Objects;
 
 public class StatisticsDTO implements DTO
 {
-    @ApiModelProperty( "IAAS expenses for customer" )
+    @Schema( description = "IAAS expenses for customer")
     private BigDecimal iaasExpenses;
 
-    @ApiModelProperty( "License expenses for customer" )
+    @Schema( description = "License expenses for customer")
     private BigDecimal licenseExpenses;
 
-    @ApiModelProperty( "Difference between earnings and costs" )
+    @Schema( description = "Difference between earnings and costs")
     private BigDecimal margin;
 
-    @ApiModelProperty( "Total earnings" )
+    @Schema( description = "Total earnings")
     private BigDecimal earnings;
 
-    @ApiModelProperty( "Total costs" )
+    @Schema( description = "Total costs")
     private BigDecimal costs;
 
-    @ApiModelProperty( "Expenses for NORMAL orders" )
+    @Schema( description = "Expenses for NORMAL orders")
     private BigDecimal normalExpenses;
 
-    @ApiModelProperty( "Expenses for TRIAL orders" )
+    @Schema( description = "Expenses for TRIAL orders")
     private BigDecimal trialExpenses;
 
-    @ApiModelProperty( "Expenses for SANDBOX orders" )
+    @Schema( description = "Expenses for SANDBOX orders")
     private BigDecimal sandboxExpenses;
 
-    @ApiModelProperty( "Active customers" )
+    @Schema( description = "Active customers")
     private Long customersCount;
 
-    @ApiModelProperty( "Registered companies" )
+    @Schema( description = "Registered companies")
     private Long companiesCount;
 
-    @ApiModelProperty( "Active subscriptions" )
+    @Schema( description = "Active subscriptions")
     private Long subscriptionsCount;
 
-    @ApiModelProperty( "Subscriptions in DEPLOYED status" )
+    @Schema( description = "Subscriptions in DEPLOYED status")
     private Long deployedSubscriptionsCount;
 
-    @ApiModelProperty( "Subscriptions in PENDING status" )
+    @Schema( description = "Subscriptions in PENDING status")
     private Long pendingSubscriptionsCount;
 
-    @ApiModelProperty( "Subscriptions in FAILED status" )
+    @Schema( description = "Subscriptions in FAILED status")
     private Long failedSubscriptionsCount;
 
-    @ApiModelProperty( "Products count" )
+    @Schema( description = "Products count")
     private Long productsCount;
 
-    @ApiModelProperty( "Published products count" )
+    @Schema( description = "Published products count")
     private Long publishedProductsCount;
 
-    @ApiModelProperty( "Paid NORMAL orders" )
+    @Schema( description = "Paid NORMAL orders")
     private Long normalOrdersCount;
 
-    @ApiModelProperty( "Trial orders" )
+    @Schema( description = "Trial orders")
     private Long trialOrdersCount;
 
-    @ApiModelProperty( "Renewal orders" )
+    @Schema( description = "Renewal orders")
     private Long renewalOrdersCount;
 
-    @ApiModelProperty( "Upsell orders" )
+    @Schema( description = "Upsell orders")
     private Long upsellOrdersCount;
 
-    @ApiModelProperty( "Most sold product versions" )
+    @Schema( description = "Most sold product versions")
     private List<SellingStatisticDTO> mostSoldProductVersions;
 
-    @ApiModelProperty( "Most profitable product versions" )
+    @Schema( description = "Most profitable product versions")
     private List<SellingStatisticDTO> mostProfitableProductVersions;
 
-    @ApiModelProperty( "Most activated product versions" )
+    @Schema( description = "Most activated product versions")
     private List<SellingStatisticDTO> mostActivatedProductVersions;
 
-    @ApiModelProperty( "Top spending customers" )
+    @Schema( description = "Top spending customers")
     private List<SellingStatisticDTO> mostProfitableCustomers;
 
     public BigDecimal getIaasExpenses()

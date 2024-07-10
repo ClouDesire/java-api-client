@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.EnumSet;
@@ -11,7 +10,7 @@ import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_EXTRA;
 import static com.cloudesire.platform.apiclient.dto.model.enums.LineType.Option.IS_INCOME;
 
-@ApiModel( description = "Which kind of cost" )
+@Schema( description = "Which kind of cost" )
 public enum LineType
 {
     BACKUP,
@@ -19,36 +18,36 @@ public enum LineType
     BILLINGITEMCOST( IS_EXTRA, IS_INCOME ),
     BILLINGITEMSETUP( IS_EXTRA, IS_INCOME ),
     BILLINGITEMPROPORTIONALSETUP( IS_EXTRA, IS_INCOME ),
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     BILLINGITEMRECURRING( IS_EXTRA, IS_INCOME ),
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     CLOUDESIREFEE,
     /** Monthly fee */
-    @ApiModelProperty( "License costs" )
+    @Schema( description = "License costs")
     CONFIGURATION( 10, IS_INCOME ),
     COUPONDISCOUNT( 15, IS_INCOME ),
-    @ApiModelProperty( "Custom vendor invoice" )
+    @Schema( description = "Custom vendor invoice")
     CUSTOM( IS_CUSTOM, IS_INCOME ),
     DISK_UPGRADE,
     DISKSPACE( 50 ),
     IAASEXPENSE,
     @Deprecated
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     METRIC( IS_INCOME ),
     ONESHOTCOST( IS_CUSTOM, IS_INCOME ),
     @Deprecated
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     PRODUCT,
     RECURRINGCOST( IS_CUSTOM, IS_INCOME ),
     REFUND,
     SETUPFEE( 20, IS_INCOME ),
     /** Bollo */
     STAMPDUTY,
-    @ApiModelProperty( "Cloud provider upfront costs" )
+    @Schema( description = "Cloud provider upfront costs")
     UPFRONT( 29 ),
-    @ApiModelProperty( "Cloud costs" )
+    @Schema( description = "Cloud costs")
     VIRTUALMACHINE( 30 );
 
     private final int weight;

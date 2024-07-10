@@ -1,16 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class InstancePricingPatchDTO extends PricingPatchDTO
 {
-    @ApiModelProperty( "Unlink the Instance Pricing from any Virtual Machine Configuration" )
+    @Schema( description = "Unlink the Instance Pricing from any Virtual Machine Configuration")
     private Boolean deprecated;
 
-    @ApiModelProperty( "Change associated diskSpace" )
+    @Schema( description = "Change associated diskSpace")
     private Integer diskSpace;
 
     public InstancePricingPatchDTO( @NotNull BigDecimal price )

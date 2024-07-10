@@ -1,23 +1,21 @@
 package com.liberologico.cloudesire.common.enums.dto;
 
 import com.liberologico.cloudesire.common.enums.HttpMethod;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
-@ApiModel( description = "How to execute an API call" )
+@Schema( description = "How to execute an API call" )
 public class ActionUrlDTO implements Serializable
 {
     private static final long serialVersionUID = 5518923410438917060L;
 
-    @ApiModelProperty( value = "The HTTP URL to execute the action", readOnly = true )
+    @Schema( description = "The HTTP URL to execute the action", readOnly = true )
     private String url;
 
-    @ApiModelProperty( value = "The HTTP method to execute the action", readOnly = true )
+    @Schema( description = "The HTTP method to execute the action", readOnly = true )
     private HttpMethod method;
 
-    @ApiModelProperty( value = "The name of the resource", example = "Subscription", readOnly = true )
+    @Schema( description = "The name of the resource", example = "Subscription", readOnly = true )
     private String resourceType;
 
     // region Auto-generated code

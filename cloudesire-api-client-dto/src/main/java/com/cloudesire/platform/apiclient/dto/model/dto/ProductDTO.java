@@ -10,7 +10,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.ProductType;
 import com.cloudesire.platform.apiclient.dto.model.enums.SubscriptionsPerProduct;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
@@ -29,7 +29,7 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 {
     private String slug;
 
-    @ApiModelProperty( "Identifier of the product, cannot be changed after creation" )
+    @Schema( description = "Identifier of the product, cannot be changed after creation")
     private String SKU;
 
     @Valid
@@ -44,185 +44,185 @@ public class ProductDTO extends NamedEntityDTO implements ProductL10nDTO, Compar
 
     private ProductType type;
 
-    @ApiModelProperty( "The versions of the product" )
+    @Schema( description = "The versions of the product")
     @Valid
     private List<UrlEntityDTO> productVersion;
 
-    @ApiModelProperty( "URLs where events of syndicated applications are dispatched" )
+    @Schema( description = "URLs where events of syndicated applications are dispatched")
     @FieldAPI( sinceVersion = ApiVersion.V20190916 )
     private Set<String> syndicationEndpoints;
 
-    @ApiModelProperty( value = "URL where events of syndicated applications are dispatched", hidden = true )
+    @Schema( description = "URL where events of syndicated applications are dispatched", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190916 )
     private String syndicatedEndpoint;
 
-    @ApiModelProperty( "Base URL for the product's API" )
+    @Schema( description = "Base URL for the product's API")
     private String apiUrl;
 
-    @ApiModelProperty( "The files linked to the product" )
+    @Schema( description = "The files linked to the product")
     @Valid
     private List<UrlEntityDTO> files;
 
-    @ApiModelProperty( "Short description of the product" )
+    @Schema( description = "Short description of the product")
     @Size( max = 4000, message = INVALID_SIZE )
     private String shortDescription;
 
-    @ApiModelProperty( "Long description of the product" )
+    @Schema( description = "Long description of the product")
     @Size( max = 8192, message = INVALID_SIZE )
     private String longDescription;
 
-    @ApiModelProperty( value = "Average rating received for the product", readOnly = true )
+    @Schema( description = "Average rating received for the product", readOnly = true )
     private BigDecimal averageRating;
 
-    @ApiModelProperty( value = "Number of ratings received for the product", readOnly = true )
+    @Schema( description = "Number of ratings received for the product", readOnly = true )
     private Long numberOfRatings;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private Boolean isFeatured = false;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private String attributes;
 
     @Size( max = 65536, message = INVALID_SIZE )
-    @ApiModelProperty( "Instructions shown to the customer that buys a subscription" )
+    @Schema( description = "Instructions shown to the customer that buys a subscription")
     private String endUserInstructions;
 
-    @ApiModelProperty( "Terms of service" )
+    @Schema( description = "Terms of service")
     @Size( max = 65536, message = INVALID_SIZE )
     private String termsOfService;
 
-    @ApiModelProperty( "Privacy policy" )
+    @Schema( description = "Privacy policy")
     @Size( max = 65536, message = INVALID_SIZE )
     private String privacy;
 
-    @ApiModelProperty( "Service level agreement" )
+    @Schema( description = "Service level agreement")
     @Size( max = 65536, message = INVALID_SIZE )
     private String serviceLevelAgreement;
 
-    @ApiModelProperty( "Tags associated to the product" )
+    @Schema( description = "Tags associated to the product")
     private Set<ProductTagDTO> tags;
 
-    @ApiModelProperty( "Cloud providers associated to the product" )
+    @Schema( description = "Cloud providers associated to the product")
     @Valid
     private List<UrlEntityDTO> cloudProviders;
 
-    @ApiModelProperty( value = "If the product is an API", readOnly = true )
+    @Schema( description = "If the product is an API", readOnly = true )
     @JsonProperty( "isApi" )
     private Boolean api;
 
-    @ApiModelProperty( value = "If the product is a bundle of other products", readOnly = true )
+    @Schema( description = "If the product is a bundle of other products", readOnly = true )
     @JsonProperty( "isBundle" )
     private Boolean bundle;
 
-    @ApiModelProperty( value = "If the product is a deployable", readOnly = true )
+    @Schema( description = "If the product is a deployable", readOnly = true )
     @JsonProperty( "isManaged" )
     private Boolean managed;
 
-    @ApiModelProperty( value = "If the product is a cloud service", readOnly = true )
+    @Schema( description = "If the product is a cloud service", readOnly = true )
     @JsonProperty( "isCloudService" )
     private Boolean cloudService;
 
-    @ApiModelProperty( value = "If the product is imported from CSP", readOnly = true )
+    @Schema( description = "If the product is imported from CSP", readOnly = true )
     @JsonProperty( "isCsp" )
     private Boolean csp;
 
-    @ApiModelProperty( value = "If the product is a service", readOnly = true )
+    @Schema( description = "If the product is a service", readOnly = true )
     @JsonProperty( "isService" )
     private Boolean service;
 
-    @ApiModelProperty( value = "If the product is syndicated", readOnly = true )
+    @Schema( description = "If the product is syndicated", readOnly = true )
     @JsonProperty( "isSyndicated" )
     private Boolean syndicated;
 
-    @ApiModelProperty( value = "If the product is a bare VM", readOnly = true )
+    @Schema( description = "If the product is a bare VM", readOnly = true )
     @JsonProperty( "isVm" )
     private Boolean vm;
 
-    @ApiModelProperty( "HTTPS certificate for the product's deployed VMs" )
+    @Schema( description = "HTTPS certificate for the product's deployed VMs")
     private String certificate;
 
-    @ApiModelProperty( "HTTPS certificate private key" )
+    @Schema( description = "HTTPS certificate private key")
     private String privateKey;
 
-    @ApiModelProperty( value = "If HTTPS certificate and private key have been uploaded", readOnly = true )
+    @Schema( description = "If HTTPS certificate and private key have been uploaded", readOnly = true )
     private boolean keyPairPresent;
 
-    @ApiModelProperty( value = "Wildcard hostname from provided certificate", readOnly = true )
+    @Schema( description = "Wildcard hostname from provided certificate", readOnly = true )
     private String certificateHostname;
 
     @JsonInclude( JsonInclude.Include.NON_NULL )
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private Set<String> environments;
 
-    @ApiModelProperty( "If the product is in a draft state" )
+    @Schema( description = "If the product is in a draft state")
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
     @JsonInclude( JsonInclude.Include.NON_NULL )
-    @ApiModelProperty( "Localized product metadata" )
+    @Schema( description = "Localized product metadata")
     private Map<String, Object> extraData;
 
-    @ApiModelProperty( "Frequently asked questions" )
+    @Schema( description = "Frequently asked questions")
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 
-    @ApiModelProperty( "The configuration parameters for the product" )
+    @Schema( description = "The configuration parameters for the product")
     @Valid
     private List<ConfigurationParameterDTO> configurationParameters;
 
-    @ApiModelProperty( "Pre-shared secret to sign event notifications" )
+    @Schema( description = "Pre-shared secret to sign event notifications")
     private String notificationSecretToken;
 
     private ProductDestination destination = ProductDestination.B2C;
 
-    @ApiModelProperty( "If the product will be displayed in an iframe" )
+    @Schema( description = "If the product will be displayed in an iframe")
     private Boolean frameable;
 
-    @ApiModelProperty( "Date of first publishing on the marketplace" )
+    @Schema( description = "Date of first publishing on the marketplace")
     private Date published;
 
-    @ApiModelProperty( "The version that will be selected by default in the marketplace" )
+    @Schema( description = "The version that will be selected by default in the marketplace")
     private UrlEntityDTO recommendedVersion;
 
-    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    @Schema( description = "Weight order for displaying on the marketplace")
     private int weight;
 
-    @ApiModelProperty( "Whether to silent emails to customer regarding product delivery" )
+    @Schema( description = "Whether to silent emails to customer regarding product delivery")
     private boolean silent;
 
-    @ApiModelProperty( "The cost for the vendor to be present in the marketplace catalog" )
+    @Schema( description = "The cost for the vendor to be present in the marketplace catalog")
     private BigDecimal listingPrice;
 
-    @ApiModelProperty( "Request approval of the product" )
+    @Schema( description = "Request approval of the product")
     private boolean requestedForApproval;
 
-    @ApiModelProperty( "Whether the CSP product is license-based or Azure marketplace" )
+    @Schema( description = "Whether the CSP product is license-based or Azure marketplace")
     private CspProductType cspProductType;
 
-    @ApiModelProperty( "Authentication header name for the upstream API" )
+    @Schema( description = "Authentication header name for the upstream API")
     private String apiHeaderName;
 
-    @ApiModelProperty( "Authentication header value for the upstream API" )
+    @Schema( description = "Authentication header value for the upstream API")
     private String apiHeaderValue;
 
     private SubscriptionsPerProduct subscriptionsPerProduct;
 
-    @ApiModelProperty( "Require approvation for customer subscriptions" )
+    @Schema( description = "Require approvation for customer subscriptions")
     private Boolean subscriptionApproval;
 
-    @ApiModelProperty( "Message to display to the user on subscription termination" )
+    @Schema( description = "Message to display to the user on subscription termination")
     @Size( max = 65536, message = INVALID_SIZE )
     private String terminationMessage;
 
-    @ApiModelProperty( "Message to display to the user for Terms of Service acceptance" )
+    @Schema( description = "Message to display to the user for Terms of Service acceptance")
     @Size( max = 65536, message = INVALID_SIZE )
     private String tosAcceptance;
 
-    @ApiModelProperty( "URLs to call for order validation" )
+    @Schema( description = "URLs to call for order validation")
     @FieldAPI( sinceVersion = ApiVersion.V20210215 )
     private Set<@Size( max = 2000 ) @URL String> orderValidationUrls;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Size( max = 2000 )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20210215 )
     @URL

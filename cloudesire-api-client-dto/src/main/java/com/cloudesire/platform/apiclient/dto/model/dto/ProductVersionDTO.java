@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.IaasBilling;
 import com.cloudesire.platform.apiclient.dto.model.enums.PaymentGateway;
 import com.cloudesire.platform.apiclient.dto.model.enums.Trial;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_MIN;
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
 public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL10nDTO
 {
@@ -28,99 +28,99 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     public static final String PUBLISHED_FIELD = "published";
     public static final String SETUP_FEE_FIELD = "setupFee";
 
-    @ApiModelProperty( "Configurations of the virtual machines for the product version" )
+    @Schema( description = "Configurations of the virtual machines for the product version")
     @Valid
     private Set<UrlEntityDTO> virtualMachineConfiguration;
 
     @Valid
     private UrlEntityDTO product;
 
-    @ApiModelProperty( "Unique identifier" )
+    @Schema( description = "Unique identifier")
     private String identifier;
 
-    @ApiModelProperty( "Suggested bandwidth to be payed in advance, decided by vendor" )
+    @Schema( description = "Suggested bandwidth to be payed in advance, decided by vendor")
     private BigDecimal bandwidthInGB;
 
-    @ApiModelProperty( "Price for the product version, can be null for a catalog-only product plan" )
+    @Schema( description = "Price for the product version, can be null for a catalog-only product plan")
     private BigDecimal price;
 
-    @ApiModelProperty( "Price set by the vendor. Visible to admin only" )
+    @Schema( description = "Price set by the vendor. Visible to admin only")
     private BigDecimal vendorPrice;
 
-    @ApiModelProperty( "How often to bill the customer, in months" )
+    @Schema( description = "How often to bill the customer, in months")
     private Integer billingPeriod;
 
-    @ApiModelProperty( "Minimum duration for a subscription, in months" )
+    @Schema( description = "Minimum duration for a subscription, in months")
     private Integer minimumDuration = 1;
 
     private Trial trial;
 
-    @ApiModelProperty( "If the emission and payment of the version's invoices must be handled by the vendor" )
+    @Schema( description = "If the emission and payment of the version's invoices must be handled by the vendor")
     private boolean selfBilling = false;
 
-    @ApiModelProperty( "If the version is published on the marketplace" )
+    @Schema( description = "If the version is published on the marketplace")
     private Boolean published = false;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private List<Integer> availableOrderPeriods;
 
-    @ApiModelProperty( "Lifespan of the product version, in hours" )
+    @Schema( description = "Lifespan of the product version, in hours")
     private Integer lifespan;
 
-    @ApiModelProperty( "Adds webdav support for the product version deployed instances" )
+    @Schema( description = "Adds webdav support for the product version deployed instances")
     private Boolean webdavSupport = false;
 
-    @ApiModelProperty( "Adds a post-configuration status in the deployment procedure" )
+    @Schema( description = "Adds a post-configuration status in the deployment procedure")
     private boolean postConfiguration;
 
-    @ApiModelProperty( "Billing item values for the product version" )
+    @Schema( description = "Billing item values for the product version")
     @Valid
     private List<BillingItemValueDTO> billingItemValues = new ArrayList<>();
 
-    @ApiModelProperty( "A one-time price for the setup of the product" )
+    @Schema( description = "A one-time price for the setup of the product")
     private BigDecimal setupFee;
 
-    @ApiModelProperty( "A one-time price for the setup of the product billed to the vendor. Visible to admin only" )
+    @Schema( description = "A one-time price for the setup of the product billed to the vendor. Visible to admin only")
     private BigDecimal vendorSetupFee;
 
     private Set<ApplicationFileEnvironmentDTO> editableEnvironment = new HashSet<>();
 
-    @ApiModelProperty( "Description of the product version" )
+    @Schema( description = "Description of the product version")
     private String description;
 
-    @ApiModelProperty( "If the product version is in a draft state" )
+    @Schema( description = "If the product version is in a draft state")
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean drafted;
 
-    @ApiModelProperty( "The configuration parameters for the product version" )
+    @Schema( description = "The configuration parameters for the product version")
     @Valid
     private List<UrlEntityDTO> configurationParameters;
 
-    @ApiModelProperty( "An optional ID for integration purposes" )
+    @Schema( description = "An optional ID for integration purposes")
     private String externalId;
 
-    @ApiModelProperty( "The duration (in days) for a trial of the product version" )
+    @Schema( description = "The duration (in days) for a trial of the product version")
     @Min( value = 1, message = INVALID_MIN )
     private Integer trialLength = 1;
 
-    @ApiModelProperty( "Trials of this version automatically convert to normal" )
+    @Schema( description = "Trials of this version automatically convert to normal")
     private boolean autoRenewable;
 
-    @ApiModelProperty( "If the product version will be selected by default in the marketplace" )
+    @Schema( description = "If the product version will be selected by default in the marketplace")
     private boolean recommended;
 
-    @ApiModelProperty( value = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
+    @Schema( description = "Bundle discount configuration", example = "{\"productVersion/123\":10}")
     private Map<UrlEntityDTO, BigDecimal> bundle;
 
     /**
      * @deprecated by GET /productVersion/{id}/metadata
      */
     @Deprecated
-    @ApiModelProperty( value = "Metadata for the product version", example = "{\"key\":\"value\"}" )
+    @Schema( description = "Metadata for the product version", example = "{\"key\":\"value\"}" )
     private Map<String, Object> metadata;
 
-    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    @Schema( description = "Weight order for displaying on the marketplace")
     private int weight;
 
     private CouponConfiguration couponConfiguration;
@@ -128,20 +128,20 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * @deprecated by {@link #couponConfiguration}
      */
-    @ApiModelProperty( value = "True if the product version can be purchased only with a coupon", hidden = true )
+    @Schema( description = "True if the product version can be purchased only with a coupon", hidden = true )
     @Deprecated
     private Boolean unlockable;
 
-    @ApiModelProperty( "The number of markups set for the product version" )
+    @Schema( description = "The number of markups set for the product version")
     private long markedUp;
 
-    @ApiModelProperty( "The number of sell-outs set for the product version" )
+    @Schema( description = "The number of sell-outs set for the product version")
     private long soldOut;
 
-    @ApiModelProperty( value = "Descriptive label of the product version", readOnly = true )
+    @Schema( description = "Descriptive label of the product version", readOnly = true )
     private String label;
 
-    @ApiModelProperty( "Whether a subscription from the product version can be upgraded to another one" )
+    @Schema( description = "Whether a subscription from the product version can be upgraded to another one")
     private Boolean upgradable;
 
     private IaasBilling iaasBilling;
@@ -153,13 +153,13 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( value = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
+    @Schema( description = "Cloud Providers enabled for the Product Version", accessMode = READ_ONLY )
     private List<UrlEntityDTO> cloudProviders;
 
-    @ApiModelProperty( "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer" )
+    @Schema( description = "Whether a Subscription of the Product Version can be terminated before the natural expiration by its customer")
     private Boolean unkillable;
 
-    @ApiModelProperty( value = "Reseller Catalog used to obtain prices for the Product Version", accessMode = READ_ONLY )
+    @Schema( description = "Reseller Catalog used to obtain prices for the Product Version", accessMode = READ_ONLY )
     private UrlEntityDTO resellerCatalog;
 
     public ProductVersionDTO( String name, UrlEntityDTO product )
@@ -221,7 +221,7 @@ public class ProductVersionDTO extends NamedEntityDTO implements ProductVersionL
     /**
      * @deprecated replaced by {@link #getTrial()}
      */
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     public Boolean getTriable()
     {

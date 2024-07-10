@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 
@@ -10,10 +10,10 @@ import java.math.BigDecimal;
 @Deprecated
 public class ResellingTotalsDTO implements DTO
 {
-    @ApiModelProperty( value = "The total earnings", readOnly = true )
+    @Schema( description = "The total earnings", readOnly = true )
     private BigDecimal earnings;
 
-    @ApiModelProperty( value = "The total costs", readOnly = true )
+    @Schema( description = "The total costs", readOnly = true )
     private BigDecimal costs;
 
     public ResellingTotalsDTO( BigDecimal earnings, BigDecimal costs )

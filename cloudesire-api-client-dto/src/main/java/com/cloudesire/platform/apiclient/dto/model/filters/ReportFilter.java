@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.filters;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.PageRequestDTO;
 import com.liberologico.cloudesire.common.SimpleDateFormatFactory;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,16 +11,16 @@ import java.util.Map;
 
 public abstract class ReportFilter extends PageRequestDTO
 {
-    @ApiModelProperty( "Filter by Product ID" )
+    @Schema( description = "Filter by Product ID")
     private Integer productId;
 
-    @ApiModelProperty( "Filter by Product Plan ID" )
+    @Schema( description = "Filter by Product Plan ID")
     private Integer productVersionId;
 
-    @ApiModelProperty( "Filter results starting from date" )
+    @Schema( description = "Filter results starting from date")
     private Date from;
 
-    @ApiModelProperty( "Filter results until date" )
+    @Schema( description = "Filter results until date")
     private Date to;
 
     // region Builder

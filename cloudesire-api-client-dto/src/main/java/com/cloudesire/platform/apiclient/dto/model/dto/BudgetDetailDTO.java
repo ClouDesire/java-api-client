@@ -1,19 +1,18 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( description = "Budget estimate with line detail" )
+@Schema( description = "Budget estimate with line detail" )
 public class BudgetDetailDTO extends BudgetDTO
 {
-    @ApiModelProperty( "Billable entries for the estimate" )
+    @Schema( description = "Billable entries for the estimate")
     private List<OrderLineDTO> lines = new LinkedList<>();
 
-    @ApiModelProperty( "Lines billed at the end of the billing period" )
+    @Schema( description = "Lines billed at the end of the billing period")
     private List<OrderLineDTO> postLines;
 
     public List<OrderLineDTO> getLines()

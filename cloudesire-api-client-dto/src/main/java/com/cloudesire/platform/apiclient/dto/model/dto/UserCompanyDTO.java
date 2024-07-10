@@ -1,12 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.Objects;
 
-@ApiModel( description = "Company data of a business customer" )
+@Schema( description = "Company data of a business customer" )
 public class UserCompanyDTO extends CompanyDTO
 {
     private VatExemptionDTO vatExemption;
@@ -14,13 +13,13 @@ public class UserCompanyDTO extends CompanyDTO
     @Valid
     private ItalianElectronicInvoicingDTO italianElectronicInvoicing;
 
-    @ApiModelProperty( "Mark this Company as public administration" )
+    @Schema( description = "Mark this Company as public administration")
     private Boolean publicAdministration;
 
-    @ApiModelProperty( "If this customer can pay later, only for admin/reseller" )
+    @Schema( description = "If this customer can pay later, only for admin/reseller")
     private Boolean delayedPayment;
 
-    @ApiModelProperty( "The reseller catalog associated to the company" )
+    @Schema( description = "The reseller catalog associated to the company")
     @Valid
     private UrlEntityDTO resellerCatalog;
 

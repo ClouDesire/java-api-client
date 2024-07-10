@@ -4,8 +4,7 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,40 +15,40 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "Defines pricing of disk usage of a VM" )
+@Schema( description = "Defines pricing of disk usage of a VM" )
 public class InstancePricingDTO extends CloudPricingDTO
 {
     @NotNull
     @Valid
     private UrlEntityDTO instanceType;
 
-    @ApiModelProperty( value = "Descriptive name of the pricing", hidden = true )
+    @Schema( description = "Descriptive name of the pricing", hidden = true )
     @Size( max = 125, message = INVALID_SIZE )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private String name;
 
-    @ApiModelProperty( value = "RAM quantity", hidden = true )
+    @Schema( description = "RAM quantity", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer ram;
 
-    @ApiModelProperty( value = "CPU Cores", hidden = true )
+    @Schema( description = "CPU Cores", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private BigDecimal cpu;
 
-    @ApiModelProperty( value = "Root disk space", hidden = true )
+    @Schema( description = "Root disk space", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer diskSpace;
 
-    @ApiModelProperty( "Operating system family" )
+    @Schema( description = "Operating system family")
     private OsFamily osFamily;
 
-    @ApiModelProperty( "Operating system" )
+    @Schema( description = "Operating system")
     private OSType operatingSystem;
 
-    @ApiModelProperty( "Whether the pricing will not be linked to any Virtual Machine Configuration" )
+    @Schema( description = "Whether the pricing will not be linked to any Virtual Machine Configuration")
     private Boolean deprecated;
 
-    @ApiModelProperty( "Configure pricing according to order minimum duration" )
+    @Schema( description = "Configure pricing according to order minimum duration")
     @Valid
     private Map<Integer, ReservedCloudPricingDTO> reservedCloudPricing;
 

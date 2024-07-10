@@ -1,17 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( description = "Defines pricing of bandwidth used by a VM" )
+@Schema( description = "Defines pricing of bandwidth used by a VM" )
 public class BandwidthPricingDTO extends CloudPricingDTO
 {
-    @ApiModelProperty( "Bandwidth sizing" )
+    @Schema( description = "Bandwidth sizing")
     @Min ( 0 )
     @NotNull
     private BigDecimal traffic;

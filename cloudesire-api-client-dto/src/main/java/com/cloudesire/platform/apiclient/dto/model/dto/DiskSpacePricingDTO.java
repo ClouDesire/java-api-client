@@ -1,16 +1,15 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Objects;
 
-@ApiModel( description = "Defines pricing of disk usage of a VM" )
+@Schema( description = "Defines pricing of disk usage of a VM" )
 public class DiskSpacePricingDTO extends CloudPricingDTO
 {
-    @ApiModelProperty( "Configure tiered pricing per disk size" )
+    @Schema( description = "Configure tiered pricing per disk size")
     private Map<Integer, BigDecimal> tiers;
 
     public Map<Integer, BigDecimal> getTiers()

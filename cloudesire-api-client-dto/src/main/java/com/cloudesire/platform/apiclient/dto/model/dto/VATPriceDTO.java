@@ -2,16 +2,15 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.MathConfiguration;
 import com.liberologico.cloudesire.common.MathUtils;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( description = "A price with VAT" )
+@Schema( description = "A price with VAT" )
 public class VATPriceDTO extends PriceDTO
 {
-    @ApiModelProperty( "VAT total amount" )
+    @Schema( description = "VAT total amount")
     private BigDecimal vatSpunOff;
 
     private BigDecimal VAT;
@@ -40,7 +39,7 @@ public class VATPriceDTO extends PriceDTO
     {
     }
 
-    @ApiModelProperty( value = "Amount plus VAT", readOnly = true )
+    @Schema( description = "Amount plus VAT", readOnly = true )
     @Override
     public BigDecimal getTotal()
     {
@@ -59,7 +58,7 @@ public class VATPriceDTO extends PriceDTO
         this.vatSpunOff = vatSpunOff;
     }
 
-    @ApiModelProperty( value = "VAT percentage", example = "22" )
+    @Schema( description = "VAT percentage", example = "22" )
     public BigDecimal getVAT()
     {
         return VAT;

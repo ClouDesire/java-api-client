@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
@@ -8,11 +8,11 @@ import java.util.Objects;
 
 public class BillingItemValueV1DTO extends BillingItemValueDTO
 {
-    @ApiModelProperty( "Recurring cost for every billing period" )
+    @Schema( description = "Recurring cost for every billing period")
     @Min( 0 )
     private BigDecimal recurring;
 
-    @ApiModelProperty( "Recurring cost set by vendor, visible to admin only" )
+    @Schema( description = "Recurring cost set by vendor, visible to admin only")
     @Min( 0 )
     private BigDecimal vendorRecurring;
 

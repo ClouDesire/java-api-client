@@ -2,8 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CategoryType;
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -11,15 +10,15 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( description = "A software dependency that can be provisioned automatically on a VM" )
+@Schema( description = "A software dependency that can be provisioned automatically on a VM" )
 public class NodeRoleDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "The name of the chef cookbook available on the platform to install and configure a software" )
+    @Schema( description = "The name of the chef cookbook available on the platform to install and configure a software")
     @NotEmpty
     private String recipe;
 
     @NotNull
-    @ApiModelProperty( "If the nodeRole is available to the user" )
+    @Schema( description = "If the nodeRole is available to the user")
     private Boolean enabled = true;
 
     @NotNull

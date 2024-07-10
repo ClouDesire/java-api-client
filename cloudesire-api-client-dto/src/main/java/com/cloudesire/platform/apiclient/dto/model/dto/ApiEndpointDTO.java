@@ -1,21 +1,20 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.enums.HttpMethod;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@ApiModel( description = "A billed HTTP endpoint" )
+@Schema( description = "A billed HTTP endpoint" )
 public class ApiEndpointDTO implements DTO
 {
-    @ApiModelProperty( "The HTTP method" )
+    @Schema( description = "The HTTP method")
     @NotNull
     private HttpMethod method;
 
-    @ApiModelProperty( value = "The endpoint path", example = "/path" )
+    @Schema( description = "The endpoint path", example = "/path" )
     @Size( min = 1, max = 2000 )
     private String path;
 
