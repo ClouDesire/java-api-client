@@ -1,10 +1,10 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 
-@ApiModel( description = "A name/value pair" )
+@Schema( description = "A name/value pair" )
 public class EntryDTO implements DTO
 {
     @NotNull

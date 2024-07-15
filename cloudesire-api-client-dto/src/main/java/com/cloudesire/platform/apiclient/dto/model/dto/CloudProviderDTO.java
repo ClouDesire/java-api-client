@@ -2,9 +2,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiModelProperty.AccessMode;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,46 +12,46 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( description = "Definition of a cloud provider" )
+@Schema( description = "Definition of a cloud provider" )
 public class CloudProviderDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "URL of a logo to display on the marketplace" )
+    @Schema( description = "URL of a logo to display on the marketplace")
     private String logoUrl;
 
-    @ApiModelProperty( "An alias for the cloud provider" )
+    @Schema( description = "An alias for the cloud provider")
     private String alias;
 
-    @ApiModelProperty( "Whether the cloud provider is enabled" )
+    @Schema( description = "Whether the cloud provider is enabled")
     private boolean enabled;
 
-    @ApiModelProperty( "Whether the cloud provider is private" )
+    @Schema( description = "Whether the cloud provider is private")
     private Boolean privateCloud = false;
 
-    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    @Schema( description = "Weight order for displaying on the marketplace")
     private int weight;
 
-    @ApiModelProperty( "Enabled features of the cloud provider" )
+    @Schema( description = "Enabled features of the cloud provider")
     private List<CloudProviderFeatureDTO> features = new ArrayList<>();
 
-    @ApiModelProperty( value = "Default SSH username per OS type", accessMode = AccessMode.READ_ONLY )
+    @Schema( description = "Default SSH username per OS type", accessMode = AccessMode.READ_ONLY )
     private Map<OSType, String> usernames;
 
     /**
      * @deprecated by {@link #usernames}
      */
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     private String username;
 
-    @ApiModelProperty( value = "Supported operating systems", accessMode = AccessMode.READ_ONLY )
+    @Schema( description = "Supported operating systems", accessMode = AccessMode.READ_ONLY )
     private List<OSType> supportedOperatingSystems;
 
     private UrlEntityDTO principal;
 
-    @ApiModelProperty( accessMode = AccessMode.READ_ONLY )
+    @Schema( accessMode = AccessMode.READ_ONLY )
     private Set<UrlEntityDTO> regions;
 
-    @ApiModelProperty( value = "Conversion factors from foreign currencies", accessMode = AccessMode.READ_ONLY )
+    @Schema( description = "Conversion factors from foreign currencies", accessMode = AccessMode.READ_ONLY )
     private Map<String, BigDecimal> currencyConversion;
 
     @JsonIgnore

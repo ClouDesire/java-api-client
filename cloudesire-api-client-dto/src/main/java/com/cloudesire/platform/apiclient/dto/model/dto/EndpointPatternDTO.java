@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.EndpointType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class EndpointPatternDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "The URL representation that must contain {nodename} as hostname placeholder" )
+    @Schema( description = "The URL representation that must contain {nodename} as hostname placeholder")
     @NotBlank
     @Size( max = 4096 )
     private String name;

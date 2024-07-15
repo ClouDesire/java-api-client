@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "A generic way of applying labels and permissions to more than one user." )
+@Schema( description = "A generic way of applying labels and permissions to more than one user." )
 public enum UserGroup
 {
     MANAGEMENT,

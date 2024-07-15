@@ -4,61 +4,60 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.Regexp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel( description = "Vendor company" )
+@Schema( description = "Vendor company" )
 public class CompanyDTO extends MinimalCompanyDTO
 {
-    @ApiModelProperty( "Receives event notifications targeted to all the company products" )
+    @Schema( description = "Receives event notifications targeted to all the company products")
     private String syndicationEndpoint;
 
-    @ApiModelProperty( "Repertorio economico amministrativo - corporate data for Italian companies" )
+    @Schema( description = "Repertorio economico amministrativo - corporate data for Italian companies")
     private String rea;
 
-    @ApiModelProperty( "Registro imprese - corporate data for Italian companies" )
+    @Schema( description = "Registro imprese - corporate data for Italian companies")
     private String ri;
 
-    @ApiModelProperty( "Email address that will receive technical notifications" )
+    @Schema( description = "Email address that will receive technical notifications")
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String technicalEmailAddress;
 
-    @ApiModelProperty( value = "SSH RSA public keys for every employee", readOnly = true )
+    @Schema( description = "SSH RSA public keys for every employee", readOnly = true )
     private String publicKey;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private Integer maxPublishedProducts;
 
-    @ApiModelProperty( value = "Counts the published products on the marketplace for the company", readOnly = true )
+    @Schema( description = "Counts the published products on the marketplace for the company", readOnly = true )
     private Integer currentPublishedProducts = 1;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private Boolean trusted;
 
-    @ApiModelProperty( "An externalId if the company is synchronized from an external system" )
+    @Schema( description = "An externalId if the company is synchronized from an external system")
     private String externalId;
 
-    @ApiModelProperty( "Website of the company" )
+    @Schema( description = "Website of the company")
     @Size( max = 1024 )
     private String companyUrl;
 
-    @ApiModelProperty( "Shared secret used to sign events" )
+    @Schema( description = "Shared secret used to sign events")
     private String notificationSecretToken;
 
-    @ApiModelProperty( "Users of the company" )
+    @Schema( description = "Users of the company")
     @FieldAPI( sinceVersion = ApiVersion.V20200108 )
     private List<UrlEntityDTO> users;
 
-    @ApiModelProperty( value = "Vendors of the company", hidden = true )
+    @Schema( description = "Vendors of the company", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20200108 )
     private List<UrlEntityDTO> vendors;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private CompanyFeatureTogglesDTO featureToggles;
 
     public enum Type

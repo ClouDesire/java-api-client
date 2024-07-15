@@ -1,20 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@ApiModel( description = "A budget estimate for a cart" )
+@Schema( description = "A budget estimate for a cart" )
 public class CartBudgetDTO implements DTO
 {
     private List<CartItemBudgetDTO> items;
 
-    @ApiModelProperty( "Total price of all the items in cart" )
+    @Schema( description = "Total price of all the items in cart")
     private BigDecimal total;
 
-    @ApiModelProperty( "Total price of all the items in cart, excluding VAT" )
+    @Schema( description = "Total price of all the items in cart, excluding VAT")
     private BigDecimal totalExcludingVAT;
 
     public List<CartItemBudgetDTO> getItems()

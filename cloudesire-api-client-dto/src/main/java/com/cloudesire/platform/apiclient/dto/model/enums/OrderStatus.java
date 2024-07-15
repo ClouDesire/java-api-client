@@ -1,24 +1,24 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum OrderStatus
 {
-    @ApiModelProperty( "An upgrade order has been deferred for the next billing period" )
+    @Schema( description = "An upgrade order has been deferred for the next billing period")
     DEFERRED,
 
-    @ApiModelProperty( "The upgrade order was free of charge" )
+    @Schema( description = "The upgrade order was free of charge")
     FREE,
 
-    @ApiModelProperty( "The upgrade has been applied and an Invoice has been emitted" )
+    @Schema( description = "The upgrade has been applied and an Invoice has been emitted")
     PAID,
 
-    @ApiModelProperty( "The upgrade is postponed to a later date" )
+    @Schema( description = "The upgrade is postponed to a later date")
     POSTPONED,
 
-    @ApiModelProperty( "The approval has been rejected" )
+    @Schema( description = "The approval has been rejected")
     REJECTED,
 
-    @ApiModelProperty( "An order is waiting for approval" )
+    @Schema( description = "An order is waiting for approval")
     REQUIRES_APPROVAL
 }

@@ -2,17 +2,16 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.utils.BodyParser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@ApiModel( description = "Reference to a related resource" )
+@Schema( description = "Reference to a related resource" )
 public class UrlEntityDTO implements DTO
 {
-    @ApiModelProperty( value = "Reference to another resource", required = true, example = "resourceName/ID" )
+    @Schema( description = "Reference to another resource", required = true, example = "resourceName/ID" )
     @NotEmpty
     @Size( max = 255 )
     private String url;
@@ -57,35 +56,35 @@ public class UrlEntityDTO implements DTO
         return url;
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @JsonIgnore
     public boolean isNull()
     {
         return url == null;
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @JsonIgnore
     public boolean hasId( Integer id )
     {
         return url.substring( url.lastIndexOf( '/' ) + 1 ).equals( id.toString() );
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @JsonIgnore
     public Integer getId()
     {
         return BodyParser.getResourceId( this.url );
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @JsonIgnore
     public String getIdentifier()
     {
         return BodyParser.getResourceIdentifier( this.url );
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @JsonIgnore
     public String getResource()
     {

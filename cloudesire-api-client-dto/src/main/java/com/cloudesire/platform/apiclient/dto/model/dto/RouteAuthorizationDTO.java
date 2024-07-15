@@ -4,8 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.Permission;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserGroup;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
@@ -16,10 +15,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@ApiModel( description = "RBAC for frontend routes" )
+@Schema( description = "RBAC for frontend routes" )
 public class RouteAuthorizationDTO implements DTO
 {
-    @ApiModelProperty( required = true )
+    @Schema( required = true )
     @NotEmpty
     private String route;
 
@@ -65,7 +64,7 @@ public class RouteAuthorizationDTO implements DTO
         this.acl = acl;
     }
 
-    @ApiModelProperty( readOnly = true )
+    @Schema( readOnly = true )
     public Set<UserRole> getRoles()
     {
         return acl.stream().map( AccessControlDTO::getRole ).collect( Collectors.toSet() );
@@ -81,7 +80,7 @@ public class RouteAuthorizationDTO implements DTO
         this.userGroups = userGroups;
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @AssertTrue
     @JsonIgnore
     public boolean isAclUniquePerRole()

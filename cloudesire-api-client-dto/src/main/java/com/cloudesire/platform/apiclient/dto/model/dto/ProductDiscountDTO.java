@@ -1,18 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@ApiModel( description = "Per-product discount of a bundle" )
+@Schema( description = "Per-product discount of a bundle" )
 public class ProductDiscountDTO implements Comparable<ProductDiscountDTO>
 {
-    @ApiModelProperty( value = "A product in a bundle", readOnly = true )
+    @Schema( description = "A product in a bundle", readOnly = true )
     private ProductDTO product;
 
-    @ApiModelProperty( value = "Discount percentage for this product", example = "20", readOnly = true )
+    @Schema( description = "Discount percentage for this product", example = "20", readOnly = true )
     private BigDecimal discount;
 
     public ProductDTO getProduct()

@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.beans.Introspector;
 import java.util.Objects;
@@ -10,10 +10,10 @@ import java.util.Objects;
 @JsonPropertyOrder ( { "id" } )
 public class BaseEntityDTO implements DTO
 {
-    @ApiModelProperty( readOnly = true )
+    @Schema( readOnly = true )
     private Integer id;
 
-    @ApiModelProperty( readOnly = true, example = "subscription/123" )
+    @Schema( readOnly = true, example = "subscription/123" )
     private String self;
 
     /**
@@ -28,7 +28,7 @@ public class BaseEntityDTO implements DTO
         else return null;
     }
 
-    @ApiModelProperty( readOnly = true )
+    @Schema( readOnly = true )
     @JsonIgnore
     public String getResourceName()
     {

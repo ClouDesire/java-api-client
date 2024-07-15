@@ -1,15 +1,15 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum CouponDestination
 {
-    @ApiModelProperty( "The coupon applies to the license cost only" )
+    @Schema( description = "The coupon applies to the license cost only")
     LICENSE_ONLY,
 
-    @ApiModelProperty( "The coupon applies to the license cost and every extra resource" )
+    @Schema( description = "The coupon applies to the license cost and every extra resource")
     LICENSE_AND_EXTRAS,
 
-    @ApiModelProperty( "The coupon applies on every cost line" )
+    @Schema( description = "The coupon applies on every cost line")
     TOTAL
 }

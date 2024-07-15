@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -8,15 +8,15 @@ import java.util.Objects;
 
 public class ReservedCloudPricingDTO implements DTO
 {
-    @ApiModelProperty( "One-time upfront cost" )
+    @Schema( description = "One-time upfront cost")
     @NotNull
     private BigDecimal upfront;
 
-    @ApiModelProperty( "Monthly price" )
+    @Schema( description = "Monthly price")
     @NotNull
     private BigDecimal price;
 
-    @ApiModelProperty( "Monthly cost" )
+    @Schema( description = "Monthly cost")
     @NotNull
     private BigDecimal cost;
 

@@ -1,8 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
@@ -10,44 +9,44 @@ import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "A draft of a product description" )
+@Schema( description = "A draft of a product description" )
 public class ProductDraftDTO extends BaseEntityDTO implements ProductL10nDTO
 {
     @Valid
     private UrlEntityDTO original;
 
-    @ApiModelProperty( "Short description of the product" )
+    @Schema( description = "Short description of the product")
     @Size( max = 4000, message = INVALID_SIZE )
     private String shortDescription;
 
-    @ApiModelProperty( "Long description of the product" )
+    @Schema( description = "Long description of the product")
     @Size( max = 8192, message = INVALID_SIZE )
     private String longDescription;
 
-    @ApiModelProperty( "Instructions shown to the customer that buys a subscription" )
+    @Schema( description = "Instructions shown to the customer that buys a subscription")
     private String endUserInstructions;
 
-    @ApiModelProperty( "Terms of service" )
+    @Schema( description = "Terms of service")
     private String termsOfService;
 
-    @ApiModelProperty( "Privacy policy" )
+    @Schema( description = "Privacy policy")
     private String privacy;
 
-    @ApiModelProperty( "Service level agreement" )
+    @Schema( description = "Service level agreement")
     private String serviceLevelAgreement;
 
-    @ApiModelProperty( "Localized product metadata" )
+    @Schema( description = "Localized product metadata")
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, Object> extraData;
 
-    @ApiModelProperty( "Frequently asked questions" )
+    @Schema( description = "Frequently asked questions")
     @JsonInclude( JsonInclude.Include.NON_NULL )
     private Map<String, String> faq;
 
-    @ApiModelProperty( "Message to display to the user on subscription termination" )
+    @Schema( description = "Message to display to the user on subscription termination")
     private String terminationMessage;
 
-    @ApiModelProperty( "Message to display to the user for Terms of Service acceptance" )
+    @Schema( description = "Message to display to the user for Terms of Service acceptance")
     private String tosAcceptance;
 
     //region Auto-generated code

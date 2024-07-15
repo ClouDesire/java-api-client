@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CspProductType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.math.BigDecimal;
@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class CspLicenseProductDTO extends CspProductDTO
 {
-    @ApiModelProperty( "The CSP offer id for importing a license-based product" )
+    @Schema( description = "The CSP offer id for importing a license-based product")
     @NotEmpty
     private String offerId;
 

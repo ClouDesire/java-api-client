@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -10,13 +10,13 @@ import java.util.Objects;
 
 public class ProductDetailDTO extends ProductDTO
 {
-    @ApiModelProperty( "Application metrics associated to the product" )
+    @Schema( description = "Application metrics associated to the product")
     @Valid
     private List<UrlEntityDTO> metrics;
 
     private MinimumCostDTO minimumCost;
 
-    @ApiModelProperty( value = "Conversion factors from foreign currencies", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @Schema( description = "Conversion factors from foreign currencies", accessMode = Schema.AccessMode.READ_ONLY )
     private Map<String, BigDecimal> currencyConversion;
 
     @Valid

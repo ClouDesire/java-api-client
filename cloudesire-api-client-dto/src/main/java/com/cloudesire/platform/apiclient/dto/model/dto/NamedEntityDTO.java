@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -13,7 +13,7 @@ public class NamedEntityDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String NAME_FIELD = "name";
 
-    @ApiModelProperty( value = "A descriptive name of the resource", required = true )
+    @Schema( description = "A descriptive name of the resource", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String name;

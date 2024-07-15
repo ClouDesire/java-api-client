@@ -1,18 +1,17 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Invoice payment status" )
+@Schema( description = "Invoice payment status" )
 public enum InvoiceStatus
 {
-    @ApiModelProperty( "Payment required" ) UNPAID,
-    @ApiModelProperty( "Payment processing" ) PENDING,
-    @ApiModelProperty( "Payment will be executed later" ) DELAYED,
-    @ApiModelProperty( "Payment is waiting for user authentication" ) REQUIRES_ACTION,
-    @ApiModelProperty( "Payment is authorized" ) REQUIRES_CAPTURE,
-    @ApiModelProperty( "Payment expired" ) EXPIRED,
-    @ApiModelProperty( "Payment received" ) PAID;
+    @Schema( description = "Payment required") UNPAID,
+    @Schema( description = "Payment processing") PENDING,
+    @Schema( description = "Payment will be executed later") DELAYED,
+    @Schema( description = "Payment is waiting for user authentication") REQUIRES_ACTION,
+    @Schema( description = "Payment is authorized") REQUIRES_CAPTURE,
+    @Schema( description = "Payment expired") EXPIRED,
+    @Schema( description = "Payment received") PAID;
 
     public static InvoiceStatus[] paid()
     {

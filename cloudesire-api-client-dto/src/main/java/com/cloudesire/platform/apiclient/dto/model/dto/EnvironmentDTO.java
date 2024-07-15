@@ -11,8 +11,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
 import com.liberologico.cloudesire.common.validators.CurrencyMap;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
@@ -36,43 +35,42 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-@ApiModel( description = "Platform configuration" )
+@Schema( description = "Platform configuration" )
 public class EnvironmentDTO implements DTO
 {
-    @ApiModelProperty( "The name of this environment" )
+    @Schema( description = "The name of this environment")
     @NotEmpty
     @Size( max = 255 )
     private String environmentName;
 
-    @ApiModelProperty( "The name of the current chef environment" )
+    @Schema( description = "The name of the current chef environment")
     @NotEmpty
     @Size( max = 255 )
     private String chefEnvironmentName;
 
-    @ApiModelProperty( "The name of the mail environment" )
+    @Schema( description = "The name of the mail environment")
     @NotEmpty
     @Size( max = 255 )
     private String mailEnvironmentName = "defaultMailEnvironment";
 
-    @ApiModelProperty( "The identifier for the overrides of mail templates" )
+    @Schema( description = "The identifier for the overrides of mail templates")
     private String mailTemplateOverride;
 
-    @ApiModelProperty( "The name of the store as it will appear in transactional emails" )
+    @Schema( description = "The name of the store as it will appear in transactional emails")
     @NotEmpty
     @Size( max = 255 )
     private String storeName;
 
-    @ApiModelProperty( "The name of the support team, used in email signatures" )
+    @Schema( description = "The name of the support team, used in email signatures")
     @NotEmpty
     @Size( max = 255 )
     private String teamName;
 
-    @ApiModelProperty( "If this is the default environment" )
+    @Schema( description = "If this is the default environment")
     private boolean defaultEnvironment = false;
 
-    @ApiModelProperty( "The base URL of the frontend" )
+    @Schema( description = "The base URL of the frontend")
     @NotNull
     @URL
     @Size( max = 2048 )
@@ -81,291 +79,291 @@ public class EnvironmentDTO implements DTO
     /**
      * Needs one `[[reseller]]` placeholder.
      */
-    @ApiModelProperty( "Pattern generating frontend URLs for a reseller" )
+    @Schema( description = "Pattern generating frontend URLs for a reseller")
     @NotEmpty
     private String frontendResellerPattern;
 
-    @ApiModelProperty( "Patterns to generate links to the frontend" )
+    @Schema( description = "Patterns to generate links to the frontend")
     @Valid
     private UrlPatterns urlPatterns;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @Deprecated
     @Email
     private String operationGroup;
 
-    @ApiModelProperty( "Sender name of all the emails generated" )
+    @Schema( description = "Sender name of all the emails generated")
     @NotEmpty
     @Size( max = 255 )
     private String mailSenderName;
 
-    @ApiModelProperty( "Sender email of all the emails generated" )
+    @Schema( description = "Sender email of all the emails generated")
     @NotEmpty
     @Email
     private String mailSenderAddress;
 
-    @ApiModelProperty( "Tag added into the subject for all outgoing emails" )
+    @Schema( description = "Tag added into the subject for all outgoing emails")
     @Size( max = 20 )
     private String mailSubjectTag;
 
-    @ApiModelProperty( "URL of the logo of all outgoing emails" )
+    @Schema( description = "URL of the logo of all outgoing emails")
     @URL
     private String mailLogo;
 
-    @ApiModelProperty( "Email palette colors" )
+    @Schema( description = "Email palette colors")
     @Valid
     private EmailPalette mailPalette = new EmailPalette();
 
-    @ApiModelProperty( "Footer for all the emails" )
+    @Schema( description = "Footer for all the emails")
     @Size( max = 2048 )
     private String mailFooter;
 
-    @ApiModelProperty( "Support email for customers" )
+    @Schema( description = "Support email for customers")
     @Email
     @NotEmpty
     private String supportMail;
 
-    @ApiModelProperty( "SendGrid template id to use" )
+    @Schema( description = "SendGrid template id to use")
     @NotEmpty
     @Size( max = 255 )
     private String sendGridTemplateID;
 
-    @ApiModelProperty( "When using SendGrid for email delivery, enable sandbox mode to not actually deliver any emails")
+    @Schema( description = "When using SendGrid for email delivery, enable sandbox mode to not actually deliver any emails")
     private boolean sendGridSandbox;
 
-    @ApiModelProperty( "The full URL for the documentation" )
+    @Schema( description = "The full URL for the documentation")
     @NotEmpty
     @URL
     @Size( max = 2048 )
     private String documentationUrl;
 
-    @ApiModelProperty( "Section of default user values" )
+    @Schema( description = "Section of default user values")
     @NotNull
     @Valid
     private DefaultUserValues defaultUserValues;
 
-    @ApiModelProperty( "Section for subscriptions alerts" )
+    @Schema( description = "Section for subscriptions alerts")
     @NotNull
     @Valid
     private SubscriptionTerm subscriptionTerm;
 
-    @ApiModelProperty( "Days after a customer cannot pay a subscription anymore" )
+    @Schema( description = "Days after a customer cannot pay a subscription anymore")
     private int daysAfterFirstPaymentExpires = 3;
 
-    @ApiModelProperty( "Section for invoice alerts" )
+    @Schema( description = "Section for invoice alerts")
     @NotNull
     @Valid
     private InvoiceSleepTerm invoiceTerm;
 
-    @ApiModelProperty( "Email sent for registration" )
+    @Schema( description = "Email sent for registration")
     @Valid
     @NotNull
     private MailCustomization registration = new MailCustomization();
 
-    @ApiModelProperty( "Email sent for new invoices" )
+    @Schema( description = "Email sent for new invoices")
     @Valid
     @NotNull
     private NotificationMailCustomization invoice = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent for paid invoices" )
+    @Schema( description = "Email sent for paid invoices")
     @Valid
     @NotNull
     private MailCustomization invoicePaid = new MailCustomization();
 
-    @ApiModelProperty( "Email sent when user must set password for the first time" )
+    @Schema( description = "Email sent when user must set password for the first time")
     @Valid
     @NotNull
     private MailCustomization passwordSet = new MailCustomization();
 
-    @ApiModelProperty( "Email sent when starting password recovery procedure" )
+    @Schema( description = "Email sent when starting password recovery procedure")
     @Valid
     @NotNull
     private MailCustomization passwordRecovery = new MailCustomization();
 
-    @ApiModelProperty( "Email sent when password set procedure completes" )
+    @Schema( description = "Email sent when password set procedure completes")
     @Valid
     @NotNull
     private MailCustomization passwordSetDone = new MailCustomization();
 
-    @ApiModelProperty( "Email sent when password recovery procedure completes" )
+    @Schema( description = "Email sent when password recovery procedure completes")
     @Valid
     @NotNull
     private MailCustomization passwordRecoveryDone = new MailCustomization();
 
-    @ApiModelProperty( "Email sent for new orders" )
+    @Schema( description = "Email sent for new orders")
     @Valid
     @NotNull
     private NotificationMailCustomization orderNotifier = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on order approval to customer" )
+    @Schema( description = "Email sent on order approval to customer")
     @Valid
     @NotNull
     private NotificationMailCustomization orderApprovalCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on order creation to customer" )
+    @Schema( description = "Email sent on order creation to customer")
     @Valid
     @NotNull
     private NotificationMailCustomization orderCreationCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on order creation to platform actors" )
+    @Schema( description = "Email sent on order creation to platform actors")
     @Valid
     @NotNull
     private MailCustomization orderCreationPlatform = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on order reject to customer" )
+    @Schema( description = "Email sent on order reject to customer")
     @Valid
     @NotNull
     private NotificationMailCustomization orderReject = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent on order request to customer" )
+    @Schema( description = "Email sent on order request to customer")
     @Valid
     @NotNull
     private NotificationMailCustomization orderRequestCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor/reseller when customer requests changes to an application" )
+    @Schema( description = "Email sent to the vendor/reseller when customer requests changes to an application")
     @Valid
     @NotNull
     private MailCustomization subscriptionAmendment = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the customer on request for changes to an application" )
+    @Schema( description = "Email sent to the customer on request for changes to an application")
     @Valid
     @NotNull
     private NotificationMailCustomization subscriptionAmendmentCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent to the customer when application has been undeployed" )
+    @Schema( description = "Email sent to the customer when application has been undeployed")
     @Valid
     @NotNull
     private NotificationMailCustomization orderUndeployCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor when application has been undeployed" )
+    @Schema( description = "Email sent to the vendor when application has been undeployed")
     @Valid
     @NotNull
     private MailCustomization orderUndeployVendor = new MailCustomization();
 
-    @ApiModelProperty( "Email sent when deploy go wrong" )
+    @Schema( description = "Email sent when deploy go wrong")
     @Valid
     @NotNull
     private MailCustomization deployFailed = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor when deployment is completed" )
+    @Schema( description = "Email sent to the vendor when deployment is completed")
     @Valid
     @NotNull
     private MailCustomization deployCompleteVendor = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor when deployment is completed but needs post configuration" )
+    @Schema( description = "Email sent to the vendor when deployment is completed but needs post configuration")
     @Valid
     @NotNull
     private MailCustomization deployCompleteWithPostConfigurationVendor = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the customer when deployment is completed" )
+    @Schema( description = "Email sent to the customer when deployment is completed")
     @Valid
     @NotNull
     private NotificationMailCustomization deployCompleteCustomer = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Email sent to the configured address when deployment is completed" )
+    @Schema( description = "Email sent to the configured address when deployment is completed")
     @Valid
     @NotNull
     private MailCustomization deployCompleteExternal = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the configured addresses when a vendor request an approval for changes of a product" )
+    @Schema( description = "Email sent to the configured addresses when a vendor request an approval for changes of a product")
     @Valid
     @NotNull
     private MailCustomization approvalRequest = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor of a subscription stuck in pending state" )
+    @Schema( description = "Email sent to the vendor of a subscription stuck in pending state")
     @Valid
     @NotNull
     private MailCustomization stuckSubscription = new MailCustomization();
 
-    @ApiModelProperty( "Sent when subscription is reaching end date" )
+    @Schema( description = "Sent when subscription is reaching end date")
     @Valid
     @NotNull
     private MailCustomization subscriptionTermAlarm = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to the vendor when his account is approved" )
+    @Schema( description = "Email sent to the vendor when his account is approved")
     @Valid
     @NotNull
     private MailCustomization vendorApproval = new MailCustomization();
 
-    @ApiModelProperty( "Email containing vendor data" )
+    @Schema( description = "Email containing vendor data")
     @Valid
     @NotNull
     private MailCustomization vendorApprovalData = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on product approval to the company" )
+    @Schema( description = "Email sent on product approval to the company")
     @Valid
     @NotNull
     private MailCustomization productApproval = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on product approval containing product data" )
+    @Schema( description = "Email sent on product approval containing product data")
     @Valid
     @NotNull
     private MailCustomization productApprovalData = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on vendor registration" )
+    @Schema( description = "Email sent on vendor registration")
     @Valid
     @NotNull
     private MailCustomization vendorRegistration = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on vendor registration to admin(s)" )
+    @Schema( description = "Email sent on vendor registration to admin(s)")
     @Valid
     @NotNull
     private MailCustomization vendorRegistrationNotification = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on customer registration/update" )
+    @Schema( description = "Email sent on customer registration/update")
     @Valid
     @NotNull
     private MailCustomization customerNotification = new MailCustomization();
 
-    @ApiModelProperty( "Email sent on customer payment method save" )
+    @Schema( description = "Email sent on customer payment method save")
     @Valid
     @NotNull
     private MailCustomization customerPaymentMethodSave = new MailCustomization();
 
-    @ApiModelProperty( "Email sent to a configurable address on customer order creation without approval" )
+    @Schema( description = "Email sent to a configurable address on customer order creation without approval")
     @Valid
     @NotNull
     private MailCustomization customerPendingOrder = new MailCustomization();
 
-    @ApiModelProperty( "Reminders before the sleep term, warn the user to pay" )
+    @Schema( description = "Reminders before the sleep term, warn the user to pay")
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceReminder = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Alert to inform the user that the subscription has been put to sleep" )
+    @Schema( description = "Alert to inform the user that the subscription has been put to sleep")
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceSleep = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Alert to inform the user that the subscription has been destroyed" )
+    @Schema( description = "Alert to inform the user that the subscription has been destroyed")
     @Valid
     @NotNull
     private NotificationMailCustomization invoiceDeath = new NotificationMailCustomization();
 
-    @ApiModelProperty( "Sent to the customer on the crossing of a billing budget threshold" )
+    @Schema( description = "Sent to the customer on the crossing of a billing budget threshold")
     @NotNull
     @Valid
     private MailCustomization billingBudgetThresholdCrossed = new MailCustomization();
 
-    @ApiModelProperty( "Sent to the customer before password expiry" )
+    @Schema( description = "Sent to the customer before password expiry")
     @NotNull
     @Valid
     private NotificationMailCustomization stalePasswordReminder = new NotificationMailCustomization();
 
-    @ApiModelProperty("Email report sent to notify of new users")
+    @Schema(description = "Email report sent to notify of new users")
     @NotNull
     @Valid
     private MailCustomization dailyNewUsersReport = new MailCustomization();
 
-    @ApiModelProperty( "Features section" )
+    @Schema( description = "Features section")
     @Valid
     private FeaturesEnvironment features;
 
-    @ApiModelProperty( "Frontend Features section" )
+    @Schema( description = "Frontend Features section")
     @Valid
     private FrontendFeaturesEnvironment frontendFeatures;
 
-    @ApiModelProperty( "Configuration section" )
+    @Schema( description = "Configuration section")
     @Valid
     private ConfigurationEnvironment configuration;
 
@@ -1064,19 +1062,19 @@ public class EnvironmentDTO implements DTO
     }
     //endregion
 
-    @ApiModel( description = "Default attributes for new users" )
+    @Schema( description = "Default attributes for new users" )
     public static class DefaultUserValues implements DTO
     {
-        @ApiModelProperty( "Enabled flag default value" )
+        @Schema( description = "Enabled flag default value")
         private boolean isEnabled;
 
-        @ApiModelProperty( "Active flag default value" )
+        @Schema( description = "Active flag default value")
         private boolean isActive;
 
-        @ApiModelProperty( "TermsAccepted flag default value" )
+        @Schema( description = "TermsAccepted flag default value")
         private boolean termsAccepted;
 
-        @ApiModelProperty( "Activate old account if not active when recreating account" )
+        @Schema( description = "Activate old account if not active when recreating account")
         private boolean canBeReactivated;
 
         //region Auto-generated getters and setters
@@ -1122,7 +1120,7 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Email palette attributes" )
+    @Schema( description = "Email palette attributes" )
     public static class EmailPalette implements DTO
     {
         @NotEmpty
@@ -1198,24 +1196,24 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "An instance of email template to be sent at certain events" )
+    @Schema( description = "An instance of email template to be sent at certain events" )
     public static class MailCustomization implements DTO
     {
         public static final String DEFAULT_MAIL_LANGUAGE = "it";
 
-        @ApiModelProperty( "Should send emails of this type" )
+        @Schema( description = "Should send emails of this type")
         private boolean serviceEnable = true;
 
-        @ApiModelProperty( "The recipients to send these emails to" )
+        @Schema( description = "The recipients to send these emails to")
         private List<String> to;
 
-        @ApiModelProperty( "The language in which this email will be rendered" )
+        @Schema( description = "The language in which this email will be rendered")
         private String language;
 
-        @ApiModelProperty( "Template parameter overrides" )
+        @Schema( description = "Template parameter overrides")
         private Map<String, String> parameters = new HashMap<>();
 
-        @ApiModelProperty( "Any additional user role to send the email to" )
+        @Schema( description = "Any additional user role to send the email to")
         private Set<UserRole> roles = EnumSet.noneOf( UserRole.class );
 
         @JsonIgnore
@@ -1290,7 +1288,7 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "A non-transactional email notification from which user can unsubscribe" )
+    @Schema( description = "A non-transactional email notification from which user can unsubscribe" )
     public static class NotificationMailCustomization extends MailCustomization
     {
         @JsonIgnore
@@ -1308,14 +1306,14 @@ public class EnvironmentDTO implements DTO
         }
     }
 
-    @ApiModel( description = "The emails to send when there are invoice with pending payment for customers" )
+    @Schema( description = "The emails to send when there are invoice with pending payment for customers" )
     public static class InvoiceSleepTerm implements DTO
     {
-        @ApiModelProperty( "Days after deadline, subscription will be set to sleeping" )
+        @Schema( description = "Days after deadline, subscription will be set to sleeping")
         @NotNull
         private Integer sleepDays = 2;
 
-        @ApiModelProperty( "Days after sleep deadline, subscription will be undeployed" )
+        @Schema( description = "Days after sleep deadline, subscription will be undeployed")
         @NotNull
         private Integer delayDays = 3;
 
@@ -1342,7 +1340,7 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Fine tuning of subscription expiration behaviour")
+    @Schema( description = "Fine tuning of subscription expiration behaviour")
     public static class SubscriptionTerm implements DTO
     {
         /**
@@ -1350,10 +1348,10 @@ public class EnvironmentDTO implements DTO
          * If &lt; 0 means that it's never possible to Renew subscriptions
          * If &gt; 0 means the day before expiration that renew is possible
          */
-        @ApiModelProperty( "How many days before expiration renewal is possibile" )
+        @Schema( description = "How many days before expiration renewal is possibile")
         private int daysLeftUntilExpirationForRenewal = -1;
 
-        @ApiModelProperty( "List of days before expire to send email alerts about expiration" )
+        @Schema( description = "List of days before expire to send email alerts about expiration")
         @NotNull
         private Integer[] subscriptionTermAlertDays;
 
@@ -1381,127 +1379,127 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Features that can be toggled at runtime" )
+    @Schema( description = "Features that can be toggled at runtime" )
     public static class FeaturesEnvironment implements DTO
     {
-        @ApiModelProperty( "Enables the creation of syndicated products" )
+        @Schema( description = "Enables the creation of syndicated products")
         private boolean syndicated = false;
 
-        @ApiModelProperty( "Enables vendors to invoice customer on their own" )
+        @Schema( description = "Enables vendors to invoice customer on their own")
         private SelfBilling selfBilling = SelfBilling.DISABLED;
 
-        @ApiModelProperty( "Enables the usage of coupons" )
+        @Schema( description = "Enables the usage of coupons")
         private boolean coupon = true;
 
-        @ApiModelProperty( "Enables uservoice widget" )
+        @Schema( description = "Enables uservoice widget")
         private boolean uservoice = true;
 
-        @ApiModelProperty( "Show the bandwidth" )
+        @Schema( description = "Show the bandwidth")
         private boolean showBandwidth = true;
 
-        @ApiModelProperty( "Enables upgrading TRIAL subscriptions to NORMAL subscriptions" )
+        @Schema( description = "Enables upgrading TRIAL subscriptions to NORMAL subscriptions")
         private boolean upgradeToNormal = true;
 
-        @ApiModelProperty( "Enable product revision" )
+        @Schema( description = "Enable product revision")
         private boolean productRevision = false;
 
-        @ApiModelProperty( "Enable unmanaged orders" )
+        @Schema( description = "Enable unmanaged orders")
         private boolean unmanagedOrders;
 
-        @ApiModelProperty( "Send product instructions to the customer on buy" )
+        @Schema( description = "Send product instructions to the customer on buy")
         private boolean instructionsInEmail = false;
 
-        @ApiModelProperty( "Email billing item summary to customer on buy/upgrade" )
+        @Schema( description = "Email billing item summary to customer on buy/upgrade")
         private boolean billingItemSummaryInEmail;
 
-        @ApiModelProperty( "Email invoice entries to customer on buy/upgrade" )
+        @Schema( description = "Email invoice entries to customer on buy/upgrade")
         private boolean invoiceEntriesInEmail;
 
-        @ApiModelProperty( "Permit links in end user instructions" )
+        @Schema( description = "Permit links in end user instructions")
         private LinksInEndUserInstructions linksInEndUserInstructions;
 
-        @ApiModelProperty( "Add a legal notice into invoice footer required in Italy" )
+        @Schema( description = "Add a legal notice into invoice footer required in Italy")
         private boolean cashAccounting = true;
 
-        @ApiModelProperty( "Enables upload of file to the blob storage service" )
+        @Schema( description = "Enables upload of file to the blob storage service")
         private boolean blobStorageUpload;
 
-        @ApiModelProperty( "The product types enabled for this environment" )
+        @Schema( description = "The product types enabled for this environment")
         private Set<ProductType> enabledProductTypes = EnumSet.allOf( ProductType.class );
 
-        @ApiModelProperty( "Require approvation for customer subscriptions" )
+        @Schema( description = "Require approvation for customer subscriptions")
         private boolean subscriptionApproval;
 
-        @ApiModelProperty( "Require approvation for subscription creation by reseller" )
+        @Schema( description = "Require approvation for subscription creation by reseller")
         private boolean resellerSubscriptionApproval;
 
-        @ApiModelProperty( "Enable order approval by reseller" )
+        @Schema( description = "Enable order approval by reseller")
         private boolean resellerOrderApproval = true;
 
-        @ApiModelProperty( "Require approvation for vendor creation" )
+        @Schema( description = "Require approvation for vendor creation")
         private boolean vendorApproval;
 
-        @ApiModelProperty( "Enable selling extra resources" )
+        @Schema( description = "Enable selling extra resources")
         private boolean billingItems = true;
 
-        @ApiModelProperty( "Enabled payment gateways" )
+        @Schema( description = "Enabled payment gateways")
         private Set<PaymentGateway> enabledPaymentGateways = Collections.singleton( PaymentGateway.STRIPE );
 
-        @ApiModelProperty( "Customize reseller emails" )
+        @Schema( description = "Customize reseller emails")
         private boolean resellerMailCustomization;
 
-        @ApiModelProperty( "Allow having more users per Distributor/Reseller company" )
+        @Schema( description = "Allow having more users per Distributor/Reseller company")
         private boolean multipleParentChildUsers;
 
-        @ApiModelProperty( "Enable Keycloak SSO" )
+        @Schema( description = "Enable Keycloak SSO")
         private boolean keycloak;
 
-        @ApiModelProperty( "Enable LDAP SSO" )
+        @Schema( description = "Enable LDAP SSO")
         private boolean ldap;
 
-        @ApiModelProperty( "Remove customer data from notifications" )
+        @Schema( description = "Remove customer data from notifications")
         private boolean gdpr;
 
-        @ApiModelProperty( "Enables custom cloud credentials" )
+        @Schema( description = "Enables custom cloud credentials")
         private CloudCredentialsSupport customerCloudCredentials = CloudCredentialsSupport.DISABLED;
 
-        @ApiModelProperty( "Enabled geocall data fields for the customer profile" )
+        @Schema( description = "Enabled geocall data fields for the customer profile")
         private boolean geocallProfile;
 
-        @ApiModelProperty( "A customer can create an account without buying anything" )
+        @Schema( description = "A customer can create an account without buying anything")
         private boolean userSelfRegistration = true;
 
-        @ApiModelProperty( "Whether to generate invoices internally" )
+        @Schema( description = "Whether to generate invoices internally")
         private Boolean generateInvoices;
 
-        @ApiModelProperty( "Allows the customer to send messages to vendor" )
+        @Schema( description = "Allows the customer to send messages to vendor")
         private boolean customerMessageToVendor;
 
-        @ApiModelProperty( "Enable customer comments on products" )
+        @Schema( description = "Enable customer comments on products")
         private boolean customerProductComments = true;
 
-        @ApiModelProperty( "Enable customer ratings on products" )
+        @Schema( description = "Enable customer ratings on products")
         private boolean customerProductRatings = true;
 
-        @ApiModelProperty( "Require the marketplace to be a reseller one" )
+        @Schema( description = "Require the marketplace to be a reseller one")
         private boolean resellerOnlyMarketplace;
 
-        @ApiModelProperty( "Enable the cart functionality for CUSTOMER and/or RESELLER" )
+        @Schema( description = "Enable the cart functionality for CUSTOMER and/or RESELLER")
         private Set<Cart> cart = EnumSet.noneOf( Cart.class );
 
-        @ApiModelProperty( "Enable changelog section for product descriptions" )
+        @Schema( description = "Enable changelog section for product descriptions")
         private boolean productChangelog;
 
-        @ApiModelProperty( "Do not bill for extra resources downgrades" )
+        @Schema( description = "Do not bill for extra resources downgrades")
         private boolean freeBillingItemDowngrades;
 
-        @ApiModelProperty( "Allow editing a postponed order's start date" )
+        @Schema( description = "Allow editing a postponed order's start date")
         private boolean editPostponedOrderDate;
 
-        @ApiModelProperty( "Allow editing a subscription's billing dates" )
+        @Schema( description = "Allow editing a subscription's billing dates")
         private boolean alterSubscriptionBillingDates;
 
-        @ApiModelProperty( "Allow editing a user's own external ID (via PATCH)" )
+        @Schema( description = "Allow editing a user's own external ID (via PATCH)")
         private boolean patchOwnExternalId;
 
         public boolean commentsEnabled()
@@ -1688,7 +1686,7 @@ public class EnvironmentDTO implements DTO
         /**
          * @deprecated use {@link #setEnabledProductTypes(Set)}
          */
-        @ApiModelProperty( hidden = true )
+        @Schema( hidden = true )
         @Deprecated
         public void setProductBundles( boolean productBundles )
         {
@@ -1843,13 +1841,13 @@ public class EnvironmentDTO implements DTO
 
         public enum SelfBilling
         {
-            @ApiModelProperty( "Every invoice emitted is self billed" )
+            @Schema( description = "Every invoice emitted is self billed")
             ENABLED,
 
-            @ApiModelProperty( "No invoice emitted is self billed" )
+            @Schema( description = "No invoice emitted is self billed")
             DISABLED,
 
-            @ApiModelProperty( "Invoices are emitted self billed according to vendor's plan or reseller's pricing" )
+            @Schema( description = "Invoices are emitted self billed according to vendor's plan or reseller's pricing")
             PER_PLAN
         }
 
@@ -1975,21 +1973,21 @@ public class EnvironmentDTO implements DTO
         //endregion
     }
 
-    @ApiModel( description = "Frontend features that can be toggled globally at runtime and overridden on per-environment basis" )
+    @Schema( description = "Frontend features that can be toggled globally at runtime and overridden on per-environment basis" )
     public static class FrontendFeaturesEnvironment implements DTO
     {
-        @ApiModelProperty( "Access to invoice section in navbar" )
+        @Schema( description = "Access to invoice section in navbar")
         private InvoiceSectionEnum invoiceSection = InvoiceSectionEnum.INVOICE;
 
-        @ApiModelProperty( "Enabled frontend applications" )
+        @Schema( description = "Enabled frontend applications")
         private Set<EnabledApplications> enabledApplications = EnumSet.of(
                 EnabledApplications.MARKETPLACE, EnabledApplications.CLASSIC_CP
         );
 
-        @ApiModelProperty( "Access to costs section in navbar" )
+        @Schema( description = "Access to costs section in navbar")
         private boolean costsSection;
 
-        @ApiModelProperty( "Enable postponed subscription upgrades" )
+        @Schema( description = "Enable postponed subscription upgrades")
         private boolean postponedUpgrades;
 
         @Valid
@@ -2060,175 +2058,175 @@ public class EnvironmentDTO implements DTO
         // endregion
     }
 
-    @ApiModel( description = "General configuration of the platform" )
+    @Schema( description = "General configuration of the platform" )
     public static class ConfigurationEnvironment implements DTO
     {
         // -1 means unlimited
-        @ApiModelProperty( "Limit concurrent customer trial requests" )
+        @Schema( description = "Limit concurrent customer trial requests")
         private int trialLimit = -1;
 
-        @ApiModelProperty( "Default trials duration" )
+        @Schema( description = "Default trials duration")
         private int trialLengthInDays = 1;
 
-        @ApiModelProperty( "Permit trials for bundles" )
+        @Schema( description = "Permit trials for bundles")
         private boolean trialForBundles;
 
-        @ApiModelProperty( "Default sandbox duration" )
+        @Schema( description = "Default sandbox duration")
         private int sandboxLengthInHour = 1;
 
         @NotNull
-        @ApiModelProperty( "Percentage (fee) kept by platform owner set by default on new products and for custom invoices" )
+        @Schema( description = "Percentage (fee) kept by platform owner set by default on new products and for custom invoices")
         private BigDecimal cloudesirePercentage = new BigDecimal( 0 );
 
-        @ApiModelProperty( "The billingPeriods (how often customers receive invoices) a vendor can chose for its products" )
+        @Schema( description = "The billingPeriods (how often customers receive invoices) a vendor can chose for its products")
         @NotNull
         private List<Integer> customerInvoicePeriod = Arrays.asList( 1, 3, 6, 12, 24 );
 
-        @ApiModelProperty( "Max available disk size when creating VMC" )
+        @Schema( description = "Max available disk size when creating VMC")
         private int diskSpaceLimit = 10000;
 
-        @ApiModelProperty( "Default currency representation" )
+        @Schema( description = "Default currency representation")
         @NotEmpty
         @Size( max = 3 )
         private String currency = "EUR";
 
-        @ApiModelProperty( "The address from which invoices are generated" )
+        @Schema( description = "The address from which invoices are generated")
         @Valid
         private AddressDTO platformAddress;
 
-        @ApiModelProperty( "Enable validation of VAT ID for companies" )
+        @Schema( description = "Enable validation of VAT ID for companies")
         private boolean taxCodeValidation;
 
-        @ApiModelProperty( "The default maximum number of published products for a newly created company" )
+        @Schema( description = "The default maximum number of published products for a newly created company")
         private int companyMaxPublishedProducts = -1;
 
-        @ApiModelProperty( "The maximum number of featured products" )
+        @Schema( description = "The maximum number of featured products")
         private int maximumFeaturedProducts = -1;
 
-        @ApiModelProperty( "The number of most sold products to show in statistics" )
+        @Schema( description = "The number of most sold products to show in statistics")
         private int mostSoldProductVersions = 10;
 
-        @ApiModelProperty( "The number of most profitable products to show in statistics" )
+        @Schema( description = "The number of most profitable products to show in statistics")
         private int mostProfitableProductVersions = 10;
 
-        @ApiModelProperty( "The number of most activated products to show in statistics" )
+        @Schema( description = "The number of most activated products to show in statistics")
         private int mostActivatedProductVersions = 10;
 
-        @ApiModelProperty( "The number of top spending customers to show in statistics" )
+        @Schema( description = "The number of top spending customers to show in statistics")
         private int mostProfitableCustomers = 10;
 
-        @ApiModelProperty( "The minimum date for statistics calculation" )
+        @Schema( description = "The minimum date for statistics calculation")
         private Date startStatisticsCalculationFrom = new Date( 0L );
 
-        @ApiModelProperty( "Send these extra headers to the HTTP request to obtain application metrics" )
+        @Schema( description = "Send these extra headers to the HTTP request to obtain application metrics")
         @Valid
         private List<EntryDTO> metricRequestExtraHeaders = new ArrayList<>();
 
-        @ApiModelProperty( "The cloud provider names enabled for this environment" )
+        @Schema( description = "The cloud provider names enabled for this environment")
         private List<String> enabledCloudProviders;
 
-        @ApiModelProperty( "The product category names enabled for this environment" )
+        @Schema( description = "The product category names enabled for this environment")
         private List<String> enabledCategories;
 
-        @ApiModelProperty( "The product category names disabled for this environment" )
+        @Schema( description = "The product category names disabled for this environment")
         private List<String> disabledCategories;
 
-        @ApiModelProperty( "Anonymous user default country code" )
+        @Schema( description = "Anonymous user default country code")
         @NotNull
         private String anonymousUserCountryCode;
 
-        @ApiModelProperty( "End of the hostname generated. eg: apps.com" )
+        @Schema( description = "End of the hostname generated. eg: apps.com")
         @NotNull
         private String appsHostnameDomain;
 
-        @ApiModelProperty( "Global syndication endpoints" )
+        @Schema( description = "Global syndication endpoints")
         @Valid
         private List<SyndicationEndpointDTO> syndicationEndpoints;
 
         // Works as feature flag too (empty means disabled)
-        @ApiModelProperty( "List of Slack Incoming Webhook to send platform notifications" )
+        @Schema( description = "List of Slack Incoming Webhook to send platform notifications")
         private List<String> slackNotificationEndpoints;
 
-        @ApiModelProperty( "Slack channel that receives notifications" )
+        @Schema( description = "Slack channel that receives notifications")
         @Size( max = 255 )
         private String slackChannel;
 
-        @ApiModelProperty( "Send activation email on user creation" )
+        @Schema( description = "Send activation email on user creation")
         @NotNull
         private Boolean sendActivationEmail;
 
-        @ApiModelProperty( "Maximum size for uploaded files in bytes, a value < 1 disables check" )
+        @Schema( description = "Maximum size for uploaded files in bytes, a value < 1 disables check")
         @NotNull
         private Long maxFileSize = 0L;
 
-        @ApiModelProperty( "Maximum number of days for a password to be stale, a null or <1 value disables expiry" )
+        @Schema( description = "Maximum number of days for a password to be stale, a null or <1 value disables expiry")
         private Long maximumPasswordStaleDays;
 
-        @ApiModelProperty(
-                value = "How many days to notify before password staleness, null or empty disables notification",
+        @Schema(
+                description = "How many days to notify before password staleness, null or empty disables notification",
                 example = "[7, 6, 5, 4, 3, 2, 1]"
         )
         private List<Integer> stalePasswordNotificationPlan;
 
-        @ApiModelProperty( "Content types of supported application files, null or empty disables feature" )
+        @Schema( description = "Content types of supported application files, null or empty disables feature")
         private List<String> supportedApplicationFileTypes;
 
-        @ApiModelProperty( "Content types of supported company and product images, null or empty disables feature" )
+        @Schema( description = "Content types of supported company and product images, null or empty disables feature")
         private List<String> supportedCompanyLogoFileTypes;
 
-        @ApiModelProperty( "Content types of supported file uploads, grouped by request type" )
+        @Schema( description = "Content types of supported file uploads, grouped by request type")
         private Map<String, List<String>> supportedFileTypes;
 
-        @ApiModelProperty( "Content types of supported public files, null or empty disables feature" )
+        @Schema( description = "Content types of supported public files, null or empty disables feature")
         private List<String> supportedPublicUserFileTypes;
 
-        @ApiModelProperty( "The VAT calculator on placed orders" )
+        @Schema( description = "The VAT calculator on placed orders")
         @NotNull
         private VatService vatService = VatService.INTERNAL;
 
-        @ApiModelProperty( "If configured, every invoice line will have this VAT" )
+        @Schema( description = "If configured, every invoice line will have this VAT")
         private BigDecimal customVat;
 
-        @ApiModelProperty( "How many subscriptions to allow per-user for a product" )
+        @Schema( description = "How many subscriptions to allow per-user for a product")
         private SubscriptionsPerProduct subscriptionsPerProduct;
 
-        @ApiModelProperty( "URLs for the CSP API connector per product type" )
+        @Schema( description = "URLs for the CSP API connector per product type")
         private Map<CspProductType, String> cspApiEndpoints;
 
-        @ApiModelProperty( "The id of the current Azure pay-per-use CSP offer" )
+        @Schema( description = "The id of the current Azure pay-per-use CSP offer")
         private String cspAzureProductId = "MS-AZR-0146P";
 
-        @ApiModelProperty( "The code to use when autocreating the ConfigurationParameter for Azure CSP products" )
+        @Schema( description = "The code to use when autocreating the ConfigurationParameter for Azure CSP products")
         private String cspAzureParameterCode = "DNS_PREFIX";
 
-        @ApiModelProperty( "The identifier used when autocreating the BillingItem for licence CSP products" )
+        @Schema( description = "The identifier used when autocreating the BillingItem for licence CSP products")
         private String cspLicenseIdentifier = "licenses";
 
-        @ApiModelProperty( "The default destination for a CSP product" )
+        @Schema( description = "The default destination for a CSP product")
         private ProductDestination cspDefaultProductDestination = ProductDestination.B2B;
 
-        @ApiModelProperty( "URLs for services" )
+        @Schema( description = "URLs for services")
         @Valid
         private ServiceDirectory serviceDirectory = new ServiceDirectory();
 
-        @ApiModelProperty( "Keep customer data disk after Subscription undeploy" )
+        @Schema( description = "Keep customer data disk after Subscription undeploy")
         private Boolean keepCustomerDataDisk = true;
 
-        @ApiModelProperty( "Pairs of Product Version IDs to be estimated together" )
+        @Schema( description = "Pairs of Product Version IDs to be estimated together")
         private List<List<Integer>> comparableProductVersions;
 
-        @ApiModelProperty( "Password policy" )
+        @Schema( description = "Password policy")
         @Valid
         private PasswordPolicy passwordPolicy = new PasswordPolicy();
 
-        @ApiModelProperty( "Conversion factors from foreign currencies" )
+        @Schema( description = "Conversion factors from foreign currencies")
         @CurrencyMap
         private Map<String, BigDecimal> currencyConversion = new HashMap<>();
 
-        @ApiModelProperty( "Salient metadata for the environment" )
+        @Schema( description = "Salient metadata for the environment")
         private SalientMetadata salientMetadata = new SalientMetadata();
 
-        @ApiModelProperty( "API rate limiter configuration" )
+        @Schema( description = "API rate limiter configuration")
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
@@ -2589,7 +2587,7 @@ public class EnvironmentDTO implements DTO
 
             return stalePasswordNotificationPlan.stream()
                     .sorted()
-                    .collect( Collectors.toList() );
+                    .toList();
         }
 
         public void setStalePasswordNotificationPlan( List<Integer> stalePasswordNotificationPlan )
@@ -2819,7 +2817,7 @@ public class EnvironmentDTO implements DTO
         }
     }
 
-    @ApiModel( description = "URL patterns used to build links to the GUI inside notification (e.g. email, slack, ...)" )
+    @Schema( description = "URL patterns used to build links to the GUI inside notification (e.g. email, slack, ...)" )
     public static class UrlPatterns implements DTO
     {
         @NotEmpty
@@ -3048,19 +3046,19 @@ public class EnvironmentDTO implements DTO
 
     public static class ServiceDirectory implements DTO
     {
-        @ApiModelProperty( "URL for the CAP (italian postal code) validation microservice" )
+        @Schema( description = "URL for the CAP (italian postal code) validation microservice")
         @URL
         private String capValidation;
 
-        @ApiModelProperty( "URL to PDF invoice manager" )
+        @Schema( description = "URL to PDF invoice manager")
         @URL
         private String janineInvoiceManager;
 
-        @ApiModelProperty( "URL for the Prometheus instance" )
+        @Schema( description = "URL for the Prometheus instance")
         @URL
         private String prometheus;
 
-        @ApiModelProperty( "URL for the Zuora connector" )
+        @Schema( description = "URL for the Zuora connector")
         @URL
         private String zuoraConnector;
 
@@ -3107,22 +3105,22 @@ public class EnvironmentDTO implements DTO
 
     public static class PasswordPolicy implements DTO
     {
-        @ApiModelProperty( "Minimum length of a password" )
+        @Schema( description = "Minimum length of a password")
         private int min;
 
-        @ApiModelProperty( "Maximum length of a password" )
+        @Schema( description = "Maximum length of a password")
         private int max = Integer.MAX_VALUE;
 
-        @ApiModelProperty( "Upper case characters" )
+        @Schema( description = "Upper case characters")
         private int upper;
 
-        @ApiModelProperty( "Lower case characters" )
+        @Schema( description = "Lower case characters")
         private int lower;
 
-        @ApiModelProperty( "Digit characters" )
+        @Schema( description = "Digit characters")
         private int digit;
 
-        @ApiModelProperty( "Special characters" )
+        @Schema( description = "Special characters")
         private int special;
 
         public int getMin()
@@ -3188,13 +3186,13 @@ public class EnvironmentDTO implements DTO
 
     public static class SalientMetadata implements DTO, Iterable<String>
     {
-        @ApiModelProperty( "Cloud tags" )
+        @Schema( description = "Cloud tags")
         private List<String> cloudTags = new ArrayList<>();
 
-        @ApiModelProperty( "Product Version metadata" )
+        @Schema( description = "Product Version metadata")
         private List<String> productVersionMetadata = new ArrayList<>();
 
-        @ApiModelProperty( "Subscription metadata" )
+        @Schema( description = "Subscription metadata")
         private List<String> subscriptionMetadata = new ArrayList<>();
 
         @Override
@@ -3240,15 +3238,15 @@ public class EnvironmentDTO implements DTO
 
     public static class RateLimiter implements DTO
     {
-        @ApiModelProperty( "Number of tokens (requests) in the bucket" )
+        @Schema( description = "Number of tokens (requests) in the bucket")
         @Positive
         private long capacity = 5000;
 
-        @ApiModelProperty( "Period in minutes for the bucket to refill" )
+        @Schema( description = "Period in minutes for the bucket to refill")
         @Positive
         private long refill = 1;
 
-        @ApiModelProperty( "Actually limit requests or just log a warning" )
+        @Schema( description = "Actually limit requests or just log a warning")
         private boolean enforced;
 
         public long getCapacity()
@@ -3282,7 +3280,7 @@ public class EnvironmentDTO implements DTO
         }
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @AssertTrue( message = "Missing CSP API connector endpoint" )
     public boolean isCspConnectorConfigured()
     {
@@ -3295,7 +3293,7 @@ public class EnvironmentDTO implements DTO
         return true;
     }
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @AssertTrue( message = "Internal VAT service is available in Italy only" )
     public boolean isInternalVatServiceInItalyOnly()
     {

@@ -1,17 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@ApiModel( description = "Define stack requirements for a vendor ApplicationFile" )
+@Schema( description = "Define stack requirements for a vendor ApplicationFile" )
 public class DependencyDTO extends BaseEntityDTO
 {
     @NotNull
-    @ApiModelProperty( "Ordering used when returning a list of dependencies" )
+    @Schema( description = "Ordering used when returning a list of dependencies")
     private Integer priority = 1;
 
     @NotNull

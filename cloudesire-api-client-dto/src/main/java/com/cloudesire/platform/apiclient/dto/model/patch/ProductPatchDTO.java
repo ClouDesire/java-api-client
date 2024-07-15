@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.fasterxml.jackson.databind.EnumNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import com.liberologico.cloudesire.common.validators.CurrencyMap;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -15,7 +15,7 @@ public class ProductPatchDTO implements DTO
     @NotNull
     private Action action;
 
-    @ApiModelProperty( "Conversion factors from foreign currencies" )
+    @Schema( description = "Conversion factors from foreign currencies")
     @CurrencyMap
     private Map<String, BigDecimal> currencyConversion;
 
@@ -76,7 +76,7 @@ public class ProductPatchDTO implements DTO
         ENABLED,
         DISABLED,
         APPROVE,
-        @ApiModelProperty( "Save currency conversion factors" )
+        @Schema( description = "Save currency conversion factors")
         SAVE_CURRENCY_CONVERSION;
     }
 }

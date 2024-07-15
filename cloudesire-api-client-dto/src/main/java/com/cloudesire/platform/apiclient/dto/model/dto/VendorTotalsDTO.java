@@ -1,16 +1,16 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class VendorTotalsDTO implements DTO
 {
-    @ApiModelProperty( value = "Total income for the vendor", readOnly = true )
+    @Schema( description = "Total income for the vendor", readOnly = true )
     private BigDecimal income;
 
-    @ApiModelProperty( value = "Total expenses for the vendor", readOnly = true )
+    @Schema( description = "Total expenses for the vendor", readOnly = true )
     private BigDecimal expenses;
 
     private String company;

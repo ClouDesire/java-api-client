@@ -1,8 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Pricing model of an extra resource" )
+@Schema( description = "Pricing model of an extra resource" )
 public enum BillingItemType
 {
     VOLUME,

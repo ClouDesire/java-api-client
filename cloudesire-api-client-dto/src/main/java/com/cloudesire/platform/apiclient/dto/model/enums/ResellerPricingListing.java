@@ -1,15 +1,15 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum ResellerPricingListing
 {
-    @ApiModelProperty( "Reseller Pricing is listed but not published" )
+    @Schema( description = "Reseller Pricing is listed but not published")
     DRAFT,
 
-    @ApiModelProperty( "Reseller Pricing is listed and published" )
+    @Schema( description = "Reseller Pricing is listed and published")
     PUBLISHED,
 
-    @ApiModelProperty( "Reseller Pricing is neither listed or published" )
+    @Schema( description = "Reseller Pricing is neither listed or published")
     DEPRECATED
 }

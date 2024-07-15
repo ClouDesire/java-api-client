@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.Regexp;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -12,35 +12,35 @@ import java.util.Objects;
 
 public abstract class MinimalCompanyDTO extends TaxCodeDTO
 {
-    @ApiModelProperty( "Description of the company, displayed on the marketplace" )
+    @Schema( description = "Description of the company, displayed on the marketplace")
     private String companyDescription;
 
-    @ApiModelProperty( "Logo of the company, displayed on the marketplace" )
+    @Schema( description = "Logo of the company, displayed on the marketplace")
     @Valid
     private UrlEntityDTO logoFile;
 
-    @ApiModelProperty( "Legal address")
+    @Schema( description = "Legal address")
     @Valid
     private AddressDTO address;
 
-    @ApiModelProperty( "Tax code" )
+    @Schema( description = "Tax code")
     @Size( max = 255 )
     private String taxCode;
 
-    @ApiModelProperty( "Auto-generated string uniquely identifying the company" )
+    @Schema( description = "Auto-generated string uniquely identifying the company")
     @Size( max = 255 )
     private String slug;
 
-    @ApiModelProperty( "Phone number" )
+    @Schema( description = "Phone number")
     @Size( max = 20 )
     private String phoneNumber;
 
-    @ApiModelProperty( value = "Email address", required = true )
+    @Schema( description = "Email address", required = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @NotNull
     private String emailAddress;
 
-    @ApiModelProperty( "Preferred company language" )
+    @Schema( description = "Preferred company language")
     @Size( min = 2, max = 2 )
     private String language;
 

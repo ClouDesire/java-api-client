@@ -1,36 +1,35 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Map;
 import java.util.Objects;
 
-@ApiModel( description = "Payment method for a customer" )
+@Schema( description = "Payment method for a customer" )
 public class PaymentMethodDTO extends BaseEntityDTO
 {
     public static final String STRIPE_PAYMENT_METHOD = "paymentMethodId";
     public static final String STRIPE_TOKEN = "stripeToken";
 
-    @ApiModelProperty( "Descriptive label for the payment method" )
+    @Schema( description = "Descriptive label for the payment method")
     @NotEmpty
     private String label;
 
-    @ApiModelProperty( "Whether the payment method is the default one" )
+    @Schema( description = "Whether the payment method is the default one")
     private Boolean defaultMethod;
 
-    @ApiModelProperty( value = "Last 4 digits of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @Schema( description = "Last 4 digits of the card", accessMode = Schema.AccessMode.READ_ONLY )
     private String last4;
 
-    @ApiModelProperty( value = "Expiration month of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @Schema( description = "Expiration month of the card", accessMode = Schema.AccessMode.READ_ONLY )
     private Integer expMonth;
 
-    @ApiModelProperty( value = "Expiration year of the card", accessMode = ApiModelProperty.AccessMode.READ_ONLY )
+    @Schema( description = "Expiration year of the card", accessMode = Schema.AccessMode.READ_ONLY )
     private Integer expYear;
 
-    @ApiModelProperty( "Payment method creation payload" )
+    @Schema( description = "Payment method creation payload")
     @Size( max = 1, message = "size must be at most 1" )
     private Map<String, String> payload;
 

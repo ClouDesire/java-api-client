@@ -1,30 +1,29 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( "Deployment status of a subscription" )
+@Schema( description = "Deployment status of a subscription" )
 public enum DeploymentStatus
 {
-    @ApiModelProperty( "Waiting for deploy" )
+    @Schema( description = "Waiting for deploy")
     PENDING,
     DEPLOYED,
     UNDEPLOYED,
     STOPPED,
     FAILED,
     POSTPONED,
-    @ApiModelProperty( "The approval has been rejected" )
+    @Schema( description = "The approval has been rejected")
     REJECTED,
-    @ApiModelProperty( "Requires approval" )
+    @Schema( description = "Requires approval")
     REQUIRES_APPROVAL,
-    @ApiModelProperty( "Undeploy request has been sent" )
+    @Schema( description = "Undeploy request has been sent")
     UNDEPLOY_SENT,
-    @ApiModelProperty( "Requires post-configuration" )
+    @Schema( description = "Requires post-configuration")
     POST_CONFIGURATION,
-    @ApiModelProperty( "Waiting for invoice payment" )
+    @Schema( description = "Waiting for invoice payment")
     WAITING_PAYMENT,
-    @ApiModelProperty( "Invoice payment time expired" )
+    @Schema( description = "Invoice payment time expired")
     PAYMENT_EXPIRED,
     @JsonEnumDefaultValue
     UNKNOWN

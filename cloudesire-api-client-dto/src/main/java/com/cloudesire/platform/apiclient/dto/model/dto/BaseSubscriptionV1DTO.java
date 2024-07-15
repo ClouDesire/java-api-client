@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.DeploymentStatus;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
@@ -19,17 +19,17 @@ import java.util.Set;
 
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20201202;
 import static com.cloudesire.platform.apiclient.dto.ApiVersion.V20220211;
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
 public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
 {
-    @ApiModelProperty( value = "When the first billing period is started, after the successful provisioning", readOnly = true )
+    @Schema( description = "When the first billing period is started, after the successful provisioning", readOnly = true )
     private Date startDate;
 
-    @ApiModelProperty( value = "When the subscription expire, if not renewed", readOnly = true )
+    @Schema( description = "When the subscription expire, if not renewed", readOnly = true )
     private Date endDate;
 
-    @ApiModelProperty( value = "Current status of the subscription", readOnly = true )
+    @Schema( description = "Current status of the subscription", readOnly = true )
     private DeploymentStatus deploymentStatus;
 
     @Valid
@@ -42,7 +42,7 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> deploymentStatusStory = new LinkedList<>();
 
-    @ApiModelProperty( value = "The list of status updates for the subscription", readOnly = true )
+    @Schema( description = "The list of status updates for the subscription", readOnly = true )
     private List<DeploymentStatusDTO> deploymentLog;
 
     @Valid
@@ -51,36 +51,36 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> invoices = new LinkedList<>();
 
-    @ApiModelProperty( value = "The duration in months of the billing period", readOnly = true )
+    @Schema( description = "The duration in months of the billing period", readOnly = true )
     private Integer billingPeriod;
 
-    @ApiModelProperty( "When the current billing period has started" )
+    @Schema( description = "When the current billing period has started")
     @FieldAPI( sinceVersion = V20201202 )
     private Date billingPeriodStart;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @UnsupportedAPI( sinceVersion = V20201202 )
     private Date lastInvoice;
 
-    @ApiModelProperty( "When the current billing period will end" )
+    @Schema( description = "When the current billing period will end")
     @FieldAPI( sinceVersion = V20220211 )
     private Date billingPeriodEnd;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @UnsupportedAPI( sinceVersion = V20220211 )
     private Date nextInvoice;
 
-    @ApiModelProperty( value = "The type of this subscription", allowableValues = "NORMAL, TRIAL, SANDBOX", accessMode = READ_ONLY )
+    @Schema( description = "The type of this subscription", allowableValues = "NORMAL, TRIAL, SANDBOX", accessMode = READ_ONLY )
     private OrderType type;
 
     /**
      * @deprecated use {@link #endpoints}
      */
     @Deprecated
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private Set<String> syndicatedEndpoints;
 
-    @ApiModelProperty( "End-User instructions to use the product" )
+    @Schema( description = "End-User instructions to use the product")
     @Length( max = 4096 )
     private String endUserInstructions;
 
@@ -93,26 +93,26 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
     @Valid
     private UrlEntityDTO buyer;
 
-    @ApiModelProperty( value = "When the subscription has been created", readOnly = true )
+    @Schema( description = "When the subscription has been created", readOnly = true )
     private Date createdAt;
 
-    @ApiModelProperty( value = "When the subscription has been last modified", readOnly = true )
+    @Schema( description = "When the subscription has been last modified", readOnly = true )
     private Date updatedAt;
 
-    @ApiModelProperty( value = "How much bandwidth in GB is available", readOnly = true )
+    @Schema( description = "How much bandwidth in GB is available", readOnly = true )
     private BigDecimal bandwidth;
 
     /**
      * @deprecated by {@link #bandwidth}
      */
-    @ApiModelProperty( value = "Deprecated", hidden = true )
+    @Schema( description = "Deprecated", hidden = true )
     @Deprecated
     private BigInteger bandwidthInGB;
 
-    @ApiModelProperty( "If the subscription automatically renews before expiring or not" )
+    @Schema( description = "If the subscription automatically renews before expiring or not")
     private boolean autoRenew;
 
-    @ApiModelProperty( value = "Historical serialized data of the subscription", readOnly = true )
+    @Schema( description = "Historical serialized data of the subscription", readOnly = true )
     private String productBillingInfo;
 
     private Set<EndpointDTO> endpoints = new HashSet<>();
@@ -131,7 +131,7 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
         return new UrlEntityDTO( getSelf() + "/metadata" );
     }
 
-    @ApiModelProperty( value = "If every emitted invoice has been paid", readOnly = true )
+    @Schema( description = "If every emitted invoice has been paid", readOnly = true )
     private boolean paid;
 
     // region Auto-generated code

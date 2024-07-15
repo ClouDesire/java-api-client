@@ -6,8 +6,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Regexp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -19,7 +18,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( description = "A user that can login on the platform" )
+@Schema( description = "A user that can login on the platform" )
 public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
 {
     public static final String USERNAME_REGEXP = "^[a-zA-Z0-9@.+\\-_]{4,255}$";
@@ -28,36 +27,36 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     @Pattern( regexp = USERNAME_REGEXP, message = ErrorKeys.CHARACTERS_NOT_PERMITTED )
     private String userName;
 
-    @ApiModelProperty( value = "Given name", required = true )
+    @Schema( description = "Given name", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String name;
 
-    @ApiModelProperty( value = "Family name", required = true )
+    @Schema( description = "Family name", required = true )
     @NotEmpty
     @Size( max = 255 )
     private String surname;
 
-    @ApiModelProperty( value = "Concatenation of name and surname", readOnly = true )
+    @Schema( description = "Concatenation of name and surname", readOnly = true )
     private String fullName;
 
-    @ApiModelProperty( "Plain-text password, used only when setting a new password" )
+    @Schema( description = "Plain-text password, used only when setting a new password")
     private String password;
 
-    @ApiModelProperty( value = "The hashed password, visible to platform administrator only", readOnly = true )
+    @Schema( description = "The hashed password, visible to platform administrator only", readOnly = true )
     private String passwordHash;
 
-    @ApiModelProperty( "Preferred user language" )
+    @Schema( description = "Preferred user language")
     @Size( min = 2, max = 2 )
     private String language;
 
-    @ApiModelProperty( value = "User email address to receive platform notifications", required = true )
+    @Schema( description = "User email address to receive platform notifications", required = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @NotNull
     @Size( max = 255 )
     private String email;
 
-    @ApiModelProperty( "User PEC address for Italian electronic invoicing" )
+    @Schema( description = "User PEC address for Italian electronic invoicing")
     @Email( regexp = Regexp.INTERNET_EMAIL )
     @Size( min = 7, max = 256 )
     private String pec;
@@ -66,23 +65,23 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     private String phoneNumber;
 
     @Valid
-    @ApiModelProperty( "Company of the user, if userRole is ROLE_VENDOR" )
+    @Schema( description = "Company of the user, if userRole is ROLE_VENDOR")
     private UrlEntityDTO company;
 
-    @ApiModelProperty( "Company of the user, if userRole is ROLE_USER" )
+    @Schema( description = "Company of the user, if userRole is ROLE_USER")
     @Valid
     private UrlEntityDTO userCompany;
 
     @Valid
     private UrlEntityDTO companyGroup;
 
-    @ApiModelProperty( "Billing address of the user" )
+    @Schema( description = "Billing address of the user")
     private AddressDTO address;
 
-    @ApiModelProperty( "Secondary address of the user" )
+    @Schema( description = "Secondary address of the user")
     private AddressDTO homeAddress;
 
-    @ApiModelProperty( value = "The platform role of the user", required = true )
+    @Schema( description = "The platform role of the user", required = true )
     private UserRole userRole;
 
     private Set<UserGroup> groups;
@@ -90,101 +89,101 @@ public class MyUserDTO extends BaseEntityDTO implements INamedEntityDTO
     /**
      * These are used to populate company when creating a ROLE_VENDOR
      **/
-    @ApiModelProperty( "Write-only field to specify a company name when creating a user with userRole ROLE_VENDOR" )
+    @Schema( description = "Write-only field to specify a company name when creating a user with userRole ROLE_VENDOR")
     private String companyName;
 
-    @ApiModelProperty( "Write-only field to specify a company tax code when creating a user with userRole ROLE_VENDOR" )
+    @Schema( description = "Write-only field to specify a company tax code when creating a user with userRole ROLE_VENDOR")
     private String companyTaxCode;
 
-    @ApiModelProperty( "If the user can login or not" )
+    @Schema( description = "If the user can login or not")
     private Boolean enabled;
 
-    @ApiModelProperty( "If the user has a confirmed email address" )
+    @Schema( description = "If the user has a confirmed email address")
     private Boolean activated;
 
-    @ApiModelProperty( value = "If the user profile can be updated or is synchronized from an external system", readOnly = true )
+    @Schema( description = "If the user profile can be updated or is synchronized from an external system", readOnly = true )
     private boolean readOnly = false;
 
-    @ApiModelProperty( "If the user does not wants to be tracked" )
+    @Schema( description = "If the user does not wants to be tracked")
     private boolean doNotTrack;
 
-    @ApiModelProperty( "If the user has accepted terms and conditions" )
+    @Schema( description = "If the user has accepted terms and conditions")
     private Boolean acceptedTerms;
 
-    @ApiModelProperty( value = "The name of the environment this user belongs to", readOnly = true )
+    @Schema( description = "The name of the environment this user belongs to", readOnly = true )
     private String environment;
 
-    @ApiModelProperty( "When the user has confirmed successfully his email address" )
+    @Schema( description = "When the user has confirmed successfully his email address")
     private Date activationDate;
 
-    @ApiModelProperty( "When the user has created his account" )
+    @Schema( description = "When the user has created his account")
     private Date creationDate;
 
-    @ApiModelProperty( "An externalId if the user is synchronized from an external system" )
+    @Schema( description = "An externalId if the user is synchronized from an external system")
     private String externalId;
 
-    @ApiModelProperty( value = "The account id of the user when using the Keycloak SSO integration", readOnly = true )
+    @Schema( description = "The account id of the user when using the Keycloak SSO integration", readOnly = true )
     private String keycloakToken;
 
-    @ApiModelProperty( "If the current user is authenticated via Keycloak SSO integration" )
+    @Schema( description = "If the current user is authenticated via Keycloak SSO integration")
     @JsonInclude( JsonInclude.Include.NON_DEFAULT )
     private boolean keycloakAuthenticated;
 
-    @ApiModelProperty( "Fiscal code of a private customer, used only when userRole is ROLE_USER" )
+    @Schema( description = "Fiscal code of a private customer, used only when userRole is ROLE_USER")
     private String fiscalCode;
 
-    @ApiModelProperty( "IBAN of the user, to receive manually executed refunds" )
+    @Schema( description = "IBAN of the user, to receive manually executed refunds")
     @Size( max = 34 )
     private String iban;
 
-    @ApiModelProperty( value = "If the user has a valid payment method available", readOnly = true )
+    @Schema( description = "If the user has a valid payment method available", readOnly = true )
     private boolean paymentDataSaved;
 
-    @ApiModelProperty( value = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
+    @Schema( description = "String representation of the culture, derived from language and country code", readOnly = true, example = "en_US" )
     private String culture;
 
-    @ApiModelProperty( "If the user has a password set" )
+    @Schema( description = "If the user has a password set")
     private boolean passwordAlreadySet;
 
-    @ApiModelProperty( "If the user want to receive email notifications generated by the platform" )
+    @Schema( description = "If the user want to receive email notifications generated by the platform")
     private boolean subscribedToNotificationEmails = true;
 
-    @ApiModelProperty( value = "When creating a new user, if a welcome email should be sent", hidden = true )
+    @Schema( description = "When creating a new user, if a welcome email should be sent", hidden = true )
     private Boolean sendActivationEmail;
 
-    @ApiModelProperty( value = "If the user has been deleted", readOnly = true )
+    @Schema( description = "If the user has been deleted", readOnly = true )
     private boolean deleted;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     private String vendorNotes;
 
     @Valid
-    @ApiModelProperty( "The risk profile of the user" )
+    @Schema( description = "The risk profile of the user")
     private UrlEntityDTO riskProfile;
 
-    @ApiModelProperty( "The reseller catalog associated to the user" )
+    @Schema( description = "The reseller catalog associated to the user")
     @Valid
     private UrlEntityDTO resellerCatalog;
 
-    @ApiModelProperty( value = "What roles can this user impersonate", readOnly = true )
+    @Schema( description = "What roles can this user impersonate", readOnly = true )
     private Set<UserRole> canImpersonate;
 
-    @ApiModelProperty( value = "What roles can this user create", readOnly = true )
+    @Schema( description = "What roles can this user create", readOnly = true )
     private Set<UserRole> canCreate;
 
-    @ApiModelProperty( value = "If the user has a configured valid address", readOnly = true )
+    @Schema( description = "If the user has a configured valid address", readOnly = true )
     private boolean validAddress;
 
-    @ApiModelProperty( value = "If the user has configured valid billing data", readOnly = true )
+    @Schema( description = "If the user has configured valid billing data", readOnly = true )
     private boolean validBillingData;
 
-    @ApiModelProperty( "The user's SSH public key" )
+    @Schema( description = "The user's SSH public key")
     private String publicKey;
 
-    @ApiModelProperty( "Auto-generated string uniquely identifying the user" )
+    @Schema( description = "Auto-generated string uniquely identifying the user")
     private String slug;
 
-    @ApiModelProperty( "Whether the user can be impersonated by the requesting client" )
+    @Schema( description = "Whether the user can be impersonated by the requesting client")
     private Boolean canBeImpersonated;
 
     @JsonIgnore

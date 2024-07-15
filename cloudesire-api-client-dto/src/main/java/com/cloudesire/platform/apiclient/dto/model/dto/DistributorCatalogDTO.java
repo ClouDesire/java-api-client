@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -16,10 +16,10 @@ public class DistributorCatalogDTO extends NamedEntityDTO
 
     private Set<UrlEntityDTO> pricings;
 
-    @ApiModelProperty( value = "When the catalog has been created", readOnly = true )
+    @Schema( description = "When the catalog has been created", readOnly = true )
     private Date createdAt;
 
-    @ApiModelProperty( value = "When the catalog has been last modified", readOnly = true )
+    @Schema( description = "When the catalog has been last modified", readOnly = true )
     private Date updatedAt;
 
     public DistributorCatalogDTO( String name )

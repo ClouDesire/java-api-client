@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum GaugeMetricFunction implements MetricFunction
 {
-    @ApiModelProperty( "Average value over time" )
+    @Schema( description = "Average value over time")
     AVERAGE,
 
-    @ApiModelProperty( "Peak value over time" )
+    @Schema( description = "Peak value over time")
     PEAK
 }

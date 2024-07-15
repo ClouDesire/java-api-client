@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.DecimalMin;
@@ -13,36 +12,36 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "Billing configuration of the ranges for an extra resource" )
+@Schema( description = "Billing configuration of the ranges for an extra resource" )
 public class BillingItemValueDTO extends BaseEntityDTO
 {
     @NotNull
     @Valid
     private UrlEntityDTO item;
 
-    @ApiModelProperty( "Range start" )
+    @Schema( description = "Range start")
     @Min( 0 )
     @NotNull
     private Integer start;
 
-    @ApiModelProperty( "Range end, null is indefinte" )
+    @Schema( description = "Range end, null is indefinte")
     @Min( 0 )
     private Integer end;
 
-    @ApiModelProperty( "Price for the range" )
+    @Schema( description = "Price for the range")
     @DecimalMin( "0" )
     @NotNull
     private BigDecimal price;
 
-    @ApiModelProperty( "Price set by vendor, visible to admin only" )
+    @Schema( description = "Price set by vendor, visible to admin only")
     @DecimalMin( "0" )
     private BigDecimal vendorPrice;
 
-    @ApiModelProperty( "Setup fee for the first billing of this range" )
+    @Schema( description = "Setup fee for the first billing of this range")
     @DecimalMin( "0" )
     private BigDecimal setup;
 
-    @ApiModelProperty( "Setup fee set by vendor, visible to admin only" )
+    @Schema( description = "Setup fee set by vendor, visible to admin only")
     @DecimalMin( "0" )
     private BigDecimal vendorSetup;
 
@@ -52,15 +51,15 @@ public class BillingItemValueDTO extends BaseEntityDTO
     @DecimalMin( "0" )
     private BigDecimal vendorProportionalSetup;
 
-    @ApiModelProperty( "Increment amount" )
+    @Schema( description = "Increment amount")
     @Min( 1 )
     private Integer step;
 
-    @ApiModelProperty( "The tag for the range, for tagged stairstep values" )
+    @Schema( description = "The tag for the range, for tagged stairstep values")
     @Size( max = 125, message = INVALID_SIZE )
     private String tag;
 
-    @ApiModelProperty( "The description for the tagged range, supports localization" )
+    @Schema( description = "The description for the tagged range, supports localization")
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 

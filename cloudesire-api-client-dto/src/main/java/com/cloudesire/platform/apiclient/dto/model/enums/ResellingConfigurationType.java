@@ -1,12 +1,12 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum ResellingConfigurationType
 {
-    @ApiModelProperty( "The value is a percentage on the previous price of the selling chain" )
+    @Schema( description = "The value is a percentage on the previous price of the selling chain")
     PERCENTAGE,
 
-    @ApiModelProperty( "The value is a price" )
+    @Schema( description = "The value is a price")
     VALUE
 }

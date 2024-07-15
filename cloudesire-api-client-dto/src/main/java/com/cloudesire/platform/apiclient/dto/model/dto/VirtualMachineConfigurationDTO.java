@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
@@ -20,18 +20,18 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @Valid
     private Set<UrlEntityDTO> instanceTypes;
 
-    @ApiModelProperty( value = "CPU cores", hidden = true )
+    @Schema( description = "CPU cores", hidden = true )
     @Min( 1 )
     @Max( 128 )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private BigDecimal cpu;
 
-    @ApiModelProperty( value = "Memory available, in MB", hidden = true )
+    @Schema( description = "Memory available, in MB", hidden = true )
     @Min( 1024 )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20190902 )
     private Integer ram;
 
-    @ApiModelProperty( "Minimum additional disk space for user data, in GB" )
+    @Schema( description = "Minimum additional disk space for user data, in GB")
     @NotNull
     @Min( 0 )
     private Integer diskSpace;
@@ -48,7 +48,7 @@ public class VirtualMachineConfigurationDTO extends NamedEntityDTO
     @Valid
     private List<UrlEntityDTO> latestApplications = new ArrayList<>();
 
-    @ApiModelProperty( "GPU support" )
+    @Schema( description = "GPU support")
     private boolean gpu = false;
 
     private OSType osType;

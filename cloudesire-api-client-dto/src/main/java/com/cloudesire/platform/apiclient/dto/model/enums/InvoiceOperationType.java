@@ -1,21 +1,21 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum InvoiceOperationType
 {
-    @ApiModelProperty( "Set the invoice to paid" )
+    @Schema( description = "Set the invoice to paid")
     PAID,
 
-    @ApiModelProperty( "Pay the invoice" )
+    @Schema( description = "Pay the invoice")
     PAY,
 
-    @ApiModelProperty( "Download invoice PDF" )
+    @Schema( description = "Download invoice PDF")
     PDF,
 
-    @ApiModelProperty( "(re)generate invoice PDF" )
+    @Schema( description = "(re)generate invoice PDF")
     MAKE_PDF,
 
-    @ApiModelProperty( "Reissue the invoice" )
+    @Schema( description = "Reissue the invoice")
     REISSUE
 }

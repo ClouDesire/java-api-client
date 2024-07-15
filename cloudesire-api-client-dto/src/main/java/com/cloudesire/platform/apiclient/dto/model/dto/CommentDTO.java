@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.HttpMethods;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -11,23 +11,23 @@ import java.util.Set;
 
 public class CommentDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "The username of the commenting User" )
+    @Schema( description = "The username of the commenting User")
     private String userName;
 
-    @ApiModelProperty( "The real name of the commenting User" )
+    @Schema( description = "The real name of the commenting User")
     private String realName;
 
     @NotNull
     @Valid
     private UrlEntityDTO product;
 
-    @ApiModelProperty( "Product rating" )
+    @Schema( description = "Product rating")
     private Integer rating;
 
-    @ApiModelProperty( "The actual comment" )
+    @Schema( description = "The actual comment")
     private String comment;
 
-    @ApiModelProperty( "Comment date" )
+    @Schema( description = "Comment date")
     private Date date;
 
     private Set<HttpMethods> availableOperations = null;

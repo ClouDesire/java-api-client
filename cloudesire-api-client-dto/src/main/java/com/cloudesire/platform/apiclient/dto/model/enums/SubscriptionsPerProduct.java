@@ -1,22 +1,22 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public enum SubscriptionsPerProduct
 {
-    @ApiModelProperty( "One subscription per product per user, regardless of company, at a time is allowed" )
+    @Schema( description = "One subscription per product per user, regardless of company, at a time is allowed")
     ONE_PER_USER( true ),
 
-    @ApiModelProperty( "One subscription per product for a whole company at a time is allowed" )
+    @Schema( description = "One subscription per product for a whole company at a time is allowed")
     ONE_PER_COMPANY( true ),
 
-    @ApiModelProperty( "One subscription per product for a company group at a time is allowed" )
+    @Schema( description = "One subscription per product for a company group at a time is allowed")
     ONE_PER_COMPANY_GROUP( true ),
 
-    @ApiModelProperty( "Only one trial per product" )
+    @Schema( description = "Only one trial per product")
     TRIAL( false ),
 
-    @ApiModelProperty( "No check is done" )
+    @Schema( description = "No check is done")
     UNLIMITED( false );
 
     private final boolean limited;

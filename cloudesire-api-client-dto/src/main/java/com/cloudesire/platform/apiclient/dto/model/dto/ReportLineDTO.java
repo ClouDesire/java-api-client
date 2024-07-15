@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 import java.util.Objects;
@@ -10,7 +10,7 @@ public abstract class ReportLineDTO extends BaseEntityDTO
 {
     protected UrlEntityDTO productVersion;
 
-    @ApiModelProperty( value = "When were the proceeds registered", readOnly = true, example = "2017-05-29" )
+    @Schema( description = "When were the proceeds registered", readOnly = true, example = "2017-05-29" )
     protected Date purchased;
 
     protected UrlEntityDTO buyer;

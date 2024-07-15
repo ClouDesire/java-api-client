@@ -5,8 +5,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liberologico.cloudesire.common.Regexp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.ObjectUtils;
 import org.hibernate.validator.constraints.Length;
 
@@ -21,18 +20,18 @@ import java.util.Objects;
 
 import static com.liberologico.cloudesire.common.DateFormats.DATE_TIME_PATTERN;
 
-@ApiModel( description = "A generated coupon" )
+@Schema( description = "A generated coupon" )
 public class CouponDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "Email address to notify customer of the coupon", readOnly = true )
+    @Schema( description = "Email address to notify customer of the coupon", readOnly = true )
     @Email( regexp = Regexp.INTERNET_EMAIL )
     private String emailCustomer;
 
-    @ApiModelProperty( value = "Unique identifier of the coupon", readOnly = true )
+    @Schema( description = "Unique identifier of the coupon", readOnly = true )
     @Length ( min = 48, max = 48 )
     private String hash;
 
-    @ApiModelProperty( value = "Human readable code of the coupon", readOnly = true )
+    @Schema( description = "Human readable code of the coupon", readOnly = true )
     @Length( max = 36 )
     private String code;
 
@@ -42,52 +41,52 @@ public class CouponDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO product;
 
-    @ApiModelProperty( value = "Coupon type", readOnly = true )
+    @Schema( description = "Coupon type", readOnly = true )
     @NotNull
     private CouponType type = CouponType.DISCOUNT;
 
-    @ApiModelProperty( value = "When the coupon has been created", readOnly = true )
+    @Schema( description = "When the coupon has been created", readOnly = true )
     @NotNull
     @JsonFormat( pattern = DATE_TIME_PATTERN )
     private Date creationDate = new Date();
 
-    @ApiModelProperty( value = "When the coupon will expire", readOnly = true )
+    @Schema( description = "When the coupon will expire", readOnly = true )
     @JsonFormat( pattern = DATE_TIME_PATTERN )
     private Date expirationDate;
 
-    @ApiModelProperty( value = "Fixed price", readOnly = true )
+    @Schema( description = "Fixed price", readOnly = true )
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     @Min ( 0 )
     private BigDecimal newPrice;
 
-    @ApiModelProperty( value = "Discount percentage", readOnly = true )
+    @Schema( description = "Discount percentage", readOnly = true )
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     @Min ( 0 )
     @Max ( 100 )
     private BigDecimal percentage;
 
-    @ApiModelProperty( value = "Days of extension", readOnly = true )
+    @Schema( description = "Days of extension", readOnly = true )
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     @Min ( 1 )
     private Integer days;
 
-    @ApiModelProperty( value = "Maximum budget for an extended trial", readOnly = true )
+    @Schema( description = "Maximum budget for an extended trial", readOnly = true )
     @JsonInclude ( JsonInclude.Include.NON_NULL )
     private BigDecimal plafond;
 
-    @ApiModelProperty( value = "Coupon state", allowableValues = "NEW, SENT, EXPIRED, USED", readOnly = true )
+    @Schema( description = "Coupon state", allowableValues = "NEW, SENT, EXPIRED, USED", readOnly = true )
     private String state;
 
-    @ApiModelProperty( value = "Whether the coupon is reusable", readOnly = true )
+    @Schema( description = "Whether the coupon is reusable", readOnly = true )
     private boolean reusable;
 
-    @ApiModelProperty( value = "What lines does the coupon affect", readOnly = true )
+    @Schema( description = "What lines does the coupon affect", readOnly = true )
     private CouponDestination destination;
 
     /**
      * @deprecated by {@link #destination}
      */
-    @ApiModelProperty( value = "Whether the coupon applies to the license cost only", hidden = true )
+    @Schema( description = "Whether the coupon applies to the license cost only", hidden = true )
     @Deprecated
     private Boolean licenseOnly;
 

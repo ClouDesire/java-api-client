@@ -1,19 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.enums.dto.ActionDTO;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 import java.util.Set;
 
 public abstract class BaseSubscriptionDTO extends BaseSubscriptionV1DTO
 {
-    @ApiModelProperty( value = "Extra resources for this subscription", readOnly = true )
+    @Schema( description = "Extra resources for this subscription", readOnly = true )
     private List<SubscriptionBillingItemDTO> billingItems;
 
     private Set<ActionDTO> availableOperations = null;
 
-    @ApiModelProperty( "Slug of the reseller company for the subscription" )
+    @Schema( description = "Slug of the reseller company for the subscription")
     private String resellerSlug;
 
     private UrlEntityDTO resellerCatalog;

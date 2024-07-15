@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.patch;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 
@@ -31,10 +31,10 @@ public class BaseCompanyPatchDTO implements DTO
 
     public enum Action
     {
-        @ApiModelProperty( "Enable a company and all its employees" )
+        @Schema( description = "Enable a company and all its employees")
         ACTIVATION,
 
-        @ApiModelProperty( "Disable a company and all its employees" )
+        @Schema( description = "Disable a company and all its employees")
         DEACTIVATION;
 
         @Override

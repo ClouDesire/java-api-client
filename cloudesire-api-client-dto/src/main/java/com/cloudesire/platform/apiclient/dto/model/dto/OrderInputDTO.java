@@ -4,7 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.liberologico.cloudesire.common.enums.OSType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class OrderInputDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( "Which type of order" )
+    @Schema( description = "Which type of order")
     @NotNull
     private OrderType type;
 
@@ -38,25 +38,25 @@ public class OrderInputDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO buyer;
 
-    @ApiModelProperty( "Optional discount coupon" )
+    @Schema( description = "Optional discount coupon")
     private String hashCoupon;
 
     @Valid
-    @ApiModelProperty( "Quantities for eventual billingItems available" )
+    @Schema( description = "Quantities for eventual billingItems available")
     private Map<UrlEntityDTO, Integer> billingItems;
 
     @Valid
-    @ApiModelProperty( "ConfigurationParameters values" )
+    @Schema( description = "ConfigurationParameters values")
     private Map<UrlEntityDTO, String> configurationParameters;
 
-    @ApiModelProperty( "Environment variables values" )
+    @Schema( description = "Environment variables values")
     private List<ApplicationFileEnvironmentDTO> environment;
 
-    @ApiModelProperty( "An external id of your choice" )
+    @Schema( description = "An external id of your choice")
     @Pattern( regexp = "[A-Za-z0-9-_]+", message = ErrorKeys.ALPHANUMERIC_UNDERSCORE )
     private String externalReference;
 
-    @ApiModelProperty( "When in reseller mode, specify the reseller username" )
+    @Schema( description = "When in reseller mode, specify the reseller username")
     private String reseller;
 
     private Integer catalogId;

@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -12,22 +12,22 @@ public class SubscriptionBillingItemDTO implements DTO
 {
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "Unique identifier of the billing item" )
+    @Schema( description = "Unique identifier of the billing item")
     private String identifier;
 
-    @ApiModelProperty( "Descriptive name of the billing item" )
+    @Schema( description = "Descriptive name of the billing item")
     private String unit;
 
-    @ApiModelProperty( "The current value for this billing item" )
+    @Schema( description = "The current value for this billing item")
     private BigDecimal value;
 
-    @ApiModelProperty( "Whether the billing item has been already bought for the Subscription" )
+    @Schema( description = "Whether the billing item has been already bought for the Subscription")
     private Boolean bought;
 
-    @ApiModelProperty( "An alternative description to identify a quantity range" )
+    @Schema( description = "An alternative description to identify a quantity range")
     private String tag;
 
-    @ApiModelProperty( "Whether the chosen value is in the last range of the possible values" )
+    @Schema( description = "Whether the chosen value is in the last range of the possible values")
     private Boolean unlimited;
 
     private ApiEndpointDTO endpoint;

@@ -1,26 +1,26 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellingConfigurationType;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ResellingPriceDTO implements DTO
 {
-    @ApiModelProperty( "The markup on the price, editable by a distributor" )
+    @Schema( description = "The markup on the price, editable by a distributor")
     private BigDecimal markup;
 
-    @ApiModelProperty( "The markup type, editable by a distributor" )
+    @Schema( description = "The markup type, editable by a distributor")
     private ResellingConfigurationType markupType;
 
-    @ApiModelProperty( value = "The sell-in price", readOnly = true )
+    @Schema( description = "The sell-in price", readOnly = true )
     private BigDecimal sellin;
 
-    @ApiModelProperty( "The sell-out on the price, editable by a reseller" )
+    @Schema( description = "The sell-out on the price, editable by a reseller")
     private BigDecimal sellout;
 
-    @ApiModelProperty( "The sell-out type, editable by a reseller" )
+    @Schema( description = "The sell-out type, editable by a reseller")
     private ResellingConfigurationType selloutType;
 
     public static ResellingPriceDTO markup( BigDecimal value, ResellingConfigurationType type )

@@ -1,28 +1,27 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-@ApiModel( description = "VM instance sizing" )
+@Schema( description = "VM instance sizing" )
 public class InstanceTypeDTO extends NamedEntityDTO
 {
     @NotNull
     @Valid
     private UrlEntityDTO cloudProvider;
 
-    @ApiModelProperty( "CPU cores" )
+    @Schema( description = "CPU cores")
     @NotNull
     private Integer cpu;
 
-    @ApiModelProperty( "RAM quantity" )
+    @Schema( description = "RAM quantity")
     @NotNull
     private Integer ram;
 
-    @ApiModelProperty( "Root disk space" )
+    @Schema( description = "Root disk space")
     @NotNull
     private Integer rootDiskSpace;
 

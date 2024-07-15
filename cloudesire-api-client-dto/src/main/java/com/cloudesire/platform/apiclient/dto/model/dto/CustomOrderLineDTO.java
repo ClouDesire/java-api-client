@@ -5,7 +5,7 @@ import com.cloudesire.platform.apiclient.dto.annotations.FieldAPI;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -13,11 +13,11 @@ import java.util.Objects;
 
 abstract class CustomOrderLineDTO extends OrderLineDTO
 {
-    @ApiModelProperty( "Cost for the platform owner" )
+    @Schema( description = "Cost for the platform owner")
     @FieldAPI( sinceVersion = ApiVersion.V20200518 )
     private PriceDTO platformCost;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20200518 )
     private BigDecimal cost;
 

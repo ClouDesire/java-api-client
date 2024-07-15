@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.liberologico.cloudesire.common.MathConfiguration;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
@@ -15,22 +14,22 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
-@ApiModel( description = "A billed unit" )
+@Schema( description = "A billed unit" )
 public class OrderLineDTO implements Line, DTO
 {
     @NotNull
     @Valid
     private VATPriceDTO price;
 
-    @ApiModelProperty( value = "The quantity", example = "1.0" )
+    @Schema( description = "The quantity", example = "1.0" )
     private BigDecimal quantity = BigDecimal.ONE;
 
-    @ApiModelProperty( "A unit of measurement for the quantity" )
+    @Schema( description = "A unit of measurement for the quantity")
     private String unit;
 
-    @ApiModelProperty( "A description of the service" )
+    @Schema( description = "A description of the service")
     @Length ( max = 1024 )
     private String description;
 
@@ -44,22 +43,22 @@ public class OrderLineDTO implements Line, DTO
     @Valid
     private UrlEntityDTO billingItem;
 
-    @ApiModelProperty( "If this is a one-off cost" )
+    @Schema( description = "If this is a one-off cost")
     private boolean setup;
 
-    @ApiModelProperty( value = "Discount percentage if this line is relative to a coupon", example = "20", accessMode = READ_ONLY )
+    @Schema( description = "Discount percentage if this line is relative to a coupon", example = "20", accessMode = READ_ONLY )
     private BigDecimal discount;
 
-    @ApiModelProperty( value = "Requested billing item maximum quantity", example = "15.00", accessMode = READ_ONLY )
+    @Schema( description = "Requested billing item maximum quantity", example = "15.00", accessMode = READ_ONLY )
     private BigDecimal maximum;
 
-    @ApiModelProperty( value = "Requested billing item tag", example = "BASIC", accessMode = READ_ONLY )
+    @Schema( description = "Requested billing item tag", example = "BASIC", accessMode = READ_ONLY )
     private String tag;
 
-    @ApiModelProperty( "Custom billing identifier" )
+    @Schema( description = "Custom billing identifier")
     private String identifier;
 
-    @ApiModelProperty( "Original line currency" )
+    @Schema( description = "Original line currency")
     private String originalCurrency;
 
     /**
@@ -67,7 +66,7 @@ public class OrderLineDTO implements Line, DTO
      */
     @Deprecated
     @JsonProperty ( value = "totalPrice" )
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     public BigDecimal calculateTotalPrice()
     {
         return getSubtotal();
@@ -78,13 +77,13 @@ public class OrderLineDTO implements Line, DTO
      */
     @Deprecated
     @JsonProperty
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     public BigDecimal getPriceExcludingVAT()
     {
         return getSubtotal();
     }
 
-    @ApiModelProperty( accessMode = READ_ONLY )
+    @Schema( accessMode = READ_ONLY )
     public BigDecimal getSubtotal()
     {
         if ( price == null || price.getPrice() == null ) return BigDecimal.ZERO;
@@ -94,7 +93,7 @@ public class OrderLineDTO implements Line, DTO
                 .setScale( MathConfiguration.DEFAULT_PRECISION, MathConfiguration.ROUNDING_MODE );
     }
 
-    @ApiModelProperty( value = "VAT total amount", accessMode = READ_ONLY )
+    @Schema( description = "VAT total amount", accessMode = READ_ONLY )
     @JsonProperty( value = "vatSpunOff" )
     public BigDecimal getVATSpunOff()
     {

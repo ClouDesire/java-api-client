@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
@@ -13,10 +13,10 @@ public class ResellerDTO extends ParentChildCompanyDTO
 {
     private List<UrlEntityDTO> distributors;
 
-    @ApiModelProperty( "Set to false and fill the rest of the data to bill for yourself" )
+    @Schema( description = "Set to false and fill the rest of the data to bill for yourself")
     private Boolean billsToDistributor;
 
-    @ApiModelProperty( "The prefix of this reseller's invoice numbers" )
+    @Schema( description = "The prefix of this reseller's invoice numbers")
     @Size( min = 3, max = 8 )
     private String invoicePrefix;
 

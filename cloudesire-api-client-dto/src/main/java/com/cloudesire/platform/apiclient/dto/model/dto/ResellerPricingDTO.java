@@ -4,8 +4,7 @@ import com.cloudesire.platform.apiclient.dto.ApiVersion;
 import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingListing;
 import com.cloudesire.platform.apiclient.dto.model.enums.ResellerPricingVisibility;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -13,13 +12,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@ApiModel( description = "Defines a pricing for a product version and a reseller" )
+@Schema( description = "Defines a pricing for a product version and a reseller" )
 public class ResellerPricingDTO extends BaseEntityDTO
 {
     @Valid
     private UrlEntityDTO productVersion;
 
-    @ApiModelProperty( "If the invoices for this resold product are self billed" )
+    @Schema( description = "If the invoices for this resold product are self billed")
     private boolean selfBilled;
 
     @NotNull
@@ -30,40 +29,40 @@ public class ResellerPricingDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO distributorPricing;
 
-    @ApiModelProperty( "The price defined by the reseller" )
+    @Schema( description = "The price defined by the reseller")
     @Valid
     private ResellingPriceDTO price;
 
-    @ApiModelProperty( "The setup fee defined by the reseller" )
+    @Schema( description = "The setup fee defined by the reseller")
     @Valid
     private ResellingPriceDTO setup;
 
-    @ApiModelProperty( "Reselling prices for the billing items" )
+    @Schema( description = "Reselling prices for the billing items")
     @Valid
     private Set<BillingItemResellingPriceDTO> billingItemResellingPrices;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20180312 )
     @Valid
     private Set<BillingItemResellingPriceDTO> billingItems;
 
-    @ApiModelProperty( "Reselling prices for the cloud pricings" )
+    @Schema( description = "Reselling prices for the cloud pricings")
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricingResellingPrices;
 
-    @ApiModelProperty( hidden = true )
+    @Schema( hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20180312 )
     @Valid
     private Set<CloudPricingResellingPriceDTO> cloudPricings;
 
-    @ApiModelProperty( "Whether the pricing will not be altered by a mass update" )
+    @Schema( description = "Whether the pricing will not be altered by a mass update")
     private Boolean locked;
 
-    @ApiModelProperty( "Billing item ranges defined by the reseller" )
+    @Schema( description = "Billing item ranges defined by the reseller")
     @Valid
     private List<BillingItemValueDTO> billingItemValues;
 
-    @ApiModelProperty( "Reselling prices for custom costs" )
+    @Schema( description = "Reselling prices for custom costs")
     @Valid
     private List<CustomResellingPriceDTO> customResellingPrices;
 

@@ -1,12 +1,11 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel( description = "Perform an operation on an invoice" )
+@Schema( description = "Perform an operation on an invoice" )
 public class InvoicePatchDTO implements DTO
 {
-    @ApiModelProperty( "Update operation" )
+    @Schema( description = "Update operation")
     private InvoicePatchAction action;
 
     public InvoicePatchDTO( InvoicePatchAction action )
@@ -25,10 +24,10 @@ public class InvoicePatchDTO implements DTO
 
     public enum InvoicePatchAction
     {
-        @ApiModelProperty( "Reissue the first invoice of a subscription" )
+        @Schema( description = "Reissue the first invoice of a subscription")
         REISSUE,
 
-        @ApiModelProperty( "Mark a CHUNKED custom invoice for completion" )
+        @Schema( description = "Mark a CHUNKED custom invoice for completion")
         FINALIZE
     }
 }

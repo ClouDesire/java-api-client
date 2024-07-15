@@ -1,20 +1,20 @@
 package com.cloudesire.platform.apiclient.dto.model.patch;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class CouponPatchDTO implements DTO
 {
-    @ApiModelProperty( "Coupon recipient email address" )
+    @Schema( description = "Coupon recipient email address")
     private String email;
 
-    @ApiModelProperty( "New plafond for an extended trial coupon" )
+    @Schema( description = "New plafond for an extended trial coupon")
     private BigDecimal plafond;
 
-    @ApiModelProperty( "New coupon expiration date" )
+    @Schema( description = "New coupon expiration date")
     private Date expiration;
 
     public String getEmail()

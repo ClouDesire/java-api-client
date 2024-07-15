@@ -3,8 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.CmwEventType;
 import com.cloudesire.platform.apiclient.dto.model.enums.EventRecipientType;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
 import javax.validation.Valid;
@@ -13,29 +12,29 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Objects;
 
-import static io.swagger.annotations.ApiModelProperty.AccessMode.READ_ONLY;
+import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
 /**
  * This is the object exposed by the API, not the notification sent via HTTP
  *
  * @see EventNotificationDTO
  */
-@ApiModel( description = "An event dispatched by the platform to a recipient" )
+@Schema( description = "An event dispatched by the platform to a recipient" )
 public class EventDTO extends BaseEntityDTO
 {
-    @ApiModelProperty( value = "The name of the entity", example = "Subscription" )
+    @Schema( description = "The name of the entity", example = "Subscription" )
     @NotEmpty
     private String entityName;
 
-    @ApiModelProperty( value = "The Id of the entity", example = "123" )
+    @Schema( description = "The Id of the entity", example = "123" )
     @NotNull
     private Integer entityId;
 
-    @ApiModelProperty( value = "If the platform has successfully dispatched this event", accessMode = READ_ONLY )
+    @Schema( description = "If the platform has successfully dispatched this event", accessMode = READ_ONLY )
     @NotNull
     private Boolean notified = false;
 
-    @ApiModelProperty( value = "When the event has been generated", accessMode = READ_ONLY )
+    @Schema( description = "When the event has been generated", accessMode = READ_ONLY )
     private Date date = new Date();
 
     @NotNull
@@ -43,7 +42,7 @@ public class EventDTO extends BaseEntityDTO
 
     private EventRecipientType recipient = EventRecipientType.COMPANY;
 
-    @ApiModelProperty( accessMode = READ_ONLY )
+    @Schema( accessMode = READ_ONLY )
     private EventNotificationDTO payload;
 
     @JsonInclude ( JsonInclude.Include.NON_NULL )
@@ -60,14 +59,14 @@ public class EventDTO extends BaseEntityDTO
     @Valid
     private UrlEntityDTO entityUrl;
 
-    @ApiModelProperty( value = "Editable only by admin - Generally not used", hidden = true )
+    @Schema( description = "Editable only by admin - Generally not used", hidden = true )
     private String environment;
 
     @NotNull
     @URL
     private String endpoint;
 
-    @ApiModelProperty( value = "When the event notification will be retried", accessMode = READ_ONLY )
+    @Schema( description = "When the event notification will be retried", accessMode = READ_ONLY )
     private Date nextRetry = new Date();
 
     public String getEntityName()

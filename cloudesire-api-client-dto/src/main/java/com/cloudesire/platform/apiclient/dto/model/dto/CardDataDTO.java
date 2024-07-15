@@ -1,8 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -13,31 +12,31 @@ import java.util.Map;
 /**
  * @deprecated by {@link StripeTokenDTO}
  */
-@ApiModel( description = "Credit card data" )
+@Schema( description = "Credit card data" )
 @Deprecated
 public class CardDataDTO implements PaymentDataDTO
 {
-    @ApiModelProperty( value = "Month of expiration", example = "09" )
+    @Schema( description = "Month of expiration", example = "09" )
     @NotEmpty
     @Pattern( regexp = "\\d{2}", message = ErrorKeys.TWO_DIGITS )
     private String expirationMonth;
 
-    @ApiModelProperty( value = "Year of expiration", example = "2021" )
+    @Schema( description = "Year of expiration", example = "2021" )
     @NotEmpty
     @Pattern( regexp = "\\d{2}|\\d{4}", message = ErrorKeys.TWO_OR_FOUR_DIGITS )
     private String expirationYear;
 
-    @ApiModelProperty( "Credit card number" )
+    @Schema( description = "Credit card number")
     @NotEmpty
     @CreditCardNumber
     private String number;
 
-    @ApiModelProperty( value = "Credit card CVC", example = "321" )
+    @Schema( description = "Credit card CVC", example = "321" )
     @NotEmpty
     @Pattern( regexp = "\\d{3}|\\d{4}", message = ErrorKeys.THREE_OR_FOUR_DIGITS )
     private String cvc;
 
-    @ApiModelProperty( value = "Credit card holder", example = "John Doe" )
+    @Schema( description = "Credit card holder", example = "John Doe" )
     private String holder;
 
     public CardDataDTO( String expirationMonth, String expirationYear, String number, String cvc )

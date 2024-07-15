@@ -7,8 +7,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemPresence;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemType;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -18,23 +17,23 @@ import java.util.Objects;
 
 import static com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys.INVALID_SIZE;
 
-@ApiModel( description = "Definition of the pricing of an extra resource" )
+@Schema( description = "Definition of the pricing of an extra resource" )
 public class BillingItemDTO extends NamedEntityDTO
 {
-    @ApiModelProperty( "Unique identifier of the billing item" )
+    @Schema( description = "Unique identifier of the billing item")
     private String identifier;
 
-    @ApiModelProperty( value = "Descriptive name of a single item", example = "user, license" )
+    @Schema( description = "Descriptive name of a single item", example = "user, license" )
     @NotEmpty
     @Size( max = 255, message = INVALID_SIZE )
     private String unit;
 
-    @ApiModelProperty( "Description of the billing item" )
+    @Schema( description = "Description of the billing item")
     @NotEmpty
     @Size( max = 8192, message = INVALID_SIZE )
     private String description;
 
-    @ApiModelProperty( "Extended description of the billing item" )
+    @Schema( description = "Extended description of the billing item")
     private String longDescription;
 
     private UrlEntityDTO owner;
@@ -46,22 +45,22 @@ public class BillingItemDTO extends NamedEntityDTO
 
     private BillingItemValueType valueType;
 
-    @ApiModelProperty( "Percentage of revenues for the platform owner" )
+    @Schema( description = "Percentage of revenues for the platform owner")
     private BigDecimal cloudesireQuota;
 
     @FieldAPI( sinceVersion = ApiVersion.V20211004 )
     private BillingItemPresence presence = BillingItemPresence.OPTIONAL;
 
-    @ApiModelProperty( value = "Whether the billing item will be included in every subscription", hidden = true )
+    @Schema( description = "Whether the billing item will be included in every subscription", hidden = true )
     @UnsupportedAPI( sinceVersion = ApiVersion.V20211004 )
     private Boolean required;
 
-    @ApiModelProperty( "Whether the billing item can be downgraded" )
+    @Schema( description = "Whether the billing item can be downgraded")
     private boolean downgradable = true;
 
     private ApiEndpointDTO endpoint;
 
-    @ApiModelProperty( "Weight order for displaying on the marketplace" )
+    @Schema( description = "Weight order for displaying on the marketplace")
     private Integer weight;
 
     public BillingItemDTO( BillingItemType type, String name, String unit, String description )

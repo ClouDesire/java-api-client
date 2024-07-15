@@ -1,36 +1,35 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Arrays;
 import java.util.List;
 
-@ApiModel( description = "The product type" )
+@Schema( description = "The product type" )
 public enum ProductType
 {
-    @ApiModelProperty( "This product is billed per API call" )
+    @Schema( description = "This product is billed per API call")
     API,
 
-    @ApiModelProperty( "This product is a bundle of other products" )
+    @Schema( description = "This product is a bundle of other products")
     BUNDLE,
 
-    @ApiModelProperty( "Like syndicated, but requires cloud credentials" )
+    @Schema( description = "Like syndicated, but requires cloud credentials")
     CLOUD_SERVICE,
 
-    @ApiModelProperty( "This product is imported from the Azure catalog" )
+    @Schema( description = "This product is imported from the Azure catalog")
     CSP,
 
-    @ApiModelProperty( "Provisioning is made by us" )
+    @Schema( description = "Provisioning is made by us")
     MANAGED,
 
-    @ApiModelProperty( "Provisioning is handled externally" )
+    @Schema( description = "Provisioning is handled externally")
     SERVICE,
 
-    @ApiModelProperty( "Provisioning is handled programmatically" )
+    @Schema( description = "Provisioning is handled programmatically")
     SYNDICATED,
 
-    @ApiModelProperty( "This product provisions a bare virtual machine" )
+    @Schema( description = "This product provisions a bare virtual machine")
     VM;
 
     public static List<ProductType> syndicated()

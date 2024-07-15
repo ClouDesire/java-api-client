@@ -1,20 +1,19 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@ApiModel( description = "Custom period definition, alternative to CalendarPeriod." )
+@Schema( description = "Custom period definition, alternative to CalendarPeriod." )
 public class CustomPeriodDTO implements DTO
 {
-    @ApiModelProperty( "Custom period start date, inclusive" )
+    @Schema( description = "Custom period start date, inclusive")
     @NotNull
     private LocalDate startDate;
 
-    @ApiModelProperty( "Custom period end date, exclusive. If null, period streches to now" )
+    @Schema( description = "Custom period end date, exclusive. If null, period streches to now")
     private LocalDate endDate;
 
     public CustomPeriodDTO( LocalDate startDate, LocalDate endDate )
