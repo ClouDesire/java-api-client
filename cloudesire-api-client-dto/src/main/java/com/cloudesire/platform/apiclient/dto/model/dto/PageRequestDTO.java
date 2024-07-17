@@ -3,6 +3,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import com.cloudesire.platform.apiclient.dto.model.enums.SortDirection;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Max;
@@ -27,18 +29,18 @@ public class PageRequestDTO
         }
     }
 
-    @Schema( description = "Page number to retrieve", defaultValue = "1" )
+    @Schema( description = "Page number to retrieve", type = "integer", defaultValue = "1" )
     @Min( value = 1, message = ErrorKeys.INVALID_MIN )
     private Integer pageNumber = DEFAULT_PAGE_NUMBER;
 
-    @Schema( description = "Number of elements for the requested page", defaultValue = "20" )
+    @Schema( description = "Number of elements for the requested page", type = "integer", defaultValue = "20" )
     @Max( value = 50, message = ErrorKeys.INVALID_MAX )
     private Integer pageSize = DEFAULT_PAGE_SIZE;
 
-    @Schema( description = "Elements sort direction")
+    @Parameter( description = "Elements sort direction" )
     private SortDirection sortDirection;
 
-    @Schema( description = "Field to sort by")
+    @Parameter( description = "Field to sort by" )
     private String sortField;
 
     public PageRequestDTO( int pageNumber, int pageSize )
@@ -96,14 +98,14 @@ public class PageRequestDTO
     {
     }
 
-    @Schema( hidden = true )
+    @Hidden
     @JsonIgnore
     public boolean isAscending()
     {
         return sortDirection == SortDirection.ASC;
     }
 
-    @Schema( hidden = true )
+    @Hidden
     @JsonIgnore
     public boolean isSet()
     {
