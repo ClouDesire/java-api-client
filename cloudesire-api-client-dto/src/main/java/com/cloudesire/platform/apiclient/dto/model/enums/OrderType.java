@@ -16,7 +16,7 @@ public enum OrderType
     UPGRADE,
     @Schema( description = "Change values for the available Billing Item")
     BILLING_ITEM_UPGRADE,
-    @Hidden
+    @Schema( description = "Monthly costs of an active subscription" )
     MONTHLY,
     @Schema( description = "Renew an active subscription")
     RENEWAL,
