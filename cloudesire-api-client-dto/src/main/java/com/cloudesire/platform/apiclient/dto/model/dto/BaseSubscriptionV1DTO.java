@@ -70,7 +70,12 @@ public abstract class BaseSubscriptionV1DTO extends NamedEntityDTO
     @UnsupportedAPI( sinceVersion = V20220211 )
     private Date nextInvoice;
 
-    @Schema( description = "The type of this subscription", allowableValues = "NORMAL, TRIAL, SANDBOX", accessMode = READ_ONLY )
+    @Schema(
+            description = "The type of this subscription",
+            type = "string",
+            allowableValues = { "NORMAL", "TRIAL", "SANDBOX" },
+            accessMode = READ_ONLY
+    )
     private OrderType type;
 
     /**

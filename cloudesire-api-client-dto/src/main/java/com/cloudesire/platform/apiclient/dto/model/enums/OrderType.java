@@ -1,5 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.enums;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema( description = "Which kind of order" )
@@ -11,11 +12,11 @@ public enum OrderType
     TRIAL,
     @Schema( description = "Test mode for vendors")
     SANDBOX,
-    @Schema( description = "Deprecated", hidden = true )
+    @Hidden
     UPGRADE,
     @Schema( description = "Change values for the available Billing Item")
     BILLING_ITEM_UPGRADE,
-    @Schema( description = "Internal", hidden = true )
+    @Hidden
     MONTHLY,
     @Schema( description = "Renew an active subscription")
     RENEWAL,
