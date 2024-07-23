@@ -30,6 +30,8 @@ import retrofit2.http.Streaming;
 import java.util.List;
 import java.util.Map;
 
+import static com.cloudesire.platform.apiclient.dto.model.constants.Parameters.AS_COMPANY;
+
 public interface UserApi
 {
     // Creates
@@ -99,6 +101,9 @@ public interface UserApi
     @GET( "user/{id}/metadata" )
     Call<Map<String, String>> getMetadata( @Path( "id" ) int id );
 
+    @GET( "user/{id}/metadata" )
+    Call<Map<String, String>> getMetadata( @Path( "id" ) int id, @Query( AS_COMPANY ) String companySlug );
+
     @Streaming
     @GET( "user" )
     @Headers( { "Accept:text/csv" } )
@@ -117,6 +122,10 @@ public interface UserApi
 
     @PUT( "user/{id}/metadata" )
     Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload );
+
+    @PUT( "user/{id}/metadata" )
+    Call<Void> updateMetadata( @Path( "id" ) int id, @Body Map<String, String> payload,
+            @Query( AS_COMPANY ) String companySlug );
 
     @POST( "user/activate" )
     Call<Void> activateAccount( @Body UserActivationDTO payload );
@@ -204,4 +213,8 @@ public interface UserApi
 
     @DELETE( "user/{id}/metadata/{key}" )
     Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key );
+
+    @DELETE( "user/{id}/metadata/{key}" )
+    Call<Void> deleteMetadata( @Path( "id" ) int id, @Path( "key" ) String key,
+            @Query( AS_COMPANY ) String companySlug );
 }
