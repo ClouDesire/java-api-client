@@ -4,7 +4,7 @@ import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.OsFamily;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 

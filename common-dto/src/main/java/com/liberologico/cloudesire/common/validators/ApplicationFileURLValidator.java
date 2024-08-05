@@ -2,8 +2,9 @@ package com.liberologico.cloudesire.common.validators;
 
 import com.liberologico.cloudesire.common.DockerConstants;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -17,7 +18,7 @@ public class ApplicationFileURLValidator implements ConstraintValidator<Applicat
 
     public boolean isValid( CharSequence value, ConstraintValidatorContext constraintValidatorContext )
     {
-        if ( value == null || value.length() == 0 ) return true;
+        if ( value == null || value.isEmpty() ) return true;
 
         if ( value.toString().startsWith( DockerConstants.SCHEMA ) )
         {

@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 

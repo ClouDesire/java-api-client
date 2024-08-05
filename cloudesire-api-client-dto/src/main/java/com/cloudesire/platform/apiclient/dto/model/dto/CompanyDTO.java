@@ -6,8 +6,8 @@ import com.cloudesire.platform.apiclient.dto.annotations.UnsupportedAPI;
 import com.liberologico.cloudesire.common.Regexp;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
