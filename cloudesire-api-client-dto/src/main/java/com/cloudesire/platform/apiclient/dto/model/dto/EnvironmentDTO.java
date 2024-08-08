@@ -2230,6 +2230,8 @@ public class EnvironmentDTO implements DTO
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
+        private Map<String, Long> customLatencyMeterThreshold;
+
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
         {
@@ -2808,6 +2810,16 @@ public class EnvironmentDTO implements DTO
         public void setRateLimiter( RateLimiter rateLimiter )
         {
             this.rateLimiter = rateLimiter;
+        }
+
+        public Map<String, Long> getCustomLatencyMeterThreshold()
+        {
+            return customLatencyMeterThreshold;
+        }
+
+        public void setCustomLatencyMeterThreshold( Map<String, Long> customLatencyMeterThreshold )
+        {
+            this.customLatencyMeterThreshold = customLatencyMeterThreshold;
         }
         //endregion
 
