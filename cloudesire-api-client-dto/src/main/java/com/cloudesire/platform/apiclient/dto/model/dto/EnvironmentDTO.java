@@ -2230,7 +2230,7 @@ public class EnvironmentDTO implements DTO
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
-        private Map<String, Long> customLatencyMeterThreshold;
+        private Map<String, Long> customLatencyMeterThreshold = new HashMap<>();
 
         //region Auto-generated getters and setters
         public Integer getTrialLimit()
