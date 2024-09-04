@@ -1,7 +1,6 @@
 package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.BillingItemDTO;
-import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.cloudesire.platform.apiclient.query.BillingItemQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -14,7 +13,6 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 import java.util.List;
-import java.util.Map;
 
 public interface BillingItemApi
 {
@@ -29,18 +27,6 @@ public interface BillingItemApi
 
     @GET( "billingItem" )
     Call<List<BillingItemDTO>> getAll( @QueryMap BillingItemQuery query );
-
-    /**
-     * @deprecated by {@link #getAll(BillingItemQuery)}
-     */
-    @Deprecated
-    @GET( "billingItem" )
-    Call<List<BillingItemDTO>> getAll(
-            @QueryMap Map<String, String> pageRequest,
-            @Query( "valueType" ) BillingItemValueType valueType,
-            @Query( "companyId" ) Integer companyId,
-            @Query( "reseller" ) String reseller
-    );
 
     @GET( "billingItem/identifier={identifier}" )
     Call<BillingItemDTO> get( @Path( "identifier" ) String identifier );
