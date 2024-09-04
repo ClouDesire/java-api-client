@@ -5,11 +5,18 @@ import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 
 public class BillingItemQuery extends PageRequestQuery
 {
+    private static final String SEARCH = "search";
     private static final String IDENTIFIER = "identifier";
     private static final String VALUE_TYPE = "valueType";
     private static final String COMPANY_ID = "companyId";
     private static final String RESELLER = "reseller";
     private static final String API = "api";
+
+    public BillingItemQuery search( String search )
+    {
+        put( SEARCH, search );
+        return this;
+    }
 
     public BillingItemQuery identifier( String identifier )
     {
