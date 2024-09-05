@@ -3,18 +3,17 @@ package com.cloudesire.platform.apiclient.query;
 import com.cloudesire.platform.apiclient.dto.model.enums.BillingItemValueType;
 import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 
-public class BillingItemQuery extends PageRequestQuery
+public class BillingItemQuery extends BaseQuery
 {
-    private static final String SEARCH = "search";
     private static final String IDENTIFIER = "identifier";
     private static final String VALUE_TYPE = "valueType";
     private static final String COMPANY_ID = "companyId";
     private static final String RESELLER = "reseller";
     private static final String API = "api";
 
-    public BillingItemQuery search( String search )
+    public BillingItemQuery search( SearchQuery search )
     {
-        put( SEARCH, search );
+        putAll( search );
         return this;
     }
 
