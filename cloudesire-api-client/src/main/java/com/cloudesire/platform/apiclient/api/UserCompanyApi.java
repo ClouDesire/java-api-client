@@ -4,6 +4,7 @@ import com.cloudesire.platform.apiclient.dto.model.dto.MinimalCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.dto.UserCompanyDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.BaseCompanyPatchDTO;
 import com.cloudesire.platform.apiclient.query.PageRequestQuery;
+import com.cloudesire.platform.apiclient.query.UserCompanyQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -33,6 +34,13 @@ public interface UserCompanyApi
     @GET( "userCompany" )
     Call<List<UserCompanyDTO>> getAll();
 
+    @GET( "userCompany" )
+    Call<List<UserCompanyDTO>> getAll( @QueryMap UserCompanyQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(UserCompanyQuery)}
+     */
+    @Deprecated( since = "20240905", forRemoval = true )
     @GET( "userCompany" )
     Call<List<UserCompanyDTO>> getAll( @Query( "textField" ) String textField, @QueryMap PageRequestQuery pageRequest );
 

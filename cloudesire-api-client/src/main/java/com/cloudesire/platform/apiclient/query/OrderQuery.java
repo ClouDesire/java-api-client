@@ -11,7 +11,6 @@ public class OrderQuery extends PageRequestQuery
     private static final String TYPE = "type";
     private static final String STATUS = "status";
     private static final String SUBSCRIPTION_ID = "subscriptionId";
-    private static final String TEXT_FIELD = "textField";
     private static final String COUPON = "coupon";
     private static final String FROM = "from";
     private static final String TO = "to";
@@ -19,6 +18,12 @@ public class OrderQuery extends PageRequestQuery
     public OrderQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
+        return this;
+    }
+
+    public OrderQuery setSearch( SearchQuery searchQuery )
+    {
+        putAll( searchQuery );
         return this;
     }
 
@@ -40,10 +45,13 @@ public class OrderQuery extends PageRequestQuery
         return this;
     }
 
+    /**
+     * @deprecated by {@link #setSearch(SearchQuery)}
+     */
+    @Deprecated( since = "20240905", forRemoval = true )
     public OrderQuery setTextField( String textField )
     {
-        put( TEXT_FIELD, textField );
-        return this;
+        return setSearch( new SearchQuery( textField ) );
     }
 
     public OrderQuery setCoupon( boolean coupon )

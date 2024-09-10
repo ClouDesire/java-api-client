@@ -4,7 +4,6 @@ import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 
 public class UserQuery extends BaseQuery
 {
-    private static final String TEXT_FIELD = "textField";
     private static final String COMPANY_ID = "companyId";
     private static final String ROLE = "role";
     private static final String DISABLED = "disabled";
@@ -16,9 +15,9 @@ public class UserQuery extends BaseQuery
         return this;
     }
 
-    public UserQuery setTextField( String textField )
+    public UserQuery search( SearchQuery query )
     {
-        put( TEXT_FIELD, textField );
+        putAll( query );
         return this;
     }
 

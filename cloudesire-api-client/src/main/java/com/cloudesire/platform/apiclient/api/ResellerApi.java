@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.api;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.ResellerDTO;
 import com.cloudesire.platform.apiclient.dto.model.patch.BaseCompanyPatchDTO;
+import com.cloudesire.platform.apiclient.query.ResellerQuery;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -25,10 +26,21 @@ public interface ResellerApi
     Call<ResellerDTO> get( @Path( "id" ) int id );
 
     @GET( "reseller" )
+    Call<List<ResellerDTO>> getAll( @QueryMap ResellerQuery query );
+
+    /**
+     * @deprecated by {@link #getAll(ResellerQuery)}
+     */
+    @Deprecated( since = "20240905", forRemoval = true )
+    @GET( "reseller" )
     Call<List<ResellerDTO>> getAll(
             @Query( "textField" ) String textField,
             @QueryMap Map<String, String> pageRequest );
 
+    /**
+     * @deprecated by {@link #getAll(ResellerQuery)}
+     */
+    @Deprecated( since = "20240905", forRemoval = true )
     @GET( "reseller" )
     Call<List<ResellerDTO>> getAll(
             @Query( "textField" ) String textField,

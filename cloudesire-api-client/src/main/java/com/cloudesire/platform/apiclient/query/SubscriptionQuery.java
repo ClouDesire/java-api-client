@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public class SubscriptionQuery extends PageRequestQuery
 {
-    private static final String FILTER = "filter";
     private static final String ID = "id";
     private static final String STATUS = "status";
     private static final String TYPE = "type";
@@ -20,16 +19,25 @@ public class SubscriptionQuery extends PageRequestQuery
         return this;
     }
 
+    public SubscriptionQuery setSearch( SearchQuery searchQuery )
+    {
+        putAll( searchQuery );
+        return this;
+    }
+
     public SubscriptionQuery setMetadata( MetadataQuery metadata )
     {
         putAll( metadata );
         return this;
     }
 
+    /**
+     * @deprecated by {@link #setSearch(SearchQuery)}
+     */
+    @Deprecated( since = "20240905", forRemoval = true )
     public SubscriptionQuery setFilter( String value )
     {
-        put( FILTER, value );
-        return this;
+        return setSearch( new SearchQuery( value ) );
     }
 
     public SubscriptionQuery setId( Integer... id )
