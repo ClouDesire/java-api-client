@@ -13,13 +13,18 @@ public class CostsQuery extends BaseQuery
 {
     private static final String FROM = "from";
     private static final String TO = "to";
-    private static final String FILTER = "filter";
     private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String GROUPING = "grouping";
 
     public CostsQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
+        return this;
+    }
+
+    public CostsQuery setSearch( SearchQuery searchQuery )
+    {
+        putAll( searchQuery );
         return this;
     }
 
@@ -32,7 +37,7 @@ public class CostsQuery extends BaseQuery
     /**
      * @deprecated by {@link #from(ZonedDateTime)}
      */
-    @Deprecated( since = "3.6.1" )
+    @Deprecated( since = "3.6.1", forRemoval = true )
     public CostsQuery from( Date from )
     {
         put( FROM, SimpleDateFormatFactory.iso8601Format().format( from ) );
@@ -48,17 +53,20 @@ public class CostsQuery extends BaseQuery
     /**
      * @deprecated by {@link #to(ZonedDateTime)}
      */
-    @Deprecated( since = "3.6.1" )
+    @Deprecated( since = "3.6.1", forRemoval = true )
     public CostsQuery to( Date to )
     {
         put( TO, SimpleDateFormatFactory.iso8601Format().format( to ) );
         return this;
     }
 
+    /**
+     * @deprecated by {@link #setSearch(SearchQuery)}
+     */
+    @Deprecated( since = "3.9.0" )
     public CostsQuery filter( String filter )
     {
-        put( FILTER, filter );
-        return this;
+        return setSearch( new SearchQuery( filter ) );
     }
 
     /**
