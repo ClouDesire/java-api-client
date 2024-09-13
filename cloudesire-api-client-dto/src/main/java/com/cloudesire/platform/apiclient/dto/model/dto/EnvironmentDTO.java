@@ -2231,7 +2231,7 @@ public class EnvironmentDTO implements DTO
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
-        @Schema( description = "" )
+        @Schema( description = "Lockout IPs after authentication failure" )
         @Valid
         private LockoutPolicy lockoutPolicy = new LockoutPolicy();
 
@@ -3309,15 +3309,19 @@ public class EnvironmentDTO implements DTO
 
     public static class LockoutPolicy implements DTO
     {
-        @Schema( description = "" )
+        @Schema( description = "Maximum number of attempts before lockout (0 disables feature)" )
         private int maxAttempts;
 
-        @Schema( description = "" )
+        @Schema( description = "Maximum lockout time" )
         @Positive
         private long ttl = 1;
 
-        @Schema( description = "" )
+        @Schema( description = "Time unit for the TTL" )
+        @NotNull
         private TimeUnit ttlUnit = TimeUnit.HOURS;
+
+        @Schema( description = "Introduce a delay after every failure" )
+        private boolean starve;
 
         public int getMaxAttempts()
         {
@@ -3349,6 +3353,15 @@ public class EnvironmentDTO implements DTO
             this.ttlUnit = ttlUnit;
         }
 
+        public boolean isStarve()
+        {
+            return starve;
+        }
+
+        public void setStarve( boolean starve )
+        {
+            this.starve = starve;
+        }
     }
 
     @Schema( hidden = true )
