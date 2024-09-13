@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Schema( description = "Platform configuration" )
 public class EnvironmentDTO implements DTO
@@ -2230,6 +2231,10 @@ public class EnvironmentDTO implements DTO
         @Valid
         private RateLimiter rateLimiter = new RateLimiter();
 
+        @Schema( description = "Lockout IPs after authentication failure" )
+        @Valid
+        private LockoutPolicy lockoutPolicy = new LockoutPolicy();
+
         private Map<String, Long> customLatencyMeterThreshold = new HashMap<>();
 
         //region Auto-generated getters and setters
@@ -2812,6 +2817,16 @@ public class EnvironmentDTO implements DTO
             this.rateLimiter = rateLimiter;
         }
 
+        public LockoutPolicy getLockoutPolicy()
+        {
+            return lockoutPolicy;
+        }
+
+        public void setLockoutPolicy( @Valid LockoutPolicy lockoutPolicy )
+        {
+            this.lockoutPolicy = lockoutPolicy;
+        }
+
         public Map<String, Long> getCustomLatencyMeterThreshold()
         {
             return customLatencyMeterThreshold;
@@ -3289,6 +3304,63 @@ public class EnvironmentDTO implements DTO
         public void setEnforced( boolean enforced )
         {
             this.enforced = enforced;
+        }
+    }
+
+    public static class LockoutPolicy implements DTO
+    {
+        @Schema( description = "Maximum number of attempts before lockout (0 disables feature)" )
+        private int maxAttempts;
+
+        @Schema( description = "Maximum lockout time" )
+        @Positive
+        private long ttl = 1;
+
+        @Schema( description = "Time unit for the TTL" )
+        @NotNull
+        private TimeUnit ttlUnit = TimeUnit.HOURS;
+
+        @Schema( description = "Introduce a delay after every failure" )
+        private boolean starve;
+
+        public int getMaxAttempts()
+        {
+            return maxAttempts;
+        }
+
+        public void setMaxAttempts( int maxAttempts )
+        {
+            this.maxAttempts = maxAttempts;
+        }
+
+        public long getTtl()
+        {
+            return ttl;
+        }
+
+        public void setTtl( long ttl )
+        {
+            this.ttl = ttl;
+        }
+
+        public TimeUnit getTtlUnit()
+        {
+            return ttlUnit;
+        }
+
+        public void setTtlUnit( TimeUnit ttlUnit )
+        {
+            this.ttlUnit = ttlUnit;
+        }
+
+        public boolean isStarve()
+        {
+            return starve;
+        }
+
+        public void setStarve( boolean starve )
+        {
+            this.starve = starve;
         }
     }
 
