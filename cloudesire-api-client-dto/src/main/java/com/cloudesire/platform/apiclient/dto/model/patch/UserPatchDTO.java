@@ -2,7 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.patch;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class UserPatchDTO implements DTO
 {

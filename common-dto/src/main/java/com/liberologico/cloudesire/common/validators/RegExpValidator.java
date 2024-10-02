@@ -1,7 +1,7 @@
 package com.liberologico.cloudesire.common.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 

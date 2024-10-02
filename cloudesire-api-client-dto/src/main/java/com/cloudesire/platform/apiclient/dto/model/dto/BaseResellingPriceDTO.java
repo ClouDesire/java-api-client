@@ -1,6 +1,6 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.Objects;
 
 abstract class BaseResellingPriceDTO extends BaseEntityDTO

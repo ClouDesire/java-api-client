@@ -7,7 +7,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;

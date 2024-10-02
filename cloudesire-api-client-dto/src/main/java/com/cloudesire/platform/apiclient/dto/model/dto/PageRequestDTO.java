@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.util.HashMap;
 import java.util.Map;
 

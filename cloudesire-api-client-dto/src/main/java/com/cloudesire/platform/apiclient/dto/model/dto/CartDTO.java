@@ -1,7 +1,7 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Size;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
