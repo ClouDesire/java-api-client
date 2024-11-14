@@ -3365,6 +3365,7 @@ public class EnvironmentDTO implements DTO
             this.starveBase = starveBase;
         }
 
+        @JsonIgnore
         public boolean isStarve()
         {
             return starveBase > 0;
