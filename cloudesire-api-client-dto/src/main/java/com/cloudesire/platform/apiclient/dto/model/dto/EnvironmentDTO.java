@@ -21,6 +21,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -3320,8 +3321,9 @@ public class EnvironmentDTO implements DTO
         @NotNull
         private TimeUnit ttlUnit = TimeUnit.HOURS;
 
-        @Schema( description = "Introduce a delay after every failure" )
-        private boolean starve;
+        @Schema( description = "Base of the exponential delay after every nth failure" )
+        @PositiveOrZero
+        private double starveBase;
 
         public int getMaxAttempts()
         {
@@ -3353,14 +3355,28 @@ public class EnvironmentDTO implements DTO
             this.ttlUnit = ttlUnit;
         }
 
-        public boolean isStarve()
+        public double getStarveBase()
         {
-            return starve;
+            return starveBase;
         }
 
+        public void setStarveBase( double starveBase )
+        {
+            this.starveBase = starveBase;
+        }
+
+        public boolean isStarve()
+        {
+            return starveBase > 0;
+        }
+
+        /**
+         * @deprecated by {@link #setStarveBase(double)}
+         */
+        @Deprecated
         public void setStarve( boolean starve )
         {
-            this.starve = starve;
+            if ( starve ) this.starveBase = 2;
         }
     }
 
