@@ -4,9 +4,9 @@ import com.cloudesire.platform.apiclient.dto.model.enums.CategoryType;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 

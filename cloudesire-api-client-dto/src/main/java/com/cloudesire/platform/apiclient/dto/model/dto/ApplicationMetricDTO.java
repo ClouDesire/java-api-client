@@ -10,8 +10,8 @@ import com.cloudesire.platform.apiclient.dto.model.enums.MetricFunction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class ApplicationMetricDTO extends BaseEntityDTO
