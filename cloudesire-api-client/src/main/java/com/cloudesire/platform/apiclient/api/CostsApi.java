@@ -12,6 +12,7 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface CostsApi
@@ -36,4 +37,8 @@ public interface CostsApi
 
     @GET( "costs/tags/{key}/values" )
     Call<List<String>> getCustomerTagsValues( @Path( "key" ) String key );
+
+    @GET( "costs/refresh" )
+    Call<ZonedDateTime> getLastRefresh();
+
 }
