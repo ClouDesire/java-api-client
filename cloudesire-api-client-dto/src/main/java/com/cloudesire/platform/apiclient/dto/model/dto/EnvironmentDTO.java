@@ -14,15 +14,15 @@ import com.liberologico.cloudesire.common.validators.CurrencyMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1527,19 +1527,19 @@ public class EnvironmentDTO implements DTO
         public void setSelfBilling( Object selfBilling )
         {
             /* @deprecated */
-            if ( selfBilling instanceof Boolean && (Boolean) selfBilling )
+            if ( selfBilling instanceof Boolean bSelfBilling && bSelfBilling )
             {
                 this.selfBilling = SelfBilling.PER_PLAN;
             }
 
-            if ( selfBilling instanceof String )
+            if ( selfBilling instanceof String sSelfBilling )
             {
-                this.selfBilling = SelfBilling.valueOf( (String) selfBilling );
+                this.selfBilling = SelfBilling.valueOf( sSelfBilling );
             }
 
-            if ( selfBilling instanceof SelfBilling )
+            if ( selfBilling instanceof SelfBilling oSelfBilling )
             {
-                this.selfBilling = (SelfBilling) selfBilling;
+                this.selfBilling = oSelfBilling;
             }
         }
 
