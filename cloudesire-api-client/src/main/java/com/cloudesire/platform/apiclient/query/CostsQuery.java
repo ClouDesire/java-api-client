@@ -16,6 +16,16 @@ public class CostsQuery extends BaseQuery
     private static final String SUBSCRIPTION_ID = "subscriptionId";
     private static final String GROUPING = "grouping";
 
+    public CostsQuery setScrollRequest( ScrollRequestQuery scrollRequestQuery )
+    {
+        putAll( scrollRequestQuery );
+        return this;
+    }
+
+    /**
+     * @deprecated by {@link #setScrollRequest(ScrollRequestQuery)}
+     */
+    @Deprecated( since = "20250109", forRemoval = true )
     public CostsQuery setPageRequest( PageRequestQuery pageRequestQuery )
     {
         putAll( pageRequestQuery );
