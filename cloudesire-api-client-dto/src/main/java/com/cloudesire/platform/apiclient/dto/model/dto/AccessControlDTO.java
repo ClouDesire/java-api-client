@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.Permission;
 import com.cloudesire.platform.apiclient.dto.model.enums.UserRole;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 

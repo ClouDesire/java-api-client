@@ -3,7 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.enums.CalendarPeriod;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.Objects;
 
 @Schema( description = "Timeframe definition for a billing budget. Either a calendar or a custom period can be defined." )

@@ -3,9 +3,9 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 

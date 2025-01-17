@@ -2,9 +2,9 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.cloudesire.platform.apiclient.dto.model.enums.CouponType;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.util.Map;
 
 import static com.cloudesire.platform.apiclient.dto.model.dto.EnvironmentDTO.MailCustomization.DEFAULT_MAIL_LANGUAGE;
@@ -367,8 +367,7 @@ public class MailEnvironmentDTO implements DTO
                     return getDiscountCoupon();
                 case FIXED_PRICE:
                     return getFixedPriceCoupon();
-                case TRIAL:
-                case EXTENDED_TRIAL:
+                case TRIAL, EXTENDED_TRIAL:
                     return getTrialCoupon();
                 default:
                     return null;

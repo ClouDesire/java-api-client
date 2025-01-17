@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.liberologico.cloudesire.common.enums.OSType;
 import com.liberologico.cloudesire.common.enums.dto.ActionUrlDTO;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;

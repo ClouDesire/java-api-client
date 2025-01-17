@@ -4,8 +4,8 @@ import com.cloudesire.platform.apiclient.dto.model.utils.BodyParser;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 @Schema( description = "Reference to a related resource" )

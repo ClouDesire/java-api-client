@@ -5,9 +5,9 @@ import com.cloudesire.platform.apiclient.dto.model.enums.PropertyFilter;
 import com.liberologico.cloudesire.common.enums.OSType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Map;
 

@@ -7,7 +7,7 @@ import com.cloudesire.platform.apiclient.dto.model.enums.LineType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Objects;
 
