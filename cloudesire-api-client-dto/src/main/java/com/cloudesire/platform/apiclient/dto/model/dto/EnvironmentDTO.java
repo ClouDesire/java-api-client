@@ -3151,6 +3151,9 @@ public class EnvironmentDTO implements DTO
         @Schema( description = "Special characters")
         private int special;
 
+        @Schema( description = "History size" )
+        private int history;
+
         public int getMin()
         {
             return min;
@@ -3209,6 +3212,16 @@ public class EnvironmentDTO implements DTO
         public void setSpecial( int special )
         {
             this.special = special;
+        }
+
+        public int getHistory()
+        {
+            return history;
+        }
+
+        public void setHistory( int history )
+        {
+            this.history = history;
         }
     }
 
