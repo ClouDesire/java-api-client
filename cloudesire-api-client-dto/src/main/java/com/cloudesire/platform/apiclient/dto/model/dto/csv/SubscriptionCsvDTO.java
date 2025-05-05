@@ -2,6 +2,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -38,6 +39,7 @@ public class SubscriptionCsvDTO implements DTO
 
     private String metadata;
 
+    @JsonIgnore
     private Map<String, String> customerMetadata;
 
     // region Auto-generated code

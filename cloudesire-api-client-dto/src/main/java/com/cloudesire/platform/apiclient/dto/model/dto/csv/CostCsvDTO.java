@@ -3,6 +3,7 @@ package com.cloudesire.platform.apiclient.dto.model.dto.csv;
 import com.cloudesire.platform.apiclient.dto.model.dto.DTO;
 import com.cloudesire.platform.apiclient.dto.model.enums.OrderType;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -53,6 +54,7 @@ public abstract class CostCsvDTO implements DTO
     @JsonProperty( "Currency" )
     private String currency;
 
+    @JsonIgnore
     private Map<String, String> metadata;
 
     public Integer getSubscription()
