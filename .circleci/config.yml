@@ -69,10 +69,14 @@ jobs:
 
       - cloudesire/maven_aggregate_tests_results
 
-      - persist_to_workspace:
-          root: /home/circleci
-          paths:
-            - .
+      - when:
+          condition:
+            equal: [ "<<pipeline.git.branch>>", "master" ]
+          steps:
+            - persist_to_workspace:
+                root: /home/circleci
+                paths:
+                  - .
 
   deploy:
     executor:
