@@ -3,8 +3,8 @@ package com.cloudesire.platform.apiclient.dto.model.dto;
 import com.cloudesire.platform.apiclient.dto.model.constants.ErrorKeys;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.HashMap;
 import java.util.Map;

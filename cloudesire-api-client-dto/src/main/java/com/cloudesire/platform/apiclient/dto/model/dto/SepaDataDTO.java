@@ -1,7 +1,8 @@
 package com.cloudesire.platform.apiclient.dto.model.dto;
 
 import com.liberologico.cloudesire.common.validators.IBAN;
-import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @deprecated by {@link StripeTokenDTO}
