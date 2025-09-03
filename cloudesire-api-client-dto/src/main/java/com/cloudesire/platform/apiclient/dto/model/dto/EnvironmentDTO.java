@@ -2003,7 +2003,7 @@ public class EnvironmentDTO implements DTO
 
         public enum EnabledApplications
         {
-            MARKETPLACE, CLASSIC_CP, VUE_CP
+            MARKETPLACE, CLASSIC_CP, VUE_CP, DOME_INTEGRATION
         }
         // endregion
 
