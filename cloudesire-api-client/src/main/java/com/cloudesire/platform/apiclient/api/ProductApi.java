@@ -81,6 +81,9 @@ public interface ProductApi
     @GET( "product" )
     Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query );
 
+    @GET( "product" )
+    Call<List<ProductDTO>> getAll( @QueryMap ProductQuery query, @Query( "language" ) String language );
+
     @GET( "product/approvalRequests" )
     Call<List<ProductDTO>> getApprovalRequests( @QueryMap PageRequestQuery pageRequest );
 
