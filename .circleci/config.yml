@@ -45,7 +45,8 @@ jobs:
       name: cloudesire/docker_java
       java_version: "21.0"
     steps:
-      - checkout
+      - checkout:
+          method: full
 
       - cloudesire/git_checkout:
           url: git@github.com:ClouDesire/ci-conf.git
