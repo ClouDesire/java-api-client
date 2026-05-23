@@ -1,6 +1,6 @@
 package com.liberologico.cloudesire.common.validators;
 
-import org.iban4j.IbanUtil;
+import de.speedbanking.iban.Iban;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -16,19 +16,6 @@ public class IBANValidatorForString implements ConstraintValidator<IBAN, String>
     @Override
     public boolean isValid( String iban, ConstraintValidatorContext context )
     {
-        if ( iban == null )
-        {
-            return true;
-
-        }
-        try
-        {
-            IbanUtil.validate( iban );
-        }
-        catch ( Exception e )
-        {
-            return false;
-        }
-        return true;
+        return iban == null || Iban.isValid(iban);
     }
 }

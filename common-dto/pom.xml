@@ -17,10 +17,11 @@
 			<version>2.0.1.Final</version>
 			<optional>true</optional>
 		</dependency>
+		<!-- iban-commons: Zero-dependency, high-performance Java 8+ IBAN and BIC validation library -->
 		<dependency>
-			<groupId>org.iban4j</groupId>
-			<artifactId>iban4j</artifactId>
-			<version>3.2.13-RELEASE</version>
+			<groupId>de.speedbanking</groupId>
+			<artifactId>iban-commons</artifactId>
+			<version>1.8.7</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
